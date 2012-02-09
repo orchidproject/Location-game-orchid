@@ -1,0 +1,13 @@
+pdx_pacman.db
+config.yml
+.DS_Store
+test.sqlite3
+public/icons/*
+doc/*
+gems/*
+cache/*
+bin/*
+specifications/*
+vendor/*
+log
+tmp

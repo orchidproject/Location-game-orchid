@@ -1,0 +1,8 @@
+development:
+  database: mysql://map:mapattack@localhost/mapattack 
+  oauth_token: 1
+  client_id: 237ff37d9cb86f0658457673739a1555
+  client_secret: edfe3785ffd6413cd62e2e7a8399e476
+  base_uri: http://mapattack.org/
+  ga_id: 1
+  admin_users: _P5LXD1gxXksKD2t7z

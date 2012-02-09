@@ -1,0 +1,217 @@
+<script type="text/javascript">
+  
+  var truckUpdateID;
+  $(function(){
+  	if(!document.getElementById("map")) {
+  		return;
+  	}
+
+  	var myOptions = {
+  		zoom: 15,
+  		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
+  		mapTypeId: google.maps.MapTypeId.ROADMAP,
+  		mapTypeControl: true,
+		disableDoubleClickZoom: true
+  	};
+
+  	// Create the main map
+  	map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+
+	$("#logout").click(function(){
+		document.location.href="/game/"+$("#layer_id").val()+"/logout?user_id="+$("#user_id").val();
+		clearInterval(truckUpdateID);
+	});
+
+	$("#join-controller").click(function(){
+		joinGame('controller');
+	});
+	
+	$("#join-truck").click(function(){
+		joinGame('truck');
+	});
+	
+	$("#join-admin").click(function(){
+		joinGame('admin');
+	});
+
+    if($("#user_team").val()=="replay"){
+		 $("#login-form").hide();
+		 $("#LoadingDiv").hide();
+            	$("#login-embedded").hide();
+		$("#waiting-massage").hide();	
+		$("#drop-cargo").hide();
+		$("#logout").hide();
+    
+    }
+    else if($("#user_team").val()!=""){
+        $("#login-form").hide();
+        if($("#game_status").val()=="0"){
+            $("#LoadingDiv").hide();
+            $("#login-embedded").hide();
+
+        }else if($("#game_status").val()=="1"){
+            getResults();
+            $("#waiting-massage").html("<center>game ended</center>");
+        }
+    }else{
+        if ($("#game_status").val()=="1"){
+            $("#login-form").hide();
+            $("#waiting-massage").html("<center>game ended</center>");
+        }
+        else{
+            $("#waiting-massage").hide();
+        }
+    }
+
+	
+	if($("#user_team").val()=="controller"){
+		
+
+  		google.maps.event.addListener(map, 'rightclick',sendRequest); 
+		//alert("you are " + $("#user_team").val());
+		$("#drop-cargo").hide();
+
+		
+	}
+	else if($("#user_team").val()=="truck"){
+		
+
+		//var p = new google.maps.LatLng(<%= @truck_latitude %>, <%= @truck_longitude %>);
+		var p = new google.maps.LatLng(0, 0);
+            	google.maps.event.addListener(map, 'rightclick',moveTruck); 
+		  
+            	
+            	var circleOptions = {
+        		strokeColor: "#FF0000",
+        		strokeOpacity: 0.8,
+        		strokeWeight: 2,
+        		fillColor: "#FF0000",
+        		fillOpacity: 0.35,
+        		map: map,
+        		center: p,
+                clickable:false,
+        		radius: 100
+      		};
+            	radiation= new google.maps.Circle(circleOptions);
+
+		//alert("you are " + $("#user_team").val());
+		truckUpdateID=setInterval("updateTruckLocation()", 500);
+		$("#drop-cargo").click(function(){
+			dropCargo();
+		});
+
+	}
+	else if($("#user_team").val()=="runner"){
+		
+        
+		$("#drop-cargo").hide();
+		$("#logout").hide();
+	}
+	else{
+		$("#drop-cargo").hide();
+		$("#logout").hide();
+		//alert("you are not logged in");
+	}
+
+    	GameMap.fitToRadius(<%= @game.radius %>);
+	
+  });
+
+
+</script>
+
+<div id="LoadingDiv" style="display:block;">   </div>
+	<div id="login-embedded">
+			<h1>Login</h1>
+
+		
+	<form action="" method="post">
+    <div id="login-form" >
+		<p><label for="accountName" class="label">&nbsp&nbspE-mail Address</label></br>
+			<input id="accountName"   class="label" value="" name="accountName" maxlength="320" type="text" tabindex="1" class="input" /></p>
+
+
+			<p><button class="btn" type="button" id="join-controller" >
+				controller
+			</button></p>
+			<p><button class="btn" type="button" id="join-truck" >
+				truck
+			</button></p>
+			<p><button class="btn" type="button" id="join-admin">
+				admin
+			</button></p>
+
+	</div>
+    
+    <div id="waiting-massage">
+		
+        <p><label for="accountName" class="label">You have logged in </br>But game not begin</br>please wait</label></p>
+
+	</div>
+    </form>	
+    
+    
+</div>
+
+
+	<div id="wrapper">
+		<section id="scoreboard-wrapper">
+			<div id="scoreboard">				
+				<h1><a href="/game/<%=@game.layer_id%>" target="_top">GeoSense</a></h1>
+				<h5 class="tagline"><span id="city"><%= h @game.name %></span></h5>
+				<h5 class="tagline"><span id="num-players"></span></h5>
+				<h5 class="tagline"><span id="user-info">Your role is <%= @user_team %> </span></h5>
+			</div>
+			<h3 id="drop-cargo" >drop cargo</h3> 
+			<h3 id="logout" class="clickable" >logout</h3> 
+		</section>
+
+		<section id="red-team-wrapper">
+			<div id="red-team"  >
+				<h2  class="clickable" >Street : <span class="red-score-value">-</span></h2>
+				<ol id="runner-team-players" class="team-players"></ol>
+			</div>
+		</section>
+			
+		<section id="blue-team-wrapper">
+			<div id="blue-team" onclick="joinGame('blue');" >
+				<h2>Contr : </h2>
+				<ol id="controller-team-players" class="team-players"></ol>
+			</div>
+			
+		</section>
+
+		<section id="truck-team-wrapper">
+			<div id="truck-team" onclick="joinGame('truck');" >
+				<h2>Truck :</h2>
+				<ol id="truck-team-players" class="team-players"></ol>
+			</div>
+		</section>
+
+		<div id="map"></div>
+
+		<nav id="top-nav">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="http://geoloqi.com">Get Geoloqi</a></li>
+			</ul>
+		</nav>
+
+		<section id="player-info">
+			<h3 id="player-score" class="team-<%= @user_team %>"><span class="value"></span></h3>
+			<h3 class="message"></h3>
+		</section>
+
+		<footer>
+			<p class="right">GeoSense is a real-time location-based GPS game powered by the <a href="http://geoloqi.com">Geoloqi</a> platform. <a href="http://geoloqi.com" style="float: right; margin-top: 3px; margin-left: 3px;"><img src="/img/loqi-16px.png" width="16" height="16" /></a> </p>
+			
+		</footer>
+    
+      </div> <!-- wrapper -->
+    <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
+    <input type="hidden" id="user_id" value="<%= @user_id %>" />
+    <input type="hidden" id="user_team" value="<%= @user_team %>" />
+    <input type="hidden" id="user_initials" value="<%= @user_initials %>" />
+    <input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
+    <input type="hidden" id="game_status" value=<%= @game.is_active %> />
