@@ -21,8 +21,5 @@ group :development do
 end
 
 group :test do
-  gem 'rack-test',         '0.5.7', :require => 'rack/test'
-  gem 'dm-sqlite-adapter', '1.1.0'
-  gem 'rspec',             '2.5.0'
-  gem 'webmock',           '1.6.2', :require => 'webmock/rspec'
+
 end
