@@ -11,3 +11,16 @@ How to install
 6. Add database login, socket.io address and port into config.yml 
 7. Start the server: bundle exec rackup -s thin -p 49992
 8. Point your browser to http://localhost:49992
+
+
+Models
+
+Game - game session 
+
+Team - define the role of players
+
+Player - game players including controller, street runner, and virtual  truck
+
+Reading, Request, Cargo - static entities in the game
+
+For detailed attributes please refer to files in folder “models”
