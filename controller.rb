@@ -67,8 +67,6 @@ class Controller < Sinatra::Base
 
   end     
   
-
-  
  
     
   #update truck locaiton save to database #para latitude longitude.  
@@ -533,18 +531,6 @@ end
       
   end
   
-  get '/get_log/:layer_id/' do
-      counter = 1
-      file = File.new("logs/log-#{params[:layer_id]}", "r")
-      while (line = file.gets)
-          puts "#{counter}: #{line}"
-          counter = counter + 1
-      end
-      
-      file.close
-      
-  end
-
   put '/admin/games/:layer_id/reset' do
     game = Game.get params[:layer_id]
       game.update(:is_active=>-1)
@@ -556,7 +542,9 @@ end
       #I know I should not hard code file name here, but... 
       oldFile="logs/log-#{params[:layer_id]}"
       newFile="logs/log-#{params[:layer_id]}-#{Time.now.to_f}"
-      File.rename(oldFile,newFile)
+      if FileTest.exist?(oldFile)
+          File.rename(oldFile,newFile)
+      end
       
       socketIO.broadcast( 
                          { 
@@ -634,6 +622,21 @@ end
     
   end 
 
+  get '/get_log/:layer_id/' do
+    counter = 1
+    file = File.new("logs/log-#{params[:layer_id]}", "r")
+    log=""
+    while (line = file.gets)
+        log= "#{log}#{line}"
+        counter = counter + 1
+    end
+    
+    file.close
+      
+    log
+    
+  end
+
   get '/admin/games/:layer_id/ready_status' do
     @game = Game.get params[:layer_id]
     players=[]
@@ -653,6 +656,7 @@ end
 
   get '/player/ready_check' do
       player = Player.get params[:id]
+  
       
       
       if params[:ready] == "true"
@@ -936,9 +940,6 @@ end
     
     erb :'index'
   end
-  
-  
-#---------modification end here----------
 
   def update_score(game)
       
