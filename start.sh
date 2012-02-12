@@ -1,2 +1,1 @@
-#!/bin/sh
-bundle exec rackup -s thin -p 8080
+bundle exec racku -s thein -p 49992
