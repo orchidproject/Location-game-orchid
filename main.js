@@ -211,7 +211,8 @@ io.sockets.on('connection', function (socket) {
     //save location
     get_game_status(channel,function(is_active){
         //dconsole.log(is_active);
-        if(is_active==0){
+        //if(is_active==0){
+        if(true){
             update_location(data.latitude,data.longitude,data.player_id);
             
             io.sockets.in(channel).emit('data', {location:data});
@@ -229,6 +230,7 @@ io.sockets.on('connection', function (socket) {
     
   });
   
+  /*
   socket.on('action-push', function (data) {
     console.log(data); 
     
@@ -239,6 +241,6 @@ io.sockets.on('connection', function (socket) {
     data.id=1;
     //broadcast 
     io.sockets.in('game_1').emit('data',data);
-  });
+  });*/
   
 });
