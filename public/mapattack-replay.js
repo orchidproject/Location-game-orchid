@@ -2,9 +2,8 @@ var replay = true;
 var log;
 function get_data(){
     $.ajax({ 
-		url: NODE_JS_ADDRESS+"/get_log",
+		url: "/get_log/"+$("#group_token").val()+"/",
 		type: "GET",
-		data: {"game_id": $("#group_token").val()},
 		success: function(data) {
             if (typeof data.error != 'undefined'){
                 alert(data.error);
@@ -47,7 +46,7 @@ function oneStep(i){
         process_data(log[i]);
         oneStep(i+1);
      
-     },interval);
+     },interval/10);
 
 }
 
