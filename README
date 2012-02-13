@@ -17,6 +17,8 @@ Install node.js. http://nodejs.org/
 Install socket.io: npm install socket.io
 Install mysql for node.js: npm install mysql
 Go to home directory of the game, start socket.io: node main.js 49991 8080
+
+
 Models
 
 Game - game session 
