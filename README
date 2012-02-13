@@ -24,3 +24,24 @@ Player - game players including controller, street runner, and virtual  truck
 Reading, Request, Cargo - static entities in the game
 
 For detailed attributes please refer to files in folder “models”
+
+
+
+
+How to implement an agent. 
+
+A easy to way to implement an agent for this game is to write a piece of js code running on node.js.
+
+A template agent and a helper class can be found in folder agent/
+
+
+This template agent controls a truck player running on a fixed router.
+
+to run this agent:
+install node.js : http://nodejs.org
+install socket.io client: npm install socket.io-client
+config server info on top section of agent.js
+run agent: node agent.js [game_id]
+
+
+A complete agent api documentation will be available shortly. 

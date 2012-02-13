@@ -3,7 +3,9 @@
 
 A not yet finished helper class for agent.
 
+but it is able to support agent tamplate (agent.js) now
 
+it deal with socket.io connection, game join and http api request
 */
 
 
