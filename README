@@ -12,7 +12,11 @@ How to install
 7. Start the server: bundle exec rackup -s thin -p 49992
 8. Point your browser to http://localhost:49992
 
-
+The game server have to run with a socket.io server
+Install node.js. http://nodejs.org/
+Install socket.io: npm install socket.io
+Install mysql for node.js: npm install mysql
+Go to home directory of the game, start socket.io: node main.js 49991 8080
 Models
 
 Game - game session 
@@ -37,11 +41,11 @@ A template agent and a helper class can be found in folder agent/
 
 This template agent controls a truck player running on a fixed router.
 
-to run this agent:
-install node.js : http://nodejs.org
-install socket.io client: npm install socket.io-client
-config server info on top section of agent.js
-run agent: node agent.js [game_id]
+to run this agent
+1.install node.js : http://nodejs.org
+2.install socket.io client: npm install socket.io-client
+3.config server info on top section of agent.js
+4.run agent: node agent.js [game_id]
 
 
 A complete agent api documentation will be available shortly. 
