@@ -1,1 +1,1 @@
-bundle exec racku -s thein -p 49992
+bundle exec rackup -s thin -p 49992

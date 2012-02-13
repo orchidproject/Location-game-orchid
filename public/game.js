@@ -1,5 +1,5 @@
-var SOCKET_IO_ADDRESS = 'http://localhost:4567';
-var NODE_JS_ADDRESS = 'http://localhost:8000';
+var SOCKET_IO_ADDRESS = 'http://localhost:49991';
+var NODE_JS_ADDRESS = 'http://localhost:8080';
 
 
 

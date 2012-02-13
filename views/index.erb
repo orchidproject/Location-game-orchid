@@ -31,8 +31,13 @@
 		joinGame('truck');
 	});
 	
-	$("#join-admin").click(function(){
-		joinGame('admin');
+	$("#join-observer").click(function(){
+		$("#login-form").hide();
+		 $("#LoadingDiv").hide();
+            	$("#login-embedded").hide();
+		$("#waiting-massage").hide();	
+		$("#drop-cargo").hide();
+		$("#logout").hide();
 	});
 
     if($("#user_team").val()=="replay"){
@@ -138,8 +143,8 @@
 			<p><button class="btn" type="button" id="join-truck" >
 				truck
 			</button></p>
-			<p><button class="btn" type="button" id="join-admin">
-				admin
+			<p><button class="btn" type="button" id="join-observer">
+				observer
 			</button></p>
 
 	</div>
