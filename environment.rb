@@ -160,3 +160,4 @@ end
 class Array; def sum; inject( nil ) { |sum,x| sum ? sum+x : x }; end; end
 
 require File.join(Controller.root, 'controller.rb')
+require File.join(Controller.root, 'agent_utility.rb')

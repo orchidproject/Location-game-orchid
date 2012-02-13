@@ -187,7 +187,7 @@ function insert_cargo(data){
 
 io.sockets.on('connection', function (socket) {
   socket.emit('game');
-   
+ 
   socket.on('game-join', function (data){
     socket.join(data);
     socket.set("channel",data);
