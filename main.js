@@ -106,10 +106,10 @@ req.end();*/
 
 //-------------------mysql utility--------------------
 var mysql = require('mysql');
-var DATABASE = 'mapattack';
+var DATABASE = 'firesim';
 var client = mysql.createClient({
-    user: 'mapattack',
-    password: 'mapattack',
+    user: 'firesim',
+    password: '',
 });
 client.query('USE '+DATABASE);
 

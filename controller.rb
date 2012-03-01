@@ -517,6 +517,14 @@ end
     content_type :json
     @game = Game.get params[:layer_id]
     boxes =[]
+	radiation = []
+	@game.radiations.each do |p|
+		radiation<<{
+			:id=>p.id,
+			:lat=>p.latitude.to_s('F'),
+			:lng=>p.longitude.to_s('F')
+		}
+	end
     @game.boundings.each do |p|
         boxes<<{
             :id=>p.id,
@@ -527,7 +535,7 @@ end
         }
     end
       
-    {:boundingBoxes=>boxes}.to_json
+    {:boundingBoxes=>boxes,:radiationBits=>radiation}.to_json
       
   end
   
@@ -721,11 +729,27 @@ end
      game.boundings.create :swLatitude=> params[:swLatitude], :swLongitude=> params[:swLongitude], :neLatitude=> params[:neLatitude], :neLongitude=> params[:neLongitude]
      {:status=> "ok"}.to_json
   end 
+  
+  post '/admin/games/:layer_id/addRadiationBit' do
+	 puts 'POST: ' 
+	 puts params
+     game=Game.first :layer_id=>params[:layer_id]
+     game.radiations.create :latitude=> params[:latitude], :longitude=> params[:longitude]
+     {:status=> "ok"}.to_json
+  end 
 
   get '/admin/games/:layer_id/clearBoundingBox' do
       game=Game.first :layer_id=>params[:layer_id]
       game.boundings.each do |box|
           box.destroy
+      end 
+      {:status=>"ok"}.to_json
+  end 
+
+  get '/admin/games/:layer_id/clearRadiationBit' do
+      game=Game.first :layer_id=>params[:layer_id]
+      game.radiations.each do |bit|
+          bit.destroy
       end 
       {:status=>"ok"}.to_json
   end 
