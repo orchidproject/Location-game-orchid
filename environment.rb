@@ -22,6 +22,7 @@ class SocketIO
         
         req = Net::HTTP::Post.new("/broadcast", initheader = {'Content-Type' =>'application/json'})
         req.body = {:data => data}.to_json
+        
         response = Net::HTTP.new(@Socket_url, @Socket_port).start {|http| http.request(req) }
         {:status=>"ok"}
 
@@ -138,8 +139,10 @@ class Controller < Sinatra::Base
     SOCKET_URL = config_hash['socket_io_url']
     SORKET_PORT = config_hash['socket_io_port']
 
-     
+    
   end
+
+  @mainloops=[]
 end
 
 module Rack

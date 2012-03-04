@@ -1,6 +1,10 @@
+var database="jtruck_db";
+var db_username="jtruck";
+var db_password="jtruck";
 
 var sys = require('util');
-url = require('url');
+var url = require('url');
+
 // Load the node-router library by creationix
 var http = require('./nodelib/node-router').getServer();
 
@@ -106,10 +110,10 @@ req.end();*/
 
 //-------------------mysql utility--------------------
 var mysql = require('mysql');
-var DATABASE = 'firesim';
+var DATABASE = database;
 var client = mysql.createClient({
-    user: 'firesim',
-    password: '',
+    user: db_username,
+    password: db_password
 });
 client.query('USE '+DATABASE);
 

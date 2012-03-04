@@ -24,4 +24,19 @@ class Player
     update :points_cache => (self.points_cache + points.to_i)
     reload
   end
+    
+  def broadcast(io)
+      io.broadcast( 
+                         { 
+                         :channel=> self.game.layer_id,             
+                         :data=>{
+                            :player=>{
+                                :id=> self.id,
+                                :name=> self.name,
+                                :points_cache => self.points_cache,
+                                :team => self.team.name
+                            }
+                         }
+                    }.to_json)   
+  end 
 end
