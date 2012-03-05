@@ -1,7 +1,5 @@
 class Controller < Sinatra::Base
     
-  # #para latitude longitude.  
-  
   get '/games/list' do
     games=[]
     Game.all.each do |g|
@@ -295,91 +293,33 @@ post '/game/:layer_id/getReading' do
         return {:error=>"game not active"}.to_json
     end 
     
-    
-    
     player = game.players.first :id=> user_id
-    @truck=nil
-    @truck= get_truck params[:layer_id]
-    
-    
-    if !player 
-        puts "no player or truck found"
-        {:error=>:error}.to_json
-        elsif !@truck 
-        puts "no player or truck found"
-        {:error=>:error}.to_json
-        
-        else
-        location= Geokit::LatLng.new latitude, longitude
-        truckLocation= Geokit::LatLng.new @truck.latitude, @truck.longitude
-        distance = location.distance_to truckLocation, {:units=>:kms}
-        
-        
-        
-        @truck.cargos.each do |cargo|
-            if !cargo.exposed
-                cargoLocation=Geokit::LatLng.new cargo.latitude, cargo.longitude
-                temp_distance=location.distance_to cargoLocation, {:units=>:kms}
-                if temp_distance<distance
+	location= Geokit::LatLng.new(latitude, longitude)
+	distance=-1;
+	game.radiations.each do |r|
+            
+                rLocation=Geokit::LatLng.new r.latitude, r.longitude
+                temp_distance=location.distance_to rLocation, {:units=>:kms}
+				if distance<0
+					distance=temp_distance
+                elsif temp_distance<distance
                     distance=temp_distance
                 end
                 
                 puts temp_distance*1000
-            end 
-        end
-        
-        reading=100-1000*distance
-        if reading<0
-            reading=0
-        end
-        
-        #transfer to string
-        if reading<10
-            reading="0#{reading}"
-            else
-            reading=reading.to_s
-        end
-        
-        #only one reading is stored for one player, others are supposed to go to log
-        currentReading = player.readings.first
-        if !currentReading
-            #save to database
-            currentReading=player.readings.create :latitude=>latitude, :longitude=>longitude, :value=>reading
-            else
-            currentReading.update(:value=>reading, :latitude=>latitude, :longitude=>longitude)
-        end
-        
-        #check whether in a range of request
-        @controller=get_controller params[:layer_id]
-        if @controller
-            @controller.requests.each do |request|
-                inRange=request.inRange(latitude,longitude);
-                
-                if inRange
-                    
-                    player.points_cache+=10
-                    socketIO.broadcast(
-                                       { 
-                                       :channel=> params[:layer_id],             
-                                       :data=>{
-                                       :player=>{
-                                       :id=> player.id,
-                                       :name=> player.name,
-                                       :points_cache => player.points_cache,
-                                       :team => player.team.name
-                                       },
-                                       :cleaup=>{
-                                       :reading=>[request.id]
-                                       }
-                                       }
-                                       }.to_json)  
-                    request.destroy
-                end 
-            end
-        end 
-        
-        #-modification send a broadcaset
-        socketIO.broadcast( 
+	end
+	distance=distance*1000
+	reading=0
+	if distance> 120 #120 
+		reading=0
+	else
+		reading=(120-distance)/120 * 100	
+	end
+	
+	
+	currentReading=player.readings.create :latitude=>latitude, :longitude=>longitude, :value=>reading
+	
+	socketIO.broadcast( 
                            { 
                            :channel=> params[:layer_id],             
                            :data=>{
@@ -393,9 +333,11 @@ post '/game/:layer_id/getReading' do
                            }
                            }
                            }.to_json)
-        
-        {:distance=>distance, :reading=>reading}.to_json
-    end
+
+    
+	
+               
+	{:distance=>distance, :reading=>reading}.to_json
 end
 
       
@@ -522,7 +464,8 @@ end
 		radiation<<{
 			:id=>p.id,
 			:lat=>p.latitude.to_s('F'),
-			:lng=>p.longitude.to_s('F')
+			:lng=>p.longitude.to_s('F'),
+			:radius=>p.radius.to_s()
 		}
 	end
     @game.boundings.each do |p|
@@ -745,10 +688,8 @@ end
   end 
   
   post '/admin/games/:layer_id/addRadiationBit' do
-	 puts 'POST: ' 
-	 puts params
      game=Game.first :layer_id=>params[:layer_id]
-     game.radiations.create :latitude=> params[:latitude], :longitude=> params[:longitude]
+     game.radiations.create :latitude=> params[:latitude], :longitude=> params[:longitude], :radius=>50
      {:status=> "ok"}.to_json
   end 
 
@@ -822,6 +763,7 @@ end
     cargos = []
     readings = []
     players = []
+	radiations = []
     
     game.players.each do |player|
         players << {
@@ -874,9 +816,18 @@ end
         end 
         
     end
+	
+	game.radiations.each do |bit|
+		radiations << {
+			:id => bit.id,
+			:longitude => bit.longitude.to_s('F'),
+			:latitude => bit.latitude.to_s('F'),
+#			:radius => bit.radius.to_s()
+		}
+	end
     
     
-    {:request => requests, :location => locations,:reading=>readings,:cargo=>cargos, :player=>players }.to_json
+    {:request => requests, :location => locations,:reading=>readings,:cargo=>cargos, :player=>players, :radiation=>radiations}.to_json
     
 end
   # TODO: mobile game join 

@@ -51,6 +51,10 @@ $(document).ready(function() {
         if(typeof data.cleanup != "undefined"){
                 cleanup(data.cleanup);
         }
+        
+        if(typeof data.radiation != "undefined"){
+                receiveRadiationBit(data.radiation);
+        }
 			
 		       
         

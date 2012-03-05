@@ -9,7 +9,7 @@
   	var myOptions = {
   		zoom: 15,
   		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
-  		mapTypeId: google.maps.MapTypeId.ROADMAP,
+  		mapTypeId: google.maps.MapTypeId.HYBRID,
   		mapTypeControl: true,
 		disableDoubleClickZoom: true
   	};
@@ -128,24 +128,38 @@
 
 <div id="LoadingDiv" style="display:block;">   </div>
 	<div id="login-embedded">
+
 			<h1>Login</h1>
+
+
 
 		
 	<form action="" method="post">
+
     <div id="login-form" >
+
 		<p><label for="accountName" class="label">&nbsp&nbspE-mail Address</label></br>
+
 			<input id="accountName"   class="label" value="" name="accountName" maxlength="320" type="text" tabindex="1" class="input" /></p>
+
+
+
 
 
 			<p><button class="btn" type="button" id="join-controller" >
 				controller
 			</button></p>
 			<p><button class="btn" type="button" id="join-truck" >
+
 				truck
+
 			</button></p>
 			<p><button class="btn" type="button" id="join-observer">
+
 				observer
+
 			</button></p>
+
 
 	</div>
     
@@ -157,6 +171,7 @@
     </form>	
     
     
+
 </div>
 
 

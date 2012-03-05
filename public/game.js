@@ -1,7 +1,10 @@
 var SOCKET_IO_ADDRESS = 'http://localhost:49991';
 var NODE_JS_ADDRESS = 'http://localhost:8080';
 
-
+var pollutantImageURL = "/img/skull.png";
+var playerIconSize = new google.maps.Size(32, 32);
+var playerIconOrigin = new google.maps.Point(0,0);
+var playerIconAnchor = new google.maps.Point(16, 32);	
 
 var setup = false;
 
@@ -103,30 +106,27 @@ var infowindow = new google.maps.InfoWindow({
 function receiveReadingData(data) {
     
     
-	var icon=cg.playerImage(data.value, 'blue');
-    
-    
-	if(typeof readings[data.player_id] == "undefined") {
-        
-		readings[data.player_id] = {
+	//var icon=cg.playerImage(data.value, 'blue');
+    var point=new google.maps.LatLng(data.latitude, data.longitude)
+        /*readings[data.player_id] = {
 			id: data.id,
             player_id : data.player_id,
-            value: data.value,
-			marker: new google.maps.Marker({
-				position: new google.maps.LatLng(data.latitude, data.longitude),
-				map: map,
-				icon: icon,
-                clickable:true,
-			
-            })
-		};
-        infowindow.setContent("<h5> reported by "+players[data.player_id].name+"</h5><br><h5> value: "+data.value+"</h5><br>");
+            value: data.value,*/
+            
+		
+    new google.maps.Circle(pick_overlay(data.value, point));	
+                    
+                            		
+
+        /*infowindow.setContent("<h5> reported by "+players[data.player_id].name+"</h5><br><h5> value: "+data.value+"</h5><br>");
         
         google.maps.event.addListener(readings[data.player_id].marker, 'click', function() {
             
             infowindow.open(map,readings[data.player_id].marker);
-        });
-	} else {
+        });*/
+        
+        
+	 /*else {
 		// one user have one readings displayed
 		var p = readings[data.player_id];
 		if(true) {
@@ -140,9 +140,36 @@ function receiveReadingData(data) {
            
             infowindow.open(map,p.marker);
         });
-	}
+	}*/
     
     
+}
+
+
+
+function pick_overlay(reading_value, point){
+
+    if (reading_value==100.0) {
+        reading_value=99.9;
+    } 
+        
+    var heat_map_colors = ["#202020","#3B3B3B","#3B3D64","#3F3CAD","#4B85F3","#3CBDC3","#56D355","#FFFB3D","#FF9F48","#FD3B3B"];
+    
+    var temp=heat_map_colors[Math.floor(reading_value/10)];
+
+    var circleOptions = {
+        		strokeColor: heat_map_colors[Math.floor(reading_value/10)],
+        		strokeOpacity: 0.8,
+        		strokeWeight: 0,
+        		fillColor: heat_map_colors[Math.floor(reading_value/10)],
+        		fillOpacity: 0.35,
+        		map: map,
+        		center: point,
+                clickable:false,
+        		radius: 10
+        };
+    return circleOptions;
+
 }
 
 var log="";
@@ -254,6 +281,60 @@ function receivePlayerData(data) {
             $("#player-score-" + data.id + " .points").html(data.points_cache);
         }
     
+}
+
+function receiveRadiationBit(bit){
+
+	var pollutantIcon= new google.maps.MarkerImage(pollutantImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);                    
+    var point = new google.maps.LatLng(bit.latitude,bit.longitude);
+                
+    	var marker = new google.maps.Marker({
+                position: point,
+                map: map,
+                icon: pollutantIcon
+        });
+        
+        var circleOptions = {
+        		strokeColor: "#FFFFB3",
+        		strokeOpacity: 0.8,
+        		strokeWeight: 2,
+        		fillColor: "#FFFFb3",
+        		fillOpacity: 0.35,
+        		map: map,
+        		center: point,
+                clickable:false,
+        		radius: 120
+        };
+        new google.maps.Circle(circleOptions);
+            	
+        var circleOptions = {
+        		strokeColor: "#00FF00",
+        		strokeOpacity: 0.8,
+        		strokeWeight: 2,
+        		fillColor: "#00FF00",
+        		fillOpacity: 0.35,
+        		map: map,
+        		center: point,
+                clickable:false,
+        		radius: 60
+        };
+        new google.maps.Circle(circleOptions);
+                
+        var circleOptions = {
+        		strokeColor: "#FF0000",
+        		strokeOpacity: 0.8,
+        		strokeWeight: 2,
+        		fillColor: "#FF0000",
+        		fillOpacity: 0.35,
+        		map: map,
+        		center: point,
+                clickable:false,
+        		radius: 50
+        };
+        new google.maps.Circle(circleOptions);
+             	
+        //radiationBits.push(point);     
+
 }
 
 
@@ -387,6 +468,11 @@ function filter(data){
         }
     }
     
+    if($("#user_team").val()=="controller"){                
+        delete data.radiation
+    }
+    
+    
     return data
 
 }
@@ -445,6 +531,15 @@ function updateGame(oneTime) {
                     receiveCargoData(d.cargo);
                 }
             });
+            
+            $(data.radiation).each(function(i, r){
+                var d=filter({"radiation":r});
+                if(typeof data.radiation != "undefined"){
+                    receiveRadiationBit(d.radiation);
+                }
+
+            });
+
             
 			lastRequestTime = Math.round((new Date()).getTime() / 1000);
 			if(!oneTime)
