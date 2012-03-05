@@ -220,8 +220,47 @@ function receiveRadiationBit(bit){
                 map: map,
                 icon: pollutantIcon
         });
+        
+        var circleOptions = {
+        		strokeColor: "#FFFFB3",
+        		strokeOpacity: 0.8,
+        		strokeWeight: 2,
+        		fillColor: "#FFFFb3",
+        		fillOpacity: 0.35,
+        		map: map,
+        		center: point,
+                clickable:false,
+        		radius: 120
+      			};
+            	new google.maps.Circle(circleOptions);
+            	
+            	var circleOptions = {
+        		strokeColor: "#00FF00",
+        		strokeOpacity: 0.8,
+        		strokeWeight: 2,
+        		fillColor: "#00FF00",
+        		fillOpacity: 0.35,
+        		map: map,
+        		center: point,
+                clickable:false,
+        		radius: 60
+      			};
+            	new google.maps.Circle(circleOptions);
+                
+                var circleOptions = {
+        		strokeColor: "#FF0000",
+        		strokeOpacity: 0.8,
+        		strokeWeight: 2,
+        		fillColor: "#FF0000",
+        		fillOpacity: 0.35,
+        		map: map,
+        		center: point,
+                clickable:false,
+        		radius: 50
+      			};
+            	new google.maps.Circle(circleOptions);
              	
-        radiationBits.push(point);     
+        //radiationBits.push(point);     
 
 }
 
@@ -271,6 +310,46 @@ $(function(){
                 	map: map,
                 	icon: pollutantIcon
                 });
+                
+                var circleOptions = {
+        		strokeColor: "#FFFFB3",
+        		strokeOpacity: 0.8,
+        		strokeWeight: 2,
+        		fillColor: "#FFFFb3",
+        		fillOpacity: 0.35,
+        		map: map,
+        		center: point,
+                clickable:false,
+        		radius: 120
+      			};
+            	new google.maps.Circle(circleOptions);
+            	
+            	var circleOptions = {
+        		strokeColor: "#00FF00",
+        		strokeOpacity: 0.8,
+        		strokeWeight: 2,
+        		fillColor: "#00FF00",
+        		fillOpacity: 0.35,
+        		map: map,
+        		center: point,
+                clickable:false,
+        		radius: 60
+      			};
+            	new google.maps.Circle(circleOptions);
+                
+                var circleOptions = {
+        		strokeColor: "#FF0000",
+        		strokeOpacity: 0.8,
+        		strokeWeight: 2,
+        		fillColor: "#FF0000",
+        		fillOpacity: 0.35,
+        		map: map,
+        		center: point,
+                clickable:false,
+        		radius: 50
+      			};
+            	new google.maps.Circle(circleOptions);
+            	
              	
                 radiationBits.push(point);     
 		
@@ -377,6 +456,7 @@ $(function(){
 
 
 </script>
+<link rel="stylesheet" href="/bootstrap.css">
 </head>
 
 <body>
@@ -385,9 +465,9 @@ $(function(){
 		<div style="padding: 3px;">
 			<!--<input type="button" value="New Line" id="newLine" />-->
 			<!--<input type="button" value="Cancel Line" id="editingCancel" disabled="disabled" />-->
-          <input type="button" value="Save" onclick="addBoundingBox();addRadiationBits()"/>
-           <input type="button" value="Clear" onclick="clearBoundingBox();clearRadiationBits()"/>
-		  <input type="button" value="Close" onclick="window.location = '/admin/games';"/>
+          <input class="btn" type="button" value="Save" onclick="addBoundingBox();addRadiationBits()"/>
+           <input class="btn" type="button" value="Clear" onclick="clearBoundingBox();clearRadiationBits()"/>
+		  <input class="btn" type="button" value="Close" onclick="window.location = '/admin/games';"/>
 		</div>
 	</div>
 

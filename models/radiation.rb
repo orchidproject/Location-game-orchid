@@ -10,23 +10,19 @@ class Radiation
   property :direction_vector, Decimal, :precision=>2, :scale=>2
   belongs_to :game #not sure this is right?
  
-  # contaminatedArea = Circle.new(:radius, :latitude, :longitude)
-#   collectWasteArea = Circle.new(:radius+10, :latitude, :longitude)
-#   readingArea = Circle.new(:radius+50, :latitude, :longitude)
-# 
-# class Circle
-# 	include Comparable
-# 
-# def initialize(radius, lat, lng)
-# 	@radius = radius
-# 	@lat = lat
-# 	@lng = lng
-# end
-# 
-# def calCircleArea()
-# 	return 3.14159*(@radius*@radius)
-# end
-# 
+class Circle
+	include Comparable
+
+def initialize(radius, lat, lng)
+	@radius = radius
+	@lat = lat
+	@lng = lng
+end
+
+def calCircleArea()
+	return 3.14159*(@radius*@radius)
+end
+
 # def <=>(circle)
 # 	area=calCircleArea()
 # 	otherArea=circle.calCircleArea()
@@ -38,7 +34,13 @@ class Radiation
 # 		return 1
 # 
 # end
-# 
-# end
+
+end
+
+def createCircles()
+  contaminatedArea = Circle.new(self.radius, self.latitude, self.longitude)
+  collectWasteArea = Circle.new(self.radius+10, self.latitude, self.longitude)
+  readingArea = Circle.new(self.radius+50, self.latitude, self.longitude)
+end
 
 end
