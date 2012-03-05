@@ -696,6 +696,20 @@ end
         return {:error=>"game already begin"}.to_json
         else
         game.update(:is_active=>0)
+        
+        get_mainloops()[Integer(params[:layer_id])]=Thread.new {
+            game_id=params[:layer_id]
+            
+            while(game.is_active==0) do
+                game=Game.first :layer_id=>game_id
+                puts "game #{game_id} active"
+                update_game(game)
+                sleep 1
+                #update game
+            end
+        }
+                #get_mainloops()[Integer(params[:layer_id])].join
+        
         socketIO.broadcast( 
                            { 
                            :channel=> params[:layer_id],             
@@ -1004,6 +1018,39 @@ end
     @games = Game.all
     session.clear
   end 
+            
+  def get_mainloops()
+        if !@mainloops
+            @mainloops=[]
+            
+        end
+        
+        return @mainloops
+  end
+            
+  def update_game(game)
+        puts "game update"
+         game.players.each do |p|
+             p.broadcast(socketIO)#test
+             game.radiations.each do |r|
+                  if get_distance(p.latitude,p.longitude,r.latitude,r.longitude)<50 #dangerous radius
+                      
+                      #reduce player score
+                      p.add_points -10
+                      #p.broadcast(socketIO)
+                      break
+                  end 
+             end 
+             
+         end 
+  end
+            
+  def get_distance(lat1,lng1,lat2,lng2)
+        location1 = Geokit::LatLng.new lat1, lng1
+        location2 = Geokit::LatLng.new lat2, lng2
+        distance = location1.distance_to location2
+        return distance
+  end
 
 end
 
