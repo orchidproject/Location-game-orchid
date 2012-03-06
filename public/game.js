@@ -224,7 +224,7 @@ function receiveTaskData(data) {
 	//schema: task { id: integer , player_id: [ array of integer ] , latitude: float , longitude: float, description: string, completed: boolean }
 
 	//first step: push the task to the comms list (as long as this task is meant for us)
-	if(data.player_id.contains(myId)) {
+	if(data.player_id.contains($('#user_id').val())) {
 		pushToTaskHistory(data.description, "task" + data.id);
 	}	
 	
@@ -257,7 +257,7 @@ function receiveMessageData(data) {
 	//schema: message { id: integer , player_id: [ array of integer ] , content: string }
 
 	//push the task to the comms list (as long as this task is meant for us)
-	if(data.player_id.contains(myId)) {
+	if(data.player_id.contains($('#user_id').val())) {
 		pushToTaskHistory(data.content, "msg" + data.id);
 	}
         
@@ -267,7 +267,7 @@ function receiveHealthData(data) {
 	//schema: health { player_id : integer , value : integer }
 
 	//push the task to the comms list (as long as this task is meant for us)
-	if(data.player_id == myId) {
+	if(data.player_id == $('#user_id').val()) {
 		//TODO: need to update health image/indicator HTML element
 		var health = data.value;
 	}
@@ -279,7 +279,7 @@ function receiveExposureData(data) {
 	//schema: health { player_id : integer , value : integer }
 
 	//push the task to the comms list (as long as this task is meant for us)
-	if(data.player_id == myId) {
+	if(data.player_id == $('#user_id').val()) {
 		//TODO: need to update exposure image/indicator HTML element
 		var exposure = data.value;
 	}
@@ -527,7 +527,7 @@ function pushToTaskHistory(message, identifier) {
 	//pushes the string message to the task list (including the date time added)
 	//(called when new tasks and messages are received)
 		
-	var line = $("<li id='" + identifier + "'>" + message + "</li>");
+	var line = $("<li id='" + identifier + "'>" + message + "</li>"); //TODO: add date, intended recipients
 	var taskList = $('#task_list');
 	taskList.append(line);
 	taskList.listview( "refresh" );  

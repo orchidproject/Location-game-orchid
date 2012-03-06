@@ -23,22 +23,6 @@
 		clearInterval(truckUpdateID);
 	});
 
-	$("#join-controller").click(function(){
-		joinGame('controller');
-	});
-	
-	$("#join-truck").click(function(){
-		joinGame('truck');
-	});
-	
-	$("#join-observer").click(function(){
-		$("#login-form").hide();
-		 $("#LoadingDiv").hide();
-            	$("#login-embedded").hide();
-		$("#waiting-massage").hide();	
-		$("#drop-cargo").hide();
-		$("#logout").hide();
-	});
 
     if($("#user_team").val()=="replay"){
 		 $("#login-form").hide();
@@ -161,38 +145,6 @@
 
 
 	<div id="wrapper">
-		<section id="scoreboard-wrapper">
-			<div id="scoreboard">				
-				<h1><a href="/game/<%=@game.layer_id%>" target="_top">GeoSense</a></h1>
-				<h5 class="tagline"><span id="city"><%= h @game.name %></span></h5>
-				<h5 class="tagline"><span id="num-players"></span></h5>
-				<h5 class="tagline"><span id="user-info">Your role is <%= @user_team %> </span></h5>
-			</div>
-			<h3 id="drop-cargo" >drop cargo</h3> 
-			<h3 id="logout" class="clickable" >logout</h3> 
-		</section>
-
-		<section id="red-team-wrapper">
-			<div id="red-team"  >
-				<h2  class="clickable" >Street : <span class="red-score-value">-</span></h2>
-				<ol id="runner-team-players" class="team-players"></ol>
-			</div>
-		</section>
-			
-		<section id="blue-team-wrapper">
-			<div id="blue-team" onclick="joinGame('blue');" >
-				<h2>Contr : </h2>
-				<ol id="controller-team-players" class="team-players"></ol>
-			</div>
-			
-		</section>
-
-		<section id="truck-team-wrapper">
-			<div id="truck-team" onclick="joinGame('truck');" >
-				<h2>Truck :</h2>
-				<ol id="truck-team-players" class="team-players"></ol>
-			</div>
-		</section>
 
 		<div id="map"></div>
 
@@ -208,12 +160,27 @@
 			<h3 class="message"></h3>
 		</section>
 
+	    <div id="messageListDiv">
+	    
+	    	<h5>Messages</h5>
+	    	<ul id="task_list" class="ui-listview" data-role="listview" data-inset="true">												
+	
+			</ul>		
+	    	
+	    
+	    </div>
+
+
 		<footer>
 			<p class="right">GeoSense is a real-time location-based GPS game powered by the <a href="http://geoloqi.com">Geoloqi</a> platform. <a href="http://geoloqi.com" style="float: right; margin-top: 3px; margin-left: 3px;"><img src="/img/loqi-16px.png" width="16" height="16" /></a> </p>
 			
 		</footer>
     
       </div> <!-- wrapper -->
+      
+ <!-- wrapper --> 
+     
+      
     <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
     <input type="hidden" id="user_id" value="<%= @user_id %>" />
     <input type="hidden" id="user_team" value="<%= @user_team %>" />
