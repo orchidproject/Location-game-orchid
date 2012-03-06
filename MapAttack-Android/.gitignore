@@ -13,4 +13,3 @@ local.properties
 proguard.cfg
 
 # Ignore Constants file
-GeoloqiConstants.java
