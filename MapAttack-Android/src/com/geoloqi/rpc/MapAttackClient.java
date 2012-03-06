@@ -180,7 +180,10 @@ public class MapAttackClient implements GeoloqiConstants {
 		}
 
 		try {// Send will throw a RuntimeException for the non-JSON return value.
-			send(request);
+			JSONObject response = send(request);
+			context.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE).edit().putString("userID", response.getString("user_id")).commit();
+		} catch (JSONException e){
+			ADB.log("JSONException in MapAttackClient/joinGame: " + e.getMessage());
 		} catch (RuntimeException e) {
 		}
 	}

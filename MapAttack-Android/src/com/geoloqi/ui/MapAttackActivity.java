@@ -47,7 +47,7 @@ public class MapAttackActivity extends Activity implements GeoloqiConstants {
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		// Build game
-		mGameUrl = String.format(URL_BASE + "/game/%s", mGameId);
+		mGameUrl = String.format(URL_BASE + "game/%s", mGameId);
 		Log.i("AAA", "Game id is: " + mGameId );
 		mWebView = (WebView) findViewById(R.id.webView);
 		mPushNotificationIntent = new Intent(this, AndroidPushNotifications.class);
@@ -96,8 +96,12 @@ public class MapAttackActivity extends Activity implements GeoloqiConstants {
 				Log.i("AAA", "joined the game");
 	
 				// Load the game into the WebView
-				mWebView.loadUrl(String.format("%s?id=%s", mGameUrl,
-						AccountMonitor.getUserID(this)));
+				String webUrl = String.format("%s?id=%s", mGameUrl,
+						AccountMonitor.getUserID(this));
+				Log.i("AAA", webUrl);
+				mWebView.loadUrl(webUrl);
+				Log.i("AAA", "web view loaded");
+
 			} catch (RPCException e) {
 				Log.e(TAG, "Got an RPCException when trying to join the game!", e);
 				Toast.makeText(this, R.string.error_join_game, Toast.LENGTH_LONG).show();
