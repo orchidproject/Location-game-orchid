@@ -119,31 +119,51 @@ $(document).ready(function() {
         if(typeof data.system != "undefined"){
             system(data.system);
         }
-        
-        
+                
 		if(typeof data.player != "undefined"){
             receivePlayerData(data.player);
-        }
-        
-        if(typeof data.textMassage != "undefined"){
-            receiveTextMassage(data.textMassage);
         }
         
         if(typeof data.location != "undefined"){
             receiveLocationData(data.location);
         }
-        
-        if(typeof data.request != "undefined"){
-            receiveRequestData(data.request);
+
+        if(typeof data.box != "undefined") {
+        	receiveBoxData(data.box);
         }
         
-        if(typeof data.reading != "undefined"){
-            receiveReadingData(data.reading);
+        if(typeof data.task != "undefined") {
+        	receiveTaskData(data.box);
         }
-            
-        if(typeof data.cargo != "undefined"){
-                receiveCargoData(data.cargo);
+        
+        if(typeof data.message != "undefined") {
+        	receiveMessageData(data.box);
         }
+        
+        if(typeof data.health != "undefined") {
+        	receiveHealthData(data.box);
+        }
+        
+        if(typeof data.exposure != "undefined") {
+        	receiveExposureData(data.exposure);
+        }
+        
+//      if(typeof data.textMassage != "undefined"){
+//      receiveTextMassage(data.textMassage);
+//  }
+  
+
+//        if(typeof data.request != "undefined"){
+//            receiveRequestData(data.request);
+//        }
+//        
+//        if(typeof data.reading != "undefined"){
+//            receiveReadingData(data.reading);
+//        }
+//            
+//        if(typeof data.cargo != "undefined"){
+//                receiveCargoData(data.cargo);
+//        }
 			
 		       
         

@@ -75,8 +75,13 @@ var playerIcons = {
 
 var requests = [];
 var players = [];
-var readings = [];
-var cargos = [];
+var boxes = [];
+var tasks = [];
+
+
+
+//var readings = [];
+//var cargos = [];
 
 
 
@@ -116,7 +121,7 @@ function receiveReadingData(data) {
 				position: new google.maps.LatLng(data.latitude, data.longitude),
 				map: map,
 				icon: icon,
-                clickable:true,
+                clickable:true
 			
             })
 		};
@@ -181,79 +186,200 @@ function receiveRequestData(data) {
 	}
 }
 
-function receiveCargoData(data) {
+
+function receiveBoxData(data) {
     var markerIcon;
 	var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
-    if(data.exposed) {
-        markerIcon = pollutantIcon_exposed;
+    if(data.removed) {
+        markerIcon = boxIconRemoved;
     }
     else{
-        markerIcon = pollutantIcon;
+        markerIcon = boxIcon;
     }
     
-    
-    //visible to truck anyway
-    if ( $("#user_team").val() == "truck" ){
-        data.exposed=true;
-    }
-	    
-    if(typeof cargos[data.id] == "undefined") {
+    	    
+    if(typeof boxes[data.id] == "undefined") {
         
-        cargos[data.id] = {
+        boxes[data.id] = {
             id: data.id,
-            value: data.value,
-            radius: data.radius,
+            points: data.points,
             marker: new google.maps.Marker({
                 position: new google.maps.LatLng(data.latitude, data.longitude),
                 map: map,
                 icon: markerIcon,
-                visible: data.exposed
+                visible: true
             })
         };
     } else {
         //update 
-        var p = cargos[data.id];
+        var p = boxes[data.id];
             p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-            p.radius = data.radius;
-            p.marker.setVisible(data.exposed);
+            //p.marker.setVisible(data.exposed);
             p.marker.setIcon(markerIcon);
     }
         
 }
 
+function receiveTaskData(data) {
+	//schema: task { id: integer , player_id: [ array of integer ] , latitude: float , longitude: float, description: string, completed: boolean }
+
+	//first step: push the task to the comms list (as long as this task is meant for us)
+	if(data.player_id.contains(myId)) {
+		pushToTaskHistory(data.description, "task" + data.id);
+	}	
+	
+    var markerIcon;
+	var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
+    markerIcon = taskIcon;
+    	    
+    if(typeof tasks[data.id] == "undefined") {
+        
+        tasks[data.id] = {
+            id: data.id,
+            marker: new google.maps.Marker({
+                position: new google.maps.LatLng(data.latitude, data.longitude),
+                map: map,
+                icon: markerIcon,
+                visible: !data.completed
+            })
+        };
+    } else {
+        //update 
+        var p = tasks[data.id];
+            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
+            p.marker.setVisible(!data.completed);
+            p.marker.setIcon(markerIcon);
+    }
+        
+}
+
+function receiveMessageData(data) {
+	//schema: message { id: integer , player_id: [ array of integer ] , content: string }
+
+	//push the task to the comms list (as long as this task is meant for us)
+	if(data.player_id.contains(myId)) {
+		pushToTaskHistory(data.content, "msg" + data.id);
+	}
+        
+}
+
+function receiveHealthData(data) {
+	//schema: health { player_id : integer , value : integer }
+
+	//push the task to the comms list (as long as this task is meant for us)
+	if(data.player_id == myId) {
+		//TODO: need to update health image/indicator HTML element
+		var health = data.value;
+	}
+        
+}
+
+
+function receiveExposureData(data) {
+	//schema: health { player_id : integer , value : integer }
+
+	//push the task to the comms list (as long as this task is meant for us)
+	if(data.player_id == myId) {
+		//TODO: need to update exposure image/indicator HTML element
+		var exposure = data.value;
+	}
+        
+}
+
+
+
+
+//function receiveCargoData(data) {
+//    var markerIcon;
+//	var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
+//    if(data.exposed) {
+//        markerIcon = pollutantIcon_exposed;
+//    }
+//    else{
+//        markerIcon = pollutantIcon;
+//    }
+//    
+//    
+//    //visible to truck anyway
+//    if ( $("#user_team").val() == "truck" ){
+//        data.exposed=true;
+//    }
+//	    
+//    if(typeof cargos[data.id] == "undefined") {
+//        
+//        cargos[data.id] = {
+//            id: data.id,
+//            value: data.value,
+//            radius: data.radius,
+//            marker: new google.maps.Marker({
+//                position: new google.maps.LatLng(data.latitude, data.longitude),
+//                map: map,
+//                icon: markerIcon,
+//                visible: data.exposed
+//            })
+//        };
+//    } else {
+//        //update 
+//        var p = cargos[data.id];
+//            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
+//            p.radius = data.radius;
+//            p.marker.setVisible(data.exposed);
+//            p.marker.setIcon(markerIcon);
+//    }
+//        
+//}
+
 
 function receivePlayerData(data) {
    
+	    var markerIcon;
+		var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
+	    if(data.skill == 'A') {
+	    	markerIcon = personSkillA;
+	    }
+	    if(data.skill == 'B') {
+	    	markerIcon = personSkillA; //TODO: change to appropriate skill icon
+	    }
+	    if(data.skill == 'C') {
+	    	markerIcon = personSkillA; //TODO: change to appropriate skill icon
+	    }
+	    if(data.skill == 'D') {
+	    	markerIcon = personSkillA; //TODO: change to appropriate skill icon
+	    }
+	    	    
+	    if(typeof players[data.id] == "undefined") {
+	        
+	        players[data.id] = {
+	            id: data.id,
+	            name: data.name,
+	            marker: new google.maps.Marker({
+	                position: new google.maps.LatLng(data.latitude, data.longitude),
+	                map: map,
+	                icon: markerIcon,
+	                visible: true
+	            })
+	        };
+	    } else {
+	        //update 
+	        var p = players[data.id];
+	            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
+	            p.marker.setIcon(markerIcon);
+	    }	        
 	
-        if(typeof players[data.id] == "undefined") {
-        
-            players[data.id] = {
-                id: data.id,
-                name: data.name,
-                team: data.team,
-                points_cache: data.points_cache
-            };
-        } else {
-            var p = players[data.id];
-            p.team = data.team;
-            p.points_cache = data.points_cache;
-        }
-    
-    
-
-        //diaplay
-        if($("#player-score-" + data.id).length == 0) {
-        
-            data.profile_image = 'http://beta.geoloqi.com/themes/standard/assets/images/profile-blank.png';
-        
-            $("#"+data.team+"-team-players").append('<li id="player-score-' + data.id + '"><img src="' + data.profile_image + '" />'
-			+ '<h3>' + data.name + '</h3>'
-			+ '<span class="points">' + data.points_cache + '</span>'
-			+ '</li>');
-        } else {
-            $("#player-score-" + data.id + " .points").html(data.points_cache);
-        }
-    
+//        if(typeof players[data.id] == "undefined") {
+//        
+//            players[data.id] = {
+//                id: data.id,
+//                name: data.name,
+//                team: data.team,
+//                points_cache: data.points_cache
+//            };
+//        } else {
+//            var p = players[data.id];
+//            p.team = data.team;
+//            p.points_cache = data.points_cache;
+//        }
+   
 }
 
 
@@ -397,6 +523,15 @@ function endGame(){
 }
 
 
+function pushToTaskHistory(message, identifier) {
+	//pushes the string message to the task list (including the date time added)
+	//(called when new tasks and messages are received)
+		
+	var line = $("<li id='" + identifier + "'>" + message + "</li>");
+	var taskList = $('#task_list');
+	taskList.append(line);
+	taskList.listview( "refresh" );  
+}
 
 // Load the initial game state and place the pins on the map. Sample data in pellets.json
 // This function polls the game server for data.
