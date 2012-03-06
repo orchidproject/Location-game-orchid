@@ -146,7 +146,7 @@ function addRadiationBits(){
     $(radiationBits).each(
         function(i,bit){
     
-            $.post("/admin/games/"+layerId+"/addRadiationBit", {
+            $.post("/admin/games/"+layerId+"/addTask", {
                 latitude: bit.lat(),
                 longitude: bit.lng(),
             }, function(data){
@@ -160,6 +160,8 @@ function addRadiationBits(){
             }, "json");
     });
 }
+
+
 
 function clearBoundingBox(){
     $.get("/admin/games/"+layerId+"/clearBoundingBox",
@@ -213,7 +215,7 @@ function clearRadiationBits(){
 function receiveRadiationBit(bit){
 
 	var pollutantIcon= new google.maps.MarkerImage(pollutantImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);                    
-    point = new google.maps.LatLng(bit.lat,bit.lng);
+    point = new google.maps.LatLng(bit.latitude,bit.longitude);
                 
     	var marker = new google.maps.Marker({
                 position: point,
@@ -221,7 +223,7 @@ function receiveRadiationBit(bit){
                 icon: pollutantIcon
         });
         
-        var circleOptions = {
+        /*var circleOptions = {
         		strokeColor: "#FFFFB3",
         		strokeOpacity: 0.8,
         		strokeWeight: 2,
@@ -258,7 +260,7 @@ function receiveRadiationBit(bit){
                 clickable:false,
         		radius: 50
       			};
-            	new google.maps.Circle(circleOptions);
+            	new google.maps.Circle(circleOptions);*/
              	
         //radiationBits.push(point);     
 
@@ -292,7 +294,13 @@ $(function(){
 	$.getJSON("/admin/games/"+layerId+"/setup.json", {
 	}, function(data){
 	
-		$(data.radiationBits).each(function(i, bit){
+		/*$(data.radiationBits).each(function(i, bit){
+			receiveRadiationBit(bit);
+		});*/
+        
+        
+        //
+        $(data.tasks).each(function(i, bit){
 			receiveRadiationBit(bit);
 		});
 	});

@@ -1,6 +1,6 @@
-var database="jtruck_db";
-var db_username="jtruck";
-var db_password="jtruck";
+var database="firesim";
+var db_username="firesim";
+var db_password="";
 
 var sys = require('util');
 var url = require('url');

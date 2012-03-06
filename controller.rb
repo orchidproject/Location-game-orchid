@@ -160,7 +160,10 @@ class Controller < Sinatra::Base
             player = game.players.create  :email =>params[:emails], :name => team.upcase, :team => game.pick_team(team)
         elsif team=="truck"
             player = game.players.create  :email =>params[:emails], :name => team.upcase, :team => game.pick_team(team), :latitude=>game.latitude , :longitude=>game.longitude
+            
         end
+        
+        
         player.points_cache=1000
         player.save
        
@@ -465,6 +468,8 @@ end
     @game = Game.get params[:layer_id]
     boxes =[]
 	radiation = []
+    task = []
+      
 	@game.radiations.each do |p|
 		radiation<<{
 			:id=>p.id,
@@ -483,7 +488,19 @@ end
         }
     end
       
-    {:boundingBoxes=>boxes,:radiationBits=>radiation}.to_json
+    @game.tasks.each do |t|
+          task<<{
+              :id=>t.id,
+              :latitude => t.latitude.to_s('F'),
+              :longitude => t.longitude.to_s('F'),
+              :status => t.status,
+              :requirement => t.requirement
+              
+          }
+    end
+
+      
+      {:boundingBoxes=>boxes,:radiationBits=>radiation,:tasks=>task}.to_json
       
   end
   
@@ -720,6 +737,13 @@ end
      game.radiations.create :latitude=> params[:latitude], :longitude=> params[:longitude], :radius=>50
      {:status=> "ok"}.to_json
   end 
+   
+  post '/admin/games/:layer_id/addTask' do
+        game=Game.first :layer_id=>params[:layer_id]
+        task=game.tasks.create :latitude=> params[:latitude], :longitude=> params[:longitude]
+        task.pick_type
+        {:status=> "ok"}.to_json
+  end 
 
   get '/admin/games/:layer_id/clearBoundingBox' do
       game=Game.first :layer_id=>params[:layer_id]
@@ -778,7 +802,17 @@ end
     end
  
   end
+ get '/game/:layer_id/activate_task' do
+     game= Game.get :layer_id=> params[:layer_id]
+     id = params[:id]
+     task=game.tasks.first :id=>id
+     task.status="activated"
+     task.save
+     
+     #make a broadcast
+     
 
+ end 
 
 
  #object templates in this fuction
@@ -854,6 +888,7 @@ end
 		}
 	end
     
+         
     
     {:request => requests, :location => locations,:reading=>readings,:cargo=>cargos, :player=>players, :radiation=>radiations}.to_json
     
@@ -870,9 +905,13 @@ end
       
     if params[:team]==nil
         player = game.players.create  :email =>params[:email], :name => params[:name], :team => game.pick_team('runner')
+        
     else
         player = game.players.create  :email =>params[:email], :name => params[:name], :team => game.pick_team(params[:team])
     end
+    
+    player.pick_skill
+    
     
     if player
       
@@ -890,6 +929,7 @@ end
                                         :id=> player.id,
                                         :name=> player.name,
                                         :points_cache => player.points_cache,
+                                        :skill => player.skill,
                                         :team => player.team.name
                                     }
                             }
@@ -898,6 +938,8 @@ end
     {'team_name' => player.team.name, 'user_id' => player.id}.to_json
       
   end
+            
+  
     
   post '/create/player/runner' do
       player = Player.create :email => params[:email], :name => params[:name].upcase, :game_layer_id => 0, :team_id => 0
@@ -1013,6 +1055,24 @@ end
              if(@simulation.isOnMap(p.latitude, p.longitude))
                 p.exposure + check_radiation(p.latitude,p.longitude)
                 puts p.exposure
+                
+                #broadcast exposure
+                #p.broadcast_exposure(socketIO)
+                
+                #broadcast current exposure
+                socketIO.broadcast(
+                                   { 
+                                    :channel=> game.layer_id,             
+                                    :data=>{
+                                        :exposure=>{
+                                            :player_id=> p.id,
+                                            :value=>check_radiation(p.latitude,p.longitude)
+                                        }
+                                   }
+                                   
+                }.to_json)
+                 
+                p.save
              else
                 puts "truck not in the boundary"
              end

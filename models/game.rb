@@ -15,6 +15,7 @@ class Game
   has n, :players
   has n, :boundings
   has n, :radiations
+  has n, :tasks
 
     
   def self.team_names
