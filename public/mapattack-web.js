@@ -23,6 +23,10 @@ $(document).ready(function() {
         if(typeof data.system != "undefined"){
             system(data.system);
         }
+              
+        if(typeof data.heatmap != "undefined"){
+              receiveHeatmapData(data.heatmap);
+        }
         
         if(typeof data.player != "undefined"){
             receivePlayerData(data.player);

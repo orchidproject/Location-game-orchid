@@ -8,6 +8,7 @@ class Player
   property :email, String, :length => 255
   property :created_at, DateTime
   property :updated_at, DateTime
+  property :exposure, Float, :default => 0.0
   
     
   belongs_to :team

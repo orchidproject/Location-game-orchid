@@ -435,7 +435,12 @@ end
 
   get '/admin/games' do
     @games = Game.all
-    erb :'admin/games/index', :layout => :'admin/layout'
+      
+      simulation = Simulation.new("simulation_data.txt", 50.00, -1.00, 100, Time.local(2012,3,5,16,0), 10)
+      puts "testtestesteststestestesetesetsetesafjdkfla;dfjklsa;fjkdsla;fjkds;lafj"
+      puts simulation.getReadingByLatLong(49.99,-0.99,Time.local(2012,3,5,16,12))
+    
+      erb :'admin/games/index', :layout => :'admin/layout'
   end
 
   get '/admin/games/new' do
@@ -639,18 +644,41 @@ end
         return {:error=>"game already begin"}.to_json
         else
         game.update(:is_active=>0)
+        @simulation = Simulation.new("simulation_data.txt", 52.9491938, -1.2144399, 5.71, Time.now, 0.1)
+        
+        count=0
         
         get_mainloops()[Integer(params[:layer_id])]=Thread.new {
             game_id=params[:layer_id]
-            
             while(game.is_active==0) do
+            
                 game=Game.first :layer_id=>game_id
                 puts "game #{game_id} active"
                 update_game(game)
+                
+                @simulation.getTimeFrame(Time.now)
+                
+                puts count
+                if count%6==0
+                    
+                    puts "redraw"
+                    socketIO.broadcast( 
+                                       { 
+                                       :channel=> params[:layer_id],             
+                                       :data=>{
+                                        :heatmap=>@simulation.getTimeFrameWithLatLng(Time.now)
+                                       }
+                                       }.to_json)
+
+                    
+                end
+                
+                count=count+1
                 sleep 1
                 #update game
             end
         }
+               
                 #get_mainloops()[Integer(params[:layer_id])].join
         
         socketIO.broadcast( 
@@ -980,20 +1008,19 @@ end
   end
             
   def update_game(game)
-        puts "game update"
+         puts "game update"
          game.players.each do |p|
-             p.broadcast(socketIO)#test
-             game.radiations.each do |r|
-                  if get_distance(p.latitude,p.longitude,r.latitude,r.longitude)<50 #dangerous radius
-                      
-                      #reduce player score
-                      p.add_points -10
-                      #p.broadcast(socketIO)
-                      break
-                  end 
-             end 
-             
+             if(@simulation.isOnMap(p.latitude, p.longitude))
+                p.exposure + check_radiation(p.latitude,p.longitude)
+                puts p.exposure
+             else
+                puts "truck not in the boundary"
+             end
          end 
+  end
+  
+  def check_radiation(latitude, longitude) 
+    return    @simulation.getReadingByLatLong(latitude, longitude, Time.now)
   end
             
   def get_distance(lat1,lng1,lat2,lng2)

@@ -107,7 +107,7 @@ function receiveReadingData(data) {
     
     
 	//var icon=cg.playerImage(data.value, 'blue');
-    var point=new google.maps.LatLng(data.latitude, data.longitude)
+    var point=new google.maps.LatLng(data.latitude, data.longitude);
         /*readings[data.player_id] = {
 			id: data.id,
             player_id : data.player_id,
@@ -145,7 +145,54 @@ function receiveReadingData(data) {
     
 }
 
+var backGroundRec;
+var heat_map=[];
 
+
+function receiveHeatmapData(data){
+    //$(data.player).each(function(i,id)
+    //var
+    if (backGroundRec == null){
+        var bound=new google.maps.LatLngBounds(
+                                           new google.maps.LatLng(data[0][data[0].length-1].lat,data[0][data[0].length-1].lng),
+                                           new google.maps.LatLng(data[data.length-1][0].lat,data[data.length-1][0].lng)
+                                           
+                                           );
+    
+        var options= {
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 3,
+            fillColor: "#FF0000",
+            fillOpacity: 0,
+            map: map,
+            bounds:bound
+        
+        }
+        backGroundRec=new google.maps.Rectangle();
+        backGroundRec.setOptions(options);
+    }
+    
+    $(heat_map).each(function(i,cell){
+        cell.setMap(null);
+        cell=null;
+    });
+    heat_map=[];
+    
+    var y=0;
+    var x=0;
+    for (y=0; y<data.length; y++){
+        for (x=0; x<data[y].length; x++){
+            
+            var test=data[y][x];
+            if (data[y][x].value>5.0){
+                var point=new google.maps.LatLng(data[y][x].lat, data[y][x].lng);
+                heat_map.push(new google.maps.Circle(pick_overlay( data[y][x].value, point)));
+            }
+        }
+    }
+    
+}
 
 function pick_overlay(reading_value, point){
 
@@ -166,7 +213,7 @@ function pick_overlay(reading_value, point){
         		map: map,
         		center: point,
                 clickable:false,
-        		radius: 10
+        		radius: 5//0.5*5.71
         };
     return circleOptions;
 

@@ -1,5 +1,7 @@
 # Encoding.default_internal = 'UTF-8'
 #$stderr.reopen $stdout
+
+
 require "rubygems"
 require "bundler"
 Bundler.setup
@@ -7,6 +9,7 @@ Bundler.require
 require 'rack/methodoverride'
 require "net/http"
 require "uri"
+require File.dirname(__FILE__) + '/simulation.rb'
 
 class SocketIO
     
@@ -103,7 +106,7 @@ class Controller < Sinatra::Base
 
   configure do
     use Rack::MobileDetect
-    register Sinatra::Synchrony
+    
     if test?
       set :sessions, false
     else
@@ -125,11 +128,7 @@ class Controller < Sinatra::Base
     APPLICATION_ACCESS_TOKEN = config_hash['oauth_token']
     AWS_KEY = config_hash['aws_key']
     AWS_SECRET = config_hash['aws_secret']
-    Faraday.default_adapter = :em_synchrony
-    Geoloqi.config :client_id => config_hash['client_id'],
-                   :client_secret => config_hash['client_secret'],
-                   :use_hashie_mash => true,
-                   :adapter => :em_synchrony
+    
     DataMapper.finalize
     DataMapper.setup :default, ENV['DATABASE_URL'] || config_hash['database']
     # DataMapper.auto_upgrade!
@@ -138,7 +137,7 @@ class Controller < Sinatra::Base
       
     SOCKET_URL = config_hash['socket_io_url']
     SORKET_PORT = config_hash['socket_io_port']
-
+      
     
   end
 

@@ -1,5 +1,5 @@
 development:
-  database: mysql://firesim:@localhost/firesim 
+  database: mysql://jtruck:jtruck@localhost/jtruck_db 
   oauth_token: 483e-ff9e202d74bcf4a004d18e7bf084fa94401f03f6
   client_id: 237ff37d9cb86f0658457673739a1555
   client_secret: edfe3785ffd6413cd62e2e7a8399e476
