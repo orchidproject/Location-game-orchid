@@ -438,11 +438,7 @@ end
 
   get '/admin/games' do
     @games = Game.all
-      
-      simulation = Simulation.new("simulation_data.txt", 50.00, -1.00, 100, Time.local(2012,3,5,16,0), 10)
-      puts "testtestesteststestestesetesetsetesafjdkfla;dfjklsa;fjkdsla;fjkds;lafj"
-      puts simulation.getReadingByLatLong(49.99,-0.99,Time.local(2012,3,5,16,12))
-    
+          
       erb :'admin/games/index', :layout => :'admin/layout'
   end
 
@@ -661,7 +657,10 @@ end
         return {:error=>"game already begin"}.to_json
         else
         game.update(:is_active=>0)
-        @simulation = Simulation.new("simulation_data.txt", 52.9491938, -1.2144399, 5.71, Time.now, 0.1)
+		#
+		#CHANGE TO ADAPT TO GRID SIZE (400/X)
+		#
+        @simulation = Simulation.new("simulation_data_03.txt", 52.9491938, -1.2144399, 8, Time.now, 0.1)
         
         count=0
         
