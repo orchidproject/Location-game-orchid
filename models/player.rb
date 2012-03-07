@@ -1,4 +1,9 @@
 class Player
+    
+  @@skill = ["medic","ambulance","soldier","something"]
+    
+    
+    
   include DataMapper::Resource
   property :id, Serial, :index => true
   property :status, Integer, :default => -1
@@ -9,6 +14,13 @@ class Player
   property :created_at, DateTime
   property :updated_at, DateTime
   property :exposure, Float, :default => 0.0
+  property :current_exposure,Float ,:default => 0.0
+    
+    
+    
+  property :skill, String
+  property :health, Integer,:default => 0.0
+    
   
     
   belongs_to :team
@@ -20,6 +32,14 @@ class Player
   has n, :cargos
     
   has n, :requests
+
+    
+  def pick_skill
+    self.skill=@@skill[self.id%4]
+    reload
+  end 
+
+
 
   def add_points(points)
     update :points_cache => (self.points_cache + points.to_i)
@@ -35,9 +55,24 @@ class Player
                                 :id=> self.id,
                                 :name=> self.name,
                                 :points_cache => self.points_cache,
-                                :team => self.team.name
+                                :team => self.team.name,
+                                :skill => self.skill
                             }
                          }
                     }.to_json)   
   end 
+    
+  def broadcast_health(io)
+        io.broadcast( 
+                     { 
+                        :channel=> self.game.layer_id,             
+                        :data=>{
+                            :health=>{
+                                :player_id => self.id,
+                                :value => self.skill
+                            }
+                        }
+                     }.to_json)   
+  end 
+
 end
