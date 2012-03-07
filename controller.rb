@@ -665,6 +665,8 @@ end
     erb :'complete'
   end
 
+  @@simulation=nil
+  
   get '/admin/games/:layer_id/start' do
     game=Game.first :layer_id=>params[:layer_id]
     if game.is_active!= -1
@@ -675,7 +677,7 @@ end
 		#CHANGE TO ADAPT TO GRID SIZE (400/X)
 		#
         @simulation = Simulation.new("simulation_data_03.txt", 52.9491938, -1.2144399, 8, Time.now, 0.1)
-        
+        @@simulation=@simulation
         count=0
         
         get_mainloops()[Integer(params[:layer_id])]=Thread.new {
@@ -814,6 +816,28 @@ end
     end
  
   end
+            
+  get '/game/:layer_id/getLocationsGrid' do
+            location=[]
+            
+            sim=@simulation
+      
+            puts "sim here"
+            puts sim
+      
+            game = Game.first :layer_id => params[:layer_id]
+            game.players.each do |p|
+                location << {
+                    :player_id => p.id,
+                    :y => @@simulation.getYIndex(p.latitude),
+                    :x => @@simulation.getXIndex(p.longitude)
+                }
+                
+            end 
+            
+     {:locations=>location}.to_json  
+  end
+
 
 
  #object templates in this fuction
@@ -841,6 +865,13 @@ end
             :team => player.team.name,
             :skill => player.skill
         }
+        
+        locations << {
+            :player_id => player.id,
+            :latitude => player.latitude,
+            :longitude => player.longitude
+        }
+
 
         healths << {
             #exposure { player_id : integer , value : float }
