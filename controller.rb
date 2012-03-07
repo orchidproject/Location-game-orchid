@@ -163,25 +163,13 @@ class Controller < Sinatra::Base
             
         end
         
-        
+        player.pick_skill
         player.points_cache=1000
         player.save
        
         session[:id]=player.id
-        
-        socketIO.broadcast( 
-                           { 
-                            :channel=> params[:layer_id],             
-                            :data=>{
-                                    :textMassage=>{:content=>"#{player.name} join the game"},
-                                    :player=>{
-                                        :id=> player.id,
-                                        :name=> player.name,
-                                        :points_cache => player.points_cache,
-                                        :team => player.team.name
-                                }
-                            }
-                           }.to_json)
+        player.broadcast(socketIO)
+        player.broadcast_health(socketIO)
         return {:status=> "ok"}.to_json
        
     end
@@ -827,55 +815,32 @@ end
     players = []
 	radiations = []
     
+    tasks = []
+    exposures = []
+    healths = []
+     
+    
     game.players.each do |player|
         players << {
             :id=> player.id,
             :name=> player.name,
             :points_cache => player.points_cache,
-            :team => player.team.name
+            :team => player.team.name,
+            :skill => player.skill
+        }
+
+        healths << {
+            #exposure { player_id : integer , value : float }
+            :player_id => player.id,
+            :value => player.health
         }
         
-        if player.latitude && player.longitude && player.longitude!="" && player.latitude != "" 
-        locations << { 
-            :player_id=> player.id,
-            #get rid of scientic notation of numbers
-            
-            :latitude=> player.latitude.to_s('F'),
-            :longitude=>player.longitude.to_s('F')
+        exposures << {
+            #health { player_id : integer , value : integer }
+            :player_id => player.id,
+            :value => player.health
         }
-        end
-        
-        player.cargos.each do |cargo| 
-            cargos << {
-                :id => cargo.id,
-                :longitude => cargo.longitude.to_s('F'),
-                :latitude => cargo.latitude.to_s('F'),
-                :player_id => cargo.player_id,
-                :radius => cargo.radius,
-                :exposed => cargo.exposed
-            }
-        end 
-        
-        player.readings.each do |reading|
-            readings << {
-                :id => reading.id,
-                :longitude => reading.longitude.to_s('F'),
-                :latitude => reading.latitude.to_s('F'),
-                :player_id => reading.player_id,
-                :value => reading.value
-            }
-        end 
-        
-        
-        player.requests.each do |request| 
-            requests << {
-                :id => request.id,
-                :longitude => request.longitude.to_s('F'),
-                :latitude => request.latitude.to_s('F'),
-                :player_id => request.player_id,
-                :radius => request.radius
-            }
-        end 
+       
         
     end
 	
@@ -883,14 +848,25 @@ end
 		radiations << {
 			:id => bit.id,
 			:longitude => bit.longitude.to_s('F'),
-			:latitude => bit.latitude.to_s('F'),
-#			:radius => bit.radius.to_s()
+			:latitude => bit.latitude.to_s('F')
 		}
 	end
+     
+    game.tasks.each do |t|
+        if t.status.eql? "active"
+         tasks << {
+             :id => t.id,
+             :type=>t.requirement,
+             :description=> t.description,
+             :longitude => t.longitude.to_s('F'),
+             :latitude => t.latitude.to_s('F')
+         }
+        end
+    end
     
          
     
-    {:request => requests, :location => locations,:reading=>readings,:cargo=>cargos, :player=>players, :radiation=>radiations}.to_json
+     {:location => locations,:task=>tasks,:exposure=>exposures,:health=>healths,:player=>players}.to_json
     
 end
   # TODO: mobile game join 
@@ -911,6 +887,9 @@ end
     end
     
     player.pick_skill
+      
+    player.broadcast(socketIO)
+    player.broadcast_health(socketIO)
     
     
     if player
@@ -1054,10 +1033,8 @@ end
          game.players.each do |p|
              if(@simulation.isOnMap(p.latitude, p.longitude))
                 p.exposure + check_radiation(p.latitude,p.longitude)
+                p.current_exposure = check_radiation(p.latitude,p.longitude)
                 puts p.exposure
-                
-                #broadcast exposure
-                #p.broadcast_exposure(socketIO)
                 
                 #broadcast current exposure
                 socketIO.broadcast(
@@ -1071,6 +1048,8 @@ end
                                    }
                                    
                 }.to_json)
+                #broadcast exposure
+                p.broadcast_health(socketIO)
                  
                 p.save
              else
