@@ -271,6 +271,28 @@ end
          
       end
   end 
+  
+get '/game/:layer_id/activateTarget' do
+	taskId = params[:id]
+	game = Game.first :layer_id => params[:layer_id]
+	task = game.tasks.first :id => taskId 
+	task.update(:status=>'active')
+	socketIO.broadcast
+	(
+		{
+		:channel=> params[:layer_id],             
+		:data=>
+			{
+			:id => t.id,
+			:type=>t.requirement,
+			:description=> t.description,
+			:longitude => t.longitude.to_s('F'),
+			:latitude => t.latitude.to_s('F'),
+			:status => t.status
+			}
+		}.to_json
+	)
+end
       
 
 post '/game/:layer_id/getReading' do
@@ -477,6 +499,7 @@ end
               :id=>t.id,
               :latitude => t.latitude.to_s('F'),
               :longitude => t.longitude.to_s('F'),
+			  :type => t.type,
               :status => t.status,
               :requirement => t.requirement
               
@@ -494,6 +517,9 @@ end
     #result = geoloqi_app.get 'place/list', :layer_id => game.layer_id, :limit => 0
       game.players.each do |p|
           p.destroy
+      end 
+	  game.tasks.each do |t|
+          t.destroy
       end 
       #clear log
       #I know I should not hard code file name here, but... 
@@ -727,8 +753,7 @@ end
    
   post '/admin/games/:layer_id/addTask' do
         game=Game.first :layer_id=>params[:layer_id]
-        task=game.tasks.create :latitude=> params[:latitude], :longitude=> params[:longitude]
-        task.pick_type
+        task=game.tasks.create :latitude=> params[:latitude], :longitude=> params[:longitude], :type=> params[:task_type]
         {:status=> "ok"}.to_json
   end 
 
@@ -742,7 +767,7 @@ end
 
   get '/admin/games/:layer_id/clearRadiationBit' do
       game=Game.first :layer_id=>params[:layer_id]
-      game.radiations.each do |bit|
+      game.tasks.each do |bit|
           bit.destroy
       end 
       {:status=>"ok"}.to_json
@@ -789,17 +814,6 @@ end
     end
  
   end
- get '/game/:layer_id/activate_task' do
-     game= Game.get :layer_id=> params[:layer_id]
-     id = params[:id]
-     task=game.tasks.first :id=>id
-     task.status="activated"
-     task.save
-     
-     #make a broadcast
-     
-
- end 
 
 
  #object templates in this fuction
@@ -858,7 +872,8 @@ end
              :type=>t.requirement,
              :description=> t.description,
              :longitude => t.longitude.to_s('F'),
-             :latitude => t.latitude.to_s('F')
+             :latitude => t.latitude.to_s('F'),
+			 :status => t.status
          }
         end
     end

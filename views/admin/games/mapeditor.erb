@@ -119,24 +119,13 @@ var playerIconSize = new google.maps.Size(32, 32);
 var playerIconOrigin = new google.maps.Point(0,0);
 var playerIconAnchor = new google.maps.Point(16, 32);
 
-var taskIcon1;
-var taskIcon2;
-var taskIcon3;
-var taskIcon4;
-
-var chosen_task_type=0;
-
-function addTask(value){
-
-
-}
 
 var taskIcon1 = "/img/task_icon1.png";
 var taskIcon2 =  "/img/task_icon2.png";
 var taskIcon3 =  "/img/task_icon3.png";
 var taskIcon4 = "/img/task_icon4.png";
 
-var chosen_task_type;
+var chosen_task_type = 0;
 
 function addTask(value) {
 	
@@ -173,9 +162,9 @@ function addRadiationBits(){
         function(i,bit){
     
             $.post("/admin/games/"+layerId+"/addTask", {
-                latitude: bit.lat(),
-                longitude: bit.lng(),
-                //task_type: bit. 
+                latitude: bit[0].lat(),
+                longitude: bit[0].lng(),
+                task_type: bit[1] 
             }, function(data){
                 if(data.status != "ok") {
                     alert("Something went wrong! :(");
@@ -241,56 +230,16 @@ function clearRadiationBits(){
 
 function receiveRadiationBit(bit){
 
-//TODO: add chosen_task.
-	var pollutantIcon= new google.maps.MarkerImage(pollutantImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);                    
-    point = new google.maps.LatLng(bit.latitude,bit.longitude);
+		chosen_task_type = bit.type;
+
+		var taskIcon= getTaskIcon();
+		point = new google.maps.LatLng(bit.latitude,bit.longitude);
                 
     	var marker = new google.maps.Marker({
-                position: point,
-                map: map,
-                icon: pollutantIcon
+                	position: point,
+                	map: map,
+                	icon: taskIcon
         });
-        
-        /*var circleOptions = {
-        		strokeColor: "#FFFFB3",
-        		strokeOpacity: 0.8,
-        		strokeWeight: 2,
-        		fillColor: "#FFFFb3",
-        		fillOpacity: 0.35,
-        		map: map,
-        		center: point,
-                clickable:false,
-        		radius: 120
-      			};
-            	new google.maps.Circle(circleOptions);
-            	
-            	var circleOptions = {
-        		strokeColor: "#00FF00",
-        		strokeOpacity: 0.8,
-        		strokeWeight: 2,
-        		fillColor: "#00FF00",
-        		fillOpacity: 0.35,
-        		map: map,
-        		center: point,
-                clickable:false,
-        		radius: 60
-      			};
-            	new google.maps.Circle(circleOptions);
-                
-                var circleOptions = {
-        		strokeColor: "#FF0000",
-        		strokeOpacity: 0.8,
-        		strokeWeight: 2,
-        		fillColor: "#FF0000",
-        		fillOpacity: 0.35,
-        		map: map,
-        		center: point,
-                clickable:false,
-        		radius: 50
-      			};
-            	new google.maps.Circle(circleOptions);*/
-             	
-        //radiationBits.push(point);     
 
 }
 
@@ -444,7 +393,7 @@ $(function(){
 //             	new google.maps.Circle(circleOptions);
 //             	
              	
-                radiationBits.push(point);     
+                radiationBits.push([point,chosen_task_type]);     
 		
 		// Immediately create the pellet and open up the editor for it
 		/*
