@@ -19,7 +19,7 @@ class Player
     
     
   property :skill, String
-  property :health, Integer,:default => 0.0
+  property :health, Integer,:default => 100
     
   
     
@@ -38,7 +38,8 @@ class Player
     self.skill=@@skill[self.id%4]
     reload
   end 
-
+    
+  
 
 
   def add_points(points)
