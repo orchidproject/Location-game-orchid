@@ -19,17 +19,17 @@ function LQHandlePushData(data) {
 	// Custom push data from mapattack will contain the "mapattack" key
 	} else if(typeof data.mapattack != "undefined") {
 		var push = data.mapattack;
-		if(typeof push.place_id != "undefined"){
-			receiveCoinData(data.mapattack);
-			if(push.triggered_user_id == $("#user_id").val()) {
-				$("#player-info").addClass("blink");
-				$("#player-info .message").html(push.points+" points!");
-				setTimeout(function(){
-					$("#player-info").removeClass("blink");
-					$("#player-info .message").html("");
-				}, 1200);
-			}
-        }
+//		if(typeof push.place_id != "undefined"){
+//			receiveCoinData(data.mapattack);
+//			if(push.triggered_user_id == $("#user_id").val()) {
+//				$("#player-info").addClass("blink");
+//				$("#player-info .message").html(push.points+" points!");
+//				setTimeout(function(){
+//					$("#player-info").removeClass("blink");
+//					$("#player-info .message").html("");
+//				}, 1200);
+//			}
+//        }
 		if(typeof push.gamestate != "undefined" && push.gamestate == "done") {
 			window.location = "/game/"+$("#layer_id").val()+"/complete";
 		}
@@ -171,7 +171,7 @@ $(document).ready(function() {
 
     //window.location="myapp://app_action/joined?"+$("#user_id").val()+"&"+$("#user_team").val();
     //to do 
-    $("#player-score .value").html($("#user_initials").val());
+    //$("#player-score .value").html($("#user_initials").val());
     
 });
 
@@ -180,4 +180,3 @@ function locationUpdate(userID, latitude, longitude){
     socket.emit('location-push',{ player_id:userID,latitude:latitude,longitude:longitude});
 }
 
-//hello

@@ -57,12 +57,14 @@ var coins = {
 		grey: new google.maps.MarkerImage(coinSpriteURL, cg.s(25,25), cg.p(57, 323), cg.p(25/2, 25/2))
 	}
 };
-var truckImageURL = "/img/truck.png";
-var truckIcon= new google.maps.MarkerImage(truckImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
-var pollutantImageURL = "/img/skull.png";
-var pollutantIcon= new google.maps.MarkerImage(pollutantImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
-var pollutantImageURL_exposed = "/img/skull-exposed.png";
-var pollutantIcon_exposed = new google.maps.MarkerImage(pollutantImageURL_exposed, playerIconSize, playerIconOrigin, playerIconAnchor);
+
+
+//var truckImageURL = "/img/truck.png";
+//var truckIcon= new google.maps.MarkerImage(truckImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
+//var pollutantImageURL = "/img/skull.png";
+//var pollutantIcon= new google.maps.MarkerImage(pollutantImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
+//var pollutantImageURL_exposed = "/img/skull-exposed.png";
+//var pollutantIcon_exposed = new google.maps.MarkerImage(pollutantImageURL_exposed, playerIconSize, playerIconOrigin, playerIconAnchor);
 
 var playerIconSize = new google.maps.Size(32, 32);
 var playerIconOrigin = new google.maps.Point(0,0);
@@ -72,11 +74,16 @@ var playerIcons = {
 	red: new google.maps.MarkerImage("http://www.google.com/intl/en_us/mapfiles/ms/icons/red-dot.png", playerIconSize, playerIconOrigin, playerIconAnchor)
 }
 
+var taskIcon = playerIcons['blue']; 
+var personSkillA = playerIcons['red'];
+
 
 var requests = [];
 var players = [];
 var boxes = [];
 var tasks = [];
+
+var lastGeigerPlayTime = 0;
 
 
 
@@ -228,6 +235,8 @@ function receiveTaskData(data) {
 		pushToTaskHistory(data.description, "task" + data.id);
 	}	
 	
+	alert("A new task has arrived! Description: " + data.description);
+	
     var markerIcon;
 	var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
     markerIcon = taskIcon;
@@ -282,6 +291,7 @@ function receiveExposureData(data) {
 	if(data.player_id == $('#user_id').val()) {
 		//TODO: need to update exposure image/indicator HTML element
 		var exposure = data.value;
+		$('#exposure_reading').text(exposure);
 		var path = 'http://galax.me/media/sounds/';
 		if(exposure < 30) {
 			playSound('geiger_low.mp3', path);
@@ -297,7 +307,14 @@ function receiveExposureData(data) {
 }
 
 function playGeigerSound(filname, path) {
-	document.getElementById("geiger_sound").innerHTML="<embed src='"+path+filename+"' hidden=true autostart=true loop=false>";
+	//avoid playing sound repeatedly
+	var currentTime = new Date().getTime();
+	var loopDelay = 1000 * 100; //100 seconds delay between plays
+	if(currentTime > lastGeigerPlayTime + loopDelay) {
+		document.getElementById("geiger_sound").innerHTML="<embed src='"+path+filename+"' hidden=true autostart=true loop=false>";
+		lastGeigerPlayTime = currentTime;
+	}
+	
 }
 
 
