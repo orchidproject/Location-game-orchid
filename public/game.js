@@ -163,6 +163,7 @@ function receiveHeatmapData(data){
             strokeColor: "#FF0000",
             strokeOpacity: 0.8,
             strokeWeight: 3,
+            clickable: false,
             fillColor: "#FF0000",
             fillOpacity: 0,
             map: map,

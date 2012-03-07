@@ -131,6 +131,20 @@ function addTask(value){
 
 }
 
+var taskIcon1 = "/img/task_icon1.png";
+var taskIcon2 =  "/img/task_icon2.png";
+var taskIcon3 =  "/img/task_icon3.png";
+var taskIcon4 = "/img/task_icon4.png";
+
+var chosen_task_type;
+
+function addTask(value) {
+	
+	chosen_task_type = value;
+	
+	
+}
+
 function addBoundingBox(){
     
     $(boundingBoxes).each(
@@ -226,6 +240,7 @@ function clearRadiationBits(){
 
 function receiveRadiationBit(bit){
 
+//TODO: add chosen_task.
 	var pollutantIcon= new google.maps.MarkerImage(pollutantImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);                    
     point = new google.maps.LatLng(bit.latitude,bit.longitude);
                 
@@ -282,6 +297,52 @@ function receiveRadiationBit(bit){
 var layerId = "<%= @game.layer_id %>";
 var radiationBits = [];
 
+function getTaskIcon() {
+
+	var imageURL = ""
+	if (chosen_task_type == 1) {
+		imageURL = taskIcon1; 
+	}
+	else if (chosen_task_type == 2) {
+		imageURL = taskIcon2;
+	}
+	else if (chosen_task_type == 3) {
+		imageURL = taskIcon3;
+	}
+	else if (chosen_task_type == 4) {
+		imageURL = taskIcon4;
+	}
+	
+    var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
+	
+	return icon;
+}
+
+function receiveBounding(data) {
+
+	var lat_1=52.94539363811494
+	var long_1=-1.2144399
+	
+	var lat_2=52.9491938
+	var long_2=-1.2085589719746395
+	
+	var bound=new google.maps.LatLngBounds(
+        new google.maps.LatLng(lat_1,long_1),
+        new google.maps.LatLng(lat_2,long_2)                      
+    );
+	
+	var options= {
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 3,
+            fillColor: "#FF0000",
+            fillOpacity: 0,
+            map: map,
+            bounds:bound    
+    }	
+	var rect = new google.maps.Rectangle();
+	rect.setOptions(options);
+}
 
 $(function(){
 
@@ -315,61 +376,64 @@ $(function(){
         $(data.tasks).each(function(i, bit){
 			receiveRadiationBit(bit);
 		});
+		
+		receiveBounding(data.bounding);
+		
 	});
 	
 	GameMap.fitToRadius(<%= @game.radius %>);
 	
 	google.maps.event.addListener(map, 'rightclick', function(event) {
                 
-                var pollutantIcon= new google.maps.MarkerImage(pollutantImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
+                var taskIcon= getTaskIcon();
                 tempPointOne=event.latLng;
                 point = new google.maps.LatLng(tempPointOne.lat(),tempPointOne.lng());
                 
                 var marker = new google.maps.Marker({
                 	position: point,
                 	map: map,
-                	icon: pollutantIcon
+                	icon: taskIcon
                 });
                 
-                var circleOptions = {
-        		strokeColor: "#FFFFB3",
-        		strokeOpacity: 0.8,
-        		strokeWeight: 2,
-        		fillColor: "#FFFFb3",
-        		fillOpacity: 0.35,
-        		map: map,
-        		center: point,
-                clickable:false,
-        		radius: 120
-      			};
-            	new google.maps.Circle(circleOptions);
-            	
-            	var circleOptions = {
-        		strokeColor: "#00FF00",
-        		strokeOpacity: 0.8,
-        		strokeWeight: 2,
-        		fillColor: "#00FF00",
-        		fillOpacity: 0.35,
-        		map: map,
-        		center: point,
-                clickable:false,
-        		radius: 60
-      			};
-            	new google.maps.Circle(circleOptions);
-                
-                var circleOptions = {
-        		strokeColor: "#FF0000",
-        		strokeOpacity: 0.8,
-        		strokeWeight: 2,
-        		fillColor: "#FF0000",
-        		fillOpacity: 0.35,
-        		map: map,
-        		center: point,
-                clickable:false,
-        		radius: 50
-      			};
-            	new google.maps.Circle(circleOptions);
-            	
+         //        var circleOptions = {
+//         		strokeColor: "#FFFFB3",
+//         		strokeOpacity: 0.8,
+//         		strokeWeight: 2,
+//         		fillColor: "#FFFFb3",
+//         		fillOpacity: 0.35,
+//         		map: map,
+//         		center: point,
+//                 clickable:false,
+//         		radius: 120
+//       			};
+//             	new google.maps.Circle(circleOptions);
+//             	
+//             	var circleOptions = {
+//         		strokeColor: "#00FF00",
+//         		strokeOpacity: 0.8,
+//         		strokeWeight: 2,
+//         		fillColor: "#00FF00",
+//         		fillOpacity: 0.35,
+//         		map: map,
+//         		center: point,
+//                 clickable:false,
+//         		radius: 60
+//       			};
+//             	new google.maps.Circle(circleOptions);
+//                 
+//                 var circleOptions = {
+//         		strokeColor: "#FF0000",
+//         		strokeOpacity: 0.8,
+//         		strokeWeight: 2,
+//         		fillColor: "#FF0000",
+//         		fillOpacity: 0.35,
+//         		map: map,
+//         		center: point,
+//                 clickable:false,
+//         		radius: 50
+//       			};
+//             	new google.maps.Circle(circleOptions);
+//             	
              	
                 radiationBits.push(point);     
 		
@@ -489,7 +553,19 @@ $(function(){
            <input class="btn" type="button" value="Clear" onclick="clearBoundingBox();clearRadiationBits()"/>
 		  <input class="btn" type="button" value="Close" onclick="window.location = '/admin/games';"/>
 		</div>
+		
+		<div style="padding: 3px;">
+          <input class="btn" type="button" value="Task 1" onclick="addTask(1)"/>
+          <input class="btn" type="button" value="Task 2" onclick="addTask(2)"/>
+          <input class="btn" type="button" value="Task 3" onclick="addTask(3)"/>
+          <input class="btn" type="button" value="Task 4" onclick="addTask(4)"/>
+		</div>
+		
+		<div style="padding: 3px;">
+          <p><h5>Instructions</h5>To place target type on map click button once and then right click on location on map.</p>
+		</div>
 	</div>
+	
 
 	<div style="display: none;" id="pointToolbar"><div style="width: 180px; padding-top: 10px;">
 
