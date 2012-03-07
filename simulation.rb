@@ -24,9 +24,15 @@ class Simulation
           
     f = File.open(filename)
 		
+	@y_size = Integer(f.readline())	
     @x_size = Integer(f.readline())
-    @y_size = Integer(f.readline())
     @t_size = Integer(f.readline())
+	
+	@GPS_lat_x1=52.9491938
+	@GPS_long_y1=-1.2144399
+	
+	@GPS_lat_x2=52.94539363811494
+	@GPS_long_y2=-1.2085589719746395
 		
     @start_time = start_time
     @grid_size_in_meters = grid_size_in_meters
@@ -79,7 +85,11 @@ class Simulation
     end
     
     def getYIndex(lat)
-        Integer((@lat_top_left-lat)*1.1119e+05/@grid_size_in_meters)
+		Integer((@lat_top_left-lat)*1.1119e+05/@grid_size_in_meters)
+    end
+	
+	 def getYIndex(lat)
+		Integer((@lat_top_left-lat)*1.1119e+05/@grid_size_in_meters)
     end
     
     def getXIndex(long)
@@ -87,14 +97,24 @@ class Simulation
         Integer((long-@long_top_left)*Math.cos(@lat_top_left/180*Math::PI)*1.1119e+05/@grid_size_in_meters)
     end
     
-    def getLat(y_index)
+	def getLat(y_index)
         @lat_top_left - y_index*@grid_size_in_meters/1.1119e+05
     end
+   
+ #  def getLat(y_index)
+#		lat=y_index/@y_size*(@GPS_long_y2-@GPS_long_y1)+@GPS_long_y1
+#		return lat
+ #  end
     
     def getLong(x_index)
         @long_top_left + 
         x_index*@grid_size_in_meters/1.1119e+05/Math.cos(@lat_top_left/180*Math::PI)
     end
+
+#	def getLong(x_index)
+#		long=x_index/@x_size*(@GPS_lat_x2-@GPS_lat_x1)+@GPS_lat_x1
+#		return long
+#	end
     
     def getTimeFrame(time)
         @data.get2DArray(getTimeIndex(time))
