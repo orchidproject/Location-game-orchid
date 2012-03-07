@@ -282,8 +282,22 @@ function receiveExposureData(data) {
 	if(data.player_id == $('#user_id').val()) {
 		//TODO: need to update exposure image/indicator HTML element
 		var exposure = data.value;
+		var path = 'http://galax.me/media/sounds/';
+		if(exposure < 30) {
+			playSound('geiger_low.mp3', path);
+		}
+		if(exposure >= 30 && exposure < 80) {
+			playSound('geiger_medium.mp3', path);
+		}
+		if(exposure > 80) {
+			playSound('geiger_high.mp3', path);
+		}
 	}
         
+}
+
+function playGeigerSound(filname, path) {
+	document.getElementById("geiger_sound").innerHTML="<embed src='"+path+filename+"' hidden=true autostart=true loop=false>";
 }
 
 
