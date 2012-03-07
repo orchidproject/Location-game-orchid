@@ -163,6 +163,7 @@ function addRadiationBits(){
             $.post("/admin/games/"+layerId+"/addTask", {
                 latitude: bit.lat(),
                 longitude: bit.lng(),
+                //task_type: bit. 
             }, function(data){
                 if(data.status != "ok") {
                     alert("Something went wrong! :(");
@@ -307,29 +308,37 @@ function getTaskIcon() {
 }
 
 function receiveBounding(data) {
-
-	var lat_1=52.94539363811494
-	var long_1=-1.2144399
 	
-	var lat_2=52.9491938
-	var long_2=-1.2085589719746395
 	
-	var bound=new google.maps.LatLngBounds(
-        new google.maps.LatLng(lat_1,long_1),
-        new google.maps.LatLng(lat_2,long_2)                      
-    );
+	var lat_sw=52.94539363811494
+	var long_sw=-1.2085589719746395
+	
+	var lat_se=52.94539363811494
+	var long_se=-1.2144399
+	
+	var lat_nw=52.9491938
+	var long_nw=-1.2144399
+	
+	var lat_ne=52.9491938
+	var long_ne=-1.2085589719746395
+	
+	var path = [
+        new google.maps.LatLng(lat_sw,long_sw),
+        new google.maps.LatLng(lat_se,long_se), 
+        new google.maps.LatLng(lat_nw,long_nw),
+        new google.maps.LatLng(lat_ne,long_ne),
+        new google.maps.LatLng(lat_sw,long_sw),
+    ];
 	
 	var options= {
             strokeColor: "#FF0000",
             strokeOpacity: 0.8,
-            strokeWeight: 3,
-            fillColor: "#FF0000",
-            fillOpacity: 0,
-            map: map,
-            bounds:bound    
+            strokeWeight: 2,
+            path:path    
     }	
-	var rect = new google.maps.Rectangle();
+	var rect = new google.maps.Polyline();
 	rect.setOptions(options);
+	rect.setMap(map);
 }
 
 $(function(){
