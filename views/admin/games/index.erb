@@ -36,6 +36,7 @@
         <td><%= h game.total_points %></td>
         <td><a href="/admin/games/<%= game.layer_id %>/edit">Setup</a></td>
         <td><a href="/admin/games/<%= game.layer_id %>/mapeditor">Edit Map</a></td>
+        <td><a href="/game/<%= game.layer_id %>/dashboard">Dashboard</a></td>
         
         <td>&nbsp;&nbsp;&nbsp;<a href="/admin/games/<%= game.layer_id %>/reset" onclick="<%= onclick_put ' Are you -really- sure?' %>">Reset Game</a></td>
         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/games/<%= game.layer_id %>" onclick="<%= onclick_delete %>">Delete</a></td>
