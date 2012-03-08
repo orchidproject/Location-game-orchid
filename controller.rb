@@ -915,6 +915,10 @@ end
       
     if params[:role_id]==nil
         return {:error=>"logout first"}.to_json
+    elsif params[:email]==nil
+    	return {:error=>"invalid email"}.to_json
+    elsif params[:name]==nil
+    	return {:error=>"invalid name"}.to_json
     else
         player = game.players.create  :email =>params[:email], :name => params[:name], :skill => params[:role_id]
     end
