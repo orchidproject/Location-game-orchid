@@ -176,7 +176,7 @@ function receiveHeatmapData(data){
     
     $(heat_map).each(function(i,cell){
         cell.setMap(null);
-        cell=null;
+        delete cell;
     });
     heat_map=[];
     
