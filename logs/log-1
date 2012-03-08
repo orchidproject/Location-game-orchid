@@ -363,3 +363,6 @@
 {"textMassage":{"content":"DOE join the game"},"player":{"id":93,"name":"DOE","points_cache":0,"skill":null,"team":"runner"},"time_stamp":1331216291649}
 {"textMassage":{"content":"hi"},"time_stamp":1331216343497}
 {"system":"ready_check","time_stamp":1331216350664}
+{"textMassage":{"content":"hello"},"time_stamp":1331216931226}
+{"textMassage":{"content":"hi"},"time_stamp":1331216947403}
+{"system":"ready_check","time_stamp":1331216953240}
