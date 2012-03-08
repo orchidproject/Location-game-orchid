@@ -14,3 +14,7 @@
 {"player":{"id":97,"name":"DOE","points_cache":0,"team":"runner","skill":null},"time_stamp":1331217672221}
 {"health":{"player_id":97,"value":null},"time_stamp":1331217672224}
 {"textMassage":{"content":"DOE join the game"},"player":{"id":97,"name":"DOE","points_cache":0,"skill":null,"team":"runner"},"time_stamp":1331217672226}
+{"textMassage":{"content":"hi"},"time_stamp":1331217738294}
+{"player":{"id":98,"name":"DOE","points_cache":0,"team":"runner","skill":null},"time_stamp":1331217857099}
+{"health":{"player_id":98,"value":null},"time_stamp":1331217857104}
+{"textMassage":{"content":"DOE join the game"},"player":{"id":98,"name":"DOE","points_cache":0,"skill":null,"team":"runner"},"time_stamp":1331217857106}

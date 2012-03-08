@@ -4149,3 +4149,131 @@ find player 97
 128.243.22.244 - - [08/Mar/2012 14:41:28] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0055
 128.243.253.129 - - [08/Mar/2012 14:41:31] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0365
 128.243.22.244 - - [08/Mar/2012 14:41:31] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0056
+128.243.253.129 - - [08/Mar/2012 14:41:34] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0776
+128.243.22.244 - - [08/Mar/2012 14:41:34] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0062
+128.243.253.129 - - [08/Mar/2012 14:41:37] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0366
+128.243.22.244 - - [08/Mar/2012 14:41:37] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0057
+128.243.253.129 - - [08/Mar/2012 14:41:40] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0357
+128.243.22.244 - - [08/Mar/2012 14:41:40] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0057
+128.243.253.129 - - [08/Mar/2012 14:41:43] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0360
+128.243.22.244 - - [08/Mar/2012 14:41:43] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0057
+ ~ (0.000288) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000502) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000291) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000222) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000328) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000518) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000327) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000252) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000300) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000539) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000299) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000226) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000305) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000481) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000282) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000221) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000292) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000483) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000284) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000220) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000300) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000500) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000310) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000224) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000327) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000510) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000301) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000224) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000328) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000505) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000299) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000223) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000298) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000504) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000297) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000225) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000296) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000485) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+128.243.253.129 - - [08/Mar/2012 14:41:46] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0357
+128.243.22.244 - - [08/Mar/2012 14:41:46] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0056
+128.243.253.129 - - [08/Mar/2012 14:41:49] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0357
+128.243.22.244 - - [08/Mar/2012 14:41:49] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0061
+128.243.253.129 - - [08/Mar/2012 14:41:52] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0357
+128.243.22.244 - - [08/Mar/2012 14:41:52] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0056
+128.243.253.129 - - [08/Mar/2012 14:41:55] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0360
+128.243.22.244 - - [08/Mar/2012 14:41:55] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0057
+128.243.253.129 - - [08/Mar/2012 14:41:58] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0359
+128.243.22.244 - - [08/Mar/2012 14:41:58] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0056
+128.243.253.129 - - [08/Mar/2012 14:42:01] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0363
+128.243.22.244 - - [08/Mar/2012 14:42:01] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0056
+128.243.253.129 - - [08/Mar/2012 14:42:04] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0359
+128.243.22.244 - - [08/Mar/2012 14:42:04] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0054
+128.243.253.129 - - [08/Mar/2012 14:42:07] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0792
+128.243.22.244 - - [08/Mar/2012 14:42:07] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0060
+128.243.253.129 - - [08/Mar/2012 14:42:10] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0366
+128.243.22.244 - - [08/Mar/2012 14:42:10] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0056
+128.243.22.244 - - [08/Mar/2012 14:42:12] "GET /location.js HTTP/1.1" 200 1162 0.0013
+128.243.253.129 - - [08/Mar/2012 14:42:13] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0359
+ ~ (0.000318) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000226) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000298) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000481) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000297) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000223) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000315) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000479) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000297) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000251) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000445) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000628) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000295) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000223) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000298) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000487) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000306) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000248) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000296) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000481) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000297) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000224) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000315) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000482) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000262) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000244) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000282) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000477) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000333) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000226) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000321) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000555) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000287) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000220) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+ ~ (0.000296) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 LIMIT 1
+ ~ (0.000478) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000295) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 11 LIMIT 1
+ ~ (0.000223) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 11 ORDER BY `id`
+128.243.22.244 - - [08/Mar/2012 14:42:13] "GET /admin/games/11/ready_status HTTP/1.1" 200 48 0.0057
+128.243.22.244 - - [08/Mar/2012 14:42:15] "GET /radiation_gray.png HTTP/1.1" 200 1743 0.0015
+128.243.22.244 - - [08/Mar/2012 14:42:15] "GET /admin/games/12/console HTTP/1.1" 200 3068 0.0064
+128.243.22.244 - - [08/Mar/2012 14:42:15] "GET /game-common.js HTTP/1.1" 200 2318 0.0020
+128.243.22.244 - - [08/Mar/2012 14:42:15] "GET /reset.css HTTP/1.1" 304 - 0.0017
+128.243.22.244 - - [08/Mar/2012 14:42:16] "GET /favicon.ico HTTP/1.1" 404 458 0.0020
+128.243.253.129 - - [08/Mar/2012 14:42:16] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0355
+128.243.22.244 - - [08/Mar/2012 14:42:16] "GET /game/12/status.json?after=0 HTTP/1.1" 200 568 0.0102
+128.243.22.244 - - [08/Mar/2012 14:42:18] "POST /admin/games/12/massage HTTP/1.1" 200 15 0.0073
+128.243.253.129 - - [08/Mar/2012 14:42:19] "GET /admin/games/1/ready_status HTTP/1.1" 200 2340 0.0357
+178.99.212.118 - - [08/Mar/2012 14:43:00] "GET /game/mobile/1 HTTP/1.1" 200 5509 0.0301
+178.99.212.118 - - [08/Mar/2012 14:43:00] "GET /game/mobile/1 HTTP/1.1" 200 5509 0.0137
+178.99.212.118 - - [08/Mar/2012 14:43:01] "GET /game-common.js HTTP/1.1" 304 - 0.0009
+178.99.212.118 - - [08/Mar/2012 14:43:01] "GET /mapattack-push.js HTTP/1.1" 304 - 0.0007
+178.99.212.118 - - [08/Mar/2012 14:43:01] "GET /game_user.js HTTP/1.1" 304 - 0.0008
+178.99.212.118 - - [08/Mar/2012 14:43:01] "GET /health_status.js HTTP/1.1" 304 - 0.0007
+178.99.212.118 - - [08/Mar/2012 14:43:01] "GET /location.js HTTP/1.1" 304 - 0.0008
+178.99.212.118 - - [08/Mar/2012 14:43:01] "GET /game-common.js HTTP/1.1" 304 - 0.0008
+178.99.212.118 - - [08/Mar/2012 14:43:01] "GET /game_user.js HTTP/1.1" 304 - 0.0009
+178.99.212.118 - - [08/Mar/2012 14:43:07] "GET /radiation_black.png HTTP/1.1" 304 - 0.0011
+178.99.212.118 - - [08/Mar/2012 14:43:11] "GET /radiation_gray.png HTTP/1.1" 304 - 0.0016
+128.243.22.244 - - [08/Mar/2012 14:44:14] "GET /games/list HTTP/1.1" 200 584 0.0056
+128.243.22.244 - - [08/Mar/2012 14:44:17] "POST /game/12/join HTTP/1.1" 200 35 0.0292
+128.243.22.244 - - [08/Mar/2012 14:44:17] "GET /game/mobile/12?id=98 HTTP/1.1" 200 5475 0.0161
