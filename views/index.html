@@ -1,0 +1,69 @@
+<script type="text/javascript">
+  
+  
+  $(function(){
+  	if(!document.getElementById("map")) {
+  		return;
+  	}
+
+  	var myOptions = {
+  		zoom: 15,
+  		center: new google.maps.LatLng(50.0,0.1), //todo: replace ruby template var
+  		mapTypeId: google.maps.MapTypeId.ROADMAP,
+  		mapTypeControl: true,
+		disableDoubleClickZoom: true
+  	};
+
+  	// Create the main map
+  	map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+
+	$("#logout").click(function(){
+		document.location.href="/game/"+$("#layer_id").val()+"/logout?user_id="+$("#user_id").val();
+	});
+
+
+    GameMap.fitToRadius(100); // todo: replace ruby template var
+	
+  });
+
+
+</script>
+
+
+
+	<div id="wrapper">
+		<div id="geiger_sound"></div>
+		
+		<p>Geiger reading: <div id="exposure_reading"></div></p>
+		
+		<div id="map"></div>
+
+		<nav id="top-nav">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="http://geoloqi.com">Get Geoloqi</a></li>
+			</ul>
+		</nav>
+
+		<section id="player-info">
+			<h3 id="player-score" class="team-firefighter"><span class="value"></span></h3> <!-- todo: replace ruby var skill -->
+			<h3 class="message"></h3>
+		</section>
+
+	    <div id="messageListDiv">
+	    
+	    	<h5>Messages</h5>
+	    	<ul id="task_list" class="ui-listview" data-role="listview" data-inset="true">												
+	
+			</ul>		
+	    	
+	    
+	    </div>
+
+
+    
+      </div> <!-- wrapper -->
+      
+ <!-- wrapper --> 
+     

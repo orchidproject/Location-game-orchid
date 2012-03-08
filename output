@@ -1407,3 +1407,605 @@ DataMapper::SaveFailureError - Player#save returned false, Player was not saved:
 128.243.253.129 - - [08/Mar/2012 23:40:15] "GET /radiation_gray.png HTTP/1.1" 304 - 0.0008
 128.243.253.129 - - [08/Mar/2012 23:40:47] "GET /radiation_black.png HTTP/1.1" 304 - 0.0011
 128.243.22.244 - - [08/Mar/2012 23:40:57] "POST /game/2/join HTTP/1.1" 200 24 0.0033
+
+ ~ (0.000181) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`id` = 140 AND `game_layer_id` = 2) ORDER BY `id` LIMIT 1
+find player 140
+ ~ (0.000127) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000247) SELECT `id` FROM `teams` WHERE (`game_layer_id` = 2 AND `name` = 'truck')
+ ~ (0.000196) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 6 ORDER BY `id` LIMIT 1
+ ~ (0.000296) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000304) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+
+ ~ (0.000177) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`id` = 140 AND `game_layer_id` = 2) ORDER BY `id` LIMIT 1
+find player 140
+ ~ (0.000125) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000202) SELECT `id` FROM `teams` WHERE (`game_layer_id` = 2 AND `name` = 'truck')
+ ~ (0.000163) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 6 ORDER BY `id` LIMIT 1
+ ~ (0.000323) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000060) SET sql_auto_is_null = 0
+ ~ (0.000086) SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+ ~ (0.000345) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` ORDER BY `layer_id`
+ ~ (0.000320) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000307) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+
+ ~ (0.000154) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`id` = 140 AND `game_layer_id` = 2) ORDER BY `id` LIMIT 1
+find player 140
+ ~ (0.000125) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000273) SELECT `id` FROM `teams` WHERE (`game_layer_id` = 2 AND `name` = 'truck')
+ ~ (0.000187) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 6 ORDER BY `id` LIMIT 1
+ ~ (0.000326) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000333) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+
+ ~ (0.000155) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`id` = 140 AND `game_layer_id` = 2) ORDER BY `id` LIMIT 1
+find player 140
+ ~ (0.000124) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000177) SELECT `id` FROM `teams` WHERE (`game_layer_id` = 2 AND `name` = 'truck')
+ ~ (0.000162) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 6 ORDER BY `id` LIMIT 1
+ ~ (0.000347) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000330) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+
+ ~ (0.000179) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`id` = 140 AND `game_layer_id` = 2) ORDER BY `id` LIMIT 1
+find player 140
+ ~ (0.000127) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000214) SELECT `id` FROM `teams` WHERE (`game_layer_id` = 2 AND `name` = 'truck')
+ ~ (0.000175) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 6 ORDER BY `id` LIMIT 1
+ ~ (0.000261) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` ORDER BY `layer_id`
+ ~ (0.000059) SET sql_auto_is_null = 0
+ ~ (0.000063) SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+ ~ (0.000392) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000307) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+
+ ~ (0.000167) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`id` = 140 AND `game_layer_id` = 2) ORDER BY `id` LIMIT 1
+find player 140
+ ~ (0.000125) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000246) SELECT `id` FROM `teams` WHERE (`game_layer_id` = 2 AND `name` = 'truck')
+ ~ (0.000171) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 6 ORDER BY `id` LIMIT 1
+ ~ (0.000327) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000091) SET sql_auto_is_null = 0
+ ~ (0.000062) SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+128.243.253.129 - - [08/Mar/2012 23:48:29] "GET /games/list HTTP/1.1" 200 129 0.0051
+128.243.253.129 - - [08/Mar/2012 23:48:31] "POST /game/2/join HTTP/1.1" 200 24 0.0055
+128.243.253.129 - - [08/Mar/2012 23:48:33] "POST /game/2/join HTTP/1.1" 200 24 0.0055
+128.243.253.129 - - [08/Mar/2012 23:48:37] "POST /game/2/join HTTP/1.1" 200 24 0.0052
+128.243.253.129 - - [08/Mar/2012 23:48:41] "GET /games/list HTTP/1.1" 200 129 0.0033
+128.243.253.129 - - [08/Mar/2012 23:48:42] "GET /games/list HTTP/1.1" 200 129 0.0030
+128.243.253.129 - - [08/Mar/2012 23:48:43] "POST /game/2/join HTTP/1.1" 200 24 0.0050
+128.243.22.246 - - [08/Mar/2012 23:48:53] "GET /admin/games HTTP/1.1" 200 4611 0.0252
+128.243.22.246 - - [08/Mar/2012 23:48:53] "GET /game-common.js HTTP/1.1" 200 3990 0.0024
+128.243.22.246 - - [08/Mar/2012 23:48:53] "GET /reset.css HTTP/1.1" 200 5672 0.0019
+128.243.22.246 - - [08/Mar/2012 23:48:54] "GET /favicon.ico HTTP/1.1" 404 458 0.0023
+128.243.22.246 - - [08/Mar/2012 23:48:54] "GET /favicon.ico HTTP/1.1" 404 458 0.0018
+128.243.253.129 - - [08/Mar/2012 23:49:18] "POST /game/2/join HTTP/1.1" 200 24 0.0061
+128.243.253.129 - - [08/Mar/2012 23:49:21] "POST /game/2/join HTTP/1.1" 200 24 0.0051
+128.243.253.129 - - [08/Mar/2012 23:49:24] "GET /games/list HTTP/1.1" 200 129 0.0032
+128.243.22.246 - - [08/Mar/2012 23:50:36] "GET /admin/games/new HTTP/1.1" 200 2388 0.0055
+128.243.22.246 - - [08/Mar/2012 23:50:36] "GET /game-common.js HTTP/1.1" 304 - 0.0021
+128.243.22.246 - - [08/Mar/2012 23:50:48] "POST /admin/games HTTP/1.1" 302 - 0.0402
+128.243.22.246 - - [08/Mar/2012 23:50:48] "GET /admin/games/3/mapeditor HTTP/1.1" 200 16262 0.0156
+128.243.22.246 - - [08/Mar/2012 23:50:48] "GET /bootstrap.css HTTP/1.1" 200 81443 0.0044
+ ~ (0.000340) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` ORDER BY `layer_id`
+ ~ (0.000302) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000192) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`game_layer_id` = 2 AND `id` = 140) ORDER BY `id` LIMIT 1
+ ~ (0.000311) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000156) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`game_layer_id` = 2 AND `id` = 140) ORDER BY `id` LIMIT 1
+ ~ (0.000326) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000166) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`game_layer_id` = 2 AND `id` = 140) ORDER BY `id` LIMIT 1
+ ~ (0.000318) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` ORDER BY `layer_id`
+ ~ (0.000289) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` ORDER BY `layer_id`
+ ~ (0.000326) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000158) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`game_layer_id` = 2 AND `id` = 140) ORDER BY `id` LIMIT 1
+ ~ (0.000296) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` ORDER BY `layer_id`
+ ~ (0.000303) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` IN (1, 2) ORDER BY `id`
+ ~ (0.000150) SELECT `id`, `name`, `created_at`, `updated_at`, `game_layer_id` FROM `teams` WHERE `game_layer_id` IN (1, 2) ORDER BY `id`
+ ~ (0.000178) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 1 ORDER BY `id`
+ ~ (0.000152) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 2 ORDER BY `id`
+ ~ (0.000175) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 3 ORDER BY `id`
+ ~ (0.000159) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 4 ORDER BY `id`
+ ~ (0.000152) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 5 ORDER BY `id`
+ ~ (0.000151) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 6 ORDER BY `id`
+ ~ (0.000351) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000173) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`game_layer_id` = 2 AND `id` = 140) ORDER BY `id` LIMIT 1
+ ~ (0.000339) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000166) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`game_layer_id` = 2 AND `id` = 140) ORDER BY `id` LIMIT 1
+ ~ (0.000320) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` ORDER BY `layer_id`
+ ~ (0.000062) SET sql_auto_is_null = 0
+ ~ (0.000086) SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+ ~ (0.011632) INSERT INTO `games` (`name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at`) VALUES ('test2', '', '', '', '', -1, '2012-03-08 23:50:48', '2012-03-08 23:50:48')
+ ~ (0.003588) INSERT INTO `teams` (`name`, `created_at`, `updated_at`, `game_layer_id`) VALUES ('runner', '2012-03-08 23:50:48', '2012-03-08 23:50:48', 3)
+ ~ (0.009074) INSERT INTO `teams` (`name`, `created_at`, `updated_at`, `game_layer_id`) VALUES ('controller', '2012-03-08 23:50:48', '2012-03-08 23:50:48', 3)
+ ~ (0.003391) INSERT INTO `teams` (`name`, `created_at`, `updated_at`, `game_layer_id`) VALUES ('truck', '2012-03-08 23:50:48', '2012-03-08 23:50:48', 3)
+ ~ (0.000246) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 3 LIMIT 1
+ ~ (0.000280) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` ORDER BY `layer_id`
+ ~ (0.000288) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` IN (1, 2, 3) ORDER BY `id`
+ ~ (0.000161) SELECT `id`, `name`, `created_at`, `updated_at`, `game_layer_id` FROM `teams` WHERE `game_layer_id` IN (1, 2, 3) ORDER BY `id`
+ ~ (0.000206) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 1 ORDER BY `id`
+ ~ (0.000158) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 2 ORDER BY `id`
+ ~ (0.000153) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 3 ORDER BY `id`
+ ~ (0.000157) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 4 ORDER BY `id`
+128.243.22.246 - - [08/Mar/2012 23:50:52] "GET /admin/games HTTP/1.1" 200 6455 0.0325
+128.243.253.129 - - [08/Mar/2012 23:50:59] "GET /games/list HTTP/1.1" 200 191 0.0037
+128.243.253.129 - - [08/Mar/2012 23:51:01] "POST /game/3/join HTTP/1.1" 200 24 0.0052
+10.50.253.110 - - [08/Mar/2012 23:51:06] "GET /admin/games HTTP/1.1" 200 6455 0.0326
+10.50.253.110 - - [08/Mar/2012 23:51:06] "GET /game-common.js HTTP/1.1" 200 3990 0.0022
+10.50.253.110 - - [08/Mar/2012 23:51:06] "GET /reset.css HTTP/1.1" 304 - 0.0016
+10.50.253.110 - - [08/Mar/2012 23:51:08] "GET /admin/games HTTP/1.1" 200 6455 0.0695
+10.50.253.110 - - [08/Mar/2012 23:51:08] "GET /favicon.ico HTTP/1.1" 404 458 0.0021
+10.50.253.110 - - [08/Mar/2012 23:51:10] "GET /admin/games/new HTTP/1.1" 200 2388 0.0055
+10.50.253.110 - - [08/Mar/2012 23:51:11] "GET /favicon.ico HTTP/1.1" 404 458 0.0020
+10.50.253.110 - - [08/Mar/2012 23:51:14] "GET /admin/games/new HTTP/1.1" 200 2388 0.0055
+10.50.253.110 - - [08/Mar/2012 23:51:14] "GET /favicon.ico HTTP/1.1" 404 458 0.0022
+10.50.253.110 - - [08/Mar/2012 23:51:19] "GET /admin/games/new HTTP/1.1" 200 2388 0.0055
+10.50.253.110 - - [08/Mar/2012 23:51:19] "GET /favicon.ico HTTP/1.1" 404 458 0.0020
+ ~ (0.000153) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 5 ORDER BY `id`
+ ~ (0.000153) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 6 ORDER BY `id`
+ ~ (0.000167) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 7 ORDER BY `id`
+ ~ (0.000181) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 8 ORDER BY `id`
+ ~ (0.000160) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 9 ORDER BY `id`
+ ~ (0.000297) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` ORDER BY `layer_id`
+ ~ (0.000326) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 3 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000181) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`game_layer_id` = 3 AND `id` = 140) ORDER BY `id` LIMIT 1
+ ~ (0.000298) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` ORDER BY `layer_id`
+ ~ (0.000212) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` IN (1, 2, 3) ORDER BY `id`
+ ~ (0.000160) SELECT `id`, `name`, `created_at`, `updated_at`, `game_layer_id` FROM `teams` WHERE `game_layer_id` IN (1, 2, 3) ORDER BY `id`
+ ~ (0.000181) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 1 ORDER BY `id`
+ ~ (0.000151) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 2 ORDER BY `id`
+ ~ (0.000151) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 3 ORDER BY `id`
+ ~ (0.000169) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 4 ORDER BY `id`
+ ~ (0.000169) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 5 ORDER BY `id`
+ ~ (0.000151) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 6 ORDER BY `id`
+ ~ (0.000152) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 7 ORDER BY `id`
+ ~ (0.000152) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 8 ORDER BY `id`
+ ~ (0.000150) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 9 ORDER BY `id`
+ ~ (0.000345) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` ORDER BY `layer_id`
+ ~ (0.000240) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` IN (1, 2, 3) ORDER BY `id`
+ ~ (0.000161) SELECT `id`, `name`, `created_at`, `updated_at`, `game_layer_id` FROM `teams` WHERE `game_layer_id` IN (1, 2, 3) ORDER BY `id`
+ ~ (0.000176) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 1 ORDER BY `id`
+ ~ (0.000410) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 2 ORDER BY `id`
+ ~ (0.000154) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 3 ORDER BY `id`
+ ~ (0.000180) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 4 ORDER BY `id`
+ ~ (0.000152) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 5 ORDER BY `id`
+ ~ (0.000151) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 6 ORDER BY `id`
+ ~ (0.000180) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 7 ORDER BY `id`
+ ~ (0.000150) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 8 ORDER BY `id`
+ ~ (0.000151) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 9 ORDER BY `id`
+ ~ (0.004256) INSERT INTO `games` (`name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at`) VALUES ('test', '', '', '', '', -1, '2012-03-08 23:51:25', '2012-03-08 23:51:25')
+ ~ (0.002621) INSERT INTO `teams` (`name`, `created_at`, `updated_at`, `game_layer_id`) VALUES ('runner', '2012-03-08 23:51:25', '2012-03-08 23:51:25', 4)
+10.50.253.110 - - [08/Mar/2012 23:51:25] "POST /admin/games HTTP/1.1" 302 - 0.0257
+10.50.253.110 - - [08/Mar/2012 23:51:25] "GET /admin/games/4/mapeditor HTTP/1.1" 200 16262 0.0153
+10.50.253.110 - - [08/Mar/2012 23:51:25] "GET /bootstrap.css HTTP/1.1" 304 - 0.0018
+10.50.253.110 - - [08/Mar/2012 23:51:25] "GET /favicon.ico HTTP/1.1" 404 458 0.0019
+NoMethodError - undefined method `is_active' for nil:NilClass:
+ /home/wxj/Location-game-orchid/controller.rb:1040:in `block in <class:Controller>'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1152:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1152:in `block in compile!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:724:in `instance_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:724:in `route_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:708:in `block (2 levels) in route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:758:in `block in process_route'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:755:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:755:in `process_route'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:707:in `block in route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:706:in `each'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:706:in `route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:843:in `dispatch!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:644:in `block in call!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `instance_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `block in invoke'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `invoke'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:644:in `call!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:629:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-mobile-detect-0.3.0/lib/rack/mobile-detect.rb:164:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/session/abstract/id.rb:195:in `context'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/session/abstract/id.rb:190:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/head.rb:9:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/showexceptions.rb:21:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/methodoverride.rb:24:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1272:in `block in call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1303:in `synchronize'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1272:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/lint.rb:48:in `_call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/lint.rb:36:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/showexceptions.rb:24:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/commonlogger.rb:20:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/chunked.rb:41:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/content_length.rb:14:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:84:in `block in pre_process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:82:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:82:in `pre_process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:57:in `process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:42:in `receive_data'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/eventmachine-1.0.0.beta.3/lib/eventmachine.rb:199:in `run_machine'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/eventmachine-1.0.0.beta.3/lib/eventmachine.rb:199:in `run'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/backends/base.rb:61:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/server.rb:159:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/handler/thin.rb:13:in `run'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/server.rb:265:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/server.rb:137:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/bin/rackup:4:in `<top (required)>'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/bin/rackup:19:in `load'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/bin/rackup:19:in `<main>'
+128.243.22.244 - - [08/Mar/2012 23:55:11] "GET /game/mobile/12 HTTP/1.1" 500 138160 0.0814
+128.243.22.244 - - [08/Mar/2012 23:55:11] "GET /favicon.ico HTTP/1.1" 404 458 0.0024
+NoMethodError - undefined method `is_active' for nil:NilClass:
+ /home/wxj/Location-game-orchid/controller.rb:1040:in `block in <class:Controller>'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1152:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1152:in `block in compile!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:724:in `instance_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:724:in `route_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:708:in `block (2 levels) in route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:758:in `block in process_route'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:755:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:755:in `process_route'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:707:in `block in route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:706:in `each'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:706:in `route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:843:in `dispatch!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:644:in `block in call!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `instance_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `block in invoke'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `invoke'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:644:in `call!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:629:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-mobile-detect-0.3.0/lib/rack/mobile-detect.rb:164:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/session/abstract/id.rb:195:in `context'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/session/abstract/id.rb:190:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/head.rb:9:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/showexceptions.rb:21:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/methodoverride.rb:24:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1272:in `block in call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1303:in `synchronize'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1272:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/lint.rb:48:in `_call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/lint.rb:36:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/showexceptions.rb:24:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/commonlogger.rb:20:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/chunked.rb:41:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/content_length.rb:14:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:84:in `block in pre_process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:82:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:82:in `pre_process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:57:in `process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:42:in `receive_data'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/eventmachine-1.0.0.beta.3/lib/eventmachine.rb:199:in `run_machine'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/eventmachine-1.0.0.beta.3/lib/eventmachine.rb:199:in `run'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/backends/base.rb:61:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/server.rb:159:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/handler/thin.rb:13:in `run'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/server.rb:265:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/server.rb:137:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/bin/rackup:4:in `<top (required)>'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/bin/rackup:19:in `load'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/bin/rackup:19:in `<main>'
+128.243.22.244 - - [08/Mar/2012 23:55:13] "GET /game/mobile/12 HTTP/1.1" 500 138292 0.0398
+128.243.22.244 - - [08/Mar/2012 23:55:13] "GET /favicon.ico HTTP/1.1" 404 458 0.0021
+128.243.22.244 - - [08/Mar/2012 23:55:15] "GET /game/mobile/1 HTTP/1.1" 200 5349 0.0146
+128.243.22.244 - - [08/Mar/2012 23:55:15] "GET /game-common.js HTTP/1.1" 200 3990 0.0023
+128.243.22.244 - - [08/Mar/2012 23:55:15] "GET /mapattack-web.js HTTP/1.1" 200 5624 0.0019
+128.243.22.244 - - [08/Mar/2012 23:55:15] "GET /game_controller.js HTTP/1.1" 200 22635 0.0024
+128.243.22.244 - - [08/Mar/2012 23:55:15] "GET /reset.css HTTP/1.1" 304 - 0.0016
+128.243.22.244 - - [08/Mar/2012 23:55:15] "GET /style.css HTTP/1.1" 304 - 0.0016
+128.243.22.244 - - [08/Mar/2012 23:55:16] "GET /radiation_gray.png HTTP/1.1" 304 - 0.0019
+128.243.22.244 - - [08/Mar/2012 23:55:16] "GET /img/home-bkg.png HTTP/1.1" 304 - 0.0017
+128.243.22.244 - - [08/Mar/2012 23:55:16] "GET /game/1/status.json?after=0 HTTP/1.1" 200 63 0.0109
+128.243.22.244 - - [08/Mar/2012 23:55:16] "GET /fonts/DroidSans-webfont.woff HTTP/1.1" 304 - 0.0017
+128.243.22.244 - - [08/Mar/2012 23:55:16] "GET /favicon.ico HTTP/1.1" 404 458 0.0021
+128.243.22.244 - - [08/Mar/2012 23:55:18] "GET /game/mobile/2 HTTP/1.1" 200 5347 0.0141
+128.243.22.244 - - [08/Mar/2012 23:55:18] "GET /game/2/status.json?after=0 HTTP/1.1" 200 208 0.0120
+128.243.22.244 - - [08/Mar/2012 23:55:18] "GET /favicon.ico HTTP/1.1" 404 458 0.0020
+NoMethodError - undefined method `is_active' for nil:NilClass:
+ /home/wxj/Location-game-orchid/controller.rb:1040:in `block in <class:Controller>'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1152:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1152:in `block in compile!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:724:in `instance_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:724:in `route_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:708:in `block (2 levels) in route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:758:in `block in process_route'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:755:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:755:in `process_route'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:707:in `block in route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:706:in `each'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:706:in `route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:843:in `dispatch!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:644:in `block in call!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `instance_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `block in invoke'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `invoke'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:644:in `call!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:629:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-mobile-detect-0.3.0/lib/rack/mobile-detect.rb:164:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/session/abstract/id.rb:195:in `context'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/session/abstract/id.rb:190:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/head.rb:9:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/showexceptions.rb:21:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/methodoverride.rb:24:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1272:in `block in call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1303:in `synchronize'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1272:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/lint.rb:48:in `_call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/lint.rb:36:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/showexceptions.rb:24:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/commonlogger.rb:20:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/chunked.rb:41:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/content_length.rb:14:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:84:in `block in pre_process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:82:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:82:in `pre_process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:57:in `process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:42:in `receive_data'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/eventmachine-1.0.0.beta.3/lib/eventmachine.rb:199:in `run_machine'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/eventmachine-1.0.0.beta.3/lib/eventmachine.rb:199:in `run'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/backends/base.rb:61:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/server.rb:159:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/handler/thin.rb:13:in `run'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/server.rb:265:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/server.rb:137:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/bin/rackup:4:in `<top (required)>'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/bin/rackup:19:in `load'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/bin/rackup:19:in `<main>'
+82.132.138.234 - - [08/Mar/2012 23:55:51] "GET /game/mobile/12 HTTP/1.1" 500 138313 0.0712
+82.132.138.234 - - [08/Mar/2012 23:55:51] "GET /favicon.ico HTTP/1.1" 404 458 0.0013
+82.132.138.234 - - [08/Mar/2012 23:55:56] "GET /game/mobile/1 HTTP/1.1" 200 5809 0.0138
+82.132.138.234 - - [08/Mar/2012 23:55:56] "GET /game_user.js HTTP/1.1" 200 19968 0.0021
+82.132.138.234 - - [08/Mar/2012 23:55:56] "GET /game-common.js HTTP/1.1" 200 3990 0.0042
+82.132.138.234 - - [08/Mar/2012 23:55:56] "GET /mapattack-push.js HTTP/1.1" 200 5636 0.0011
+82.132.138.234 - - [08/Mar/2012 23:55:56] "GET /health_status.js HTTP/1.1" 200 4586 0.0012
+82.132.138.234 - - [08/Mar/2012 23:55:56] "GET /location.js HTTP/1.1" 200 1162 0.0010
+82.132.138.234 - - [08/Mar/2012 23:56:03] "GET /radiation_gray.png HTTP/1.1" 200 1743 0.0015
+82.132.138.234 - - [08/Mar/2012 23:56:14] "GET /game/mobile/1 HTTP/1.1" 200 5809 0.0137
+82.132.138.234 - - [08/Mar/2012 23:56:18] "GET /radiation_gray.png HTTP/1.1" 304 - 0.0012
+128.243.253.129 - - [08/Mar/2012 23:57:01] "GET /games/list HTTP/1.1" 200 252 0.0044
+128.243.253.129 - - [08/Mar/2012 23:57:22] "GET /games/list HTTP/1.1" 200 252 0.0037
+DataMapper::SaveFailureError - Player#save returned false, Player was not saved:
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/resource.rb:1197:in `assert_save_successful'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/resource.rb:407:in `save'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/model.rb:704:in `_create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/model.rb:450:in `create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/collection.rb:1211:in `block in _create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/repository.rb:114:in `scope'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/collection.rb:1211:in `_create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/associations/one_to_many.rb:265:in `_create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/collection.rb:793:in `create'
+ /home/wxj/Location-game-orchid/controller.rb:919:in `block in <class:Controller>'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1152:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1152:in `block in compile!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:724:in `instance_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:724:in `route_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:708:in `block (2 levels) in route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:758:in `block in process_route'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:755:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:755:in `process_route'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:707:in `block in route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:706:in `each'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:706:in `route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:843:in `dispatch!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:644:in `block in call!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `instance_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `block in invoke'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `invoke'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:644:in `call!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:629:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-mobile-detect-0.3.0/lib/rack/mobile-detect.rb:164:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/session/abstract/id.rb:195:in `context'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/session/abstract/id.rb:190:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/head.rb:9:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/showexceptions.rb:21:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/methodoverride.rb:24:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1272:in `block in call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1303:in `synchronize'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1272:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/lint.rb:48:in `_call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/lint.rb:36:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/showexceptions.rb:24:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/commonlogger.rb:20:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/chunked.rb:41:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/content_length.rb:14:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:84:in `block in pre_process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:82:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:82:in `pre_process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:57:in `process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:42:in `receive_data'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/eventmachine-1.0.0.beta.3/lib/eventmachine.rb:199:in `run_machine'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/eventmachine-1.0.0.beta.3/lib/eventmachine.rb:199:in `run'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/backends/base.rb:61:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/server.rb:159:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/handler/thin.rb:13:in `run'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/server.rb:265:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/server.rb:137:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/bin/rackup:4:in `<top (required)>'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/bin/rackup:19:in `load'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/bin/rackup:19:in `<main>'
+128.243.253.129 - - [08/Mar/2012 23:57:27] "POST /game/2/join HTTP/1.1" 500 159883 0.0812
+128.243.253.129 - - [08/Mar/2012 23:57:27] "GET /game/mobile/2?id=140 HTTP/1.1" 200 5807 0.0141
+128.243.253.129 - - [08/Mar/2012 23:57:27] "GET /game-common.js HTTP/1.1" 200 3990 0.0011
+128.243.253.129 - - [08/Mar/2012 23:57:27] "GET /mapattack-push.js HTTP/1.1" 200 5636 0.0010
+128.243.253.129 - - [08/Mar/2012 23:57:28] "GET /game_user.js HTTP/1.1" 200 19968 0.0015
+128.243.253.129 - - [08/Mar/2012 23:57:28] "GET /health_status.js HTTP/1.1" 200 4586 0.0010
+128.243.253.129 - - [08/Mar/2012 23:57:28] "GET /location.js HTTP/1.1" 200 1162 0.0009
+128.243.253.129 - - [08/Mar/2012 23:57:33] "GET /radiation_gray.png HTTP/1.1" 200 1743 0.0016
+ ~ (0.004526) INSERT INTO `teams` (`name`, `created_at`, `updated_at`, `game_layer_id`) VALUES ('controller', '2012-03-08 23:51:25', '2012-03-08 23:51:25', 4)
+ ~ (0.002779) INSERT INTO `teams` (`name`, `created_at`, `updated_at`, `game_layer_id`) VALUES ('truck', '2012-03-08 23:51:25', '2012-03-08 23:51:25', 4)
+ ~ (0.000222) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 4 LIMIT 1
+ ~ (0.000059) SET sql_auto_is_null = 0
+ ~ (0.000061) SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+ ~ (0.000349) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 12 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000282) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 12 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000326) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 ORDER BY `layer_id` LIMIT 1
+
+find player 
+ ~ (0.000126) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000291) SELECT `id` FROM `teams` WHERE (`game_layer_id` = 1 AND `name` = 'truck')
+ ~ (0.000172) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 3 ORDER BY `id` LIMIT 1
+ ~ (0.000326) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000192) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000170) SELECT `id`, `latitude`, `longitude`, `created_at`, `radius`, `exposed`, `movement_speed`, `direction_vector`, `game_layer_id` FROM `radiations` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000141) SELECT `id`, `type`, `created_at`, `updated_at`, `description`, `status`, `latitude`, `longitude`, `game_layer_id` FROM `tasks` WHERE `game_layer_id` = 1 ORDER BY `id`
+ ~ (0.000301) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+
+find player 
+ ~ (0.000126) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000202) SELECT `id` FROM `teams` WHERE (`game_layer_id` = 2 AND `name` = 'truck')
+ ~ (0.000193) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 6 ORDER BY `id` LIMIT 1
+ ~ (0.000294) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000193) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 2 ORDER BY `id`
+ ~ (0.000141) SELECT `id`, `latitude`, `longitude`, `created_at`, `radius`, `exposed`, `movement_speed`, `direction_vector`, `game_layer_id` FROM `radiations` WHERE `game_layer_id` = 2 ORDER BY `id`
+ ~ (0.000188) SELECT `id`, `type`, `created_at`, `updated_at`, `description`, `status`, `latitude`, `longitude`, `game_layer_id` FROM `tasks` WHERE `game_layer_id` = 2 ORDER BY `id`
+output2
+2
+ ~ (0.000301) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 12 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000322) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 ORDER BY `layer_id` LIMIT 1
+
+find player 
+ ~ (0.000130) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000197) SELECT `id` FROM `teams` WHERE (`game_layer_id` = 1 AND `name` = 'truck')
+ ~ (0.000166) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 3 ORDER BY `id` LIMIT 1
+ ~ (0.000321) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 ORDER BY `layer_id` LIMIT 1
+
+find player 
+ ~ (0.000132) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 1 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000190) SELECT `id` FROM `teams` WHERE (`game_layer_id` = 1 AND `name` = 'truck')
+ ~ (0.000164) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 3 ORDER BY `id` LIMIT 1
+ ~ (0.000302) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` ORDER BY `layer_id`
+ ~ (0.000300) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` ORDER BY `layer_id`
+ ~ (0.000352) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000305) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+
+ ~ (0.000158) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE (`id` = 140 AND `game_layer_id` = 2) ORDER BY `id` LIMIT 1
+find player 140
+ ~ (0.000123) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000182) SELECT `id` FROM `teams` WHERE (`game_layer_id` = 2 AND `name` = 'truck')
+ ~ (0.000158) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `team_id` = 6 ORDER BY `id` LIMIT 1
+ ~ (0.000316) SELECT `layer_id`, `name`, `address`, `latitude`, `longitude`, `radius`, `is_active`, `created_at`, `updated_at` FROM `games` WHERE `layer_id` = 2 ORDER BY `layer_id` LIMIT 1
+ ~ (0.000205) SELECT `id`, `status`, `points_cache`, `profile_image`, `name`, `email`, `created_at`, `updated_at`, `exposure`, `current_exposure`, `skill`, `health`, `latitude`, `longitude`, `team_id`, `game_layer_id` FROM `players` WHERE `game_layer_id` = 2 ORDER BY `id`
+ ~ (0.000142) SELECT `id`, `latitude`, `longitude`, `created_at`, `radius`, `exposed`, `movement_speed`, `direction_vector`, `game_layer_id` FROM `radiations` WHERE `game_layer_id` = 2 ORDER BY `id`
+ ~ (0.000180) SELECT `id`, `type`, `created_at`, `updated_at`, `description`, `status`, `latitude`, `longitude`, `game_layer_id` FROM `tasks` WHERE `game_layer_id` = 2 ORDER BY `id`
+128.243.253.129 - - [08/Mar/2012 23:57:33] "GET /game/2/status.json?after=0 HTTP/1.1" 200 208 0.0071
+128.243.253.129 - - [08/Mar/2012 23:57:38] "GET /radiation_black.png HTTP/1.1" 200 1191 0.0015
+DataMapper::SaveFailureError - Player#save returned false, Player was not saved:
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/resource.rb:1197:in `assert_save_successful'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/resource.rb:407:in `save'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/model.rb:704:in `_create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/model.rb:450:in `create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/collection.rb:1211:in `block in _create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/repository.rb:114:in `scope'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/collection.rb:1211:in `_create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/associations/one_to_many.rb:265:in `_create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/collection.rb:793:in `create'
+ /home/wxj/Location-game-orchid/controller.rb:919:in `block in <class:Controller>'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1152:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1152:in `block in compile!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:724:in `instance_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:724:in `route_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:708:in `block (2 levels) in route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:758:in `block in process_route'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:755:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:755:in `process_route'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:707:in `block in route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:706:in `each'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:706:in `route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:843:in `dispatch!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:644:in `block in call!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `instance_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `block in invoke'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `invoke'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:644:in `call!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:629:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-mobile-detect-0.3.0/lib/rack/mobile-detect.rb:164:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/session/abstract/id.rb:195:in `context'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/session/abstract/id.rb:190:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/head.rb:9:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/showexceptions.rb:21:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/methodoverride.rb:24:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1272:in `block in call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1303:in `synchronize'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1272:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/lint.rb:48:in `_call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/lint.rb:36:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/showexceptions.rb:24:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/commonlogger.rb:20:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/chunked.rb:41:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/content_length.rb:14:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:84:in `block in pre_process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:82:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:82:in `pre_process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:57:in `process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:42:in `receive_data'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/eventmachine-1.0.0.beta.3/lib/eventmachine.rb:199:in `run_machine'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/eventmachine-1.0.0.beta.3/lib/eventmachine.rb:199:in `run'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/backends/base.rb:61:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/server.rb:159:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/handler/thin.rb:13:in `run'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/server.rb:265:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/server.rb:137:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/bin/rackup:4:in `<top (required)>'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/bin/rackup:19:in `load'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/bin/rackup:19:in `<main>'
+128.243.253.129 - - [08/Mar/2012 23:58:04] "POST /game/3/join HTTP/1.1" 500 159883 0.0820
+128.243.253.129 - - [08/Mar/2012 23:58:05] "GET /game/mobile/3?id=140 HTTP/1.1" 200 5755 0.0178
+128.243.253.129 - - [08/Mar/2012 23:58:06] "GET /game/3/status.json?after=0 HTTP/1.1" 200 63 0.0090
+DataMapper::SaveFailureError - Player#save returned false, Player was not saved:
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/resource.rb:1197:in `assert_save_successful'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/resource.rb:407:in `save'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/model.rb:704:in `_create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/model.rb:450:in `create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/collection.rb:1211:in `block in _create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/repository.rb:114:in `scope'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/collection.rb:1211:in `_create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/associations/one_to_many.rb:265:in `_create'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/dm-core-1.1.0/lib/dm-core/collection.rb:793:in `create'
+ /home/wxj/Location-game-orchid/controller.rb:919:in `block in <class:Controller>'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1152:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1152:in `block in compile!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:724:in `instance_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:724:in `route_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:708:in `block (2 levels) in route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:758:in `block in process_route'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:755:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:755:in `process_route'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:707:in `block in route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:706:in `each'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:706:in `route!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:843:in `dispatch!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:644:in `block in call!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `instance_eval'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `block in invoke'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:808:in `invoke'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:644:in `call!'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:629:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-mobile-detect-0.3.0/lib/rack/mobile-detect.rb:164:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/session/abstract/id.rb:195:in `context'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/session/abstract/id.rb:190:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/head.rb:9:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/showexceptions.rb:21:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/methodoverride.rb:24:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1272:in `block in call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1303:in `synchronize'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/sinatra-1.2.6/lib/sinatra/base.rb:1272:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/lint.rb:48:in `_call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/lint.rb:36:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/showexceptions.rb:24:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/commonlogger.rb:20:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/chunked.rb:41:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/content_length.rb:14:in `call'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:84:in `block in pre_process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:82:in `catch'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:82:in `pre_process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:57:in `process'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/connection.rb:42:in `receive_data'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/eventmachine-1.0.0.beta.3/lib/eventmachine.rb:199:in `run_machine'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/eventmachine-1.0.0.beta.3/lib/eventmachine.rb:199:in `run'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/backends/base.rb:61:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/thin-1.2.11/lib/thin/server.rb:159:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/handler/thin.rb:13:in `run'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/server.rb:265:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/lib/rack/server.rb:137:in `start'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/gems/rack-1.3.3/bin/rackup:4:in `<top (required)>'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/bin/rackup:19:in `load'
+ /usr/local/rvm/gems/ruby-1.9.2-p290@MapAttack/bin/rackup:19:in `<main>'
+128.243.253.129 - - [08/Mar/2012 23:58:30] "POST /game/2/join HTTP/1.1" 500 159883 0.0821
+128.243.253.129 - - [08/Mar/2012 23:58:31] "GET /game/mobile/2?id=140 HTTP/1.1" 200 5807 0.0144
