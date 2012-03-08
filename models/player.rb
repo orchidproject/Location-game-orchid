@@ -1,6 +1,6 @@
 class Player
     
-  @@skill = ["medic","ambulance","soldier","something"]
+  @@skill = ["medic","ambulance","soldier","transporter"]
     
     
     

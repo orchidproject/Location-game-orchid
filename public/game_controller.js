@@ -486,7 +486,10 @@ function cleanup(data){
 
 }
 
-                    
+
+function receiveExposureData(data){
+    document.getElementById("exposure").innerHTML=data.value;
+}
 
 
 function filter(data){
