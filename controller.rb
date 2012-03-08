@@ -665,8 +665,6 @@ end
     erb :'complete'
   end
 
-  @@simulation=nil
-  
   get '/admin/games/:layer_id/start' do
     game=Game.first :layer_id=>params[:layer_id]
     if game.is_active!= -1
@@ -677,7 +675,7 @@ end
 		#CHANGE TO ADAPT TO GRID SIZE (400/X)
 		#
         @simulation = Simulation.new("simulation_data_03.txt", 52.9491938, -1.2144399, 8, Time.now, 0.1)
-        @@simulation=@simulation
+        
         count=0
         
         get_mainloops()[Integer(params[:layer_id])]=Thread.new {
@@ -698,7 +696,7 @@ end
                                        { 
                                        :channel=> params[:layer_id],             
                                        :data=>{
-                                        :heatmap=>@simulation.getTimeFrameWithLatLng(Time.now)
+                                       :heatmap=>@simulation.getTimeFrameWithLatLng(Time.now)
                                        }
                                        }.to_json)
 
@@ -816,28 +814,6 @@ end
     end
  
   end
-            
-  get '/game/:layer_id/getLocationsGrid' do
-            location=[]
-            
-            sim=@simulation
-      
-            puts "sim here"
-            puts sim
-      
-            game = Game.first :layer_id => params[:layer_id]
-            game.players.each do |p|
-                location << {
-                    :player_id => p.id,
-                    :y => @@simulation.getYIndex(p.latitude),
-                    :x => @@simulation.getXIndex(p.longitude)
-                }
-                
-            end 
-            
-     {:locations=>location}.to_json  
-  end
-
 
 
  #object templates in this fuction
@@ -865,13 +841,6 @@ end
             :team => player.team.name,
             :skill => player.skill
         }
-        
-        locations << {
-            :player_id => player.id,
-            :latitude => player.latitude,
-            :longitude => player.longitude
-        }
-
 
         healths << {
             #exposure { player_id : integer , value : float }
@@ -897,16 +866,17 @@ end
 	end
      
     game.tasks.each do |t|
-        if t.status.eql? "active"
+       # if t.status.eql? "active"
          tasks << {
              :id => t.id,
-             :type=>t.requirement,
+             :type=>t.type,
+			 :requirement=>t.requirement,
              :description=> t.description,
              :longitude => t.longitude.to_s('F'),
              :latitude => t.latitude.to_s('F'),
 			 :status => t.status
          }
-        end
+        #end
     end
     
          
@@ -962,6 +932,18 @@ end
     {'team_name' => player.team.name, 'user_id' => player.id}.to_json
       
   end
+  
+  
+  post '/game/:layer_id/postLocation' do
+  	@game = Game.first :layer_id => params[:layer_id]
+  	playerId = params[:email]
+  	
+  	
+  end
+  
+  get '/game/:layer_id/getLocations' do 
+  
+  end
             
   
     
@@ -1012,6 +994,46 @@ end
     @user_initials = player ? player.name : ''
     erb :'index'
   end
+  
+  get '/game/mobile/:layer_id/?' do
+    @game = Game.first :layer_id => params[:layer_id]
+      
+      #if game ended, clear them
+    if @game.is_active==1
+        session.clear
+        params[:id]=nil
+    end
+   
+    player = Player.first :id => session[:id], :game => @game
+    puts session[:id]
+    if !player 
+        #mobile users store id information in params 
+        player = Player.first :id => params[:id], :game => @game
+        puts "find player #{params[:id]}"
+        
+    end
+    
+    @user_id=""
+    if player
+        @user_id = player.id
+        @user_team = player.team.name
+    end
+    
+      
+      @truck= get_truck params[:layer_id]
+      if @truck
+          @truck_latitude=@truck.latitude
+          @truck_longitude=@truck.longitude
+          
+      else
+          @truck_latitude=@game.latitude
+          @truck_longitude=@game.longitude
+      end
+
+    @user_initials = player ? player.name : ''
+    erb :'index_user'
+  end
+  
   
   get '/game/:layer_id/dashboard' do
     @game = Game.first :layer_id => params[:layer_id]
