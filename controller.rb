@@ -853,6 +853,12 @@ end
             :player_id => player.id,
             :value => player.health
         }
+        
+        locations << {
+        	:player_id => player.id,
+        	:latitude => player.latitude,
+        	:longitude => player.longitude
+        }
        
         
     end
@@ -890,21 +896,31 @@ end
     content_type :json
     game = Game.first :layer_id => params[:layer_id]
     
-    if game.is_active>=0
-          return {:error=>"game already begin"}.to_json
-    end
+    player_id = params[:id]
       
-    if params[:team]==nil
-        player = game.players.create  :email =>params[:email], :name => params[:name], :team => game.pick_team('runner')
+    if player_id
+        player = game.players.first :id => player_id
         
-    else
-        player = game.players.create  :email =>params[:email], :name => params[:name], :team => game.pick_team(params[:team])
-    end
+        if player
+            return {:status=>"ok"}.to_json
+        else
+            return {:error=>"logout first"}.to_json
+        end
+        
     
-    player.pick_skill
+    end 
       
-    player.broadcast(socketIO)
-    player.broadcast_health(socketIO)
+    
+      
+      
+      
+    if params[:role_id]==nil
+        return {:error=>"logout first"}.to_json
+    else
+        player = game.players.create  :email =>params[:email], :name => params[:name], :skill => params[:role_id]
+    end
+      
+    
     
     
     if player
@@ -914,18 +930,23 @@ end
         #broadcast to socket.io
         #session[:id]=player.id
         
+        player.broadcast(socketIO)
+        player.broadcast_health(socketIO)
+        
+        
+        
         socketIO.broadcast( 
                            { 
                             :channel=> params[:layer_id],             
                             :data=>{
-                                    :textMassage=>{:content=>"#{player.name} join the game"},
-                                    :player=>{
-                                        :id=> player.id,
-                                        :name=> player.name,
-                                        :points_cache => player.points_cache,
-                                        :skill => player.skill,
-                                        :team => player.team.name
-                                    }
+                                    :textMassage=>{:content=>"#{player.name} join the game"}
+                           #:player=>{
+                           #:id=> player.id,
+                           #:name=> player.name,
+                           #:points_cache => player.points_cache,
+                           #:skill => player.skill,
+                           #:team => player.team.name
+                           #}
                             }
                            }.to_json)
     end
@@ -935,17 +956,35 @@ end
   
   
   post '/game/:layer_id/postLocation' do
-  	@game = Game.first :layer_id => params[:layer_id]
-  	playerId = params[:email]
-  	
-  	
+  	game = Game.first :layer_id => params[:layer_id]
+  	playerId = params[:id]
+    player = game.players.first :id => playerId
+    current_exposure = @@simulation.getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
+    exposure = player.exposure + current_exposure
+    player.update(:latitude => params[:latitude], :longitude => params[:longitude], :current_exposure => current_exposure, :exposure => exposure)
+    {:exposure => exposure , :current_exposure => current_exposure}.to_json
+  end
+  
+  
+  post '/game/:layer_id/getReading' do
+  	game = Game.first :layer_id => params[:layer_id]
+    current_exposure = @@simulation.getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
+    {:current_exposure => current_exposure}.to_json
   end
   
   get '/game/:layer_id/getLocations' do 
-  
+  	game = Game.first :layer_id => params[:layer_id]
+  	game.players.each do |player| 
+  			players = []
+  			players << {
+	  			:player_id => player.id,
+    	    	:latitude => player.latitude,
+        		:longitude => player.longitude
+        		}
+    
+    end
+    {:player => players}.to_json
   end
-            
-  
     
   post '/create/player/runner' do
       player = Player.create :email => params[:email], :name => params[:name].upcase, :game_layer_id => 0, :team_id => 0
@@ -1138,9 +1177,12 @@ end
          puts "game update"
          game.players.each do |p|
              if(@simulation.isOnMap(p.latitude, p.longitude))
-                p.exposure + check_radiation(p.latitude,p.longitude)
+                p.exposure = p.exposure + check_radiation(p.latitude,p.longitude)
                 p.current_exposure = check_radiation(p.latitude,p.longitude)
+                puts "acc_exposure"
                 puts p.exposure
+                puts "current_exposure"
+                puts p.current_exposure
                 
                 #broadcast current exposure
                 socketIO.broadcast(

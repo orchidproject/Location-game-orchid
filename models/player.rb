@@ -1,6 +1,6 @@
 class Player
     
-  @@skill = ["medic","ambulance","soldier","something"]
+    #@@skill = ["medic","ambulance","soldier","transporter"]
     
     
     
@@ -18,7 +18,7 @@ class Player
     
     
     
-  property :skill, String
+  property :skill, Integer
   property :health, Integer,:default => 100
     
   
@@ -32,14 +32,6 @@ class Player
   has n, :cargos
     
   has n, :requests
-
-    
-  def pick_skill
-    self.skill=@@skill[self.id%4]
-    reload
-  end 
-    
-  
 
 
   def add_points(points)
