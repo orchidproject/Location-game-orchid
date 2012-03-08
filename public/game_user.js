@@ -363,57 +363,6 @@ function playSound(filename, path) {
 //}
 
 
-function receivePlayerData(data) {
-   
-	    var markerIcon;
-		var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
-	    if(data.skill == 'A') {
-	    	markerIcon = personSkillA;
-	    }
-	    if(data.skill == 'B') {
-	    	markerIcon = personSkillA; //TODO: change to appropriate skill icon
-	    }
-	    if(data.skill == 'C') {
-	    	markerIcon = personSkillA; //TODO: change to appropriate skill icon
-	    }
-	    if(data.skill == 'D') {
-	    	markerIcon = personSkillA; //TODO: change to appropriate skill icon
-	    }
-	    	    
-	    if(typeof players[data.id] == "undefined") {
-	        
-	        players[data.id] = {
-	            id: data.id,
-	            name: data.name,
-	            marker: new google.maps.Marker({
-	                position: new google.maps.LatLng(data.latitude, data.longitude),
-	                map: map,
-	                icon: markerIcon,
-	                visible: true
-	            })
-	        };
-	    } else {
-	        //update 
-	        var p = players[data.id];
-	            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-	            p.marker.setIcon(markerIcon);
-	    }	        
-	
-//        if(typeof players[data.id] == "undefined") {
-//        
-//            players[data.id] = {
-//                id: data.id,
-//                name: data.name,
-//                team: data.team,
-//                points_cache: data.points_cache
-//            };
-//        } else {
-//            var p = players[data.id];
-//            p.team = data.team;
-//            p.points_cache = data.points_cache;
-//        }
-   
-}
 
 
 
