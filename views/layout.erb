@@ -3,6 +3,7 @@
   	<title>MapAttack</title>
 	  <meta name="viewport" content="initial-scale=1.0">
   	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry"></script>
+  	<script type="text/javascript" src="/game-common.js"></script>
   	
   	<% if request.path =~ /\/game\// %>
             <% if ['iPhone', 'Android', 'iPod'].include?(request.env[Rack::MobileDetect::X_HEADER]) %>
