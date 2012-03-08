@@ -188,7 +188,7 @@
 			<h3 id="logout" class="clickable" >logout</h3> -->
 		</section>
 		
-		<!--
+		
 		<section id="players">
 			<div style="float: right;">
 			<table>
@@ -199,7 +199,7 @@
 			<% @game.players.each do |player| %>
 			 	<tr>
    			     	<td><%= player.name %></td>
-        			<td>Exposure: <%= player.exposure %></td>
+        			<td>Exposure: <div id="exposure"></div> </td>
 		        	<% if player.exposure <= 49 %>
         		    <td>Low</td>
 			        <% elsif (player.exposure > 49) & (player.exposure <= 99) %>
@@ -215,7 +215,7 @@
 			 </table>
 			</div>
 		</section>
-		-->
+		
 
 	 	<!--
 		<section id="red-team-wrapper">
