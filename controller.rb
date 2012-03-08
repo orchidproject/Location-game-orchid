@@ -896,21 +896,31 @@ end
     content_type :json
     game = Game.first :layer_id => params[:layer_id]
     
-    if game.is_active>=0
-          return {:error=>"game already begin"}.to_json
-    end
+    player_id = params[:id]
       
-    if params[:team]==nil
-        player = game.players.create  :email =>params[:email], :name => params[:name], :team => game.pick_team('runner')
+    if player_id
+        player = game.players.first :id => player_id
         
-    else
-        player = game.players.create  :email =>params[:email], :name => params[:name], :team => game.pick_team(params[:team])
-    end
+        if player
+            return {:status=>"ok"}.to_json
+        else
+            return {:error=>"logout first"}.to_json
+        end
+        
     
-    player.pick_skill
+    end 
       
-    player.broadcast(socketIO)
-    player.broadcast_health(socketIO)
+    
+      
+      
+      
+    if params[:role_id]==nil
+        return {:error=>"logout first"}.to_json
+    else
+        player = game.players.create  :email =>params[:email], :name => params[:name], :skill => params[:role_id]
+    end
+      
+    
     
     
     if player
@@ -920,18 +930,23 @@ end
         #broadcast to socket.io
         #session[:id]=player.id
         
+        player.broadcast(socketIO)
+        player.broadcast_health(socketIO)
+        
+        
+        
         socketIO.broadcast( 
                            { 
                             :channel=> params[:layer_id],             
                             :data=>{
-                                    :textMassage=>{:content=>"#{player.name} join the game"},
-                                    :player=>{
-                                        :id=> player.id,
-                                        :name=> player.name,
-                                        :points_cache => player.points_cache,
-                                        :skill => player.skill,
-                                        :team => player.team.name
-                                    }
+                                    :textMassage=>{:content=>"#{player.name} join the game"}
+                           #:player=>{
+                           #:id=> player.id,
+                           #:name=> player.name,
+                           #:points_cache => player.points_cache,
+                           #:skill => player.skill,
+                           #:team => player.team.name
+                           #}
                             }
                            }.to_json)
     end
