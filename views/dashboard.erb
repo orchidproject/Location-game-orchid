@@ -187,6 +187,35 @@
 			<h3 id="drop-cargo" >drop cargo</h3> 
 			<h3 id="logout" class="clickable" >logout</h3> -->
 		</section>
+		
+		<!--
+		<section id="players">
+			<div style="float: right;">
+			<table>
+			<th>Active players</th>
+			<th>Radioactive exposure</th>
+			<th>Exposure level</th>
+			<% if @game.is_active==0 %>
+			<% @game.players.each do |player| %>
+			 	<tr>
+   			     	<td><%= player.name %></td>
+        			<td>Exposure: <%= player.exposure %></td>
+		        	<% if player.exposure <= 49 %>
+        		    <td>Low</td>
+			        <% elsif (player.exposure > 49) & (player.exposure <= 99) %>
+            		<td style="color:orange">Heightened</td>
+			        <% elsif (player.exposure > 99) & (player.exposure <= 150) %>
+		            <td style="color:red">Critical</td>
+        			 <% elsif (player.exposure > 150) %>
+		            <td>Incapacitated. Return to base.</td>
+        			<% end %>
+	        	</tr>		 
+			 <% end %>
+			 <% end %>
+			 </table>
+			</div>
+		</section>
+		-->
 
 	 	<!--
 		<section id="red-team-wrapper">
