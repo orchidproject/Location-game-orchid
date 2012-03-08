@@ -6,7 +6,7 @@
   	<script type="text/javascript" src="/game-common.js"></script>
   	
   	<% if request.path =~ /\/game\// %>
-            <% if ['iPhone', 'Android', 'iPod'].include?(request.env[Rack::MobileDetect::X_HEADER]) %>
+            <%  if ['iPhone', 'Android', 'iPod'].include?(request.env[Rack::MobileDetect::X_HEADER]) %>
               	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
             
                 <script type="text/javascript" src="https://subscribe.geoloqi.com/socket.io/socket.io.js"></script>
@@ -19,14 +19,14 @@
 				<script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
 				<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 				<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-    			
-  	        <% else %>
+    		
+    		<%  else %> 
     		   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   	           <script type="text/javascript" src="https://subscribe.geoloqi.com/socket.io/socket.io.js"></script>
                <script type="text/javascript" src="/mapattack-web.js"></script>
 			   <script type="text/javascript" src="/game_controller.js"></script>
 			  	<link rel="stylesheet" type="text/css" href="/reset.css" />
-			  	<link rel="stylesheet" type="text/css" href="/style.css" />
+			  	<link rel="stylesheet" type="text/css" href="/style.css" /> 
   	      
             <% end %>
   	<% end %>
