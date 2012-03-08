@@ -94,7 +94,7 @@ function setHighlightPosition(loc) {
 	
 	highlightMarker.setPosition(loc);
 	//now centre the map around me
-	centreMap(loc);$('#map'). 
+	centreMap(loc);
 }
 
 function centreMap(loc) {
