@@ -1,0 +1,71 @@
+<script type="text/javascript">
+  $(function(){
+  	if(!document.getElementById("map")) {
+  		return;
+  	}
+
+  	var myOptions = {
+  		zoom: 15,
+  		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
+  		mapTypeId: google.maps.MapTypeId.ROADMAP,
+  		mapTypeControl: true
+  	};
+
+  	// Create the main map
+  	map = new google.maps.Map(document.getElementById("map"), myOptions);
+  	  
+    GameMap.fitToRadius(<%= @game.radius %>);
+  });
+</script>
+
+	<div id="wrapper">
+		<section id="scoreboard-wrapper">
+			<div id="scoreboard">				
+				<h1><a href="/game/<%=@game.layer_id%>" target="_top">Map Attack!</a></h1>
+				<h5 class="tagline"><span id="city"><%= h @game.name %></span></h5>
+				<h5 class="tagline"><span id="num-players"></span></h5>
+				<!-- <a href="" id="join-game" class="button">Join Game</a> -->
+			</div>
+			<h2 id="red-score" class="red-score-value">-</h2>
+			<h2 id="blue-score" class="blue-score-value">-</h2>
+		</section>
+
+		<section id="red-team-wrapper">
+			<div id="red-team">
+				<h2>Red : <span class="red-score-value">-</span></h2>
+				<ol id="red-team-players" class="team-players"></ol>
+			</div>
+		</section>
+			
+		<section id="blue-team-wrapper">
+			<div id="blue-team">
+				<h2>Blue : <span class="blue-score-value">-</h2>
+				<ol id="blue-team-players" class="team-players"></ol>
+			</div>
+		</section>
+
+		<div id="map"></div>
+
+		<nav id="top-nav">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="http://geoloqi.com">Get Geoloqi</a></li>
+			</ul>
+		</nav>
+
+		<section id="player-info">
+			<h3 id="player-score" class="team-<%= @user_team %>"><span class="value"></span></h3>
+			<h3 class="message"></h3>
+		</section>
+
+		<footer>
+			<p class="right">MapAttack is a real-time location-based GPS game powered by the <a href="http://geoloqi.com">Geoloqi</a> platform. <a href="http://geoloqi.com" style="float: right; margin-top: 3px; margin-left: 3px;"><img src="/img/loqi-16px.png" width="16" height="16" /></a> but now I am trying to costumize it!!!</p>
+			<p class="left">Credits: <a href="http://aaronparecki.com">Aaron Parecki</a> // <a href="http://caseorganic.com">Amber Case</a> // <a href="http://kyledrake.net">Kyle Drake</a> // <a href="http://patrickarlt.com/">Patrick Arlt</a> // <a href="http://brianledger.com/">Brian Ledger</a></p>
+		</footer>
+    
+      </div> <!-- wrapper -->
+    <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
+    <input type="hidden" id="user_id" value="<%= @user_id %>" />
+    <input type="hidden" id="user_team" value="<%= @user_team %>" />
+    <input type="hidden" id="user_initials" value="<%= @user_initials %>" />
+    <input type="hidden" id="group_token" value="<%= @game.group_token %>" />

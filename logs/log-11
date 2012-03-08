@@ -1,0 +1,8 @@
+{"player":{"id":92,"name":"DOE","points_cache":0,"team":"runner","skill":null},"time_stamp":1331213941261}
+{"health":{"player_id":92,"value":null},"time_stamp":1331213941263}
+{"textMassage":{"content":"DOE join the game"},"player":{"id":92,"name":"DOE","points_cache":0,"skill":null,"team":"runner"},"time_stamp":1331213941266}
+{"textMassage":{"content":"hello"},"time_stamp":1331213978079}
+{"system":"ready_check","time_stamp":1331213979919}
+{"system":"start","time_stamp":1331213986140}
+{"textMassage":{"content":"hi"},"time_stamp":1331214001295}
+{"system":"ready_check","time_stamp":1331214004163}
