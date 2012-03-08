@@ -15,12 +15,22 @@
     	$.ajax({ 
 		url: "massage",
 		type: "POST",
-		data: {"content": $('#massage').val() },
+		data: {"content": $('#massage').val(), "id":0, "player_id":[0,1,2,3,4,5,6,7,8,9] },
 		dataType: "json", 
 		success: function(data) {
 			$('#massage').val("");
             	}        	
     	});
+    }
+
+    function sendTask(){
+	//alert($("#task").val());
+    	$.ajax({ 
+		url: "task",
+		type: "POST",
+		data: {"description": $('#task').val(), "id":0, "player_id":[0,1,2,3,4,5,6,7,8,9], "latitude":$('#task_lat').val(),
+			"longitude":$('#task_long').val() },
+		dataType: "json"}); 
     }
 
     function ready_check(){
@@ -78,8 +88,14 @@
       
     </tr>
       <tr>
-	<td>text massage</td>
+	<td>text message</td>
         <td><input type=text name='massage' id='massage' ><input onclick="sendMassage();" type=button name='send' id='massage1' value="send"></td>
+      </tr>
+    <tr> 
+	<td>task</td>
+        <td><input type=text name='task' id='task' ></td>
+        <td><input type=text name='task_lat' id='task_lat' ></td>
+        <td><input type=text name='task_long' id='task_long' ><input onclick="sendTask();" type=button name='send' id='task1' value="send"></td>
       </tr>
     <tr> 
 	<td>ready check</td>
