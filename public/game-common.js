@@ -81,8 +81,8 @@ function receivePlayerData(data) {
 		}   
 }
 
-<<<<<<< HEAD
-=======
+
+
 
 var highlightMarker = null;
 
@@ -101,7 +101,7 @@ function centreMap(loc) {
 	$('#map').setCentre();
 }
 
->>>>>>> a9542f7027956d313599c9ebd816864ebe5f7ba8
+
 /**
 TASK ICONS... 
 */
