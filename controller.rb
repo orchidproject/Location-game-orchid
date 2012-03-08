@@ -940,6 +940,10 @@ end
   	
   	
   end
+  
+  get '/game/:layer_id/getLocations' do 
+  
+  end
             
   
     
@@ -989,6 +993,45 @@ end
 
     @user_initials = player ? player.name : ''
     erb :'index'
+  end
+  
+  get '/game/mobile/:layer_id/?' do
+    @game = Game.first :layer_id => params[:layer_id]
+      
+      #if game ended, clear them
+    if @game.is_active==1
+        session.clear
+        params[:id]=nil
+    end
+   
+    player = Player.first :id => session[:id], :game => @game
+    puts session[:id]
+    if !player 
+        #mobile users store id information in params 
+        player = Player.first :id => params[:id], :game => @game
+        puts "find player #{params[:id]}"
+        
+    end
+    
+    @user_id=""
+    if player
+        @user_id = player.id
+        @user_team = player.team.name
+    end
+    
+      
+      @truck= get_truck params[:layer_id]
+      if @truck
+          @truck_latitude=@truck.latitude
+          @truck_longitude=@truck.longitude
+          
+      else
+          @truck_latitude=@game.latitude
+          @truck_longitude=@game.longitude
+      end
+
+    @user_initials = player ? player.name : ''
+    erb :'index_user'
   end
   
   
