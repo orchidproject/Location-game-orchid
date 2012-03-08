@@ -9,13 +9,8 @@
 
   	var myOptions = {
   		zoom: 15,
-
   		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
   		mapTypeId: google.maps.MapTypeId.HYBRID,
-
-
-
-
   		mapTypeControl: true,
 		disableDoubleClickZoom: true
   	};
@@ -87,3 +82,11 @@
       
  <!-- wrapper --> 
      
+<input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
+    <input type="hidden" id="user_id" value="<%= @user_id %>" />
+    <input type="hidden" id="user_skill" value="<%= @user_skill %>" />
+    <input type="hidden" id="user_initials" value="<%= @user_initials %>" />
+    <input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
+    <input type="hidden" id="game_status" value=<%= @game.is_active %> /> 
+   
+  
