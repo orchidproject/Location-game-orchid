@@ -42,41 +42,66 @@ function receivePlayerData(data) {
 	    var markerIcon = getPlayerIcon(data.skill);
 		var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
         	    	    
-	    if(typeof players[data.id] == "undefined") {
-	        
-	        players[data.id] = {
-	            id: data.id,
-	            name: data.name,
-	            marker: new google.maps.Marker({
-	                position: new google.maps.LatLng(data.latitude, data.longitude),
-	                map: map,
-	                icon: markerIcon,
-	                visible: true
-	            })
-	        };
-	    } else {
-	        //update 
-	        var p = players[data.id];
-	            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-	            p.marker.setIcon(markerIcon);
-	    }	        
-	
-//        if(typeof players[data.id] == "undefined") {
-//        
-//            players[data.id] = {
-//                id: data.id,
-//                name: data.name,
-//                team: data.team,
-//                points_cache: data.points_cache
-//            };
-//        } else {
-//            var p = players[data.id];
-//            p.team = data.team;
-//            p.points_cache = data.points_cache;
-//        }
-   
+		//move my highlighting (if necessary)
+		if(data.id == $('#user_id').val()) {
+			setHighlightPosition(new google.maps.LatLng(data.latitude, data.longitude));
+		} else {
+		    if(typeof players[data.id] == "undefined") {
+		        
+		        players[data.id] = {
+		            id: data.id,
+		            name: data.name,
+		            marker: new google.maps.Marker({
+		                position: new google.maps.LatLng(data.latitude, data.longitude),
+		                map: map,
+		                icon: markerIcon,
+		                visible: true
+		            })
+		        };
+		    } else {
+		        //update 
+		        var p = players[data.id];
+		            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
+		            p.marker.setIcon(markerIcon);
+		    }	        
+		
+	//        if(typeof players[data.id] == "undefined") {
+	//        
+	//            players[data.id] = {
+	//                id: data.id,
+	//                name: data.name,
+	//                team: data.team,
+	//                points_cache: data.points_cache
+	//            };
+	//        } else {
+	//            var p = players[data.id];
+	//            p.team = data.team;
+	//            p.points_cache = data.points_cache;
+	//        }
+		}   
 }
 
+<<<<<<< HEAD
+=======
+
+var highlightMarker = null;
+
+function setHighlightPosition(loc) {
+	if(highlightMarker==null) {
+		highlightImage = "/img/dot-sprite.png";
+		highlightMarker = new google.maps.MarkerImage(highlightImage, playerIconSize, playerIconOrigin, playerIconAnchor);
+	}
+	
+	highlightMarker.setPosition(loc);
+	//now centre the map around me
+	centreMap(loc);$('#map'). 
+}
+
+function centreMap(loc) {
+	$('#map').setCentre();
+}
+
+>>>>>>> a9542f7027956d313599c9ebd816864ebe5f7ba8
 /**
 TASK ICONS... 
 */

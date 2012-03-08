@@ -35,7 +35,7 @@
     //setup tabs
     showScreen('map');
     
-    //listenForPositionUpdates();
+    listenForPositionUpdates();
     
     //test response to incomming messages
     var userid = $('#user_id').val();
@@ -91,11 +91,10 @@
    </div>
 
 	<div id="testing_bar">
-	    <!-- <div id="headline_message"></div> -->
-		<a href="#" onclick="testReceive('player');">MapTest</a>
-		<a href="#" onclick="testReceive('health');">HealthTest</a>
-		<a href="#" onclick="testReceive('exposure');">ExposureTest</a>
-		<a href="#" onclick="testReceive('message');">MessageTest</a>
+	       <div id="headline_message"></div>
+		<a href="#" onclick="testReceive('player'); alert('testing!');">MapTest</a>
+		<a href="#" onclick="testReceive('health'); alert('testing!');">ExposureTest</a>
+		<a href="#" onclick="testReceive('exposure'); alert('testing!');">HealthTest</a>
 	</div>
 		
 		<div id="map" style="height:300px;horizontal-align:center;"></div>
