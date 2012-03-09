@@ -103,7 +103,7 @@
     
     //listenForPositionUpdates();
     
-    var mapHeight = $(document).height() - $('#header').height() - $('#status_bar').height();
+    var mapHeight = $(document).height() - $('#header').height() - $('#wrapper').height();
 	$('#map').css("height", mapHeight);
     
     //test response to incomming messages
@@ -161,15 +161,15 @@
         
         <div style="clear:both"></div>
    </div>
-
+<!--
 	<div id="testing_bar">
-	    <!-- <div id="headline_message"></div> -->
+	   
 		<a href="#" onclick="testReceive('player');">MapTest</a>
 		<a href="#" onclick="testReceive('health');">HealthTest</a>
 		<a href="#" onclick="testReceive('exposure');">ExposureTest</a>
 		<a href="#" onclick="testReceive('message');">MessageTest</a>
 	</div>
-		
+	-->	
 		<div id="map" style="horizontal-align:center;"></div>
 
 		<section id="player-info">
