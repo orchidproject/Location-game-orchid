@@ -74,6 +74,11 @@
   
   	var myOptions = {
   		zoom: 15,
+  		zoomControl: true,
+  		zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.LARGE,
+            position: google.maps.ControlPosition.TOP_LEFT
+        },
   		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
   		mapTypeId: google.maps.MapTypeId.HYBRID,
   		mapTypeControl: true,
@@ -83,17 +88,14 @@
 	//mapHeight = $(document).height() - $('#header').height() - $('#radiation_reading').height();
  	
 
- 	alert(mapHeight + "=" + $(window).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
- 	alert("doc: " + $(document).height() + "window: " + $(window).height());
- 	$('#map').css("height", mapHeight);
+ 	//alert(mapHeight + "=" + $(window).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
+ 	//alert("doc: " + $(document).height() + "window: " + $(window).height());
+ 	//$('#map').css("height", mapHeight);
 
 
   	// Create the main map
   	map = new google.maps.Map(document.getElementById("map"), myOptions);
 
-    var mapTypeControl = new GMapTypeControl();
-    var topLeft = new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(10,10));
-    map.addControl(mapTypeControl, topLeft);
 
 	$("#logout").click(function(){
 		document.location.href="/game/"+$("#layer_id").val()+"/logout?user_id="+$("#user_id").val();
