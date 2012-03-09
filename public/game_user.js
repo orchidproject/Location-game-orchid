@@ -276,6 +276,7 @@ function receiveHealthData(data) {
 	//schema: health { player_id : integer , value : integer }
 
 	//push the task to the comms list (as long as this task is meant for us)
+	alert('checking health: ' + data.player_id + ' against ' + $('#user_id').val());
 	if(data.player_id == $('#user_id').val()) {
 		//update health image/indicator HTML element
 		var health = data.value;

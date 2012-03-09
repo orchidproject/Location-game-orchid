@@ -21,6 +21,8 @@ $(document).ready(function() {
 	});
     
     socket.emit('data', {'health':{'value':61, 'player_id':21}});
+    socket.emit('data', {'exposure':{'value':22, 'player_id':21}});
+    
     socket.emit('data', {'textMassage':{'content':'hello hello hello'}});
     socket.emit('data', {'location-push':{'latitude':123.45, 'longitude':-0.123, 'player_id':1});
     
