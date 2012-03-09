@@ -22,7 +22,6 @@ class Player
   property :health, Integer,:default => 100
     
   
-    
   belongs_to :team
   belongs_to :game
   has n, :readings
