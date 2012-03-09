@@ -71,8 +71,7 @@
   		return;
   	}
   	
-  	$('#headline_message').text("HELLO!");
-
+  
   	var myOptions = {
   		zoom: 15,
   		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
@@ -81,9 +80,9 @@
 		disableDoubleClickZoom: true
   	};
 
-	mapHeight = $(document).height() - $('#header').height() - $('#status_bar').height();
+	mapHeight = screen.height - $('#header').height() - $('#radiation_reading').height();
  	
- 	alert(mapHeight + "=" + $(document).height()+ " - " + $('#header').height()+ " - " +$('#status_bar').height());
+ 	alert(mapHeight + "=" + screen.height + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
  	
  	$('#map').css("height", mapHeight);
 
