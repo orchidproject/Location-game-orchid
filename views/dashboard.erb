@@ -188,7 +188,7 @@
 			<h3 id="logout" class="clickable" >logout</h3> -->
 		</section>
 		
-		
+		<!--
 		<section id="players">
 			<div style="float: right;">
 			<table>
@@ -200,6 +200,7 @@
 			 	<tr>
    			     	<td><%= player.name %></td>
         			<td>Exposure: <div id="exposure"></div> </td>
+        			<td> <div id="level"></div> </td>
 		        	<% if player.exposure <= 49 %>
         		    <td>Low</td>
 			        <% elsif (player.exposure > 49) & (player.exposure <= 99) %>
@@ -215,9 +216,46 @@
 			 </table>
 			</div>
 		</section>
+		-->
 		
 
-	 	<!--
+
+		
+		
+		<section id="active-player-wrapper">
+			<div align="center">
+				<h2>Players</h2>
+			<table>
+			<th>Active players  |</th>
+			<th>|  Radioactive exposure  |</th>
+			<th>|  Level</th>
+			<% if @game.is_active==0 %>
+			<% @game.players.each do |player| %>
+			 	<tr>
+   			     	<td align="center"><%= player.name %></td>
+        			<td align="center"><div id="exposure"></div> </td>
+        			<td align="center"> <div id="level"></div> </td>
+        			<!--
+		        	<% if player.exposure <= 49 %>
+        		    <td>Low</td>
+			        <% elsif (player.exposure > 49) & (player.exposure <= 99) %>
+            		<td style="color:orange">Heightened</td>
+			        <% elsif (player.exposure > 99) & (player.exposure <= 150) %>
+		            <td style="color:red">Critical</td>
+        			 <% elsif (player.exposure > 150) %>
+		            <td>Incapacitated. Return to base.</td>
+        			<% end %>
+        			-->
+	        	</tr>		 
+			 <% end %>
+			 <% end %>
+			 </table>
+			</div>
+			
+		</section>
+
+		<!--
+		
 		<section id="red-team-wrapper">
 			<div id="red-team"  >
 				<h2  class="clickable" >Street : <span class="red-score-value">-</span></h2>
@@ -225,14 +263,6 @@
 			</div>
 		</section>
 			
-		<section id="blue-team-wrapper">
-			<div id="blue-team" onclick="joinGame('blue');" >
-				<h2>Contr : </h2>
-				<ol id="controller-team-players" class="team-players"></ol>
-			</div>
-			
-		</section>
-
 		<section id="truck-team-wrapper">
 			<div id="truck-team" onclick="joinGame('truck');" >
 				<h2>Truck :</h2>

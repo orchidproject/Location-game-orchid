@@ -1190,7 +1190,7 @@ end
                                     :data=>{
                                         :exposure=>{
                                             :player_id=> p.id,
-                                            :value=>check_radiation(p.latitude,p.longitude)
+                                            :value=>p.exposure
                                         }
                                    }
                                    
