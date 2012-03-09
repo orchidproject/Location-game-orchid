@@ -49,7 +49,7 @@ function convertToTwoDigitHex(number) {
      
      var radiationColours = [[255,0,0],[255,200,0],[255,255,0],[0,255,0]];
      var radiationValueThresholds = [100,60,5,0];
-     var radiationLabelThresholds = [1,25,50,75];
+     var radiationLabelThresholds = [1,33,66];
             
      var backColours = [[255,255,255],[255,50,50]];
      var backThreshold = 25;
