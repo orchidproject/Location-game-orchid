@@ -20,7 +20,7 @@ class Player
   property :health, Integer,:default => 100
   property :longitude, Decimal, :precision=>10 , :scale=>7  
   
-    
+  belongs_to :team
   belongs_to :game
   has n, :readings
   has n, :cargos
