@@ -669,12 +669,27 @@ end
     game=Game.first :layer_id=>params[:layer_id]
     if game.is_active!= -1
         return {:error=>"game already begin"}.to_json
+        
         else
         game.update(:is_active=>0)
 		#
 		#CHANGE TO ADAPT TO GRID SIZE (400/X)
 		#
         @simulation = Simulation.new("simulation_data_03.txt", 52.9491938, -1.2144399, 8, Time.now, 0.1)
+        
+        game.tasks.each do |t|
+            # if t.status.eql? "active"
+            socketIO.broadcast({
+                :id => t.id,
+                :type=>t.type,
+                :requirement=>t.requirement,
+                :description=> t.description,
+                :longitude => t.longitude.to_s('F'),
+                :latitude => t.latitude.to_s('F'),
+                :status => t.status
+            }.to_json)
+            #end
+        end
         
         count=0
         
