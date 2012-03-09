@@ -71,8 +71,7 @@
   		return;
   	}
   	
-  	$('#headline_message').text("HELLO!");
-
+  
   	var myOptions = {
   		zoom: 15,
   		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
@@ -81,15 +80,20 @@
 		disableDoubleClickZoom: true
   	};
 
-	mapHeight = $(document).height() - $('#header').height() - $('#status_bar').height();
+	//mapHeight = $(document).height() - $('#header').height() - $('#radiation_reading').height();
  	
- 	alert(mapHeight + "=" + $(document).height()+ " - " + $('#header').height()+ " - " +$('#status_bar').height());
- 	
+
+ 	alert(mapHeight + "=" + $(window).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
+ 	alert("doc: " + $(document).height() + "window: " + $(window).heigth());
  	$('#map').css("height", mapHeight);
+
 
   	// Create the main map
   	map = new google.maps.Map(document.getElementById("map"), myOptions);
 
+    var mapTypeControl = new GMapTypeControl();
+    var topLeft = new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(10,10));
+    map.addControl(mapTypeControl, topLeft);
 
 	$("#logout").click(function(){
 		document.location.href="/game/"+$("#layer_id").val()+"/logout?user_id="+$("#user_id").val();
@@ -142,7 +146,7 @@
   	<div data-role="content">
 
 	<div id="wrapper">
-		    <div id="status_bar" style="height:100%;width:100%">
+		    <div id="status_bar" style="width:100%">
         <div id="geiger_sound"></div>
         
         <div id="radiation_reading" style="padding:2%;float:left;width:25%;height:12ex;text-align:center">
@@ -171,7 +175,7 @@
 		<a href="#" onclick="testReceive('message');">MessageTest</a>
 	</div>
 	-->	
-		<div id="map" style="horizontal-align:center;height:300px"></div>
+		<div id="map" style="horizontal-align:center;height:800px"></div>
 
 		<section id="player-info">
 			<h3 id="player-score" class="team-firefighter"><span class="value"></span></h3> <!-- todo: replace ruby var skill -->
