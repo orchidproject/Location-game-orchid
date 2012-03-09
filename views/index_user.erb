@@ -96,9 +96,6 @@
   	// Create the main map
   	map = new google.maps.Map(document.getElementById("map"), myOptions);
 
-    var mapTypeControl = new GMapTypeControl();
-    var topLeft = new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(10,10));
-    map.addControl(mapTypeControl, topLeft);
 
 	$("#logout").click(function(){
 		document.location.href="/game/"+$("#layer_id").val()+"/logout?user_id="+$("#user_id").val();
