@@ -9,7 +9,7 @@
   function handleSocketData(dataStr) {
 
 	var data = jQuery.parseJSON(dataStr);
-    alert('health at ' + data.health.value);
+    //alert('health at ' + data.health.value);
 
     if(typeof data.system != "undefined"){
         system(data.system);
