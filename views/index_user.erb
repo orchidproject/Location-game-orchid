@@ -80,9 +80,9 @@
 		disableDoubleClickZoom: true
   	};
 
-	mapHeight = $(document).height() - $('#header').height() - $('#radiation_reading').height();
+	mapHeight = screen.height - $('#header').height() - $('#radiation_reading').height();
  	
- 	alert(mapHeight + "=" + $(document).height()+ " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
+ 	alert(mapHeight + "=" + screen.height + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
  	
  	$('#map').css("height", mapHeight);
 
