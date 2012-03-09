@@ -586,8 +586,18 @@ function endGame(){
 
 function getTime() {
    var now = new Date();
-   var outStr = now.getHours()+':'+now.getMinutes();
+   var outStr = pad(now.getHours(),1)+':'+pad(now.getMinutes(),1);
    return outStr;
+}
+
+function pad(num, size) {
+	
+	var extraZeros = size - Math.floor(Math.log(num));
+	var i;
+	for(i; i<extraZeros; i++) {
+		num = '0' + num;
+	}
+	return num;
 }
 
 function pushToTaskHistory(message, identifier) {
