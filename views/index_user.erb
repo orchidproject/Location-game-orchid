@@ -82,6 +82,9 @@
   	};
 
 	mapHeight = $(document).height() - $('#header').height() - $('#status_bar').height();
+ 	
+ 	alert(mapHeight + "=" + $(document).height()+ " - " + $('#header').height()+ " - " +$('#status_bar').height());
+ 	
  	$('#map').css("height", mapHeight);
 
   	// Create the main map
