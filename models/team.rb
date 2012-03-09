@@ -6,5 +6,4 @@ class Team
   property :updated_at, DateTime
   belongs_to :game
   has n, :players
-
 end

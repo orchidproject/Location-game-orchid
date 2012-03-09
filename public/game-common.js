@@ -38,45 +38,84 @@ function getPlayerIcon(skill) {
 }
 
 function receivePlayerData(data) {
-   
-	    var markerIcon = getPlayerIcon(data.skill);
-		var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
-        	    	    
-	    if(typeof players[data.id] == "undefined") {
-	        
-	        players[data.id] = {
-	            id: data.id,
-	            name: data.name,
+	var markerIcon;
+
+   if(typeof data.skill == 'undefined') {
+	   markerIcon = new google.maps.MarkerImage("http://www.google.com/intl/en_us/mapfiles/ms/icons/blue-dot.png", playerIconSize, playerIconOrigin, playerIconAnchor); //getPlayerIcon(data.skill);
+   } else {
+	   markerIcon = getPlayerIcon(data.skill);
+   }
+	    var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
+		var pid = data.player_id;
+		//move my highlighting (if necessary)
+		//if(pid == $('#user_id').val()) {
+		//	setHighlightPosition(new google.maps.LatLng(data.latitude, data.longitude));
+		//} else {
+		    if(typeof players[pid] == "undefined") {
+		        
+		        players[pid] = {
+		            id: pid,
+		            name: data.name,
+		            marker: new google.maps.Marker({
+		                position: new google.maps.LatLng(data.latitude, data.longitude),
+		                map: map,
+		                icon: markerIcon,
+		                visible: true
+		            })
+		        };
+		    } else {
+		        //update 
+		        var p = players[pid];
+		            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
+		            p.marker.setIcon(markerIcon);
+		    }	        
+		
+	//        if(typeof players[data.id] == "undefined") {
+	//        
+	//            players[data.id] = {
+	//                id: data.id,
+	//                name: data.name,
+	//                team: data.team,
+	//                points_cache: data.points_cache
+	//            };
+	//        } else {
+	//            var p = players[data.id];
+	//            p.team = data.team;
+	//            p.points_cache = data.points_cache;
+	//        }
+		//}   
+}
+
+
+
+
+var highlightMarker=null;
+
+function setHighlightPosition(loc) {
+	if(highlightMarker==null) {
+		highlightImage = "/img/dot-sprite.png";
+		highlightMarkerIcon = new google.maps.MarkerImage(highlightImage, playerIconSize, playerIconOrigin, playerIconAnchor);
+        highlightMarker = {
+	            id: 9999,
+	            name: "my_marker",
 	            marker: new google.maps.Marker({
-	                position: new google.maps.LatLng(data.latitude, data.longitude),
+	                position: loc,
 	                map: map,
-	                icon: markerIcon,
+	                icon: highlightMarkerIcon,
 	                visible: true
 	            })
 	        };
-	    } else {
-	        //update 
-	        var p = players[data.id];
-	            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-	            p.marker.setIcon(markerIcon);
-	    }	        
+
+	}
 	
-//        if(typeof players[data.id] == "undefined") {
-//        
-//            players[data.id] = {
-//                id: data.id,
-//                name: data.name,
-//                team: data.team,
-//                points_cache: data.points_cache
-//            };
-//        } else {
-//            var p = players[data.id];
-//            p.team = data.team;
-//            p.points_cache = data.points_cache;
-//        }
-   
+	//highlightMarker.setPosition(loc);
+	//now centre the map around me
+	//centreMap(loc);
 }
 
+function centreMap(loc) {
+	$('#map').setCentre();
+}
 
 
 /**
@@ -84,9 +123,8 @@ TASK ICONS...
 */
 
 function receiveTaskData(task){
-        chosen_task_type = task.type;
 
-		var taskIcon= getTaskIcon();
+		var taskIcon= getTaskIcon(task.type);
 		point = new google.maps.LatLng(task.latitude,task.longitude);
                 
     	var marker = new google.maps.Marker({
@@ -97,19 +135,19 @@ function receiveTaskData(task){
 }
 
 
-function getTaskIcon() {
+function getTaskIcon(task_type) {
 
 	var imageURL = ""
-	if (chosen_task_type == 1) {
+	if (task_type == 1) {
 		imageURL = taskIcon1; 
 	}
-	else if (chosen_task_type == 2) {
+	else if (task_type == 2) {
 		imageURL = taskIcon2;
 	}
-	else if (chosen_task_type == 3) {
+	else if (task_type == 3) {
 		imageURL = taskIcon3;
 	}
-	else if (chosen_task_type == 4) {
+	else if (task_type == 4) {
 		imageURL = taskIcon4;
 	}
 	
@@ -117,6 +155,8 @@ function getTaskIcon() {
 	
 	return icon;
 }
+
+
 
 
 var GameMap = {
@@ -130,3 +170,4 @@ var GameMap = {
 	  map.fitBounds(bounds);
 	}
 }
+

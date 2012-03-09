@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  	<title>Atomic Orchid</title>
+	  <meta name="HandheldFriendly" content="true" />
+  	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry"></script>
+  	<script type="text/javascript" src="/game-common.js"></script>
+  	
+  	<% if request.path =~ /\/game\// %>
+              	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+                <script type="text/javascript" src="https://subscribe.geoloqi.com/socket.io/socket.io.js"></script>
+                <script type="text/javascript" src="/mapattack-push.js"></script>
+    			<script type="text/javascript" src="/game_user.js"></script>
+    			<script type="text/javascript" src="/health_status.js"></script>
+    			<script type="text/javascript" src="/location.js"></script>
+    			
+    			<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
+				<script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
+				<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+				<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+				
+				
+    		
+  	<% end %>
+  	
+        <% if request.path =~ /\/replay\// %>
+    	  <script type="text/javascript" src="/mapattack-replay.js"></script>
+  	<% end %>
+  	
+
+  	<% if Controller::GA_ID %>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '<%= Controller::GA_ID %>']);
+        _gaq.push(['_trackPageview']);
+
+        <% if request.path =~ /^\/$/ %>
+		// geoloqi.com A/B Testing
+		_gaq.push(['gwo._setAccount', 'UA-25750303-7']);
+		_gaq.push(['gwo._trackPageview', '/0594274968/goal']);
+		<% end %>
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+    <% end %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>

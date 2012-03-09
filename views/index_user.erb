@@ -1,22 +1,154 @@
-
+<style type="text/css">
+ 	body {
+ 		padding: 0;
+ 	}
+</style>
 
 <script type="text/javascript">
-  
+  /**
+* converted stringify() to jQuery plugin.
+* serializes a simple object to a JSON formatted string.
+* Note: stringify() is different from jQuery.serialize() which URLEncodes form elements
+
+* UPDATES:
+* Added a fix to skip over Object.prototype members added by the prototype.js library
+* USAGE:
+* jQuery.ajax({
+* data : {serialized_object : jQuery.stringify (JSON_Object)},
+* success : function (data) {
+*
+* }
+* });
+*
+* CREDITS: http://blogs.sitepointstatic.com/examples/tech/json-serialization/json-serialization.js
+*/
+jQuery.extend({
+    stringify : function stringify(obj) {
+        var t = typeof (obj);
+        if (t != "object" || obj === null) {
+            // simple data type
+            if (t == "string") obj = '"' + obj + '"';
+            return String(obj);
+        } else {
+            // recurse array or object
+            var n, v, json = [], arr = (obj && obj.constructor == Array);
+
+            for (n in obj) {
+                v = obj[n];
+                t = typeof(v);
+                if (obj.hasOwnProperty(n)) {
+                    if (t == "string") v = '"' + v + '"'; else if (t == "object" && v !== null) v = jQuery.stringify(v);
+                    json.push((arr ? "" : '"' + n + '":') + String(v));
+                }
+            }
+            return (arr ? "[" : "{") + String(json) + (arr ? "]" : "}");
+        }
+    }
+});
+
+  function handleSocketData(dataStr) {
+  	var dataStr0 = jQuery.stringify(dataStr);
+	var dataStr1 = dataStr0.substring(1,dataStr0.length-1);
+	//alert('string arrived for you: ' + dataStr1);
+	var data = jQuery.parseJSON(dataStr1);
+    //alert('health at ' + data.health.value);
+
+
+    if(typeof data.health != "undefined") {
+    	//alert('entering health');
+    	receiveHealthData(data.health);
+    } else {
+    	//alert('did not enter health');
+    	//alert(data);
+    }
+
+
+    if(typeof data.system != "undefined"){
+        system(data.system);
+    }
+            
+    
+    if(typeof data.heatMap != "undefined"){
+    	receiveHeatmapData(data.heatMap);
+    }
+    
+	if(typeof data.player != "undefined"){
+        receivePlayerData(data.player);
+    }
+    
+    if(typeof data.location != "undefined"){
+        receivePlayerData(data.location);
+    }
+
+    if(typeof data.box != "undefined") {
+    	receiveBoxData(data.box);
+    }
+    
+    if(typeof data.task != "undefined") {
+    	receiveTaskData(data.task);
+    }
+    
+    if(typeof data.message != "undefined") {
+    	receiveMessageData(data.message);
+    }
+    
+    
+    if(typeof data.exposure != "undefined") {
+    	receiveExposureData(data.exposure);
+    }
+    
+    if(typeof data.textMassage != "undefined"){
+	  	receiveTextMassage(data.textMassage);
+  	}
+
+    if(typeof data.request != "undefined"){
+        receiveRequestData(data.request);
+    }
+    
+    if(typeof data.reading != "undefined"){
+        receiveReadingData(data.reading);
+    }
+        
+    if(typeof data.cargo != "undefined"){
+            receiveCargoData(data.cargo);
+    }
+		
+	}
   
   $(function(){
   	if(!document.getElementById("map")) {
   		return;
   	}
   	
-  	$('#headline_message').text("HELLO!");
-
+  	
+  //	  		zoomControl: true,
+  //		zoomControlOptions: {
+  //          style: google.maps.ZoomControlStyle.LARGE,
+  //          position: google.maps.ControlPosition.TOP_LEFT
+  //      },
+  
   	var myOptions = {
   		zoom: 15,
-  		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>), //todo: replace ruby template var
+  		zoomControl: true,
+  		zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.LARGE,
+            position: google.maps.ControlPosition.TOP_LEFT
+        },
+  		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
   		mapTypeId: google.maps.MapTypeId.HYBRID,
   		mapTypeControl: true,
 		disableDoubleClickZoom: true
   	};
+
+	mapHeight = $(document).height() - $('#radiation_reading').height() ;
+ 	
+
+
+ 	//alert(mapHeight + "=" + $(window).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
+ 	//alert("doc: " + $(document).height() + "window: " + $(window).height());
+
+ 	$('#map').css("height", mapHeight);
+
 
   	// Create the main map
   	map = new google.maps.Map(document.getElementById("map"), myOptions);
@@ -30,36 +162,37 @@
     GameMap.fitToRadius(<%= @game.radius %>); // todo: replace ruby template var
     
     //setup health status
-    setRadiation(50);
+    //setRadiation(50);
     
     //setup tabs
     showScreen('map');
     
-    listenForPositionUpdates();
+    //listenForPositionUpdates();
     
-    //test response to incomming messages
+    
+    //test response to incoming messages
     var userid = $('#user_id').val();
-    exposureData = {'value':30, 'player_id':userid};
+    exposureData = {'value':0, 'player_id':userid};
     receiveExposureData(exposureData);
-    messageData = {'id':0, 'content':'Hi! This is a test of messages', 'player_id':[userid]};
-	receiveMessageData(messageData);    
-	messageData = {'id':1, 'content':'Hi! This is another test of messages', 'player_id':[userid]};
-	receiveMessageData(messageData);    
-	messageData = {'id':2, 'content':'Hi! This is one last test of messages', 'player_id':[userid]};
+	messageData = {'id':0, 'content':'Hi! Here is where you will receive important info about the game.', 'player_id':[userid]};
 	receiveMessageData(messageData);    
 	
   });
 
 
 </script>
-
+<style type="text/css">
+	div.ui-content {
+		padding: 0;
+	}
+</style>
 
 <div id="main" data-role="page">
 
     	<div data-role="header" id="header">
 	    	<div data-role="navbar">
 				<ul>
-					<li><a href="#" onclick="showScreen('map');">Map</a></li>
+					<li><a href="#" class="ui-btn-active" onclick="showScreen('map');">Map</a></li>
 					<li><a href="#" onclick="showScreen('messages');">Messages</a></li>					
 				</ul>
 			</div><!-- /navbar -->
@@ -68,7 +201,7 @@
   	<div data-role="content">
 
 	<div id="wrapper">
-		    <div id="status_bar" style="height:100%;width:100%">
+		    <div id="status_bar" style="width:100%">
         <div id="geiger_sound"></div>
         
         <div id="radiation_reading" style="padding:2%;float:left;width:25%;height:12ex;text-align:center">
@@ -78,7 +211,6 @@
             <img id="rad0" src="/radiation_gray.png" width="20pt"/>
             <img id="rad1" src="/radiation_gray.png" width="20pt"/>
             <img id="rad2" src="/radiation_gray.png" width="20pt"/>
-            <img id="rad3" src="/radiation_gray.png" width="20pt"/>
           </div>
         </div>
         
@@ -88,10 +220,17 @@
         </div>
         
         <div style="clear:both"></div>
-       <div id="headline_message"></div>
    </div>
-		
-		<div id="map" style="height:300px;horizontal-align:center;"></div>
+<!--
+	<div id="testing_bar">
+	   
+		<a href="#" onclick="testReceive('player');">MapTest</a>
+		<a href="#" onclick="testReceive('health');">HealthTest</a>
+		<a href="#" onclick="testReceive('exposure');">ExposureTest</a>
+		<a href="#" onclick="testReceive('message');">MessageTest</a>
+	</div>
+	-->	
+		<div id="map" style="horizontal-align:center;height:300px"></div>
 
 		<section id="player-info">
 			<h3 id="player-score" class="team-firefighter"><span class="value"></span></h3> <!-- todo: replace ruby var skill -->
@@ -115,7 +254,7 @@
  <!-- wrapper -->
  </div> 
  </div>
-     
+
 <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
     <input type="hidden" id="user_id" value="<%= @user_id %>" />
     <input type="hidden" id="user_skill" value="<%= @user_skill %>" />

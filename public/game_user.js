@@ -262,13 +262,16 @@ function receiveTaskData(data) {
         
 }
 
+var latestMsgId = 0;
+
 function receiveMessageData(data) {
 	//schema: message { id: integer , player_id: [ array of integer ] , content: string }
 
 	//push the task to the comms list (as long as this task is meant for us)
-	if(jQuery.inArray($('#user_id').val(), data.player_id)) {
-		pushToTaskHistory(data.content, "msg" + data.id);
-	}
+	//if(jQuery.inArray($('#user_id').val(), data.player_id)) {
+		pushToTaskHistory(data.content, "msg" + latestMsgId++);
+		alert("Message from the controller: " + data.content);
+	//}
         
 }
 
@@ -276,9 +279,10 @@ function receiveHealthData(data) {
 	//schema: health { player_id : integer , value : integer }
 
 	//push the task to the comms list (as long as this task is meant for us)
+	//alert('checking health: ' + data.player_id + ' against ' + $('#user_id').val());
 	if(data.player_id == $('#user_id').val()) {
 		//update health image/indicator HTML element
-		var health = data.value;
+		var health = Number(data.value);
 		$('#health_bar').progressbar({value:health});
 	}
         
@@ -303,19 +307,19 @@ function receiveExposureData(data) {
 		if(exposure > 80) {
 			playSound('geiger_high.mp3', path);
 		}
-		alert("new radation level: " + exposure);
+		//alert("new radation level: " + exposure);
 	}
         
 }
 
 function playSound(filename, path) {
 	//avoid playing sound repeatedly
-//	var currentTime = new Date().getTime();
-//	var loopDelay = 1000 * 100; //100 seconds delay between plays
-//	if(currentTime > lastGeigerPlayTime + loopDelay) {
-//		document.getElementById("geiger_sound").innerHTML="<embed src='"+path+filename+"' hidden=true autostart=true loop=false>";
-//		lastGeigerPlayTime = currentTime;
-//	}
+	var currentTime = new Date().getTime();
+	var loopDelay = 1000 * 100; //100 seconds delay between plays
+	if(currentTime > lastGeigerPlayTime + loopDelay) {
+		document.getElementById("geiger_sound").innerHTML="<embed src='"+path+filename+"' hidden=true autostart=true loop=false>";
+		lastGeigerPlayTime = currentTime;
+	}
 	
 }
 
@@ -584,14 +588,29 @@ function endGame(){
 
 }
 
+function getTime() {
+   var now = new Date();
+   var outStr = pad(now.getHours(),1)+':'+pad(now.getMinutes(),1);
+   return outStr;
+}
+
+function pad(num, size) {
+	
+	var extraZeros = size - Math.floor(Math.log(num) / Math.log(10));
+	var i;
+	for(i=0; i<extraZeros; i++) {
+		num = '0' + num;
+	}
+	return num;
+}
 
 function pushToTaskHistory(message, identifier) {
 	//pushes the string message to the task list (including the date time added)
 	//(called when new tasks and messages are received)
 		
-	var line = $("<li id='" + identifier + "'>" + message + "</li>"); //TODO: add date, intended recipients
+	var line = $("<li id='" + identifier + "'>" + message + "  (sent " + getTime() + ")</li>"); //TODO: add intended recipients
 	var taskList = $('#task_list');
-	taskList.append(line);
+	taskList.prepend(line);
 	taskList.listview( "refresh" );  
 }
 
@@ -662,5 +681,31 @@ function showScreen(screen) {
 	if(screen =='messages') {
 		mapDiv.hide();
 		messageDiv.show();
+	}
+}
+
+var test_msg_id = 0;
+function testReceive(test) {
+	if(test=='player') { //oregon ,
+		var randomLatDelta = Math.random();
+		var randomLngDelta = Math.random();
+		var userId = Math.floor(Math.random()*11);
+		var data = {'skill':'A', 'latitude':45.526675+randomLatDelta, 'longitude':-122.675428+randomLngDelta, 'id':userId, 'player_id':userId};
+		receivePlayerData(data);
+	}
+	if(test=='health') { 
+		var health = Math.floor(Math.random()*100);
+		var data = {'player_id':'', 'value':health};
+		receiveHealthData(data);
+	}
+	if(test=='exposure') { 
+		var exposure = Math.floor(Math.random()*100);
+		var data = {'player_id':'', 'value':exposure};
+		receiveExposureData(data);
+	}
+	if(test=='message') { 
+		var message = 'Here is a random number: '+Math.floor(Math.random()*100);
+		var data = {'player_id':'', 'content':message, 'id':test_msg_id++};
+		receiveMessageData(data);
 	}
 }
