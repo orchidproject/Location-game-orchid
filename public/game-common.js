@@ -118,9 +118,8 @@ TASK ICONS...
 */
 
 function receiveTaskData(task){
-        chosen_task_type = task.type;
 
-		var taskIcon= getTaskIcon();
+		var taskIcon= getTaskIcon(task.type);
 		point = new google.maps.LatLng(task.latitude,task.longitude);
                 
     	var marker = new google.maps.Marker({
@@ -131,19 +130,19 @@ function receiveTaskData(task){
 }
 
 
-function getTaskIcon() {
+function getTaskIcon(task_type) {
 
 	var imageURL = ""
-	if (chosen_task_type == 1) {
+	if (task_type == 1) {
 		imageURL = taskIcon1; 
 	}
-	else if (chosen_task_type == 2) {
+	else if (task_type == 2) {
 		imageURL = taskIcon2;
 	}
-	else if (chosen_task_type == 3) {
+	else if (task_type == 3) {
 		imageURL = taskIcon3;
 	}
-	else if (chosen_task_type == 4) {
+	else if (task_type == 4) {
 		imageURL = taskIcon4;
 	}
 	
