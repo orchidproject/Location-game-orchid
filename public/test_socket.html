@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Send Socket.io</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://subscribe.geoloqi.com/socket.io/socket.io.js"></script>
+                
+<script type="text/javascript">
+var socket;
+$(document).ready(function() {
+    
+	socket = io.connect(  'http://holt.mrl.nott.ac.uk:49991', { //'http://localhost:4567', { //
+            transports: ['xhr-polling', 'xhr-multipart', 'websocket', 'flashsocket', 'htmlfile']
+    });
+    socket.on('game', function(data) {
+        //debug
+        //alert("join " + $("#group_token").val());
+		socket.emit('game-join', 1);
+	});
+    
+    socket.emit('data', {'health':{'value':61, 'player_id':21}});
+    socket.emit('data', {'textMassage':{'content':'hello hello hello'}});
+    socket.emit('data', {'location-push':{'latitude':123.45, 'longitude':-0.123, 'player_id':1});
+    
+<!--	socket.on('data', function(data) {-->
+<!--		//alert('socket io received: ' + data);-->
+<!--		$('#headline_message').text(data);-->
+<!--		-->
+<!--        data=filter(data);-->
+<!--        saveLog(data);-->
+<!---->
+<!--        //handleSocketData(data);-->
+<!---->
+<!--        -->
+<!--	});-->
+
+    //window.location="myapp://app_action/joined?"+$("#user_id").val()+"&"+$("#user_team").val();
+    //to do 
+    //$("#player-score .value").html($("#user_initials").val());
+    
+});
+
+</script>
+
+</head>
+<body>
+Sending data...
+</body>
+</html>

@@ -569,8 +569,7 @@ end
       socketIO.broadcast( 
                          { 
                             :channel=> params[:layer_id],             
-                            :data=>{
-                            :textMassage=>{:content=>params[:content]},
+                            :data=>params[:content]                            
                             }
                          }.to_json)
       {"status"=>:ok}.to_json
