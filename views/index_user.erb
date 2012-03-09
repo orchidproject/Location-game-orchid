@@ -6,8 +6,9 @@
 
 <script type="text/javascript">
   
-  function handleSocketData(data) {
+  function handleSocketData(dataStr) {
 
+	var data = jQuery.parseJSON(dataStr);
     alert(data);
 
     if(typeof data.system != "undefined"){
