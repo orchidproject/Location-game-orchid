@@ -262,13 +262,15 @@ function receiveTaskData(data) {
         
 }
 
+var latestMsgId = 0;
+
 function receiveMessageData(data) {
 	//schema: message { id: integer , player_id: [ array of integer ] , content: string }
 
 	//push the task to the comms list (as long as this task is meant for us)
-	if(jQuery.inArray($('#user_id').val(), data.player_id)) {
-		pushToTaskHistory(data.content, "msg" + data.id);
-	}
+	//if(jQuery.inArray($('#user_id').val(), data.player_id)) {
+		pushToTaskHistory(data.content, "msg" + latestMsgId++);
+	//}
         
 }
 
