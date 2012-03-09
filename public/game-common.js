@@ -103,7 +103,7 @@ function setHighlightPosition(loc) {
 
 	}
 	
-	highlightMarker.setPosition(loc);
+	//highlightMarker.setPosition(loc);
 	//now centre the map around me
 	centreMap(loc);
 }

@@ -52,6 +52,15 @@ jQuery.extend({
 	var data = jQuery.parseJSON(jQuery.stringify(dataStr));
     //alert('health at ' + data.health.value);
 
+
+    if(typeof data.health != "undefined") {
+    	alert('entering health');
+    	receiveHealthData(data.health);
+    } else {
+    	alert('did not enter health');
+    }
+
+
     if(typeof data.system != "undefined"){
         system(data.system);
     }
@@ -81,9 +90,6 @@ jQuery.extend({
     	receiveMessageData(data.message);
     }
     
-    if(typeof data.health != "undefined") {
-    	receiveHealthData(data.health);
-    }
     
     if(typeof data.exposure != "undefined") {
     	receiveExposureData(data.exposure);
