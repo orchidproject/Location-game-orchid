@@ -570,7 +570,7 @@ end
                          { 
                             :channel=> params[:layer_id],             
                             :data=>params[:content]                            
-                            }
+                            
                          }.to_json)
       {"status"=>:ok}.to_json
 
