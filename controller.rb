@@ -1073,7 +1073,7 @@ end
       end
 
     @user_initials = player ? player.name : ''
-    erb :'index_user', :layout => 'layout_user'
+    erb :'index_user', :layout => :'layout_user'
   end
   
   
