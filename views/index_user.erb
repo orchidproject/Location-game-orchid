@@ -162,7 +162,7 @@ jQuery.extend({
     GameMap.fitToRadius(<%= @game.radius %>); // todo: replace ruby template var
     
     //setup health status
-    setRadiation(50);
+    //setRadiation(50);
     
     //setup tabs
     showScreen('map');
@@ -170,15 +170,11 @@ jQuery.extend({
     //listenForPositionUpdates();
     
     
-    //test response to incomming messages
+    //test response to incoming messages
     var userid = $('#user_id').val();
-    exposureData = {'value':30, 'player_id':userid};
+    exposureData = {'value':0, 'player_id':userid};
     receiveExposureData(exposureData);
-    messageData = {'id':0, 'content':'Hi! This is a test of messages', 'player_id':[userid]};
-	receiveMessageData(messageData);    
-	messageData = {'id':1, 'content':'Hi! This is another test of messages', 'player_id':[userid]};
-	receiveMessageData(messageData);    
-	messageData = {'id':2, 'content':'Hi! This is one last test of messages', 'player_id':[userid]};
+	messageData = {'id':0, 'content':'Hi! Here is where you will receive important info about the game.', 'player_id':[userid]};
 	receiveMessageData(messageData);    
 	
   });

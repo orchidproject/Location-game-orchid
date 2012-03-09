@@ -270,6 +270,7 @@ function receiveMessageData(data) {
 	//push the task to the comms list (as long as this task is meant for us)
 	//if(jQuery.inArray($('#user_id').val(), data.player_id)) {
 		pushToTaskHistory(data.content, "msg" + latestMsgId++);
+		alert("Message from the controller: " + data.content);
 	//}
         
 }

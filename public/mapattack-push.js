@@ -133,9 +133,9 @@ $(document).ready(function() {
     
 	socket.on('data', function(data) {
 		//alert('socket io received: ' + data);
-		$('#headline_message').text(data);
-		
-        data=filter(data);
+//		$('#headline_message').text(data);
+//		
+//        data=filter(data);
         saveLog(data);
 
         //handleSocketData(data);
