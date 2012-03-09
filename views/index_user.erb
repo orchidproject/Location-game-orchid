@@ -103,8 +103,11 @@
     
     //listenForPositionUpdates();
     
-    var mapHeight = $(document).height() - $('#header').height() - $('#wrapper').height();
-	$('#map').css("height", mapHeight);
+     var docHeight = $(document).height() 
+       -  $("#header").height() 
+       - $("#status_bar").height() ;
+    
+    $("#map").css({"height" : docHeight});
     
     //test response to incomming messages
     var userid = $('#user_id').val();
