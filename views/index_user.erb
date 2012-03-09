@@ -80,15 +80,18 @@
 		disableDoubleClickZoom: true
   	};
 
-	mapHeight = $(document).height() - $('#header').height() - $('#radiation_reading').height();
+	//mapHeight = $(document).height() - $('#header').height() - $('#radiation_reading').height();
  	
- 	alert(mapHeight + "=" + $(document).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
+ 	//alert(mapHeight + "=" + $(document).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
  	
- 	$('#map').css("height", mapHeight);
+ 	//$('#map').css("height", mapHeight);
 
   	// Create the main map
   	map = new google.maps.Map(document.getElementById("map"), myOptions);
 
+    var mapTypeControl = new GMapTypeControl();
+    var topLeft = new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(10,10));
+    map.addControl(mapTypeControl, topLeft);
 
 	$("#logout").click(function(){
 		document.location.href="/game/"+$("#layer_id").val()+"/logout?user_id="+$("#user_id").val();
@@ -170,7 +173,7 @@
 		<a href="#" onclick="testReceive('message');">MessageTest</a>
 	</div>
 	-->	
-		<div id="map" style="horizontal-align:center;height:300px"></div>
+		<div id="map" style="horizontal-align:center;height:800px"></div>
 
 		<section id="player-info">
 			<h3 id="player-score" class="team-firefighter"><span class="value"></span></h3> <!-- todo: replace ruby var skill -->
