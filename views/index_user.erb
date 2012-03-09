@@ -81,6 +81,12 @@
 		disableDoubleClickZoom: true
   	};
 
+	mapHeight = $(document).height() - $('#header').height() - $('#status_bar').height();
+ 	
+ 	alert(mapHeight + "=" + $(document).height()+ " - " + $('#header').height()+ " - " +$('#status_bar').height());
+ 	
+ 	$('#map').css("height", mapHeight);
+
   	// Create the main map
   	map = new google.maps.Map(document.getElementById("map"), myOptions);
 
@@ -100,8 +106,11 @@
     
     //listenForPositionUpdates();
     
-    var mapHeight = $(window).height() - $('#header').height() - $('#status_bar').height();
-	$('#map').css("height", mapHeight);
+     var docHeight = $(document).height() 
+       -  $("#header").height() 
+       - $("#status_bar").height() ;
+    
+    $("#map").css({"height" : docHeight});
     
     //test response to incomming messages
     var userid = $('#user_id').val();
@@ -118,14 +127,18 @@
 
 
 </script>
-
+<style type="text/css">
+	div.ui-content {
+		padding: 0;
+	}
+</style>
 
 <div id="main" data-role="page">
 
     	<div data-role="header" id="header">
 	    	<div data-role="navbar">
 				<ul>
-					<li class="ui-btn-active"><a href="#" onclick="showScreen('map');">Map</a></li>
+					<li><a href="#" class="ui-btn-active" onclick="showScreen('map');">Map</a></li>
 					<li><a href="#" onclick="showScreen('messages');">Messages</a></li>					
 				</ul>
 			</div><!-- /navbar -->
@@ -144,7 +157,6 @@
             <img id="rad0" src="/radiation_gray.png" width="20pt"/>
             <img id="rad1" src="/radiation_gray.png" width="20pt"/>
             <img id="rad2" src="/radiation_gray.png" width="20pt"/>
-            <img id="rad3" src="/radiation_gray.png" width="20pt"/>
           </div>
         </div>
         
@@ -155,15 +167,15 @@
         
         <div style="clear:both"></div>
    </div>
-
+<!--
 	<div id="testing_bar">
-	    <!-- <div id="headline_message"></div> -->
+	   
 		<a href="#" onclick="testReceive('player');">MapTest</a>
 		<a href="#" onclick="testReceive('health');">HealthTest</a>
 		<a href="#" onclick="testReceive('exposure');">ExposureTest</a>
 		<a href="#" onclick="testReceive('message');">MessageTest</a>
 	</div>
-		
+	-->	
 		<div id="map" style="horizontal-align:center;"></div>
 
 		<section id="player-info">
