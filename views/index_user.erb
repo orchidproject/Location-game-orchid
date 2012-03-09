@@ -81,6 +81,9 @@
 		disableDoubleClickZoom: true
   	};
 
+	mapHeight = $(window).height() - $('#header').height() - $('#status_bar').height();
+ 	$('#map').css("height", mapHeight);
+
   	// Create the main map
   	map = new google.maps.Map(document.getElementById("map"), myOptions);
 
@@ -118,7 +121,11 @@
 
 
 </script>
-
+style type="text/css">
+	body {
+		padding: 0;
+	}
+</style>
 
 <div id="main" data-role="page">
 
@@ -144,7 +151,6 @@
             <img id="rad0" src="/radiation_gray.png" width="20pt"/>
             <img id="rad1" src="/radiation_gray.png" width="20pt"/>
             <img id="rad2" src="/radiation_gray.png" width="20pt"/>
-            <img id="rad3" src="/radiation_gray.png" width="20pt"/>
           </div>
         </div>
         
