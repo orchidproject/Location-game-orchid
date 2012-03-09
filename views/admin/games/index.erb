@@ -21,7 +21,7 @@
     </tr>
     <% @games.each do |game| %>
       <tr>
-        <td><a href="/game/<%= game.layer_id %>"><%= h game.name %></a></td>
+        <td><%= h game.name %><!--<a href="/game/<%= game.layer_id %>"></a>--></td>
         <td><%= h game.created_at.strftime('%D') %></td>
         <td><%= h game.players(:order => :updated_at).first.updated_at.strftime('%D') if game.players.length > 0 %></td>
         <% if game.is_active==0 %>
