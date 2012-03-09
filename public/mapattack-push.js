@@ -173,15 +173,15 @@ function handleSocketData(data) {
     }
     
     if(typeof data.task != "undefined") {
-    	receiveTaskData(data.box);
+    	receiveTaskData(data.task);
     }
     
     if(typeof data.message != "undefined") {
-    	receiveMessageData(data.box);
+    	receiveMessageData(data.message);
     }
     
     if(typeof data.health != "undefined") {
-    	receiveHealthData(data.box);
+    	receiveHealthData(data.health);
     }
     
     if(typeof data.exposure != "undefined") {
