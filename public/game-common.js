@@ -39,7 +39,7 @@ function getPlayerIcon(skill) {
 
 function receivePlayerData(data) {
    
-	    var markerIcon = getPlayerIcon('soldier'); //(data.skill);
+	    var markerIcon = getPlayerIcon(data.skill);
 		var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
 		var pid = data.player_id;
 		//move my highlighting (if necessary)
