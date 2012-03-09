@@ -276,3 +276,301 @@
 {"location":{"player_id":"140","longitude":-1.1864669241837005,"latitude":52.95389893327942},"time_stamp":1331250071855}
 {"location":{"player_id":"140","longitude":-1.1871969185202296,"latitude":52.95335641047096},"time_stamp":1331251129833}
 {"location":{"player_id":"140","longitude":-1.1870226400234531,"latitude":52.95367007035047},"time_stamp":1331251196952}
+{"player":{"id":2,"name":"999","points_cache":0,"team":"runner","skill":1},"time_stamp":1331256442632}
+{"health":{"player_id":2,"value":1},"time_stamp":1331256442635}
+{"textMassage":{"content":"999 join the game"},"time_stamp":1331256442638}
+{"player":{"id":3,"name":"soldier","points_cache":0,"team":"runner","skill":3},"time_stamp":1331256646894}
+{"health":{"player_id":3,"value":3},"time_stamp":1331256646896}
+{"textMassage":{"content":"soldier join the game"},"time_stamp":1331256646900}
+{"player":{"id":4,"name":"soldier","points_cache":0,"team":"runner","skill":3},"time_stamp":1331256788872}
+{"health":{"player_id":4,"value":3},"time_stamp":1331256788875}
+{"textMassage":{"content":"soldier join the game"},"time_stamp":1331256788877}
+{"player":{"id":5,"name":"soldier","points_cache":0,"team":"runner","skill":3},"time_stamp":1331257019924}
+{"health":{"player_id":5,"value":3},"time_stamp":1331257019928}
+{"textMassage":{"content":"soldier join the game"},"time_stamp":1331257019930}
+{"location":{"player_id":"4","longitude":-1.1872396040341435,"latitude":52.95340764101734},"time_stamp":1331257110287}
+{"location":{"player_id":"4","longitude":-1.186716803197024,"latitude":52.953899420807865},"time_stamp":1331257478784}
+{"location":{"player_id":"4","longitude":-1.1865716524114713,"latitude":52.95393010024367},"time_stamp":1331257488740}
+{"location":{"player_id":"4","longitude":-1.1867228123461406,"latitude":52.9535500832793},"time_stamp":1331257617524}
+{"player":{"id":10,"name":"soldier","points_cache":0,"team":"runner","skill":3},"time_stamp":1331258869381}
+{"health":{"player_id":10,"value":3},"time_stamp":1331258869383}
+{"textMassage":{"content":"soldier join the game"},"time_stamp":1331258869385}
+{"player":{"id":18,"name":"soldier","points_cache":0,"team":"runner","skill":3},"time_stamp":1331261432899}
+{"health":{"player_id":18,"value":3},"time_stamp":1331261432902}
+{"textMassage":{"content":"soldier join the game"},"time_stamp":1331261432906}
+{"player":{"id":21,"name":"soldier","points_cache":0,"team":"runner","skill":3},"time_stamp":1331262713740}
+{"health":{"player_id":21,"value":3},"time_stamp":1331262713743}
+{"textMassage":{"content":"soldier join the game"},"time_stamp":1331262713745}
+{"location":{"player_id":"21","longitude":-12221.084094999998,"latitude":37.4222},"time_stamp":1331262740981}
+{"location":{"player_id":"21","longitude":-12221.084094999998,"latitude":37.4222},"time_stamp":1331262788364}
+{"location":{"player_id":"21","longitude":-122221.08409333335,"latitude":37.4222},"time_stamp":1331263741551}
+{"player":{"id":22,"name":"transporter","points_cache":0,"team":"runner","skill":4},"time_stamp":1331263854337}
+{"health":{"player_id":22,"value":4},"time_stamp":1331263854340}
+{"textMassage":{"content":"transporter join the game"},"time_stamp":1331263854343}
+{"textMassage":{"content":"{'health':{'value':61,'player_id':21}}"},"time_stamp":1331263881841}
+{"textMassage":{"content":""},"time_stamp":1331263885040}
+{"textMassage":{"content":""},"time_stamp":1331263893731}
+{"player":{"id":23,"name":"transporter","points_cache":0,"team":"runner","skill":4},"time_stamp":1331263909395}
+{"health":{"player_id":23,"value":4},"time_stamp":1331263909399}
+{"textMassage":{"content":"transporter join the game"},"time_stamp":1331263909401}
+{"textMassage":{"content":"{'location-push':{'latitude':123.45, 'longitude':-0.123, 'player_id':1}"},"time_stamp":1331263914699}
+{"textMassage":{"content":"{'location-push':{'latitude':123.45, 'longitude':-0.123, 'player_id':1}"},"time_stamp":1331263921997}
+{"player":{"id":24,"name":"transporter","points_cache":0,"team":"runner","skill":4},"time_stamp":1331263923558}
+{"health":{"player_id":24,"value":4},"time_stamp":1331263923561}
+{"textMassage":{"content":"transporter join the game"},"time_stamp":1331263923564}
+{"textMassage":{"content":"{'location-push':{'latitude':123.45, 'longitude':-0.123, 'player_id':1}"},"time_stamp":1331263938031}
+{"textMassage":{"content":"{'location-push':{'latitude':123.45, 'longitude':-0.123, 'player_id':1}"},"time_stamp":1331264000669}
+{"system":"ready_check","time_stamp":1331264085956}
+{"textMassage":{"content":"{'exposure':{'value':22, 'player_id':21}}"},"time_stamp":1331264147029}
+{"textMassage":{"content":"{'exposure':{'value':22, 'player_id':21}}"},"time_stamp":1331264368659}
+{"textMassage":{"content":"{'exposure':{'value':22, 'player_id':21}}"},"time_stamp":1331264442098}
+{"textMassage":{"content":"{'health':{'value':22, 'player_id':21}}"},"time_stamp":1331264635783}
+{"textMassage":{"content":"{'health':{'value':22, 'player_id':21}}"},"time_stamp":1331264778780}
+{"textMassage":{"content":"{'health':{'value':22, 'player_id':21}}"},"time_stamp":1331264910705}
+{"textMassage":{"content":"{'health':{'value':22, 'player_id':21}}"},"time_stamp":1331264921428}
+{"textMassage":{"content":"{'health':{'value':22, 'player_id':21}}"},"time_stamp":1331264967527}
+"{'health':{'value':22, 'player_id':21}}"
+"{'health':{'value':22, 'player_id':21}}"
+""
+"{'health':{'value':22, 'player_id':21}}"
+"'{'health':{'value':22, 'player_id':21}}'"
+"\"{'health':{'value':22, 'player_id':21}}\""
+"\"{'health':{'value':22, 'player_id':21}}\""
+"{health:{value:22, player_id:21}}"
+"{'health':{'value':'22', 'player_id':'21'}}"
+{"location":{"player_id":"21","longitude":-122221.08409333335,"latitude":37.4222},"time_stamp":1331265666477}
+"{'health':{'value':'22', 'player_id':'21'}}"
+{"player":{"id":25,"name":"medic","points_cache":0,"team":"runner","skill":1},"time_stamp":1331265800042}
+{"health":{"player_id":25,"value":1},"time_stamp":1331265800046}
+{"textMassage":{"content":"medic join the game"},"time_stamp":1331265800048}
+"{\\\"health\\\":{\\\"value\\\":22, \\\"player_id\\\":21}}"
+{"player":{"id":26,"name":"medic","points_cache":0,"team":"runner","skill":1},"time_stamp":1331265869849}
+{"health":{"player_id":26,"value":1},"time_stamp":1331265869853}
+{"textMassage":{"content":"medic join the game"},"time_stamp":1331265869857}
+{"player":{"id":27,"name":"medic","points_cache":0,"team":"runner","skill":1},"time_stamp":1331265876080}
+{"health":{"player_id":27,"value":1},"time_stamp":1331265876082}
+{"textMassage":{"content":"medic join the game"},"time_stamp":1331265876084}
+"{\"health\":{\"value\":22, \"player_id\":21}}"
+"{\"health\":{\"value\":22, \"player_id\":21}}"
+"[{\"health\":{\"value\":22, \"player_id\":21}}]"
+"{\"health\":{\"value\":22, \"player_id\":21}}"
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331266790607}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331266799951}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331266802125}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331266805011}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331266816547}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331266817944}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331266819045}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331266819683}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331266820537}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331266821334}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331267062448}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331267071473}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331267165086}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331267188938}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331267193298}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331267196683}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331267199160}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331267202610}
+{"player":{"id":28,"name":"soldier","points_cache":0,"team":"runner","skill":3},"time_stamp":1331267475633}
+{"health":{"player_id":28,"value":3},"time_stamp":1331267475635}
+{"textMassage":{"content":"soldier join the game"},"time_stamp":1331267475638}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331267517915}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331267611753}
+{"player":{"id":29,"name":"medic","points_cache":0,"team":"runner","skill":1},"time_stamp":1331267906971}
+{"health":{"player_id":29,"value":1},"time_stamp":1331267906974}
+{"textMassage":{"content":"medic join the game"},"time_stamp":1331267906976}
+{"location":{"player_id":"29","longitude":-1.1873149406164885,"latitude":52.95392005238682},"time_stamp":1331268075250}
+{"location":{"player_id":"29","longitude":-1.187302703037858,"latitude":52.953825504519045},"time_stamp":1331268076206}
+{"location":{"player_id":"29","longitude":-1.1872931476682425,"latitude":52.95387621503323},"time_stamp":1331268077198}
+{"location":{"player_id":"29","longitude":-1.1872967518866062,"latitude":52.95390450395644},"time_stamp":1331268078219}
+{"location":{"player_id":"29","longitude":-1.1873572692275047,"latitude":52.95385500881821},"time_stamp":1331268094545}
+{"location":{"player_id":"29","longitude":-1.187331536784768,"latitude":52.953827725723386},"time_stamp":1331268095517}
+{"location":{"player_id":"29","longitude":-1.1873172037303448,"latitude":52.95384205877781},"time_stamp":1331268096546}
+{"location":{"player_id":"29","longitude":-1.1872977577149868,"latitude":52.953837239183486},"time_stamp":1331268097546}
+{"location":{"player_id":"29","longitude":-1.1872733663767576,"latitude":52.953814775682986},"time_stamp":1331268098544}
+{"location":{"player_id":"29","longitude":-1.1872525792568922,"latitude":52.95379796996713},"time_stamp":1331268099586}
+{"location":{"player_id":"29","longitude":-1.1872391682118177,"latitude":52.95379134826362},"time_stamp":1331268100587}
+{"location":{"player_id":"29","longitude":-1.1872301995754242,"latitude":52.95378556475043},"time_stamp":1331268101587}
+{"location":{"player_id":"29","longitude":-1.1872224044054747,"latitude":52.95377881731838},"time_stamp":1331268103707}
+{"location":{"player_id":"29","longitude":-1.1872222367674112,"latitude":52.9537682980299},"time_stamp":1331268104656}
+{"location":{"player_id":"29","longitude":-1.1872142739593983,"latitude":52.9537492711097},"time_stamp":1331268105638}
+{"location":{"player_id":"29","longitude":-1.1872098315507174,"latitude":52.953734057955444},"time_stamp":1331268106516}
+{"location":{"player_id":"29","longitude":-1.1872053891420364,"latitude":52.95372299384326},"time_stamp":1331268107556}
+{"location":{"player_id":"29","longitude":-1.1871929839253426,"latitude":52.953711594454944},"time_stamp":1331268109564}
+{"location":{"player_id":"29","longitude":-1.1871835961937904,"latitude":52.95371377374977},"time_stamp":1331268110566}
+{"location":{"player_id":"29","longitude":-1.1871792376041412,"latitude":52.953703086823225},"time_stamp":1331268111536}
+{"location":{"player_id":"29","longitude":-1.1871784832328558,"latitude":52.95368682593107},"time_stamp":1331268112566}
+{"location":{"player_id":"29","longitude":-1.187177812680602,"latitude":52.95366608072072},"time_stamp":1331268113557}
+{"location":{"player_id":"29","longitude":-1.1871833447366953,"latitude":52.95365409459919},"time_stamp":1331268114577}
+{"location":{"player_id":"29","longitude":-1.187193151563406,"latitude":52.95364307239652},"time_stamp":1331268115606}
+{"location":{"player_id":"29","longitude":-1.187190469354391,"latitude":52.953614657744765},"time_stamp":1331268116586}
+{"location":{"player_id":"29","longitude":-1.1871947441250086,"latitude":52.95359529554844},"time_stamp":1331268117595}
+{"location":{"player_id":"29","longitude":-1.187199605628848,"latitude":52.95357333496213},"time_stamp":1331268118634}
+{"location":{"player_id":"29","longitude":-1.1872032936662436,"latitude":52.95355493668467},"time_stamp":1331268119537}
+{"location":{"player_id":"29","longitude":-1.1872180458158255,"latitude":52.953549195080996},"time_stamp":1331268120587}
+{"location":{"player_id":"29","longitude":-1.1872192192822695,"latitude":52.95353272464126},"time_stamp":1331268121526}
+{"location":{"player_id":"29","longitude":-1.1872224044054747,"latitude":52.95352404937148},"time_stamp":1331268122515}
+{"location":{"player_id":"29","longitude":-1.1872416827827692,"latitude":52.95355807989836},"time_stamp":1331268123525}
+{"location":{"player_id":"29","longitude":-1.187259117141366,"latitude":52.95359035022557},"time_stamp":1331268124535}
+{"location":{"player_id":"29","longitude":-1.1872674152255058,"latitude":52.95360330026597},"time_stamp":1331268125667}
+{"location":{"player_id":"29","longitude":-1.1872737854719162,"latitude":52.95360723976046},"time_stamp":1331268126596}
+{"location":{"player_id":"29","longitude":-1.1872819997370243,"latitude":52.95360128860921},"time_stamp":1331268128625}
+{"location":{"player_id":"29","longitude":-1.18727738969028,"latitude":52.9535912303254},"time_stamp":1331268131655}
+{"location":{"player_id":"29","longitude":-1.1872716061770916,"latitude":52.953579160384834},"time_stamp":1331268132505}
+{"location":{"player_id":"29","longitude":-1.1872731987386942,"latitude":52.95358544681221},"time_stamp":1331268133566}
+{"location":{"player_id":"29","longitude":-1.187276216223836,"latitude":52.95359663665295},"time_stamp":1331268134526}
+{"location":{"player_id":"29","longitude":-1.1872778926044703,"latitude":52.953605060465634},"time_stamp":1331268136574}
+{"location":{"player_id":"29","longitude":-1.1872851848602295,"latitude":52.95360388699919},"time_stamp":1331268138766}
+{"location":{"player_id":"29","longitude":-1.1872883699834347,"latitude":52.95359206851572},"time_stamp":1331268139605}
+{"location":{"player_id":"29","longitude":-1.187286777421832,"latitude":52.95358180068433},"time_stamp":1331268140655}
+{"location":{"player_id":"29","longitude":-1.1872855201363564,"latitude":52.95357467606664},"time_stamp":1331268141615}
+{"location":{"player_id":"29","longitude":-1.1872851848602295,"latitude":52.95356763526797},"time_stamp":1331268143617}
+{"location":{"player_id":"29","longitude":-1.1872823350131512,"latitude":52.95355879236013},"time_stamp":1331268144616}
+{"location":{"player_id":"29","longitude":-1.1872778926044703,"latitude":52.95354948844761},"time_stamp":1331268145696}
+{"location":{"player_id":"29","longitude":-1.1872725281864405,"latitude":52.95353804714978},"time_stamp":1331268146677}
+{"location":{"player_id":"29","longitude":-1.1872708518058062,"latitude":52.9535246361047},"time_stamp":1331268147644}
+{"location":{"player_id":"29","longitude":-1.187265571206808,"latitude":52.95353171881288},"time_stamp":1331268148525}
+{"location":{"player_id":"29","longitude":-1.1872568540275097,"latitude":52.953527863137424},"time_stamp":1331268150577}
+{"location":{"player_id":"29","longitude":-1.1872514057904482,"latitude":52.95352270826697},"time_stamp":1331268151547}
+{"location":{"player_id":"29","longitude":-1.1872469633817673,"latitude":52.95353419147432},"time_stamp":1331268152596}
+{"location":{"player_id":"29","longitude":-1.1872433591634035,"latitude":52.953554056584835},"time_stamp":1331268153554}
+{"location":{"player_id":"29","longitude":-1.1872410122305155,"latitude":52.95356667134911},"time_stamp":1331268154624}
+{"location":{"player_id":"29","longitude":-1.1872360669076443,"latitude":52.95357270631939},"time_stamp":1331268157956}
+{"location":{"player_id":"29","longitude":-1.1872329656034708,"latitude":52.95356763526797},"time_stamp":1331268158626}
+{"location":{"player_id":"29","longitude":-1.18711126036942,"latitude":52.95374151784927},"time_stamp":1331268199234}
+{"location":{"player_id":"29","longitude":-1.1870966758579016,"latitude":52.95376716647297},"time_stamp":1331268200274}
+{"location":{"player_id":"29","longitude":-1.1870936583727598,"latitude":52.953780074603856},"time_stamp":1331268201262}
+{"location":{"player_id":"29","longitude":-1.1870913952589035,"latitude":52.95382898300886},"time_stamp":1331268202259}
+{"location":{"player_id":"29","longitude":-1.187102124094963,"latitude":52.95384356752038},"time_stamp":1331268203273}
+{"location":{"player_id":"29","longitude":-1.187110673636198,"latitude":52.95382403768599},"time_stamp":1331268204311}
+{"location":{"player_id":"29","longitude":-1.1871188040822744,"latitude":52.95381460804492},"time_stamp":1331268205361}
+{"location":{"player_id":"29","longitude":-1.1871370766311884,"latitude":52.95380392111838},"time_stamp":1331268206205}
+{"location":{"player_id":"29","longitude":-1.18716549128294,"latitude":52.95379348564893},"time_stamp":1331268207190}
+{"location":{"player_id":"29","longitude":-1.18718552403152,"latitude":52.95378711540252},"time_stamp":1331268208192}
+{"location":{"player_id":"29","longitude":-1.1871932353824377,"latitude":52.95377626083791},"time_stamp":1331268209223}
+{"location":{"player_id":"29","longitude":-1.1872017849236727,"latitude":52.95372668188065},"time_stamp":1331268210201}
+{"location":{"player_id":"29","longitude":-1.1872037127614021,"latitude":52.95368401799351},"time_stamp":1331268211211}
+{"location":{"player_id":"29","longitude":-1.1872062273323536,"latitude":52.95366872102022},"time_stamp":1331268212243}
+{"location":{"player_id":"29","longitude":-1.187218213453889,"latitude":52.95366084203124},"time_stamp":1331268213240}
+{"location":{"player_id":"29","longitude":-1.1872153636068106,"latitude":52.95365241821855},"time_stamp":1331268214243}
+{"location":{"player_id":"29","longitude":-1.1872177105396986,"latitude":52.95364789199084},"time_stamp":1331268215313}
+{"location":{"player_id":"29","longitude":-1.1872213147580624,"latitude":52.95363251119852},"time_stamp":1331268217271}
+{"location":{"player_id":"29","longitude":-1.1872208956629038,"latitude":52.95364437159151},"time_stamp":1331268218282}
+{"location":{"player_id":"29","longitude":-1.1872176267206669,"latitude":52.95365409459919},"time_stamp":1331268219323}
+{"location":{"player_id":"29","longitude":-1.1872119270265102,"latitude":52.95363909099251},"time_stamp":1331268220404}
+{"location":{"player_id":"29","longitude":-1.1872092448174953,"latitude":52.95360187534243},"time_stamp":1331268221353}
+{"location":{"player_id":"29","longitude":-1.18720019236207,"latitude":52.95357593335211},"time_stamp":1331268222363}
+{"location":{"player_id":"29","longitude":-1.1872032936662436,"latitude":52.95355602633208},"time_stamp":1331268224065}
+{"location":{"player_id":"29","longitude":-1.1872094962745905,"latitude":52.95355166774243},"time_stamp":1331268224472}
+{"location":{"player_id":"29","longitude":-1.1872077360749245,"latitude":52.953531383536756},"time_stamp":1331268225473}
+{"location":{"player_id":"29","longitude":-1.1872064787894487,"latitude":52.95351969078183},"time_stamp":1331268226392}
+{"location":{"player_id":"29","longitude":-1.187212010845542,"latitude":52.9535351973027},"time_stamp":1331268227441}
+{"location":{"player_id":"29","longitude":-1.1872210633009672,"latitude":52.95353398192674},"time_stamp":1331268229301}
+{"location":{"player_id":"29","longitude":-1.1872314568609,"latitude":52.95353804714978},"time_stamp":1331268230341}
+{"location":{"player_id":"29","longitude":-1.1872403416782618,"latitude":52.95353557448834},"time_stamp":1331268231364}
+{"location":{"player_id":"29","longitude":-1.1872472148388624,"latitude":52.95353305991739},"time_stamp":1331268232363}
+{"location":{"player_id":"29","longitude":-1.187254674732685,"latitude":52.953523211181164},"time_stamp":1331268233392}
+{"location":{"player_id":"29","longitude":-1.1872594524174929,"latitude":52.95351139269769},"time_stamp":1331268234413}
+{"location":{"player_id":"29","longitude":-1.1872586980462074,"latitude":52.953501041047275},"time_stamp":1331268235393}
+{"location":{"player_id":"29","longitude":-1.187264984473586,"latitude":52.95351093169302},"time_stamp":1331268237424}
+{"location":{"player_id":"29","longitude":-1.1872722767293453,"latitude":52.95351411681622},"time_stamp":1331268238292}
+{"location":{"player_id":"29","longitude":-1.1872808262705803,"latitude":52.95350095722824},"time_stamp":1331268239353}
+{"location":{"player_id":"29","longitude":-1.187288286164403,"latitude":52.953507620841265},"time_stamp":1331268241363}
+{"location":{"player_id":"29","longitude":-1.1872903816401958,"latitude":52.95351931359619},"time_stamp":1331268242523}
+{"location":{"player_id":"29","longitude":-1.1872996855527163,"latitude":52.95351244043559},"time_stamp":1331268244352}
+{"location":{"player_id":"29","longitude":-1.1873051337897778,"latitude":52.95350703410804},"time_stamp":1331268245434}
+{"location":{"player_id":"29","longitude":-1.187313599511981,"latitude":52.953497101552784},"time_stamp":1331268246402}
+{"location":{"player_id":"29","longitude":-1.1873242445290089,"latitude":52.953475937247276},"time_stamp":1331268247463}
+{"location":{"player_id":"29","longitude":-1.1873369850218296,"latitude":52.953449953347445},"time_stamp":1331268248333}
+{"location":{"player_id":"29","longitude":-1.1873522400856018,"latitude":52.95342220924795},"time_stamp":1331268249372}
+{"location":{"player_id":"29","longitude":-1.18736338801682,"latitude":52.953418185934424},"time_stamp":1331268250363}
+{"location":{"player_id":"29","longitude":-1.1873767152428627,"latitude":52.95341894030571},"time_stamp":1331268252723}
+{"location":{"player_id":"29","longitude":-1.187384845688939,"latitude":52.95340657699853},"time_stamp":1331268253364}
+{"location":{"player_id":"29","longitude":-1.1873923055827618,"latitude":52.95340343378484},"time_stamp":1331268254423}
+{"location":{"player_id":"29","longitude":-1.1873995140194893,"latitude":52.95339878182858},"time_stamp":1331268255423}
+{"location":{"player_id":"29","longitude":-1.1874109134078026,"latitude":52.953395219519734},"time_stamp":1331268256443}
+{"location":{"player_id":"29","longitude":-1.1874267552047968,"latitude":52.95338071882725},"time_stamp":1331268257333}
+{"location":{"player_id":"29","longitude":-1.1874427646398544,"latitude":52.95337686315179},"time_stamp":1331268258343}
+{"location":{"player_id":"29","longitude":-1.1874582711607218,"latitude":52.953364164568484},"time_stamp":1331268259334}
+{"location":{"player_id":"29","longitude":-1.1874728556722403,"latitude":52.953358171507716},"time_stamp":1331268260314}
+{"location":{"player_id":"29","longitude":-1.1874905414879322,"latitude":52.95335263945162},"time_stamp":1331268261322}
+{"location":{"player_id":"29","longitude":-1.1875069700181484,"latitude":52.95335154980421},"time_stamp":1331268262363}
+{"location":{"player_id":"29","longitude":-1.1875285115092993,"latitude":52.95333109796047},"time_stamp":1331268263361}
+{"location":{"player_id":"29","longitude":-1.1875431798398495,"latitude":52.953325607813895},"time_stamp":1331268264344}
+{"location":{"player_id":"29","longitude":-1.1875493824481964,"latitude":52.95332020148635},"time_stamp":1331268265361}
+{"location":{"player_id":"29","longitude":-1.1875586863607168,"latitude":52.95331148430705},"time_stamp":1331268267433}
+{"location":{"player_id":"29","longitude":-1.1875553335994482,"latitude":52.95332250650972},"time_stamp":1331268269392}
+{"location":{"player_id":"29","longitude":-1.1875610332936049,"latitude":52.953330469317734},"time_stamp":1331268270401}
+{"location":{"player_id":"29","longitude":-1.1875510588288307,"latitude":52.95334186870605},"time_stamp":1331268273391}
+{"location":{"player_id":"29","longitude":-1.187545945867896,"latitude":52.95335498638451},"time_stamp":1331268274363}
+{"location":{"player_id":"29","longitude":-1.1875416710972786,"latitude":52.95336462557316},"time_stamp":1331268275383}
+{"location":{"player_id":"29","longitude":-1.1875402461737394,"latitude":52.95338331721723},"time_stamp":1331268276473}
+{"location":{"player_id":"29","longitude":-1.1875425092875957,"latitude":52.95340045820922},"time_stamp":1331268278433}
+{"location":{"player_id":"29","longitude":-1.1875296011567116,"latitude":52.95342765748501},"time_stamp":1331268279441}
+{"location":{"player_id":"29","longitude":-1.18752415291965,"latitude":52.95343545265496},"time_stamp":1331268280451}
+{"location":{"player_id":"29","longitude":-1.1875109933316708,"latitude":52.95345422811806},"time_stamp":1331268282312}
+{"location":{"player_id":"29","longitude":-1.1875101551413536,"latitude":52.953459466807544},"time_stamp":1331268283314}
+{"location":{"player_id":"29","longitude":-1.18750118650496,"latitude":52.953470782376826},"time_stamp":1331268285341}
+{"location":{"player_id":"29","longitude":-1.1874930560588837,"latitude":52.953484235331416},"time_stamp":1331268286391}
+{"location":{"player_id":"29","longitude":-1.1874788906425238,"latitude":52.95350594446063},"time_stamp":1331268287361}
+{"location":{"player_id":"29","longitude":-1.1874783039093018,"latitude":52.953515206463635},"time_stamp":1331268288381}
+{"location":{"player_id":"29","longitude":-1.187471766024828,"latitude":52.953511266969144},"time_stamp":1331268289452}
+{"location":{"player_id":"29","longitude":-1.1874665692448616,"latitude":52.953522582538426},"time_stamp":1331268290434}
+{"location":{"player_id":"29","longitude":-1.1874674074351788,"latitude":52.95353134162724},"time_stamp":1331268291473}
+{"location":{"player_id":"29","longitude":-1.1874687485396862,"latitude":52.95354663860053},"time_stamp":1331268292301}
+{"location":{"player_id":"29","longitude":-1.1874698381870985,"latitude":52.9535515839234},"time_stamp":1331268294333}
+{"location":{"player_id":"29","longitude":-1.1874639708548784,"latitude":52.953555774874985},"time_stamp":1331268295331}
+{"location":{"player_id":"29","longitude":-1.1874695867300034,"latitude":52.95356512069702},"time_stamp":1331268296393}
+{"location":{"player_id":"29","longitude":-1.1874658986926079,"latitude":52.95357010792941},"time_stamp":1331268298422}
+{"location":{"player_id":"29","longitude":-1.187297087162733,"latitude":52.953589470125735},"time_stamp":1331268324357}
+{"location":{"player_id":"29","longitude":-1.1873170360922813,"latitude":52.95356277376413},"time_stamp":1331268325335}
+{"location":{"player_id":"29","longitude":-1.187295662239194,"latitude":52.95351646374911},"time_stamp":1331268326357}
+{"location":{"player_id":"29","longitude":-1.1873001884669065,"latitude":52.9534876300022},"time_stamp":1331268327407}
+{"location":{"player_id":"29","longitude":-1.1869450472295284,"latitude":52.953640264458954},"time_stamp":1331268723534}
+{"location":{"player_id":"29","longitude":-1.1869241762906313,"latitude":52.953806687146425},"time_stamp":1331268724532}
+{"location":{"player_id":"29","longitude":-1.186883943155408,"latitude":52.953751157037914},"time_stamp":1331268725542}
+{"location":{"player_id":"29","longitude":-1.1869968473911285,"latitude":52.95351017732173},"time_stamp":1331268726552}
+{"location":{"player_id":"29","longitude":-1.1868242640048265,"latitude":52.95347350649536},"time_stamp":1331268727552}
+{"location":{"player_id":"29","longitude":-1.1869078315794468,"latitude":52.95359378680587},"time_stamp":1331268728453}
+{"location":{"player_id":"29","longitude":-1.1869157943874598,"latitude":52.95376305934042},"time_stamp":1331268729512}
+{"location":{"player_id":"29","longitude":-1.1869741324335337,"latitude":52.953692860901356},"time_stamp":1331268730452}
+{"location":{"player_id":"29","longitude":-1.1870339792221785,"latitude":52.953668092377484},"time_stamp":1331268731461}
+{"location":{"player_id":"29","longitude":-1.1870312131941319,"latitude":52.95345028862357},"time_stamp":1331268732461}
+{"location":{"player_id":"29","longitude":-1.1870840191841125,"latitude":52.95339140575379},"time_stamp":1331268733471}
+{"location":{"player_id":"29","longitude":-1.1870887968689203,"latitude":52.95373674016446},"time_stamp":1331268734782}
+{"location":{"player_id":"29","longitude":-1.187125090509653,"latitude":52.953536245040596},"time_stamp":1331268735582}
+{"location":{"player_id":"29","longitude":-1.1870501562952995,"latitude":52.95345984399319},"time_stamp":1331268736542}
+{"location":{"player_id":"29","longitude":-1.1871356517076492,"latitude":52.95336441602558},"time_stamp":1331268737511}
+{"location":{"player_id":"29","longitude":-1.187193151563406,"latitude":52.953288056887686},"time_stamp":1331268738562}
+{"location":{"player_id":"29","longitude":-1.1870984360575676,"latitude":52.953340485692024},"time_stamp":1331268739531}
+{"location":{"player_id":"29","longitude":-1.1870971787720919,"latitude":52.95334610156715},"time_stamp":1331268740553}
+{"location":{"player_id":"29","longitude":-1.1871447879821062,"latitude":52.953333612531424},"time_stamp":1331268741591}
+{"location":{"player_id":"29","longitude":-1.1872467119246721,"latitude":52.953203902579844},"time_stamp":1331268742551}
+{"location":{"player_id":"29","longitude":-1.187186362221837,"latitude":52.95303618069738},"time_stamp":1331268743463}
+{"location":{"player_id":"29","longitude":-1.1872254218906164,"latitude":52.95299909077585},"time_stamp":1331268744461}
+{"location":{"player_id":"29","longitude":-1.1873302794992924,"latitude":52.95314078684896},"time_stamp":1331268745461}
+{"location":{"player_id":"29","longitude":-1.187236150726676,"latitude":52.95313860755414},"time_stamp":1331268746471}
+{"location":{"player_id":"29","longitude":-1.1872041318565607,"latitude":52.95335724949837},"time_stamp":1331268747482}
+{"location":{"player_id":"29","longitude":-1.1871110927313566,"latitude":52.95340712182224},"time_stamp":1331268748491}
+{"location":{"player_id":"29","longitude":-1.1869726236909628,"latitude":52.95379264745861},"time_stamp":1331268756461}
+{"location":{"player_id":"29","longitude":-1.186982598155737,"latitude":52.95397981535643},"time_stamp":1331268757471}
+{"location":{"player_id":"29","longitude":-1.1869749706238508,"latitude":52.95418290887028},"time_stamp":1331268758530}
+{"location":{"player_id":"29","longitude":-1.1870877910405397,"latitude":52.95414892025292},"time_stamp":1331268759492}
+{"location":{"player_id":"29","longitude":-1.1870659980922937,"latitude":52.95386087615043},"time_stamp":1331268760500}
+{"location":{"player_id":"29","longitude":-1.1870992742478848,"latitude":52.95393078122288},"time_stamp":1331268761521}
+{"location":{"player_id":"29","longitude":-1.1870672553777695,"latitude":52.95393576845527},"time_stamp":1331268762521}
+{"location":{"player_id":"29","longitude":-1.1872142739593983,"latitude":52.9538642289117},"time_stamp":1331268763511}
+{"location":{"player_id":"29","longitude":-1.1872441973537207,"latitude":52.954048798419535},"time_stamp":1331268764531}
+{"location":{"player_id":"29","longitude":-1.1872824188321829,"latitude":52.953993352130055},"time_stamp":1331268765541}
+{"location":{"player_id":"29","longitude":-1.187206981703639,"latitude":52.95402692165226},"time_stamp":1331268766531}
+{"location":{"player_id":"29","longitude":-1.1872727796435356,"latitude":52.95419808011502},"time_stamp":1331268767552}
+{"location":{"player_id":"29","longitude":-1.1872737016528845,"latitude":52.95391213148832},"time_stamp":1331268768452}
+{"location":{"player_id":"29","longitude":-1.1872611287981272,"latitude":52.95394188724458},"time_stamp":1331268769461}
+{"location":{"player_id":"29","longitude":-1.187186110764742,"latitude":52.953716749325395},"time_stamp":1331268770481}
+{"location":{"player_id":"29","longitude":-1.1872486397624016,"latitude":52.95378900133073},"time_stamp":1331268771513}
+{"location":{"player_id":"29","longitude":-1.1873082350939512,"latitude":52.953924955800176},"time_stamp":1331268772501}
+{"location":{"player_id":"29","longitude":-1.1872737016528845,"latitude":52.953878813423216},"time_stamp":1331268773501}
+{"location":{"player_id":"29","longitude":-1.1872503161430359,"latitude":52.95391812454909},"time_stamp":1331268774511}
+{"location":{"player_id":"29","longitude":-1.18713422678411,"latitude":52.95383849646896},"time_stamp":1331268775523}
+{"health":{"value":"39","player_id":"21"},"time_stamp":1331273112079}
