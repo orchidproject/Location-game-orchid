@@ -80,9 +80,9 @@
 		disableDoubleClickZoom: true
   	};
 
-	mapHeight = screen.height - $('#header').height() - $('#radiation_reading').height();
+	mapHeight = $(document).height() - $('#header').height() - $('#radiation_reading').height();
  	
- 	alert(mapHeight + "=" + screen.height + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
+ 	alert(mapHeight + "=" + $(document).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
  	
  	$('#map').css("height", mapHeight);
 
@@ -141,7 +141,7 @@
   	<div data-role="content">
 
 	<div id="wrapper">
-		    <div id="status_bar" style="height:100%;width:100%">
+		    <div id="status_bar" style="width:100%">
         <div id="geiger_sound"></div>
         
         <div id="radiation_reading" style="padding:2%;float:left;width:25%;height:12ex;text-align:center">
