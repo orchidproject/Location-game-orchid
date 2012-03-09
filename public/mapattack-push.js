@@ -138,7 +138,7 @@ $(document).ready(function() {
         data=filter(data);
         saveLog(data);
 
-        handleSocketData(data);
+        //handleSocketData(data);
 
         
 	});
