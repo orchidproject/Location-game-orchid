@@ -37,6 +37,9 @@
     
     //listenForPositionUpdates();
     
+    var mapHeight = $(window).height() - $('#header').height() - $('#status_bar').height();
+	$('#map').css("height", mapHeight);
+    
     //test response to incomming messages
     var userid = $('#user_id').val();
     exposureData = {'value':30, 'player_id':userid};
@@ -98,7 +101,7 @@
 		<a href="#" onclick="testReceive('message');">MessageTest</a>
 	</div>
 		
-		<div id="map" style="height:300px;horizontal-align:center;"></div>
+		<div id="map" style="horizontal-align:center;"></div>
 
 		<section id="player-info">
 			<h3 id="player-score" class="team-firefighter"><span class="value"></span></h3> <!-- todo: replace ruby var skill -->

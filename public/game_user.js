@@ -303,7 +303,7 @@ function receiveExposureData(data) {
 		if(exposure > 80) {
 			playSound('geiger_high.mp3', path);
 		}
-		alert("new radation level: " + exposure);
+		//alert("new radation level: " + exposure);
 	}
         
 }
