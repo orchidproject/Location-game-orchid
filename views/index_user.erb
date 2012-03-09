@@ -82,9 +82,11 @@
 
 	//mapHeight = $(document).height() - $('#header').height() - $('#radiation_reading').height();
  	
- 	//alert(mapHeight + "=" + $(document).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
- 	
- 	//$('#map').css("height", mapHeight);
+
+ 	alert(mapHeight + "=" + $(window).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
+ 	alert("doc: " + $(document).height() + "window: " + $(window).heigth());
+ 	$('#map').css("height", mapHeight);
+
 
   	// Create the main map
   	map = new google.maps.Map(document.getElementById("map"), myOptions);
