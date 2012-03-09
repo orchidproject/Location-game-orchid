@@ -916,7 +916,7 @@ end
     if params[:role_id]==nil
         return {:error=>"no role id"}.to_json
     else
-        player = game.players.create  :email =>params[:email], :name => params[:name], :skill => params[:role_id]
+        player = game.players.create  :email =>params[:email], :name => params[:name], :skill => params[:role_id], :team=>game.pick_team("runner")
     end
       
     
