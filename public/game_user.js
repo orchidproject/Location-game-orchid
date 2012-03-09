@@ -592,7 +592,7 @@ function getTime() {
 
 function pad(num, size) {
 	
-	var extraZeros = size - Math.floor(Math.log(num));
+	var extraZeros = size - Math.floor(Math.log(num) / Math.log(10));
 	var i;
 	for(i; i<extraZeros; i++) {
 		num = '0' + num;
