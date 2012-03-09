@@ -84,7 +84,7 @@ function receivePlayerData(data) {
 
 
 
-var highlightMarker = null;
+var highlightMarker=null;
 
 function setHighlightPosition(loc) {
 	if(highlightMarker==null) {
