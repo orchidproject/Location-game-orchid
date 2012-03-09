@@ -71,6 +71,12 @@
   		return;
   	}
   	
+  	
+  //	  		zoomControl: true,
+  //		zoomControlOptions: {
+  //          style: google.maps.ZoomControlStyle.LARGE,
+  //          position: google.maps.ControlPosition.TOP_LEFT
+  //      },
   
   	var myOptions = {
   		zoom: 15,
@@ -85,12 +91,12 @@
 		disableDoubleClickZoom: true
   	};
 
-	//mapHeight = $(document).height() - $('#header').height() - $('#radiation_reading').height();
+	mapHeight = $(document).height() - $('#header').height() - $('#radiation_reading').height();
  	
 
- 	//alert(mapHeight + "=" + $(window).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
- 	//alert("doc: " + $(document).height() + "window: " + $(window).height());
- 	//$('#map').css("height", mapHeight);
+ 	alert(mapHeight + "=" + $(window).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
+ 	alert("doc: " + $(document).height() + "window: " + $(window).height());
+ 	$('#map').css("height", mapHeight);
 
 
   	// Create the main map
@@ -177,7 +183,7 @@
 		<a href="#" onclick="testReceive('message');">MessageTest</a>
 	</div>
 	-->	
-		<div id="map" style="horizontal-align:center;height:800px"></div>
+		<div id="map" style="horizontal-align:center;height:300px"></div>
 
 		<section id="player-info">
 			<h3 id="player-score" class="team-firefighter"><span class="value"></span></h3> <!-- todo: replace ruby var skill -->
