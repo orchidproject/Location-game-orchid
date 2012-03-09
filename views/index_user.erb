@@ -49,7 +49,7 @@ jQuery.extend({
   function handleSocketData(dataStr) {
 
 	alert('string arrived for you: ' + jQuery.stringify(dataStr));
-	var data = jQuery.parseJSON(dataStr);
+	var data = jQuery.parseJSON(jQuery.stringify(dataStr));
     //alert('health at ' + data.health.value);
 
     if(typeof data.system != "undefined"){
