@@ -150,64 +150,7 @@ $(document).ready(function() {
 });
 
 
-function handleSocketData(data) {
 
-    alert(data);
-
-    if(typeof data.system != "undefined"){
-        system(data.system);
-    }
-            
-    
-    if(typeof data.heatMap != "undefined"){
-    	receiveHeatmapData(data.heatMap);
-    }
-    
-	if(typeof data.player != "undefined"){
-        receivePlayerData(data.player);
-    }
-    
-    if(typeof data.location != "undefined"){
-        receiveLocationData(data.location);
-    }
-
-    if(typeof data.box != "undefined") {
-    	receiveBoxData(data.box);
-    }
-    
-    if(typeof data.task != "undefined") {
-    	receiveTaskData(data.task);
-    }
-    
-    if(typeof data.message != "undefined") {
-    	receiveMessageData(data.message);
-    }
-    
-    if(typeof data.health != "undefined") {
-    	receiveHealthData(data.health);
-    }
-    
-    if(typeof data.exposure != "undefined") {
-    	receiveExposureData(data.exposure);
-    }
-    
-    if(typeof data.textMassage != "undefined"){
-	  	receiveTextMassage(data.textMassage);
-  	}
-
-    if(typeof data.request != "undefined"){
-        receiveRequestData(data.request);
-    }
-    
-    if(typeof data.reading != "undefined"){
-        receiveReadingData(data.reading);
-    }
-        
-    if(typeof data.cargo != "undefined"){
-            receiveCargoData(data.cargo);
-    }
-		
-}
 
 function locationUpdate(userID, latitude, longitude){
     socket.emit('location-push',{ player_id:userID,latitude:latitude,longitude:longitude});
