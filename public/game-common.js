@@ -89,7 +89,18 @@ var highlightMarker = null;
 function setHighlightPosition(loc) {
 	if(highlightMarker==null) {
 		highlightImage = "/img/dot-sprite.png";
-		highlightMarker = new google.maps.MarkerImage(highlightImage, playerIconSize, playerIconOrigin, playerIconAnchor);
+		highlightMarkerIcon = new google.maps.MarkerImage(highlightImage, playerIconSize, playerIconOrigin, playerIconAnchor);
+        highlightMarker = {
+	            id: 9999,
+	            name: "my_marker",
+	            marker: new google.maps.Marker({
+	                position: loc,
+	                map: map,
+	                icon: highlightMarkerIcon,
+	                visible: true
+	            })
+	        };
+
 	}
 	
 	highlightMarker.setPosition(loc);
