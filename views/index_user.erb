@@ -81,7 +81,7 @@
 		disableDoubleClickZoom: true
   	};
 
-	mapHeight = $(window).height() - $('#header').height() - $('#status_bar').height();
+	mapHeight = $(document).height() - $('#header').height() - $('#status_bar').height();
  	$('#map').css("height", mapHeight);
 
   	// Create the main map
@@ -103,7 +103,7 @@
     
     //listenForPositionUpdates();
     
-    var mapHeight = $(window).height() - $('#header').height() - $('#status_bar').height();
+    var mapHeight = $(document).height() - $('#header').height() - $('#status_bar').height();
 	$('#map').css("height", mapHeight);
     
     //test response to incomming messages
@@ -132,7 +132,7 @@
     	<div data-role="header" id="header">
 	    	<div data-role="navbar">
 				<ul>
-					<li class="ui-btn-active"><a href="#" onclick="showScreen('map');">Map</a></li>
+					<li><a href="#" class="ui-btn-active" onclick="showScreen('map');">Map</a></li>
 					<li><a href="#" onclick="showScreen('messages');">Messages</a></li>					
 				</ul>
 			</div><!-- /navbar -->
