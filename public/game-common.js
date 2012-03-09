@@ -42,41 +42,64 @@ function receivePlayerData(data) {
 	    var markerIcon = getPlayerIcon(data.skill);
 		var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
         	    	    
-	    if(typeof players[data.id] == "undefined") {
-	        
-	        players[data.id] = {
-	            id: data.id,
-	            name: data.name,
-	            marker: new google.maps.Marker({
-	                position: new google.maps.LatLng(data.latitude, data.longitude),
-	                map: map,
-	                icon: markerIcon,
-	                visible: true
-	            })
-	        };
-	    } else {
-	        //update 
-	        var p = players[data.id];
-	            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-	            p.marker.setIcon(markerIcon);
-	    }	        
-	
-//        if(typeof players[data.id] == "undefined") {
-//        
-//            players[data.id] = {
-//                id: data.id,
-//                name: data.name,
-//                team: data.team,
-//                points_cache: data.points_cache
-//            };
-//        } else {
-//            var p = players[data.id];
-//            p.team = data.team;
-//            p.points_cache = data.points_cache;
-//        }
-   
+		//move my highlighting (if necessary)
+		if(data.id == $('#user_id').val()) {
+			setHighlightPosition(new google.maps.LatLng(data.latitude, data.longitude));
+		} else {
+		    if(typeof players[data.id] == "undefined") {
+		        
+		        players[data.id] = {
+		            id: data.id,
+		            name: data.name,
+		            marker: new google.maps.Marker({
+		                position: new google.maps.LatLng(data.latitude, data.longitude),
+		                map: map,
+		                icon: markerIcon,
+		                visible: true
+		            })
+		        };
+		    } else {
+		        //update 
+		        var p = players[data.id];
+		            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
+		            p.marker.setIcon(markerIcon);
+		    }	        
+		
+	//        if(typeof players[data.id] == "undefined") {
+	//        
+	//            players[data.id] = {
+	//                id: data.id,
+	//                name: data.name,
+	//                team: data.team,
+	//                points_cache: data.points_cache
+	//            };
+	//        } else {
+	//            var p = players[data.id];
+	//            p.team = data.team;
+	//            p.points_cache = data.points_cache;
+	//        }
+		}   
 }
 
+
+
+
+var highlightMarker = null;
+
+function setHighlightPosition(loc) {
+	if(highlightMarker==null) {
+		highlightImage = "/img/dot-sprite.png";
+		highlightMarker = new google.maps.MarkerImage(highlightImage, playerIconSize, playerIconOrigin, playerIconAnchor);
+	}
+	
+	highlightMarker.setPosition(loc);
+	//now centre the map around me
+	centreMap(loc);
+}
+
+function centreMap(loc) {
+	$('#map').setCentre();
+}
 
 
 /**
@@ -116,5 +139,20 @@ function getTaskIcon() {
     var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
 	
 	return icon;
+}
+
+
+
+
+var GameMap = {
+	fitToRadius: function(radius) {
+	  var center = map.getCenter();
+	  var topMiddle = google.maps.geometry.spherical.computeOffset(center, radius, 0);
+	  var bottomMiddle = google.maps.geometry.spherical.computeOffset(center, radius, 180);
+	  var bounds = new google.maps.LatLngBounds();
+	  bounds.extend(topMiddle);
+	  bounds.extend(bottomMiddle);
+	  map.fitBounds(bounds);
+	}
 }
 

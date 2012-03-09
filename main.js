@@ -1,10 +1,6 @@
-var database="firesim";
-var db_username="firesim";
-var db_password="";
 
 var sys = require('util');
-var url = require('url');
-
+url = require('url');
 // Load the node-router library by creationix
 var http = require('./nodelib/node-router').getServer();
 
@@ -110,10 +106,10 @@ req.end();*/
 
 //-------------------mysql utility--------------------
 var mysql = require('mysql');
-var DATABASE = database;
+var DATABASE = 'wxj';
 var client = mysql.createClient({
-    user: db_username,
-    password: db_password
+    user: 'wxj',
+    password: 't5*m3$A',
 });
 client.query('USE '+DATABASE);
 

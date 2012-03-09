@@ -163,7 +163,6 @@ class Controller < Sinatra::Base
             
         end
         
-        player.pick_skill
         player.points_cache=1000
         player.save
        

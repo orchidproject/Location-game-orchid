@@ -310,12 +310,12 @@ function receiveExposureData(data) {
 
 function playSound(filename, path) {
 	//avoid playing sound repeatedly
-//	var currentTime = new Date().getTime();
-//	var loopDelay = 1000 * 100; //100 seconds delay between plays
-//	if(currentTime > lastGeigerPlayTime + loopDelay) {
-//		document.getElementById("geiger_sound").innerHTML="<embed src='"+path+filename+"' hidden=true autostart=true loop=false>";
-//		lastGeigerPlayTime = currentTime;
-//	}
+	var currentTime = new Date().getTime();
+	var loopDelay = 1000 * 100; //100 seconds delay between plays
+	if(currentTime > lastGeigerPlayTime + loopDelay) {
+		document.getElementById("geiger_sound").innerHTML="<embed src='"+path+filename+"' hidden=true autostart=true loop=false>";
+		lastGeigerPlayTime = currentTime;
+	}
 	
 }
 
@@ -662,5 +662,31 @@ function showScreen(screen) {
 	if(screen =='messages') {
 		mapDiv.hide();
 		messageDiv.show();
+	}
+}
+
+var test_msg_id = 0;
+function testReceive(test) {
+	if(test=='player') { //oregon ,
+		var randomLatDelta = Math.random();
+		var randomLngDelta = Math.random();
+		var userId = Math.floor(Math.random()*11);
+		var data = {'skill':'A', 'latitude':45.526675+randomLatDelta, 'longitude':-122.675428+randomLngDelta, 'id':userId, 'player_id':userId};
+		receivePlayerData(data);
+	}
+	if(test=='health') { 
+		var health = Math.floor(Math.random()*100);
+		var data = {'player_id':'', 'value':health};
+		receiveHealthData(data);
+	}
+	if(test=='exposure') { 
+		var exposure = Math.floor(Math.random()*100);
+		var data = {'player_id':'', 'value':exposure};
+		receiveExposureData(data);
+	}
+	if(test=='message') { 
+		var message = 'Here is a random number: '+Math.floor(Math.random()*100);
+		var data = {'player_id':'', 'content':message, 'id':test_msg_id++};
+		receiveMessageData(data);
 	}
 }
