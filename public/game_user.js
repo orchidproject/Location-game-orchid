@@ -594,10 +594,10 @@ function pushToTaskHistory(message, identifier) {
 	//pushes the string message to the task list (including the date time added)
 	//(called when new tasks and messages are received)
 		
-//	var line = $("<li id='" + identifier + "'>" + message + "  (sent " + getTime() + ")</li>"); //TODO: add intended recipients
-//	var taskList = $('#task_list');
-//	taskList.prepend(line);
-//	taskList.listview( "refresh" );  
+	var line = $("<li id='" + identifier + "'>" + message + "  (sent " + getTime() + ")</li>"); //TODO: add intended recipients
+	var taskList = $('#task_list');
+	taskList.prepend(line);
+	taskList.listview( "refresh" );  
 }
 
 // Load the initial game state and place the pins on the map. Sample data in pellets.json
