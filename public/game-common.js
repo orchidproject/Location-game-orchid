@@ -39,17 +39,17 @@ function getPlayerIcon(skill) {
 
 function receivePlayerData(data) {
    
-	    var markerIcon = getPlayerIcon(data.skill);
+	    var markerIcon = getPlayerIcon('soldier'); //(data.skill);
 		var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
-        	    	    
+		var pid = data.player_id;
 		//move my highlighting (if necessary)
-		if(data.id == $('#user_id').val()) {
-			setHighlightPosition(new google.maps.LatLng(data.latitude, data.longitude));
-		} else {
-		    if(typeof players[data.id] == "undefined") {
+		//if(pid == $('#user_id').val()) {
+		//	setHighlightPosition(new google.maps.LatLng(data.latitude, data.longitude));
+		//} else {
+		    if(typeof players[pid] == "undefined") {
 		        
-		        players[data.id] = {
-		            id: data.id,
+		        players[pid] = {
+		            id: pid,
 		            name: data.name,
 		            marker: new google.maps.Marker({
 		                position: new google.maps.LatLng(data.latitude, data.longitude),
@@ -60,7 +60,7 @@ function receivePlayerData(data) {
 		        };
 		    } else {
 		        //update 
-		        var p = players[data.id];
+		        var p = players[pid];
 		            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
 		            p.marker.setIcon(markerIcon);
 		    }	        
@@ -78,7 +78,7 @@ function receivePlayerData(data) {
 	//            p.team = data.team;
 	//            p.points_cache = data.points_cache;
 	//        }
-		}   
+		//}   
 }
 
 
