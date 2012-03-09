@@ -6,12 +6,19 @@
   	<script type="text/javascript" src="/game-common.js"></script>
   	
   	<% if request.path =~ /\/game\// %>
-    		   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-  	           <script type="text/javascript" src="https://subscribe.geoloqi.com/socket.io/socket.io.js"></script>
-               <script type="text/javascript" src="/mapattack-web.js"></script>
-			   <script type="text/javascript" src="/game_controller.js"></script>
-			  	<link rel="stylesheet" type="text/css" href="/reset.css" />
-			  	<link rel="stylesheet" type="text/css" href="/style.css" /> 
+              	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+            
+                <script type="text/javascript" src="https://subscribe.geoloqi.com/socket.io/socket.io.js"></script>
+                <script type="text/javascript" src="/mapattack-push.js"></script>
+    			<script type="text/javascript" src="/game_user.js"></script>
+    			<script type="text/javascript" src="/health_status.js"></script>
+    			<script type="text/javascript" src="/location.js"></script>
+    			
+    			<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
+				<script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
+				<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+				<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    		
   	<% end %>
   	
         <% if request.path =~ /\/replay\// %>
