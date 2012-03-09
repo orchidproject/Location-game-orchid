@@ -569,12 +569,14 @@ end
       socketIO.broadcast( 
                          { 
                             :channel=> params[:layer_id],             
-                            :data=>params[:content]                            
+                            :data => { :message=>params[:content]  }                          
                             
                          }.to_json)
       {"status"=>:ok}.to_json
 
   end 
+
+
 
   get '/admin/games/:layer_id/ready_check' do
     @game = Game.get params[:layer_id]
