@@ -15,20 +15,15 @@ class Player
   property :updated_at, DateTime
   property :exposure, Float, :default => 0.0
   property :current_exposure,Float ,:default => 0.0
-    
-    
-    
+  property :latitude, Decimal, :precision=>10, :scale=>7   
   property :skill, Integer
   property :health, Integer,:default => 100
-    
+  property :longitude, Decimal, :precision=>10 , :scale=>7  
   
     
   belongs_to :team
   belongs_to :game
   has n, :readings
-    
-  property :latitude, Decimal, :precision=>10, :scale=>7
-  property :longitude, Decimal, :precision=>10 , :scale=>7
   has n, :cargos
     
   has n, :requests
