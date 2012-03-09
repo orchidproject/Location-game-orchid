@@ -920,7 +920,7 @@ end
     elsif params[:name]==nil
     	return {:error=>"invalid name"}.to_json
     else
-        player = game.players.create  :email =>params[:email], :name => params[:name], :skill => params[:role_id]
+        player = game.players.create  :email =>params[:email], :name => params[:name], :skill => params[:role_id], :team=>game.pick_team("runner")
     end
       
     
