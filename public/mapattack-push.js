@@ -151,6 +151,9 @@ $(document).ready(function() {
 
 
 function handleSocketData(data) {
+
+    alert(data);
+
     if(typeof data.system != "undefined"){
         system(data.system);
     }
