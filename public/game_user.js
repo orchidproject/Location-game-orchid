@@ -584,14 +584,19 @@ function endGame(){
 
 }
 
+function getTime() {
+   var now = new Date();
+   var outStr = now.getHours()+':'+now.getMinutes();
+   return outStr;
+}
 
 function pushToTaskHistory(message, identifier) {
 	//pushes the string message to the task list (including the date time added)
 	//(called when new tasks and messages are received)
 		
-	var line = $("<li id='" + identifier + "'>" + message + "</li>"); //TODO: add date, intended recipients
+	var line = $("<li id='" + identifier + "'>" + message + "  (sent " + getTime() + ")</li>"); //TODO: add intended recipients
 	var taskList = $('#task_list');
-	taskList.append(line);
+	taskList.prepend(line);
 	taskList.listview( "refresh" );  
 }
 
