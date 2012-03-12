@@ -139,6 +139,16 @@ html, body {
 	background: url('img/blue-bg.png');
 }
 
+#active-player-wrapper {	
+	background: blue;
+	position: absolute;
+	z-index: 2;
+	top: 50px;
+	right: 40px;
+	width: 450px;
+	background-color: #E1E1E1;
+}
+
 #truck-team-wrapper {	
 	background: blue;
 	position: absolute;

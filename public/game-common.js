@@ -38,9 +38,14 @@ function getPlayerIcon(skill) {
 }
 
 function receivePlayerData(data) {
-   
-	    var markerIcon = getPlayerIcon(data.skill);
-		var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
+	var markerIcon;
+
+   if(typeof data.skill == 'undefined') {
+	   markerIcon = new google.maps.MarkerImage("http://www.google.com/intl/en_us/mapfiles/ms/icons/blue-dot.png", playerIconSize, playerIconOrigin, playerIconAnchor); //getPlayerIcon(data.skill);
+   } else {
+	   markerIcon = getPlayerIcon(data.skill);
+   }
+	    var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
 		var pid = data.player_id;
 		//move my highlighting (if necessary)
 		//if(pid == $('#user_id').val()) {

@@ -525,6 +525,20 @@ function cleanup(data){
 
 function receiveExposureData(data){
     document.getElementById("exposure").innerHTML=data.value;
+    
+    var level = document.getElementById("level");
+    if (data.value <= 50) {
+    	level.innerHTML = "Low"; 
+    }
+    else if (data.value > 50 && data.level <=100)   {
+    	level.innerHTML = "Increased"; 
+    }
+    else if (data.value > 100 && data.level <=150)   {
+    	level.innerHTML = "Critical"; 
+    }
+    else if (data.value > 150)   {
+    	level.innerHTML = "Extreme"; 
+    }
 }
 
 
