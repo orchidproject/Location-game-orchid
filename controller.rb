@@ -700,15 +700,13 @@ end
             while(game.is_active==0) do
             
                 game=Game.first :layer_id=>game_id
-                puts "game #{game_id} loop running"
+                puts "game #{game_id} loop running count #{count}"
                 update_game(game)
-                               @simulation.getTimeFrame(Time.now) 
+                @simulation.getTimeFrame(Time.now) 
 
-                
-                puts count
                 if count%6==0
                     
-                    puts "redraw"
+                    puts "heat map redraw in this loop"
                     socketIO.broadcast( 
                                        { 
                                        :channel=> params[:layer_id],             
