@@ -9,6 +9,8 @@ Bundler.require
 require 'rack/methodoverride'
 require "net/http"
 require "uri"
+
+
 require File.dirname(__FILE__) + '/simulation.rb'
 
 class SocketIO
@@ -57,10 +59,6 @@ class Controller < Sinatra::Base
     
     def socketIO
         @_socketIO ||= SocketIO.new SOCKET_URL,SORKET_PORT
-    end
-
-    def geoloqi_app
-      @_geoloqi_app ||= Geoloqi::Session.new :access_token => APPLICATION_ACCESS_TOKEN
     end
     
     def onclick_delete(msg='Are you sure?')
@@ -121,27 +119,30 @@ class Controller < Sinatra::Base
     set :admin_usernames, {}
     
     mime_type :woff, 'application/octet-stream'
+    
+    #setup including dir
     Dir.glob(File.join(root, 'models', '**/*.rb')).each { |f| require f }
     config_hash = YAML.load_file(File.join(root, 'config.yml'))[environment.to_s]
     raise "in config.yml, the \"#{environment.to_s}\" configuration is missing" if config_hash.nil?
-    GA_ID = config_hash['ga_id']
-    APPLICATION_ACCESS_TOKEN = config_hash['oauth_token']
-    AWS_KEY = config_hash['aws_key']
-    AWS_SECRET = config_hash['aws_secret']
+
     
     DataMapper.finalize
     DataMapper.setup :default, ENV['DATABASE_URL'] || config_hash['database']
     # DataMapper.auto_upgrade!
     DataMapper::Model.raise_on_save_failure = true
-    settings.admin_usernames = config_hash['admin_users'].nil? ? [] : config_hash['admin_users'].split(',')
+    
       
     SOCKET_URL = config_hash['socket_io_url']
     SORKET_PORT = config_hash['socket_io_port']
-      
+    
+    #array of background loops
+    MAIN_LOOP = []
+    
+    puts "self instance"
+    puts self.object_id
     
   end
 
-  @mainloops=[]
 end
 
 module Rack
@@ -163,3 +164,4 @@ class Array; def sum; inject( nil ) { |sum,x| sum ? sum+x : x }; end; end
 
 require File.join(Controller.root, 'controller.rb')
 require File.join(Controller.root, 'agent_utility.rb')
+require File.join(Controller.root, 'controller-utility.rb')
