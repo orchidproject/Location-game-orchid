@@ -11,5 +11,4 @@ specifications/*
 vendor/*
 log
 tmp
-config.yml
 Gemfile
