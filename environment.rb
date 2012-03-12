@@ -18,7 +18,7 @@ class SocketIO
     def initialize(url, port)
         @Socket_url=url
         @Socket_port=port
-        puts "#{@Socket_url}:#{@Socket_port}/broadcast"
+        puts "#{@Socket_url}:#{@Socket_port}/broadcast socket.io init"
     end
         
     def broadcast (data)
