@@ -51,6 +51,12 @@ class Controller < Sinatra::Base
   def update_game(game)
          puts "game update"
          game.players.each do |p|
+         	 if (p.latitude == nil || p.longitude == nil)
+         	 	puts "no location for user #{p.id}"
+         	 	next
+         	 end 
+         	 
+         	 
              if(@simulation.isOnMap(p.latitude, p.longitude))
                 p.exposure = p.exposure + check_radiation(p.latitude,p.longitude)
                 p.current_exposure = check_radiation(p.latitude,p.longitude)
@@ -71,6 +77,7 @@ class Controller < Sinatra::Base
                                    }
                                    
                 }.to_json)
+                
                 #broadcast exposure
                 p.broadcast_health(socketIO)
                  
