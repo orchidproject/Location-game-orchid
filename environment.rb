@@ -28,7 +28,7 @@ class SocketIO
         req = Net::HTTP::Post.new("/broadcast", initheader = {'Content-Type' =>'application/json'})
         req.body = {:data => data}.to_json
         
-        puts "broadcast to #{url} with content #{req.body}"
+        puts "broadcast to #{url}"
         
         response = Net::HTTP.new(@Socket_url, @Socket_port).start {|http| http.request(req) }
         {:status=>"ok"}
