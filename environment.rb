@@ -130,7 +130,7 @@ class Controller < Sinatra::Base
     DataMapper.setup :default, ENV['DATABASE_URL'] || config_hash['database']
     # DataMapper.auto_upgrade!
     DataMapper::Model.raise_on_save_failure = true
-    
+    GA_ID = config_hash['ga_id']
       
     SOCKET_URL = config_hash['socket_io_url']
     SORKET_PORT = config_hash['socket_io_port']
