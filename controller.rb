@@ -670,7 +670,7 @@ end
     if game.is_active!= -1
         return {:error=>"game already begin"}.to_json
         
-        else
+    else
         game.update(:is_active=>0)
 		#
 		#CHANGE TO ADAPT TO GRID SIZE (400/X)
@@ -694,12 +694,13 @@ end
         
         count=0
         
-        get_mainloops()[Integer(params[:layer_id])]=Thread.new {
+        Thread.abort_on_exception = true
+        bg=Thread.new {
             game_id=params[:layer_id]
             while(game.is_active==0) do
             
                 game=Game.first :layer_id=>game_id
-                puts "game #{game_id} active"
+                puts "game #{game_id} loop running"
                 update_game(game)
                                @simulation.getTimeFrame(Time.now) 
 
@@ -721,11 +722,9 @@ end
                 
                 count=count+1
                 sleep 1
-                #update game
+                
             end
         }
-               
-                #get_mainloops()[Integer(params[:layer_id])].join
         
         socketIO.broadcast( 
                            { 
@@ -910,9 +909,11 @@ end
 
   post '/game/:layer_id/join' do
     content_type :json
+    
     game = Game.first :layer_id => params[:layer_id]
     
     player_id = params[:id]
+    puts "client try to join game"
       
     if player_id
         player = game.players.first :id => player_id
@@ -1146,4 +1147,3 @@ end
 
 
 end
-
