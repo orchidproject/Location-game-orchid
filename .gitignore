@@ -11,3 +11,6 @@ specifications/*
 vendor/*
 log
 tmp
+logs/*
+config.yml
+Gemfile
