@@ -41,7 +41,7 @@ function receivePlayerData(data) {
 	var markerIcon;
 
    if(typeof data.skill == 'undefined') {
-	   markerIcon = new google.maps.MarkerImage("http://www.google.com/intl/en_us/mapfiles/ms/icons/blue-dot.png", playerIconSize, playerIconOrigin, playerIconAnchor); //getPlayerIcon(data.skill);
+     markerIcon = new google.maps.MarkerImage("http://www.google.com/intl/en_us/mapfiles/ms/icons/blue-dot.png", playerIconSize, playerIconOrigin, playerIconAnchor); //getPlayerIcon(data.skill);
    } else {
 	   markerIcon = getPlayerIcon(data.skill);
    }
