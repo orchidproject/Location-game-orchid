@@ -1,9 +1,9 @@
 development:
-  database: mysql://wxj:t5*m3$A@localhost/wxj 
+  database: mysql://firesim:@localhost/firesim 
   oauth_token: 483e-ff9e202d74bcf4a004d18e7bf084fa94401f03f6
   client_id: 237ff37d9cb86f0658457673739a1555
   client_secret: edfe3785ffd6413cd62e2e7a8399e476
-  base_uri: http://holt.mrl.nott.ac.uk/
+  base_uri: http://localhost/
   ga_id: 1
   admin_users: _P5LXD1gxXksKD2t7z
   socket_io_url: 0.0.0.0

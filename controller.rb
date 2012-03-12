@@ -674,8 +674,9 @@ end
         game.update(:is_active=>0)
 		#
 		#CHANGE TO ADAPT TO GRID SIZE (400/X)
-		#
-        @simulation = Simulation.new("simulation_data_03.txt", 52.9491938, -1.2144399, 8, Time.now, 0.1)
+		#Library Jubilee Campus (debugging) 52.953664,-1.188509
+		#Wollaton Park 52.9491938, -1.2144399
+        @simulation = Simulation.new("simulation_data_03.txt", 52.953664, -1.188509, 8, Time.now, 0.1)
         
         game.tasks.each do |t|
             # if t.status.eql? "active"
@@ -700,8 +701,8 @@ end
                 game=Game.first :layer_id=>game_id
                 puts "game #{game_id} active"
                 update_game(game)
-                
-                @simulation.getTimeFrame(Time.now)
+                               @simulation.getTimeFrame(Time.now) 
+
                 
                 puts count
                 if count%6==0
@@ -1223,6 +1224,7 @@ end
                 puts "truck not in the boundary"
              end
          end 
+		 end
   end
   
   def check_radiation(latitude, longitude) 
