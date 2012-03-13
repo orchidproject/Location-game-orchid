@@ -9,6 +9,7 @@ cache/*
 bin/*
 specifications/*
 vendor/*
-log
+log/*
 tmp
 Gemfile
+public/config.js
