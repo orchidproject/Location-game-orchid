@@ -37,6 +37,7 @@ function getPlayerIcon(skill) {
 	return icon;
 }
 
+//SHOULD BE LOCATION DATA???////
 function receivePlayerData(data) {
 	var markerIcon;
 
