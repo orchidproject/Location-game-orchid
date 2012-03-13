@@ -137,8 +137,138 @@ class Simulation
         
         return arrayWithLatLng
     end
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    #edge detection
+    def getFrame(t)
+        @data.get2DArray(t)
+    end
+    
+   
+    def visualize_edge(frame_number)
+    	#previous_frame = getFrame(frame_number)
+    	frame = getFrame(frame_number)
+    	count=0
+    	(0..(@y_size-1)).each do |y|
+            (0..(@x_size-1)).each do |x|
+                value=frame[x][y]
+                value=(value/10).floor
+                
+                if isEdge?(x,y,frame) 
+                	print "#{value } "
+                	count=count+1
+                else
+                	print "   "
+                end
+        	end 
+        	puts "."
+        end
+    	puts "value displayed: #{count}"
+    end 
+    
+    def visualize_diff(frame_number)
+    	if frame_number==1
+    		return 
+    	end
+    	
+    	previous_frame = getFrame(frame_number-1)
+    	frame = getFrame(frame_number)
+    	count=0
+    	(0..(@y_size-1)).each do |y|
+            (0..(@x_size-1)).each do |x|
+                value=frame[x][y]
+                previous_value=(previous_frame[x][y]/10).floor
+                value=(value/10).floor
+                if value != previous_value
+                	print "#{value } "
+                	count=count+1
+                else
+                	print "   "
+                end
+        	end 
+        	puts "."
+        end
+    	
+    	puts "value displayed: #{count}"
+    end
+    
+    
+    def isEdge?(x,y,frame)
+    	
+    	if x != 0 && y !=0 && x != @x_size-1 && y != @y_size-1  #ignore the boundary 
+    		value=(frame[x][y]/10).floor
+    		if (frame[x-1][y]/10).floor != value
+    			return true
+    		end
+    		if (frame[x+1][y]/10).floor != value
+    			return true
+    		end
+    		if (frame[x][y-1]/10).floor != value
+    			return true
+    		end
+    		if (frame[x][y+1]/10).floor != value
+    			return true
+    		end
+    		if (frame[x+1][y+1]/10).floor != value
+    			return true
+    		end
+    		if (frame[x+1][y-1]/10).floor != value
+    			return true
+    		end
+    		if (frame[x-1][y+1]/10).floor != value
+    			return true
+    		end
+    		if (frame[x-1][y-1]/10).floor != value
+    			return true
+    		end
+    		
+    	end
+    	
+    	return false
+    end 
+    
+    def getIndexedDiffFrame(frame_number)
+    	
+        arrayWithLatLng=Array.new(@x_size) {Array.new(@y_size)}
+    	if frame_number==1
+    		(0..(@y_size-1)).each do |y|
+            	(0..(@x_size-1)).each do |x|
+                	lat=getLat(y)
+                	lng=getLong(x)
+                	value=getReadingByIndex(y, x, Time.now)
+                	arrayWithLatLng[x][y]={:value=>value,:lat=>lat,:lng=>lng}
+                
+            	end
+        	end
+        
+        	return arrayWithLatLng
+    	end
+    	
+    	(0..(@y_size-1)).each do |y|
+            	(0..(@x_size-1)).each do |x|
+                	lat=getLat(y)
+                	lng=getLong(x)
+                	previous_value=value=getReadingByIndex(y, x, Time.now)
+                	value=getReadingByIndex(y, x, Time.now)
+                	arrayWithLatLng[x][y]={:value=>value,:lat=>lat,:lng=>lng}
+                	@previous_time = Time.now
+                
+            	end
+        end
+    	
+    end 
 	
 end
+
+
 
 #simulation = Simulation.new("simulation_data.txt", 50.00, -1.00, 100, Time.local(2012,3,5,8,0), 10)
 	
