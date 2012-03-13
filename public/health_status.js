@@ -102,7 +102,7 @@ function convertToTwoDigitHex(number) {
           //setTimeout("advance()", 2000);
      });
      
-     function setRadiation(radiation) {
+     function setRadiation(radiation) {     
         $("#radiation_number").empty();
         $("#radiation_number").append(radiation);
         var colour = mapValueToColour(radiation,radiationColours, radiationValueThresholds);
