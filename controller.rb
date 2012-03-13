@@ -709,7 +709,7 @@ end
                     puts "heat map redraw in this loop"
                     socketIO.broadcast( 
                                        { 
-                                       :channel=> "#{params[:layer_id]}-1",             
+                                       :channel=> "#{game_id}-1",             
                                        :data=>{
                                        :heatmap=>@simulation.getTimeFrameWithLatLng(Time.now)
                                        }
