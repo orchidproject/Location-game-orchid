@@ -13,6 +13,7 @@ $(document).ready(function() {
         //debug
         //alert("join " + $("#group_token").val());
 		socket.emit('game-join', $("#group_token").val());
+        socket.emit('game-join', $("#group_token").val()+"-1");
 	});
     
 	socket.on('data', function(data) {
