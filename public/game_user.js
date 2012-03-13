@@ -636,7 +636,7 @@ function updateGame(oneTime) {
             $(data.location).each(function(i, location){
                 var d=filter({"location":location});
                 if(typeof d.location != "undefined"){
-                    receiveLocationData(d.location);
+                    receivePlayerData(d.location);
                 }
             });
             
