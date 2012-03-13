@@ -870,7 +870,8 @@ end
         locations << {
         	:player_id => player.id,
         	:latitude => player.latitude,
-        	:longitude => player.longitude
+        	:longitude => player.longitude,
+        	:skill => player.skill_string()
         }
        
         
