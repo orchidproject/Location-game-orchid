@@ -138,7 +138,8 @@ $(document).ready(function() {
 //        data=filter(data);
         saveLog(data);
 
-        //handleSocketData(data);
+//uncomment to debug in browser on computer
+        handleSocketData(data);
 
         
 	});
