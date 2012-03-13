@@ -103,7 +103,6 @@ function convertToTwoDigitHex(number) {
      });
      
      function setRadiation(radiation) {
-        document.getElementById("radiation_number").innerHTML = radiation.value;
         $("#radiation_number").empty();
         $("#radiation_number").append(radiation);
         var colour = mapValueToColour(radiation,radiationColours, radiationValueThresholds);
