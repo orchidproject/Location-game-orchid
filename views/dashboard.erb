@@ -233,8 +233,8 @@
 			<% @game.players.each do |player| %>
 			 	<tr>
    			     	<td align="center"><%= player.name %></td>
-        			<td align="center"><div id="exposure_"<%=player.id%></div> </td>
-        			<td align="center"> <div id="level_"<%=player.id%></div> </td>
+        			<td align="center"><div id="exposure_"<% player.id %> </div> </td>
+        			<td align="center"> <div id="level_"<% player.id %> </div> </td>
         			<!--
 		        	<% if player.exposure <= 49 %>
         		    <td>Low</td>
