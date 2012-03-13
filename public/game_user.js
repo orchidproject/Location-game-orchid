@@ -626,17 +626,17 @@ function updateGame(oneTime) {
 			$("#num-players").html(data.player.length + " Players");
 			
             
-			$(data.player).each(function(i, player){
-                var d=filter({"player":player});
-                if(typeof d.player != "undefined"){
-                    receivePlayerData(d.player);
-                }
-            });
+//			$(data.player).each(function(i, player){
+//                var d=filter({"player":player});
+  //              if(typeof d.player != "undefined"){
+    //                receivePlayerData(d.player);
+      //          }
+        //    });
             
             $(data.location).each(function(i, location){
                 var d=filter({"location":location});
                 if(typeof d.location != "undefined"){
-                    receiveLocationData(d.location);
+                    receivePlayerData(d.location);
                 }
             });
             
