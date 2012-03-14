@@ -23,7 +23,7 @@ $(document).ready(function() {
         }
         
         if(typeof data.system != "undefined"){
-            //system(data.system); not implemented
+            system(data.system); 
         }
               
         if(typeof data.heatmap != "undefined"){

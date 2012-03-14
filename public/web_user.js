@@ -8,6 +8,7 @@
 function handleSocketData(dataStr) {
     //commented three var... lines below for debugging in desktop browser
     var data = dataStr;
+    alert(dataStr);
   	//var dataStr0 = jQuery.stringify(dataStr);
 	//var dataStr1 = dataStr0.substring(1,dataStr0.length-1);
 	//alert('string arrived for you: ' + dataStr1);
@@ -25,7 +26,7 @@ function handleSocketData(dataStr) {
     
     
     if(typeof data.system != "undefined"){
-        //system(data.system); not implemented
+        system(data.system); 
     }
     
     
