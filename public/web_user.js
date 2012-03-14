@@ -6,13 +6,15 @@
 
 
 function handleSocketData(dataStr) {
-    //commented three var... lines below for debugging in desktop browser
-    var data = dataStr;
+    
+    //var data = dataStr;
     alert(dataStr);
-  	//var dataStr0 = jQuery.stringify(dataStr);
-	//var dataStr1 = dataStr0.substring(1,dataStr0.length-1);
+    
+    //parse string from native app
+  	var dataStr0 = jQuery.stringify(dataStr);
+	var dataStr1 = dataStr0.substring(1,dataStr0.length-1);
 	//alert('string arrived for you: ' + dataStr1);
-	//var data = jQuery.parseJSON(dataStr1);
+	var data = jQuery.parseJSON(dataStr1);
     //alert('health at ' + data.health.value);
     
     
