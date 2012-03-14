@@ -309,6 +309,54 @@ function filter(data){
 
 }
 
+function system(data){
+    
+    if (data=="start"){
+        location.reload();
+    }
+    //legacy for iOS, this part will try to communicate with iphone native code
+    else if(data=="end"){
+        var results = "";
+        
+        $(players).each(function(i, player){
+            if(typeof player != "undefined"){
+                results=results+ player.name+ ":" + player.points_cache + "\n";
+            }
+        });
+        alert(log);
+        //push it back to server
+         $.ajax({ 
+            url: NODE_JS_ADDRESS+"/push_log",
+            type: "POST",
+            data: JSON.stringify({player_id:$("#user_id").val(),game_id:$("#layer_id").val(),data:log}),
+            dataType:"json",
+            success: function(data) {
+                           
+            }
+        });    
+        alert("Game ended\n Results: \n"+results);
+        
+        
+        location.reload();
+    }
+    else if(data=="reset"){
+        location.reload();
+    }
+    else if(data=="ready_check"){
+        var ready=confirm("Ready check");
+         $.ajax({ 
+            url: "/player/ready_check",
+            type: "GET",
+            data: {"ready":ready, "id": $("#user_id").val()},
+            dataType:"json",
+            success: function(data) {
+                           
+            }
+        });    
+    }
+
+}
+
 
 
 function pushToTaskHistory(message, identifier) {

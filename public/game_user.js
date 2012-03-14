@@ -423,6 +423,57 @@ function testReceive(test) {
 	}
 }
 
+function system(data){
+    
+    if (data=="start"){
+        window.location="myapp://app_action/start";
+        location.reload();
+    }
+    //js will try to communicate with naive code
+    else if(data=="end"){
+        var results = "";
+        
+        $(players).each(function(i, player){
+            if(typeof player != "undefined"){
+                results=results+ player.name+ ":" + player.points_cache + "\n";
+            }
+        });
+        alert(log);
+        //push it back to server
+         $.ajax({ 
+            url: NODE_JS_ADDRESS+"/push_log",
+            type: "POST",
+            data: JSON.stringify({player_id:$("#user_id").val(),game_id:$("#layer_id").val(),data:log}),
+            dataType:"json",
+            success: function(data) {
+                           
+            }
+        });    
+        alert("Game ended\n Results: \n"+results);
+        
+        
+        window.location="myapp://app_action/end"
+        location.reload();
+    }
+    else if(data=="reset"){
+        window.location="myapp://app_action/reset"
+        
+    }
+    else if(data=="ready_check"){
+        var ready=confirm("Ready check");
+         $.ajax({ 
+            url: "/player/ready_check",
+            type: "GET",
+            data: {"ready":ready, "id": $("#user_id").val()},
+            dataType:"json",
+            success: function(data) {
+                           
+            }
+        });    
+    }
+
+
+}
 
 
 //legacy function from jtruck
