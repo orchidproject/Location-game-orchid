@@ -297,7 +297,6 @@ end
 
   put '/admin/games/:layer_id/end_game' do
     @game = Game.get params[:layer_id]
-    geoloqi_app.post "group/message/#{@game.group_token}", :mapattack => {:gamestate => 'done'}
     redirect '/admin/games'
   end
 

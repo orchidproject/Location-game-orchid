@@ -58,9 +58,6 @@ function handleSocketData(dataStr) {
     	receiveExposureData(data.exposure);
     }
     
-    if(typeof data.textMassage != "undefined"){
-	  	receiveTextMassage(data.textMassage);
-  	}
     
     
 }
