@@ -8,7 +8,7 @@
 function handleSocketData(dataStr) {
     
     //var data = dataStr;
-    alert(dataStr);
+    
     
     //parse string from native app
   	var dataStr0 = jQuery.stringify(dataStr);
@@ -16,7 +16,7 @@ function handleSocketData(dataStr) {
 	//alert('string arrived for you: ' + dataStr1);
 	var data = jQuery.parseJSON(dataStr1);
     //alert('health at ' + data.health.value);
-    
+    alert(data);
     
     if(typeof data.health != "undefined") {
     	//alert('entering health');
@@ -37,6 +37,7 @@ function handleSocketData(dataStr) {
     }
     
     if(typeof data.location != "undefined"){
+    	alert("in location");
         receivePlayerData(data.location);
     }
     
