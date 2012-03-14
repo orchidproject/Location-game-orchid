@@ -317,7 +317,7 @@ end
       socketIO.broadcast( 
                          { 
                             :channel=> params[:layer_id],             
-                            :data => { :message=>params[:content]  }                          
+                            :data => { :message=>{:content=>params[:content]}  }                          
                             
                          }.to_json)
       {"status"=>:ok}.to_json
