@@ -1,5 +1,3 @@
-//modified:
-
 var socket;
 
 $(document).ready(function() {
@@ -25,23 +23,20 @@ $(document).ready(function() {
         }
         
         if(typeof data.system != "undefined"){
-            system(data.system);
+            //system(data.system); not implemented
         }
               
         if(typeof data.heatmap != "undefined"){
               receiveHeatmapData(data.heatmap);
         }
         
-        if(typeof data.player != "undefined"){
-            receivePlayerData(data.player);
-        }
-        
+        //not sure whether this is implemented
         if(typeof data.textMassage != "undefined"){
             receiveTextMassage(data.textMassage);
         }
         
         if(typeof data.location != "undefined"){
-            receiveLocationData(data.location);
+            receivePlayerData(data.location);
         }
         
         if(typeof data.request != "undefined"){
@@ -57,11 +52,7 @@ $(document).ready(function() {
         }
         
         if(typeof data.cleanup != "undefined"){
-                cleanup(data.cleanup);
-        }
-        
-        if(typeof data.radiation != "undefined"){
-                receiveRadiationBit(data.radiation);
+                //cleanup(data.cleanup); not implemented now
         }
 			
 		       
@@ -71,93 +62,16 @@ $(document).ready(function() {
 });
 
 
-function joinGame(team) {
-    $.ajax({ 
-		url: "/game/"+$("#layer_id").val()+"/webjoin",
-		type: "GET",
-		data: {"team": team},
-		dataType: "json", 
-		success: function(data) {
-            if (typeof data.error != 'undefined'){
-                alert(data.error);
-            }
-            else{
-                location.reload();
-            }
-                   
-        }
-        
-    });
-}
-
-////////////////player actions//////////////////
-
-function sendRequest(event){
-    $.ajax({ 
-		url: "/game/"+$("#layer_id").val()+"/request",
-		type: "GET",
-		data: {"latitude": event.latLng.lat(), "longitude":event.latLng.lng()},
-		dataType: "json", 
-		success: function(data) {
-            alert("request made");
-            //receiveCoinData(data);
-        }
-    });
-}
-
-function dropCargo(){
-	$.ajax({ 
-		url: "/game/"+$("#layer_id").val()+"/dropCargo",
-		type: "POST",
-		data: {"latitude":truckMarker.position.lat(),"longitude":truckMarker.position.lng() },
-		dataType: "json", 
-		success: function(data) {
-           //alert("request made");
-        }
-    });
-}
 
 
-/////////////////////////////
-//this is a for animated movement of truck
-//
 
-var previousMoveId=0;
-var count=0;
-var lngPerStep;
-var latPerStep;
-var steps;
-var radiation;
-//seems to be invoked twice
-function moveTruck(event){
-    var speed = 3; //10 m/s
-    var distance = google.maps.geometry.spherical.computeDistanceBetween(event.latLng, truckMarker.position);
-    //alert(distance);
-    steps = (distance*10)/speed;//10 times more smooth
-    lngPerStep = (event.latLng.lng()-truckMarker.position.lng())/steps;
-    latPerStep = (event.latLng.lat()-truckMarker.position.lat())/steps;
-    count=0;
-    
-    
-    clearInterval(previousMoveId);
-    previousMoveId = setInterval("moveOneStep()",100);
-    
 
-}
 
-function moveOneStep() {
-        if(count<steps){
-            var p=new google.maps.LatLng(truckMarker.position.lat()+latPerStep,truckMarker.position.lng()+lngPerStep);
-            truckMarker.setPosition(p);
-            radiation.setCenter(p)
-            count++;
-        
-        }
-        else{
-            clearInterval(previousMoveId);
-        }
-}
 
+
+
+//legacy for iOS, this function will try to communicate with iphone native code
+/*
 function system(data){
     
     if (data=="start"){
@@ -204,12 +118,110 @@ function system(data){
     }
 
 }
+*/
+
+
+/* legacy fuction from jtruck
+function joinGame(team) {
+    $.ajax({ 
+		url: "/game/"+$("#layer_id").val()+"/webjoin",
+		type: "GET",
+		data: {"team": team},
+		dataType: "json", 
+		success: function(data) {
+            if (typeof data.error != 'undefined'){
+                alert(data.error);
+            }
+            else{
+                location.reload();
+            }
+                   
+        }
+        
+    });
+}
+*/
+//legacy
+////////////////player actions//////////////////
+/*
+function sendRequest(event){
+    $.ajax({ 
+		url: "/game/"+$("#layer_id").val()+"/request",
+		type: "GET",
+		data: {"latitude": event.latLng.lat(), "longitude":event.latLng.lng()},
+		dataType: "json", 
+		success: function(data) {
+            alert("request made");
+            //receiveCoinData(data);
+        }
+    });
+}
+
+function dropCargo(){
+	$.ajax({ 
+		url: "/game/"+$("#layer_id").val()+"/dropCargo",
+		type: "POST",
+		data: {"latitude":truckMarker.position.lat(),"longitude":truckMarker.position.lng() },
+		dataType: "json", 
+		success: function(data) {
+           //alert("request made");
+        }
+    });
+}
+
+*/
+/////////////////////////////
+//this is a for animated movement of truck
+//legacy
+////
+/*
+var previousMoveId=0;
+var count=0;
+var lngPerStep;
+var latPerStep;
+var steps;
+var radiation;
+//seems to be invoked twice
+function moveTruck(event){
+    var speed = 3; //10 m/s
+    var distance = google.maps.geometry.spherical.computeDistanceBetween(event.latLng, truckMarker.position);
+    //alert(distance);
+    steps = (distance*10)/speed;//10 times more smooth
+    lngPerStep = (event.latLng.lng()-truckMarker.position.lng())/steps;
+    latPerStep = (event.latLng.lat()-truckMarker.position.lat())/steps;
+    count=0;
+    
+    
+    clearInterval(previousMoveId);
+    previousMoveId = setInterval("moveOneStep()",100);
+    
+
+}
+
+function moveOneStep() {
+        if(count<steps){
+            var p=new google.maps.LatLng(truckMarker.position.lat()+latPerStep,truckMarker.position.lng()+lngPerStep);
+            truckMarker.setPosition(p);
+            radiation.setCenter(p)
+            count++;
+        
+        }
+        else{
+            clearInterval(previousMoveId);
+        }
+}
+
+*/
+
 
 //////////////////////////////////
 //
-//game server request
+//legacy
 //
-//
+////
+
+/*
+
 function getTruck(){
     index=-1;
     $(players).each(function(i, p){
@@ -226,3 +238,5 @@ function updateTruckLocation(){
     var truck= getTruck();
     socket.emit('location-push',{ player_id:truck.id,latitude:truckMarker.position.lat(),longitude:truckMarker.position.lng()});
 }
+
+*/

@@ -6,8 +6,8 @@ var playerIconOrigin = new google.maps.Point(0,0);
 var playerIconAnchor = new google.maps.Point(16, 32);	
 
 var setup = false;
-
-var GameMap = {
+//duplication in game-common
+/*var GameMap = {
 	fitToRadius: function(radius) {
 	  var center = map.getCenter();
 	  var topMiddle = google.maps.geometry.spherical.computeOffset(center, radius, 0);
@@ -17,7 +17,7 @@ var GameMap = {
 	  bounds.extend(bottomMiddle);
 	  map.fitBounds(bounds);
 	}
-}
+}*/
 
 var lastRequestTime = 0;
 
@@ -35,38 +35,7 @@ var cg = {
 	}
 }
 
-var coinSpriteURL = "/img/gameboard-sprite.png";
-var coinHeight = 25;
-var coins = {
-	10: {
-		red: new google.maps.MarkerImage(coinSpriteURL, cg.s(17,17),  cg.p(0, 277), cg.p(17/2, 17/2)),
-		blue: new google.maps.MarkerImage(coinSpriteURL, cg.s(17,17), cg.p(0, 302), cg.p(17/2, 17/2)),
-		grey: new google.maps.MarkerImage(coinSpriteURL, cg.s(17,17), cg.p(0, 327), cg.p(17/2, 17/2))
-	},
-	20: {
-		red: new google.maps.MarkerImage(coinSpriteURL, cg.s(19,19),  cg.p(17, 276), cg.p(19/2, 19/2)),
-		blue: new google.maps.MarkerImage(coinSpriteURL, cg.s(19,19), cg.p(17, 301), cg.p(19/2, 19/2)),
-		grey: new google.maps.MarkerImage(coinSpriteURL, cg.s(19,19), cg.p(17, 326), cg.p(19/2, 19/2))
-	},
-	30: {
-		red: new google.maps.MarkerImage(coinSpriteURL, cg.s(21,21),  cg.p(36, 275), cg.p(21/2, 21/2)),
-		blue: new google.maps.MarkerImage(coinSpriteURL, cg.s(21,21), cg.p(36, 299), cg.p(21/2, 21/2)),
-		grey: new google.maps.MarkerImage(coinSpriteURL, cg.s(21,21), cg.p(36, 325), cg.p(21/2, 21/2))
-	},
-	50: {
-		red: new google.maps.MarkerImage(coinSpriteURL, cg.s(25,25),  cg.p(57, 273), cg.p(25/2, 25/2)),
-		blue: new google.maps.MarkerImage(coinSpriteURL, cg.s(25,25), cg.p(57, 298), cg.p(25/2, 25/2)),
-		grey: new google.maps.MarkerImage(coinSpriteURL, cg.s(25,25), cg.p(57, 323), cg.p(25/2, 25/2))
-	}
-};
 
-
-//var truckImageURL = "/img/truck.png";
-//var truckIcon= new google.maps.MarkerImage(truckImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
-//var pollutantImageURL = "/img/skull.png";
-//var pollutantIcon= new google.maps.MarkerImage(pollutantImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
-//var pollutantImageURL_exposed = "/img/skull-exposed.png";
-//var pollutantIcon_exposed = new google.maps.MarkerImage(pollutantImageURL_exposed, playerIconSize, playerIconOrigin, playerIconAnchor);
 
 var playerIconSize = new google.maps.Size(32, 32);
 var playerIconOrigin = new google.maps.Point(0,0);
@@ -80,17 +49,13 @@ var taskIcon = playerIcons['blue'];
 var personSkillA = playerIcons['red'];
 
 
-var requests = [];
+
 var players = [];
 var boxes = [];
 var tasks = [];
 
 var lastGeigerPlayTime = 0;
 
-
-
-//var readings = [];
-//var cargos = [];
 
 
 
@@ -102,61 +67,7 @@ var player_profiles = [];
 // player icon: '/player/' + player.geoloqi_id + "/" + player.team + '/map_icon.png'
 
 
-function deleteCoin(id) {
-	$(pellets).each(function(i, pellet) {
-		if(pellet.id == id) {
-			pellet.marker.setMap(null);
-		}
-	});
-}
-
-var infowindow = new google.maps.InfoWindow({
-        content: ""
-    });
-
-function receiveReadingData(data) {
-    
-    
-	//var icon=cg.playerImage(data.value, 'blue');
-    var point=new google.maps.LatLng(data.latitude, data.longitude);
-        /*readings[data.player_id] = {
-			id: data.id,
-            player_id : data.player_id,
-
-            value: data.value,*/
-            
-		
-    new google.maps.Circle(pick_overlay(data.value, point));	
-                    
-                            		
-
-        /*infowindow.setContent("<h5> reported by "+players[data.player_id].name+"</h5><br><h5> value: "+data.value+"</h5><br>");
-
-        google.maps.event.addListener(readings[data.player_id].marker, 'click', function() {
-            
-            infowindow.open(map,readings[data.player_id].marker);
-        });*/
-        
-        
-	 /*else {
-		// one user have one readings displayed
-		var p = readings[data.player_id];
-		if(true) {
-            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-            p.marker.setIcon(icon);
-        } else {
-			console.debug("coin already claimed");
-		}
-        infowindow.setContent("<h5> reported by "+players[data.player_id].name+"</h5><br><h5> value: "+data.value+"</h5><br>");
-        google.maps.event.addListener(p.marker, 'click', function() {
-           
-            infowindow.open(map,p.marker);
-        });
-	}*/
-    
-    
-}
-
+//////heatmap drawing//////
 var backGroundRec;
 var heat_map=[];
 
@@ -269,7 +180,7 @@ function receiveRequestData(data) {
 }
 
 
-
+/*
 function receiveRadiationBit(bit){
 
 	var pollutantIcon= new google.maps.MarkerImage(pollutantImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);                    
@@ -322,49 +233,11 @@ function receiveRadiationBit(bit){
              	
         //radiationBits.push(point);     
 
-}
+}*/
 
 
 
-//add markers to player's array 
-function receiveLocationData(data) {
 
-	var id = data.player_id;
-	var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
-	var exists;
-	if(typeof players[data.player_id] == "undefined"){
-		
-
-	
-    }else{
-			var player = players[data.player_id];
-            if(player.team == "runner"){
-                markerIcon=cg.playerImage(player.name, 'red');
-            }
-            else if(player.team == "truck"){
-                markerIcon=truckIcon;
-            }
-            
-            if(typeof player.marker == "undefined"){
-            
-                player.marker = new google.maps.Marker({
-                    position: myLatLng,
-                    map: map,
-                    icon: markerIcon
-                });
-                
-                if(player.team == "truck"){
-                    truckMarker = player.marker;
-                }
-                
-            }
-            else{
-                player.marker.setPosition(myLatLng);
-            }
-		
-	}
-
-}
 
 function errorCheck(data){
     if (typeof data.error != 'undefined'){
@@ -377,53 +250,7 @@ function receiveTextMassage(data){
 }
 
 
-function cleanup(data){
-    if (typeof data.player != "undefined"){
-        $(data.player).each(function(i,id){
-            var p=players[id];
-            if(p!=null){
-                p.marker.setMap(null);
-                if (p.team=="controller"){
-                    $(requests).each(function(i,r){
-                        r.marker.setMap(null);
-                    });
-                }
-                else if (p.team == "truck"){
-                    $(cargos).each(function(i,c){
-                        c.marker.setMap(null);
-                    });
-                }
-                else if (p.team == "runner"){
-                    reading[id].setMap(null);
-                }
-            }
-        });
-    }
-    if (typeof data.request != "undefined"){
-        $(data.request).each(function(i,id){
-            if(requests[id] != null){
-                requests[id].marker.setMap(null);
-            }
-        });
-    
-    }
-    if (typeof data.cargo != "undefined"){
-        $(data.cargo).each(function(i,id){
-            if(cargos[id] != null){
-                cargos[id].marker.setMap(null);
-            }
-        });
-    }
-    
-    if (typeof data.reading != "undefined"){
-        $(data.reading).each(function(i,id){
-            if(readings[id] != null){
-                readings[id].marker.setMap(null);
-            }
-        });
-    }
 
-}
 
 
 function receiveExposureData(data){
@@ -444,7 +271,7 @@ function receiveExposureData(data){
     }
 }
 
-
+////legacy but probably useful
 function filter(data){
 
     if($("#user_team").val()=="truck"){
@@ -482,10 +309,6 @@ function filter(data){
 
 }
 
-function endGame(){
-
-
-}
 
 
 function pushToTaskHistory(message, identifier) {
@@ -523,36 +346,9 @@ function updateGame(oneTime) {
                 }
             });
             
-			$(data.request).each(function(i, request) {
-                var d=filter({"request":request});
-                if(typeof data.request != "undefined"){
-                    receiveRequestData(d.request);
-                }
-			});
+		
             
-            $(data.reading).each(function(i, reading){
-               var d=filter({"reading":reading});
-               if(typeof d.reading != "undefined"){
-                receiveReadingData(d.reading);
-               }
-            });
             
-    
-            $(data.cargo).each(function(i, po){
-                var d=filter({"cargo":po});
-                if(typeof d.cargo != "undefined"){
-                    receiveCargoData(d.cargo);
-                }
-            });
-            
-            $(data.radiation).each(function(i, r){
-                var d=filter({"radiation":r});
-                if(typeof data.radiation != "undefined"){
-                    receiveRadiationBit(d.radiation);
-                }
-
-            });
-
             
 			lastRequestTime = Math.round((new Date()).getTime() / 1000);
 			if(!oneTime)
@@ -562,5 +358,3 @@ function updateGame(oneTime) {
 		}
 	});
 }
-
-//hello
