@@ -77,7 +77,7 @@ class Player
                      { 
                         :channel=> self.game.layer_id,             
                         :data=>{
-                            :health=>{
+                            :acc_exposure=>{
                                 :player_id => self.id,
                                 :value => self.exposure
                             }
@@ -90,7 +90,7 @@ class Player
                      { 
                         :channel=> self.game.layer_id,             
                         :data=>{
-                            :health=>{
+                            :exposure=>{
                                 :player_id => self.id,
                                 :value => self.current_exposure
                             }
