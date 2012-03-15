@@ -365,10 +365,7 @@ function updateGame(oneTime) {
             });
             
 		
-            
-            
-            
-			lastRequestTime = Math.round((new Date()).getTime() / 1000);
+            lastRequestTime = Math.round((new Date()).getTime() / 1000);
 			if(!oneTime)
 				setTimeout(updateGame, 5000);
 			else

@@ -16,7 +16,7 @@ function handleSocketData(dataStr) {
 	//alert('string arrived for you: ' + dataStr1);
 	var data = jQuery.parseJSON(dataStr1);
     //alert('health at ' + data.health.value);
-    alert("after parse"+jQuery.stringify(data));
+    //alert("after parse"+jQuery.stringify(data));
     
     if(typeof data.health != "undefined") {
     	//alert('entering health');
