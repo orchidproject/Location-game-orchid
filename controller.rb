@@ -455,11 +455,11 @@ end
 				
 				
 				
-                if count%6==0 && diffFrame
+                if count%6==0
                     #diffFrame can be nil, (when there is no diff between two frames) 
 					diffFrame=@simulation.getIndexedDiffFrame(Time.now)
 					
-					if diffFarme
+					if diffFrame
                     	puts "heat map redraw in this loop"
                     	socketIO.broadcast( 
                                        { 
