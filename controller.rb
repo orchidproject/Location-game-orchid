@@ -424,7 +424,8 @@ end
 		#CHANGE TO ADAPT TO GRID SIZE (400/X)
 		#Library Jubilee Campus (debugging) 52.953664,-1.188509
 		#Wollaton Park 52.9491938, -1.2144399
-        @simulation = Simulation.new("simulation_data_03.txt", 52.953664, -1.188509, 8, Time.now, 0.1)
+		#North of Jubilee campus 52.956046,-1.18878
+        @simulation = Simulation.new("simulation_data_03.txt", 52.956046, -1.18878, 8, Time.now, 0.1)
         
         game.tasks.each do |t|
             # if t.status.eql? "active"
