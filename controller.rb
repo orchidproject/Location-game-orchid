@@ -427,19 +427,20 @@ end
 		#North of Jubilee campus 52.956046,-1.18878
         @simulation = Simulation.new("simulation_data_03.txt", 52.956046, -1.18878, 8, Time.now, 0.1)
         
-        game.tasks.each do |t|
-            # if t.status.eql? "active"
-            socketIO.broadcast({
-                :id => t.id,
-                :type=>t.type,
-                :requirement=>t.requirement,
-                :description=> t.description,
-                :longitude => t.longitude.to_s('F'),
-                :latitude => t.latitude.to_s('F'),
-                :status => t.status
-            }.to_json)
-            #end
-        end
+        
+        # game.tasks.each do |t|
+#             # if t.status.eql? "active"
+#             socketIO.broadcast({
+#                 :id => t.id,
+#                 :type=>t.type,
+#                 :requirement=>t.requirement,
+#                 :description=> t.description,
+#                 :longitude => t.longitude.to_s('F'),
+#                 :latitude => t.latitude.to_s('F'),
+#                 :status => t.status
+#             }.to_json)*/
+#             #end
+#         end
         
         count=0
         
