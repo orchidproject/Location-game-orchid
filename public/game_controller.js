@@ -62,8 +62,10 @@ function receiveHeatmapData(data){
     var i=0;
     for (i=0; i<data.length; i++){
        if(heat_map[data[i].index]==null){
-       		var point=new google.maps.LatLng(data[i].lat, data[i].lng);
-       		heat_map[data[i].index]=new google.maps.Circle(pick_overlay( data[i].value, point))
+       		if (data[i].value>0){
+       			var point=new google.maps.LatLng(data[i].lat, data[i].lng);
+       			heat_map[data[i].index]=new google.maps.Circle(pick_overlay( data[i].value, point))
+       		}
        }
        else{
        		var point=new google.maps.LatLng(data[i].lat, data[i].lng);
@@ -72,7 +74,7 @@ function receiveHeatmapData(data){
     }
 	
 }
-var HEAT_MAP_COLORS = ["#202020","#3B3B3B","#3B3D64","#3F3CAD","#4B85F3","#3CBDC3","#56D355","#FFFB3D","#FF9F48","#FD3B3B"];
+var HEAT_MAP_COLORS = ["#202020","#3B3B3B","#3B3D64","#3F3CAD","#4B85F3","#3CBDC3","#56D355","#FFFB3D","#FF9F48","#FD3B3B","#FD3B3B"];
 function pick_overlay(value, point){
 		var circleOptions = {
         		strokeColor: HEAT_MAP_COLORS[value],
