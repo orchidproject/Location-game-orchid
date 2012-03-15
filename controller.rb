@@ -452,14 +452,16 @@ end
                 update_game(game)
 				
 				
-				#diffFrame can be nil, (when there is no diff between two frames) 
-				diffFrame=@simulation.getIndexedDiffFrame(Time.now)
+				
 				
 				
                 if count%6==0 && diffFrame
-                    
-                    puts "heat map redraw in this loop"
-                    socketIO.broadcast( 
+                    #diffFrame can be nil, (when there is no diff between two frames) 
+					diffFrame=@simulation.getIndexedDiffFrame(Time.now)
+					
+					if diffFarme
+                    	puts "heat map redraw in this loop"
+                    	socketIO.broadcast( 
                                        { 
                                        :channel=> "#{game_id}-1",             
                                        :data=>{
@@ -467,6 +469,7 @@ end
                                         :heatmap=>diffFrame
                                        }
                                        }.to_json)
+                    end
 
                     
                 end
