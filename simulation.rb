@@ -252,7 +252,7 @@ class Simulation
                 end
         	end
         	
-        	puts "heatmap initial update"
+        	puts "heatmap initial update #{arrayWithLatLng.to_s}"
         	@previous_time = time
         	return arrayWithLatLng
     	end
