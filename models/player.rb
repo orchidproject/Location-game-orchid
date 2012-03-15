@@ -1,6 +1,6 @@
 class Player
     
-    #@@skill = ["medic","ambulance","soldier","transporter"]
+  @@skill = ["medic","ambulance","soldier","transporter"]
     
     
     
@@ -26,7 +26,10 @@ class Player
   has n, :cargos
     
   has n, :requests
-
+  def skill_string()
+  	return @@skill[self.skill-1]
+  
+  end 
 
   def add_points(points)
     update :points_cache => (self.points_cache + points.to_i)

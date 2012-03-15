@@ -1,11 +1,8 @@
-var SOCKET_IO_ADDRESS = 'http://localhost:49991'; //'http://holt.mrl.nott.ac.uk:49992'; //
-var NODE_JS_ADDRESS = 'http://localhost:8080'; //'http://holt.mrl.nott.ac.uk:8080'
-
-
-
 var setup = false;
 
-var GameMap = {
+
+//duplication in game-common
+/*var GameMap = {
 	fitToRadius: function(radius) {
 	  var center = map.getCenter();
 	  var topMiddle = google.maps.geometry.spherical.computeOffset(center, radius, 0);
@@ -15,7 +12,7 @@ var GameMap = {
 	  bounds.extend(bottomMiddle);
 	  map.fitBounds(bounds);
 	}
-}
+}*/
 
 var lastRequestTime = 0;
 
@@ -33,39 +30,6 @@ var cg = {
 	}
 }
 
-var coinSpriteURL = "/img/gameboard-sprite.png";
-var coinHeight = 25;
-var coins = {
-	10: {
-		red: new google.maps.MarkerImage(coinSpriteURL, cg.s(17,17),  cg.p(0, 277), cg.p(17/2, 17/2)),
-		blue: new google.maps.MarkerImage(coinSpriteURL, cg.s(17,17), cg.p(0, 302), cg.p(17/2, 17/2)),
-		grey: new google.maps.MarkerImage(coinSpriteURL, cg.s(17,17), cg.p(0, 327), cg.p(17/2, 17/2))
-	},
-	20: {
-		red: new google.maps.MarkerImage(coinSpriteURL, cg.s(19,19),  cg.p(17, 276), cg.p(19/2, 19/2)),
-		blue: new google.maps.MarkerImage(coinSpriteURL, cg.s(19,19), cg.p(17, 301), cg.p(19/2, 19/2)),
-		grey: new google.maps.MarkerImage(coinSpriteURL, cg.s(19,19), cg.p(17, 326), cg.p(19/2, 19/2))
-	},
-	30: {
-		red: new google.maps.MarkerImage(coinSpriteURL, cg.s(21,21),  cg.p(36, 275), cg.p(21/2, 21/2)),
-		blue: new google.maps.MarkerImage(coinSpriteURL, cg.s(21,21), cg.p(36, 299), cg.p(21/2, 21/2)),
-		grey: new google.maps.MarkerImage(coinSpriteURL, cg.s(21,21), cg.p(36, 325), cg.p(21/2, 21/2))
-	},
-	50: {
-		red: new google.maps.MarkerImage(coinSpriteURL, cg.s(25,25),  cg.p(57, 273), cg.p(25/2, 25/2)),
-		blue: new google.maps.MarkerImage(coinSpriteURL, cg.s(25,25), cg.p(57, 298), cg.p(25/2, 25/2)),
-		grey: new google.maps.MarkerImage(coinSpriteURL, cg.s(25,25), cg.p(57, 323), cg.p(25/2, 25/2))
-	}
-};
-
-
-//var truckImageURL = "/img/truck.png";
-//var truckIcon= new google.maps.MarkerImage(truckImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
-//var pollutantImageURL = "/img/skull.png";
-//var pollutantIcon= new google.maps.MarkerImage(pollutantImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
-//var pollutantImageURL_exposed = "/img/skull-exposed.png";
-//var pollutantIcon_exposed = new google.maps.MarkerImage(pollutantImageURL_exposed, playerIconSize, playerIconOrigin, playerIconAnchor);
-
 var playerIconSize = new google.maps.Size(32, 32);
 var playerIconOrigin = new google.maps.Point(0,0);
 var playerIconAnchor = new google.maps.Point(16, 32);
@@ -77,85 +41,16 @@ var playerIcons = {
 var taskIcon = playerIcons['blue']; 
 var personSkillA = playerIcons['red'];
 
-
-var requests = [];
 var players = [];
 var boxes = [];
 var tasks = [];
 
 var lastGeigerPlayTime = 0;
-
-
-
-//var readings = [];
-//var cargos = [];
-
-
-
-var truckMarker;
-
-
-var people = [];
 var player_profiles = [];
 // player icon: '/player/' + player.geoloqi_id + "/" + player.team + '/map_icon.png'
 
 
-function deleteCoin(id) {
-	$(pellets).each(function(i, pellet) {
-		if(pellet.id == id) {
-			pellet.marker.setMap(null);
-		}
-	});
-}
 
-var infowindow = new google.maps.InfoWindow({
-        content: ""
-    });
-
-function receiveReadingData(data) {
-    
-    
-	var icon=cg.playerImage(data.value, 'blue');
-    
-    
-	if(typeof readings[data.player_id] == "undefined") {
-        
-		readings[data.player_id] = {
-			id: data.id,
-            player_id : data.player_id,
-            value: data.value,
-			marker: new google.maps.Marker({
-				position: new google.maps.LatLng(data.latitude, data.longitude),
-				map: map,
-				icon: icon,
-                clickable:true
-			
-            })
-		};
-        infowindow.setContent("<h5> reported by "+players[data.player_id].name+"</h5><br><h5> value: "+data.value+"</h5><br>");
-        
-        google.maps.event.addListener(readings[data.player_id].marker, 'click', function() {
-            
-            infowindow.open(map,readings[data.player_id].marker);
-        });
-	} else {
-		// one user have one readings displayed
-		var p = readings[data.player_id];
-		if(true) {
-            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-            p.marker.setIcon(icon);
-        } else {
-			console.debug("coin already claimed");
-		}
-        infowindow.setContent("<h5> reported by "+players[data.player_id].name+"</h5><br><h5> value: "+data.value+"</h5><br>");
-        google.maps.event.addListener(p.marker, 'click', function() {
-           
-            infowindow.open(map,p.marker);
-        });
-	}
-    
-    
-}
 
 var log="";
 function saveLog(data){
@@ -163,35 +58,6 @@ function saveLog(data){
     
 }
 
-function receiveRequestData(data) {
-    
-    
-	markerIcon = coins[10].grey;
-	if(typeof requests[data.id] == "undefined") {
-		requests[data.id] = {
-			id: data.id,
-            radius: data.radius,
-			marker: new google.maps.Marker({
-				position: new google.maps.LatLng(data.latitude, data.longitude),
-				map: map,
-				icon: markerIcon
-			})
-		};
-	} else {
-		// Coin is already on the screen, decide whether we should update it
-		var p = requests[data.id];
-		if(true) {
-			p.marker.setMap(null);
-			p.marker = new google.maps.Marker({
-				position: new google.maps.LatLng(data.latitude, data.longitude),
-				map: map,
-				icon: markerIcon
-			});
-		} else {
-			console.debug("coin already claimed");
-		}
-	}
-}
 
 
 function receiveBoxData(data) {
@@ -227,6 +93,8 @@ function receiveBoxData(data) {
         
 }
 
+
+
 function receiveTaskData(data) {
 	//schema: task { id: integer , player_id: [ array of integer ] , latitude: float , longitude: float, description: string, completed: boolean }
 
@@ -261,6 +129,7 @@ function receiveTaskData(data) {
     }
         
 }
+
 
 var latestMsgId = 0;
 
@@ -326,100 +195,14 @@ function playSound(filename, path) {
 
 
 
-//function receiveCargoData(data) {
-//    var markerIcon;
-//	var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
-//    if(data.exposed) {
-//        markerIcon = pollutantIcon_exposed;
-//    }
-//    else{
-//        markerIcon = pollutantIcon;
-//    }
-//    
-//    
-//    //visible to truck anyway
-//    if ( $("#user_team").val() == "truck" ){
-//        data.exposed=true;
-//    }
-//	    
-//    if(typeof cargos[data.id] == "undefined") {
-//        
-//        cargos[data.id] = {
-//            id: data.id,
-//            value: data.value,
-//            radius: data.radius,
-//            marker: new google.maps.Marker({
-//                position: new google.maps.LatLng(data.latitude, data.longitude),
-//                map: map,
-//                icon: markerIcon,
-//                visible: data.exposed
-//            })
-//        };
-//    } else {
-//        //update 
-//        var p = cargos[data.id];
-//            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-//            p.radius = data.radius;
-//            p.marker.setVisible(data.exposed);
-//            p.marker.setIcon(markerIcon);
-//    }
-//        
-//}
-
-
-
-
-
-//add markers to player's array 
-function receiveLocationData(data) {
-
-	var id = data.player_id;
-	var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
-	var exists;
-	if(typeof players[data.player_id] == "undefined"){
-		
-
-	
-    }else{
-			var player = players[data.player_id];
-            if(player.team == "runner"){
-                markerIcon=cg.playerImage(player.name, 'red');
-            }
-            else if(player.team == "truck"){
-                markerIcon=truckIcon;
-            }
-            
-            if(typeof player.marker == "undefined"){
-            
-                player.marker = new google.maps.Marker({
-                    position: myLatLng,
-                    map: map,
-                    icon: markerIcon
-                });
-                
-                if(player.team == "truck"){
-                    truckMarker = player.marker;
-                }
-                
-            }
-            else{
-                player.marker.setPosition(myLatLng);
-            }
-		
-	}
-
-}
-
 function errorCheck(data){
     if (typeof data.error != 'undefined'){
         alert(data.error);
     }
 }
 
-function receiveTextMassage(data){
-    alert(data.content);
-}
 
+///////////////////////heatmap drawing/////////////////
 var backGroundRec;
 var heat_map=[];
 
@@ -500,57 +283,10 @@ function saveLog(data){
     
 }
 
-function cleanup(data){
-    if (typeof data.player != "undefined"){
-        $(data.player).each(function(i,id){
-            var p=players[id];
-            if(p!=null){
-                p.marker.setMap(null);
-                if (p.team=="controller"){
-                    $(requests).each(function(i,r){
-                        r.marker.setMap(null);
-                    });
-                }
-                else if (p.team == "truck"){
-                    $(cargos).each(function(i,c){
-                        c.marker.setMap(null);
-                    });
-                }
-                else if (p.team == "runner"){
-                    reading[id].setMap(null);
-                }
-            }
-        });
-    }
-    if (typeof data.request != "undefined"){
-        $(data.request).each(function(i,id){
-            if(requests[id] != null){
-                requests[id].marker.setMap(null);
-            }
-        });
-    
-    }
-    if (typeof data.cargo != "undefined"){
-        $(data.cargo).each(function(i,id){
-            if(cargos[id] != null){
-                cargos[id].marker.setMap(null);
-            }
-        });
-    }
-    
-    if (typeof data.reading != "undefined"){
-        $(data.reading).each(function(i,id){
-            if(readings[id] != null){
-                readings[id].marker.setMap(null);
-            }
-        });
-    }
-
-}
 
                     
 
-
+//legacy but will be useful in future
 function filter(data){
 
     if($("#user_team").val()=="truck"){
@@ -583,10 +319,7 @@ function filter(data){
 
 }
 
-function endGame(){
 
-
-}
 
 function getTime() {
    var now = new Date();
@@ -614,7 +347,7 @@ function pushToTaskHistory(message, identifier) {
 	taskList.listview( "refresh" );  
 }
 
-// Load the initial game state and place the pins on the map. Sample data in pellets.json
+// Load the initial game state
 // This function polls the game server for data.
 function updateGame(oneTime) {
 	$.ajax({ 
@@ -640,27 +373,7 @@ function updateGame(oneTime) {
                 }
             });
             
-			$(data.request).each(function(i, request) {
-                var d=filter({"request":request});
-                if(typeof data.request != "undefined"){
-                    receiveRequestData(d.request);
-                }
-			});
-            
-            $(data.reading).each(function(i, reading){
-               var d=filter({"reading":reading});
-               if(typeof d.reading != "undefined"){
-                receiveReadingData(d.reading);
-               }
-            });
-            
-    
-            $(data.cargo).each(function(i, po){
-                var d=filter({"cargo":po});
-                if(typeof d.cargo != "undefined"){
-                    receiveCargoData(d.cargo);
-                }
-            });
+			
             
 			lastRequestTime = Math.round((new Date()).getTime() / 1000);
 			if(!oneTime)
@@ -709,3 +422,231 @@ function testReceive(test) {
 		receiveMessageData(data);
 	}
 }
+
+function system(data){
+    
+    if (data=="start"){
+        window.location="myapp://app_action/start";
+        location.reload();
+    }
+    //js will try to communicate with naive code
+    else if(data=="end"){
+        var results = "";
+        
+        $(players).each(function(i, player){
+            if(typeof player != "undefined"){
+                results=results+ player.name+ ":" + player.points_cache + "\n";
+            }
+        });
+        alert(log);
+        //push it back to server
+         $.ajax({ 
+            url: NODE_JS_ADDRESS+"/push_log",
+            type: "POST",
+            data: JSON.stringify({player_id:$("#user_id").val(),game_id:$("#layer_id").val(),data:log}),
+            dataType:"json",
+            success: function(data) {
+                           
+            }
+        });    
+        alert("Game ended\n Results: \n"+results);
+        
+        
+        window.location="myapp://app_action/end"
+        location.reload();
+    }
+    else if(data=="reset"){
+        window.location="myapp://app_action/reset"
+        
+    }
+    else if(data=="ready_check"){
+        var ready=confirm("Ready check");
+         $.ajax({ 
+            url: "/player/ready_check",
+            type: "GET",
+            data: {"ready":ready, "id": $("#user_id").val()},
+            dataType:"json",
+            success: function(data) {
+                           
+            }
+        });    
+    }
+
+
+}
+
+
+//legacy function from jtruck
+
+/*function receiveReadingData(data) {
+    
+    
+	var icon=cg.playerImage(data.value, 'blue');
+    
+    
+	if(typeof readings[data.player_id] == "undefined") {
+        
+		readings[data.player_id] = {
+			id: data.id,
+            player_id : data.player_id,
+            value: data.value,
+			marker: new google.maps.Marker({
+				position: new google.maps.LatLng(data.latitude, data.longitude),
+				map: map,
+				icon: icon,
+                clickable:true
+			
+            })
+		};
+        infowindow.setContent("<h5> reported by "+players[data.player_id].name+"</h5><br><h5> value: "+data.value+"</h5><br>");
+        
+        google.maps.event.addListener(readings[data.player_id].marker, 'click', function() {
+            
+            infowindow.open(map,readings[data.player_id].marker);
+        });
+	} else {
+		// one user have one readings displayed
+		var p = readings[data.player_id];
+		if(true) {
+            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
+            p.marker.setIcon(icon);
+        } else {
+			console.debug("coin already claimed");
+		}
+        infowindow.setContent("<h5> reported by "+players[data.player_id].name+"</h5><br><h5> value: "+data.value+"</h5><br>");
+        google.maps.event.addListener(p.marker, 'click', function() {
+           
+            infowindow.open(map,p.marker);
+        });
+	}
+    
+    
+}
+
+//var requests = [];
+//var truckMarker;
+/*function receiveRequestData(data) {
+    
+    
+	markerIcon = coins[10].grey;
+	if(typeof requests[data.id] == "undefined") {
+		requests[data.id] = {
+			id: data.id,
+            radius: data.radius,
+			marker: new google.maps.Marker({
+				position: new google.maps.LatLng(data.latitude, data.longitude),
+				map: map,
+				icon: markerIcon
+			})
+		};
+	} else {
+		// Coin is already on the screen, decide whether we should update it
+		var p = requests[data.id];
+		if(true) {
+			p.marker.setMap(null);
+			p.marker = new google.maps.Marker({
+				position: new google.maps.LatLng(data.latitude, data.longitude),
+				map: map,
+				icon: markerIcon
+			});
+		} else {
+			console.debug("coin already claimed");
+		}
+	}
+}*/
+
+
+
+
+//function receiveCargoData(data) {
+//    var markerIcon;
+//	var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
+//    if(data.exposed) {
+//        markerIcon = pollutantIcon_exposed;
+//    }
+//    else{
+//        markerIcon = pollutantIcon;
+//    }
+//    
+//    
+//    //visible to truck anyway
+//    if ( $("#user_team").val() == "truck" ){
+//        data.exposed=true;
+//    }
+//	    
+//    if(typeof cargos[data.id] == "undefined") {
+//        
+//        cargos[data.id] = {
+//            id: data.id,
+//            value: data.value,
+//            radius: data.radius,
+//            marker: new google.maps.Marker({
+//                position: new google.maps.LatLng(data.latitude, data.longitude),
+//                map: map,
+//                icon: markerIcon,
+//                visible: data.exposed
+//            })
+//        };
+//    } else {
+//        //update 
+//        var p = cargos[data.id];
+//            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
+//            p.radius = data.radius;
+//            p.marker.setVisible(data.exposed);
+//            p.marker.setIcon(markerIcon);
+//    }
+//        
+//}
+
+
+
+
+
+//Legacy function from Jtruck
+
+/*
+function receiveLocationData(data) {
+
+	var id = data.player_id;
+	var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
+	var exists;
+	if(typeof players[data.player_id] == "undefined"){
+		
+
+	
+    }else{
+			var player = players[data.player_id];
+            if(player.team == "runner"){
+                markerIcon=cg.playerImage(player.name, 'red');
+            }
+            else if(player.team == "truck"){
+                markerIcon=truckIcon;
+            }
+            
+            if(typeof player.marker == "undefined"){
+            
+                player.marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    icon: markerIcon
+                });
+                
+                if(player.team == "truck"){
+                    truckMarker = player.marker;
+                }
+                
+            }
+            else{
+                player.marker.setPosition(myLatLng);
+            }
+		
+	}
+
+}
+ 
+ function receiveTextMassage(data){
+ alert(data.content);
+ }
+ 
+ 
+ */

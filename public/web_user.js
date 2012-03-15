@@ -3,28 +3,94 @@
 // object to the function. The object will have come from either
 // Geoloqi with the location of someone in the game, or from the game
 // server with data about the coins on the map.
-var times=0;
 
-function joinGame(team) {
-    $.ajax({ 
-		url: "/game/"+$("#layer_id").val()+"/webjoin",
-		type: "GET",
-		data: {"team": team},
-		dataType: "json", 
-		success: function(data) {
-            if (typeof data.error != 'undefined'){
-                alert(data.error);
-            }
-            else{
-                location.reload();
-            }
-                   
-        }
-        
-    });
+
+function handleSocketData(dataStr) {
+    
+    //var data = dataStr;
+    
+    
+    //parse string from native app
+  	var dataStr0 = jQuery.stringify(dataStr);
+	var dataStr1 = dataStr0.substring(1,dataStr0.length-1);
+	//alert('string arrived for you: ' + dataStr1);
+	var data = jQuery.parseJSON(dataStr1);
+    //alert('health at ' + data.health.value);
+    alert("after parse"+jQuery.stringify(data));
+    
+    if(typeof data.health != "undefined") {
+    	//alert('entering health');
+    	receiveHealthData(data.health);
+    } else {
+    	//alert('did not enter health');
+    	//alert(data);
+    }
+    
+    
+    if(typeof data.system != "undefined"){
+        system(data.system); 
+    }
+    
+    
+    if(typeof data.heatMap != "undefined"){
+    	//receiveHeatmapData(data.heatMap); heatMap data will not be broadcasted to mobile
+    }
+    
+    if(typeof data.location != "undefined"){
+    	//alert("in location");
+        receivePlayerData(data.location);
+    }
+    
+    if(typeof data.box != "undefined") {
+    	receiveBoxData(data.box);
+    }
+    
+    if(typeof data.task != "undefined") {
+    	receiveTaskData(data.task);
+    }
+    
+    if(typeof data.message != "undefined") {
+    	receiveMessageData(data.message);
+    }
+    
+    
+    if(typeof data.exposure != "undefined") {
+    	receiveExposureData(data.exposure);
+    }
+    
+    
+    
 }
 
-function LQHandlePushData(data) {
+
+
+
+
+
+
+
+
+/*
+ function joinGame(team) {
+ $.ajax({ 
+ url: "/game/"+$("#layer_id").val()+"/webjoin",
+ type: "GET",
+ data: {"team": team},
+ dataType: "json", 
+ success: function(data) {
+ if (typeof data.error != 'undefined'){
+ alert(data.error);
+ }
+ else{
+ location.reload();
+ }
+ 
+ }
+ 
+ });
+ }
+ 
+ function LQHandlePushData(data) {
 
 	// Location broadcasts from the group will have a user_id key
 	if(typeof data.user_id != "undefined"){
@@ -66,60 +132,12 @@ function LQHandlePushData(data) {
             
         }
     }
-}
-
-function system(data){
-    
-    if (data=="start"){
-        window.location="myapp://app_action/start";
-        location.reload();
-    }
-    else if(data=="end"){
-        var results = "";
-        
-        $(players).each(function(i, player){
-            if(typeof player != "undefined"){
-                results=results+ player.name+ ":" + player.points_cache + "\n";
-            }
-        });
-        alert(log);
-        //push it back to server
-         $.ajax({ 
-            url: NODE_JS_ADDRESS+"/push_log",
-            type: "POST",
-            data: JSON.stringify({player_id:$("#user_id").val(),game_id:$("#layer_id").val(),data:log}),
-            dataType:"json",
-            success: function(data) {
-                           
-            }
-        });    
-        alert("Game ended\n Results: \n"+results);
-        
-        
-        window.location="myapp://app_action/end"
-        location.reload();
-    }
-    else if(data=="reset"){
-        window.location="myapp://app_action/reset"
-        
-    }
-    else if(data=="ready_check"){
-        var ready=confirm("Ready check");
-         $.ajax({ 
-            url: "/player/ready_check",
-            type: "GET",
-            data: {"ready":ready, "id": $("#user_id").val()},
-            dataType:"json",
-            success: function(data) {
-                           
-            }
-        });    
-    }
+}*/
 
 
-}
 
-var socket;
+//web-based socket.io, for browser test, uncomment this function
+/*var socket;
 $(document).ready(function() {
     updateGame(true);
 	socket = io.connect(  'http://holt.mrl.nott.ac.uk:49991', { //'http://localhost:4567', { //
@@ -147,13 +165,18 @@ $(document).ready(function() {
     //window.location="myapp://app_action/joined?"+$("#user_id").val()+"&"+$("#user_team").val();
     //to do 
     //$("#player-score .value").html($("#user_initials").val());
+ 
+ function locationUpdate(userID, latitude, longitude){
+ socket.emit('location-push',{ player_id:userID,latitude:latitude,longitude:longitude});
+ }
     
-});
+});*/
 
 
 
 
-function locationUpdate(userID, latitude, longitude){
-    socket.emit('location-push',{ player_id:userID,latitude:latitude,longitude:longitude});
-}
+
+
+
+
 

@@ -8,7 +8,14 @@ simulation = Simulation.new("simulation_data_03.txt", 52.953664, -1.188509, 8, T
 	#sleep 1
 #end
 
+#(2..400).each do |i|
+#	simulation.visualize_diff(i)
+#	sleep 1
+#end
+
 (2..400).each do |i|
-	simulation.visualize_diff(i)
+	simulation.getIndexedDiffFrame(Time.now)
 	sleep 1
 end
+
+

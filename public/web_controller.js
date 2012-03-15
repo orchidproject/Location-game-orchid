@@ -1,5 +1,3 @@
-//modified:
-
 var socket;
 
 $(document).ready(function() {
@@ -25,23 +23,20 @@ $(document).ready(function() {
         }
         
         if(typeof data.system != "undefined"){
-            system(data.system);
+            system(data.system); 
         }
               
         if(typeof data.heatmap != "undefined"){
               receiveHeatmapData(data.heatmap);
         }
         
-        if(typeof data.player != "undefined"){
-            receivePlayerData(data.player);
-        }
-        
+        //not sure whether this is implemented
         if(typeof data.textMassage != "undefined"){
             receiveTextMassage(data.textMassage);
         }
         
         if(typeof data.location != "undefined"){
-            receiveLocationData(data.location);
+            receivePlayerData(data.location);
         }
         
         if(typeof data.request != "undefined"){
@@ -57,11 +52,7 @@ $(document).ready(function() {
         }
         
         if(typeof data.cleanup != "undefined"){
-                cleanup(data.cleanup);
-        }
-        
-        if(typeof data.radiation != "undefined"){
-                receiveRadiationBit(data.radiation);
+                //cleanup(data.cleanup); not implemented now
         }
 			
 		       
@@ -71,6 +62,21 @@ $(document).ready(function() {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* legacy fuction from jtruck
 function joinGame(team) {
     $.ajax({ 
 		url: "/game/"+$("#layer_id").val()+"/webjoin",
@@ -89,9 +95,10 @@ function joinGame(team) {
         
     });
 }
-
+*/
+//legacy
 ////////////////player actions//////////////////
-
+/*
 function sendRequest(event){
     $.ajax({ 
 		url: "/game/"+$("#layer_id").val()+"/request",
@@ -117,11 +124,12 @@ function dropCargo(){
     });
 }
 
-
+*/
 /////////////////////////////
 //this is a for animated movement of truck
-//
-
+//legacy
+////
+/*
 var previousMoveId=0;
 var count=0;
 var lngPerStep;
@@ -158,58 +166,17 @@ function moveOneStep() {
         }
 }
 
-function system(data){
-    
-    if (data=="start"){
-        location.reload();
-    }
-    else if(data=="end"){
-        var results = "";
-        
-        $(players).each(function(i, player){
-            if(typeof player != "undefined"){
-                results=results+ player.name+ ":" + player.points_cache + "\n";
-            }
-        });
-        alert(log);
-        //push it back to server
-         $.ajax({ 
-            url: NODE_JS_ADDRESS+"/push_log",
-            type: "POST",
-            data: JSON.stringify({player_id:$("#user_id").val(),game_id:$("#layer_id").val(),data:log}),
-            dataType:"json",
-            success: function(data) {
-                           
-            }
-        });    
-        alert("Game ended\n Results: \n"+results);
-        
-        
-        location.reload();
-    }
-    else if(data=="reset"){
-        location.reload();
-    }
-    else if(data=="ready_check"){
-        var ready=confirm("Ready check");
-         $.ajax({ 
-            url: "/player/ready_check",
-            type: "GET",
-            data: {"ready":ready, "id": $("#user_id").val()},
-            dataType:"json",
-            success: function(data) {
-                           
-            }
-        });    
-    }
+*/
 
-}
 
 //////////////////////////////////
 //
-//game server request
+//legacy
 //
-//
+////
+
+/*
+
 function getTruck(){
     index=-1;
     $(players).each(function(i, p){
@@ -226,3 +193,5 @@ function updateTruckLocation(){
     var truck= getTruck();
     socket.emit('location-push',{ player_id:truck.id,latitude:truckMarker.position.lat(),longitude:truckMarker.position.lng()});
 }
+
+*/
