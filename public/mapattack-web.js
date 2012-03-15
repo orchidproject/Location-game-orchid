@@ -20,8 +20,8 @@ $(document).ready(function() {
         data=filter(data);
         saveLog(data);
         
-        if(typeof data.exposure != "undefined"){
-            receiveExposureData(data.exposure);
+        if(typeof data.acc_exposure != "undefined"){
+            receiveExposureData(data.acc_exposure);
         }
         
         if(typeof data.system != "undefined"){
