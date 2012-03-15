@@ -221,20 +221,23 @@ function receiveTextMassage(data){
 
 
 function receiveExposureData(data){
-    document.getElementById("exposure_"+data.player_id).innerHTML=data.value;
+    document.getElementById("acc_exposure_"+data.player_id).innerHTML=data.value;
     
     var level = document.getElementById("level_"+data.player_id);
     if (data.value <= 50) {
     	level.innerHTML = "Low"; 
     }
-    else if (data.value > 50 && data.level <=100)   {
+    else if (data.value > 50 && data.level <=350)   {
     	level.innerHTML = "Increased"; 
     }
-    else if (data.value > 100 && data.level <=150)   {
+    else if (data.value > 350 && data.level <=750)   {
+    	level.innerHTML = "High"; 
+    }
+    else if (data.value > 750 && data.level <=999)   {
     	level.innerHTML = "Critical"; 
     }
-    else if (data.value > 150)   {
-    	level.innerHTML = "Extreme"; 
+    else if (data.value >= 1000)   {
+    	level.innerHTML = "Incapacitated"; 
     }
 }
 
