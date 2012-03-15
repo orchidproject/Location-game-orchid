@@ -235,34 +235,59 @@ class Simulation
     	return false
     end 
     
-    def getIndexedDiffFrame(frame_number)
+    def getIndexedDiffFrame(time)
+    	frame_number= getTimeIndex(time)
+    	
     	
         arrayWithLatLng=Array.new(@x_size) {Array.new(@y_size)}
-    	if frame_number==1
+    	
+    	#if it is the first time, get the initial frame
+    	if !@previous_time
     		(0..(@y_size-1)).each do |y|
             	(0..(@x_size-1)).each do |x|
                 	lat=getLat(y)
                 	lng=getLong(x)
-                	value=getReadingByIndex(y, x, Time.now)
+                	value=(getReadingByIndex(y, x, time)/10).floor
                 	arrayWithLatLng[x][y]={:value=>value,:lat=>lat,:lng=>lng}
-                
-            	end
+                end
         	end
-        
+        	
+        	puts "first time"
+        	@previous_time = time
         	return arrayWithLatLng
     	end
     	
+    	
+    	
+    	#return a nil there is no diff between two frames
+    	previous_frame_number=getTimeIndex(@previous_time)
+    	if previous_frame_number==frame_number
+    		@previous_time = time
+    		puts "no diff"
+    		return nil
+    	end
+    		
+    	#caculate diff and return array
+    	count=0
     	(0..(@y_size-1)).each do |y|
             	(0..(@x_size-1)).each do |x|
                 	lat=getLat(y)
                 	lng=getLong(x)
-                	previous_value=value=getReadingByIndex(y, x, Time.now)
-                	value=getReadingByIndex(y, x, Time.now)
-                	arrayWithLatLng[x][y]={:value=>value,:lat=>lat,:lng=>lng}
-                	@previous_time = Time.now
+                	
+                	previous_value=(getReadingByIndex(y, x, @previous_time)/10).floor
+                	value=(getReadingByIndex(y, x, time)/10).floor
+                	
+                	if value != previous_value 
+                		count=count+1
+                		arrayWithLatLng[x][y]={:value=>value,:lat=>lat,:lng=>lng}
+                	end
                 
             	end
         end
+        puts count
+        
+        @previous_time = time
+        return arrayWithLatLng
     	
     end 
 	

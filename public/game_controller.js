@@ -67,11 +67,37 @@ var player_profiles = [];
 // player icon: '/player/' + player.geoloqi_id + "/" + player.team + '/map_icon.png'
 
 
-//////heatmap drawing//////
+
 var backGroundRec;
 var heat_map=[];
 
 
+function receiveHeatmapData(data){
+	 if (backGroundRec == null){
+        var bound=new google.maps.LatLngBounds(
+                                           new google.maps.LatLng(data[0][data[0].length-1].lat,data[0][data[0].length-1].lng),
+                                           new google.maps.LatLng(data[data.length-1][0].lat,data[data.length-1][0].lng)
+                                           
+                                           );
+    
+        var options= {
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 3,
+            clickable: false,
+            fillColor: "#FF0000",
+            fillOpacity: 0,
+            map: map,
+            bounds:bound
+        
+        }
+        backGroundRec=new google.maps.Rectangle();
+        backGroundRec.setOptions(options);
+    }
+	
+}
+//////old heatmap drawing//////
+/*
 function receiveHeatmapData(data){
     //$(data.player).each(function(i,id)
     //var
@@ -142,6 +168,7 @@ function pick_overlay(reading_value, point){
     return circleOptions;
 
 }
+*/
 
 var log="";
 function saveLog(data){
@@ -179,61 +206,6 @@ function receiveRequestData(data) {
 	}
 }
 
-
-/*
-function receiveRadiationBit(bit){
-
-	var pollutantIcon= new google.maps.MarkerImage(pollutantImageURL, playerIconSize, playerIconOrigin, playerIconAnchor);                    
-    var point = new google.maps.LatLng(bit.latitude,bit.longitude);
-                
-    	var marker = new google.maps.Marker({
-                position: point,
-                map: map,
-                icon: pollutantIcon
-        });
-        
-        var circleOptions = {
-        		strokeColor: "#FFFFB3",
-        		strokeOpacity: 0.8,
-        		strokeWeight: 2,
-        		fillColor: "#FFFFb3",
-        		fillOpacity: 0.35,
-        		map: map,
-        		center: point,
-                clickable:false,
-        		radius: 120
-        };
-        new google.maps.Circle(circleOptions);
-            	
-        var circleOptions = {
-        		strokeColor: "#00FF00",
-        		strokeOpacity: 0.8,
-        		strokeWeight: 2,
-        		fillColor: "#00FF00",
-        		fillOpacity: 0.35,
-        		map: map,
-        		center: point,
-                clickable:false,
-        		radius: 60
-        };
-        new google.maps.Circle(circleOptions);
-                
-        var circleOptions = {
-        		strokeColor: "#FF0000",
-        		strokeOpacity: 0.8,
-        		strokeWeight: 2,
-        		fillColor: "#FF0000",
-        		fillOpacity: 0.35,
-        		map: map,
-        		center: point,
-                clickable:false,
-        		radius: 50
-        };
-        new google.maps.Circle(circleOptions);
-             	
-        //radiationBits.push(point);     
-
-}*/
 
 
 

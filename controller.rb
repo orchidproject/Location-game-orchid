@@ -187,7 +187,7 @@ end
   end
 
   after do
-      #session[:geoloqi_auth] = geoloqi.auth
+      
   end
 
   get '/?' do
@@ -450,16 +450,21 @@ end
                 game=Game.first :layer_id=>game_id
                 puts "game #{game_id} loop running count #{count}"
                 update_game(game)
-                @simulation.getTimeFrame(Time.now) 
-
-                if count%6==0
+				
+				
+				#diffFrame can be nil, (when there is no diff between two frames) 
+				diffFrame=@simulation.getIndexedDiffFrame(Time.now)
+				
+				
+                if count%6==0 && diffFrame
                     
                     puts "heat map redraw in this loop"
                     socketIO.broadcast( 
                                        { 
                                        :channel=> "#{game_id}-1",             
                                        :data=>{
-                                       :heatmap=>@simulation.getTimeFrameWithLatLng(Time.now)
+                                       #:heatmap=>@simulation.getTimeFrameWithLatLng(Time.now)
+                                        :heatmap=>diffFrame
                                        }
                                        }.to_json)
 
