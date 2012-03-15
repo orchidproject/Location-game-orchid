@@ -59,15 +59,15 @@ var lastGeigerPlayTime = 0;
 //var backGroundRec;
 var heat_map=[];
 function receiveHeatmapData(data){
-    
-    $(data).each(function(i,cell){
-       if(heat_map[cell.index]==null){
-       		var point=new google.maps.LatLng(cell.lat, cell.lng);
-       		heat_map[cell.index]=new google.maps.Circle(pick_overlay( cell.value, point))
+    var i=0;
+    for (i=0; i<data.length; i++){
+       if(heat_map[data[i].index]==null){
+       		var point=new google.maps.LatLng(data[i].lat, data[i].lng);
+       		heat_map[data[i].index]=new google.maps.Circle(pick_overlay( data[i].value, point))
        }
        else{
-       		var point=new google.maps.LatLng(cell.lat, cell.lng);
-       		heat_map[cell.index].setOptions(pick_overlay( cell.value, point));
+       		var point=new google.maps.LatLng(data[i].lat, data[i].lng);
+       		heat_map[data[i].index].setOptions(pick_overlay( data[i].value, point));
        }
     });
 	
