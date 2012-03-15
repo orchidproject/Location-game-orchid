@@ -73,7 +73,7 @@ var heat_map=[];
 
 
 function receiveHeatmapData(data){
-	 if (backGroundRec == null){
+	 /*if (backGroundRec == null){
         var bound=new google.maps.LatLngBounds(
                                            new google.maps.LatLng(data[0][data[0].length-1].lat,data[0][data[0].length-1].lng),
                                            new google.maps.LatLng(data[data.length-1][0].lat,data[data.length-1][0].lng)
@@ -93,7 +93,7 @@ function receiveHeatmapData(data){
         }
         backGroundRec=new google.maps.Rectangle();
         backGroundRec.setOptions(options);
-    }
+    }*/
 	
 }
 //////old heatmap drawing//////

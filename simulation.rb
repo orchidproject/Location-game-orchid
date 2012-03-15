@@ -239,7 +239,7 @@ class Simulation
     	frame_number= getTimeIndex(time)
     	
     	
-        arrayWithLatLng=Array.new(@x_size) {Array.new(@y_size)}
+        arrayWithLatLng=[]
     	
     	#if it is the first time, get the initial frame
     	if !@previous_time
@@ -248,11 +248,11 @@ class Simulation
                 	lat=getLat(y)
                 	lng=getLong(x)
                 	value=(getReadingByIndex(y, x, time)/10).floor
-                	arrayWithLatLng[x][y]={:value=>value,:lat=>lat,:lng=>lng}
+                	arrayWithLatLng<<{:index=>"#{x}-#{y}",:value=>value,:lat=>lat,:lng=>lng}
                 end
         	end
         	
-        	puts "first time"
+        	puts "heatmap initial update"
         	@previous_time = time
         	return arrayWithLatLng
     	end
@@ -279,7 +279,7 @@ class Simulation
                 	
                 	if value != previous_value 
                 		count=count+1
-                		arrayWithLatLng[x][y]={:value=>value,:lat=>lat,:lng=>lng}
+                		arrayWithLatLng<<{:index=>"#{x}-#{y}",:value=>value,:lat=>lat,:lng=>lng}
                 	end
                 
             	end
