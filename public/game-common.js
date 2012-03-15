@@ -7,10 +7,10 @@ var taskIcon2 =  "/img/task_icon2.png";
 var taskIcon3 =  "/img/task_icon3.png";
 var taskIcon4 = "/img/task_icon4.png";
 
-var personSkillA = "/img/medic.png";
-var personSkillB =  "/img/soldier.png";
-var personSkillC =  "/img/ambulance.png";
-var personSkillD = "/img/convertible.png";
+var medic = "/img/medic.png";
+var soldier =  "/img/soldier.png";
+var ambulance =  "/img/ambulance.png";
+var transporter = "/img/convertible.png";
 
 var chosen_task_type = 0;
 
@@ -20,16 +20,16 @@ function getPlayerIcon(skill) {
 	var imageURL = "";
 	
     if(skill == 'medic') {
-            imageURL = personSkillA;
+            imageURL = medic;
     }
     else if(skill == 'soldier') {
-	    	imageURL = personSkillB; 
+	    	imageURL = soldier; 
     }
 	else if(skill == 'ambulance') {
-	    	imageURL = personSkillC;
+	    	imageURL = ambulance;
     }
     else if(skill == 'transporter') {
-	    	imageURL = personSkillD;
+	    	imageURL = transporter;
     }
 
     var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
