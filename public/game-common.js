@@ -17,7 +17,7 @@ var chosen_task_type = 0;
 
 function getPlayerIcon(skill) {
 
-	var imageURL = ""
+	var imageURL = "";
 	
     if(skill == 'medic') {
             imageURL = personSkillA;
