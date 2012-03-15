@@ -73,7 +73,7 @@ function receiveHeatmapData(data){
 	
 }
 var HEAT_MAP_COLORS = ["#202020","#3B3B3B","#3B3D64","#3F3CAD","#4B85F3","#3CBDC3","#56D355","#FFFB3D","#FF9F48","#FD3B3B"];
-function pick_overlay(reading_value, point){
+function pick_overlay(value, point){
 		var circleOptions = {
         		strokeColor: HEAT_MAP_COLORS[value],
         		strokeOpacity: 0.8,
