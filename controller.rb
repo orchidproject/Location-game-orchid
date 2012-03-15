@@ -455,11 +455,7 @@ end
                 puts "game #{game_id} loop running count #{count}"
                 update_game(game)
 				
-				
-				
-				
-				
-                if count%6==0
+				if count%6==0
                     #diffFrame can be nil, (when there is no diff between two frames) 
 					diffFrame=@simulation.getIndexedDiffFrame(Time.now)
 					

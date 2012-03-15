@@ -65,21 +65,11 @@ class Controller < Sinatra::Base
                 puts "current_exposure"
                 puts p.current_exposure
                 
-                #broadcast current exposure
-                socketIO.broadcast(
-                                   { 
-                                    :channel=> game.layer_id,             
-                                    :data=>{
-                                        :exposure=>{
-                                            :player_id=> p.id,
-                                            :value=>check_radiation(p.latitude,p.longitude)
-                                        }
-                                   }
-                                   
-                }.to_json)
-                
                 #broadcast exposure
+                p.update
                 p.broadcast_health(socketIO)
+                p.broadcast_acc_exposure(socketIO)
+                p.broadcast_curr_exposure(socketIO)
                  
                 p.save
              else

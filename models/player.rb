@@ -35,7 +35,14 @@ class Player
     update :points_cache => (self.points_cache + points.to_i)
     reload
   end
-    
+
+  def update
+  	self.health=100-(self.exposure/10)
+  
+  end 
+  
+  
+  
   def broadcast(io)
       io.broadcast( 
                          { 
@@ -59,7 +66,33 @@ class Player
                         :data=>{
                             :health=>{
                                 :player_id => self.id,
-                                :value => self.skill
+                                :value => self.health
+                            }
+                        }
+                     }.to_json)   
+  end 
+  
+  def broadcast_acc_exposure(io)
+        io.broadcast( 
+                     { 
+                        :channel=> self.game.layer_id,             
+                        :data=>{
+                            :health=>{
+                                :player_id => self.id,
+                                :value => self.exposure
+                            }
+                        }
+                     }.to_json)   
+  end 
+  
+  def broadcast_curr_exposure(io)
+        io.broadcast( 
+                     { 
+                        :channel=> self.game.layer_id,             
+                        :data=>{
+                            :health=>{
+                                :player_id => self.id,
+                                :value => self.current_exposure
                             }
                         }
                      }.to_json)   
