@@ -444,6 +444,10 @@ end
         
         Thread.abort_on_exception = true
         bg=Thread.new {
+        	#6 sec waiting, lett clients get ready
+        	sleep 6
+            
+            
             game_id=params[:layer_id]
             while(game.is_active==0) do
             

@@ -47,9 +47,6 @@ var playerIcons = {
 
 var taskIcon = playerIcons['blue']; 
 var personSkillA = playerIcons['red'];
-
-
-
 var players = [];
 var boxes = [];
 var tasks = [];
@@ -58,44 +55,40 @@ var lastGeigerPlayTime = 0;
 
 
 
-
-var truckMarker;
-
-
-var people = [];
-var player_profiles = [];
-// player icon: '/player/' + player.geoloqi_id + "/" + player.team + '/map_icon.png'
-
-
-
-var backGroundRec;
+//new heatmap drawing//
+//var backGroundRec;
 var heat_map=[];
-
-
 function receiveHeatmapData(data){
-	 /*if (backGroundRec == null){
-        var bound=new google.maps.LatLngBounds(
-                                           new google.maps.LatLng(data[0][data[0].length-1].lat,data[0][data[0].length-1].lng),
-                                           new google.maps.LatLng(data[data.length-1][0].lat,data[data.length-1][0].lng)
-                                           
-                                           );
     
-        var options= {
-            strokeColor: "#FF0000",
-            strokeOpacity: 0.8,
-            strokeWeight: 3,
-            clickable: false,
-            fillColor: "#FF0000",
-            fillOpacity: 0,
-            map: map,
-            bounds:bound
-        
-        }
-        backGroundRec=new google.maps.Rectangle();
-        backGroundRec.setOptions(options);
-    }*/
+    $(data).each(function(i,cell){
+       if(heat_map[cell.index]==null){
+       		var point=new google.maps.LatLng(cell.lat, cell.lng);
+       		heat_map[cell.index]=new google.maps.Circle(pick_overlay( cell.value, point))
+       }
+       else{
+       		var point=new google.maps.LatLng(cell.lat, cell.lng);
+       		heat_map[cell.index].setOptions(pick_overlay( cell.value, point));
+       }
+    });
 	
 }
+var HEAT_MAP_COLORS = ["#202020","#3B3B3B","#3B3D64","#3F3CAD","#4B85F3","#3CBDC3","#56D355","#FFFB3D","#FF9F48","#FD3B3B"];
+function pick_overlay(reading_value, point){
+		var circleOptions = {
+        		strokeColor: HEAT_MAP_COLORS[value],
+        		strokeOpacity: 0.8,
+        		strokeWeight: 0,
+        		fillColor: HEAT_MAP_COLORS[value],
+        		fillOpacity: 0.35,
+        		map: map,
+        		center: point,
+                clickable:false,
+        		radius: 5//0.5*5.71
+        };
+    return circleOptions;
+
+}
+
 //////old heatmap drawing//////
 /*
 function receiveHeatmapData(data){
