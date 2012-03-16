@@ -636,7 +636,7 @@ end
                            { 
                             :channel=> params[:layer_id],             
                             :data=>{
-                                    :textMassage=>{:content=>"#{player.name} join the game"}
+                                    :textMassage=>{:content=>"#{player.name} join the game"},
                            				:player=>{
                            					:id=> player.id,
                            					:name=> player.name,
