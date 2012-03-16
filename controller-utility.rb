@@ -70,6 +70,7 @@ class Controller < Sinatra::Base
          puts "game update"
          puts game.layer_id
          puts get_simulations(game.layer_id).object_id
+         sim = get_simulations(game.layer_id)
          game.players.each do |p|
          	 if (p.latitude == nil || p.longitude == nil)
          	 	puts "no location for user #{p.id}"
@@ -77,7 +78,7 @@ class Controller < Sinatra::Base
          	 end 
          	 
          	 
-             if(get_simulations(game.layer_id).isOnMap(p.latitude, p.longitude))
+             if(sim.isOnMap(p.latitude, p.longitude))
                 p.exposure = p.exposure + check_radiation(p.latitude,p.longitude)
                 p.current_exposure = check_radiation(p.latitude,p.longitude)
                 puts "acc_exposure"
