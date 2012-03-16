@@ -7,24 +7,24 @@ class Controller < Sinatra::Base
       end
   end
 
-  def get_truck(layer_id)
-      game=Game.first :layer_id=>layer_id
-      team = game.teams :name=>"truck"
-      
-      #only one truck player shoud be in the team 
-      truck= team.players.first
-      return truck
-  end
-
-  def get_controller(layer_id)
-      game=Game.first :layer_id=>layer_id
-      team = game.teams :name=>"controller"
-      
-      #only one truck player shoud be in the team 
-      controller= team.players.first
-      return controller 
-
-  end 
+  # def get_truck(layer_id)
+#       game=Game.first :layer_id=>layer_id
+#       team = game.teams :name=>"truck"
+#       
+#       #only one truck player shoud be in the team 
+#       truck= team.players.first
+#       return truck
+#   end
+# 
+#   def get_controller(layer_id)
+#       game=Game.first :layer_id=>layer_id
+#       team = game.teams :name=>"controller"
+#       
+#       #only one truck player shoud be in the team 
+#       controller= team.players.first
+#       return controller 
+# 
+#   end 
 
   def endGame(game)
     game.update(:is_active=>1)
@@ -39,13 +39,31 @@ class Controller < Sinatra::Base
     session.clear
   end 
             
-  def get_mainloops()
-        if !@mainloops
-            @mainloops=[]
-            
+  def get_mainloops(game_id)
+  
+  		if !$mainloops
+  			$mainloops=[]
+  			
+  		end 
+  		
+        if !$mainloops[game_id]
+        	$mainloops[game_id]=nil
         end
         
-        return @mainloops
+        return $mainloops[game_id]
+  end
+  
+  def get_simulations(game_id)
+  		if !$simulations
+  			$simulations=[]
+  			puts "simulation: #{$simulations.object_id}"
+  		end 
+        
+        if !$simulations[game_id]
+        	$simulations[game_id]=nil
+        end
+        
+        return $simulations[game_id]
   end
             
   def update_game(game)

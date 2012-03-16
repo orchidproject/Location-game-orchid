@@ -136,11 +136,13 @@ class Controller < Sinatra::Base
       
     SOCKET_URL = config_hash['socket_io_url']
     SORKET_PORT = config_hash['socket_io_port']
+    DEFAULT_SIM_LAT = config_hash['default_sim_lat']
+    DEFAULT_SIM_LNG = config_hash['default_sim_lng']
     
-    #array of background loops
-    MAIN_LOOP = []
     
-    puts "self instance"
+    
+    
+    puts "self instance number (for experiment)"
     puts self.object_id
     
   end

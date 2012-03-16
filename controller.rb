@@ -11,64 +11,14 @@ class Controller < Sinatra::Base
   end 
 
     
-  post '/game/:layer_id/dropCargo' do
-    game=Game.first :layer_id=>params[:layer_id]
-    if game.is_active<0
-          return {:error=>"game not active"}.to_json
-    end 
-
-    @truck= get_truck params[:layer_id]
-    if @truck.points_cache<0
-        return {status: "no points available"}
-    end
-
-    #-modification send to socket io
-
-    
-    cargo=@truck.cargos.create :latitude=>params[:latitude], :longitude=>params[:longitude], :radius=>100, :exposed=>false
-    
-
-    #notifications to all users
-    @truck.add_points -10
+  
    
-    socketIO.broadcast( 
-      { 
-        :channel=> params[:layer_id],             
-        :data=>{
-            :cargo=>{
-                :id => cargo.id,
-                :longitude => cargo.longitude.to_s('F'),
-                :latitude => cargo.latitude.to_s('F'),
-                :player_id => cargo.player_id,
-                :radius => cargo.radius,
-                :exposed => cargo.exposed
-            }
-        }
-    }.to_json)
-
-    #updatescore
-    socketIO.broadcast( 
-        { 
-            :channel=> params[:layer_id],             
-            :data=>{
-                       :player=>{
-                            :id=> @truck.id,
-                            :name=> @truck.name,
-                            :points_cache => @truck.points_cache,
-                            :team => @truck.team.name
-                       }
-                   }
-        }.to_json)
-        
-
-   return {status: "ok"}
-
-  end     
   
  
     
   #update truck locaiton save to database #para latitude longitude.  
        #post '/game/:layer_id/moveTruck' 
+       #post '/game/:layer_id/dropCargo' do
 
   get '/game/:layer_id/logout' do
     
@@ -420,46 +370,34 @@ end
         
     else
         game.update(:is_active=>0)
-		#
+		
 		#CHANGE TO ADAPT TO GRID SIZE (400/X)
 		#Library Jubilee Campus (debugging) 52.953664,-1.188509
 		#Wollaton Park 52.9491938, -1.2144399
 		#North of Jubilee campus 52.956046,-1.18878
-        @simulation = Simulation.new("simulation_data_03.txt", 52.956046, -1.18878, 8, Time.now, 0.1)
+		sim = get_simulations(game.layer_id)
+        sim = Simulation.new("simulation_data_03.txt", DEFAULT_SIM_LAT, DEFAULT_SIM_LNG, 8, Time.now, 0.1)
         
         
-        # game.tasks.each do |t|
-#             # if t.status.eql? "active"
-#             socketIO.broadcast({
-#                 :id => t.id,
-#                 :type=>t.type,
-#                 :requirement=>t.requirement,
-#                 :description=> t.description,
-#                 :longitude => t.longitude.to_s('F'),
-#                 :latitude => t.latitude.to_s('F'),
-#                 :status => t.status
-#             }.to_json)*/
-#             #end
-#         end
         
-        count=0
         
         Thread.abort_on_exception = true
-        bg=Thread.new {
-        	
+        ml = get_mainloops(game.layer_id) 
+        ml = Thread.new {
+        	count=0
         	game_id=params[:layer_id]
         	#6 sec waiting, lett clients get ready
         	sleep 6
             
             while(game.is_active==0) do
-            
+            	#?seems cg will release game ob, so assgin a new one
                 game=Game.first :layer_id=>game_id
-                puts "game #{game_id} loop running count #{count}"
+                puts "game #{game_id}, loop running count #{count}"
                 update_game(game)
 				
 				if count%6==0
                     #diffFrame can be nil, (when there is no diff between two frames) 
-					diffFrame=@simulation.getIndexedDiffFrame(Time.now)
+					diffFrame=sim.getIndexedDiffFrame(Time.now)
 					
 					if diffFrame
                     	puts "heat map redraw in this loop"
@@ -718,7 +656,7 @@ end
   	game = Game.first :layer_id => params[:layer_id]
   	playerId = params[:id]
     player = game.players.first :id => playerId
-    current_exposure = @@simulation.getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
+    current_exposure = get_simulations(params[:layer_id]).getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
     exposure = player.exposure + current_exposure
     player.update(:latitude => params[:latitude], :longitude => params[:longitude], :current_exposure => current_exposure, :exposure => exposure)
     {:exposure => exposure , :current_exposure => current_exposure}.to_json
@@ -727,7 +665,7 @@ end
   
   post '/game/:layer_id/getReading' do
   	game = Game.first :layer_id => params[:layer_id]
-    current_exposure = @@simulation.getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
+    current_exposure = get_simulations(params[:layer_id]).getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
     {:current_exposure => current_exposure}.to_json
   end
   
