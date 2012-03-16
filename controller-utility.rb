@@ -97,8 +97,8 @@ class Controller < Sinatra::Base
          end 
   end
   
-  def check_radiation(latitude, longitude,game_id) 
-    return    $simulations[game.layer_id].getReadingByLatLong(latitude, longitude, Time.now)
+  def check_radiation(latitude, longitude, game_id) 
+    return    $simulations[game_id].getReadingByLatLong(latitude, longitude, Time.now)
   end
             
   def get_distance(lat1,lng1,lat2,lng2)
