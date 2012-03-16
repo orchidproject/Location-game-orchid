@@ -749,7 +749,7 @@ end
     end
     
       
-      @truck= get_truck params[:layer_id]
+      
       if @truck
           @truck_latitude=@truck.latitude
           @truck_longitude=@truck.longitude
