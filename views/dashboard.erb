@@ -72,8 +72,7 @@
 	
 	if($("#user_team").val()=="controller"){
 		
-
-  		google.maps.event.addListener(map, 'rightclick',sendRequest); 
+		google.maps.event.addListener(map, 'rightclick',sendRequest); 
 		//alert("you are " + $("#user_team").val());
 		$("#drop-cargo").hide();
 
@@ -81,8 +80,6 @@
 	}
 	else if($("#user_team").val()=="truck"){
 		
-
-		//var p = new google.maps.LatLng(<%= @truck_latitude %>, <%= @truck_longitude %>);
 		var p = new google.maps.LatLng(0, 0);
             	google.maps.event.addListener(map, 'rightclick',moveTruck); 
 		  
@@ -229,23 +226,16 @@
 			<th>Active players  |</th>
 			<th>|  Radioactive exposure  |</th>
 			<th>|  Level</th>
-			<% @game.players.each do |player| %>
+			<div id="players" >
+			<!--<% @game.players.each do |player| %>
 			 	<tr>
    			     	<td align="center"><%= player.name %></td>
         			<td align="center"><div id="exposure_<%= player.id %>"> </div> </td>
         			<td align="center"> <div id="level_<%= player.id %>"> </div> </td>
-        			<!--
-		        	<% if player.exposure <= 49 %>
-        		    <td>Low</td>
-			        <% elsif (player.exposure > 49) & (player.exposure <= 99) %>
-            		<td style="color:orange">Heightened</td>
-			        <% elsif (player.exposure > 99) & (player.exposure <= 150) %>
-		            <td style="color:red">Critical</td>
-        			 <% elsif (player.exposure > 150) %>
-		            <td>Incapacitated. Return to base.</td>
-        			<% end %>
-        			-->
-	        	</tr>		 
+        			
+        			
+	        	</tr>	-->	 
+	        	</div>
 			 <% end %>
 			 </table>
 			</div>

@@ -216,7 +216,14 @@ function receiveTextMassage(data){
     alert(data.content);
 }
 
+function receivePlayerInfoData(data){
 
+	$("#players").html("<td align='center'>hi</td> <td align='center'><div id='exposure_'> </div> </td> <td align='center'> <div id='level_<%= player.id %>'> </div> </td>");
+	
+//    <td align="center"><%= player.name %></td>
+//    <td align="center"><div id="exposure_<%= player.id %>"> </div> </td>
+//    <td align="center"> <div id="level_<%= player.id %>"> </div> </td>
+}
 
 
 
@@ -361,6 +368,13 @@ function updateGame(oneTime) {
                 var d=filter({"location":location});
                 if(typeof d.location != "undefined"){
                     receivePlayerData(d.location);
+                }
+            });
+            
+             $(data.player).each(function(i, player){
+                var d=filter({"player":player});
+                if(typeof d.player != "undefined"){
+                    receivePlayerInfoData(d.location);
                 }
             });
             

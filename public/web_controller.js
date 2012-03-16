@@ -39,18 +39,6 @@ $(document).ready(function() {
             receivePlayerData(data.location);
         }
         
-        if(typeof data.request != "undefined"){
-            receiveRequestData(data.request);
-        }
-        
-        if(typeof data.reading != "undefined"){
-                receiveReadingData(data.reading);
-        }
-            
-        if(typeof data.cargo != "undefined"){
-                receiveCargoData(data.cargo);
-        }
-        
         if(typeof data.cleanup != "undefined"){
                 //cleanup(data.cleanup); not implemented now
         }
