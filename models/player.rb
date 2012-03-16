@@ -51,9 +51,7 @@ class Player
                             :player=>{
                                 :id=> self.id,
                                 :name=> self.name,
-                                :points_cache => self.points_cache,
-                                :team => self.team.name,
-                                :skill => self.skill
+                                :skill => skill_string()
                             }
                          }
                     }.to_json)   

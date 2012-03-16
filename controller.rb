@@ -636,15 +636,8 @@ end
                            { 
                             :channel=> params[:layer_id],             
                             :data=>{
-                                    :textMassage=>{:content=>"#{player.name} join the game"},
-                           				:player=>{
-                           					:id=> player.id,
-                           					:name=> player.name,
-                           					:points_cache => player.points_cache,
-                           					:skill => player.skill_string(),
-                           					:team => player.team.name
-                           			}
-                            }
+                                    :textMassage=>{:content=>"#{player.name} join the game"}
+                           	}
                            }.to_json)
     end
     {'team_name' => player.team.name, 'user_id' => player.id}.to_json
