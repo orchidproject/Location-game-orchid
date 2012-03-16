@@ -376,14 +376,14 @@ end
 		#Wollaton Park 52.9491938, -1.2144399
 		#North of Jubilee campus 52.956046,-1.18878
 		
-        get_simulations(game.layer_id) = Simulation.new("simulation_data_03.txt", DEFAULT_SIM_LAT, DEFAULT_SIM_LNG, 8, Time.now, 0.1)
+        $simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", DEFAULT_SIM_LAT, DEFAULT_SIM_LNG, 8, Time.now, 0.1)
         
         
         
         
         Thread.abort_on_exception = true
          
-        get_mainloops(game.layer_id)  = Thread.new {
+        $mainloops[game.layer_id]  = Thread.new {
         	count=0
         	game_id=params[:layer_id]
         	#6 sec waiting, lett clients get ready
@@ -397,7 +397,7 @@ end
 				
 				if count%6==0
                     #diffFrame can be nil, (when there is no diff between two frames) 
-					diffFrame=sim.getIndexedDiffFrame(Time.now)
+					diffFrame=$simulations[game.layer_id].getIndexedDiffFrame(Time.now)
 					
 					if diffFrame
                     	puts "heat map redraw in this loop"
@@ -649,7 +649,7 @@ end
   	game = Game.first :layer_id => params[:layer_id]
   	playerId = params[:id]
     player = game.players.first :id => playerId
-    current_exposure = get_simulations(params[:layer_id]).getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
+    current_exposure = $simulations[params[:layer_id]].getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
     exposure = player.exposure + current_exposure
     player.update(:latitude => params[:latitude], :longitude => params[:longitude], :current_exposure => current_exposure, :exposure => exposure)
     {:exposure => exposure , :current_exposure => current_exposure}.to_json
@@ -658,7 +658,7 @@ end
   
   post '/game/:layer_id/getReading' do
   	game = Game.first :layer_id => params[:layer_id]
-    current_exposure = get_simulations(params[:layer_id]).getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
+    current_exposure = $simulations[params[:layer_id]].getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
     {:current_exposure => current_exposure}.to_json
   end
   

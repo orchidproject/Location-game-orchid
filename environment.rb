@@ -140,7 +140,8 @@ class Controller < Sinatra::Base
     DEFAULT_SIM_LNG = config_hash['default_sim_lng']
     
     
-    
+    $simulations=[]
+    $mainloops=[]
     
     puts "self instance number (for experiment)"
     puts self.object_id
