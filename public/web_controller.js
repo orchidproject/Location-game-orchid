@@ -42,6 +42,10 @@ $(document).ready(function() {
         if(typeof data.cleanup != "undefined"){
                 //cleanup(data.cleanup); not implemented now
         }
+        
+        if(typeof data.player != "undefined"){
+                receivePlayerInfoData(data.player);
+        }
 			
 		       
         

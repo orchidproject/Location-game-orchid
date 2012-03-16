@@ -641,7 +641,7 @@ end
                            					:id=> player.id,
                            					:name=> player.name,
                            					:points_cache => player.points_cache,
-                           					:skill => player.skill,
+                           					:skill => player.skill_string(),
                            					:team => player.team.name
                            			}
                             }
