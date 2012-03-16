@@ -68,6 +68,7 @@ class Controller < Sinatra::Base
             
   def update_game(game)
          puts "game update"
+         puts get_simulations(game.layer_id)
          game.players.each do |p|
          	 if (p.latitude == nil || p.longitude == nil)
          	 	puts "no location for user #{p.id}"
