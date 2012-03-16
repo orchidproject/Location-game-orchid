@@ -375,15 +375,15 @@ end
 		#Library Jubilee Campus (debugging) 52.953664,-1.188509
 		#Wollaton Park 52.9491938, -1.2144399
 		#North of Jubilee campus 52.956046,-1.18878
-		sim = get_simulations(game.layer_id)
-        sim = Simulation.new("simulation_data_03.txt", DEFAULT_SIM_LAT, DEFAULT_SIM_LNG, 8, Time.now, 0.1)
+		
+        get_simulations(game.layer_id) = Simulation.new("simulation_data_03.txt", DEFAULT_SIM_LAT, DEFAULT_SIM_LNG, 8, Time.now, 0.1)
         
         
         
         
         Thread.abort_on_exception = true
-        ml = get_mainloops(game.layer_id) 
-        ml = Thread.new {
+         
+        get_mainloops(game.layer_id)  = Thread.new {
         	count=0
         	game_id=params[:layer_id]
         	#6 sec waiting, lett clients get ready
