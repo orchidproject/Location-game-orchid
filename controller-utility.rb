@@ -75,7 +75,7 @@ class Controller < Sinatra::Base
          	 end 
          	 
          	 
-             if(@simulation.isOnMap(p.latitude, p.longitude))
+             if(get_simulations(game.layer_id).isOnMap(p.latitude, p.longitude))
                 p.exposure = p.exposure + check_radiation(p.latitude,p.longitude)
                 p.current_exposure = check_radiation(p.latitude,p.longitude)
                 puts "acc_exposure"

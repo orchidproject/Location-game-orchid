@@ -529,7 +529,7 @@ end
             :name=> player.name,
             :points_cache => player.points_cache,
             :team => player.team.name,
-            :skill => player.skill
+            :skill => player.skill_string()
         }
 
         healths << {
