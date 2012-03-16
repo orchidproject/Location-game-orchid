@@ -60,6 +60,7 @@ class Controller < Sinatra::Base
   		end 
         
         if !$simulations[game_id]
+        	 puts "set simulation to nil"
         	$simulations[game_id]=nil
         end
         
