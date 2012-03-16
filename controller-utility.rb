@@ -63,6 +63,8 @@ class Controller < Sinatra::Base
         	$simulations[game_id]=nil
         end
         
+        puts "simulation: #{$simulations.object_id}"
+        puts "simulation with #{game_id}: #{$simulations[game_id].object_id}"
         return $simulations[game_id]
   end
             
@@ -71,6 +73,7 @@ class Controller < Sinatra::Base
          puts game.layer_id
          puts get_simulations(game.layer_id).object_id
          sim = get_simulations(game.layer_id)
+         
          game.players.each do |p|
          	 if (p.latitude == nil || p.longitude == nil)
          	 	puts "no location for user #{p.id}"
