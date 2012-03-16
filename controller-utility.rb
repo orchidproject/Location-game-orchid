@@ -7,24 +7,24 @@ class Controller < Sinatra::Base
       end
   end
 
-  # def get_truck(layer_id)
-#       game=Game.first :layer_id=>layer_id
-#       team = game.teams :name=>"truck"
-#       
-#       #only one truck player shoud be in the team 
-#       truck= team.players.first
-#       return truck
-#   end
-# 
-#   def get_controller(layer_id)
-#       game=Game.first :layer_id=>layer_id
-#       team = game.teams :name=>"controller"
-#       
-#       #only one truck player shoud be in the team 
-#       controller= team.players.first
-#       return controller 
-# 
-#   end 
+ def get_truck(layer_id)
+       game=Game.first :layer_id=>layer_id
+       team = game.teams :name=>"truck"
+       
+       #only one truck player shoud be in the team 
+       truck= team.players.first
+       return truck
+   end
+ 
+   def get_controller(layer_id)
+       game=Game.first :layer_id=>layer_id
+       team = game.teams :name=>"controller"
+       
+       #only one truck player shoud be in the team 
+       controller= team.players.first
+       return controller 
+ 
+   end 
 
   def endGame(game)
     game.update(:is_active=>1)
