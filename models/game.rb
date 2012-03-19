@@ -48,4 +48,16 @@ class Game
     total
   end
   
+  def broadcast(socketIO,signal)
+  	socketIO.broadcast( 
+                           { 
+                           :channel=> self.layer_id,             
+                           :data=>{
+                           :system=>signal
+                           }
+                           }.to_json)
+  
+  
+  end 
+  
 end

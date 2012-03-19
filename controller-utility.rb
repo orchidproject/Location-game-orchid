@@ -22,13 +22,7 @@ class Controller < Sinatra::Base
 
   def endGame(game)
     game.update(:is_active=>1)
-    socketIO.broadcast( 
-                       { 
-                       :channel=> params[:layer_id],             
-                       :data=>{
-                       :system=>"end"
-                       }
-                       }.to_json)
+    game.broadcast(socketIO, "end")
     @games = Game.all
     session.clear
   end 

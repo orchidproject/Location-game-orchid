@@ -139,9 +139,10 @@ class Controller < Sinatra::Base
     DEFAULT_SIM_LAT = config_hash['default_sim_lat']
     DEFAULT_SIM_LNG = config_hash['default_sim_lng']
     
-    
+    #sperating game instances
     $simulations=[]
     $mainloops=[]
+    $game_area_top_left=[]
     
     puts "self instance number (for experiment)"
     puts self.object_id

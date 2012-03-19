@@ -44,6 +44,7 @@ class Player
   
   
   def broadcast(io)
+  	
       io.broadcast( 
                          { 
                          :channel=> self.game.layer_id,             

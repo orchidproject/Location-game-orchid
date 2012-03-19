@@ -139,16 +139,16 @@ function receiveTaskData(task){
 function getTaskIcon(task_type) {
 
 	var imageURL = ""
-	if (task_type == 1) {
+	if (task_type == 0) {
 		imageURL = taskIcon1; 
 	}
-	else if (task_type == 2) {
+	else if (task_type == 1) {
 		imageURL = taskIcon2;
 	}
-	else if (task_type == 3) {
+	else if (task_type == 2) {
 		imageURL = taskIcon3;
 	}
-	else if (task_type == 4) {
+	else if (task_type == 3) {
 		imageURL = taskIcon4;
 	}
 	
