@@ -446,14 +446,7 @@ $(function(){
 <body>
 
 	<div id="lineToolbar">
-		<div style="padding: 3px;">
-			<!--<input type="button" value="New Line" id="newLine" />-->
-			<!--<input type="button" value="Cancel Line" id="editingCancel" disabled="disabled" />-->
-          <input class="btn" type="button" value="Save" onclick="addBoundingBox();addRadiationBits()"/>
-           <input class="btn" type="button" value="Clear" onclick="clearBoundingBox();clearRadiationBits()"/>
-		  <input class="btn" type="button" value="Close" onclick="window.location = '/admin/games';"/>
-		</div>
-		
+	
 		<div style="padding: 3px;">
 		  <div style="padding: 3px;">
           <p><h5>Deploy target types</h5>To place target type on map click button once and then right click on location on map.</p>
@@ -466,15 +459,21 @@ $(function(){
 		
 		<div style="padding: 3px;">
 		  <div style="padding: 3px;">
-          <p><h5>Top left corner of game area</h5>plz put vaild lat lng, or the system will crash</p>
+          <p><h5>Top left corner of game area</h5>Please put in vaild lat lng, or the system will crash.</p>
 		  </div>
 		  latitude:
           <input  type="text" value="<%= @top_left_latitude %>" id="top_left_lat" />
           longitude:
-          <input  type="text" value="<%= @top_left_longitude %>" id="top_left_lng" />
-          
+          <input  type="text" value="<%= @top_left_longitude %>" id="top_left_lng" />   
 		</div>
 		
+		<div style="padding: 3px;">
+			<!--<input type="button" value="New Line" id="newLine" />-->
+			<!--<input type="button" value="Cancel Line" id="editingCancel" disabled="disabled" />-->
+          <input class="btn" type="button" value="Save" onclick="addBoundingBox();addRadiationBits()"/>
+           <input class="btn" type="button" value="Clear" onclick="clearBoundingBox();clearRadiationBits()"/>
+		  <input class="btn" type="button" value="Close" onclick="window.location = '/admin/games';"/>
+		</div>
 		
 	</div>
 	
