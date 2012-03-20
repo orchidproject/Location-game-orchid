@@ -58,28 +58,6 @@
   <script type="text/javascript" src="/game-common.js"></script>
 <script type="text/javascript">
 
-var GameMap = {
-	fitToRadius: function(radius) {
-	  var center = map.getCenter();
-	  var topMiddle = google.maps.geometry.spherical.computeOffset(center, radius, 0);
-	  var bottomMiddle = google.maps.geometry.spherical.computeOffset(center, radius, 180);
-	  var bounds = new google.maps.LatLngBounds();
-	  bounds.extend(topMiddle);
-	  bounds.extend(bottomMiddle);
-	  map.fitBounds(bounds);
-	},
-
-	goToAddress: function(address) {
-		var geocoder = new google.maps.Geocoder();
-		geocoder.geocode({address: address, bounds: map.getBounds()}, function(response) {
-				if(response.length > 0) {
-					var place = response[0];
-					map.setCenter(place.geometry.location);
-				}
-			}
-		);
-	}
-}
 
 
 
@@ -135,16 +113,7 @@ var tempPointOne;
 var tempPointTwo;
 
 
-var pollutantImageURL = "/img/skull.png";
-var playerIconSize = new google.maps.Size(32, 32);
-var playerIconOrigin = new google.maps.Point(0,0);
-var playerIconAnchor = new google.maps.Point(16, 32);
 
-
-var taskIcon1 = "/img/task_icon1.png";
-var taskIcon2 =  "/img/task_icon2.png";
-var taskIcon3 =  "/img/task_icon3.png";
-var taskIcon4 = "/img/task_icon4.png";
 
 var chosen_task_type = 0;
 
@@ -155,8 +124,10 @@ function addTask(value) {
 	
 }
 
+//this fuction currently does nothing
+//bounding box is obsolate
 function addBoundingBox(){
-    
+    setGameArea();
     $(boundingBoxes).each(
         function(i,box){
     
@@ -177,6 +148,23 @@ function addBoundingBox(){
     });
 }
 
+function setGameArea(){
+	$.post("/admin/games/"+layerId+"/setGameArea", {
+                latitude: $("#top_left_lat").val(),
+                longitude: $("#top_left_lng").val()
+            }, function(data){
+                if(data.status != "ok") {
+                    alert("Something went wrong! :(");
+                    window.location = window.location;
+                }
+                else{
+                     window.location = window.location;
+                }
+            }, "json");
+}
+
+
+//this function has been changed to adapt task objects
 function addRadiationBits(){
     
     $(radiationBits).each(
@@ -185,7 +173,7 @@ function addRadiationBits(){
             $.post("/admin/games/"+layerId+"/addTask", {
                 latitude: bit[0].lat(),
                 longitude: bit[0].lng(),
-                task_type: bit[1] 
+                task_type: bit[1]
             }, function(data){
                 if(data.status != "ok") {
                     alert("Something went wrong! :(");
@@ -253,7 +241,7 @@ function receiveRadiationBit(bit){
 
 		chosen_task_type = bit.type;
 
-		var taskIcon= getTaskIcon();
+		var taskIcon= getTaskIcon(chosen_task_type);
 		point = new google.maps.LatLng(bit.latitude,bit.longitude);
                 
     	var marker = new google.maps.Marker({
@@ -268,59 +256,45 @@ function receiveRadiationBit(bit){
 var layerId = "<%= @game.layer_id %>";
 var radiationBits = [];
 
-function getTaskIcon() {
 
-	var imageURL = ""
-	if (chosen_task_type == 1) {
-		imageURL = taskIcon1; 
-	}
-	else if (chosen_task_type == 2) {
-		imageURL = taskIcon2;
-	}
-	else if (chosen_task_type == 3) {
-		imageURL = taskIcon3;
-	}
-	else if (chosen_task_type == 4) {
-		imageURL = taskIcon4;
-	}
-	
-    var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
-	
-	return icon;
-}
 
+
+//add a point for left top corner?
 function receiveBounding(data) {
 	
+	//var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
 	
-	var lat_sw=52.94539363811494
-	var long_sw=-1.2085589719746395
 	
-	var lat_se=52.94539363811494
-	var long_se=-1.2144399
 	
-	var lat_nw=52.9491938
-	var long_nw=-1.2144399
-	
-	var lat_ne=52.9491938
-	var long_ne=-1.2085589719746395
-	
-	var path = [
-        new google.maps.LatLng(lat_sw,long_sw),
-        new google.maps.LatLng(lat_se,long_se), 
-        new google.maps.LatLng(lat_nw,long_nw),
-        new google.maps.LatLng(lat_ne,long_ne),
-        new google.maps.LatLng(lat_sw,long_sw),
-    ];
-	
-	var options= {
-            strokeColor: "#FF0000",
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            path:path    
-    }	
-	var rect = new google.maps.Polyline();
-	rect.setOptions(options);
-	rect.setMap(map);
+// var lat_sw=52.94539363811494
+// 	var long_sw=-1.2085589719746395
+// 	
+// 	var lat_se=52.94539363811494
+// 	var long_se=-1.2144399
+// 	
+// 	var lat_nw=52.9491938
+// 	var long_nw=-1.2144399
+// 	
+// 	var lat_ne=52.9491938
+// 	var long_ne=-1.2085589719746395
+// 	
+// 	var path = [
+//         new google.maps.LatLng(lat_sw,long_sw),
+//         new google.maps.LatLng(lat_se,long_se), 
+//         new google.maps.LatLng(lat_nw,long_nw),
+//         new google.maps.LatLng(lat_ne,long_ne),
+//         new google.maps.LatLng(lat_sw,long_sw),
+//     ];
+// 	
+// 	var options= {
+//             strokeColor: "#FF0000",
+//             strokeOpacity: 0.8,
+//             strokeWeight: 2,
+//             path:path    
+//     }	
+// 	var rect = new google.maps.Polyline();
+// 	rect.setOptions(options);
+// 	rect.setMap(map);
 }
 
 $(function(){
@@ -335,14 +309,7 @@ $(function(){
 	// Create the main map
 	map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-	// $.getJSON("/admin/games/"+layerId+"/setup.json", {
-// 	}, function(data){
-// 	
-// 		$(data.boundingBoxes).each(function(i, box){
-// 			receiveSavedBoundingBox(box);
-// 		});
-// 	});
-
+	
 	$.getJSON("/admin/games/"+layerId+"/setup.json", {
 	}, function(data){
 	
@@ -362,9 +329,12 @@ $(function(){
 	
 	GameMap.fitToRadius(<%= @game.radius %>);
 	
+	
+	 	
 	google.maps.event.addListener(map, 'rightclick', function(event) {
                 
-                var taskIcon= getTaskIcon();
+                var taskIcon= getTaskIcon(chosen_task_type);
+                var icon = new google.maps.MarkerImage("/img/task_icon1.png", playerIconSize, playerIconOrigin, playerIconAnchor);
                 tempPointOne=event.latLng;
                 point = new google.maps.LatLng(tempPointOne.lat(),tempPointOne.lng());
                 
@@ -374,60 +344,11 @@ $(function(){
                 	icon: taskIcon
                 });
                 
-         //        var circleOptions = {
-//         		strokeColor: "#FFFFB3",
-//         		strokeOpacity: 0.8,
-//         		strokeWeight: 2,
-//         		fillColor: "#FFFFb3",
-//         		fillOpacity: 0.35,
-//         		map: map,
-//         		center: point,
-//                 clickable:false,
-//         		radius: 120
-//       			};
-//             	new google.maps.Circle(circleOptions);
-//             	
-//             	var circleOptions = {
-//         		strokeColor: "#00FF00",
-//         		strokeOpacity: 0.8,
-//         		strokeWeight: 2,
-//         		fillColor: "#00FF00",
-//         		fillOpacity: 0.35,
-//         		map: map,
-//         		center: point,
-//                 clickable:false,
-//         		radius: 60
-//       			};
-//             	new google.maps.Circle(circleOptions);
-//                 
-//                 var circleOptions = {
-//         		strokeColor: "#FF0000",
-//         		strokeOpacity: 0.8,
-//         		strokeWeight: 2,
-//         		fillColor: "#FF0000",
-//         		fillOpacity: 0.35,
-//         		map: map,
-//         		center: point,
-//                 clickable:false,
-//         		radius: 50
-//       			};
-//             	new google.maps.Circle(circleOptions);
-//             	
+
              	
                 radiationBits.push([point,chosen_task_type]);     
 		
-		// Immediately create the pellet and open up the editor for it
-		/*
 		
-		$.post("/admin/games/"+layerId+"/new_pellet.json", {
-			points: 10,
-			latitude: event.latLng.lat(),
-			longitude: event.latLng.lng()
-		}, function(data){
-			addNewPellet(data);
-			startEditingPoint(data.place_id);
-		}, "json");
-                */
 
 	});
 	
@@ -537,10 +458,21 @@ $(function(){
 		  <div style="padding: 3px;">
           <p><h5>Deploy target types</h5>To place target type on map click button once and then right click on location on map.</p>
 		  </div>
-          <input class="btn" type="button" value="Radioactive" onclick="addTask(1)"/>
-          <input class="btn" type="button" value="Animal" onclick="addTask(2)"/>
-          <input class="btn" type="button" value="Patient" onclick="addTask(3)"/>
-          <input class="btn" type="button" value="Fuel tank" onclick="addTask(4)"/>
+          <input class="btn" type="button" value="Radioactive" onclick="addTask(0)"/>
+          <input class="btn" type="button" value="Animal" onclick="addTask(1)"/>
+          <input class="btn" type="button" value="Patient" onclick="addTask(2)"/>
+          <input class="btn" type="button" value="Fuel tank" onclick="addTask(3)"/>
+		</div>
+		
+		<div style="padding: 3px;">
+		  <div style="padding: 3px;">
+          <p><h5>Top left corner of game area</h5>plz put vaild lat lng, or the system will crash</p>
+		  </div>
+		  latitude:
+          <input  type="text" value="<%= @top_left_latitude %>" id="top_left_lat" />
+          longitude:
+          <input  type="text" value="<%= @top_left_longitude %>" id="top_left_lng" />
+          
 		</div>
 		
 		

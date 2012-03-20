@@ -38,8 +38,7 @@ var playerIcons = {
 	red: new google.maps.MarkerImage("http://www.google.com/intl/en_us/mapfiles/ms/icons/red-dot.png", playerIconSize, playerIconOrigin, playerIconAnchor)
 }
 
-var taskIcon = playerIcons['blue']; 
-var personSkillA = playerIcons['red'];
+
 
 var players = [];
 var boxes = [];

@@ -182,12 +182,12 @@ function moveOneStep() {
 }
 
 //join game
-helper.join('agent','a@agent.com','truck', function(p){
+helper.join('agent','a@agent.com','truck','medic', function(p){
     
     
     if (p.user_id != null){
         //wait for starting signal 
-        console.log("wait for starting signal ");
+        /*console.log("wait for starting signal ");
         
         socket.on('data', function(data) {
             if(data.system == "start"){
@@ -199,7 +199,8 @@ helper.join('agent','a@agent.com','truck', function(p){
                 setHandler();
                 mainloop();
             }
-        });
+        });*/
+        console.log("game join successful")
     }
 });
 

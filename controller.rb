@@ -1,135 +1,4 @@
 class Controller < Sinatra::Base
-    
-  get '/games/list' do
-    games=[]
-    Game.all.each do |g|
-        games << {"layer_id"=> g.layer_id , "name"=> g.name, "description"=> "", "is_active"=>g.is_active}
-
-    end
-    
-    {"games"=> games}.to_json
-  end 
-
-    
-  post '/game/:layer_id/dropCargo' do
-    game=Game.first :layer_id=>params[:layer_id]
-    if game.is_active<0
-          return {:error=>"game not active"}.to_json
-    end 
-
-    @truck= get_truck params[:layer_id]
-    if @truck.points_cache<0
-        return {status: "no points available"}
-    end
-
-    #-modification send to socket io
-
-    
-    cargo=@truck.cargos.create :latitude=>params[:latitude], :longitude=>params[:longitude], :radius=>100, :exposed=>false
-    
-
-    #notifications to all users
-    @truck.add_points -10
-   
-    socketIO.broadcast( 
-      { 
-        :channel=> params[:layer_id],             
-        :data=>{
-            :cargo=>{
-                :id => cargo.id,
-                :longitude => cargo.longitude.to_s('F'),
-                :latitude => cargo.latitude.to_s('F'),
-                :player_id => cargo.player_id,
-                :radius => cargo.radius,
-                :exposed => cargo.exposed
-            }
-        }
-    }.to_json)
-
-    #updatescore
-    socketIO.broadcast( 
-        { 
-            :channel=> params[:layer_id],             
-            :data=>{
-                       :player=>{
-                            :id=> @truck.id,
-                            :name=> @truck.name,
-                            :points_cache => @truck.points_cache,
-                            :team => @truck.team.name
-                       }
-                   }
-        }.to_json)
-        
-
-   return {status: "ok"}
-
-  end     
-  
- 
-    
-  #update truck locaiton save to database #para latitude longitude.  
-       #post '/game/:layer_id/moveTruck' 
-
-  get '/game/:layer_id/logout' do
-    
-    #delete user from database
-    game=Game.first :layer_id=>params[:layer_id]
-    player=game.players.first :id => params[:user_id]
-      
-        
-   
-     
-    socketIO.broadcast( 
-                         { 
-                            :channel=> params[:layer_id],             
-                            :data=>{
-                                :textMassage=>{:content=>"#{player.name} quitted game"},
-                                :player=>{:id=>player.id,:action=>"cleanup"}
-                            }
-                         }.to_json)
-    player.destroy
-    session.clear
-    redirect "/game/#{params[:layer_id]}/"
-   
-      
-  end
-
-
-
-  #post handler is for mobile device
-  post '/game/:layer_id/logout' do
-    
-    #delete user from database
-    game=Game.first :layer_id=>params[:layer_id]
-    player=game.players.first :id => params[:id]
-    
-   
-    
-    socketIO.broadcast( 
-                       { 
-                       :channel=> params[:layer_id],             
-                         :data=>{
-                            :cleanup=>{
-                                :player=>[player.id]
-                            }
-                         }
-                       }.to_json)
-    player.destroy
-    session.clear
-    
-   
-    {:status=> "ok"}.to_json
-              
-    
-  end
-  
-                    
-  
-                
-
-
- 
-  
 get '/game/:layer_id/activateTarget' do
 	taskId = params[:id]
 	game = Game.first :layer_id => params[:layer_id]
@@ -152,16 +21,7 @@ get '/game/:layer_id/activateTarget' do
 	)
 end
       
-
-
-
-      
-  
-
-  
-    
-  
-  #for development 
+  ################for development #####################
   get '/migrate' do
         DataMapper.auto_migrate!
   end 
@@ -187,7 +47,7 @@ end
   end
 
   after do
-      
+      #do something
   end
 
   get '/?' do
@@ -200,99 +60,10 @@ end
       erb :'admin/games/index', :layout => :'admin/layout'
   end
 
-  get '/admin/games/new' do
-    @game = Game.new
-    erb :'admin/games/new', :layout => :'admin/layout'
-  end
-
-  get '/admin/games/:id/mapeditor' do
-    @game = Game.get params[:id]
-    erb :'admin/games/mapeditor', :layout => false
-  end
-
-  post '/admin/games' do
-    game = Game.new params[:game]
-    game.save
-    redirect "/admin/games/#{game.layer_id}/mapeditor"
-  end
-
-
-  get '/admin/games/:layer_id/setup.json' do
-    content_type :json
-    @game = Game.get params[:layer_id]
-    boxes =[]
-	radiation = []
-    task = []
-      
-	@game.radiations.each do |p|
-		radiation<<{
-			:id=>p.id,
-			:lat=>p.latitude.to_s('F'),
-			:lng=>p.longitude.to_s('F'),
-			:radius=>p.radius.to_s()
-		}
-	end
-    @game.boundings.each do |p|
-        boxes<<{
-            :id=>p.id,
-            :neLatitude => p.neLatitude.to_s('F'),
-            :neLongitude => p.neLongitude.to_s('F'),
-            :swLatitude => p.swLatitude.to_s('F'),
-            :swLongitude => p.swLongitude.to_s('F')
-        }
-    end
-      
-    @game.tasks.each do |t|
-          task<<{
-              :id=>t.id,
-              :latitude => t.latitude.to_s('F'),
-              :longitude => t.longitude.to_s('F'),
-			  :type => t.type,
-              :status => t.status,
-              :requirement => t.requirement
-              
-          }
-    end
-
-      
-      {:boundingBoxes=>boxes,:radiationBits=>radiation,:tasks=>task}.to_json
-      
-  end
-  
-  put '/admin/games/:layer_id/reset' do
-    game = Game.get params[:layer_id]
-      game.update(:is_active=>-1)
-    #result = geoloqi_app.get 'place/list', :layer_id => game.layer_id, :limit => 0
-      game.players.each do |p|
-          p.destroy
-      end 
-	  game.tasks.each do |t|
-          t.destroy
-      end 
-      #clear log
-      #I know I should not hard code file name here, but... 
-      oldFile="logs/log-#{params[:layer_id]}"
-      newFile="logs/log-#{params[:layer_id]}-#{Time.now.to_f}"
-      if FileTest.exist?(oldFile)
-          File.rename(oldFile,newFile)
-      end
-      
-      socketIO.broadcast( 
-                         { 
-                         :channel=> params[:layer_id],             
-                         :data=>{
-                         :system=>"reset"
-                         }
-                         }.to_json)
-    
-    redirect '/admin/games'
-  end
-
-
-#be careful for the layer id 
   get '/admin/games/:layer_id/edit' do
     @game = Game.get params[:layer_id]
     erb :'admin/games/edit', :layout => :'admin/layout'
+  
   end
 
   put '/admin/games/:layer_id/end_game' do
@@ -413,88 +184,7 @@ end
     erb :'complete'
   end
 
-  get '/admin/games/:layer_id/start' do
-    game=Game.first :layer_id=>params[:layer_id]
-    if game.is_active!= -1
-        return {:error=>"game already begin"}.to_json
-        
-    else
-        game.update(:is_active=>0)
-		#
-		#CHANGE TO ADAPT TO GRID SIZE (400/X)
-		#Library Jubilee Campus (debugging) 52.953664,-1.188509
-		#Wollaton Park 52.9491938, -1.2144399
-		#North of Jubilee campus 52.956046,-1.18878
-        @simulation = Simulation.new("simulation_data_03.txt", 52.956046, -1.18878, 8, Time.now, 0.1)
-        
-        
-        # game.tasks.each do |t|
-#             # if t.status.eql? "active"
-#             socketIO.broadcast({
-#                 :id => t.id,
-#                 :type=>t.type,
-#                 :requirement=>t.requirement,
-#                 :description=> t.description,
-#                 :longitude => t.longitude.to_s('F'),
-#                 :latitude => t.latitude.to_s('F'),
-#                 :status => t.status
-#             }.to_json)*/
-#             #end
-#         end
-        
-        count=0
-        
-        Thread.abort_on_exception = true
-        bg=Thread.new {
-        	
-        	game_id=params[:layer_id]
-        	#6 sec waiting, lett clients get ready
-        	sleep 6
-            
-            while(game.is_active==0) do
-            
-                game=Game.first :layer_id=>game_id
-                puts "game #{game_id} loop running count #{count}"
-                update_game(game)
-				
-				if count%6==0
-                    #diffFrame can be nil, (when there is no diff between two frames) 
-					diffFrame=@simulation.getIndexedDiffFrame(Time.now)
-					
-					if diffFrame
-                    	puts "heat map redraw in this loop"
-                    	socketIO.broadcast( 
-                                       { 
-                                       :channel=> "#{game_id}-1",             
-                                       :data=>{
-                                       #:heatmap=>@simulation.getTimeFrameWithLatLng(Time.now)
-                                        :heatmap=>diffFrame
-                                       }
-                                       }.to_json)
-                    end
-
-                    
-                end
-                
-                count=count+1
-                sleep 1
-                
-            end
-        }
-        
-        socketIO.broadcast( 
-                           { 
-                           :channel=> params[:layer_id],             
-                           :data=>{
-                           :system=>"start"
-                           }
-                           }.to_json)
-        @games = Game.all
-        erb :'admin/games/index', :layout => :'admin/layout'
-    end
-    
-    
-  end 
+  
 
   get '/admin/games/:layer_id/end' do
     game=Game.first :layer_id=>params[:layer_id]
@@ -543,12 +233,8 @@ end
       end 
       {:status=>"ok"}.to_json
   end 
-
-
-
-
-
-  get '/player/:i1/:i2/:team/map_icon.png' do
+ 
+ get '/player/:i1/:i2/:team/map_icon.png' do
     a = params[:i1].upcase
     b = params[:i2].upcase
         
@@ -591,7 +277,7 @@ end
             :name=> player.name,
             :points_cache => player.points_cache,
             :team => player.team.name,
-            :skill => player.skill
+            :skill => player.skill_string()
         }
 
         healths << {
@@ -643,93 +329,9 @@ end
      {:location => locations,:task=>tasks,:exposure=>exposures,:health=>healths,:player=>players}.to_json
     
 end
-  # TODO: mobile game join 
-
-  post '/game/:layer_id/join' do
-    content_type :json
-    
-    game = Game.first :layer_id => params[:layer_id]
-    
-    player_id = params[:id]
-    puts "client try to join game"
-      
-    if player_id
-        player = game.players.first :id => player_id
-        
-        if player
-            return {:status=>"ok"}.to_json
-        else
-            return {:error=>"logout first"}.to_json
-        end
-        
-    
-    end 
-      
-    
-      
-      
-      
-    if params[:role_id]==nil
-        return {:error=>"logout first"}.to_json
-    elsif params[:email]==nil
-    	return {:error=>"invalid email"}.to_json
-    elsif params[:name]==nil
-    	return {:error=>"invalid name"}.to_json
-    else
-        player = game.players.create  :email =>params[:email], :name => params[:name], :skill => params[:role_id], :team=>game.pick_team("runner")
-    end
-      
-    
-    
-    
-    if player
-      
-        #update player info, add game information.
-        #player.update(:game_layer_id=>game.layer_id,:team => game.pick_team('runner'))
-        #broadcast to socket.io
-        #session[:id]=player.id
-        
-        player.broadcast(socketIO)
-        player.broadcast_health(socketIO)
-        
-        
-        
-        socketIO.broadcast( 
-                           { 
-                            :channel=> params[:layer_id],             
-                            :data=>{
-                                    :textMassage=>{:content=>"#{player.name} join the game"}
-                           #:player=>{
-                           #:id=> player.id,
-                           #:name=> player.name,
-                           #:points_cache => player.points_cache,
-                           #:skill => player.skill,
-                           #:team => player.team.name
-                           #}
-                            }
-                           }.to_json)
-    end
-    {'team_name' => player.team.name, 'user_id' => player.id}.to_json
-      
-  end
   
   
-  post '/game/:layer_id/postLocation' do
-  	game = Game.first :layer_id => params[:layer_id]
-  	playerId = params[:id]
-    player = game.players.first :id => playerId
-    current_exposure = @@simulation.getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
-    exposure = player.exposure + current_exposure
-    player.update(:latitude => params[:latitude], :longitude => params[:longitude], :current_exposure => current_exposure, :exposure => exposure)
-    {:exposure => exposure , :current_exposure => current_exposure}.to_json
-  end
-  
-  
-  post '/game/:layer_id/getReading' do
-  	game = Game.first :layer_id => params[:layer_id]
-    current_exposure = @@simulation.getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
-    {:current_exposure => current_exposure}.to_json
-  end
+ 
   
   get '/game/:layer_id/getLocations' do 
   	game = Game.first :layer_id => params[:layer_id]
@@ -746,7 +348,7 @@ end
   end
     
 
-
+  
   get '/game/:layer_id/?' do
     @game = Game.first :layer_id => params[:layer_id]
       
@@ -874,6 +476,299 @@ end
     @user_initials = ''
     
     erb :'index'
+  end
+  
+  
+  #######################    mapeditor   ####################
+  post "/admin/games/:layer_id/setGameArea" do
+  		$game_area_top_left[Integer(params[:layer_id])]={:lat => Float(params[:latitude]),:lng=> Float(params[:longitude]) }
+  		return { :status => :ok }.to_json
+  end
+  
+  
+   get '/admin/games/new' do
+    @game = Game.new
+    erb :'admin/games/new', :layout => :'admin/layout'
+  end
+
+  get '/admin/games/:id/mapeditor' do
+    @game = Game.get params[:id]
+    
+    if $game_area_top_left[@game.layer_id]
+    	@top_left_latitude = $game_area_top_left[@game.layer_id][:lat]
+    	@top_left_longitude = $game_area_top_left[@game.layer_id][:lng]
+    else
+    	@top_left_latitude = DEFAULT_SIM_LAT
+    	@top_left_longitude = DEFAULT_SIM_LNG
+    end
+    
+    puts @top_left_latitude
+    puts @top_left_longitude
+   
+    erb :'admin/games/mapeditor', :layout => false
+  end
+
+  post '/admin/games' do
+    game = Game.new params[:game]
+    game.save
+    redirect "/admin/games/#{game.layer_id}/mapeditor"
+  end
+
+
+  get '/admin/games/:layer_id/setup.json' do
+    content_type :json
+    @game = Game.get params[:layer_id]
+    boxes =[]
+	radiation = []
+    task = []
+      
+	@game.radiations.each do |p|
+		radiation<<{
+			:id=>p.id,
+			:lat=>p.latitude.to_s('F'),
+			:lng=>p.longitude.to_s('F'),
+			:radius=>p.radius.to_s()
+		}
+	end
+	#obsolate now
+    @game.boundings.each do |p|
+        boxes<<{
+            :id=>p.id,
+            :neLatitude => p.neLatitude.to_s('F'),
+            :neLongitude => p.neLongitude.to_s('F'),
+            :swLatitude => p.swLatitude.to_s('F'),
+            :swLongitude => p.swLongitude.to_s('F')
+        }
+    end
+      
+    @game.tasks.each do |t|
+          task<<{
+              :id=>t.id,
+              :latitude => t.latitude.to_s('F'),
+              :longitude => t.longitude.to_s('F'),
+			  :type => t.type,
+              :status => t.status,
+              :requirement => t.requirement
+              
+          }
+    end
+
+      
+      {:boundingBoxes=>boxes,:radiationBits=>radiation,:tasks=>task}.to_json
+      
+  end
+  
+  #######################    user management   ####################
+  
+  # TODO: mobile game join 
+
+  post '/game/:layer_id/join' do
+    content_type :json
+    
+    game = Game.first :layer_id => params[:layer_id]
+    
+    player_id = params[:id]
+    puts "client try to join game"
+      
+    if player_id
+        player = game.players.first :id => player_id
+        
+        if player
+            return {:status=>"ok"}.to_json
+        else
+            return {:error=>"logout first"}.to_json
+        end
+        
+    
+    end 
+      
+    if params[:role_id]==nil
+        return {:error=>"logout first"}.to_json
+    elsif params[:email]==nil
+    	return {:error=>"invalid email"}.to_json
+    elsif params[:name]==nil
+    	return {:error=>"invalid name"}.to_json
+    else
+        player = game.players.create  :email =>params[:email], :name => params[:name], :skill => params[:role_id], :team=>game.pick_team("runner")#team is a legacy
+    end
+      
+    
+    if player
+      
+        #update player info, add game information.
+        #player.update(:game_layer_id=>game.layer_id,:team => game.pick_team('runner'))
+        #broadcast to socket.io
+        #session[:id]=player.id
+        
+        player.broadcast(socketIO)
+        player.broadcast_health(socketIO)
+        
+        
+        
+        socketIO.broadcast( 
+                           { 
+                            :channel=> params[:layer_id],             
+                            :data=>{
+                                    :textMassage=>{:content=>"#{player.name} join the game"}
+                           	}
+                           }.to_json)
+    end
+    {'team_name' => player.team.name, 'user_id' => player.id}.to_json
+      
+  end
+  
+  post '/game/:layer_id/logout' do
+    
+    #delete user from database
+    game=Game.first :layer_id=>params[:layer_id]
+    player=game.players.first :id => params[:id]
+    
+   
+    
+    socketIO.broadcast( 
+                       { 
+                       :channel=> params[:layer_id],             
+                         :data=>{
+                            :cleanup=>{
+                                :player=>[player.id]
+                            }
+                         }
+                       }.to_json)
+    player.destroy
+    session.clear
+    
+   
+    {:status=> "ok"}.to_json
+              
+    
+  end
+  
+  #######################    game management   ####################
+  
+  get '/games/list' do
+    games=[]
+    Game.all.each do |g|
+        games << {"layer_id"=> g.layer_id , "name"=> g.name, "description"=> "", "is_active"=>g.is_active}
+
+    end
+    
+    {"games"=> games}.to_json
+  end 
+
+  get '/admin/games/:layer_id/start' do
+    game=Game.first :layer_id=>params[:layer_id]
+    if game.is_active!= -1
+        return {:error=>"game already begin"}.to_json
+        
+    else
+        game.update(:is_active=>0)
+		
+		#CHANGE TO ADAPT TO GRID SIZE (400/X)
+		#Library Jubilee Campus (debugging) 52.953664,-1.188509
+		#Wollaton Park 52.9491938, -1.2144399
+		#North of Jubilee campus 52.956046,-1.18878
+		if $game_area_top_left[game.layer_id] == nil
+        	$simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", DEFAULT_SIM_LAT, DEFAULT_SIM_LNG, 8, Time.now, 0.1)
+        else
+        	$simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", 
+        												  $game_area_top_left[game.layer_id].lat, 
+        												  $game_area_top_left[game.layer_id].lng, 
+        												  8, 
+        												  Time.now, 
+        												  0.1)
+        end
+        
+        
+        
+        Thread.abort_on_exception = true
+         
+        $mainloops[game.layer_id]  = Thread.new {
+        	count=0
+        	game_id=params[:layer_id]
+        	#6 sec waiting, lett clients get ready
+        	sleep 6
+            
+            while(game.is_active==0) do
+            	#?seems cg will release game ob, so assgin a new one
+                game=Game.first :layer_id=>game_id
+                puts "game #{game_id}, loop running count #{count}"
+                update_game(game)
+				
+				if count%6==0
+                    #diffFrame can be nil, (when there is no diff between two frames) 
+					diffFrame=$simulations[game.layer_id].getIndexedDiffFrame(Time.now)
+					
+					if diffFrame
+                    	puts "heat map redraw in this loop"
+                    	socketIO.broadcast( 
+                                       { 
+                                       :channel=> "#{game_id}-1",             
+                                       :data=>{
+                                       #:heatmap=>@simulation.getTimeFrameWithLatLng(Time.now)
+                                        :heatmap=>diffFrame
+                                       }
+                                       }.to_json)
+                    end
+
+                    
+                end
+                
+                count=count+1
+                sleep 1
+                
+            end
+        }
+        
+        game.broadcast(socketIO, "start")
+        
+       
+        @games = Game.all
+        
+        erb :'admin/games/index', :layout => :'admin/layout'
+    end
+    
+    
+  end 
+  
+  put '/admin/games/:layer_id/reset' do
+    game = Game.get params[:layer_id]
+      game.update(:is_active=>-1)
+    #result = geoloqi_app.get 'place/list', :layer_id => game.layer_id, :limit => 0
+      game.players.each do |p|
+          p.destroy
+      end 
+	  game.tasks.each do |t|
+          t.destroy
+      end 
+      #clear log
+      #I know I should not hard code file name here, but... 
+      oldFile="logs/log-#{params[:layer_id]}"
+      newFile="logs/log-#{params[:layer_id]}-#{Time.now.to_f}"
+      if FileTest.exist?(oldFile)
+          File.rename(oldFile,newFile)
+      end
+      
+      game.broadcast(socketIO,"reset")
+    
+      redirect '/admin/games'
+  end
+  
+   ############fall back plan#####################
+  post '/game/:layer_id/postLocation' do
+  	game = Game.first :layer_id => params[:layer_id]
+  	playerId = params[:id]
+    player = game.players.first :id => playerId
+    current_exposure = $simulations[params[:layer_id]].getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
+    exposure = player.exposure + current_exposure
+    player.update(:latitude => params[:latitude], :longitude => params[:longitude], :current_exposure => current_exposure, :exposure => exposure)
+    {:exposure => exposure , :current_exposure => current_exposure}.to_json
+  end
+  
+  
+  post '/game/:layer_id/getReading' do
+  	game = Game.first :layer_id => params[:layer_id]
+    current_exposure = $simulations[params[:layer_id]].getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
+    {:current_exposure => current_exposure}.to_json
   end
 
 

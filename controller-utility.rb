@@ -1,55 +1,66 @@
 class Controller < Sinatra::Base
-	  def update_score(game)
-      
-      scores = {}
-      game.players.each do |player|
-          scores[player.id] = player.points_cache
-      end
-  end
+	
 
-  def get_truck(layer_id)
-      game=Game.first :layer_id=>layer_id
-      team = game.teams :name=>"truck"
-      
-      #only one truck player shoud be in the team 
-      truck= team.players.first
-      return truck
-  end
-
-  def get_controller(layer_id)
-      game=Game.first :layer_id=>layer_id
-      team = game.teams :name=>"controller"
-      
-      #only one truck player shoud be in the team 
-      controller= team.players.first
-      return controller 
-
-  end 
+ def get_truck(layer_id)
+       game=Game.first :layer_id=>layer_id
+       team = game.teams :name=>"truck"
+       
+       #only one truck player shoud be in the team 
+       truck= team.players.first
+       return truck
+   end
+ 
+   def get_controller(layer_id)
+       game=Game.first :layer_id=>layer_id
+       team = game.teams :name=>"controller"
+       
+       #only one truck player shoud be in the team 
+       controller= team.players.first
+       return controller 
+ 
+   end 
 
   def endGame(game)
     game.update(:is_active=>1)
-    socketIO.broadcast( 
-                       { 
-                       :channel=> params[:layer_id],             
-                       :data=>{
-                       :system=>"end"
-                       }
-                       }.to_json)
+    game.broadcast(socketIO, "end")
     @games = Game.all
     session.clear
   end 
             
-  def get_mainloops()
-        if !@mainloops
-            @mainloops=[]
-            
-        end
-        
-        return @mainloops
-  end
+  # def get_mainloops(game_id)
+#   
+#   		if !$mainloops
+#   			$mainloops=[]
+#   			
+#   		end 
+#   		
+#         if !$mainloops[game_id]
+#         	$mainloops[game_id]=nil
+#         end
+#         
+#         return $mainloops[game_id]
+#   end
+#   
+#   def get_simulations(game_id)
+#   		if !$simulations
+#   			$simulations=[]
+#   			puts "simulation: #{$simulations.object_id}"
+#   		end 
+#         
+#         if !$simulations[game_id]
+#         	 puts "set simulation to nil"
+#         	$simulations[game_id]=nil
+#         end
+#         
+#         puts "simulation: #{$simulations.object_id}"
+#         puts "simulation with #{game_id}: #{$simulations[game_id].object_id}"
+#         return $simulations[game_id]
+#   end
             
   def update_game(game)
          puts "game update"
+         sim = $simulations[game.layer_id]
+         
          game.players.each do |p|
          	 if (p.latitude == nil || p.longitude == nil)
          	 	puts "no location for user #{p.id}"
@@ -57,9 +68,11 @@ class Controller < Sinatra::Base
          	 end 
          	 
          	 
-             if(@simulation.isOnMap(p.latitude, p.longitude))
-                p.exposure = p.exposure + check_radiation(p.latitude,p.longitude)
-                p.current_exposure = check_radiation(p.latitude,p.longitude)
+             if(sim.isOnMap(p.latitude, p.longitude))
+             
+                p.current_exposure = check_radiation(p.latitude,p.longitude,game.layer_id)
+                p.exposure = p.exposure + p.current_exposure
+               
                 puts "acc_exposure"
                 puts p.exposure
                 puts "current_exposure"
@@ -78,8 +91,8 @@ class Controller < Sinatra::Base
          end 
   end
   
-  def check_radiation(latitude, longitude) 
-    return    @simulation.getReadingByLatLong(latitude, longitude, Time.now)
+  def check_radiation(latitude, longitude, game_id) 
+    return    $simulations[game_id].getReadingByLatLong(latitude, longitude, Time.now)
   end
             
   def get_distance(lat1,lng1,lat2,lng2)
