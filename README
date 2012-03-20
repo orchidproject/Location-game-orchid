@@ -58,6 +58,8 @@ TODO
 1. put initials on icon
 2. socketIO need to handle disconnect
 3. user logout
-3. mainloop inplementation. 
+3. mainloop inplementation.
+	- e.g. tasks only carried by specified players/roles etc. 
 4. virtual agent implementation
 5. messaging system 
+	- add text field in mobile web view
