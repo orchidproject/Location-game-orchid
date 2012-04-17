@@ -217,7 +217,7 @@ function receiveTextMassage(data){
 
 function receivePlayerInfoData(data){
 
-	$("#players").append("<tr><td align='center'>"+ data.skill +"</td> <td align='center'><div id='exposure_"+data.id+"'></div> </td> <td align='center'> <div id='level_"+data.id+"'></div> </td><tr>");
+	$("#players").append("<tr><td align='center'>"+ data.name +"</td> <td align='center'>"+ data.skill +"</td> <td align='center'><div id='exposure_"+data.id+"'></div> </td> <td align='center'> <div id='level_"+data.id+"'></div> </td><tr>");
 	
 //    <td align="center"><%= player.name %></td>
 //    <td align="center"><div id="exposure_<%= player.id %>"> </div> </td>
