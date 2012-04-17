@@ -10,7 +10,6 @@ class Player
   property :points_cache, Integer, :default => 0
   property :profile_image, String, :length => 255
   property :name, String
-  property :email, String, :length => 255
   property :created_at, DateTime
   property :updated_at, DateTime
   property :exposure, Float, :default => 0.0
@@ -19,13 +18,17 @@ class Player
   property :skill, Integer
   property :health, Integer,:default => 100
   property :longitude, Decimal, :precision=>10 , :scale=>7  
-  
-  belongs_to :team
+  property :current_task, Integer,:default => -1
+  property :initials, String, :length => 255
   belongs_to :game
+  
+  #lagecy 
+  belongs_to :team
   has n, :readings
   has n, :cargos
-    
   has n, :requests
+  
+  
   def skill_string()
   	return @@skill[self.skill-1]
   
@@ -38,7 +41,16 @@ class Player
 
   def update
   	self.health=100-(self.exposure/10)
+  	
   
+  end 
+  
+  def distance_to(lat,lng)
+  	  #for approxi check
+  	  location1 = Geokit::LatLng.new lat, lng
+  	  location2 = Geokit::LatLng.new self.latitude, self.longitude
+  	  return (location1.distance_to location2, :units => :kms)*1000
+  	
   end 
   
   

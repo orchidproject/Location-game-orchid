@@ -14,13 +14,13 @@ var events = require('events');
 
 
 //listen to the server
-//var SOCKET_IO_ADDRESS = 'http://localhost:49991';
-//var NODE_JS_ADDRESS = 'http://localhost:8080';
-//var RUBY_ADDRESS = 'localhost';
+var SOCKET_IO_ADDRESS = 'http://localhost:49991';
+var NODE_JS_ADDRESS = 'http://localhost:8080';
+var RUBY_ADDRESS = 'localhost';
 
-var SOCKET_IO_ADDRESS = 'http://holt.mrl.nott.ac.uk:49991';
-var NODE_JS_ADDRESS = 'http://holt.mrl.nott.ac.uk:8080';
-var RUBY_ADDRESS = 'holt.mrl.nott.ac.uk';
+//var SOCKET_IO_ADDRESS = 'http://holt.mrl.nott.ac.uk:49991';
+//var NODE_JS_ADDRESS = 'http://holt.mrl.nott.ac.uk:8080';
+//var RUBY_ADDRESS = 'holt.mrl.nott.ac.uk';
 
 var RUBY_PORT = 49992;
 var game_id=process.argv[2];
@@ -98,7 +98,7 @@ function mainloop(){
                 
 
     //move a truck along a path
-    var path=[helper.player,{lat:52.9542228,lng:-1.1877573},{lat:52.9544232,lng:-1.189549}];
+    var path=[helper.player,{lat:52.9542228,lng:-1.1877573},{lat:52.9536905,lng:-1.1885117},{lat:52.9542228,lng:-1.1877573},{lat:52.9544232,lng:-1.189549}];
     var section=0;
     
     //go along next section when previous section finished.
@@ -182,7 +182,7 @@ function moveOneStep() {
 }
 
 //join game
-helper.join('agent','a@agent.com','truck','medic', function(p){
+helper.join('agent','a@agent.com','truck',1, function(p){
     
     
     if (p.user_id != null){
@@ -194,13 +194,17 @@ helper.join('agent','a@agent.com','truck','medic', function(p){
                 game_playing=true;
                 console.log("start playing");
                 
-                //initialize
-                helper.player=p;
-                setHandler();
-                mainloop();
+                
             }
         });*/
-        console.log("game join successful")
+        
+        //initialize
+        helper.player=p;
+        setHandler();
+        mainloop();
+        
+        //console.log("game join successful");
     }
+    console.log(p);
 });
 

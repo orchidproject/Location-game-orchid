@@ -319,7 +319,7 @@ end
              :description=> t.description,
              :longitude => t.longitude.to_s('F'),
              :latitude => t.latitude.to_s('F'),
-			 :status => t.status
+			 :state => t.state
          }
         #end
     end
@@ -547,7 +547,7 @@ end
               :latitude => t.latitude.to_s('F'),
               :longitude => t.longitude.to_s('F'),
 			  :type => t.type,
-              :status => t.status,
+              :state => t.state,
               :requirement => t.requirement
               
           }
@@ -583,13 +583,15 @@ end
     end 
       
     if params[:role_id]==nil
-        return {:error=>"logout first"}.to_json
+        return {:error=>"error no role_id supplied"}.to_json
     elsif params[:email]==nil
     	return {:error=>"invalid email"}.to_json
     elsif params[:name]==nil
     	return {:error=>"invalid name"}.to_json
+    elsif params[:initials]==nil
+    	return {:error=>"invalid initials"}.to_json
     else
-        player = game.players.create  :email =>params[:email], :name => params[:name], :skill => params[:role_id], :team=>game.pick_team("runner")#team is a legacy
+        player = game.players.create  :initials => params[:initials], :name => params[:name], :skill => params[:role_id], :team=>game.pick_team("runner")#team is a legacy
     end
       
     
@@ -613,7 +615,7 @@ end
                            	}
                            }.to_json)
     end
-    {'team_name' => player.team.name, 'user_id' => player.id}.to_json
+    {'skill' => player.skill_string(), 'user_id' => player.id}.to_json
       
   end
   

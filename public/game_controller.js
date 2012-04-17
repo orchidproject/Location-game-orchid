@@ -49,7 +49,7 @@ var taskIcon = playerIcons['blue'];
 var personSkillA = playerIcons['red'];
 var players = [];
 var boxes = [];
-var tasks = [];
+
 
 var lastGeigerPlayTime = 0;
 
@@ -172,9 +172,7 @@ function saveLog(data){
 }
 
 function receiveRequestData(data) {
-    
-    
-	markerIcon = coins[10].grey;
+    markerIcon = coins[10].grey;
 	if(typeof requests[data.id] == "undefined") {
 		requests[data.id] = {
 			id: data.id,
@@ -206,6 +204,7 @@ function receiveRequestData(data) {
 
 
 
+
 function errorCheck(data){
     if (typeof data.error != 'undefined'){
         alert(data.error);
@@ -223,6 +222,7 @@ function receivePlayerInfoData(data){
 //    <td align="center"><%= player.name %></td>
 //    <td align="center"><div id="exposure_<%= player.id %>"> </div> </td>
 //    <td align="center"> <div id="level_<%= player.id %>"> </div> </td>
+
 }
 
 

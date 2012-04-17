@@ -123,16 +123,33 @@ function centreMap(loc) {
 TASK ICONS... 
 */
 
+var tasks = [];
 function receiveTaskData(task){
-
-		var taskIcon= getTaskIcon(task.type);
-		point = new google.maps.LatLng(task.latitude,task.longitude);
+		var existing_task=null;
+		for (i=0;i<tasks.length;i++) {
+			if (tasks[i].id==task.id){
+				existing_task=tasks[i];
+			}
+		}
+		
+		if(existing_task==null){
+			var taskIcon= getTaskIcon(task.type);
+			var point = new google.maps.LatLng(task.latitude,task.longitude);
                 
-    	var marker = new google.maps.Marker({
+    		var marker = new google.maps.Marker({
                 	position: point,
                 	map: map,
                 	icon: taskIcon
-        });
+        	});
+        
+        	var the_task={id:task.id,marker:marker};
+        
+        	tasks.push(the_task);
+        }
+        else{
+        	var new_postion = new google.maps.LatLng(task.latitude,task.longitude);
+        	existing_task.marker.setPosition(new_postion);
+        }
 }
 
 

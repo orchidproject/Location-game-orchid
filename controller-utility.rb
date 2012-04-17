@@ -61,6 +61,10 @@ class Controller < Sinatra::Base
          puts "game update"
          sim = $simulations[game.layer_id]
          
+         game.tasks.each do |t|
+         	t.update(socketIO)
+         end
+         
          game.players.each do |p|
          	 if (p.latitude == nil || p.longitude == nil)
          	 	puts "no location for user #{p.id}"
