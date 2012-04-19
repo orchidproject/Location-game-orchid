@@ -217,6 +217,12 @@ end
         task=game.tasks.create :latitude=> params[:latitude], :longitude=> params[:longitude], :type=> params[:task_type]
         {:status=> "ok"}.to_json
   end 
+  
+  post '/admin/games/:layer_id/addDropOffPoint' do
+        game=Game.first :layer_id=>params[:layer_id]
+        dropOffpoint=game.dropoffpoints.create :latitude=> params[:latitude], :longitude=> params[:longitude], :radius=> params[:radius]
+        {:status=> "ok"}.to_json
+  end 
 
   get '/admin/games/:layer_id/clearBoundingBox' do
       game=Game.first :layer_id=>params[:layer_id]
@@ -225,10 +231,14 @@ end
       end 
       {:status=>"ok"}.to_json
   end 
-
+#clear both dropoff points and tasks
   get '/admin/games/:layer_id/clearRadiationBit' do
       game=Game.first :layer_id=>params[:layer_id]
       game.tasks.each do |bit|
+          bit.destroy
+      end 
+      
+      game.dropoffpoints.each do |bit|
           bit.destroy
       end 
       {:status=>"ok"}.to_json
@@ -269,6 +279,7 @@ end
 	tasks = []
     exposures = []
     healths = []
+    dropoffpoints = []
      
     
     game.players.each do |player|
@@ -311,7 +322,7 @@ end
 	end
      
     game.tasks.each do |t|
-       # if t.status.eql? "active"
+       	 # if t.status.eql? "active"
          tasks << {
              :id => t.id,
              :type=>t.type,
@@ -324,9 +335,16 @@ end
         #end
     end
     
-         
+    game.dropoffpoints.each do |d|
+    	dropoffpoints << {
+             :id => d.id,
+             :latitude=>d.latitude,
+             :longitude=>d.longitude,
+             :radius=>d.radius
+		}
+    end 
     
-     {:location => locations,:task=>tasks,:exposure=>exposures,:health=>healths,:player=>players}.to_json
+    {:location => locations,:task=>tasks,:exposure=>exposures,:health=>healths,:player=>players, :dropoffpoint=>dropoffpoints}.to_json
     
 end
   
@@ -521,15 +539,9 @@ end
     boxes =[]
 	radiation = []
     task = []
+    dropoffpoint = []
       
-	@game.radiations.each do |p|
-		radiation<<{
-			:id=>p.id,
-			:lat=>p.latitude.to_s('F'),
-			:lng=>p.longitude.to_s('F'),
-			:radius=>p.radius.to_s()
-		}
-	end
+	
 	#obsolate now
     @game.boundings.each do |p|
         boxes<<{
@@ -552,9 +564,18 @@ end
               
           }
     end
+    
+    @game.dropoffpoints.each do |d|
+          dropoffpoint<<{
+              :id=>d.id,
+              :latitude => d.latitude.to_s('F'),
+              :longitude => d.longitude.to_s('F'),
+			  :radius => d.radius,
+          }
+    end
 
       
-      {:boundingBoxes=>boxes,:radiationBits=>radiation,:tasks=>task}.to_json
+      {:boundingBoxes=>boxes,:radiationBits=>radiation,:tasks=>task,:dropoffpoints=>dropoffpoint}.to_json
       
   end
   

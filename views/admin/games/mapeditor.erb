@@ -186,6 +186,28 @@ function addRadiationBits(){
     });
 }
 
+function addDropOffPoints(){
+    
+    $(dropoffpoints).each(
+        function(i,bit){
+    
+            $.post("/admin/games/"+layerId+"/addDropOffPoint", {
+                latitude: bit[0].lat(),
+                longitude: bit[0].lng(),
+                radius: bit[1]
+            }, function(data){
+                if(data.status != "ok") {
+                    alert("Something went wrong! :(");
+                    window.location = window.location;
+                }
+                else{
+                     window.location = window.location;
+                }
+            }, "json");
+    });
+}
+
+
 
 
 function clearBoundingBox(){
@@ -252,20 +274,30 @@ function receiveRadiationBit(bit){
 
 }
 
+function receiveDropoffpoints(bit){
+
+		point = new google.maps.LatLng(bit.latitude,bit.longitude);
+                	
+        var circle = new google.maps.Circle({
+                center:point,
+  				map: map,
+  				radius: bit.radius,    
+  				fillColor: '#0000FF',
+  				strokeColor: '#0000FF'
+		});
+
+}
+
 
 var layerId = "<%= @game.layer_id %>";
 var radiationBits = [];
-
+var dropoffpoints = [];
 
 
 
 //add a point for left top corner?
 function receiveBounding(data) {
-	
-	//var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
-	
-	
-	
+//var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
 // var lat_sw=52.94539363811494
 // 	var long_sw=-1.2085589719746395
 // 	
@@ -323,6 +355,10 @@ $(function(){
 			receiveRadiationBit(bit);
 		});
 		
+		$(data.dropoffpoints).each(function(i, bit){
+			receiveDropoffpoints(bit);
+		});
+		
 		receiveBounding(data.bounding);
 		
 	});
@@ -332,21 +368,33 @@ $(function(){
 	
 	 	
 	google.maps.event.addListener(map, 'rightclick', function(event) {
+                if (chosen_task_type<100){
+                	var taskIcon= getTaskIcon(chosen_task_type);
+                	var icon = new google.maps.MarkerImage("/img/task_icon1.png", playerIconSize, playerIconOrigin, playerIconAnchor);
+                	tempPointOne=event.latLng;
+                	point = new google.maps.LatLng(tempPointOne.lat(),tempPointOne.lng());
                 
-                var taskIcon= getTaskIcon(chosen_task_type);
-                var icon = new google.maps.MarkerImage("/img/task_icon1.png", playerIconSize, playerIconOrigin, playerIconAnchor);
-                tempPointOne=event.latLng;
-                point = new google.maps.LatLng(tempPointOne.lat(),tempPointOne.lng());
-                
-                var marker = new google.maps.Marker({
-                	position: point,
-                	map: map,
-                	icon: taskIcon
-                });
-                
-
-             	
-                radiationBits.push([point,chosen_task_type]);     
+                	var marker = new google.maps.Marker({
+                		position: point,
+                		map: map,
+                		icon: taskIcon
+                	});
+                	radiationBits.push([point,chosen_task_type]); 
+                }
+                else if(chosen_task_type==100){
+                	tempPointOne=event.latLng;
+                	point = new google.maps.LatLng(tempPointOne.lat(),tempPointOne.lng());
+                	
+                	var radius=Number($("#drop-off-radius").val());
+                	var circle = new google.maps.Circle({
+                		center:point,
+  						map: map,
+  						radius: radius,    
+  						fillColor: '#0000FF',
+  						strokeColor: '#0000FF'
+					});
+                	dropoffpoints.push([point,radius]);
+                }
 		
 		
 
@@ -459,6 +507,16 @@ $(function(){
 		
 		<div style="padding: 3px;">
 		  <div style="padding: 3px;">
+          <p><h5>Deploy drop-off points</h5></p>
+		  </div>
+		  <input class="btn" type="button" value="deploy points" onclick="addTask(100)"/>
+          radius:
+          <input  type="text" value=10 id="drop-off-radius" />
+          
+		</div>
+		
+		<div style="padding: 3px;">
+		  <div style="padding: 3px;">
           <p><h5>Top left corner of game area</h5>Please put in vaild lat lng, or the system will crash.</p>
 		  </div>
 		  latitude:
@@ -470,7 +528,7 @@ $(function(){
 		<div style="padding: 3px;">
 			<!--<input type="button" value="New Line" id="newLine" />-->
 			<!--<input type="button" value="Cancel Line" id="editingCancel" disabled="disabled" />-->
-          <input class="btn" type="button" value="Save" onclick="addBoundingBox();addRadiationBits()"/>
+          <input class="btn" type="button" value="Save" onclick="addBoundingBox();addRadiationBits();addDropOffPoints()"/>
            <input class="btn" type="button" value="Clear" onclick="clearBoundingBox();clearRadiationBits()"/>
 		  <input class="btn" type="button" value="Close" onclick="window.location = '/admin/games';"/>
 		</div>

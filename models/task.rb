@@ -2,7 +2,7 @@ class Task
   #
   module State
     PICKED_UP = 1
-    DROPED_DOWN = 2
+    DROPPED_DOWN = 2
     IDLE = 3
   end
 
@@ -127,8 +127,21 @@ class Task
   		end 
   		
   		if dropped_off
-  			self.state=State::IDLE
+  			
   			#should check wether it is save area now
+  			drop_off_in_safe=false
+  			self.game.dropoffpoints.each do |d|
+  				if d.distance_to(self.latitude, self.longitude)<d.radius
+  					drop_off_in_safe=true
+  					
+  				end
+  			end
+  			
+  			if drop_off_in_safe
+  				self.state=State::DROPPED_DOWN
+  			else
+  				self.state=State::IDLE
+  			end
   			
   			
   			working_players.each do |p|

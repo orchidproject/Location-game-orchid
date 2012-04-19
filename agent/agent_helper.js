@@ -40,8 +40,8 @@ Helper.prototype.getSocket = function(){
 }
  
 
-Helper.prototype.join = function join(name,email,team,role_id,callback){
-    var content="name="+name+"&email="+email+"&team="+team+"&role_id="+role_id;
+Helper.prototype.join = function join(name,email,team,role_id,initials,callback){
+    var content="name="+name+"&email="+email+"&team="+team+"&role_id="+role_id+"&initials="+initials;
     var length=content.length;
     console.log('parsed: ' + this.ruby_address);
     var options = {

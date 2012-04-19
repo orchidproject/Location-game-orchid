@@ -378,6 +378,13 @@ function updateGame(oneTime) {
                 }
             });
             
+            $(data.dropoffpoint).each(function(i, drop){
+                var d=filter({"drop":drop});
+                if(typeof d.drop != "undefined"){
+                    receiveDropoffpointData(d.drop);
+                }
+            });
+            
 		
             lastRequestTime = Math.round((new Date()).getTime() / 1000);
 			if(!oneTime)

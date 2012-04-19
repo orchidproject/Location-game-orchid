@@ -8,7 +8,6 @@ it moves a truck along a fix route
 
 */
 
-
 var events = require('events');
 
 
@@ -182,7 +181,7 @@ function moveOneStep() {
 }
 
 //join game
-helper.join('agent','a@agent.com','truck',2, function(p){
+helper.join('agent','a@agent.com','truck',2,'AA', function(p){
     
     
     if (p.user_id != null){

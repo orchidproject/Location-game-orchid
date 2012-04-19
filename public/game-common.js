@@ -11,6 +11,7 @@ var medic = "/img/medic.png";
 var soldier =  "/img/soldier.png";
 var ambulance =  "/img/ambulance.png";
 var transporter = "/img/convertible.png";
+var tick = "/img/tick.png";
 
 var chosen_task_type = 0;
 
@@ -123,6 +124,21 @@ function centreMap(loc) {
 TASK ICONS... 
 */
 
+function receiveDropoffpointData(drop){
+		point = new google.maps.LatLng(drop.latitude,drop.longitude);
+                	
+        var circle = new google.maps.Circle({
+                center:point,
+  				map: map,
+  				radius: drop.radius,    
+  				fillColor: '#0000FF',
+  				strokeColor: '#0000FF',
+  				clickable: false
+		});
+
+}
+
+
 var tasks = [];
 function receiveTaskData(task){
 		var existing_task=null;
@@ -132,10 +148,14 @@ function receiveTaskData(task){
 			}
 		}
 		
+		
 		if(existing_task==null){
+			
 			var taskIcon= getTaskIcon(task.type);
 			var point = new google.maps.LatLng(task.latitude,task.longitude);
-                
+            if (task.state==2){
+				taskIcon=new google.maps.MarkerImage(tick, playerIconSize, playerIconOrigin, playerIconAnchor);
+			}
     		var marker = new google.maps.Marker({
                 	position: point,
                 	map: map,
@@ -149,6 +169,11 @@ function receiveTaskData(task){
         else{
         	var new_postion = new google.maps.LatLng(task.latitude,task.longitude);
         	existing_task.marker.setPosition(new_postion);
+        	
+        	if (task.state==2){
+				var taskIcon=new google.maps.MarkerImage(tick, playerIconSize, playerIconOrigin, playerIconAnchor);
+				existing_task.marker.setIcon(taskIcon);
+			}
         }
 }
 
