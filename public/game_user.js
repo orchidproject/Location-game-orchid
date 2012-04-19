@@ -372,7 +372,12 @@ function updateGame(oneTime) {
                 }
             });
             
-			
+            $(data.task).each(function(i, task){
+                var d=filter({"task":task});
+                if(typeof d.task != "undefined"){
+                    receiveTaskData(d.task);
+                }
+            });
             
 			lastRequestTime = Math.round((new Date()).getTime() / 1000);
 			if(!oneTime)
