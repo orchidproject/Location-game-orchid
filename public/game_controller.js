@@ -21,22 +21,6 @@ var setup = false;
 
 var lastRequestTime = 0;
 
-var cg = {
-	s: function(w,h) {
-		return new google.maps.Size(w,h);
-	},
-	p: function(w,h) {
-		return new google.maps.Point(w,h);
-	},
-	playerImage: function(name, team) {
-//		if(typeof name == "undefined") name = "AA";
-//		if(typeof team == "undefined") team = "red";
-		return new google.maps.MarkerImage("/player/"+name[0]+"/"+name[1]+"/"+team+"/map_icon.png", new google.maps.Size(38, 31), new google.maps.Point(0,0), new google.maps.Point(10, 30));
-	}
-}
-
-
-
 var playerIconSize = new google.maps.Size(32, 32);
 var playerIconOrigin = new google.maps.Point(0,0);
 var playerIconAnchor = new google.maps.Point(16, 32);
@@ -49,7 +33,7 @@ var taskIcon = playerIcons['blue'];
 var personSkillA = playerIcons['red'];
 var players = [];
 var boxes = [];
-var tasks = [];
+
 
 var lastGeigerPlayTime = 0;
 
@@ -74,6 +58,7 @@ function receiveHeatmapData(data){
     }
 	
 }
+
 var HEAT_MAP_COLORS = ["#202020","#3B3B3B","#3B3D64","#3F3CAD","#4B85F3","#3CBDC3","#56D355","#FFFB3D","#FF9F48","#FD3B3B","#FD3B3B"];
 function pick_overlay(value, point){
 		var circleOptions = {
@@ -172,9 +157,7 @@ function saveLog(data){
 }
 
 function receiveRequestData(data) {
-    
-    
-	markerIcon = coins[10].grey;
+    markerIcon = coins[10].grey;
 	if(typeof requests[data.id] == "undefined") {
 		requests[data.id] = {
 			id: data.id,
@@ -206,6 +189,7 @@ function receiveRequestData(data) {
 
 
 
+
 function errorCheck(data){
     if (typeof data.error != 'undefined'){
         alert(data.error);
@@ -223,6 +207,7 @@ function receivePlayerInfoData(data){
 //    <td align="center"><%= player.name %></td>
 //    <td align="center"><div id="exposure_<%= player.id %>"> </div> </td>
 //    <td align="center"> <div id="level_<%= player.id %>"> </div> </td>
+
 }
 
 
@@ -375,6 +360,13 @@ function updateGame(oneTime) {
                 var d=filter({"player":player});
                 if(typeof d.player != "undefined"){
                     receivePlayerInfoData(d.player);
+                }
+            });
+            
+            $(data.dropoffpoint).each(function(i, drop){
+                var d=filter({"drop":drop});
+                if(typeof d.drop != "undefined"){
+                    receiveDropoffpointData(d.drop);
                 }
             });
             

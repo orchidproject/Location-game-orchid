@@ -46,6 +46,10 @@ $(document).ready(function() {
         if(typeof data.player != "undefined"){
                 receivePlayerInfoData(data.player);
         }
+        
+        if(typeof data.task != "undefined"){
+                receiveTaskData(data.task);
+        }
 			
 		       
         

@@ -217,6 +217,12 @@ end
         task=game.tasks.create :latitude=> params[:latitude], :longitude=> params[:longitude], :type=> params[:task_type]
         {:status=> "ok"}.to_json
   end 
+  
+  post '/admin/games/:layer_id/addDropOffPoint' do
+        game=Game.first :layer_id=>params[:layer_id]
+        dropOffpoint=game.dropoffpoints.create :latitude=> params[:latitude], :longitude=> params[:longitude], :radius=> params[:radius]
+        {:status=> "ok"}.to_json
+  end 
 
   get '/admin/games/:layer_id/clearBoundingBox' do
       game=Game.first :layer_id=>params[:layer_id]
@@ -225,23 +231,26 @@ end
       end 
       {:status=>"ok"}.to_json
   end 
-
+#clear both dropoff points and tasks
   get '/admin/games/:layer_id/clearRadiationBit' do
       game=Game.first :layer_id=>params[:layer_id]
       game.tasks.each do |bit|
           bit.destroy
       end 
+      
+      game.dropoffpoints.each do |bit|
+          bit.destroy
+      end 
       {:status=>"ok"}.to_json
   end 
  
- get '/player/:i1/:i2/:team/map_icon.png' do
+ get '/player/:i1/:i2/:role/map_icon.png' do
     a = params[:i1].upcase
     b = params[:i2].upcase
         
-    puts :fdsa
-    file_path = File.join Controller.root, "public", "icons", "#{a}#{b}_#{params[:team]}.png"
+    file_path = File.join Controller.root, "public", "icons", "#{a}#{b}_#{params[:role]}.png"
     file_path_tmp = "#{file_path}tmp"
-    marker_path = File.join Controller.root, "public", "img", "player-icon-" + params[:team] + ".png"
+    marker_path = File.join Controller.root, "public", "img", "#{params[:role]}.png"
     
     if File.exist?(file_path)
         send_file file_path
@@ -269,6 +278,7 @@ end
 	tasks = []
     exposures = []
     healths = []
+    dropoffpoints = []
      
     
     game.players.each do |player|
@@ -296,6 +306,7 @@ end
         	:player_id => player.id,
         	:latitude => player.latitude,
         	:longitude => player.longitude,
+        	:initials => player.initials,
         	:skill => player.skill_string()
         }
        
@@ -311,7 +322,7 @@ end
 	end
      
     game.tasks.each do |t|
-       # if t.status.eql? "active"
+       	 # if t.status.eql? "active"
          tasks << {
              :id => t.id,
              :type=>t.type,
@@ -319,14 +330,21 @@ end
              :description=> t.description,
              :longitude => t.longitude.to_s('F'),
              :latitude => t.latitude.to_s('F'),
-			 :status => t.status
+			 :state => t.state
          }
         #end
     end
     
-         
+    game.dropoffpoints.each do |d|
+    	dropoffpoints << {
+             :id => d.id,
+             :latitude=>d.latitude,
+             :longitude=>d.longitude,
+             :radius=>d.radius
+		}
+    end 
     
-     {:location => locations,:task=>tasks,:exposure=>exposures,:health=>healths,:player=>players}.to_json
+    {:location => locations,:task=>tasks,:exposure=>exposures,:health=>healths,:player=>players, :dropoffpoint=>dropoffpoints}.to_json
     
 end
   
@@ -521,15 +539,9 @@ end
     boxes =[]
 	radiation = []
     task = []
+    dropoffpoint = []
       
-	@game.radiations.each do |p|
-		radiation<<{
-			:id=>p.id,
-			:lat=>p.latitude.to_s('F'),
-			:lng=>p.longitude.to_s('F'),
-			:radius=>p.radius.to_s()
-		}
-	end
+	
 	#obsolate now
     @game.boundings.each do |p|
         boxes<<{
@@ -547,14 +559,23 @@ end
               :latitude => t.latitude.to_s('F'),
               :longitude => t.longitude.to_s('F'),
 			  :type => t.type,
-              :status => t.status,
+              :state => t.state,
               :requirement => t.requirement
               
           }
     end
+    
+    @game.dropoffpoints.each do |d|
+          dropoffpoint<<{
+              :id=>d.id,
+              :latitude => d.latitude.to_s('F'),
+              :longitude => d.longitude.to_s('F'),
+			  :radius => d.radius,
+          }
+    end
 
       
-      {:boundingBoxes=>boxes,:radiationBits=>radiation,:tasks=>task}.to_json
+      {:boundingBoxes=>boxes,:radiationBits=>radiation,:tasks=>task,:dropoffpoints=>dropoffpoint}.to_json
       
   end
   
@@ -583,13 +604,15 @@ end
     end 
       
     if params[:role_id]==nil
-        return {:error=>"logout first"}.to_json
+        return {:error=>"error no role_id supplied"}.to_json
     elsif params[:email]==nil
     	return {:error=>"invalid email"}.to_json
     elsif params[:name]==nil
     	return {:error=>"invalid name"}.to_json
+    elsif params[:initials]==nil
+    	return {:error=>"invalid initials"}.to_json
     else
-        player = game.players.create  :email =>params[:email], :name => params[:name], :skill => params[:role_id], :team=>game.pick_team("runner")#team is a legacy
+        player = game.players.create  :initials => params[:initials], :name => params[:name], :skill => params[:role_id], :team=>game.pick_team("runner")#team is a legacy
     end
       
     
@@ -613,7 +636,7 @@ end
                            	}
                            }.to_json)
     end
-    {'team_name' => player.team.name, 'user_id' => player.id}.to_json
+    {'skill' => player.skill_string(), 'user_id' => player.id}.to_json
       
   end
   
