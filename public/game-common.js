@@ -15,8 +15,23 @@ var tick = "/img/tick.png";
 
 var chosen_task_type = 0;
 
+var cg = {
+	s: function(w,h) {
+		return new google.maps.Size(w,h);
+	},
+	p: function(w,h) {
+		return new google.maps.Point(w,h);
+	},
+	playerImage: function(name, skill) {
+//		if(typeof name == "undefined") name = "AA";
+//		if(typeof team == "undefined") team = "red";
+		return new google.maps.MarkerImage("/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png", new google.maps.Size(38, 31), new google.maps.Point(0,0), new google.maps.Point(10, 30));
+	}
+}
 
-function getPlayerIcon(skill) {
+
+
+function getPlayerIcon(initials, skill) {
 
 	var imageURL = "";
 	
@@ -33,20 +48,16 @@ function getPlayerIcon(skill) {
 	    	imageURL = transporter;
     }
 
-    var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
+    //var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);cg.playerImage
+    var icon = cg.playerImage(initials,skill);
 	
 	return icon;
 }
 
 //SHOULD BE LOCATION DATA???////
 function receivePlayerData(data) {
-	var markerIcon;
+		var markerIcon;
 
-   if(typeof data.skill == 'undefined') {
-     markerIcon = new google.maps.MarkerImage("http://www.google.com/intl/en_us/mapfiles/ms/icons/blue-dot.png", playerIconSize, playerIconOrigin, playerIconAnchor); //getPlayerIcon(data.skill);
-   } else {
-	   markerIcon = getPlayerIcon(data.skill);
-   }
 	    var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
 		var pid = data.player_id;
 		//move my highlighting (if necessary)
@@ -54,7 +65,7 @@ function receivePlayerData(data) {
 		//	setHighlightPosition(new google.maps.LatLng(data.latitude, data.longitude));
 		//} else {
 		    if(typeof players[pid] == "undefined") {
-		        
+		        markerIcon = getPlayerIcon(data.initials,data.skill);
 		        players[pid] = {
 		            id: pid,
 		            name: data.name,
@@ -68,24 +79,11 @@ function receivePlayerData(data) {
 		    } else {
 		        //update 
 		        var p = players[pid];
-		            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-		            p.marker.setIcon(markerIcon);
+		        p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
+		        //p.marker.setIcon(markerIcon);
 		    }	        
 		
-	//        if(typeof players[data.id] == "undefined") {
-	//        
-	//            players[data.id] = {
-	//                id: data.id,
-	//                name: data.name,
-	//                team: data.team,
-	//                points_cache: data.points_cache
-	//            };
-	//        } else {
-	//            var p = players[data.id];
-	//            p.team = data.team;
-	//            p.points_cache = data.points_cache;
-	//        }
-		//}   
+	
 }
 
 

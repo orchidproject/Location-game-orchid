@@ -21,22 +21,6 @@ var setup = false;
 
 var lastRequestTime = 0;
 
-var cg = {
-	s: function(w,h) {
-		return new google.maps.Size(w,h);
-	},
-	p: function(w,h) {
-		return new google.maps.Point(w,h);
-	},
-	playerImage: function(name, team) {
-//		if(typeof name == "undefined") name = "AA";
-//		if(typeof team == "undefined") team = "red";
-		return new google.maps.MarkerImage("/player/"+name[0]+"/"+name[1]+"/"+team+"/map_icon.png", new google.maps.Size(38, 31), new google.maps.Point(0,0), new google.maps.Point(10, 30));
-	}
-}
-
-
-
 var playerIconSize = new google.maps.Size(32, 32);
 var playerIconOrigin = new google.maps.Point(0,0);
 var playerIconAnchor = new google.maps.Point(16, 32);
@@ -74,6 +58,7 @@ function receiveHeatmapData(data){
     }
 	
 }
+
 var HEAT_MAP_COLORS = ["#202020","#3B3B3B","#3B3D64","#3F3CAD","#4B85F3","#3CBDC3","#56D355","#FFFB3D","#FF9F48","#FD3B3B","#FD3B3B"];
 function pick_overlay(value, point){
 		var circleOptions = {

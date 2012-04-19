@@ -244,14 +244,13 @@ end
       {:status=>"ok"}.to_json
   end 
  
- get '/player/:i1/:i2/:team/map_icon.png' do
+ get '/player/:i1/:i2/:role/map_icon.png' do
     a = params[:i1].upcase
     b = params[:i2].upcase
         
-    puts :fdsa
-    file_path = File.join Controller.root, "public", "icons", "#{a}#{b}_#{params[:team]}.png"
+    file_path = File.join Controller.root, "public", "icons", "#{a}#{b}_#{params[:role]}.png"
     file_path_tmp = "#{file_path}tmp"
-    marker_path = File.join Controller.root, "public", "img", "player-icon-" + params[:team] + ".png"
+    marker_path = File.join Controller.root, "public", "img", "#{params[:role]}.png"
     
     if File.exist?(file_path)
         send_file file_path
@@ -307,6 +306,7 @@ end
         	:player_id => player.id,
         	:latitude => player.latitude,
         	:longitude => player.longitude,
+        	:initials => player.initials,
         	:skill => player.skill_string()
         }
        
