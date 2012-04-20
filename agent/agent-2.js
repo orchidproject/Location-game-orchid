@@ -14,13 +14,13 @@ var events = require('events');
 
 
 //listen to the server
-var SOCKET_IO_ADDRESS = 'http://localhost:49991';
-var NODE_JS_ADDRESS = 'http://localhost:8080';
-var RUBY_ADDRESS = 'localhost';
+//var SOCKET_IO_ADDRESS = 'http://localhost:49991';
+//var NODE_JS_ADDRESS = 'http://localhost:8080';
+//var RUBY_ADDRESS = 'localhost';
 
-//var SOCKET_IO_ADDRESS = 'http://holt.mrl.nott.ac.uk:49991';
-//var NODE_JS_ADDRESS = 'http://holt.mrl.nott.ac.uk:8080';
-//var RUBY_ADDRESS = 'holt.mrl.nott.ac.uk';
+var SOCKET_IO_ADDRESS = 'http://holt.mrl.nott.ac.uk:49991';
+var NODE_JS_ADDRESS = 'http://holt.mrl.nott.ac.uk:8080';
+var RUBY_ADDRESS = 'holt.mrl.nott.ac.uk';
 
 var RUBY_PORT = 49992;
 var game_id=process.argv[2];
@@ -119,7 +119,7 @@ function mainloop(){
 
 
 function updateTruckLocation(){
-    socket.emit('location-push',{"player_id":helper.player.user_id,"latitude":helper.player.lat,"longitude":helper.player.lng,"skill":helper.player.skill});
+    socket.emit('location-push',{"player_id":helper.player.user_id,"latitude":helper.player.lat,"longitude":helper.player.lng,"skill":helper.player.skill,"initials":helper.player.initials});
 }
 
 /////////////////////////////

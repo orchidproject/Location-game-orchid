@@ -57,15 +57,12 @@ function getPlayerIcon(initials, skill) {
 //SHOULD BE LOCATION DATA???////
 function receivePlayerData(data) {
 		var markerIcon;
-
+		markerIcon = getPlayerIcon(data.initials,data.skill);
 	    var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
 		var pid = data.player_id;
-		//move my highlighting (if necessary)
-		//if(pid == $('#user_id').val()) {
-		//	setHighlightPosition(new google.maps.LatLng(data.latitude, data.longitude));
-		//} else {
+		
 		    if(typeof players[pid] == "undefined") {
-		        markerIcon = getPlayerIcon(data.initials,data.skill);
+		        
 		        players[pid] = {
 		            id: pid,
 		            name: data.name,

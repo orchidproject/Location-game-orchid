@@ -60,6 +60,7 @@ Helper.prototype.join = function join(name,email,team,role_id,initials,callback)
         res.on('data', function (chunk) {
             console.log('game join status: ' + chunk);
             player=JSON.parse(chunk);
+            player.initials=initials;
             callback(player);
         });
     });

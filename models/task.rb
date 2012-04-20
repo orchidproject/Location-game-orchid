@@ -9,16 +9,17 @@ class Task
  include DataMapper::Resource 
 
     #@@task_type={
+    #:Radioactive=>['transporter','soldier']
     #:Patient=>['ambulance','medic'],
     #:Fueldump=>['transporter','soldier'],
     #:Animal=>['transporter','soldier'],
-    #:Radioactive=>['transporter','soldier']
+    
     #}
     
     @@task_type=[
+        ['transporter','soldier'],
+        ['transporter','soldier'],
         ['ambulance','medic'],
-        ['transporter','soldier'],
-        ['transporter','soldier'],
         ['transporter','soldier']
     ]
  
