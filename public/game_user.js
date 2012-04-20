@@ -372,16 +372,21 @@ function updateGame(oneTime) {
                 }
             });
             
+           
             $(data.task).each(function(i, task){
+            	
                 var d=filter({"task":task});
                 if(typeof d.task != "undefined"){
+                	
                     receiveTaskData(d.task);
                 }
             });
             
             $(data.dropoffpoint).each(function(i, drop){
+            	
                 var d=filter({"drop":drop});
                 if(typeof d.drop != "undefined"){
+                	
                     receiveDropoffpointData(d.drop);
                 }
             });

@@ -5,6 +5,10 @@
 // server with data about the coins on the map.
 
 
+$(document).ready(function() {
+	updateGame(true);
+});
+
 function handleSocketData(dataStr) {
     
     //var data = dataStr;
@@ -57,6 +61,8 @@ function handleSocketData(dataStr) {
     if(typeof data.exposure != "undefined") {
     	receiveExposureData(data.exposure);
     }
+    
+    
     
     
     
