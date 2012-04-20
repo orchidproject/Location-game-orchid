@@ -187,12 +187,14 @@ function sendMessage(){
 	    <div id="messageListDiv">
 	    
 	    	<h5>Messages</h5>
-	    	<div style="position:relative; bottom:5px; width:100%">
-				<input type="text" name="message" id="message"/>
-				<input onclick="sendMessage();" type="button" name="send" id="message_btn" value="send"/>
-			</div>
 	    	<ul id="task_list" class="ui-listview" data-role="listview" data-inset="true">												
 			</ul>
+			<div style="position:relative; bottom:5px; width:100%">
+				<form action="">
+				<input type="text" name="message" id="message"/>
+				<input onclick="sendMessage();" type="button" name="send" id="message_btn" value="send"/>
+				</form>
+			</div>
 			
 	    	
 	    
