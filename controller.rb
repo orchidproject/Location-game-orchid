@@ -83,7 +83,20 @@ end
       erb :'/admin/games/console', :layout => :'admin/layout'
   end 
 
-  post '/admin/games/:layer_id/massage' do
+  post '/admin/games/:layer_id/message' do
+      @game = Game.get params[:layer_id]
+      socketIO.broadcast( 
+                         { 
+                            :channel=> params[:layer_id],             
+                            :data => { :message=>{:content=>params[:content], :player_initials=> :MO, :player_name=> :mobilePlayer} }                          
+                            
+                         }.to_json)
+      {"status"=>:ok}.to_json
+
+  end 
+  
+  
+   post '/game/mobile/:layer_id/massage' do
       @game = Game.get params[:layer_id]
       socketIO.broadcast( 
                          { 
@@ -94,7 +107,6 @@ end
       {"status"=>:ok}.to_json
 
   end 
-
 
 
   get '/admin/games/:layer_id/ready_check' do
