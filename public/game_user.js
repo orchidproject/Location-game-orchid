@@ -94,40 +94,40 @@ function receiveBoxData(data) {
 
 
 
-function receiveTaskData(data) {
-	//schema: task { id: integer , player_id: [ array of integer ] , latitude: float , longitude: float, description: string, completed: boolean }
-
-	//first step: push the task to the comms list (as long as this task is meant for us)
-	if(data.player_id.contains($('#user_id').val())) {
-		pushToTaskHistory(data.description, "task" + data.id);
-	}	
-	
-	alert("A new task has arrived! Description: " + data.description);
-	
-    var markerIcon;
-	var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
-    markerIcon = taskIcon;
-    	    
-    if(typeof tasks[data.id] == "undefined") {
-        
-        tasks[data.id] = {
-            id: data.id,
-            marker: new google.maps.Marker({
-                position: new google.maps.LatLng(data.latitude, data.longitude),
-                map: map,
-                icon: markerIcon,
-                visible: !data.completed
-            })
-        };
-    } else {
-        //update 
-        var p = tasks[data.id];
-            p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-            p.marker.setVisible(!data.completed);
-            p.marker.setIcon(markerIcon);
-    }
-        
-}
+// function receiveTaskData(data) {
+// 	//schema: task { id: integer , player_id: [ array of integer ] , latitude: float , longitude: float, description: string, completed: boolean }
+// 
+// 	//first step: push the task to the comms list (as long as this task is meant for us)
+// 	if(data.player_id.contains($('#user_id').val())) {
+// 		pushToTaskHistory(data.description, "task" + data.id);
+// 	}	
+// 	
+// 	alert("A new task has arrived! Description: " + data.description);
+// 	
+//     var markerIcon;
+// 	var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
+//     markerIcon = taskIcon;
+//     	    
+//     if(typeof tasks[data.id] == "undefined") {
+//         
+//         tasks[data.id] = {
+//             id: data.id,
+//             marker: new google.maps.Marker({
+//                 position: new google.maps.LatLng(data.latitude, data.longitude),
+//                 map: map,
+//                 icon: markerIcon,
+//                 visible: !data.completed
+//             })
+//         };
+//     } else {
+//         //update 
+//         var p = tasks[data.id];
+//             p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
+//             p.marker.setVisible(!data.completed);
+//             p.marker.setIcon(markerIcon);
+//     }
+//         
+// }
 
 
 var latestMsgId = 0;
