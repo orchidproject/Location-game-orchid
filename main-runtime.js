@@ -1,4 +1,6 @@
-var sys = require('util');
+var database="jtruck_db";
+var db_username="jtruck";
+var db_password="jtruck";var sys = require('util');
 var url = require('url');
 
 // Load the node-router library by creationix
