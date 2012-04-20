@@ -112,6 +112,18 @@ jQuery.extend({
 	
   });
 
+function sendMessage(){
+//alert($("#massage").val());
+	$.ajax({
+		url: "massage",
+		type: "POST",
+		data: {"content":$('#message').val()}, <!-- JSON.parse($('#message').val()), "id":0, "player_id":[0,1,2,3,4,5,6,7,8,9] }, -->
+		dataType: "json",
+		success: function(data) {
+		$('#message').val("");
+		}
+	});
+}
 
 </script>
 <style type="text/css">
@@ -175,8 +187,11 @@ jQuery.extend({
 	    
 	    	<h5>Messages</h5>
 	    	<ul id="task_list" class="ui-listview" data-role="listview" data-inset="true">												
-	
-			</ul>		
+			</ul>
+			<div style="position:fixed; position:bottom;">
+				<input type="text" name="message" id="message"/>
+				<input onclick="sendMessage();" type="button" name="send" id="message_btn" value="send"/>
+			</div>
 	    	
 	    
 	    </div>
