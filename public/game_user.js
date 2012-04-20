@@ -137,7 +137,7 @@ function receiveMessageData(data) {
 
 	//push the task to the comms list (as long as this task is meant for us)
 	//if(jQuery.inArray($('#user_id').val(), data.player_id)) {
-		pushToTaskHistory(data.content, "msg" + latestMsgId++);
+		pushToTaskHistory(data.content, "msg" + latestMsgId++, data.player_initials, data.player_name);
 		alert("Message from the controller: " + data.content);
 	//}
         
@@ -336,11 +336,11 @@ function pad(num, size) {
 	return num;
 }
 
-function pushToTaskHistory(message, identifier) {
+function pushToTaskHistory(message, identifier, player_initials, player_name) {
 	//pushes the string message to the task list (including the date time added)
 	//(called when new tasks and messages are received)
 		
-	var line = $("<li id='" + identifier + "'>" + message + "  (sent " + getTime() + ")</li>"); //TODO: add intended recipients
+	var line = $("<li id='" + identifier + "'>"+player_name+" ("+player_initials+"): " + message + "  (sent " + getTime() + ")</li>"); //TODO: add intended recipients
 	var taskList = $('#task_list');
 	taskList.prepend(line);
 	taskList.listview( "refresh" );  
