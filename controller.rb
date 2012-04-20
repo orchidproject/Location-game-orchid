@@ -83,7 +83,7 @@ end
       erb :'/admin/games/console', :layout => :'admin/layout'
   end 
 
-  post '/admin/games/:layer_id/message' do
+  post '/game/mobile/:layer_id/message' do
       @game = Game.get params[:layer_id]
       socketIO.broadcast( 
                          { 
@@ -96,7 +96,7 @@ end
   end 
   
   
-   post '/game/mobile/:layer_id/massage' do
+   post '/admin/games/:layer_id/massage' do
       @game = Game.get params[:layer_id]
       socketIO.broadcast( 
                          { 
