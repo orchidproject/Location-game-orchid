@@ -56,6 +56,8 @@ GEM
       ruby-debug-base19 (>= 0.11.19)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
+    shotgun (0.9)
+      rack (>= 1.0)
     sinatra (1.2.6)
       rack (~> 1.1)
       tilt (>= 1.2.2, < 2.0)
@@ -85,5 +87,6 @@ DEPENDENCIES
   rack-mobile-detect (= 0.3.0)
   rake (= 0.8.7)
   ruby-debug19
+  shotgun
   sinatra (= 1.2.6)
   thin
