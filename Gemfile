@@ -11,6 +11,7 @@ gem 'rack-cache',        '1.0.1', :require => 'rack/cache'
 gem 'rake',              '0.8.7',  :require => nil
 gem 'hashie',            '1.0.0'
 gem 'thin'
+gem 'shotgun'
 gem 'rack-mobile-detect', '0.3.0', :require => 'rack/mobile-detect'
 gem 'aws-ses',                     :require => 'aws/ses'
 

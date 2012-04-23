@@ -179,19 +179,20 @@ class Task
   end
   
   def broadcast_state_change(socket,p1,p2)
+		targets=[p1,p2]
   		socket.broadcast(
       	 { 
             :channel=> self.game.layer_id,     
       		:data=>{
       					  
-      		  :task_state_change=>{
-             	:p1=>p1.id,
-             	:p2=>p2.id
-			  }
+      		  :textMessage=>{
+             			:content=>"Picked up",
+             			:player_initials=>"CO",
+             			:player_name=>"controller",
+						:target => targets
+			  	  }
 			}
          }.to_json)
-  
-  
   
   end
   

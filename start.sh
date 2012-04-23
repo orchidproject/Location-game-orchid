@@ -1,1 +1,1 @@
-bundle exec rackup -s thin -p 49992
+bundle exec shotgun -s thin -p 49992

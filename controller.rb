@@ -113,6 +113,8 @@ end
     @game = Game.get params[:layer_id]
     players=[]
     
+    puts :hello
+    
     
     socketIO.broadcast( 
                           { 

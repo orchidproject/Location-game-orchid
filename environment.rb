@@ -144,8 +144,8 @@ class Controller < Sinatra::Base
     $mainloops=[]
     $game_area_top_left=[]
     
-    puts "self instance number (for experiment)"
-    puts self.object_id
+    #puts "self instance number (for experiment)"
+    #ßputs self.object_id
     
   end
 
