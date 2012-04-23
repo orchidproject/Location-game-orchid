@@ -1,1 +1,1 @@
-bundle exec shotgun -s thin -p 49992 -E production
+bundle exec rackup -s thin -p 49992 -E production
