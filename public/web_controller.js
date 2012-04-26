@@ -12,8 +12,8 @@ $(document).ready(function() {
         //alert("join " + $("#group_token").val());
         //channel and id pair needed for hand shaking 
 		socket.emit('game-join', {channel:$("#group_token").val(),id:-1});
-        socket.emit('game-join', {channel:$("#group_token").val()+"-1"),id:-1};
-        socket.emit('game-join', {channel:$("#group_token").val()+"-2"),id:-1};
+        socket.emit('game-join', {channel:$("#group_token").val()+"-1",id:-1});
+        socket.emit('game-join', {channel:$("#group_token").val()+"-2",id:-1});
 	});
     
 	socket.on('data', function(data) {
