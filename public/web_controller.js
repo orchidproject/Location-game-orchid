@@ -10,8 +10,10 @@ $(document).ready(function() {
     socket.on('game', function(data) {
         //debug
         //alert("join " + $("#group_token").val());
-		socket.emit('game-join', $("#group_token").val());
-        socket.emit('game-join', $("#group_token").val()+"-1");
+        //channel and id pair needed for hand shaking 
+		socket.emit('game-join', {channel:$("#group_token").val(),id:-1});
+        socket.emit('game-join', {channel:$("#group_token").val()+"-1"),id:-1};
+        socket.emit('game-join', {channel:$("#group_token").val()+"-2"),id:-1};
 	});
     
 	socket.on('data', function(data) {

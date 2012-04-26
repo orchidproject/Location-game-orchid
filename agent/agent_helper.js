@@ -118,15 +118,18 @@ Helper.prototype.pullGameStatus = function pullGameStatus(){
 
 
 
-function Helper(socket_address,ruby_address,ruby_port,game_id){
-    this.socket_address=socket_address;
-    this.ruby_address=ruby_address;
-    this.ruby_port=ruby_port;
+function Helper(game_id){
+    this.socket_address='http://holt.mrl.nott.ac.uk:49991';
+    this.ruby_address='holt.mrl.nott.ac.uk';
+    this.ruby_port=49992;
     this.player=new Object;
     this.game_id=game_id;
+    
+	this.socketAddress='http://holt.mrl.nott.ac.uk:49991';
+	this.nodeAddress='http://holt.mrl.nott.ac.uk:8080';
+	this.rubyAddress='holt.mrl.nott.ac.uk';
+	
     //this.socket=new Socket(socket_address);
-    
-    
 }
 
 module.exports=Helper;

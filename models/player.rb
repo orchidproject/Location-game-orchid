@@ -73,7 +73,8 @@ class Player
   def broadcast_health(io)
         io.broadcast( 
                      { 
-                        :channel=> self.game.layer_id,             
+                        :channel=> "#{self.game.layer_id}-2",  
+                        :users=>[self.id], #send to a particular user
                         :data=>{
                             :health=>{
                                 :player_id => self.id,
@@ -86,7 +87,8 @@ class Player
   def broadcast_acc_exposure(io)
         io.broadcast( 
                      { 
-                        :channel=> self.game.layer_id,             
+                        :channel=> "#{self.game.layer_id}-2", 
+                        :users=>[self.id], #send to a particular user
                         :data=>{
                             :acc_exposure=>{
                                 :player_id => self.id,
@@ -99,7 +101,8 @@ class Player
   def broadcast_curr_exposure(io)
         io.broadcast( 
                      { 
-                        :channel=> self.game.layer_id,             
+                        :channel=> "#{self.game.layer_id}-2", 
+                        :users=>[self.id], #send to a particular user
                         :data=>{
                             :exposure=>{
                                 :player_id => self.id,

@@ -21,6 +21,8 @@ function write_log(game_id,data){
 
 //-----Http server for pushing information from ruby
 
+var sessionTable = {};
+
 
 http.post("/broadcast", function (request, response) {
     request.content = '';
@@ -33,12 +35,20 @@ http.post("/broadcast", function (request, response) {
         content=JSON.parse(ob.data);
         
         var channel=content.channel;console.log(channel);
-        
+        var users=
         
         io.sockets.in(channel).emit('data', content.data);
         write_log(channel,content.data);
         
-	});
+        
+        //send to indvidual users
+        if(users!=null){
+        	var user;
+        	for(user in users){
+        		io.sockets.socket(sessionTable[user]).emit('data', content.data);
+        	}
+        }
+    });
     
     response.simpleText(200, "ok");
 });
@@ -189,8 +199,14 @@ io.sockets.on('connection', function (socket) {
   socket.emit('game');
  
   socket.on('game-join', function (data){
-    socket.join(data);
-    socket.set("channel",data);
+    socket.join(data.channel);
+    socket.set("channel",data.channel);
+    
+    if (data.id!=null){
+    	sessionTable.push({data.id:socket.transport.sessionid});
+    	console.log('session id recorded ' + data.id + " " + socket.transport.sessionid );
+    }
+    
     socket.get("channel", function (err, content) {
         console.log('join game channel ' + content);
     });

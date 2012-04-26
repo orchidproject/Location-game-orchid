@@ -10,18 +10,6 @@ it moves a truck along a fix route
 
 
 var events = require('events');
-
-
-
-//listen to the server
-//var SOCKET_IO_ADDRESS = 'http://localhost:49991';
-//var NODE_JS_ADDRESS = 'http://localhost:8080';
-//var RUBY_ADDRESS = 'localhost';
-
-var SOCKET_IO_ADDRESS = 'http://holt.mrl.nott.ac.uk:49991';
-var NODE_JS_ADDRESS = 'http://holt.mrl.nott.ac.uk:8080';
-var RUBY_ADDRESS = 'holt.mrl.nott.ac.uk';
-
 var RUBY_PORT = 49992;
 var game_id=process.argv[2];
 
@@ -29,9 +17,13 @@ var game_id=process.argv[2];
 
 
 var Helper = require('./agent_helper');
-var helper = new Helper(SOCKET_IO_ADDRESS,RUBY_ADDRESS,RUBY_PORT,game_id);
+var helper = new Helper(game_id);
 // get a socket io connection to server
 var socket = helper.getSocket();
+
+var SOCKET_IO_ADDRESS = helper.socketAddress;
+var NODE_JS_ADDRESS = helper.nodeAddress;
+var RUBY_ADDRESS = helper.rubyAddress;
 
 //logout of game when the pragram terminates
 var stdin = process.openStdin();
@@ -93,12 +85,12 @@ function mainloop(){
     truckUpdateID=setInterval(updateTruckLocation, 500);
     
     //set initial postion
-    helper.player.lat=52.953451;
-    helper.player.lng=-1.1869453;
+    helper.player.lat=52.9531411;
+    helper.player.lng=-1.18569;
                 
 
     //move a truck along a path
-    var path=[helper.player,{lat:52.9542228,lng:-1.1877573},{lat:52.9536905,lng:-1.1885117},{lat:52.9542228,lng:-1.1877573},{lat:52.9544232,lng:-1.189549}];
+    var path=[helper.player,{lat:52.9529583,lng:-1.186727},{lat:52.9540927,lng:-1.18750480},{lat:52.9531411,lng:-1.18569}];
     var section=0;
     
     //go along next section when previous section finished.
@@ -119,7 +111,7 @@ function mainloop(){
 
 
 function updateTruckLocation(){
-    socket.emit('location-push',{"player_id":helper.player.user_id,"latitude":helper.player.lat,"longitude":helper.player.lng,"skill":helper.player.skill});
+    socket.emit('location-push',{"player_id":helper.player.user_id,"latitude":helper.player.lat,"initials": "AA","longitude":helper.player.lng,"skill":helper.player.skill});
 }
 
 /////////////////////////////
@@ -182,7 +174,7 @@ function moveOneStep() {
 }
 
 //join game
-helper.join('agent','a@agent.com','truck',1,'AA', function(p){
+helper.join('agent','a@agent.com','truck',4,'AA', function(p){
     
     
     if (p.user_id != null){
