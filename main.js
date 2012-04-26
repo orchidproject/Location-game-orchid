@@ -21,7 +21,7 @@ function write_log(game_id,data){
 
 //-----Http server for pushing information from ruby
 
-var sessionTable = {};
+var sessionTable = [];
 
 
 http.post("/broadcast", function (request, response) {
@@ -203,7 +203,8 @@ io.sockets.on('connection', function (socket) {
     socket.set("channel",data.channel);
     
     if (data.id!=null){
-    	sessionTable.push({data.id:socket.transport.sessionid});
+    	//sessionTable.push({data.id:socket.transport.sessionid});
+    	sessionTable[data.id]=socket.transport.sessionid;
     	console.log('session id recorded ' + data.id + " " + socket.transport.sessionid );
     }
     
