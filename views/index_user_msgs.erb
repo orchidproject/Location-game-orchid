@@ -1,0 +1,38 @@
+<style type="text/css">
+ 	body {
+ 		padding: 0;
+ 	}
+</style>
+
+<style type="text/css">
+	div.ui-content {
+		padding: 0;
+	}
+</style>
+
+<div id="msgs" data-role="page">
+    
+  <div data-role="content">
+	<div id="wrapper">
+       
+
+	    <div id="messageListDiv">
+	    
+	    	<h5>Messages</h5>
+	    	<ul id="task_list" class="ui-listview" data-role="listview" data-inset="true">												
+			</ul>
+			
+		</div>      
+ 	</div> 
+ </div>
+</div>
+ 
+<input type="text" name="message" id="message"/>
+<input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
+    <input type="hidden" id="user_id" value="<%= @user_id %>" />
+    <input type="hidden" id="user_skill" value="<%= @user_skill %>" />
+    <input type="hidden" id="user_initials" value="<%= @user_initials %>" />
+    <input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
+    <input type="hidden" id="game_status" value="<%= @game.is_active %>" /> 
+   
+  
