@@ -1,0 +1,48 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'events' ]
+info using npm@1.1.0-beta-10
+info using node@v0.6.7
+verbose config file /home/wxj/.npmrc
+verbose config file /usr/local/etc/npmrc
+verbose config file /usr/local/lib/node_modules/npm/npmrc
+verbose caching /home/wxj/Location-game-orchid/node_modules/socket.io-client/package.json
+verbose loadDefaults socket.io-client@0.9.5
+verbose caching /home/wxj/Location-game-orchid/node_modules/socket.io/package.json
+verbose loadDefaults socket.io@0.9.5
+verbose caching /home/wxj/Location-game-orchid/node_modules/mysql/package.json
+verbose loadDefaults mysql@0.9.5
+verbose into /home/wxj/Location-game-orchid [ 'events' ]
+verbose cache add events
+verbose cache add [ 'events', null ]
+silly cache add: name, spec, args [ undefined, 'events', [ 'events', null ] ]
+verbose parsed url { pathname: 'events', path: 'events', href: 'events' }
+verbose addNamed [ 'events', '' ]
+verbose addNamed [ null, '' ]
+silly name, range, hasData [ 'events', '', false ]
+verbose raw, before any munging events
+verbose url resolving [ 'https://registry.npmjs.org/', './events' ]
+verbose url resolved https://registry.npmjs.org/events
+http GET https://registry.npmjs.org/events
+ERR! Error: failed to fetch from registry: events
+ERR!     at /usr/local/lib/node_modules/npm/lib/utils/npm-registry-client/get.js:139:12
+ERR!     at cb (/usr/local/lib/node_modules/npm/lib/utils/npm-registry-client/request.js:32:9)
+ERR!     at Request._callback (/usr/local/lib/node_modules/npm/lib/utils/npm-registry-client/request.js:137:18)
+ERR!     at Request.callback (/usr/local/lib/node_modules/npm/node_modules/request/main.js:104:22)
+ERR!     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/main.js:181:58)
+ERR!     at Request.emit (events.js:88:20)
+ERR!     at ClientRequest.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/main.js:178:10)
+ERR!     at ClientRequest.emit (events.js:67:17)
+ERR!     at CleartextStream.<anonymous> (http.js:1127:11)
+ERR!     at CleartextStream.emit (events.js:67:17)
+ERR! Report this *entire* log at:
+ERR!     <http://github.com/isaacs/npm/issues>
+ERR! or email it to:
+ERR!     <npm-@googlegroups.com>
+ERR! 
+ERR! System Linux 2.6.32-220.7.1.el6.x86_64
+ERR! command "node" "/usr/local/bin/npm" "install" "events"
+ERR! cwd /home/wxj/Location-game-orchid/agent
+ERR! node -v v0.6.7
+ERR! npm -v 1.1.0-beta-10
+ERR! message failed to fetch from registry: events
+verbose exit [ 1, true ]
