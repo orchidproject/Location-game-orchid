@@ -85,10 +85,13 @@ end
 
   post '/game/mobile/:layer_id/message' do
       @game = Game.get params[:layer_id]
+	  player_id = params[:id]
+	  player = @game.players.first :id => player_id
+		
       socketIO.broadcast( 
                          { 
                             :channel=> params[:layer_id],             
-                            :data => { :message=>{:content=>params[:content], :player_initials=> :MO, :player_name=> :mobilePlayer} }                          
+                            :data => { :message=>{:content=>params[:content], :player_initials=> :player.initials, :player_name=> :player.name} }                          
                             
                          }.to_json)
       {"status"=>:ok}.to_json
@@ -100,7 +103,7 @@ end
       @game = Game.get params[:layer_id]
       socketIO.broadcast( 
                          { 
-                            :channel=> params[:layer_id],             
+                            :channel=> params[:layer_id],          
                             :data => { :message=>{:content=>params[:content], :player_initials=> :CO, :player_name=> :controller} }                          
                             
                          }.to_json)
@@ -419,6 +422,35 @@ end
     @user_initials = player ? player.name : ''
     erb :'index'
   end
+  
+  get '/game/mobile/:layer_id/messages' do
+	@game = Game.first :layer_id => params[:layer_id]
+      
+      #if game ended, clear them
+    if @game.is_active==1
+        session.clear
+        params[:id]=nil
+    end
+	
+	player = Player.first :id => session[:id], :game => @game
+    puts session[:id]
+    if !player 
+        #mobile users store id information in params 
+        player = Player.first :id => params[:id], :game => @game
+        puts "find player #{params[:id]}"
+    end
+    
+    @user_id=""
+    if player
+        @user_id = player.id
+	end
+	
+	@user_initials = player ? player.name : ''
+    erb :'index_user_msgs', :layout => :'layout_user'
+	
+   end
+
+
   
   get '/game/mobile/:layer_id/?' do
     @game = Game.first :layer_id => params[:layer_id]
