@@ -204,8 +204,8 @@ io.sockets.on('connection', function (socket) {
     
     if (data.id!=null){
     	//sessionTable.push({data.id:socket.transport.sessionid});
-    	sessionTable[data.id]=socket.transport.sessionid;
-    	console.log('session id recorded ' + data.id + " " + socket.transport.sessionid );
+    	sessionTable[data.id]=socket.id;
+    	console.log('session id recorded ' + data.id + " " + socket.id);
     }
     
     socket.get("channel", function (err, content) {
