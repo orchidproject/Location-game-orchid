@@ -199,8 +199,13 @@ io.sockets.on('connection', function (socket) {
   socket.emit('game');
  
   socket.on('game-join', function (data){
-    socket.join(data.channel);
-    socket.set("channel",data.channel);
+  	if (data.channel==null){//support old client
+  		socket.join(data);
+  		socket.set("channel",data);
+  	}else{
+    	socket.join(data.channel);
+    	socket.set("channel",data.channel);
+    }
     
     if (data.id!=null){
     	//sessionTable.push({data.id:socket.transport.sessionid});
