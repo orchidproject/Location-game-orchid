@@ -53,8 +53,10 @@ function receiveMessageData(data) {
 function pushToTaskHistory(message, identifier, player_initials, player_name) {
 	//pushes the string message to the task list (including the date time added)
 	//(called when new tasks and messages are received)
+	
+	var currentTime = new Date();
 		
-	var line = $("<li id='" + identifier + "'>"+player_name+" ("+player_initials+"): " + message + "  (sent " + getTime() + ")</li>"); //TODO: add intended recipients
+	var line = $("<li id='" + identifier + "'>"+player_name+" ("+player_initials+"): " + message + "  (sent " + currentTime.getHours() +":"+currentTime.getMinutes()+")</li>"); //TODO: add intended recipients
 	var taskList = $('#task_list');
 	taskList.prepend(line);
 	taskList.listview( "refresh" );  
