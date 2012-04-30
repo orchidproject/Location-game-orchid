@@ -10,6 +10,17 @@
 	}
 </style>
 
+<script text="javascript">
+$(function(){
+//test response to incoming messages
+    var userid = $('#user_id').val();
+    exposureData = {'value':0, 'player_id':userid};
+    receiveExposureData(exposureData);
+	messageData = {'id':0, 'content':'Hi! Here is where you will receive important info about the game.', 'player_id':[userid]};
+	receiveMessageData(messageData);    
+	});
+</script>
+
 <div id="msgs" data-role="page">
     
   <div data-role="content">
