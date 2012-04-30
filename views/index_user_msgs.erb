@@ -11,6 +11,9 @@
 </style>
 
 <script text="javascript">
+
+var latestMsgId = 0;
+
 $(function(){
 //test response to incoming messages
     var userid = $('#user_id').val();
@@ -35,7 +38,6 @@ function handleSocketData(dataStr) {
     	receiveMessageData(data.message);
     }
 }
-	
 
 function receiveMessageData(data) {
 	//schema: message { id: integer , player_id: [ array of integer ] , content: string }
