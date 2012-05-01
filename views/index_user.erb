@@ -135,14 +135,16 @@ function sendMessage(){
 
 <div id="main" data-role="page">
 
+
     	<div data-role="header" id="header">
+    	 </div> <!-- /header -->
+    	<!--
 	    	<div data-role="navbar">
 				<ul>
 					<li><a href="#" class="ui-btn-active" onclick="showScreen('map');">Map</a></li>
 					<li><a href="#" onclick="showScreen('messages');">Messages</a></li>					
 				</ul>
-			</div><!-- /navbar -->
-	    </div><!-- /header -->
+			</div>  --> 	   
     
   	<div data-role="content">
 
@@ -154,9 +156,9 @@ function sendMessage(){
           Radiation<br/>
           <div id="radiation_number" style="font-size : 300%">0</div>
           <div id="radiation_images">
-            <img id="rad0" src="/radiation_gray.png" width="20pt"/>
-            <img id="rad1" src="/radiation_gray.png" width="20pt"/>
-            <img id="rad2" src="/radiation_gray.png" width="20pt"/>
+            <img id="rad0" src="/img/radiation_gray.png" width="20pt"/>
+            <img id="rad1" src="/img/radiation_gray.png" width="20pt"/>
+            <img id="rad2" src="/img/radiation_gray.png" width="20pt"/>
           </div>
         </div>
         
@@ -184,6 +186,7 @@ function sendMessage(){
 			<h3 class="message"></h3>
 		</section>
 
+<!--
 	    <div id="messageListDiv">
 	    
 	    	<h5>Messages</h5>
@@ -194,12 +197,11 @@ function sendMessage(){
 				<input type="text" name="message" id="message"/>
 				<input onclick="sendMessage();" type="button" name="send" id="message_btn" value="send"/>
 				</form>
-			
 			</div>
-			
-	    	
+
 	    
 	    </div>
+	    -->
 
 
   

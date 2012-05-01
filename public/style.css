@@ -145,8 +145,9 @@ html, body {
 	z-index: 2;
 	top: 50px;
 	right: 40px;
-	width: 450px;
+	width: 500px;
 	background-color: #E1E1E1;
+	opacity: 0.9;
 }
 
 #truck-team-wrapper {	
@@ -184,10 +185,11 @@ html, body {
 	background: url('img/white-bg.png');
 	position: absolute;
 	z-index: 9999;
-	width: 410px;
+	width: 360px;
 	left: 50%;
 	margin: 0 0 0 -200px;
 	padding:0 0 4px 0;
+	opacity: 0.9;
 	/* top: 45px; should be 45 when the top bar is displayed */
 	top: 0; 
 }
@@ -195,8 +197,9 @@ html, body {
 #scoreboard {
 	background: #e1e1e1;
 	height: 120px;
-	width:400px;
+	width:350px;
 	margin: 0 auto;
+	opacity: 0.9;
 }
 
 #drop-cargo {

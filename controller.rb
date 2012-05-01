@@ -91,7 +91,7 @@ end
       socketIO.broadcast( 
                          { 
                             :channel=> params[:layer_id],             
-                            :data => { :message=>{:content=>params[:content], :player_initials=> :player.initials, :player_name=> :player.name} }                          
+                            :data => { :message=>{:content=>params[:content], :player_initials=> player.initials, :player_name=> player.name} }                          
                             
                          }.to_json)
       {"status"=>:ok}.to_json
@@ -446,7 +446,7 @@ end
 	end
 	
 	@user_initials = player ? player.name : ''
-    erb :'index_user_msgs', :layout => :'layout_user'
+    erb :'index_user_msgs', :layout => :'layout_user_msgs'
 	
    end
 

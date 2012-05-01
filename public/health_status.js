@@ -112,9 +112,9 @@ function convertToTwoDigitHex(number) {
         
         for (var i = 0; i < radiationLabelThresholds.length; i++) {
            if (radiation > radiationLabelThresholds[i]) {
-                $("#rad" + i ).attr("src","/radiation_black.png");
+                $("#rad" + i ).attr("src","/img/radiation_black.png");
              } else {
-                $("#rad" + i ).attr("src","/radiation_gray.png");
+                $("#rad" + i ).attr("src","/img/radiation_gray.png");
             }
         }
      }
