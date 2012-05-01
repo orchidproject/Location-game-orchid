@@ -829,7 +829,9 @@ end
     player = game.players.first :id => playerId
     #current_exposure = $simulations[params[:layer_id]].getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
     #exposure = player.exposure + current_exposure
-    player.update(:latitude => params[:latitude], :longitude => params[:longitude])
+    player.latitude=params[:latitude]
+    player.longitude=params[:longitude]
+    player.save
     {:status=> :ok}.to_json
   end
   
