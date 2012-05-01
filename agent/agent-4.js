@@ -174,7 +174,7 @@ function moveOneStep() {
 }
 
 //join game
-helper.join('agent','a@agent.com','truck',4,'AA', function(p){
+helper.join('agent','a@agent.com','truck',4,'DD', function(p){
     
     
     if (p.user_id != null){

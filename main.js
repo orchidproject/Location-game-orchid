@@ -35,7 +35,7 @@ http.post("/broadcast", function (request, response) {
         content=JSON.parse(ob.data);
         
         var channel=content.channel;console.log(channel);
-        var users=
+        var users=content.users;
         
         io.sockets.in(channel).emit('data', content.data);
         write_log(channel,content.data);

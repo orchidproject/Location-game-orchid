@@ -77,17 +77,25 @@ class Controller < Sinatra::Base
                 p.current_exposure = check_radiation(p.latitude,p.longitude,game.layer_id)
                 p.exposure = p.exposure + p.current_exposure
                
-                puts "acc_exposure"
-                puts p.exposure
-                puts "current_exposure"
-                puts p.current_exposure
+                #puts "acc_exposure"
+                #puts p.exposure
+                #puts "current_exposure"
+                #puts p.current_exposure
                 
-                #broadcast exposure
+                
                 p.update
+                
+                #broadcast 
                 p.broadcast_health(socketIO)
                 p.broadcast_acc_exposure(socketIO)
                 p.broadcast_curr_exposure(socketIO)
-                 
+                
+                
+                #ubiserver interface
+                p.send_curr_exposure(socketIO)
+                p.send_acc_exposure(socketIO)
+                p.send_health(socketIO)
+                
                 p.save
              else
                 puts "truck not in the boundary"

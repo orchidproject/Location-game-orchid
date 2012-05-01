@@ -1,0 +1,27 @@
+{"system":"reset","time_stamp":1335789205146}
+{"system":"start","time_stamp":1335789209818}
+{"player":{"id":37,"name":"agent","skill":"medic"},"time_stamp":1335789214588}
+{"textMassage":{"content":"agent join the game"},"time_stamp":1335789214595}
+{"location":{"player_id":37,"latitude":52.9544262360967,"longitude":-1.1895196004048434,"skill":"medic","initials":"AA"},"time_stamp":1335789215101}
+{"location":{"player_id":37,"latitude":52.954430031217576,"longitude":-1.1894828509108977,"skill":"medic","initials":"AA"},"time_stamp":1335789215600}
+{"location":{"player_id":37,"latitude":52.95443382633845,"longitude":-1.189446101416952,"skill":"medic","initials":"AA"},"time_stamp":1335789216101}
+{"location":{"player_id":37,"latitude":52.95443762145933,"longitude":-1.1894093519230062,"skill":"medic","initials":"AA"},"time_stamp":1335789216600}
+{"location":{"player_id":37,"latitude":52.9544414165802,"longitude":-1.1893726024290605,"skill":"medic","initials":"AA"},"time_stamp":1335789217102}
+{"location":{"player_id":37,"latitude":52.95444521170108,"longitude":-1.1893358529351148,"skill":"medic","initials":"AA"},"time_stamp":1335789217600}
+{"location":{"player_id":37,"latitude":52.95444900682195,"longitude":-1.189299103441169,"skill":"medic","initials":"AA"},"time_stamp":1335789218100}
+{"location":{"player_id":37,"latitude":52.95445280194283,"longitude":-1.1892623539472233,"skill":"medic","initials":"AA"},"time_stamp":1335789218599}
+{"location":{"player_id":37,"latitude":52.954456597063704,"longitude":-1.1892256044532776,"skill":"medic","initials":"AA"},"time_stamp":1335789219099}
+{"location":{"player_id":37,"latitude":52.95446039218458,"longitude":-1.189188854959332,"skill":"medic","initials":"AA"},"time_stamp":1335789219600}
+{"location":{"player_id":37,"latitude":52.954464187305454,"longitude":-1.1891521054653862,"skill":"medic","initials":"AA"},"time_stamp":1335789220100}
+{"location":{"player_id":37,"latitude":52.95446798242633,"longitude":-1.1891153559714405,"skill":"medic","initials":"AA"},"time_stamp":1335789220599}
+{"location":{"player_id":37,"latitude":52.954471777547205,"longitude":-1.1890786064774947,"skill":"medic","initials":"AA"},"time_stamp":1335789221099}
+{"location":{"player_id":37,"latitude":52.95447557266808,"longitude":-1.189041856983549,"skill":"medic","initials":"AA"},"time_stamp":1335789221600}
+{"location":{"player_id":37,"latitude":52.954479367788956,"longitude":-1.1890051074896033,"skill":"medic","initials":"AA"},"time_stamp":1335789222100}
+{"location":{"player_id":37,"latitude":52.95448316290983,"longitude":-1.1889683579956576,"skill":"medic","initials":"AA"},"time_stamp":1335789222600}
+{"location":{"player_id":37,"latitude":52.95448695803071,"longitude":-1.1889316085017119,"skill":"medic","initials":"AA"},"time_stamp":1335789223100}
+{"location":{"player_id":37,"latitude":52.95449075315158,"longitude":-1.1888948590077661,"skill":"medic","initials":"AA"},"time_stamp":1335789223600}
+{"location":{"player_id":37,"latitude":52.95449454827246,"longitude":-1.1888581095138204,"skill":"medic","initials":"AA"},"time_stamp":1335789224100}
+{"location":{"player_id":37,"latitude":52.95449834339333,"longitude":-1.1888213600198747,"skill":"medic","initials":"AA"},"time_stamp":1335789224600}
+{"location":{"player_id":37,"latitude":52.95450213851421,"longitude":-1.188784610525929,"skill":"medic","initials":"AA"},"time_stamp":1335789225100}
+{"location":{"player_id":37,"latitude":52.95450593363508,"longitude":-1.1887478610319833,"skill":"medic","initials":"AA"},"time_stamp":1335789225600}
+{"location":{"player_id":37,"latitude":52.95450972875596,"longitude":-1.1887111115380375,"skill":"medic","initials":"AA"},"time_stamp":1335789226100}

@@ -110,6 +110,45 @@ class Player
                             }
                         }
                      }.to_json)   
+                     
+       
   end 
-
+  
+  #channel involve
+  #exposure-[gameid](-[playerid])
+  #health-[gameid](-[playerid])
+  #acc_exposure-[gameid]
+  
+  
+  def send_acc_exposure(io)
+  		io.update_clients({
+  				:channel=> "acc_exposure-#{self.game.layer_id}", 
+  				:userID=>self.id,
+  				:updates=>{
+                            :acc_exposure=>self.exposure
+                         }
+        }.to_json);
+  
+  end
+  
+  def send_health(io)
+  		io.update_clients({
+  				:channel=> "health-#{self.game.layer_id},health-#{self.game.layer_id}-#{self.id}", 
+  				:userID=>self.id,
+  				:updates=>{
+                            :health=>self.health
+                         }
+        }.to_json);
+  
+  end 
+  
+  def send_curr_exposure(io)
+  		io.update_clients({
+  				:channel=> "exposure-#{self.game.layer_id},exposure-#{self.game.layer_id}-#{self.id}", 
+  				:userID=>self.id,
+  				:updates=>{
+                            :exposure=>self.current_exposure
+                         }
+        }.to_json);
+  end 
 end

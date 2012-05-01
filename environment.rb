@@ -32,6 +32,21 @@ class SocketIO
         {:status=>"ok"}
 
     end 
+    
+    def update_clients(data)
+    	url = @Socket_url
+        
+        
+        req = Net::HTTP::Post.new("/update", initheader = {'Content-Type' =>'application/json'})
+        req.body = data
+        
+        #puts "broadcast to #{url}"
+        
+        response = Net::HTTP.new(@Socket_url, 8888).start {|http| http.request(req) }
+        {:status=>"ok"}
+    
+    
+    end 
 end
 
 class Controller < Sinatra::Base

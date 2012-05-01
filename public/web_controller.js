@@ -1,4 +1,23 @@
-var socket;
+
+$(document).ready(function() {
+	connect('http://localhost:49891', 0, "dashboard", "observer", "exposure-1", newreceiver, statechange);
+});
+
+
+function statechange(receivername,updates,timestamp,values) {
+		for (var key in updates) {
+			console.log("hander :"+ key + " " + updates[key]);
+		}
+}
+function newreceiver(name,state) {
+		console.log('newreceiver: '+name);
+		//receivernames.push(name);
+	
+		state.onchange(function(updates,timestamp,values) { statechange(name,updates,timestamp,values); });
+		state.list(function(values,timestamp) { statechange(name,values,timestamp,values); });
+}
+
+/*var socket;
 
 $(document).ready(function() {
 	updateGame(true);
@@ -57,22 +76,7 @@ $(document).ready(function() {
         
 	});
 
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+});*/
 
 /* legacy fuction from jtruck
 function joinGame(team) {
