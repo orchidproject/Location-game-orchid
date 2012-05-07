@@ -3,14 +3,14 @@
 $(document).ready(function() {
 	updateGame(true);
 	id='dashboard'+(new Date()).getTime();
-	connect('http://localhost:49891', id , "dashboard", "observer", 
+	/*connect('http://localhost:49891', id , "dashboard", "observer", 
 		"acc_exposure-"+$("#group_token").val()+
 		",locations-"+$("#group_token").val() + 
 		",player_info-"+$("#group_token").val()+
 		",tasks-"+$("#group_token").val()+
 		",heatmap-"+$("#group_token").val()+
 		",system-"+$("#group_token").val(),
-		newreceiver, statechange);
+		newreceiver, statechange);*/
 });
 
 function statechange(receivername,updates,timestamp,values) {
