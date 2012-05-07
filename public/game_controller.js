@@ -43,20 +43,19 @@ var lastGeigerPlayTime = 0;
 //var backGroundRec;
 var heat_map=[];
 function receiveHeatmapData(data){
-    var i=0;
-    for (i=0; i<data.length; i++){
-       if(heat_map[data[i].index]==null){
-       		if (data[i].value>0){
-       			var point=new google.maps.LatLng(data[i].lat, data[i].lng);
-       			heat_map[data[i].index]=new google.maps.Circle(pick_overlay( data[i].value, point))
+
+    for (var key in data){
+       if(heat_map[key]==null){
+       		if (data[key].value>0){
+       			var point=new google.maps.LatLng(data[key].lat, data[key].lng);
+       			heat_map[key]=new google.maps.Circle(pick_overlay( data[key].value, point))
        		}
        }
        else{
-       		var point=new google.maps.LatLng(data[i].lat, data[i].lng);
-       		heat_map[data[i].index].setOptions(pick_overlay( data[i].value, point));
+       		var point=new google.maps.LatLng(data[key].lat, data[key].lng);
+       		heat_map[key].setOptions(pick_overlay( data[key].value, point));
        }
     }
-	
 }
 
 var HEAT_MAP_COLORS = ["#202020","#3B3B3B","#3B3D64","#3F3CAD","#4B85F3","#3CBDC3","#56D355","#FFFB3D","#FF9F48","#FD3B3B","#FD3B3B"];
@@ -201,12 +200,11 @@ function receiveTextMassage(data){
 }
 
 function receivePlayerInfoData(data){
+	var ele=$("#players-section-"+data.id);
+	if($("#players-section-"+data.id).length==0){
+			$("#players").append("<tr id='players-section-"+data.id+"'><td align='center'>"+ data.name +"</td> <td align='center'>"+ data.skill +"</td> <td align='center'><div id='exposure_"+data.id+"'></div> </td> <td align='center'> <div id='level_"+data.id+"'></div> </td><tr>");
+	}
 
-	$("#players").append("<tr><td align='center'>"+ data.name +"</td> <td align='center'>"+ data.skill +"</td> <td align='center'><div id='exposure_"+data.id+"'></div> </td> <td align='center'> <div id='level_"+data.id+"'></div> </td><tr>");
-	
-//    <td align="center"><%= player.name %></td>
-//    <td align="center"><div id="exposure_<%= player.id %>"> </div> </td>
-//    <td align="center"> <div id="level_<%= player.id %>"> </div> </td>
 
 }
 
@@ -216,7 +214,7 @@ function receiveExposureData(data){
     document.getElementById("exposure_"+data.player_id).innerHTML=data.value;
     
     var level = document.getElementById("level_"+data.player_id);
-    if (data.value <= 50) {
+    if (data.exposure <= 50) {
     	level.innerHTML = "Low"; 
     }
     else if (data.value > 50 && data.level <=350)   {
@@ -348,6 +346,13 @@ function updateGame(oneTime) {
                     receiveTaskData(d.task);
                 }
             });
+            
+            $(data.player).each(function(i, p){
+                var d=filter({"player":p});
+                if(typeof d.player != "undefined"){
+                    receivePlayerInfoData(d.player);
+                }
+            });
                         
             $(data.location).each(function(i, location){
                 var d=filter({"location":location});
@@ -359,7 +364,7 @@ function updateGame(oneTime) {
              $(data.player).each(function(i, player){
                 var d=filter({"player":player});
                 if(typeof d.player != "undefined"){
-                    receivePlayerInfoData(d.player);
+                    //receivePlayerInfoData(d.player);
                 }
             });
             

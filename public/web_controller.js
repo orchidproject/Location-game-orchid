@@ -1,199 +1,148 @@
-
+var id;
 $(document).ready(function() {
-	connect('http://localhost:49891', 0, "dashboard", "observer", "exposure-1", newreceiver, statechange);
+	//currently keep creating new peers in server when refresh
+	updateGame(true);
+	id='dashboard'+(new Date()).getTime();
+	connect('http://localhost:49891', id , "dashboard", "observer", 
+		"acc_exposure-"+$("#group_token").val()+
+		",locations-"+$("#group_token").val() + 
+		",player_info-"+$("#group_token").val()+
+		",tasks-"+$("#group_token").val()+
+		",heatmap-"+$("#group_token").val()+
+		",system-"+$("#group_token").val(),
+		newreceiver, statechange);
 });
 
 
 function statechange(receivername,updates,timestamp,values) {
+		
+		//parse id
+		//example "exposure-1/server-52"
+		//parse to channel:exposure, user_id:52
+		var temp=receivername.split("/");
+		var user_id;
+		var channel;
+		channel=(temp[0].split("-"))[0];
+		temp=temp[1].split("-");
+		user_id= temp[temp.length-1];
+		
 		for (var key in updates) {
-			console.log("hander :"+ key + " " + updates[key]);
+			console.log("hander : "+ user_id +" "+ key + " " + updates[key]);
 		}
+		
+		var old_style_json=new Object;
+		
+		if (channel=="acc_exposure"){
+			//convert ot old json schema
+			old_style_json["player_id"]=user_id;
+			old_style_json["value"]=upates["acc_exposure"];
+			
+			receiveExposureData(old_style_json);
+		}
+		else if (channel=="locations"){
+			old_style_json["player_id"]=user_id;
+			if (updates["latitude"]!=null) {old_style_json["latitude"]=updates["latitude"]}else{return;}
+			if (updates["longitude"]!=null) {old_style_json["longitude"]=updates["longitude"]}else{return;}
+			old_style_json["skill"]=values["skill"];
+			old_style_json["initials"]=values["initials"];
+			
+			receivePlayerData(old_style_json);
+			
+		}
+		else if (channel=="player_info"){
+			//ignore the first loading of state, avoid conflict with updateGame
+			old_style_json["player_id"]=user_id;
+			if (rece.first){
+				rece.first=false;
+				return;
+			}
+			
+			//convert ot old json schema
+			if (updates["name"]!=null) {old_style_json["name"]=updates["name"]}else{return;}
+			if (updates["skill"]!=null) {old_style_json["skill"]=updates["skill"]}else{return};
+			
+			receivePlayerInfoData(old_style_json);
+		}
+		
+		else if (channel=="system"){
+			old_style_json["player_id"]=user_id;
+			var rece=peer.receivers[receivername];
+			
+			//ignore the first loading of state, allow onoff signal
+			if (rece.first){
+				rece.first=false;
+			}
+			else{
+				system(updates["signal"]);
+			}
+			
+			
+		}
+		else if (channel=="tasks"){
+			//convert ot old json schema
+			old_style_json["player_id"]=user_id;
+			if (updates["latitude"]!=null) {old_style_json["latitude"]=updates["latitude"]}else{return;}
+			if (updates["longitude"]!=null) {old_style_json["longitude"]=updates["longitude"]}else{return;}
+			if (updates["requirement"]!=null) {old_style_json["requirement"]=updates["requirement"]}else{return;}
+			if (updates["state"]!=null) {old_style_json["state"]=updates["state"]}else{return;}
+			if (updates["id"]!=null) {old_style_json["id"]=updates["id"]}else{return;}
+			if (updates["type"]!=null) {old_style_json["type"]=updates["type"]}else{return;}
+			
+			
+			receiveTaskData(old_style_json);
+		}
+		else if(channel=="heatmap"){
+			var rece=peer.receivers[receivername];
+			if (rece.first){
+				//turn off the flag
+				rece.first=false;
+				receiveHeatmapData(values);
+			}
+			else{
+				receiveHeatmapData(updates);
+			}
+			
+// convert it to heatmap format
+// 			var heatMapData={
+//     			max: 10,
+//     			//data: [{lat: 52.9545091, lng:-1.1887172, count: 10},{lat: 52.9540927, lng:-1.18750480, count: 10}]
+//     		};
+//     		
+//     		var data=[];
+//     		for(var index in values){
+//     			if (values[index].lat==null||values[index].lng==null){return;}
+//     			data.push({
+//     				lat:values[index].lat,lng:values[index].lng,count:values[index].value
+//     			});
+//     		}
+// 			//data.push({lat: 52.9545091, lng:-1.1887172, count: 10},{lat: 52.9540927, lng:-1.18750480, count: 10});
+//     		
+//     		heatMapData["data"]=data;
+//     		
+//     		// this is important, because if you set the data set too early, the latlng/pixel projection doesn't work
+// 			google.maps.event.addListenerOnce(map, "idle", function(){
+// 				heatmap.setDataSet(heatMapData);
+// 			});
+		
+		}
+
 }
+
+
 function newreceiver(name,state) {
 		console.log('newreceiver: '+name);
 		//receivernames.push(name);
-	
+		var rece=peer.receivers[name];
+		//notify when initial update received
+		rece["first"]=true;
+		
+		//onchange will push a new handler.
 		state.onchange(function(updates,timestamp,values) { statechange(name,updates,timestamp,values); });
-		state.list(function(values,timestamp) { statechange(name,values,timestamp,values); });
+		//state.list(function(values,timestamp) { statechange(name,values,timestamp,values); });
 }
 
-/*var socket;
-
-$(document).ready(function() {
-	updateGame(true);
-    
-    socket = io.connect(SOCKET_IO_ADDRESS, {
-            transports: ['websocket', 'flashsocket', 'htmlfile']
-    });
-    
-    socket.on('game', function(data) {
-        //debug
-        //alert("join " + $("#group_token").val());
-        //channel and id pair needed for hand shaking 
-		socket.emit('game-join', {channel:$("#group_token").val(),id:-1});
-        socket.emit('game-join', {channel:$("#group_token").val()+"-1",id:-1});
-        socket.emit('game-join', {channel:$("#group_token").val()+"-2",id:-1});
-	});
-    
-	socket.on('data', function(data) {
-        data=filter(data);
-        saveLog(data);
-        
-        if(typeof data.acc_exposure != "undefined"){
-            receiveExposureData(data.acc_exposure);
-        }
-        
-        if(typeof data.system != "undefined"){
-            system(data.system); 
-        }
-              
-        if(typeof data.heatmap != "undefined"){
-              receiveHeatmapData(data.heatmap);
-        }
-        
-        //not sure whether this is implemented
-        if(typeof data.textMassage != "undefined"){
-            receiveTextMassage(data.textMassage);
-        }
-        
-        if(typeof data.location != "undefined"){
-            receivePlayerData(data.location);
-        }
-        
-        if(typeof data.cleanup != "undefined"){
-                //cleanup(data.cleanup); not implemented now
-        }
-        
-        if(typeof data.player != "undefined"){
-                receivePlayerInfoData(data.player);
-        }
-        
-        if(typeof data.task != "undefined"){
-                receiveTaskData(data.task);
-        }
-			
-		       
-        
-	});
-
-});*/
-
-/* legacy fuction from jtruck
-function joinGame(team) {
-    $.ajax({ 
-		url: "/game/"+$("#layer_id").val()+"/webjoin",
-		type: "GET",
-		data: {"team": team},
-		dataType: "json", 
-		success: function(data) {
-            if (typeof data.error != 'undefined'){
-                alert(data.error);
-            }
-            else{
-                location.reload();
-            }
-                   
-        }
-        
-    });
-}
-*/
-//legacy
-////////////////player actions//////////////////
-/*
-function sendRequest(event){
-    $.ajax({ 
-		url: "/game/"+$("#layer_id").val()+"/request",
-		type: "GET",
-		data: {"latitude": event.latLng.lat(), "longitude":event.latLng.lng()},
-		dataType: "json", 
-		success: function(data) {
-            alert("request made");
-            //receiveCoinData(data);
-        }
-    });
+function getState(channel, userID, key){
+	var receiver=peer.receivers[channel+"/"+userID];
+	return receiver.state.values[key];
 }
 
-function dropCargo(){
-	$.ajax({ 
-		url: "/game/"+$("#layer_id").val()+"/dropCargo",
-		type: "POST",
-		data: {"latitude":truckMarker.position.lat(),"longitude":truckMarker.position.lng() },
-		dataType: "json", 
-		success: function(data) {
-           //alert("request made");
-        }
-    });
-}
-
-*/
-/////////////////////////////
-//this is a for animated movement of truck
-//legacy
-////
-/*
-var previousMoveId=0;
-var count=0;
-var lngPerStep;
-var latPerStep;
-var steps;
-var radiation;
-//seems to be invoked twice
-function moveTruck(event){
-    var speed = 3; //10 m/s
-    var distance = google.maps.geometry.spherical.computeDistanceBetween(event.latLng, truckMarker.position);
-    //alert(distance);
-    steps = (distance*10)/speed;//10 times more smooth
-    lngPerStep = (event.latLng.lng()-truckMarker.position.lng())/steps;
-    latPerStep = (event.latLng.lat()-truckMarker.position.lat())/steps;
-    count=0;
-    
-    
-    clearInterval(previousMoveId);
-    previousMoveId = setInterval("moveOneStep()",100);
-    
-
-}
-
-function moveOneStep() {
-        if(count<steps){
-            var p=new google.maps.LatLng(truckMarker.position.lat()+latPerStep,truckMarker.position.lng()+lngPerStep);
-            truckMarker.setPosition(p);
-            radiation.setCenter(p)
-            count++;
-        
-        }
-        else{
-            clearInterval(previousMoveId);
-        }
-}
-
-*/
-
-
-//////////////////////////////////
-//
-//legacy
-//
-////
-
-/*
-
-function getTruck(){
-    index=-1;
-    $(players).each(function(i, p){
-        if(typeof p != "undefined"){
-            if(p.team == "truck"){
-                return index=i;
-            }
-        }
-    });
-    if (index >= 0) { return players[index]; }
-}
-
-function updateTruckLocation(){
-    var truck= getTruck();
-    socket.emit('location-push',{ player_id:truck.id,latitude:truckMarker.position.lat(),longitude:truckMarker.position.lng()});
-}
-
-*/

@@ -136,7 +136,7 @@
 		this.isconnected = false;
 		this.nextackid = 1;
 		// state - not sent, maybe received-awaiting ack, maybe received-no ack, known received
-		// get and queue initial state
+		// get and queue  state
 		var self = this;
 		// just key/values
 		this.statenotsent = {};

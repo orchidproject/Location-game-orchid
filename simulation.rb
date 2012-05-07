@@ -139,14 +139,6 @@ class Simulation
     end
     
     
-    
-    
-    
-    
-    
-    
-    
-    
     #edge detection
     def getFrame(t)
         @data.get2DArray(t)
@@ -239,7 +231,7 @@ class Simulation
     	frame_number= getTimeIndex(time)
     	
     	
-        arrayWithLatLng=[]
+        arrayWithLatLng={}
     	
     	#if it is the first time, get the initial frame
     	if !@previous_time
@@ -248,7 +240,8 @@ class Simulation
                 	lat=getLat(y)
                 	lng=getLong(x)
                 	value=(getReadingByIndex(y, x, time)/10).floor
-                	arrayWithLatLng<<{:index=>"#{x}-#{y}",:value=>value,:lat=>lat,:lng=>lng}
+                	
+                	arrayWithLatLng.update({"#{x}-#{y}"=>{:value=>value,:lat=>lat,:lng=>lng}})
                 end
         	end
         	
@@ -279,7 +272,7 @@ class Simulation
                 	
                 	if value != previous_value 
                 		count=count+1
-                		arrayWithLatLng<<{:index=>"#{x}-#{y}",:value=>value,:lat=>lat,:lng=>lng}
+                		arrayWithLatLng.update({"#{x}-#{y}"=>{:value=>value,:lat=>lat,:lng=>lng}})
                 	end
                 
             	end

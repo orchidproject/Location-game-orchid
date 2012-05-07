@@ -11,34 +11,10 @@ it deal with socket.io connection, game join and http api request
 
 var requestClient = require('http');
 var events = require('events');
-var client = require('socket.io-client');
+
 
 Helper.prototype = new events.EventEmitter;
 
-Helper.prototype.getSocket = function(){
-    //should be a singleton
-    if(typeof this.socket == 'undefined'){
-        this.socket = client.connect(this.socket_address, {
-            transports: ['websocket', 'flashsocket', 'htmlfile']
-        });
-        var so = this.socket;
-        var game_id=this.game_id;
-        so.on('game', function(data) {
-            so.emit('game-join', game_id);
-        });
-    
-
-        so.on('data', function(data) {
-            console.log(data);
-        });
-        
-        console.log(this.game_id);
-    }
-    
-    return so;
-
-}
- 
 
 Helper.prototype.join = function join(name,email,team,role_id,initials,callback){
     var content="name="+name+"&email="+email+"&team="+team+"&role_id="+role_id+"&initials="+initials;
@@ -122,14 +98,14 @@ function Helper(game_id){
     //this.socket_address='http://holt.mrl.nott.ac.uk:49991';
     //this.ruby_address='holt.mrl.nott.ac.uk';
     
-    this.socket_address='http://holt.mrl.nott.ac.uk:49991';
-    this.ruby_address='holt.mrl.nott.ac.uk';
+    this.socket_address='http://localhost:49991';
+    this.ruby_address='localhost';
     this.ruby_port=49992;
     this.player=new Object;
     this.game_id=game_id;
     
 	this.socketAddress=this.socket_address;
-	this.nodeAddress='http://holt.mrl.nott.ac.uk:8080';
+	//this.nodeAddress='http://holt.mrl.nott.ac.uk:8080';
 	this.rubyAddress=this.ruby_address;
 	
     //this.socket=new Socket(socket_address);

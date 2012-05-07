@@ -22,40 +22,11 @@ class Controller < Sinatra::Base
 
   def endGame(game)
     game.update(:is_active=>1)
-    game.broadcast(socketIO, "end")
+    game.send(socketIO, "end")
     @games = Game.all
     session.clear
   end 
             
-  # def get_mainloops(game_id)
-#   
-#   		if !$mainloops
-#   			$mainloops=[]
-#   			
-#   		end 
-#   		
-#         if !$mainloops[game_id]
-#         	$mainloops[game_id]=nil
-#         end
-#         
-#         return $mainloops[game_id]
-#   end
-#   
-#   def get_simulations(game_id)
-#   		if !$simulations
-#   			$simulations=[]
-#   			puts "simulation: #{$simulations.object_id}"
-#   		end 
-#         
-#         if !$simulations[game_id]
-#         	 puts "set simulation to nil"
-#         	$simulations[game_id]=nil
-#         end
-#         
-#         puts "simulation: #{$simulations.object_id}"
-#         puts "simulation with #{game_id}: #{$simulations[game_id].object_id}"
-#         return $simulations[game_id]
-#   end
             
   def update_game(game)
          puts "game update"
@@ -76,19 +47,13 @@ class Controller < Sinatra::Base
              
                 p.current_exposure = check_radiation(p.latitude,p.longitude,game.layer_id)
                 p.exposure = p.exposure + p.current_exposure
-               
-                #puts "acc_exposure"
-                #puts p.exposure
-                #puts "current_exposure"
-                #puts p.current_exposure
-                
                 
                 p.update
                 
                 #broadcast 
-                p.broadcast_health(socketIO)
-                p.broadcast_acc_exposure(socketIO)
-                p.broadcast_curr_exposure(socketIO)
+                #p.broadcast_health(socketIO)
+                #p.broadcast_acc_exposure(socketIO)
+                #p.broadcast_curr_exposure(socketIO)
                 
                 
                 #ubiserver interface

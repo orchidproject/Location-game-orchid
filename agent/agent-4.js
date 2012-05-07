@@ -22,7 +22,7 @@ var helper = new Helper(game_id);
 var socket = helper.getSocket();
 
 var SOCKET_IO_ADDRESS = helper.socketAddress;
-var NODE_JS_ADDRESS = helper.nodeAddress;
+//var NODE_JS_ADDRESS = helper.nodeAddress;
 var RUBY_ADDRESS = helper.rubyAddress;
 
 //logout of game when the pragram terminates

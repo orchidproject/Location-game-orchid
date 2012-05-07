@@ -1,5 +1,5 @@
 class Task
-  #
+  
   module State
     PICKED_UP = 1
     DROPPED_DOWN = 2
@@ -96,6 +96,8 @@ class Task
   			end
   			self.save
   		end
+  		#test
+  		self.send_updates(socket)
   		
   	elsif self.state==State::PICKED_UP
   		count=0
@@ -153,30 +155,10 @@ class Task
   		end
   		
   		#broadcast
-  		self.broadcast(socket)
+  		self.send_updates(socket)
   	end
   	
   end 
-  
-  def broadcast(socket)
-  	socket.broadcast(
-      	 { 
-            :channel=> self.game.layer_id,     
-      		:data=>{
-      					  
-      		  :task=>{
-             	:id => self.id,
-             	:type=>self.type,
-			 	:requirement=>self.requirement,
-             	:description=> self.description,
-             	:longitude => self.longitude.to_s('F'),
-             	:latitude => self.latitude.to_s('F'),
-			 	:state => self.state
-			  }
-			}
-         }.to_json)
-      	
-  end
   
   def broadcast_state_change(socket,p1,p2)
 		targets=[p1,p2]
@@ -194,6 +176,22 @@ class Task
 			}
          }.to_json)
   
+  end
+  
+  def send_updates(io)
+  	
+         io.update_clients({
+  				:channel=> "tasks-#{self.game.layer_id}", 
+  				:userID=>self.id,
+  				:updates=>{
+             				:type=>self.type,
+			 				:requirement=>self.requirement,
+             				:longitude => self.longitude.to_s('F'),
+             				:latitude => self.latitude.to_s('F'),
+			 				:state => self.state
+                         }
+        }.to_json)
+      	
   end
   
 

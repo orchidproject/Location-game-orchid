@@ -47,6 +47,21 @@ class SocketIO
     
     
     end 
+    
+     def clear_clients(game_id)
+    	url = @Socket_url
+        
+        
+        req = Net::HTTP::Post.new("/clear", initheader = {'Content-Type' =>'application/json'})
+        req.body = {:gameID => game_id}.to_json
+        
+        #puts "broadcast to #{url}"
+        
+        response = Net::HTTP.new(@Socket_url, 8888).start {|http| http.request(req) }
+        {:status=>"ok"}
+    
+    
+    end 
 end
 
 class Controller < Sinatra::Base
@@ -151,6 +166,7 @@ class Controller < Sinatra::Base
     SORKET_PORT = config_hash['socket_io_port']
     DEFAULT_SIM_LAT = config_hash['default_sim_lat']
     DEFAULT_SIM_LNG = config_hash['default_sim_lng']
+    JS_CONFIG= config_hash['js_config_file']
     
     #sperating game instances
     $simulations=[]

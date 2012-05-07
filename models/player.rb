@@ -54,65 +54,67 @@ class Player
   end 
   
   
+# old style
+#   def broadcast(io)
+#   	
+#       io.broadcast( 
+#                          { 
+#                          :channel=> self.game.layer_id,             
+#                          :data=>{
+#                             :player=>{
+#                                 :id=> self.id,
+#                                 :name=> self.name,
+#                                 :skill => skill_string()
+#                             }
+#                          }
+#                     }.to_json)   
+#   end 
+#     
+#   def broadcast_health(io)
+#         io.broadcast( 
+#                      { 
+#                         :channel=> "#{self.game.layer_id}-2",  
+#                         :users=>[self.id], #send to a particular user
+#                         :data=>{
+#                             :health=>{
+#                                 :player_id => self.id,
+#                                 :value => self.health
+#                             }
+#                         }
+#                      }.to_json)   
+#   end 
+#   
+#   def broadcast_acc_exposure(io)
+#         io.broadcast( 
+#                      { 
+#                         :channel=> "#{self.game.layer_id}-2", 
+#                         :users=>[self.id], #send to a particular user
+#                         :data=>{
+#                             :acc_exposure=>{
+#                                 :player_id => self.id,
+#                                 :value => self.exposure
+#                             }
+#                         }
+#                      }.to_json)   
+#   end 
+#   
+#   def broadcast_curr_exposure(io)
+#         io.broadcast( 
+#                      { 
+#                         :channel=> "#{self.game.layer_id}-2", 
+#                         :users=>[self.id], #send to a particular user
+#                         :data=>{
+#                             :exposure=>{
+#                                 :player_id => self.id,
+#                                 :value => self.current_exposure
+#                             }
+#                         }
+#                      }.to_json)   
+#                      
+#        
+#   end 
   
-  def broadcast(io)
-  	
-      io.broadcast( 
-                         { 
-                         :channel=> self.game.layer_id,             
-                         :data=>{
-                            :player=>{
-                                :id=> self.id,
-                                :name=> self.name,
-                                :skill => skill_string()
-                            }
-                         }
-                    }.to_json)   
-  end 
-    
-  def broadcast_health(io)
-        io.broadcast( 
-                     { 
-                        :channel=> "#{self.game.layer_id}-2",  
-                        :users=>[self.id], #send to a particular user
-                        :data=>{
-                            :health=>{
-                                :player_id => self.id,
-                                :value => self.health
-                            }
-                        }
-                     }.to_json)   
-  end 
   
-  def broadcast_acc_exposure(io)
-        io.broadcast( 
-                     { 
-                        :channel=> "#{self.game.layer_id}-2", 
-                        :users=>[self.id], #send to a particular user
-                        :data=>{
-                            :acc_exposure=>{
-                                :player_id => self.id,
-                                :value => self.exposure
-                            }
-                        }
-                     }.to_json)   
-  end 
-  
-  def broadcast_curr_exposure(io)
-        io.broadcast( 
-                     { 
-                        :channel=> "#{self.game.layer_id}-2", 
-                        :users=>[self.id], #send to a particular user
-                        :data=>{
-                            :exposure=>{
-                                :player_id => self.id,
-                                :value => self.current_exposure
-                            }
-                        }
-                     }.to_json)   
-                     
-       
-  end 
   
   #channel involve
   #exposure-[gameid](-[playerid])
@@ -151,4 +153,17 @@ class Player
                          }
         }.to_json);
   end 
+  
+  def send_player_info(io)
+  		io.update_clients({
+  				:channel=> "player_info-#{self.game.layer_id}", 
+  				:userID=>self.id,
+  				:updates=>{
+                            :name=>self.name,
+                            :userID=>self.id,
+                            :skill => skill_string()
+                         }
+        }.to_json);
+  end 
+
 end

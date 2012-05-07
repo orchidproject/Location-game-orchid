@@ -6,6 +6,7 @@ production:
   socket_io_port: 8080
   default_sim_lat: 52.956046
   default_sim_lng: -1.18878
+  js_config_file: config.js
 development:
   database: mysql://jtruck:jtruck@localhost/jtruck_db 
   base_uri: http://holt.mrl.nott.ac.uk/
@@ -14,3 +15,4 @@ development:
   socket_io_port: 8080
   default_sim_lat: 52.956046
   default_sim_lng: -1.18878
+  js_config_file: config_server.js

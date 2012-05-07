@@ -49,16 +49,19 @@ class Game
     total
   end
   
-  def broadcast(socketIO,signal)
-  	socketIO.broadcast( 
-                           { 
-                           :channel=> self.layer_id,             
-                           :data=>{
-                           :system=>signal
-                           }
-                           }.to_json)
   
-  
+  def send(io,signal)
+  	 io.update_clients({
+  				:channel=> "system-#{self.layer_id}", 
+  				:userID=>"server",
+  				:updates=>{
+                            :signal=>signal
+                         }
+    }.to_json)
   end 
+  
+  def clear(io)
+  		io.clear_clients(self.layer_id)
+  end
   
 end

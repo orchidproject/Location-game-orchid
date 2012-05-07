@@ -116,16 +116,13 @@ end
     @game = Game.get params[:layer_id]
     players=[]
     
-    puts :hello
-    
-    
-    socketIO.broadcast( 
-                          { 
-                           :channel=> params[:layer_id],             
-                           :data=>{
-                           :system=>"ready_check"
-                          }
-                       }.to_json)
+    io.update_clients({
+  				:channel=> "system-#{self.game.layer_id}", 
+  				:userID=>"server",
+  				:updates=>{
+                            :signal=>"ready_check"
+                         }
+    }.to_json);
 
     @game.players.each{ |p|
         
@@ -672,6 +669,8 @@ end
         player.broadcast(socketIO)
         player.broadcast_health(socketIO)
         
+        #new protocol
+        player.send_player_info(socketIO)
         
         
         socketIO.broadcast( 
@@ -769,14 +768,15 @@ end
 					
 					if diffFrame
                     	puts "heat map redraw in this loop"
-                    	socketIO.broadcast( 
-                                       { 
-                                       :channel=> "#{game_id}-1",             
-                                       :data=>{
-                                       #:heatmap=>@simulation.getTimeFrameWithLatLng(Time.now)
-                                        :heatmap=>diffFrame
-                                       }
-                                       }.to_json)
+
+
+						socketIO.update_clients({
+							  :channel => "heatmap-#{game_id}",
+							  :userID => "heatmap-#{game_id}",
+							  :updates => diffFrame
+						}.to_json)
+						
+						
                     end
 
                     
@@ -788,7 +788,7 @@ end
             end
         }
         
-        game.broadcast(socketIO, "start")
+        game.send(socketIO, "start")
         
        
         @games = Game.all
@@ -817,7 +817,9 @@ end
           File.rename(oldFile,newFile)
       end
       
-      game.broadcast(socketIO,"reset")
+     
+      game.send(socketIO,"reset")
+      game.clear(socketIO)
     
       redirect '/admin/games'
   end
