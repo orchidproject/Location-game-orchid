@@ -216,7 +216,9 @@ io.sockets.on('connection', function (socket) {
   });
   
   socket.on('ack', function (data) {
+  	 console.log('ack received ' + data);
   	 write_log(data.channel,data);
+  	 
   });
   
   //SINGLE location push
