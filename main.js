@@ -217,7 +217,7 @@ io.sockets.on('connection', function (socket) {
   
   socket.on('ack', function (data) {
   	 console.log('ack received ' + data);
-  	 write_log(data.channel,data);
+  	 write_log("ack"+data.channel,data);
   	 
   });
   
@@ -236,7 +236,7 @@ io.sockets.on('connection', function (socket) {
         //if(is_active==0){
         if(true){
             update_location(data.latitude,data.longitude,data.player_id);
-            data[ackid]=ackid++;
+            data["ackid"]=ackid++;
             io.sockets.in(channel).emit('data', {location:data});
             write_log(channel,{location:data});
         
