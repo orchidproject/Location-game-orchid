@@ -88,8 +88,6 @@ http.post("/push_log", function (request, response){
 // Listen on port 8080 on localhost
 http.listen(process.argv[3], "0.0.0.0");
 
-
-
 //work around, cos no geo library exists for node.js. 
 /*
 var options = {
@@ -154,9 +152,6 @@ function get_game_status(game_layer_id,callback){
     );
    
 }
-
-
-
 
 function insert_request(request){
     client.query(
@@ -241,7 +236,7 @@ io.sockets.on('connection', function (socket) {
             update_location(data.latitude,data.longitude,data.player_id);
             data[ackid]=ackid++;
             io.sockets.in(channel).emit('data', {location:data});
-            write_log("ack-"+channel,{location:data});
+            write_log(channel,{location:data});
         
         }
         else{
