@@ -238,7 +238,7 @@ io.sockets.on('connection', function (socket) {
             update_location(data.latitude,data.longitude,data.player_id);
             //data["ackid"]=ackid++;
             io.sockets.in(channel).emit('data', {"location":data,"ackid":ackid++});
-            write_log(channel,{location:data});
+            write_log(channel,{"location":data,"ackid":ackid++});
         
         }
         else{
