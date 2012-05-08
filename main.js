@@ -245,10 +245,12 @@ io.sockets.on('connection', function (socket) {
             console.log("game not active, broadcast blocked");
         }
     });
-   
-
     
-  });
+    //test from webview 
+    socket.on('message', function (data) {
+  	 	console.log('message' + data);
+  	});
+});
   
   /*
   socket.on('action-push', function (data) {
