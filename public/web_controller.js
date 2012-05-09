@@ -3,7 +3,7 @@ $(document).ready(function() {
 	//currently keep creating new peers in server when refresh
 	updateGame(true);
 	id='dashboard'+(new Date()).getTime();
-	connect('http://localhost:49891', id , "dashboard", "observer", 
+	connect(SOCKET_IO_ADDRESS, id , "dashboard", "observer", 
 		"acc_exposure-"+$("#group_token").val()+
 		",locations-"+$("#group_token").val() + 
 		",player_info-"+$("#group_token").val()+
