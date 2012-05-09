@@ -93,48 +93,92 @@ var RETRY_TIMEOUT = 10000;
 function connectPeerSender(sender,senderid,socket) {
 	sender.connected(function(sendermsg) {
 		var msg = {type: 'sender', sender: senderid, msg: sendermsg};
-		socket.json.send(msg);
+		Android.sendMessage(msg);
 		logmessage('Send', 'sender', msg);
 	});
 }
 
 
-function connect_socketio(url, device, peer, transports) {
-	// Note: don't reconnect at the socket.io level - we'll do it at a higher level
-	// Note: if the initial handshake fails then we don't get any event back - we'd just have to 
-	// set a timeout for the lack of connecting.
-	console.log('connect_socketio '+url);
+/** called to initiate (high-level) connectivity to server
+ * @param url server URL
+ * @param id device ID
+ * @param name device name
+ * @param group device group name
+ * @param initialsubscriptions comma-separated list of senders (groups) to subscribe to initial
+ * @param onnewreceiver2 callback when new receiver (state) found, arguments (name,state)
+ * @param onstatechange callback when connection state changes, arguments (connstatename)
+ * @parma transports array of socket.io transports to use (default if undefined to websocket, xhr-polling and jsonp-polling)
+ */
+function connect(url, id, name, group, initialsubscriptions, onnewreceiver2, onstatechange2, transports) {
+	// old connection?
+	disconnectinternal();
+	peer.known = false;
+	// ...
+	logmessage('Action','connect',{id:id,name:name,group:group});
+	device.id = id;
+	device.name = name;
+	device.group = group;
+	peer.url = url;
 	
-	if (transports===undefined)
-		transports = [ 'websocket', 'xhr-polling', 'jsonp-polling' ];
-	// Hmm. jsonp needed on simulator for CSR but can lead to Application Error when timed out on
-	// player. May be safer with real device to use another option!
-	var socket = io.connect(url, { transports: transports, // 'websocket'
-		reconnect: false, 'connect timeout': 10000, 'force new connection':true });
-	peer.socket = socket;
-	peer.connected = false;
+	/*
+	clientState.begin();
+	clientState.set('id',id);
+	clientState.set('name',name);
+	clientState.set('group',group);
+	clientState.end();
+	*/
+	
+	peer.senders[group] = clientState.sender('server');
+	
+	// subscribe to GROUP
+	subscriptions.set(SENDERS,initialsubscriptions);
+	subscriptions.get(SENDERS,function(value) {
+		console.log('Initial value of SENDERS is '+value);
+	})
+	
+	onnewreceiver = onnewreceiver2;
+	onstatechange = onstatechange2;
+	
+	callonstatechange('connecting');
+	
+	
+	//connect_socketio(peer.url, device, peer, transports);
+	//Android.connect();
+}
 
-	// timeout for initial handshake (inferred from first call to connect - could trap connecting but then 
-	// also deal with connect_failed, etc.)
-	peer.connectTimeout = setTimeout(function() {
-		logmessage('Event','connect timeout');
-		socket.disconnect();
-		peer.retryTimeout = setTimeout(function() {
-			connect_socketio(url, device, peer, transports);
-		}, RETRY_TIMEOUT)
-	}, CONNECT_TIMEOUT);
-	
-	socket.on('connect', function() {
-		if (socket!==peer.socket) {
-			console.log('ignore connect for old/wrong socket');
-			return;
-		}
-		logmessage('Event','connect');
-		// cancel connect timeout
-		if (peer.connectTimeout!==undefined) {
-			clearTimeout(peer.connectTimeout);
-			delete peer.connectTimeout;
-		}
+function getsenderstate(name) {
+	if (name===undefined)
+		return clientState;
+	var sender = peer.senders[name];
+	if (sender!==undefined)
+		return sender.state;
+	return undefined;
+}
+
+function getreceiverstate(name) {
+	if (name===undefined)
+		return undefined;
+	var receiver = peer.receivers[name];
+	if (receiver===undefined)
+		return undefined;
+	return receiver.state;
+}
+
+function disconnectinternal() {
+	if (peer.socket!==undefined) {
+		peer.socket.disconnect();
+		logmessage('Sent', 'disconnect');
+	}
+	clearTimeout(peer.connectTimeout);
+	clearTimeout(peer.retryTimeout);
+}
+function disconnect() {
+	//disconnectinternal();
+	callonstatechange('disconnected');
+}
+
+//================================adapt to  android================
+function onConnect(){
 		peer.connected = true;
 		peer.connstate = STATE_NEW;
 		if (!peer.known) {
@@ -155,7 +199,7 @@ function connect_socketio(url, device, peer, transports) {
 				version: version,
 				reason: 'unknown_peer'
 			};
-			socket.json.send(m);
+			Android.sendMessage(m);
 			logmessage('Send', 'init_peer_req', m);
 			peer.connstate = STATE_PEER_REQ;
 		}
@@ -169,57 +213,25 @@ function connect_socketio(url, device, peer, transports) {
 					name: device.name,
 					version: version,
 			};
-			socket.json.send(m);
+			Android.sendMessage(m);
 			logmessage('Send', 'init_confirm_untrusted', m);
 			peer.connstate = STATE_CONFIRM_UNTRUSTED;
 		}
-	});
-	socket.on('connecting', function(transport_type) {
-		logmessage('Event','connecting',transport_type);
-	});
-	socket.on('connect_failed', function() {
-		logmessage('Event','connect_failed','');
-	});
-	socket.on('close', function() {
-		logmessage('Event','close','');
-	});
-	// called when disconnect called or detected
-	socket.on('disconnect', function() {
-		if (socket!==peer.socket) {
-			console.log('ignore disconnect for old/wrong socket');
-			return;
-		}
-		logmessage('Event','disconnect','');
-		peer.connected = false;
-		delete peer.socket;
+}
+
+function onDisconnect(){
 		for (var senderid in peer.senders) {
 			var sender = peer.senders[senderid];
 			sender.disconnected();
 		}
-		peer.retryTimeout = setTimeout(function() {
-			connect_socketio(url, device, peer, transports);
-		}, RETRY_TIMEOUT)
-		
 		if (peer.id===undefined)
 			callonstatechange('connecting');
 		else
 			callonstatechange('reconnecting');
-	});
-	socket.on('reconnect', function(transport_type,reconnectionAttempts) {
-		logmessage('Event','reconnect',{transport_type:transport_type,reconnectionAttempts:reconnectionAttempts});
-	});
-	socket.on('reconnecting', function(reconnectionDelay,reconnectionAttempts) {
-		logmessage('Event','reconnecting',{reconnectionDelay:reconnectionDelay,reconnectionAttempts:reconnectionAttempts});
-	});
-	socket.on('reconnect_failed', function() {
-		logmessage('Event','reconnect_failed','');
-	});
-    socket.on('message', function (msg) {
-		if (socket!==peer.socket) {
-			console.log('ignore message for old/wrong socket');
-			return;
-		}
-		logmessage('Recv','message',msg);
+}
+
+function onMessage(){
+	    logmessage('Recv','message',msg);
 		if (peer.connstate==STATE_PEER_REQ || peer.connstate==STATE_CONFIRM_UNTRUSTED) {
 			if (msg.type=='resp_peer_nopin') {
 				// id, name, info? secret
@@ -290,7 +302,7 @@ function connect_socketio(url, device, peer, transports) {
 				var ackmsg = receiver.received(msg.msg);
 				if (ackmsg!=null) {
 					var repl = {type:'receiver',sender:msg.sender,msg:ackmsg};
-					socket.json.send(repl);
+					Android.sendMessage(repl);
 				}
 			}
 			else if (msg.type=='receiver') {
@@ -308,84 +320,11 @@ function connect_socketio(url, device, peer, transports) {
 				sender.acked(msg.msg);
 			}
 		}
-    });
-    
+   
+
 }
 
 
-/** called to initiate (high-level) connectivity to server
- * @param url server URL
- * @param id device ID
- * @param name device name
- * @param group device group name
- * @param initialsubscriptions comma-separated list of senders (groups) to subscribe to initial
- * @param onnewreceiver2 callback when new receiver (state) found, arguments (name,state)
- * @param onstatechange callback when connection state changes, arguments (connstatename)
- * @parma transports array of socket.io transports to use (default if undefined to websocket, xhr-polling and jsonp-polling)
- */
-function connect(url, id, name, group, initialsubscriptions, onnewreceiver2, onstatechange2, transports) {
-	// old connection?
-	disconnectinternal();
-	peer.known = false;
-	// ...
-	logmessage('Action','connect',{id:id,name:name,group:group});
-	device.id = id;
-	device.name = name;
-	device.group = group;
-	peer.url = url;
-	
-	/*
-	clientState.begin();
-	clientState.set('id',id);
-	clientState.set('name',name);
-	clientState.set('group',group);
-	clientState.end();
-	*/
-	
-	peer.senders[group] = clientState.sender('server');
-	
-	// subscribe to GROUP
-	subscriptions.set(SENDERS,initialsubscriptions);
-	subscriptions.get(SENDERS,function(value) {
-		console.log('Initial value of SENDERS is '+value);
-	})
-	
-	onnewreceiver = onnewreceiver2;
-	onstatechange = onstatechange2;
-	
-	callonstatechange('connecting');
-	
-	connect_socketio(peer.url, device, peer, transports);
-}
 
-function getsenderstate(name) {
-	if (name===undefined)
-		return clientState;
-	var sender = peer.senders[name];
-	if (sender!==undefined)
-		return sender.state;
-	return undefined;
-}
 
-function getreceiverstate(name) {
-	if (name===undefined)
-		return undefined;
-	var receiver = peer.receivers[name];
-	if (receiver===undefined)
-		return undefined;
-	return receiver.state;
-}
-
-function disconnectinternal() {
-	if (peer.socket!==undefined) {
-		peer.socket.disconnect();
-		logmessage('Sent', 'disconnect');
-	}
-	clearTimeout(peer.connectTimeout);
-	clearTimeout(peer.retryTimeout);
-}
-function disconnect() {
-	disconnectinternal();
-	callonstatechange('disconnected');
-}
 
