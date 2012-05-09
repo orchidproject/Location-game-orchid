@@ -23,6 +23,8 @@ function write_log(game_id,data){
 
 //-----Http server for pushing information from ruby
 
+var sessionTable = [];
+var ackid=0;
 
 http.post("/broadcast", function (request, response) {
     request.content = '';
@@ -33,14 +35,22 @@ http.post("/broadcast", function (request, response) {
 	request.addListener("end", function() {
         var ob=JSON.parse(request.content);
         content=JSON.parse(ob.data);
-        
+        content.data["ackid"]=ackid++;
         var channel=content.channel;console.log(channel);
-        
+        var users=content.users;
         
         io.sockets.in(channel).emit('data', content.data);
         write_log(channel,content.data);
         
-	});
+        
+        //send to indvidual users
+        if(users!=null){
+        	var user;
+        	for(user in users){
+        		io.sockets.socket(sessionTable[user]).emit('data', content.data);
+        	}
+        }
+    });
     
     response.simpleText(200, "ok");
 });
@@ -191,15 +201,29 @@ io.sockets.on('connection', function (socket) {
   socket.emit('game');
  
   socket.on('game-join', function (data){
-    socket.join(data);
-    socket.set("channel",data);
+  	if (data.channel==null){//support old client
+  		socket.join(data);
+  		socket.set("channel",data);
+  	}else{
+    	socket.join(data.channel);
+    	socket.set("channel",data.channel);
+    }
+    
+    if (data.id!=null){
+    	//sessionTable.push({data.id:socket.transport.sessionid});
+    	sessionTable[data.id]=socket.id;
+    	console.log('session id recorded ' + data.id + " " + socket.id);
+    }
+    
     socket.get("channel", function (err, content) {
         console.log('join game channel ' + content);
     });
     
   });
   
-  
+  socket.on('ack', function (data) {
+  	 write_log(data.channel,data);
+  });
   
   //SINGLE location push
   socket.on('location-push', function (data) {
@@ -216,10 +240,8 @@ io.sockets.on('connection', function (socket) {
         //if(is_active==0){
         if(true){
             update_location(data.latitude,data.longitude,data.player_id);
-            
+            data[ackid]=ackid++;
             io.sockets.in(channel).emit('data', {location:data});
-            
-           
             write_log(channel,{location:data});
         
         }

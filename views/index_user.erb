@@ -103,13 +103,14 @@ jQuery.extend({
     //listenForPositionUpdates();
     
     
-    //test response to incoming messages
-    var userid = $('#user_id').val();
-    exposureData = {'value':0, 'player_id':userid};
-    receiveExposureData(exposureData);
-	messageData = {'id':0, 'content':'Hi! Here is where you will receive important info about the game.', 'player_id':[userid]};
-	receiveMessageData(messageData);    
-	
+    // test response to incoming messages
+    // var userid = $('#user_id').val();
+    // exposureData = {'value':0, 'player_id':userid};
+	// receiveExposureData(exposureData);
+	// 	messageData = {'id':0, 'content':'Hi! Here is where you will receive important info about the game.', 'player_id':[userid]};
+	// 	receiveMessageData(messageData);    
+	 Android.showToast("android");
+	 Android.sendMessage("a test message sent from webview")
   });
 
 function sendMessage(){

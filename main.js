@@ -22,7 +22,7 @@ function write_log(game_id,data){
 //-----Http server for pushing information from ruby
 
 var sessionTable = [];
-
+var ackid=0;
 
 http.post("/broadcast", function (request, response) {
     request.content = '';
@@ -33,11 +33,12 @@ http.post("/broadcast", function (request, response) {
 	request.addListener("end", function() {
         var ob=JSON.parse(request.content);
         content=JSON.parse(ob.data);
-        
+        content.data["ackid"]=ackid++;
         var channel=content.channel;console.log(channel);
-        var users=
+        var users=content.users;
         
         io.sockets.in(channel).emit('data', content.data);
+        
         write_log(channel,content.data);
         
         
@@ -86,8 +87,6 @@ http.post("/push_log", function (request, response){
 
 // Listen on port 8080 on localhost
 http.listen(process.argv[3], "0.0.0.0");
-
-
 
 //work around, cos no geo library exists for node.js. 
 /*
@@ -154,9 +153,6 @@ function get_game_status(game_layer_id,callback){
    
 }
 
-
-
-
 function insert_request(request){
     client.query(
     'INSERT INTO requests'
@@ -219,7 +215,11 @@ io.sockets.on('connection', function (socket) {
     
   });
   
-  
+  socket.on('ack', function (data) {
+  	 console.log('ack received ' + data);
+  	 write_log("ack-"+data.channel,data);
+  	 
+  });
   
   //SINGLE location push
   socket.on('location-push', function (data) {
@@ -236,21 +236,21 @@ io.sockets.on('connection', function (socket) {
         //if(is_active==0){
         if(true){
             update_location(data.latitude,data.longitude,data.player_id);
-            
-            io.sockets.in(channel).emit('data', {location:data});
-            
-           
-            write_log(channel,{location:data});
+            //data["ackid"]=ackid++;
+            io.sockets.in(channel).emit('data', {"location":data,"ackid":ackid++});
+            write_log(channel,{"location":data,"ackid":ackid++});
         
         }
         else{
             console.log("game not active, broadcast blocked");
         }
     });
-   
-
     
-  });
+    //test from webview 
+    socket.on('message', function (data) {
+  	 	console.log('message' + data);
+  	});
+});
   
   /*
   socket.on('action-push', function (data) {

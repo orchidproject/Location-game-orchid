@@ -19,6 +19,8 @@ $(document).ready(function() {
 	socket.on('data', function(data) {
         data=filter(data);
         saveLog(data);
+        sendBackAck(data.ackid);
+        
         
         if(typeof data.acc_exposure != "undefined"){
             receiveExposureData(data.acc_exposure);
@@ -59,7 +61,9 @@ $(document).ready(function() {
 
 });
 
-
+function sendBackAck(ackid){
+	socket.emit("ack",{"ackid":ackid,"channel":$("#layer_id").val()});
+}
 
 
 
