@@ -10,11 +10,24 @@ var fs = require('fs');
 
 //log system 
 function write_log(game_id,data){
-    var log = fs.createWriteStream('logs/log-'+game_id, {'flags': 'a'});
+
+	data.time_stamp = time.getTime();
+    /*var log = fs.createWriteStream('logs/log-'+game_id, {'flags': 'a'});
     var time = new Date();
-    data.time_stamp = time.getTime();
-    log.write(JSON.stringify(data)+"\n");
-    log.end();
+    
+    log.writeSync(JSON.stringify(data)+"\n");
+    log.end();*/
+    
+    //thread safe?
+    fs.openSync('logs/log-'+game_id, 'a', 666, function( err, id ) {
+    					if (err) throw err;
+                         fs.writeSync( id, data, null, 'utf8', function(err, written){
+                         	 if (err) throw err;
+                             fs.closeSync(id, function(){
+                                  
+                             });
+                         });
+                     });
 }
 
 
@@ -33,7 +46,8 @@ http.post("/broadcast", function (request, response) {
 	request.addListener("end", function() {
         var ob=JSON.parse(request.content);
         content=JSON.parse(ob.data);
-        content.data["ackid"]=ackid++;
+        ackid++;
+        content.data["ackid"]=ackid;
         var channel=content.channel;console.log(channel);
         var users=content.users;
         
@@ -237,7 +251,8 @@ io.sockets.on('connection', function (socket) {
         if(true){
             update_location(data.latitude,data.longitude,data.player_id);
             //data["ackid"]=ackid++;
-            io.sockets.in(channel).emit('data', {"location":data,"ackid":ackid++});
+            ackid++;
+            io.sockets.in(channel).emit('data', {"location":data,"ackid":ackid});
             write_log(channel,{"location":data,"ackid":ackid});
         
         }
