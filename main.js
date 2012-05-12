@@ -19,11 +19,11 @@ function write_log(game_id,data){
     log.end();*/
     
     //thread safe?
-    fs.open('logs/log-'+game_id, 'a', 666, function( err, id ) {
+    fs.openSync('logs/log-'+game_id, 'a', 777, function( err, id ) {
     					if (err) throw err;
-                         fs.write( id, data, null, 'utf8', function(err, written){
+                         fs.writeSync( id, data, null, 'utf8', function(err, written){
                          	 if (err) throw err;
-                             fs.close(id, function(){
+                             fs.closeSync(id, function(){
                                   
                              });
                          });
