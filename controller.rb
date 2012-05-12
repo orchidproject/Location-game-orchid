@@ -643,7 +643,7 @@ end
         if player
             return {:status=>"ok"}.to_json
         else
-            return {:error=>"logout first"}.to_json
+            return {:error=>"your info not found, game may have been reset, try logout and login again"}.to_json
         end
         
     

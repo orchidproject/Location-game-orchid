@@ -47,7 +47,7 @@ http.post("/broadcast", function (request, response) {
         ackid++;
         content.data["ackid"]=ackid;
         var channel=content.channel;console.log(channel);
-        var users=content.users;
+        var users=(content.users).split(",");
         
         io.sockets.in(channel).emit('data', content.data);
         
@@ -58,7 +58,13 @@ http.post("/broadcast", function (request, response) {
         if(users!=null){
         	var user;
         	for(user in users){
-        		io.sockets.socket(sessionTable[user]).emit('data', content.data);
+        		if (sessionTable[user] != null){
+        			console.log["send to user " +  sessionTable[user]]
+        			io.sockets.socket(sessionTable[user]).emit('data', content.data);
+        		}else
+        		{
+        			console.log(user + " not found in session table");
+        		}
         	}
         }
     });
