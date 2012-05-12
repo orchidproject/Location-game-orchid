@@ -24,7 +24,7 @@ function write_log(game_id,data){
                          fs.write( id, data, null, 'utf8', function(err, written){
                          	 if (err) throw err;
                              fs.close(id, function(){
-                                  console("write to log:" + data);
+                                  console.log("write to log:" + data);
                              });
                          });
                      });
