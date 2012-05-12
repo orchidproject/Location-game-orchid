@@ -56,7 +56,7 @@ http.post("/broadcast", function (request, response) {
         
         //send to indvidual users
         if(users!=null){
-        	var users=users.split(",");
+        	
         	for(user in users){
         		if (sessionTable[user] != null){
         			console.log["send to user " +  sessionTable[user]]
