@@ -47,7 +47,7 @@ http.post("/broadcast", function (request, response) {
         ackid++;
         content.data["ackid"]=ackid;
         var channel=content.channel;console.log(channel);
-        var users=(content.users).split(",");
+        var users=content.users;
         
         io.sockets.in(channel).emit('data', content.data);
         
@@ -56,7 +56,7 @@ http.post("/broadcast", function (request, response) {
         
         //send to indvidual users
         if(users!=null){
-        	var user;
+        	var users=user.split(",");
         	for(user in users){
         		if (sessionTable[user] != null){
         			console.log["send to user " +  sessionTable[user]]
