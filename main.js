@@ -12,22 +12,20 @@ var fs = require('fs');
 function write_log(game_id,data){
 	var time = new Date();
 	data.time_stamp = time.getTime();
-    /*var log = fs.createWriteStream('logs/log-'+game_id, {'flags': 'a'});
+    var log = fs.createWriteStream('logs/log-'+game_id, {'flags': 'a'});
+	log.write(JSON.stringify(data)+"\n");
+    log.end();
     
-    
-    log.writeSync(JSON.stringify(data)+"\n");
-    log.end();*/
-    
-    //thread safe?
-    fs.openSync('logs/log-'+game_id, 'a', 0777, function( err, id ) {
+    //thread safe? oh js should be single threaded.
+    /*fs.openSync('logs/log-'+game_id, 'a', 0777, function( err, id ) {
     					if (err) throw err;
-                         fs.write( id, JSON.stringify(data)+"\n", null, 'utf8', function(err, written){
+                         fs.writeSync( id, JSON.stringify(data)+"\n", null, 'utf8', function(err, written){
                          	 if (err) throw err;
                              fs.close(id, function(){
                                   console.log("write to log:" + JSON.stringify(data)+"\n");
                              });
                          });
-                     });
+                     });*/
 }
 
 
