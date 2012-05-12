@@ -10,10 +10,10 @@ var fs = require('fs');
 
 //log system 
 function write_log(game_id,data){
-
+	var time = new Date();
 	data.time_stamp = time.getTime();
     /*var log = fs.createWriteStream('logs/log-'+game_id, {'flags': 'a'});
-    var time = new Date();
+    
     
     log.writeSync(JSON.stringify(data)+"\n");
     log.end();*/
