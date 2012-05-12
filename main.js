@@ -57,13 +57,13 @@ http.post("/broadcast", function (request, response) {
         //send to indvidual users
         if(users!=null){
         	
-        	for(user in users){
-        		if (sessionTable[user] != null){
+        	for(id in users){
+        		if (sessionTable[users[id]] != null){
         			console.log["send to user " +  sessionTable[user]]
-        			io.sockets.socket(sessionTable[user]).emit('data', content.data);
+        			io.sockets.socket(sessionTable[users[id]]).emit('data', content.data);
         		}else
         		{
-        			console.log(user + " not found in session table");
+        			console.log(users[id] + " not found in session table");
         		}
         	}
         }
