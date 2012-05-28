@@ -440,11 +440,23 @@ function testReceive(test) {
 	}
 }
 
+function clearAll(){
+	for (i in players){
+		players[i].marker.setMap(null);
+		delete player[i];
+	}
+	for (i in tasks){
+		tasks[i].marker.setMap(null);
+		delete tasks[i];
+	}
+
+}
 function system(data){
     
     if (data=="start"){
-        window.location="myapp://app_action/start";
-        location.reload();
+        //window.location="myapp://app_action/start";
+        //location.reload();
+       alert('game start');
     }
     //js will try to communicate with naive code
     else if(data=="end"){
@@ -473,8 +485,8 @@ function system(data){
         location.reload();
     }
     else if(data=="reset"){
-        window.location="myapp://app_action/reset"
-        
+        //window.location="myapp://app_action/reset"
+        //need to reset all;
     }
     else if(data=="ready_check"){
         var ready=confirm("Ready check");
