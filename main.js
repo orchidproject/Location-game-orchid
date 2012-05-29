@@ -239,6 +239,16 @@ io.sockets.on('connection', function (socket) {
   	 
   });
   
+  socket.on('disconnect', function () { 
+  	//unregister
+  	for (i in sessionTable){
+  		if(sessionTable[i]==socket.id){
+  			delete sessionTable[i];
+  			console.log("client unregistered");
+  		}
+  	}
+  });
+  
   //SINGLE location push
   socket.on('location-push', function (data) {
     
