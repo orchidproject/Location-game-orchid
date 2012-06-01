@@ -1,3 +1,4 @@
+
 var database="jtruck_db";
 var db_username="jtruck";
 var db_password="jtruck";var sys = require('util');
@@ -25,6 +26,8 @@ function write_log(game_id,data){
 
 var sessionTable = [];
 
+var ackid=0;
+
 
 http.post("/broadcast", function (request, response) {
     request.content = '';
@@ -35,7 +38,7 @@ http.post("/broadcast", function (request, response) {
 	request.addListener("end", function() {
         var ob=JSON.parse(request.content);
         content=JSON.parse(ob.data);
-        
+        content.data["ackid"]=ackid++;
         var channel=content.channel;console.log(channel);
         var users=content.users;
         
@@ -221,7 +224,9 @@ io.sockets.on('connection', function (socket) {
     
   });
   
-  
+  socket.on('ack', function (data) {
+  	 write_log(data.channel,data);
+  });
   
   //SINGLE location push
   socket.on('location-push', function (data) {
@@ -238,10 +243,8 @@ io.sockets.on('connection', function (socket) {
         //if(is_active==0){
         if(true){
             update_location(data.latitude,data.longitude,data.player_id);
-            
+            data[ackid]=ackid++;
             io.sockets.in(channel).emit('data', {location:data});
-            
-           
             write_log(channel,{location:data});
         
         }

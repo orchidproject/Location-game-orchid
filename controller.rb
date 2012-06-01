@@ -91,7 +91,7 @@ end
       socketIO.broadcast( 
                          { 
                             :channel=> params[:layer_id],             
-                            :data => { :message=>{:content=>params[:content], :player_initials=> :player.initials, :player_name=> :player.name} }                          
+                            :data => { :message=>{:content=>params[:content], :player_initials=> player.initials, :player_name=> player.name} }                          
                             
                          }.to_json)
       {"status"=>:ok}.to_json
@@ -443,7 +443,7 @@ end
 	end
 	
 	@user_initials = player ? player.name : ''
-    erb :'index_user_msgs', :layout => :'layout_user'
+    erb :'index_user_msgs', :layout => :'layout_user_msgs'
 	
    end
 
@@ -640,7 +640,7 @@ end
         if player
             return {:status=>"ok"}.to_json
         else
-            return {:error=>"logout first"}.to_json
+            return {:error=>"your info not found, game may have been reset, try logout and login again"}.to_json
         end
         
     
@@ -830,9 +830,13 @@ end
   	playerId = params[:id]
     player = game.players.first :id => playerId
     #current_exposure = $simulations[params[:layer_id]].getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
-    exposure = player.exposure + current_exposure
-    player.update(:latitude => params[:latitude], :longitude => params[:longitude], :current_exposure => current_exposure, :exposure => exposure)
-    {:exposure => exposure , :current_exposure => current_exposure}.to_json
+
+    #exposure = player.exposure + current_exposure
+    player.latitude=params[:latitude]
+    player.longitude=params[:longitude]
+    player.save
+    {:status=> :ok}.to_json
+
   end
   
   

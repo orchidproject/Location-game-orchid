@@ -2,6 +2,7 @@ var id;
 $(document).ready(function() {
 	//currently keep creating new peers in server when refresh
 	updateGame(true);
+
 	id='dashboard'+(new Date()).getTime();
 	connect(SOCKET_IO_ADDRESS, id , "dashboard", "observer", 
 		"acc_exposure-"+$("#group_token").val()+
@@ -125,7 +126,9 @@ function statechange(receivername,updates,timestamp,values) {
 // 			});
 		
 		}
-
+	/*function sendBackAck(ackid){
+		socket.emit("ack",{"ackid":ackid,"channel":$("#layer_id").val()});
+	}*/
 }
 
 

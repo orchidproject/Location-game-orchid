@@ -273,6 +273,7 @@ function system(data){
     
     if (data=="start"){
         location.reload();
+        //need to clear all previous data
     }
     //legacy for iOS, this part will try to communicate with iphone native code
     else if(data=="end"){
@@ -301,6 +302,7 @@ function system(data){
     }
     else if(data=="reset"){
         location.reload();
+        //need to clear all previous data
     }
     else if(data=="ready_check"){
         var ready=confirm("Ready check");

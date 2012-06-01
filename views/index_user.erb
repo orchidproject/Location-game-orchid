@@ -52,13 +52,6 @@ jQuery.extend({
   	if(!document.getElementById("map")) {
   		return;
   	}
-  	
-  	
-  //	  		zoomControl: true,
-  //		zoomControlOptions: {
-  //          style: google.maps.ZoomControlStyle.LARGE,
-  //          position: google.maps.ControlPosition.TOP_LEFT
-  //      },
   
   	var myOptions = {
   		zoom: 15,
@@ -74,11 +67,6 @@ jQuery.extend({
   	};
 
 	mapHeight = $(document).height() - $('#radiation_reading').height() ;
- 	
-
-
- 	//alert(mapHeight + "=" + $(window).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
- 	//alert("doc: " + $(document).height() + "window: " + $(window).height());
 
  	$('#map').css("height", mapHeight);
 
@@ -101,17 +89,9 @@ jQuery.extend({
     showScreen('map');
     
     //listenForPositionUpdates();
-    
-    
-    //test response to incoming messages
-    /*var userid = $('#user_id').val();
-    exposureData = {'value':0, 'player_id':userid};
-    receiveExposureData(exposureData);
-	messageData = {'id':0, 'content':'Hi! Here is where you will receive important info about the game.', 'player_id':[userid]};
-	receiveMessageData(messageData);   */
-	
 	Android.showToast("android");
 	
+
   });
 
 function sendMessage(){
@@ -136,80 +116,45 @@ function sendMessage(){
 </style>
 
 <div id="main" data-role="page">
-
-    	<div data-role="header" id="header">
-	    	<div data-role="navbar">
-				<ul>
-					<li><a href="#" class="ui-btn-active" onclick="showScreen('map');">Map</a></li>
-					<li><a href="#" onclick="showScreen('messages');">Messages</a></li>					
-				</ul>
-			</div><!-- /navbar -->
-	    </div><!-- /header -->
-    
-  	<div data-role="content">
-
-	<div id="wrapper">
+	<div data-role="header" id="header"></div> <!-- /header -->
+    <div data-role="content">
+		<div id="wrapper">
 		    <div id="status_bar" style="width:100%">
-        <div id="geiger_sound"></div>
+        		<div id="geiger_sound"></div>
+        			<div id="radiation_reading" style="padding:2%;float:left;width:25%;height:12ex;text-align:center">
+        				Radiation<br/>
+          				<div id="radiation_number" style="font-size : 300%">0</div>
+          				<div id="radiation_images">
+            				<img id="rad0" src="/img/radiation_gray.png" width="20pt"/>
+            				<img id="rad1" src="/img/radiation_gray.png" width="20pt"/>
+            				<img id="rad2" src="/img/radiation_gray.png" width="20pt"/>
+          				</div>
+        			</div>
         
-        <div id="radiation_reading" style="padding:2%;float:left;width:25%;height:12ex;text-align:center">
-          Radiation<br/>
-          <div id="radiation_number" style="font-size : 300%">0</div>
-          <div id="radiation_images">
-            <img id="rad0" src="/radiation_gray.png" width="20pt"/>
-            <img id="rad1" src="/radiation_gray.png" width="20pt"/>
-            <img id="rad2" src="/radiation_gray.png" width="20pt"/>
-          </div>
-        </div>
+        			<div style="padding:2%;float:left;width:67%;height:12ex">
+          				Health
+          				<div id="health_bar" style="height:82%"></div>
+        			</div>
         
-        <div style="padding:2%;float:left;width:67%;height:12ex">
-          Health
-          <div id="health_bar" style="height:82%"></div>
-        </div>
-        
-        <div style="clear:both"></div>
-   </div>
+        			<div style="clear:both"></div>
+   				</div>
+   			</div>
+			<div id="map" style="horizontal-align:center;height:300px"></div>
 
-<!--
-	<div id="testing_bar">
-		<a href="#" onclick="testReceive('player');">MapTest</a>
-		<a href="#" onclick="testReceive('health');">HealthTest</a>
-		<a href="#" onclick="testReceive('exposure');">ExposureTest</a>
-		<a href="#" onclick="testReceive('message');">MessageTest</a>
+			<section id="player-info">
+				<h3 id="player-score" class="team-firefighter"><span class="value"></span></h3> <!-- todo: replace ruby var skill -->
+				<h3 class="message"></h3>
+			</section>
+		</div> 
 	</div>
-	-->
+</div> 
 
-		<div id="map" style="horizontal-align:center;height:300px"></div>
-
-		<section id="player-info">
-			<h3 id="player-score" class="team-firefighter"><span class="value"></span></h3> <!-- todo: replace ruby var skill -->
-			<h3 class="message"></h3>
-		</section>
-
-	    <div id="messageListDiv">
-	    
-	    	<h5>Messages</h5>
-	    	<ul id="task_list" class="ui-listview" data-role="listview" data-inset="true">												
-			</ul>
-			<div style="position:relative; bottom:5px; width:100%">
-				<form action="">
-				<input type="text" name="message" id="message"/>
-				<input onclick="sendMessage();" type="button" name="send" id="message_btn" value="send"/>
-				</form>
-			
-			</div>
-		</div>
-	</div> <!-- wrapper -->
-      
- <!-- wrapper -->
- </div> 
- </div>
 
 <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
-    <input type="hidden" id="user_id" value="<%= @user_id %>" />
-    <input type="hidden" id="user_skill" value="<%= @user_skill %>" />
-    <input type="hidden" id="user_initials" value="<%= @user_initials %>" />
-    <input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
-    <input type="hidden" id="game_status" value=<%= @game.is_active %> /> 
+<input type="hidden" id="user_id" value="<%= @user_id %>" />
+<input type="hidden" id="user_skill" value="<%= @user_skill %>" />
+<input type="hidden" id="user_initials" value="<%= @user_initials %>" />
+<input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
+<input type="hidden" id="game_status" value=<%= @game.is_active %> /> 
    
   
