@@ -93,7 +93,7 @@ var RETRY_TIMEOUT = 10000;
 function connectPeerSender(sender,senderid,socket) {
 	sender.connected(function(sendermsg) {
 		var msg = {type: 'sender', sender: senderid, msg: sendermsg};
-		Android.sendMessage(msg);
+		Android.sendMessage(JSON.stringify(msg));
 		logmessage('Send', 'sender', msg);
 	});
 }
@@ -177,7 +177,7 @@ function connect_socketio(url, device, peer, transports) {
 					name: device.name,
 					version: version,
 			};
-			Android.sendMessage(m);
+			Android.sendMessage(JSON.stringify(m));
 			logmessage('Send', 'init_confirm_untrusted', m);
 			peer.connstate = STATE_CONFIRM_UNTRUSTED;
 		}
@@ -301,7 +301,7 @@ function connect_socketio(url, device, peer, transports) {
 				var ackmsg = receiver.received(msg.msg);
 				if (ackmsg!=null) {
 					var repl = {type:'receiver',sender:msg.sender,msg:ackmsg};
-					Android.sendMessage(repl);
+					Android.sendMessage(JSON.stringify(repl));
 				}
 			}
 			else if (msg.type=='receiver') {
