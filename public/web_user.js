@@ -3,16 +3,16 @@
 $(document).ready(function() {
 	updateGame(true);
 	id='dashboard'+(new Date()).getTime();
-	
-});
-
-function ready(){
-  	connect('http://holt.mrl.nott.ac.uk:49991', id , "dashboard", "observer", 
+	connect('http://holt.mrl.nott.ac.uk:49991', id , "dashboard", "observer", 
 		"acc_exposure-"+$("#group_token").val(),
 		newreceiver, statechange);
+});
+
+/*function ready(){
+  	
 	//Anndroid.connect();
 	
-}
+}*/
 function statechange(receivername,updates,timestamp,values) {
 }
 
