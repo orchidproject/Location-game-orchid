@@ -661,13 +661,6 @@ end
     
     if player
       
-        #update player info, add game information.
-        #player.update(:game_layer_id=>game.layer_id,:team => game.pick_team('runner'))
-        #broadcast to socket.io
-        #session[:id]=player.id
-        
-        player.broadcast(socketIO)
-        player.broadcast_health(socketIO)
         
         #new protocol
         player.send_player_info(socketIO)
@@ -692,16 +685,7 @@ end
     player=game.players.first :id => params[:id]
     
    
-    
-    socketIO.broadcast( 
-                       { 
-                       :channel=> params[:layer_id],             
-                         :data=>{
-                            :cleanup=>{
-                                :player=>[player.id]
-                            }
-                         }
-                       }.to_json)
+
     player.destroy
     session.clear
     
