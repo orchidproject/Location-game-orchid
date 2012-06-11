@@ -108,6 +108,7 @@ function connect_socketio(url, device, peer, transports) {
 	if (transports===undefined)
 		transports = [ 'websocket', 'xhr-polling', 'jsonp-polling' ];
 	
+	alert("ready to connect");
 	var connected = Android.connect(url);
 	alert(connected);
 	//peer.socket = socket;
