@@ -140,7 +140,7 @@ function connect_socketio(url, device, peer, transports) {
 		}
 		peer.connected = true;
 		peer.connstate = STATE_NEW;
-		alert("handler invoked")
+		
 		if (!peer.known) {
 			// new/unknown peer
 			// send init_peer_req
@@ -159,8 +159,12 @@ function connect_socketio(url, device, peer, transports) {
 				version: version,
 				reason: 'unknown_peer'
 			};
-			Android.sendMessage(m);
-			logmessage('Send', 'init_peer_req', m);
+			
+			alert("handler invoked");
+			var ms = JSON.stringify(m);
+			Android.sendMessage(ms);
+			alert("handler invoked 2");
+			logmessage('Send', 'init_peer_req parsed', ms);
 			peer.connstate = STATE_PEER_REQ;
 		}
 		else {

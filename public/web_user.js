@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	updateGame(true);
-	id='dashboard'+(new Date()).getTime();
-	connect('http://holt.mrl.nott.ac.uk:49991', id , "dashboard", "observer", 
+	id='user'+(new Date()).getTime();
+	connect('http://holt.mrl.nott.ac.uk:49991', id , "user", "observer", 
 		"acc_exposure-"+$("#group_token").val(),
 		newreceiver, statechange);
 });
