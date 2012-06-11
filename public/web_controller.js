@@ -103,27 +103,6 @@ function statechange(receivername,updates,timestamp,values) {
 				receiveHeatmapData(updates);
 			}
 			
-// convert it to heatmap format
-// 			var heatMapData={
-//     			max: 10,
-//     			//data: [{lat: 52.9545091, lng:-1.1887172, count: 10},{lat: 52.9540927, lng:-1.18750480, count: 10}]
-//     		};
-//     		
-//     		var data=[];
-//     		for(var index in values){
-//     			if (values[index].lat==null||values[index].lng==null){return;}
-//     			data.push({
-//     				lat:values[index].lat,lng:values[index].lng,count:values[index].value
-//     			});
-//     		}
-// 			//data.push({lat: 52.9545091, lng:-1.1887172, count: 10},{lat: 52.9540927, lng:-1.18750480, count: 10});
-//     		
-//     		heatMapData["data"]=data;
-//     		
-//     		// this is important, because if you set the data set too early, the latlng/pixel projection doesn't work
-// 			google.maps.event.addListenerOnce(map, "idle", function(){
-// 				heatmap.setDataSet(heatMapData);
-// 			});
 		
 		}
 	/*function sendBackAck(ackid){
