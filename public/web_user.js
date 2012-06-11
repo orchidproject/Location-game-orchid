@@ -7,15 +7,10 @@ $(document).ready(function() {
 });
 
 function ready(){
-  /*connect('http://holt.mrl.nott.ac.uk:49991', id , "dashboard", "observer", 
-		"acc_exposure-"+$("#group_token").val()+
-		",locations-"+$("#group_token").val() + 
-		",player_info-"+$("#group_token").val()+
-		",tasks-"+$("#group_token").val()+
-		",heatmap-"+$("#group_token").val()+
-		",system-"+$("#group_token").val(),
-		newreceiver, statechange);*/
-	Anndroid.connect();
+  	connect('http://holt.mrl.nott.ac.uk:49991', id , "dashboard", "observer", 
+		"acc_exposure-"+$("#group_token").val(),
+		newreceiver, statechange);
+	//Anndroid.connect();
 	
 }
 function statechange(receivername,updates,timestamp,values) {

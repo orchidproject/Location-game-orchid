@@ -99,232 +99,6 @@ function connectPeerSender(sender,senderid,socket) {
 }
 
 
-function connect_socketio(url, device, peer, transports) {
-	// Note: don't reconnect at the socket.io level - we'll do it at a higher level
-	// Note: if the initial handshake fails then we don't get any event back - we'd just have to 
-	// set a timeout for the lack of connecting.
-	console.log('connect_socketio '+url);
-	
-	if (transports===undefined)
-		transports = [ 'websocket', 'xhr-polling', 'jsonp-polling' ];
-	
-	var connected = Android.connect(url);
-	alert(connected);
-	//peer.socket = socket;
-	peer.connected = false;
-
-     
-	// timeout for initial handshake (inferred from first call to connect - could trap connecting but then 
-	// also deal with connect_failed, etc.)
-	// now android code deal with this.
-	/*peer.connectTimeout = setTimeout(function() {
-		logmessage('Event','connect timeout');
-		socket.disconnect();
-		peer.retryTimeout = setTimeout(function() {
-			connect_socketio(url, device, peer, transports);
-		}, RETRY_TIMEOUT)
-	}, CONNECT_TIMEOUT);*/
-	
-	setEventHandler('connect', function() {
-		// curruent all reconnection in socket.io server
-		/*if (socket!==peer.socket) {
-			console.log('ignore connect for old/wrong socket');
-			return;
-		}*/
-		logmessage('Event','connect');
-		// cancel connect timeout
-		if (peer.connectTimeout!==undefined) {
-			clearTimeout(peer.connectTimeout);
-			delete peer.connectTimeout;
-		}
-		peer.connected = true;
-		peer.connstate = STATE_NEW;
-		if (!peer.known) {
-			// new/unknown peer
-			// send init_peer_req
-			// requires initiator nonce and pin
-			peer.nonce = getNonce();
-			peer.pin = getPin();
-			peer.pindigest = getPinDigest(peer.nonce, peer.pin);
-			console.log('nonce='+peer.nonce+', pin='+peer.pin+', pindigest='+peer.pindigest);
-			
-			// Note: we set 'unknown_peer' to prevent a resp_peer_known response
-			var m = {
-				type: 'init_peer_req',	
-				id: device.id,
-				pindigest: peer.pindigest,
-				name: device.name,
-				version: version,
-				reason: 'unknown_peer'
-			};
-			Android.sendMessage(m);
-			logmessage('Send', 'init_peer_req', m);
-			peer.connstate = STATE_PEER_REQ;
-		}
-		else {
-			// known peer (unless it has crashed/restarted)
-			// send init_confirm_untrusted
-			var m = {
-					type: 'init_confirm_untrusted',	
-					id: device.id,
-					confirmid: peer.id,
-					name: device.name,
-					version: version,
-			};
-			Android.sendMessage(m);
-			logmessage('Send', 'init_confirm_untrusted', m);
-			peer.connstate = STATE_CONFIRM_UNTRUSTED;
-		}
-	});
-	setEventHandler('connecting', function(transport_type) {
-		logmessage('Event','connecting',transport_type);
-	});
-	setEventHandler('connect_failed', function() {
-		logmessage('Event','connect_failed','');
-	});
-	setEventHandler('close', function() {
-		logmessage('Event','close','');
-	});
-	// called when disconnect called or detected
-	setEventHandler('disconnect', function() {
-		// curruent all reconnection in socket.io server
-		/*if (socket!==peer.socket) {
-			console.log('ignore connect for old/wrong socket');
-			return;
-		}*/
-		logmessage('Event','disconnect','');
-		peer.connected = false;
-		//delete peer.socket;
-		for (var senderid in peer.senders) {
-			var sender = peer.senders[senderid];
-			sender.disconnected();
-		}
-		peer.retryTimeout = setTimeout(function() {
-			connect_socketio(url, device, peer, transports);
-		}, RETRY_TIMEOUT)
-		
-		if (peer.id===undefined)
-			callonstatechange('connecting');
-		else
-			callonstatechange('reconnecting');
-	});
-	setEventHandler('reconnect', function(transport_type,reconnectionAttempts) {
-		logmessage('Event','reconnect',{transport_type:transport_type,reconnectionAttempts:reconnectionAttempts});
-	});
-	setEventHandler('reconnecting', function(reconnectionDelay,reconnectionAttempts) {
-		logmessage('Event','reconnecting',{reconnectionDelay:reconnectionDelay,reconnectionAttempts:reconnectionAttempts});
-	});
-	setEventHandler('reconnect_failed', function() {
-		logmessage('Event','reconnect_failed','');
-	});
-    setEventHandler('message', function (msg) {
-		// curruent all reconnection in socket.io server
-		/*if (socket!==peer.socket) {
-			console.log('ignore connect for old/wrong socket');
-			return;
-		}*/
-		logmessage('Recv','message',msg);
-		if (peer.connstate==STATE_PEER_REQ || peer.connstate==STATE_CONFIRM_UNTRUSTED) {
-			if (msg.type=='resp_peer_nopin') {
-				// id, name, info? secret
-				if (msg.id===undefined || msg.name===undefined || msg.secret===undefined) {
-					console.log('incomplete resp_peer_nopin message ('+JSON.stringify(msg)+')');
-					Android.disconnect();
-					return;
-				}
-				peer.id = msg.id;
-				peer.name = msg.name;
-				peer.secret = msg.secret;
-				peer.connstate = STATE_PEERED;
-				console.log('Now peered with id='+peer.id+', name='+peer.name);
-				peer.known = true;
-				for (var senderid in peer.senders) {
-					var sender = peer.senders[senderid];
-					// mustn't create closure in loop!
-					// empty string for socket
-					connectPeerSender(sender,senderid,"");
-				}
-				callonstatechange('connected');
-			}
-			else if (msg.type=='resp_peer_known') {
-				// id, name, challenge1resp, challenge2
-				// but in this case we should have sent init_confirm !
-				conole.log('resp_peer_known needs to be handled!!');
-				disconnect();
-			}
-			else if (msg.type=='reject') {
-				console.log('state STATE_PEER_REQ/CONFIRM_UNTRUSTED rejected: '+msg.message);
-				// NB probably unrecoverable!!
-				disconnect();
-				return;
-			} else {
-				console.log('state STATE_PEER_REQ got '+msg.type);
-				Android.disconnect();
-				return;
-			}
-
-		}
-		else if (peer.connstate==STATE_PEERED) {
-			if (msg.type=='sender') {
-				// sender, msg
-				if (msg.sender===undefined || msg.msg===undefined) {
-					console.log('incomplete sender message ('+JSON.stringify(msg)+')');
-					Android.disconnect();
-					return;
-				}
-				//console.log('sender message '+JSON.stringify(msg));
-				var receiver = peer.receivers[msg.sender];
-				if (receiver===undefined) {
-					if (msg.msg.newstate!=true) {
-						console.log('sender message for unknown receiver '+msg.sender+' not newstate - ignored');
-						return;
-					}
-					receiver = new ubistate.Receiver;
-					peer.receivers[msg.sender] = receiver;
-					
-					if (onnewreceiver!==undefined) {
-						try {
-							onnewreceiver(msg.sender,receiver.state);
-						}
-						catch (err) {
-							console.log('error in onnewreceiver: '+err.message);
-						}
-						
-					}
-				}
-				var ackmsg = receiver.received(msg.msg);
-				if (ackmsg!=null) {
-					var repl = {type:'receiver',sender:msg.sender,msg:ackmsg};
-					Android.sendMessage(repl);
-				}
-			}
-			else if (msg.type=='receiver') {
-				// sender,msg
-				if (msg.sender===undefined || msg.msg===undefined) {
-					console.log('incomplete receiver message ('+JSON.stringify(msg)+')');
-					Android.disconnect();
-					return;
-				}
-				var sender = peer.senders[msg.sender];
-				if (sender===undefined) {
-					console.log('reveiver message for unknown sender '+msg.sender);
-					return;
-				}
-				sender.acked(msg.msg);
-			}
-		}
-    });
-    
-}
-
-
-//map each event to a handler so android device can call callbacks according to events.
-var eventMap = [];
-function setEventHandler(event,callback){
-	eventMap[event]=callback;
-}
-
-
 /** called to initiate (high-level) connectivity to server
  * @param url server URL
  * @param id device ID
@@ -367,7 +141,9 @@ function connect(url, id, name, group, initialsubscriptions, onnewreceiver2, ons
 	
 	callonstatechange('connecting');
 	
-	connect_socketio(peer.url, device, peer, transports);
+	
+	//connect_socketio(peer.url, device, peer, transports);
+	//Android.connect();
 }
 
 function getsenderstate(name) {
@@ -389,20 +165,164 @@ function getreceiverstate(name) {
 }
 
 function disconnectinternal() {
-	Android.disconnect();
-	/*if (peer.socket!==undefined) {
+	if (peer.socket!==undefined) {
 		peer.socket.disconnect();
 		logmessage('Sent', 'disconnect');
 	}
 	clearTimeout(peer.connectTimeout);
-	clearTimeout(peer.retryTimeout);*/
+	clearTimeout(peer.retryTimeout);
 }
 function disconnect() {
-	Android.disconnect();
-	/*disconnectinternal();
-	callonstatechange('disconnected');*/
+	//disconnectinternal();
+	callonstatechange('disconnected');
 }
 
+//================================adapt to  android================
+function onConnect(){
+		peer.connected = true;
+		peer.connstate = STATE_NEW;
+		if (!peer.known) {
+			// new/unknown peer
+			// send init_peer_req
+			// requires initiator nonce and pin
+			peer.nonce = getNonce();
+			peer.pin = getPin();
+			peer.pindigest = getPinDigest(peer.nonce, peer.pin);
+			console.log('nonce='+peer.nonce+', pin='+peer.pin+', pindigest='+peer.pindigest);
+			
+			// Note: we set 'unknown_peer' to prevent a resp_peer_known response
+			var m = {
+				type: 'init_peer_req',	
+				id: device.id,
+				pindigest: peer.pindigest,
+				name: device.name,
+				version: version,
+				reason: 'unknown_peer'
+			};
+			Android.sendMessage(m);
+			logmessage('Send', 'init_peer_req', m);
+			peer.connstate = STATE_PEER_REQ;
+		}
+		else {
+			// known peer (unless it has crashed/restarted)
+			// send init_confirm_untrusted
+			var m = {
+					type: 'init_confirm_untrusted',	
+					id: device.id,
+					confirmid: peer.id,
+					name: device.name,
+					version: version,
+			};
+			Android.sendMessage(m);
+			logmessage('Send', 'init_confirm_untrusted', m);
+			peer.connstate = STATE_CONFIRM_UNTRUSTED;
+		}
+}
+
+function onDisconnect(){
+		for (var senderid in peer.senders) {
+			var sender = peer.senders[senderid];
+			sender.disconnected();
+		}
+		if (peer.id===undefined)
+			callonstatechange('connecting');
+		else
+			callonstatechange('reconnecting');
+}
+
+function onMessage(){
+	    logmessage('Recv','message',msg);
+		if (peer.connstate==STATE_PEER_REQ || peer.connstate==STATE_CONFIRM_UNTRUSTED) {
+			if (msg.type=='resp_peer_nopin') {
+				// id, name, info? secret
+				if (msg.id===undefined || msg.name===undefined || msg.secret===undefined) {
+					console.log('incomplete resp_peer_nopin message ('+JSON.stringify(msg)+')');
+					socket.disconnect();
+					return;
+				}
+				peer.id = msg.id;
+				peer.name = msg.name;
+				peer.secret = msg.secret;
+				peer.connstate = STATE_PEERED;
+				console.log('Now peered with id='+peer.id+', name='+peer.name);
+				peer.known = true;
+				for (var senderid in peer.senders) {
+					var sender = peer.senders[senderid];
+					// mustn't create closure in loop!
+					connectPeerSender(sender,senderid,socket);
+				}
+				callonstatechange('connected');
+			}
+			else if (msg.type=='resp_peer_known') {
+				// id, name, challenge1resp, challenge2
+				// but in this case we should have sent init_confirm !
+				conole.log('resp_peer_known needs to be handled!!');
+				disconnect();
+			}
+			else if (msg.type=='reject') {
+				console.log('state STATE_PEER_REQ/CONFIRM_UNTRUSTED rejected: '+msg.message);
+				// NB probably unrecoverable!!
+				disconnect();
+				return;
+			} else {
+				console.log('state STATE_PEER_REQ got '+msg.type);
+				socket.disconnect();
+				return;
+			}
+
+		}
+		else if (peer.connstate==STATE_PEERED) {
+			if (msg.type=='sender') {
+				// sender, msg
+				if (msg.sender===undefined || msg.msg===undefined) {
+					console.log('incomplete sender message ('+JSON.stringify(msg)+')');
+					socket.disconnect();
+					return;
+				}
+				//console.log('sender message '+JSON.stringify(msg));
+				var receiver = peer.receivers[msg.sender];
+				if (receiver===undefined) {
+					if (msg.msg.newstate!=true) {
+						console.log('sender message for unknown receiver '+msg.sender+' not newstate - ignored');
+						return;
+					}
+					receiver = new ubistate.Receiver;
+					peer.receivers[msg.sender] = receiver;
+					
+					if (onnewreceiver!==undefined) {
+						try {
+							onnewreceiver(msg.sender,receiver.state);
+						}
+						catch (err) {
+							console.log('error in onnewreceiver: '+err.message);
+						}
+						
+					}
+				}
+				var ackmsg = receiver.received(msg.msg);
+				if (ackmsg!=null) {
+					var repl = {type:'receiver',sender:msg.sender,msg:ackmsg};
+					Android.sendMessage(repl);
+				}
+			}
+			else if (msg.type=='receiver') {
+				// sender,msg
+				if (msg.sender===undefined || msg.msg===undefined) {
+					console.log('incomplete receiver message ('+JSON.stringify(msg)+')');
+					socket.disconnect();
+					return;
+				}
+				var sender = peer.senders[msg.sender];
+				if (sender===undefined) {
+					console.log('reveiver message for unknown sender '+msg.sender);
+					return;
+				}
+				sender.acked(msg.msg);
+			}
+		}
+   
+
+}
 
 
 
