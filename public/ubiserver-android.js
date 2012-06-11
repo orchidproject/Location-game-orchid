@@ -108,9 +108,9 @@ function connect_socketio(url, device, peer, transports) {
 	if (transports===undefined)
 		transports = [ 'websocket', 'xhr-polling', 'jsonp-polling' ];
 	
-	alert("ready to connect");
+	//alert("ready to connect");
 	var connected = Android.connect(url);
-	alert(connected);
+	//alert(connected);
 	//peer.socket = socket;
 	peer.connected = false;
 
@@ -160,10 +160,9 @@ function connect_socketio(url, device, peer, transports) {
 				reason: 'unknown_peer'
 			};
 			
-			alert("handler invoked");
 			var ms = JSON.stringify(m);
 			Android.sendMessage(ms);
-			alert("handler invoked 2");
+
 			logmessage('Send', 'init_peer_req parsed', ms);
 			peer.connstate = STATE_PEER_REQ;
 		}
@@ -343,7 +342,7 @@ function setEventHandler(event,callback){
  */
 function connect(url, id, name, group, initialsubscriptions, onnewreceiver2, onstatechange2, transports) {
 	// old connection?
-	disconnectinternal();
+	// disconnectinternal();
 	peer.known = false;
 	// ...
 	logmessage('Action','connect',{id:id,name:name,group:group});
