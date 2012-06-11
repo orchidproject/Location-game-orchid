@@ -665,14 +665,6 @@ end
         #new protocol
         player.send_player_info(socketIO)
         
-        
-        socketIO.broadcast( 
-                           { 
-                            :channel=> params[:layer_id],             
-                            :data=>{
-                                    :textMassage=>{:content=>"#{player.name} join the game"}
-                           	}
-                           }.to_json)
     end
     {'skill' => player.skill_string(), 'user_id' => player.id}.to_json
       
