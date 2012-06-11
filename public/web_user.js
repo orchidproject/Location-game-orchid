@@ -68,8 +68,11 @@ function newreceiver(name,state) {
 }*/
 
 function handleSocketData(event,msg){
-	alert("handle data "+event +" " +msg);
-	eventMap[event](msg);
+	var dataStr0 = jQuery.stringify(msg);
+	var dataStr1 = dataStr0.substring(1,dataStr0.length-1);
+	var data = jQuery.parseJSON(dataStr1);
+	alert("handle data "+event +" " +data);
+	eventMap[event](data);
 	alert("handle finished");
 }
 

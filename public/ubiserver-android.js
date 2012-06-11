@@ -140,6 +140,7 @@ function connect_socketio(url, device, peer, transports) {
 		}
 		peer.connected = true;
 		peer.connstate = STATE_NEW;
+		alert("handler invoked")
 		if (!peer.known) {
 			// new/unknown peer
 			// send init_peer_req
