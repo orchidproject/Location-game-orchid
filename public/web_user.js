@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
 	updateGame(true);
 	id='dashboard'+(new Date()).getTime();
@@ -8,16 +6,13 @@ $(document).ready(function() {
 		newreceiver, statechange);
 });
 
-/*function ready(){
-  	
-	//Anndroid.connect();
-	
-}*/
 function statechange(receivername,updates,timestamp,values) {
 }
 
 function newreceiver(name,state) {
 }
+
+
 //native socket.io invoke this function whenever data arrived here
 
 /*function handleSocketData(dataStr) {
@@ -72,7 +67,10 @@ function newreceiver(name,state) {
     
 }*/
 
-function handleSocketData(){
-
-
+function handleSocketData(event,msg){
+	alert("handle data "+event +" " +msg);
+	eventMap[event](msg);
+	alert("handle finished");
 }
+
+

@@ -178,7 +178,7 @@ function connect_socketio(url, device, peer, transports) {
 		}
 	});
 	setEventHandler('connecting', function(transport_type) {
-		logmessage('Event','connecting',transport_type);
+		//logmessage('Event','connecting',transport_type);
 	});
 	setEventHandler('connect_failed', function() {
 		logmessage('Event','connect_failed','');
@@ -210,13 +210,13 @@ function connect_socketio(url, device, peer, transports) {
 			callonstatechange('reconnecting');
 	});
 	setEventHandler('reconnect', function(transport_type,reconnectionAttempts) {
-		logmessage('Event','reconnect',{transport_type:transport_type,reconnectionAttempts:reconnectionAttempts});
+		//logmessage('Event','reconnect',{transport_type:transport_type,reconnectionAttempts:reconnectionAttempts});
 	});
 	setEventHandler('reconnecting', function(reconnectionDelay,reconnectionAttempts) {
-		logmessage('Event','reconnecting',{reconnectionDelay:reconnectionDelay,reconnectionAttempts:reconnectionAttempts});
+		//logmessage('Event','reconnecting',{reconnectionDelay:reconnectionDelay,reconnectionAttempts:reconnectionAttempts});
 	});
 	setEventHandler('reconnect_failed', function() {
-		logmessage('Event','reconnect_failed','');
+		//logmessage('Event','reconnect_failed','');
 	});
     setEventHandler('message', function (msg) {
 		// curruent all reconnection in socket.io server
@@ -390,6 +390,7 @@ function getreceiverstate(name) {
 }
 
 function disconnectinternal() {
+	alert("disconnect");
 	Android.disconnect();
 	/*if (peer.socket!==undefined) {
 		peer.socket.disconnect();
