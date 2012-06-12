@@ -170,12 +170,13 @@ function getState(channel, userID, key){
 }*/
 
 function setState(keys,values){
+	alert(keys+" "+values);
 	var key_array=keys.split(",");
 	var value_array=values.split(",");
 	//key_array length == value_array length
 	clientState.begin();
 	for (i in key_array){
-		alert(key[i]+values[i]);
+		//alert(key[i]+values[i]);
 		clientState.set(key[i],values[i]);
 	}
 	clientState.end();
