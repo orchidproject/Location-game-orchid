@@ -170,7 +170,7 @@ function getState(channel, userID, key){
 }*/
 
 function setState(keys,values){
-	alert(keys+" "+values);
+	//alert(keys+" "+values);
 	var key_array=keys.split(",");
 	var value_array=values.split(",");
 	//key_array length == value_array length
