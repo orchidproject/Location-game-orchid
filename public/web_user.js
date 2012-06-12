@@ -6,7 +6,7 @@ $(document).ready(function() {
 	id='user'+(new Date()).getTime();
 	
 	var timeout=setTimeout(function(){
-		if(Android!=null){
+		if(typeof Android!="undefined"){
 			var info=Android.request_info();
 			alert(info+"3");
 			

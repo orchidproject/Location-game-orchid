@@ -365,10 +365,7 @@ function connect(url, id, name, group, initialsubscriptions, game_id,onnewreceiv
 	clientState.end();
 	*/
 
-	clientState.begin();
-	clientState.set('skill',game_info['skill']);
-	clientState.set('initials',game_info['initials']);
-	clientState.end();
+	
 	
 	// subscribe to GROUP
 	subscriptions.set(SENDERS,initialsubscriptions);
