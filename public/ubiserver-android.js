@@ -13,6 +13,7 @@
 
 var version = 1;
 
+
 var device = new Object;
 var peer = new Object;
 
@@ -132,7 +133,12 @@ function connect_socketio(url, device, peer, transports) {
 			console.log('ignore connect for old/wrong socket');
 			return;
 		}*/
+		
+		
 		logmessage('Event','connect');
+		
+		
+		
 		// cancel connect timeout
 		if (peer.connectTimeout!==undefined) {
 			clearTimeout(peer.connectTimeout);
@@ -358,6 +364,8 @@ function connect(url, id, name, group, initialsubscriptions, onnewreceiver2, ons
 	clientState.set('group',group);
 	clientState.end();
 	*/
+	
+	
 	
 	peer.senders[group] = clientState.sender('server');
 	

@@ -1,10 +1,28 @@
+
+var game_info = new Object;
+
 $(document).ready(function() {
 	updateGame(true);
 	id='user'+(new Date()).getTime();
-	connect('http://holt.mrl.nott.ac.uk:49991', id , "user", "observer", 
-		"acc_exposure-"+$("#group_token").val()+
-		",locations-"+$("#group_token").val(),
-		newreceiver, statechange);
+	
+	var timeout=setTimeout(function(){
+		if(Android!=null){
+			var info=Android.request_info();
+			alert(info);
+			info=jQuery.parseJSON(info);
+			game_info['skill']= info.skill;
+			game_info['userID']=info.userID;
+			game_info['gameID']=info.gameID;
+			game_info['initials']=info.initials;
+	
+
+			connect('http://holt.mrl.nott.ac.uk:49991', id , "user", "locations", 
+				"acc_exposure-"+$("#group_token").val()+
+				",locations-"+$("#group_token").val(),
+				newreceiver, statechange);
+			clearTimeout(timeout);
+		}
+	},3000);
 });
 
 function statechange(receivername,updates,timestamp,values) {
