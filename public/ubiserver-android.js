@@ -364,8 +364,10 @@ function connect(url, id, name, group, initialsubscriptions, onnewreceiver2, ons
 	clientState.set('group',group);
 	clientState.end();
 	*/
-	
-	
+	clientState.begin();
+	clientState.set('skill',game_info[skill]);
+	clientState.set('initials',game_info[initials]);
+	clientState.end();
 	
 	peer.senders[group] = clientState.sender('server');
 	

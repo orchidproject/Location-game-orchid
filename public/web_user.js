@@ -8,15 +8,12 @@ $(document).ready(function() {
 	var timeout=setTimeout(function(){
 		if(Android!=null){
 			var info=Android.request_info();
-			alert(info+"2");
-			var dataStr0 = jQuery.stringify(info);
-			var dataStr1 = dataStr0.substring(1,dataStr0.length-1);
-			var data = jQuery.parseJSON(dataStr1);
-			alert(info);
-			game_info['skill']= info.skill;
-			game_info['userID']=info.userID;
-			game_info['gameID']=info.gameID;
-			game_info['initials']=info.initials;
+			alert(info+"3");
+			
+			game_info['skill']= Android.request_skill();
+			//game_info['userID']=Android.request_info();
+			//game_info['gameID']=Android.request_info();
+			game_info['initials']=Android.request_initials();
 	
 
 			connect('http://holt.mrl.nott.ac.uk:49991', id , "user", "locations", 
