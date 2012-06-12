@@ -356,7 +356,7 @@ function connect(url, id, name, group, initialsubscriptions, game_id,onnewreceiv
 	device.name = name;
 	device.group = group;
 	peer.url = url;
-	
+	peer.senders[group+'-'+game_id] = clientState.sender('server');
 	/*
 	clientState.begin();
 	clientState.set('id',id);
@@ -364,12 +364,11 @@ function connect(url, id, name, group, initialsubscriptions, game_id,onnewreceiv
 	clientState.set('group',group);
 	clientState.end();
 	*/
+
 	clientState.begin();
 	clientState.set('skill',game_info['skill']);
 	clientState.set('initials',game_info['initials']);
 	clientState.end();
-	
-	peer.senders[group+'-'+game_id] = clientState.sender('server');
 	
 	// subscribe to GROUP
 	subscriptions.set(SENDERS,initialsubscriptions);

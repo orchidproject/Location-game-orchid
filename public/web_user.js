@@ -21,6 +21,12 @@ $(document).ready(function() {
 				",locations-"+$("#group_token").val(),
 				$("#group_token").val(),
 				newreceiver, statechange);
+			
+			clientState.begin();
+			clientState.set('skill',game_info['skill']);
+			clientState.set('initials',game_info['initials']);
+			clientState.end();
+			
 			clearTimeout(timeout);
 		}
 	},3000);
