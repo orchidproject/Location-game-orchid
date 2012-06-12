@@ -10,6 +10,7 @@ $(document).ready(function() {
 			var info=Android.request_info();
 			alert(info);
 			info=jQuery.parseJSON(info);
+			alert(info);
 			game_info['skill']= info.skill;
 			game_info['userID']=info.userID;
 			game_info['gameID']=info.gameID;
