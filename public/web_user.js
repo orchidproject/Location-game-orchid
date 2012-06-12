@@ -18,7 +18,10 @@ $(document).ready(function() {
 			
 			connect('http://holt.mrl.nott.ac.uk:49991', game_info['userID'], "user", "locations",
 				"acc_exposure-"+$("#group_token").val()+
-				",locations-"+$("#group_token").val(),
+				",locations-"+$("#group_token").val()+
+				",system-"+$("#group_token").val()+
+				",health-"+$("#group_token").val()+
+				",exposure-"+$("#group_token").val(),
 				$("#group_token").val(),
 				newreceiver, statechange);
 			
