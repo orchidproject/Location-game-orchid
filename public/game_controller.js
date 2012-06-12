@@ -214,7 +214,7 @@ function receiveExposureData(data){
     document.getElementById("exposure_"+data.player_id).innerHTML=data.value;
     
     var level = document.getElementById("level_"+data.player_id);
-    if (data.exposure <= 50) {
+    if (data.value <= 50) {
     	level.innerHTML = "Low"; 
     }
     else if (data.value > 50 && data.level <=350)   {

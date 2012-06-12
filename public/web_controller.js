@@ -36,7 +36,7 @@ function statechange(receivername,updates,timestamp,values) {
 		if (channel=="acc_exposure"){
 			//convert ot old json schema
 			old_style_json["player_id"]=user_id;
-			old_style_json["value"]=upates["acc_exposure"];
+			old_style_json["value"]=updates["acc_exposure"];
 			
 			receiveExposureData(old_style_json);
 		}
