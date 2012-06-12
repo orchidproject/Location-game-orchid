@@ -16,7 +16,7 @@ $(document).ready(function() {
 			game_info['initials']=Android.request_initials();
 	
 
-			connect('http://holt.mrl.nott.ac.uk:49991', id , "user", "locations", 
+			connect('http://holt.mrl.nott.ac.uk:49991', $("#user_id").val() , "user", "locations", 
 				"acc_exposure-"+$("#group_token").val()+
 				",locations-"+$("#group_token").val(),
 				newreceiver, statechange);

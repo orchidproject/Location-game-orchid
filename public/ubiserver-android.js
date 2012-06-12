@@ -346,7 +346,7 @@ function setEventHandler(event,callback){
  * @param onstatechange callback when connection state changes, arguments (connstatename)
  * @parma transports array of socket.io transports to use (default if undefined to websocket, xhr-polling and jsonp-polling)
  */
-function connect(url, id, name, group, initialsubscriptions, onnewreceiver2, onstatechange2, transports) {
+function connect(url, id, name, group, initialsubscriptions, game_id,onnewreceiver2, onstatechange2, transports) {
 	// old connection?
 	// disconnectinternal();
 	peer.known = false;
@@ -369,7 +369,7 @@ function connect(url, id, name, group, initialsubscriptions, onnewreceiver2, ons
 	clientState.set('initials',game_info['initials']);
 	clientState.end();
 	
-	peer.senders[group] = clientState.sender('server');
+	peer.senders[group+'-'+game_id] = clientState.sender('server');
 	
 	// subscribe to GROUP
 	subscriptions.set(SENDERS,initialsubscriptions);
