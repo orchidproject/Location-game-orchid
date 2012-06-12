@@ -9,7 +9,9 @@ $(document).ready(function() {
 		if(Android!=null){
 			var info=Android.request_info();
 			alert(info);
-			info=jQuery.parseJSON(info);
+			var dataStr0 = jQuery.stringify(info);
+			var dataStr1 = dataStr0.substring(1,dataStr0.length-1);
+			var data = jQuery.parseJSON(dataStr1);
 			alert(info);
 			game_info['skill']= info.skill;
 			game_info['userID']=info.userID;
