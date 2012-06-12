@@ -11,12 +11,15 @@ $(document).ready(function() {
 			alert(info+"3");
 			
 			game_info['skill']= Android.request_skill();
-			//game_info['userID']=Android.request_info();
+			game_info['userID']=Android.request_userID();
 			//game_info['gameID']=Android.request_info();
 			game_info['initials']=Android.request_initials();
 	
-
-			connect('http://holt.mrl.nott.ac.uk:49991', $("#user_id").val() , "user", "locations",
+			if ($("#user_id").val()==""){
+				return;
+			}
+			
+			connect('http://holt.mrl.nott.ac.uk:49991', game_info['userID'], "user", "locations",
 				"acc_exposure-"+$("#group_token").val()+
 				",locations-"+$("#group_token").val(),
 				$("#group_token").val(),
