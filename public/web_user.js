@@ -177,7 +177,7 @@ function setState(keys,values){
 	clientState.begin();
 	for (i in key_array){
 		//alert(key[i]+values[i]);
-		clientState.set(keys[i],values[i]);
+		clientState.set(key_array[i],value_array[i]);
 	}
 	clientState.end();
 }
