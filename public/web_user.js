@@ -5,7 +5,7 @@ $(document).ready(function() {
 	updateGame(true);
 	id='user'+(new Date()).getTime();
 	
-	var timeout=setTimeout(function(){
+	var timeout=setInterval(function(){
 		if(typeof Android!="undefined"){
 			var info=Android.request_info();
 			alert(info+"3");
@@ -27,7 +27,7 @@ $(document).ready(function() {
 			clientState.set('initials',game_info['initials']);
 			clientState.end();
 			
-			clearTimeout(timeout);
+			clearInterval(timeout);
 		}
 	},3000);
 });
