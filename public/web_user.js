@@ -175,7 +175,7 @@ function setState(keys,values){
 	//key_array length == value_array length
 	clientState.begin();
 	for (i in key_array){
-		clientState.set(key[i],value[i]);
+		clientState.set(key[i],values[i]);
 	}
 	clientState.end();
 }
