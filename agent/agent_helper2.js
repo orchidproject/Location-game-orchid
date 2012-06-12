@@ -122,14 +122,14 @@ function Helper(game_id){
     //this.socket_address='http://holt.mrl.nott.ac.uk:49991';
     //this.ruby_address='holt.mrl.nott.ac.uk';
     
-    this.socket_address='http://localhost:49991';
-    this.ruby_address='localhost';
+    this.socket_address='http://holt.mrl.nott.ac.uk:49991';
+    this.ruby_address='holt.mrl.nott.ac.uk';
     this.ruby_port=49992;
     this.player=new Object;
     this.game_id=game_id;
     
 	this.socketAddress=this.socket_address;
-	this.nodeAddress='http://localhost:8080';
+	this.nodeAddress='http://holt.mrl.nott.ac.uk:8080';
 	this.rubyAddress=this.ruby_address;
 	
     //this.socket=new Socket(socket_address);
