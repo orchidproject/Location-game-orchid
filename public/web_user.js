@@ -169,6 +169,17 @@ function getState(channel, userID, key){
     
 }*/
 
+function setState(keys,values){
+	var key_array=keys.split(",");
+	var value_array=values.split(",");
+	//key_array length == value_array length
+	clientState.begin();
+	for (i in key_array){
+		clientState.set(key[i],value[i]);
+	}
+	clientState.end();
+}
+
 function handleSocketData(event,msg){
 	var dataStr0 = jQuery.stringify(msg);
 	var dataStr1 = dataStr0.substring(1,dataStr0.length-1);
