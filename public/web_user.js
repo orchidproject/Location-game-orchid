@@ -8,7 +8,7 @@ $(document).ready(function() {
 	var timeout=setTimeout(function(){
 		if(Android!=null){
 			var info=Android.request_info();
-			alert(info);
+			alert(info+"2");
 			var dataStr0 = jQuery.stringify(info);
 			var dataStr1 = dataStr0.substring(1,dataStr0.length-1);
 			var data = jQuery.parseJSON(dataStr1);
