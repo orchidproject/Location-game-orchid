@@ -15,9 +15,6 @@ $(document).ready(function() {
 			//game_info['gameID']=Android.request_info();
 			game_info['initials']=Android.request_initials();
 	
-			if ($("#user_id").val()==""){
-				return;
-			}
 			
 			connect('http://holt.mrl.nott.ac.uk:49991', game_info['userID'], "user", "locations",
 				"acc_exposure-"+$("#group_token").val()+
