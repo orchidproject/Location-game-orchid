@@ -1,0 +1,9 @@
+{"player":{"id":403,"name":"","skill":"medic"},"ackid":5,"time_stamp":1338238042648}
+{"textMassage":{"content":" join the game"},"ackid":7,"time_stamp":1338238042651}
+{"cleanup":{"player":[403]},"ackid":8,"time_stamp":1338238048372}
+{"player":{"id":405,"name":"","skill":"medic"},"ackid":4862,"time_stamp":1338241566833}
+{"textMassage":{"content":" join the game"},"ackid":4864,"time_stamp":1338241566836}
+{"player":{"id":406,"name":"","skill":"soldier"},"ackid":4866,"time_stamp":1338241760271}
+{"textMassage":{"content":" join the game"},"ackid":4868,"time_stamp":1338241760275}
+{"cleanup":{"player":[405]},"ackid":4869,"time_stamp":1338241767792}
+{"cleanup":{"player":[406]},"ackid":4873,"time_stamp":1338241775819}

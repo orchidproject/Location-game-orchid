@@ -1,0 +1,15 @@
+{"system":"reset","ackid":1,"time_stamp":1338293314788}
+{"player":{"id":423,"name":"","skill":"soldier"},"ackid":2,"time_stamp":1338293349583}
+{"textMassage":{"content":" join the game"},"ackid":4,"time_stamp":1338293349590}
+{"player":{"id":424,"name":"","skill":"soldier"},"ackid":5,"time_stamp":1338293364315}
+{"textMassage":{"content":" join the game"},"ackid":7,"time_stamp":1338293364322}
+{"location":{"player_id":"424","longitude":-1.1874115001410246,"latitude":52.9533848259598,"skill":"soldier","initials":"BB"},"ackid":8,"time_stamp":1338293383891}
+{"system":"start","ackid":9,"time_stamp":1338293385449}
+{"location":{"player_id":"424","longitude":-1.187333632260561,"latitude":52.9533763602376,"skill":"soldier","initials":"BB"},"ackid":10,"time_stamp":1338293385904}
+{"location":{"player_id":"424","longitude":-1.1872348934412003,"latitude":52.953397021628916,"skill":"soldier","initials":"BB"},"ackid":11,"time_stamp":1338293387975}
+{"location":{"player_id":"424","longitude":-1.1871700175106525,"latitude":52.953430213965476,"skill":"soldier","initials":"BB"},"ackid":12,"time_stamp":1338293391074}
+{"location":{"player_id":"424","longitude":-1.1870932392776012,"latitude":52.95342962723225,"skill":"soldier","initials":"BB"},"ackid":42,"time_stamp":1338293400003}
+{"location":{"player_id":"424","longitude":-1.187017634510994,"latitude":52.95342644210905,"skill":"soldier","initials":"BB"},"ackid":68,"time_stamp":1338293409008}
+{"location":{"player_id":"424","longitude":-1.1869340669363737,"latitude":52.95344253536314,"skill":"soldier","initials":"BB"},"ackid":88,"time_stamp":1338293414334}
+{"location":{"player_id":"423","longitude":-1.187275629490614,"latitude":52.95349148567766,"skill":"soldier","initials":"AA"},"ackid":257,"time_stamp":1338293469411}
+{"location":{"player_id":"424","longitude":-1.1870126891881227,"latitude":52.953428914770484,"skill":"soldier","initials":"BB"},"ackid":394,"time_stamp":1338293492277}
