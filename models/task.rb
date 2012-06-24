@@ -69,7 +69,7 @@ class Task
   							
   							#modify array in iteration,seem will throw excepation if it is in Java
   							current_state[index]=1
-  							puts "#{current_state.to_s}"
+  							puts "#{self.type},#{current_state.to_s}"
   							eligiable_players << p
   							
   						end 
