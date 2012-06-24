@@ -85,12 +85,15 @@ function mainloop(){
     truckUpdateID=setInterval(updateTruckLocation, 500);
     
     //set initial postion
-     helper.player.lat=52.955035;
-    helper.player.lng=-1.1886727;
+    helper.player.lat=helper.pointSet.p0.lat;
+    helper.player.lng=helper.pointSet.p0.lng;
                 
 
     //move a truck along a path
-    var path=[helper.player,{lat:52.9545091,lng:-1.1887172},{lat:52.9540927,lng:-1.18750480},{lat:52.955035,lng:-1.1886727}];
+    var path=[helper.player,helper.pointSet.p1,helper.pointSet.t1,helper.pointSet.p1,helper.pointSet.p0, //go get t1
+    helper.pointSet.p1,helper.pointSet.p0,helper.pointSet.t5, helper.pointSet.p0, //get t5
+    helper.pointSet.t2,helper.pointSet.p0 //get t3
+    ];
     var section=0;
     
     //go along next section when previous section finished.
@@ -174,7 +177,7 @@ function moveOneStep() {
 }
 
 //join game
-helper.join('agent','a@agent.com','truck',2,'AA', function(p){
+helper.join('agent','a@agent.com','truck',1,'AA', function(p){
     
     
     if (p.user_id != null){

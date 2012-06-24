@@ -20,7 +20,8 @@ class Task
         ['transporter','soldier'],
         ['transporter','soldier'],
         ['ambulance','medic'],
-        ['transporter','soldier']
+        ['transporter','medic']
+        
     ]
  
   property :type, Integer

@@ -129,6 +129,19 @@ function Helper(game_id){
 	this.nodeAddress='http://holt.mrl.nott.ac.uk:8080';
 	this.rubyAddress='holt.mrl.nott.ac.uk';
 	
+	this.pointSet= {
+	t1:{lat:50.936151,lng:-1.397983},
+	t2:{lat:50.935312,lng:-1.396825},
+	t3:{lat:50.934295,lng:-1.398466},
+	t4:{lat:50.934484,lng:-1.399518},
+	t5:{lat:50.935522,lng:-1.399005},
+	p0:{lat:50.935404,lng:-1.397983},
+	p1:{lat:50.9356,lng:-1.398273},
+	p2:{lat:50.93635,lng:-1.397785},
+	p3:{lat:50.936063,lng:-1.396685},
+	p4:{lat:50.935065,lng:-1.398987}
+	}
+	
     //this.socket=new Socket(socket_address);
 }
 
