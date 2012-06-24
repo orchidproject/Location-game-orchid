@@ -1,0 +1,10 @@
+{"player":{"id":415,"name":"","skill":"soldier"},"ackid":20,"time_stamp":1338293058785}
+{"textMassage":{"content":" join the game"},"ackid":22,"time_stamp":1338293058789}
+{"player":{"id":416,"name":"","skill":"soldier"},"ackid":23,"time_stamp":1338293058893}
+{"textMassage":{"content":" join the game"},"ackid":25,"time_stamp":1338293058896}
+{"cleanup":{"player":[416]},"ackid":26,"time_stamp":1338293070537}
+{"cleanup":{"player":[415]},"ackid":30,"time_stamp":1338293076180}
+{"player":{"id":419,"name":"","skill":"soldier"},"ackid":36,"time_stamp":1338293088318}
+{"textMassage":{"content":" join the game"},"ackid":38,"time_stamp":1338293088321}
+{"player":{"id":420,"name":"","skill":"soldier"},"ackid":39,"time_stamp":1338293088467}
+{"textMassage":{"content":" join the game"},"ackid":41,"time_stamp":1338293088470}
