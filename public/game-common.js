@@ -23,8 +23,6 @@ var cg = {
 		return new google.maps.Point(w,h);
 	},
 	playerImage: function(name, skill) {
-//		if(typeof name == "undefined") name = "AA";
-//		if(typeof team == "undefined") team = "red";
 		return new google.maps.MarkerImage("/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png", new google.maps.Size(38, 31), new google.maps.Point(0,0), new google.maps.Point(10, 30));
 	}
 }
@@ -33,22 +31,6 @@ var cg = {
 
 function getPlayerIcon(initials, skill) {
 
-	var imageURL = "";
-	
-    if(skill == 'medic') {
-            imageURL = medic;
-    }
-    else if(skill == 'soldier') {
-	    	imageURL = soldier; 
-    }
-	else if(skill == 'ambulance') {
-	    	imageURL = ambulance;
-    }
-    else if(skill == 'transporter') {
-	    	imageURL = transporter;
-    }
-
-    //var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);cg.playerImage
     var icon = cg.playerImage(initials,skill);
 	
 	return icon;
