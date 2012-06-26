@@ -4,13 +4,13 @@ var playerIconAnchor = new google.maps.Point(16, 32);
 
 var taskIcon1 = "/img/task_icon1.png";
 var taskIcon2 =  "/img/task_icon2.png";
-var taskIcon3 =  "/img/task_icon3.png";
+var taskIcon3 =  "/img/victim.png";
 var taskIcon4 = "/img/task_icon4.png";
 
 var medic = "/img/medic.png";
 var soldier =  "/img/soldier.png";
 var ambulance =  "/img/ambulance.png";
-var transporter = "/img/convertible.png";
+var transporter = "/img/firefighter.png";
 var tick = "/img/tick.png";
 
 var chosen_task_type = 0;

@@ -19,8 +19,8 @@ class Task
     @@task_type=[
         ['transporter','soldier'],
         ['transporter','medic'],
-        ['ambulance','medic'],
-        ['transporter','soldier']
+        ['firefighter','medic'],
+        ['firefighter','soldier']
         
     ]
  
