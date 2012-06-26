@@ -9,8 +9,8 @@ var taskIcon4 = "/img/task_icon4.png";
 
 var medic = "/img/medic.png";
 var soldier =  "/img/soldier.png";
-var ambulance =  "/img/ambulance.png";
-var transporter = "/img/firefighter.png";
+var ambulance =  "/img/firefighter.png";
+var transporter = "/img/convertible.png";
 var tick = "/img/tick.png";
 
 var chosen_task_type = 0;
