@@ -209,7 +209,7 @@ function receivePlayerInfoData(data){
 		}
 		else{
 			var markerIcon = getPlayerIcon(data.initials,"dead");
-			players[data.id].marker=markerIcon;
+			players[data.id].marker.icon=markerIcon;
 		}
 	}
 	else{
