@@ -6,8 +6,8 @@
 	
 	position: absolute;
 	z-index: 2;
-	top: 50px;
-	left: 40px;
+	bottom: 10px;
+	left: 0px;
 	width: 500px;
 	
 	opacity: 0.9;
