@@ -7,10 +7,10 @@
 	position: absolute;
 	z-index: 2;
 	bottom: 10px;
-	left: 50px;
+	left: 60px;
 	opacity: 0.9;
 	background:#E1E1E1;
-	width:400px;
+	width:350px;
 	border:1px solid #ACD8F0; }
  
 
@@ -27,7 +27,7 @@
 	overflow:auto; }
  
 #usermsg {
-	width:395px;
+	width:300px;
 	border:1px solid #ACD8F0; }
  
 #submit { width: 60px; }
