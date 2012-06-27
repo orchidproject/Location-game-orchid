@@ -18,9 +18,8 @@
   	map = new google.maps.Map(document.getElementById("map"), myOptions);
 
 
-	$("#logout").click(function(){
-		document.location.href="/game/"+$("#layer_id").val()+"/logout?user_id="+$("#user_id").val();
-		clearInterval(truckUpdateID);
+	$("#collapse").click(function(){
+		$("#chat-wrapper").hide();
 	});
 
 	$("#join-controller").click(function(){
@@ -117,6 +116,7 @@
 	}
 
     	GameMap.fitToRadius(<%= @game.radius %>);
+    
 	
   });
 
@@ -159,11 +159,12 @@
 		</section>
 		
 		<section id="chat-wrapper">
-			<input name="Collapse" type="button" id="Collapse" value="Collapse"/>
+			
 			<div id="menu">
 			
 			<div style="clear:both"></div>
 			</div>	
+			<input name="Collapse" type="button" id="Collapse" value="Collapse"/>
 			<div id="chatbox"></div>
 			
 			<input name="usermsg" type="text" id="usermsg" size="63" />
@@ -175,10 +176,7 @@
 		<div id="map"></div>
 
 
-		<footer>
-			<p class="right">GeoSense is a real-time location-based GPS game powered by the <a href="http://geoloqi.com">Geoloqi</a> platform. <a href="http://geoloqi.com" style="float: right; margin-top: 3px; margin-left: 3px;"><img src="/img/loqi-16px.png" width="16" height="16" /></a> </p>
-			
-		</footer>
+		
     
     	
       </div> <!-- wrapper -->
