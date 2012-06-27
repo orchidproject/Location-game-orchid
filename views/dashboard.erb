@@ -19,7 +19,7 @@
 
 
 	$("#collapse").click(function(){
-		if($("#chat-window").hiden()==false){
+		if($("#chat-window").is(':visible')){
 			$("#chat-window").hide();
 			$("#collapse").val("open chatting window");
 		}
