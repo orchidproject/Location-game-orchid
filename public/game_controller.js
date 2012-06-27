@@ -204,7 +204,7 @@ function receivePlayerInfoData(data){
 
 	if(data.status=="incapacitated"){
 		//setIcon to dead ppl
-		if(players[data.player_id]==null){
+		if(players[data.id]==null){
 			alert("error occur");
 		}
 		else{
