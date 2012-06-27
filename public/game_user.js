@@ -307,9 +307,10 @@ function system(data){
     }
     //js will try to communicate with naive code
     else if(data=="end"){
-        var results = "";
+    	alert('game end, please return to base');
+        /* var results = "";
         
-        $(players).each(function(i, player){
+       $(players).each(function(i, player){
             if(typeof player != "undefined"){
                 results=results+ player.name+ ":" + player.points_cache + "\n";
             }
@@ -329,7 +330,7 @@ function system(data){
         
         
         window.location="myapp://app_action/end"
-        location.reload();
+        location.reload();*/
     }
     else if(data=="reset"){
         //window.location="myapp://app_action/reset"
