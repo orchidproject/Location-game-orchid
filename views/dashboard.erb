@@ -123,53 +123,6 @@
 
 </script>
 
-<!--<div id="LoadingDiv" style="display:block;">   </div>-->
-	<!--<div id="login-embedded">
-
-			<h1>Login</h1>
-
-
-
-		
-	<form action="" method="post">
-
-    <div id="login-form" >
-
-		<p><label for="accountName" class="label">&nbsp&nbspE-mail Address</label></br>
-
-			<input id="accountName"   class="label" value="" name="accountName" maxlength="320" type="text" tabindex="1" class="input" /></p>
-
-
-
-
-
-			<p><button class="btn" type="button" id="join-controller" >
-				controller
-			</button></p>
-			<p><button class="btn" type="button" id="join-truck" >
-
-				truck
-
-			</button></p>
-			<p><button class="btn" type="button" id="join-observer">
-
-				observer
-
-			</button></p>
-
-
-	</div>
-    
-    <div id="waiting-massage">
-		
-        <p><label for="accountName" class="label">You have logged in </br>But game not begin</br>please wait</label></p>
-
-	</div>
-    </form>	
-    
-    
-
-</div>-->
 
 
 	<div id="wrapper">
@@ -185,35 +138,7 @@
 			<h3 id="logout" class="clickable" >logout</h3> -->
 		</section>
 		
-		<!--
-		<section id="players">
-			<div style="float: right;">
-			<table>
-			<th>Active players</th>
-			<th>Radioactive exposure</th>
-			<th>Exposure level</th>
-			<% if @game.is_active==0 %>
-			<% @game.players.each do |player| %>
-			 	<tr>
-   			     	<td><%= player.name %></td>
-        			<td>Exposure: <div id="exposure"></div> </td>
-        			<td> <div id="level"></div> </td>
-		        	<% if player.exposure <= 49 %>
-        		    <td>Low</td>
-			        <% elsif (player.exposure > 49) & (player.exposure <= 99) %>
-            		<td style="color:orange">Heightened</td>
-			        <% elsif (player.exposure > 99) & (player.exposure <= 150) %>
-		            <td style="color:red">Critical</td>
-        			 <% elsif (player.exposure > 150) %>
-		            <td>Incapacitated. Return to base.</td>
-        			<% end %>
-	        	</tr>		 
-			 <% end %>
-			 <% end %>
-			 </table>
-			</div>
-		</section>
-		-->
+		
 		
 
 
@@ -232,6 +157,20 @@
 			</div>
 			
 		</section>
+		
+		<div id="chat-wrapper">
+			<div id="menu">
+			
+			<p class="logout"><a id="exit" href="#">Exit Chat</a></p>
+			<div style="clear:both"></div>
+			</div>	
+			<div id="chatbox"></div>
+	
+			<form name="message" action="">
+				<input name="usermsg" type="text" id="usermsg" size="63" />
+				<input name="submitmsg" type="submit"  id="submitmsg" value="Send" />
+			</form>
+		</div>
 
 
 		<div id="map"></div>
@@ -242,6 +181,7 @@
 			
 		</footer>
     
+    	
       </div> <!-- wrapper -->
     <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
     <input type="hidden" id="user_id" value="<%= @user_id %>" />
