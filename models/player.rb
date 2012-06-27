@@ -6,7 +6,7 @@ class Player
     
   include DataMapper::Resource
   property :id, Serial, :index => true
-  property :status, Integer, :default => -1
+  
   property :points_cache, Integer, :default => 0
   property :profile_image, String, :length => 255
   property :name, String
