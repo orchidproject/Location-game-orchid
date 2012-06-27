@@ -202,12 +202,19 @@ function receiveTextMassage(data){
 
 function receivePlayerInfoData(data){
 
-	$("#players").append("<tr><td align='center'>"+ data.name +"</td> <td align='center'>"+ data.skill +"</td> <td align='center'><div id='exposure_"+data.id+"'></div> </td> <td align='center'> <div id='level_"+data.id+"'></div> </td><tr>");
-	
-//    <td align="center"><%= player.name %></td>
-//    <td align="center"><div id="exposure_<%= player.id %>"> </div> </td>
-//    <td align="center"> <div id="level_<%= player.id %>"> </div> </td>
-
+	if(data.status=="incapacitated"){
+		//setIcon to dead ppl
+		if(players[data.player_id]==null){
+			alert("error occur");
+		}
+		else{
+			var markerIcon = getPlayerIcon(data.initials,"dead");
+			players[data.player_id].marker=markerIcon;
+		}
+	}
+	else{
+		$("#players").append("<tr><td align='center'>"+ data.name +"</td> <td align='center'>"+ data.skill +"</td> <td align='center'><div id='exposure_"+data.id+"'></div> </td> <td align='center'> <div id='level_"+data.id+"'></div> </td><tr>");
+	}
 }
 
 

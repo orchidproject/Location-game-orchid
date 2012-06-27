@@ -76,6 +76,10 @@ class Controller < Sinatra::Base
              
                 p.current_exposure = check_radiation(p.latitude,p.longitude,game.layer_id)
                 p.exposure = p.exposure + p.current_exposure
+                if (p.exposure > 1000 )
+                	p.status="incapacitated"
+                	p.broadcast(socketIO)
+                end
                
                 puts "acc_exposure"
                 puts p.exposure

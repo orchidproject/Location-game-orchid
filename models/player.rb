@@ -20,6 +20,7 @@ class Player
   property :longitude, Decimal, :precision=>10 , :scale=>7  
   property :current_task, Integer,:default => -1
   property :initials, String, :length => 255
+  property :status, String, :default => "normal"
   belongs_to :game
   
   #lagecy 
@@ -64,7 +65,9 @@ class Player
                             :player=>{
                                 :id=> self.id,
                                 :name=> self.name,
-                                :skill => skill_string()
+                                :skill => skill_string(),
+                                :initials => player.initials,
+                                :status => self.status
                             }
                          }
                     }.to_json)   

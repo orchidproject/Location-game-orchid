@@ -304,7 +304,9 @@ end
             :name=> player.name,
             :points_cache => player.points_cache,
             :team => player.team.name,
-            :skill => player.skill_string()
+            :initials => player.initials,
+            :skill => player.skill_string(),
+            :status => player.status
         }
 
         healths << {
