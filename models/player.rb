@@ -66,7 +66,7 @@ class Player
                                 :id=> self.id,
                                 :name=> self.name,
                                 :skill => skill_string(),
-                                :initials => player.initials,
+                                :initials => self.initials,
                                 :status => self.status
                             }
                          }
