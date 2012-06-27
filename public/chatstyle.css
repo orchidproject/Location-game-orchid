@@ -8,7 +8,7 @@
 	z-index: 2;
 	bottom: 10px;
 	left: 0px;
-	width: 500px;
+	width: 400px;
 	
 	opacity: 0.9;
 	background:#E1E1E1;
@@ -23,8 +23,8 @@
 	margin-bottom:25px;
 	padding:10px;
 	background:#fff;
-	height:270px;
-	width:430px;
+	height:200px;
+	width:300px;
 	border:1px solid #ACD8F0;
 	overflow:auto; }
  
