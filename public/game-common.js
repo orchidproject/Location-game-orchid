@@ -47,6 +47,7 @@ function receivePlayerData(data) {
 		        
 		        players[pid] = {
 		            id: pid,
+		            
 		            name: data.name,
 		            marker: new google.maps.Marker({
 		                position: new google.maps.LatLng(data.latitude, data.longitude),

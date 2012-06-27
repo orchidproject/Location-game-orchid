@@ -62,6 +62,7 @@ function handleSocketData(dataStr) {
     
     if(typeof data.player != "undefined"){
         receivePlayerInfoData(data.player);
+        
     }
     
     

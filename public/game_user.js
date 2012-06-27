@@ -218,7 +218,12 @@ function updateGame(oneTime) {
                     receivePlayerData(d.location);
                 }
             });
-            
+             $(data.player).each(function(i, player){
+                var d=filter({"player":player});
+                if(typeof d.player != "undefined"){
+                    receivePlayerInfoData(d.player);
+                }
+            });
            
             $(data.task).each(function(i, task){
             	
