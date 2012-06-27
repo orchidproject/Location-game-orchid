@@ -18,7 +18,7 @@ a {
  
 	a:hover { text-decoration:underline; }
  
-#chat-wrapper, #loginform {
+#chat-wrapper {
 	
 	position: absolute;
 	z-index: 2;
@@ -27,8 +27,6 @@ a {
 	width: 500px;
 	
 	opacity: 0.9;
-	margin:0 auto;
-	padding-bottom:25px;
 	background:#E1E1E1;
 	width:504px;
 	border:1px solid #ACD8F0; }
@@ -42,7 +40,7 @@ a {
 	margin:0 auto;
 	margin-bottom:25px;
 	padding:10px;
-	background:#E1E1E1;
+	background:#fff;
 	height:270px;
 	width:430px;
 	border:1px solid #ACD8F0;
