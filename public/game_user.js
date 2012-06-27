@@ -78,12 +78,12 @@ function receiveHealthData(data) {
 function receivePlayerInfoData(data){
 	if(data.status=="incapacitated"){
 		//setIcon to dead ppl
-		if(players[data.player_id]==null){
+		if(players[data.id]==null){
 			alert("error occur");
 		}
 		else{
 			var markerIcon = getPlayerIcon(data.initials,"dead");
-			players[data.player_id].marker=markerIcon;
+			players[data.id].marker=markerIcon;
 		}
 	}
 }

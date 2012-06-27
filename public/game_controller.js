@@ -200,6 +200,7 @@ function receiveTextMassage(data){
     alert(data.content);
 }
 
+var panel_item=[];
 function receivePlayerInfoData(data){
 
 	if(data.status=="incapacitated"){
@@ -209,12 +210,15 @@ function receivePlayerInfoData(data){
 		}
 		else{
 			var markerIcon = getPlayerIcon(data.initials,"dead");
-			players[data.id].marker.icon=markerIcon;
+			players[data.id].marker.setIcon(markerIcon);
 		}
 	}
-	else{
-		$("#players").append("<tr><td align='center'>"+ data.name +"</td> <td align='center'>"+ data.skill +"</td> <td align='center'><div id='exposure_"+data.id+"'></div> </td> <td align='center'> <div id='level_"+data.id+"'></div> </td><tr>");
+	
+	if(panel_item[data.id]==null){
+			panel_item[data.id]==true;
+			$("#players").append("<tr><td align='center'>"+ data.name +"</td> <td align='center'>"+ data.skill +"</td> <td align='center'><div id='exposure_"+data.id+"'></div> </td> <td align='center'> <div id='level_"+data.id+"'></div> </td><tr>");
 	}
+	
 }
 
 
