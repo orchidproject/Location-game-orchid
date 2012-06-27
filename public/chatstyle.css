@@ -7,7 +7,7 @@
 	position: absolute;
 	z-index: 2;
 	top: 50px;
-	right: 40px;
+	left: 40px;
 	width: 500px;
 	
 	opacity: 0.9;
