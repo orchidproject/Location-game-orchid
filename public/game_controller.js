@@ -337,15 +337,7 @@ function receiveMessageData(data) {
 	alert(data.player_name + ": " + data.content);
 }
 var latestMsgId = 0;
-function pushToTaskHistory(message, identifier) {
-	//pushes the string message to the task list (including the date time added)
-	//(called when new tasks and messages are received)
-		
-	var line = $("<li id='" + identifier + "'>" + message + "</li>"); //TODO: add date, intended recipients
-	var chatList = $('#chatbox');
-	chatList.append(line);
-	
-}
+
 
 function pushToTaskHistory(message, identifier, player_initials, player_name) {
 	//pushes the string message to the task list (including the date time added)
