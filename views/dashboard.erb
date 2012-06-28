@@ -33,7 +33,7 @@
 		var clientmsg = $("#usermsg").val();
 		$.ajax({ 
             url: "/game/mobile/:layer_id/message",
-            type: "GET",
+            type: "POST",
             data: {"ready":clientmsg, "id": $("#user_id").val()},
             dataType:"json",
             success: function(data) {
