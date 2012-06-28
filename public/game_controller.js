@@ -322,7 +322,7 @@ function system(data){
          $.ajax({ 
             url: "/player/ready_check",
             type: "GET",
-            data: {"ready":ready, "id": $("#user_id").val()},
+            data: {"content":"hi", "player_id": $("#user_id").val()},
             dataType:"json",
             success: function(data) {
                            
@@ -356,6 +356,8 @@ function pushToTaskHistory(message, identifier, player_initials, player_name) {
 	var taskList = $('#chatbox');
 	taskList.append(line);
 }
+
+
 
 // Load the initial game state and place the pins on the map. Sample data in pellets.json
 // This function polls the game server for data.

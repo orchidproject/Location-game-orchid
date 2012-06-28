@@ -29,16 +29,22 @@
 		}
 	});
 
-	
-	
-	$("#join-observer").click(function(){
-		$("#login-form").hide();
-		 $("#LoadingDiv").hide();
-            	$("#login-embedded").hide();
-		$("#waiting-massage").hide();	
-		$("#drop-cargo").hide();
-		$("#logout").hide();
+	$("#submitmsg").click(function(){	
+		var clientmsg = $("#usermsg").val();
+		$.ajax({ 
+            url: "/game/mobile/:layer_id/message",
+            type: "GET",
+            data: {"ready":clientmsg, "id": $("#user_id").val()},
+            dataType:"json",
+            success: function(data) {
+                           
+            }
+        });    			
+		$("#usermsg").attr("value", "");
+		return false;
 	});
+	
+	
 
     if($("#user_team").val()=="replay"){
 		 $("#login-form").hide();
@@ -70,53 +76,8 @@
     }
 
 	
-	if($("#user_team").val()=="controller"){
-		
-		google.maps.event.addListener(map, 'rightclick',sendRequest); 
-		//alert("you are " + $("#user_team").val());
-		$("#drop-cargo").hide();
-
-		
-	}
-	else if($("#user_team").val()=="truck"){
-		
-		var p = new google.maps.LatLng(0, 0);
-            	google.maps.event.addListener(map, 'rightclick',moveTruck); 
-		  
-            	
-            	var circleOptions = {
-        		strokeColor: "#FF0000",
-        		strokeOpacity: 0.8,
-        		strokeWeight: 2,
-        		fillColor: "#FF0000",
-        		fillOpacity: 0.35,
-        		map: map,
-        		center: p,
-                clickable:false,
-        		radius: 100
-      		};
-            	radiation= new google.maps.Circle(circleOptions);
-
-		//alert("you are " + $("#user_team").val());
-		truckUpdateID=setInterval("updateTruckLocation()", 500);
-		$("#drop-cargo").click(function(){
-			dropCargo();
-		});
-
-	}
-	else if($("#user_team").val()=="runner"){
-		
-        
-		$("#drop-cargo").hide();
-		$("#logout").hide();
-	}
-	else{
-		$("#drop-cargo").hide();
-		$("#logout").hide();
-		//alert("you are not logged in");
-	}
-
-    	GameMap.fitToRadius(<%= @game.radius %>);
+	
+	GameMap.fitToRadius(<%= @game.radius %>);
     
 	
   });
