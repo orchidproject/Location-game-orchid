@@ -39,6 +39,10 @@ $(document).ready(function() {
             receiveTextMassage(data.textMassage);
         }
         
+        if(typeof data.message != "undefined") {
+    		receiveMessageData(data.message);
+    	}
+        
         if(typeof data.location != "undefined"){
             receivePlayerData(data.location);
         }

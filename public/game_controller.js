@@ -332,16 +332,19 @@ function system(data){
 
 }
 
-
+function receiveMessageData(data) {
+	pushToTaskHistory(data.content, "msg" + latestMsgId++, data.player_initials, data.player_name);
+	alert(data.player_name + ": " + data.content);
+}
 
 function pushToTaskHistory(message, identifier) {
 	//pushes the string message to the task list (including the date time added)
 	//(called when new tasks and messages are received)
 		
 	var line = $("<li id='" + identifier + "'>" + message + "</li>"); //TODO: add date, intended recipients
-	var taskList = $('#task_list');
-	taskList.append(line);
-	taskList.listview( "refresh" );  
+	var chatList = $('#chatbox');
+	chatList.append(line);
+	
 }
 
 // Load the initial game state and place the pins on the map. Sample data in pellets.json
