@@ -336,7 +336,7 @@ function receiveMessageData(data) {
 	pushToTaskHistory(data.content, "msg" + latestMsgId++, data.player_initials, data.player_name);
 	alert(data.player_name + ": " + data.content);
 }
-
+var latestMsgId = 0;
 function pushToTaskHistory(message, identifier) {
 	//pushes the string message to the task list (including the date time added)
 	//(called when new tasks and messages are received)
@@ -345,6 +345,16 @@ function pushToTaskHistory(message, identifier) {
 	var chatList = $('#chatbox');
 	chatList.append(line);
 	
+}
+
+function pushToTaskHistory(message, identifier, player_initials, player_name) {
+	//pushes the string message to the task list (including the date time added)
+	//(called when new tasks and messages are received)
+	
+	var currentTime = new Date();
+	var line = $("<li id='" + identifier + "'>"+player_name+" ("+player_initials+"): " + message + "  (sent " + currentTime.getHours() +":"+currentTime.getMinutes()+")</li>"); //TODO: add intended recipients
+	var taskList = $('#chatbox');
+	taskList.append(line);
 }
 
 // Load the initial game state and place the pins on the map. Sample data in pellets.json

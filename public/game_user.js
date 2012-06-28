@@ -58,7 +58,6 @@ function saveLog(data){
 var latestMsgId = 0;
 
 function receiveMessageData(data) {
-	pushToTaskHistory(data.content, "msg" + latestMsgId++, data.player_initials, data.player_name);
 	alert(data.player_name + ": " + data.content);
 }
 
@@ -179,6 +178,7 @@ function getTime() {
    return outStr;
 }
 
+
 function pad(num, size) {
 	
 	var extraZeros = size - Math.floor(Math.log(num) / Math.log(10));
@@ -189,15 +189,7 @@ function pad(num, size) {
 	return num;
 }
 
-function pushToTaskHistory(message, identifier, player_initials, player_name) {
-	//pushes the string message to the task list (including the date time added)
-	//(called when new tasks and messages are received)
-		
-	var line = $("<li id='" + identifier + "'>"+player_name+" ("+player_initials+"): " + message + "  (sent " + getTime() + ")</li>"); //TODO: add intended recipients
-	var taskList = $('#task_list');
-	taskList.prepend(line);
-	taskList.listview( "refresh" );  
-}
+
 
 // Load the initial game state
 // This function polls the game server for data.
