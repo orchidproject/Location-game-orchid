@@ -334,7 +334,7 @@ function system(data){
 
 function receiveMessageData(data) {
 	pushToTaskHistory(data.content, "msg" + latestMsgId++, data.player_initials, data.player_name);
-	alert(data.player_name + ": " + data.content);
+	//alert(data.player_name + ": " + data.content);
 }
 var latestMsgId = 0;
 

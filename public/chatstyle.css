@@ -24,7 +24,7 @@
 	height:200px;
 	width:300px;
 	border:1px solid #ACD8F0;
-	overflow:auto; }
+	overflow:scroll }
  
 #usermsg {
 	width:300px;
