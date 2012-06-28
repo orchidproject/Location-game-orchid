@@ -32,7 +32,7 @@
 	$("#submitmsg").click(function(){	
 		var clientmsg = $("#usermsg").val();
 		$.ajax({ 
-            url: "/game/mobile/:layer_id/message",
+            url: "/admin/games/:layer_id/massage",
             type: "POST",
             data: {"ready":clientmsg, "id": $("#user_id").val()},
             dataType:"json",

@@ -104,7 +104,7 @@ end
       socketIO.broadcast( 
                          { 
                             :channel=> params[:layer_id],          
-                            :data => { :message=>{:content=>params[:content], :player_initials=> :CO, :player_name=> :controller} }                          
+                            :data => { :message=>{:content=>params[:content], :player_initials=> :HQ, :player_name=> :controller} }                          
                             
                          }.to_json)
       {"status"=>:ok}.to_json
