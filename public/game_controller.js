@@ -347,6 +347,10 @@ function pushToTaskHistory(message, identifier, player_initials, player_name) {
 	var line = $("<li id='" + identifier + "'>"+player_name+" ("+player_initials+"): " + message + "  (sent " + currentTime.getHours() +":"+currentTime.getMinutes()+")</li>"); //TODO: add intended recipients
 	var taskList = $('#chatbox');
 	taskList.append(line);
+	
+	
+	var newscrollHeight = $("#chatbox").attr("scrollHeight") - 20;
+	$("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal'); 
 }
 
 
