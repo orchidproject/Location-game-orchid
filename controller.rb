@@ -739,7 +739,7 @@ end
 		#Wollaton Park 52.9491938, -1.2144399
 		#North of Jubilee campus 52.956046,-1.18878
 		if $game_area_top_left[game.layer_id] == nil
-        	$simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", DEFAULT_SIM_LAT, DEFAULT_SIM_LNG, 8, Time.now, 0.2) #last para in mins
+        	$simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", DEFAULT_SIM_LAT, DEFAULT_SIM_LNG, 8, Time.now, 0.1) #last para in mins
         else
         	$simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", 
         												  $game_area_top_left[game.layer_id][:lat], 
