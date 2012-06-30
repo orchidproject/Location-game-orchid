@@ -746,7 +746,7 @@ end
         												  $game_area_top_left[game.layer_id][:lng], 
         												  8, 
         												  Time.now, 
-        												  0.1)
+        												  0.4)
         end
         
         
