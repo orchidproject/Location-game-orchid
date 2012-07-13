@@ -449,7 +449,9 @@ end
   
   get '/game/:layer_id/dashboard' do
     @game = Game.first :layer_id => params[:layer_id]
+    player = Player.first :id => params[:id], :game => @game
     @user_id = player.id
+    @user_initials = player ? player.name : ''
     erb :'dashboard'
   end
 
