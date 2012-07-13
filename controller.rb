@@ -385,7 +385,7 @@ end
   end
     
 
-  
+  # A easy way to go back
   get '/game/:layer_id/?' do
     @game = Game.first :layer_id => params[:layer_id]
       
@@ -427,27 +427,10 @@ end
   
   get '/game/mobile/:layer_id/messages' do
 	@game = Game.first :layer_id => params[:layer_id]
-      
-      #if game ended, clear them
-    if @game.is_active==1
-        session.clear
-        params[:id]=nil
-    end
-	
-	player = Player.first :id => session[:id], :game => @game
-    puts session[:id]
-    if !player 
-        #mobile users store id information in params 
-        player = Player.first :id => params[:id], :game => @game
-        puts "find player #{params[:id]}"
-    end
-    
-    @user_id=""
-    if player
-        @user_id = player.id
-	end
-	
-	@user_initials = player ? player.name : ''
+    #mobile users store id information in params 
+    player = Player.first :id => params[:id], :game => @game
+    @user_id = player.id
+    @user_initials = player ? player.name : ''
     erb :'index_user_msgs', :layout => :'layout_user_msgs'
 	
    end
@@ -456,39 +439,9 @@ end
   
   get '/game/mobile/:layer_id/?' do
     @game = Game.first :layer_id => params[:layer_id]
-      
-      #if game ended, clear them
-    if @game.is_active==1
-        session.clear
-        params[:id]=nil
-    end
-   
-    player = Player.first :id => session[:id], :game => @game
-    puts session[:id]
-    if !player 
-        #mobile users store id information in params 
-        player = Player.first :id => params[:id], :game => @game
-        puts "find player #{params[:id]}"
-        
-    end
-    
-    @user_id=""
-    if player
-        @user_id = player.id
-        @user_team = player.team.name
-    end
-    
-      
-      @truck= get_truck params[:layer_id]
-      if @truck
-          @truck_latitude=@truck.latitude
-          @truck_longitude=@truck.longitude
-          
-      else
-          @truck_latitude=@game.latitude
-          @truck_longitude=@game.longitude
-      end
-
+    #mobile users store id information in params 
+    player = Player.first :id => params[:id], :game => @game
+    @user_id = player.id
     @user_initials = player ? player.name : ''
     erb :'index_user', :layout => :'layout_user'
   end
@@ -496,52 +449,16 @@ end
   
   get '/game/:layer_id/dashboard' do
     @game = Game.first :layer_id => params[:layer_id]
-      
-      #if game ended, clear them
-    if @game.is_active==1
-        session.clear
-        params[:id]=nil
-    end
-   
-    player = Player.first :id => session[:id], :game => @game
-    puts session[:id]
-    if !player 
-        #mobile users store id information in params 
-        player = Player.first :id => params[:id], :game => @game
-        puts "find player #{params[:id]}"
-        
-    end
-    
-    @user_id=""
-    if player
-        @user_id = player.id
-        @user_team = player.team.name
-    end
-    
-      
-      @truck= get_truck params[:layer_id]
-      if @truck
-          @truck_latitude=@truck.latitude
-          @truck_longitude=@truck.longitude
-          
-      else
-          @truck_latitude=@game.latitude
-          @truck_longitude=@game.longitude
-      end
-
-    @user_initials = player ? player.name : ''
+    @user_id = player.id
     erb :'dashboard'
   end
 
 
 
-  get '/replay/:layer_id/?' do
-    @game = Game.first :layer_id => params[:layer_id]
-    @user_id = nil
-    @user_team = 'replay'
-    @user_initials = ''
-    
-    erb :'index'
+  get '/replay/:layer_id/:filename' do
+  	 @game = Game.first :layer_id => params[:layer_id]
+    #@replay_data = File.read("logs/#{params[:filename]}")
+    erb :'replay'
   end
   
   
@@ -739,14 +656,14 @@ end
 		#Wollaton Park 52.9491938, -1.2144399
 		#North of Jubilee campus 52.956046,-1.18878
 		if $game_area_top_left[game.layer_id] == nil
-        	$simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", DEFAULT_SIM_LAT, DEFAULT_SIM_LNG, 8, Time.now, 0.4) #last para in mins
+        	$simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", DEFAULT_SIM_LAT, DEFAULT_SIM_LNG, 8, Time.now, 0.3) #last para in mins
         else
         	$simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", 
         												  $game_area_top_left[game.layer_id][:lat], 
         												  $game_area_top_left[game.layer_id][:lng], 
         												  8, 
         												  Time.now, 
-        												  0.4)
+        												  0.3)
         end
         
         

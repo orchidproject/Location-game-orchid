@@ -16,16 +16,6 @@ function write_log(game_id,data){
 	log.write(JSON.stringify(data)+"\n");
     log.end();
     
-    //thread safe? oh js should be single threaded.
-    /*fs.openSync('logs/log-'+game_id, 'a', 0777, function( err, id ) {
-    					if (err) throw err;
-                         fs.writeSync( id, JSON.stringify(data)+"\n", null, 'utf8', function(err, written){
-                         	 if (err) throw err;
-                             fs.close(id, function(){
-                                  console.log("write to log:" + JSON.stringify(data)+"\n");
-                             });
-                         });
-                     });*/
 }
 
 

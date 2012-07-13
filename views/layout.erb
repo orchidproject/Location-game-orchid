@@ -17,8 +17,12 @@
 			  	<link type="text/css" rel="stylesheet" href="/chatstyle.css" />
   	<% end %>
   	
-        <% if request.path =~ /\/replay\// %>
-    	  <script type="text/javascript" src="/replay.js"></script>
+    <% if request.path =~ /\/replay\// %>
+    	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		  <script type="text/javascript" src="/game_controller.js" ></script>
+		  <link rel="stylesheet" type="text/css" href="/reset.css" />
+		  <link rel="stylesheet" type="text/css" href="/style.css" /> 
+		  <link type="text/css" rel="stylesheet" href="/chatstyle.css" />
   	<% end %>
   	
 
