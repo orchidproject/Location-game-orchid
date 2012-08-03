@@ -674,7 +674,7 @@ end
                 puts "game #{game_id}, loop running count #{count}"
                 #initial update of task
                 
-                if count==1 do
+                if count==1 
                 	game.tasks.each do |t|
                 		t.broadcast(socketIO);
                 	end 

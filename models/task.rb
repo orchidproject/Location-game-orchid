@@ -33,7 +33,7 @@ class Task
   property :description, String, :length => 255
   property :latitude, Decimal, :precision=>10, :scale=>7
   property :longitude, Decimal, :precision=>10 , :scale=>7
-  property :players, String, :length => 255, :deflaut=>""
+  property :players, String, :length => 255, :default => 0
   
   property :state, Integer, :default=> State::IDLE
 # has n, :players
