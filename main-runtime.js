@@ -1,6 +1,6 @@
-var database="wxj";
-var db_username="wxj";
-var db_password="t5*m3$A";var sys = require('util');
+var database="jtruck_db";
+var db_username="jtruck";
+var db_password="jtruck";var sys = require('util');
 var url = require('url');
 
 // Load the node-router library by creationix
@@ -18,16 +18,6 @@ function write_log(game_id,data){
 	log.write(JSON.stringify(data)+"\n");
     log.end();
     
-    //thread safe? oh js should be single threaded.
-    /*fs.openSync('logs/log-'+game_id, 'a', 0777, function( err, id ) {
-    					if (err) throw err;
-                         fs.writeSync( id, JSON.stringify(data)+"\n", null, 'utf8', function(err, written){
-                         	 if (err) throw err;
-                             fs.close(id, function(){
-                                  console.log("write to log:" + JSON.stringify(data)+"\n");
-                             });
-                         });
-                     });*/
 }
 
 
@@ -283,17 +273,5 @@ io.sockets.on('connection', function (socket) {
   	});
 });
   
-  /*
-  socket.on('action-push', function (data) {
-    console.log(data); 
-    
-    //store in mysql 
-    if (data.type != "undefined"){
-        console.log(data.type);
-    }
-    data.id=1;
-    //broadcast 
-    io.sockets.in('game_1').emit('data',data);
-  });*/
   
 });

@@ -22,6 +22,8 @@ var cg = {
 	p: function(w,h) {
 		return new google.maps.Point(w,h);
 	},
+	
+	
 	playerImage: function(name, skill) {
 		return new google.maps.MarkerImage("/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png", new google.maps.Size(38, 31), new google.maps.Point(0,0), new google.maps.Point(10, 30));
 	}
@@ -35,38 +37,6 @@ function getPlayerIcon(initials, skill) {
 	
 	return icon;
 }
-
-//SHOULD BE LOCATION DATA???////
-function receivePlayerData(data) {
-		var markerIcon;
-		markerIcon = getPlayerIcon(data.initials,data.skill);
-	    var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
-		var pid = data.player_id;
-		
-		    if(typeof players[pid] == "undefined") {
-		        
-		        players[pid] = {
-		            id: pid,
-		            
-		            name: data.name,
-		            marker: new google.maps.Marker({
-		                position: new google.maps.LatLng(data.latitude, data.longitude),
-		                map: map,
-		                icon: markerIcon,
-		                visible: true
-		            })
-		        };
-		    } else {
-		        //update 
-		        var p = players[pid];
-		        p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-		        //p.marker.setIcon(markerIcon);
-		    }	        
-		
-	
-}
-
-
 
 
 var highlightMarker=null;
@@ -125,7 +95,6 @@ function receiveTaskData(task){
 				existing_task=tasks[i];
 			}
 		}
-		
 		
 		if(existing_task==null){
 			

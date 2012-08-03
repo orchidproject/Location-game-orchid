@@ -2,7 +2,7 @@ var replay = true;
 var log;
 function get_data(){
     $.ajax({ 
-		url: "/get_log/"+$("#group_token").val()+"/",
+		url: "/get_log/"+$("#replay_file").val()+"/",
 		type: "GET",
 		success: function(data) {
             if (typeof data.error != 'undefined'){
@@ -59,38 +59,26 @@ function process_data(data){
             receivePlayerData(data.player);
         }
         
-        if(typeof data.textMassage != "undefined"){
-            receiveTextMassage(data.textMassage);
+        if(typeof data.message != "undefined"){
+            //receiveTextMassage(data.textMassage);
         }
         
         if(typeof data.location != "undefined"){
-            receiveLocationData(data.location);
+            receivePlayerData(data.location);
         }
         
         if(typeof data.request != "undefined"){
             receiveRequestData(data.request);
         }
         
-        if(typeof data.reading != "undefined"){
-                receiveReadingData(data.reading);
-        }
-            
-        if(typeof data.cargo != "undefined"){
-                receiveCargoData(data.cargo);
-        }
-        
-        if(typeof data.cleanup != "undefined"){
-                cleanup(data.cleanup);
-        }
-
+       
 
 }
 
 $(document).ready(function() {
 	setup = true;
 	updateGame(true);
-
-    get_data();
+	get_data();
     
        
 

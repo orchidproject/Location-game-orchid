@@ -355,6 +355,36 @@ function pushToTaskHistory(message, identifier, player_initials, player_name) {
 
 
 
+
+
+//SHOULD BE LOCATION DATA???////
+function receivePlayerData(data) {
+		var markerIcon;
+		markerIcon = getPlayerIcon(data.initials,data.skill);
+	    var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
+		var pid = data.player_id;
+		
+		if(typeof players[pid] == "undefined") {
+		    players[pid] = {
+		        id: pid,
+		        name: data.name,
+		        marker: new google.maps.Marker({
+		                position: new google.maps.LatLng(data.latitude, data.longitude),
+		                map: map,
+		                icon: markerIcon,
+		                visible: true
+		        })
+		    };
+		} else {
+		    //update 
+		    var p = players[pid];
+		    p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
+		}	
+		
+}
+
+
+
 // Load the initial game state and place the pins on the map. Sample data in pellets.json
 // This function polls the game server for data.
 function updateGame(oneTime) {

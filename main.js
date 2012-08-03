@@ -271,17 +271,5 @@ io.sockets.on('connection', function (socket) {
   	});
 });
   
-  /*
-  socket.on('action-push', function (data) {
-    console.log(data); 
-    
-    //store in mysql 
-    if (data.type != "undefined"){
-        console.log(data.type);
-    }
-    data.id=1;
-    //broadcast 
-    io.sockets.in('game_1').emit('data',data);
-  });*/
   
 });

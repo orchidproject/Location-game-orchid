@@ -1,25 +1,5 @@
 class Controller < Sinatra::Base
-get '/game/:layer_id/activateTarget' do
-	taskId = params[:id]
-	game = Game.first :layer_id => params[:layer_id]
-	task = game.tasks.first :id => taskId 
-	task.update(:status=>'active')
-	socketIO.broadcast
-	(
-		{
-		:channel=> params[:layer_id],             
-		:data=>
-			{
-			:id => t.id,
-			:type=>t.requirement,
-			:description=> t.description,
-			:longitude => t.longitude.to_s('F'),
-			:latitude => t.latitude.to_s('F'),
-			:status => t.status
-			}
-		}.to_json
-	)
-end
+
       
   ################for development #####################
   get '/migrate' do
@@ -31,9 +11,7 @@ end
      headers
   end
 
-  get '/test' do
-     
-  end 
+  
 
 
   before do
@@ -143,7 +121,7 @@ end
 
   get '/get_log/:layer_id/' do
     counter = 1
-    file = File.new("logs/log-#{params[:layer_id]}", "r")
+    file = File.new("logs/#{params[:layer_id]}", "r")
     log=""
     while (line = file.gets)
         log= "#{log}#{line}"
@@ -155,6 +133,9 @@ end
     log
     
   end
+  
+  
+ 
 
   get '/admin/games/:layer_id/ready_status' do
     @game = Game.get params[:layer_id]
@@ -441,11 +422,19 @@ end
     @game = Game.first :layer_id => params[:layer_id]
     #mobile users store id information in params 
     player = Player.first :id => params[:id], :game => @game
-    @user_id = player.id
-    @user_initials = player ? player.name : ''
+    
+    if player
+    	@user_id = player.id
+   	    @user_initials = player ? player.name : ''
+   	end 
+   	
     erb :'index_user', :layout => :'layout_user'
   end
   
+  
+  get '/test' do
+  	erb :'test'
+  end
   
   get '/game/:layer_id/dashboard' do
     @game = Game.first :layer_id => params[:layer_id]
@@ -457,7 +446,9 @@ end
 
   get '/replay/:layer_id/:filename' do
   	 @game = Game.first :layer_id => params[:layer_id]
-    #@replay_data = File.read("logs/#{params[:filename]}")
+  	  
+     #@replay_data = File.read("logs/#{params[:filename]}")
+     @replay_file=params[:filename]
     erb :'replay'
   end
   
@@ -672,6 +663,7 @@ end
          
         $mainloops[game.layer_id]  = Thread.new {
         	count=0
+        	
         	game_id=params[:layer_id]
         	#6 sec waiting, lett clients get ready
         	sleep 6
@@ -680,6 +672,14 @@ end
             	#?seems cg will release game ob, so assgin a new one
                 game=Game.first :layer_id=>game_id
                 puts "game #{game_id}, loop running count #{count}"
+                #initial update of task
+                
+                if count==1 do
+                	game.tasks.each do |t|
+                		t.broadcast(socketIO);
+                	end 
+                end
+                
                 update_game(game)
 				
 				if count%6==0
@@ -728,13 +728,18 @@ end
 	  game.tasks.each do |t|
           t.destroy
       end 
-      #clear log
-      #I know I should not hard code file name here, but... 
-      oldFile="logs/log-#{params[:layer_id]}"
-      newFile="logs/log-#{params[:layer_id]}-#{Time.now.to_f}"
-      if FileTest.exist?(oldFile)
-          File.rename(oldFile,newFile)
+      
+      
+      newDir="session-#{params[:layer_id]}-#{Time.now.to_s}"
+      Dir.chdir("logs")
+      Dir.mkdir(newDir)
+      
+      Dir.glob("log-#{params[:layer_id]}*").each do |f|
+      		system('mv', f, "#{newDir}/#{f}")
       end
+      
+      Dir.chdir("..")
+      
       
       game.broadcast(socketIO,"reset")
     

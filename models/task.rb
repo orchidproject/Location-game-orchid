@@ -33,6 +33,7 @@ class Task
   property :description, String, :length => 255
   property :latitude, Decimal, :precision=>10, :scale=>7
   property :longitude, Decimal, :precision=>10 , :scale=>7
+  property :players, String, :length => 255, :deflaut=>""
   
   property :state, Integer, :default=> State::IDLE
 # has n, :players
@@ -91,8 +92,10 @@ class Task
   			self.state=State::PICKED_UP
   			puts "task be picked up"
   			#lock players
+  			self.players=""
   			eligiable_players.each do |p|
   				p.current_task=self.id
+  				self.players="#{self.players},#{p.id}"
   				p.save
   			end
   			self.save
@@ -172,7 +175,8 @@ class Task
              	:description=> self.description,
              	:longitude => self.longitude.to_s('F'),
              	:latitude => self.latitude.to_s('F'),
-			 	:state => self.state
+			 	:state => self.state,
+			 	:players => self.players
 			  }
 			}
          }.to_json)

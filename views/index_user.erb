@@ -53,31 +53,51 @@ jQuery.extend({
   		return;
   	}
   	
+  	//test
+  	update_player_status();
+  	$("#aim").click(function(){
+  		relocate();
   	
-  //	  		zoomControl: true,
-  //		zoomControlOptions: {
-  //          style: google.maps.ZoomControlStyle.LARGE,
-  //          position: google.maps.ControlPosition.TOP_LEFT
-  //      },
+  	});
+  	
+  	var menu_status=1;
+  	$("#slide-menu-control").click(function(){
+  		if(menu_status==0){	
+  			
+  			$('#slide-menu-control').animate({'width':"5%"},{queue:false, duration:200});
+  			$('#slide-menu-content').animate({'width':"0%"},{queue:false, duration:200});
+  				$('#slide-menu-control').html("<img id='control' style='height:100%;-webkit-transform: rotate(-180deg);' src='/img/arrow.png'>");
+  			menu_status=1;
+  		}
+  		else{
+  			
+  			$('#slide-menu-control').animate({'width':"20%"},{queue:false, duration:200});
+  			$('#slide-menu-control').html("<img id='control' style='height:100%;' src='/img/arrow.png'>");
+  			$('#slide-menu-content').animate({'width':"20%"},{queue:false, duration:200});
+  			menu_status=0;
+  		}
+  	});
+  	
+  	
   
   	var myOptions = {
   		zoom: 15,
-  		zoomControl: true,
+  		zoomControl: false,
   		zoomControlOptions: {
-            style: google.maps.ZoomControlStyle.LARGE,
+            
             position: google.maps.ControlPosition.TOP_LEFT
         },
   		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
   		mapTypeId: google.maps.MapTypeId.HYBRID,
   		mapTypeControl: true,
-		disableDoubleClickZoom: true
+		disableDoubleClickZoom: true,
+		streetViewControl:false,
+		panControl:false
   	};
 
 	mapHeight = $(document).height() - $('#radiation_reading').height() ;
  	
-
-
- 	//alert(mapHeight + "=" + $(window).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
+	//alert(mapHeight + "=" + $(window).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
  	//alert("doc: " + $(document).height() + "window: " + $(window).height());
 
  	$('#map').css("height", mapHeight);
@@ -93,28 +113,12 @@ jQuery.extend({
 
 
     GameMap.fitToRadius(<%= @game.radius %>); // todo: replace ruby template var
-    
-    //setup health status
-    //setRadiation(50);
-    
-    //setup tabs
-    showScreen('map');
-    
-    //listenForPositionUpdates();
-    
-    
-    // test response to incoming messages
-    // var userid = $('#user_id').val();
-    // exposureData = {'value':0, 'player_id':userid};
-	// receiveExposureData(exposureData);
-	// 	messageData = {'id':0, 'content':'Hi! Here is where you will receive important info about the game.', 'player_id':[userid]};
-	// 	receiveMessageData(messageData);    
-	 Android.showToast("android");
-	 //Android.sendMessage("a test message sent from webview")
+
+	Android.showToast("android");
+	//Android.sendMessage("a test message sent from webview")
   });
 
-function sendMessage(){
-//alert($("#massage").val());
+ function sendMessage(){
 	var pathname = window.location.pathname;
 	$.ajax({
 		url: pathname+"/message",
@@ -124,8 +128,23 @@ function sendMessage(){
 		success: function(data) {
 			$('#message').val("");
 		}
-	});
-}
+	 });
+ }
+ 
+
+ function relocate(){
+ 	//test
+ 	//players[$("user_id").val()]
+ 	//map.panTo(new google.maps.LatLng(53,-1));
+ 	map.setZoom(19);
+ }
+ 
+ function update_player_status(){
+ 	$("#current-target").html("<img src='/player/a/b/firefighter/map_icon.png' >");
+ 	$("#team-mate").html("<img src='/img/victim.png' >");
+ 	
+ }
+
 
 </script>
 <style type="text/css">
@@ -135,20 +154,9 @@ function sendMessage(){
 </style>
 
 <div id="main" data-role="page">
-
-
-    	<div data-role="header" id="header">
-    	 </div> <!-- /header -->
-    	<!--
-	    	<div data-role="navbar">
-				<ul>
-					<li><a href="#" class="ui-btn-active" onclick="showScreen('map');">Map</a></li>
-					<li><a href="#" onclick="showScreen('messages');">Messages</a></li>					
-				</ul>
-			</div>  --> 	   
-    
-  	<div data-role="content">
-
+	
+	<div data-role="content" style="position:relative">
+	
 	<div id="wrapper">
 		    <div id="status_bar" style="width:100%">
         <div id="geiger_sound"></div>
@@ -165,58 +173,60 @@ function sendMessage(){
         
         <div style="padding:2%;float:left;width:67%;height:12ex">
           Health
-          <div id="health_bar" style="height:82%"></div>
+          <div id="health_bar" style="height:40%"></div>
+          	<div id="wedget" style="height:40%;position:relative;top:10">
+          		<div id="wedget1" style="float:left;width:20%;height:100%">
+          		
+          		<img id="aim" src="/img/aimpoint.jpeg" style="height:100%" ></div>
+          		<div id="wedget2" style="position:relative;float:left;width:25%;height:100%">
+          			<div id="a" style="position:absolute;bottom:0;left:0">
+          				Picked up: 
+          			</div> 
+          		</div>
+          		
+          		<div id="current-target" style="position:relative;float:left;width:10%;height:100%">
+          			
+          		</div>
+          		
+          		<div id="wedget3" style="position:relative;float:left;width:25%;height:100%;display:table-cell;vertical-align:bottom">
+          			<div id="a" style="position:absolute;bottom:0;left:0">
+          				Teamed with:
+          			</div>
+          		</div>
+          		
+          		<div id="team-mate" style="position:relative;float:left;width:10%;height:100%">
+          		</div>
+          
+          	</div>
+          
         </div>
         
         <div style="clear:both"></div>
    </div>
 
-<!--
-	<div id="testing_bar">
-		<a href="#" onclick="testReceive('player');">MapTest</a>
-		<a href="#" onclick="testReceive('health');">HealthTest</a>
-		<a href="#" onclick="testReceive('exposure');">ExposureTest</a>
-		<a href="#" onclick="testReceive('message');">MessageTest</a>
+	<div id="map-warp" style="horizontal-align:center">
+		
+		<div id="map" ></div>
 	</div>
-	-->
 
-		<div id="map" style="horizontal-align:center;height:300px"></div>
-
-		<section id="player-info">
-			<h3 id="player-score" class="team-firefighter"><span class="value"></span></h3> <!-- todo: replace ruby var skill -->
-			<h3 class="message"></h3>
-		</section>
-
-<!--
-	    <div id="messageListDiv">
-	    
-	    	<h5>Messages</h5>
-	    	<ul id="task_list" class="ui-listview" data-role="listview" data-inset="true">												
-			</ul>
-			<div style="position:relative; bottom:5px; width:100%">
-				<form action="">
-				<input type="text" name="message" id="message"/>
-				<input onclick="sendMessage();" type="button" name="send" id="message_btn" value="send"/>
-				</form>
-			</div>
-
-	    
-	    </div>
-	    -->
-
-
-  
-      </div> <!-- wrapper -->
+	
+	<div  id="slide-menu-control" style="position:absolute;top:0;right:0;width:5%;height:5%;background-color:rgb(255,255,255);z-index=0" >
+		<img id="control" style="height:100%;-webkit-transform: rotate(-180deg);" src="/img/arrow.png">
+	</div>
+	
+	<div  id="slide-menu-content" style="position:absolute;top:5%;right:0;width:0%;height:95%;background-color:rgb(0,0,255);z-index=0" ></div>
+	
+  </div> <!-- wrapper -->
       
- <!-- wrapper -->
+
  </div> 
- </div>
+</div>
 
 <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
-    <input type="hidden" id="user_id" value="<%= @user_id %>" />
-    <input type="hidden" id="user_skill" value="<%= @user_skill %>" />
-    <input type="hidden" id="user_initials" value="<%= @user_initials %>" />
-    <input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
-    <input type="hidden" id="game_status" value=<%= @game.is_active %> /> 
+<input type="hidden" id="user_id" value="<%= @user_id %>" />
+<input type="hidden" id="user_skill" value="<%= @user_skill %>" />
+<input type="hidden" id="user_initials" value="<%= @user_initials %>" />
+<input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
+<input type="hidden" id="game_status" value=<%= @game.is_active %> /> 
    
   
