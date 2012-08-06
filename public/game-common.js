@@ -22,10 +22,11 @@ var cg = {
 	p: function(w,h) {
 		return new google.maps.Point(w,h);
 	},
-	
-	
 	playerImage: function(name, skill) {
 		return new google.maps.MarkerImage("/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png", new google.maps.Size(38, 31), new google.maps.Point(0,0), new google.maps.Point(10, 30));
+	},
+	imageSrc: function(name, skill) {
+		return "/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png";
 	}
 }
 
@@ -122,11 +123,12 @@ function receiveTaskData(task){
 				existing_task.marker.setIcon(taskIcon);
 			}
         }
+        
+        //handle task status
+        handleTaskStatus(task);
 }
 
-
-function getTaskIcon(task_type) {
-
+function getTaskImage(task_type) {
 	var imageURL = ""
 	if (task_type == 0) {
 		imageURL = taskIcon1; 
@@ -141,11 +143,48 @@ function getTaskIcon(task_type) {
 		imageURL = taskIcon4;
 	}
 	
-    var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
+	return imageURL;
+}
+
+function getTaskIcon(task_type) {
+
+	var imageURL=getTaskImage(task_type);
 	
+    var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
 	return icon;
 }
 
+//SHOULD BE LOCATION DATA???////
+function receivePlayerData(data) {
+		var markerIcon;
+		
+		var userID=$("#user_id").value;
+		
+		markerIcon = getPlayerIcon(data.initials,data.skill);
+	    var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
+		var pid = data.player_id;
+		
+		    if(typeof players[pid] == "undefined") {
+		        
+		        players[pid] = {
+		            id: pid,
+		            skill: data.skill,
+		            initials: data.initials,
+		            name: data.name,
+		            marker: new google.maps.Marker({
+		                position: new google.maps.LatLng(data.latitude, data.longitude),
+		                map: map,
+		                icon: markerIcon,
+		                visible: true
+		            })
+		        };
+		    } else {
+		        //update 
+		        var p = players[pid];
+		        p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
+		        //p.marker.setIcon(markerIcon);
+		    }	 
+}
 
 
 

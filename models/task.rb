@@ -33,7 +33,7 @@ class Task
   property :description, String, :length => 255
   property :latitude, Decimal, :precision=>10, :scale=>7
   property :longitude, Decimal, :precision=>10 , :scale=>7
-  property :players, String, :length => 255, :default => 0
+  property :players, String, :length => 255, :default => ""
   
   property :state, Integer, :default=> State::IDLE
 # has n, :players
@@ -121,46 +121,46 @@ class Task
   		self.longitude=lng/count
   		
   		
-  		self.save
-  		
   		
   		#distance check, if one player goes too far, then task dropped off
   		working_players.each do |p|
-  			if p.distance_to(self.latitude,self.longitude) > 10
+  			if (p.distance_to(self.latitude,self.longitude) > 10)
   				dropped_off=true
   			end 
   		end 
   		
   		if dropped_off
-  			
-  			#should check wether it is save area now
-  			drop_off_in_safe=false
-  			self.game.dropoffpoints.each do |d|
-  				if d.distance_to(self.latitude, self.longitude)<d.radius
-  					drop_off_in_safe=true
-  					
-  				end
-  			end
-  			
-  			if drop_off_in_safe
-  				self.state=State::DROPPED_DOWN
-  			else
-  				self.state=State::IDLE
-  			end
-  			
-  			
+  			#set the players
+  			self.players=""
+  			self.state=State::IDLE
   			working_players.each do |p|
   				p.current_task=-1
   				p.save
   			end
-  			self.save
+  			
   		end
   		
+  		#should check wether it is save area now
+  		drop_off_in_safe=false
+  		self.game.dropoffpoints.each do |d|
+  			if d.distance_to(self.latitude, self.longitude)<d.radius
+  					drop_off_in_safe=true
+  			end
+  		end
+  	
+  		if drop_off_in_safe
+  			self.players=""
+  			self.state=State::DROPPED_DOWN
+  		end
+  		
+  		self.save
   		#broadcast
   		self.broadcast(socket)
   	end
   	
   end 
+  
+  
   
   def broadcast(socket)
   	socket.broadcast(

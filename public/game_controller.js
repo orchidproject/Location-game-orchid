@@ -156,40 +156,6 @@ function saveLog(data){
     
 }
 
-function receiveRequestData(data) {
-    markerIcon = coins[10].grey;
-	if(typeof requests[data.id] == "undefined") {
-		requests[data.id] = {
-			id: data.id,
-            radius: data.radius,
-			marker: new google.maps.Marker({
-				position: new google.maps.LatLng(data.latitude, data.longitude),
-				map: map,
-				icon: markerIcon
-			})
-		};
-	} else {
-		// Coin is already on the screen, decide whether we should update it
-		var p = requests[data.id];
-		if(true) {
-			p.marker.setMap(null);
-			p.marker = new google.maps.Marker({
-				position: new google.maps.LatLng(data.latitude, data.longitude),
-				map: map,
-				icon: markerIcon
-			});
-		} else {
-			console.debug("coin already claimed");
-		}
-	}
-}
-
-
-
-
-
-
-
 function errorCheck(data){
     if (typeof data.error != 'undefined'){
         alert(data.error);
@@ -357,32 +323,13 @@ function pushToTaskHistory(message, identifier, player_initials, player_name) {
 
 
 
-//SHOULD BE LOCATION DATA???////
-function receivePlayerData(data) {
-		var markerIcon;
-		markerIcon = getPlayerIcon(data.initials,data.skill);
-	    var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
-		var pid = data.player_id;
-		
-		if(typeof players[pid] == "undefined") {
-		    players[pid] = {
-		        id: pid,
-		        name: data.name,
-		        marker: new google.maps.Marker({
-		                position: new google.maps.LatLng(data.latitude, data.longitude),
-		                map: map,
-		                icon: markerIcon,
-		                visible: true
-		        })
-		    };
-		} else {
-		    //update 
-		    var p = players[pid];
-		    p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-		}	
-		
-}
 
+
+
+function handleTaskStatus(task){
+
+	//empty implementation
+};
 
 
 // Load the initial game state and place the pins on the map. Sample data in pellets.json

@@ -297,48 +297,19 @@ function clearAll(){
 }
 
 
-//SHOULD BE LOCATION DATA???////
-function receivePlayerData(data) {
-		var markerIcon;
-		
-		var userID=$("#user_id").value;
-		
-		markerIcon = getPlayerIcon(data.initials,data.skill);
-	    var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
-		var pid = data.player_id;
-		
-		    if(typeof players[pid] == "undefined") {
-		        
-		        players[pid] = {
-		            id: pid,
-		            
-		            name: data.name,
-		            marker: new google.maps.Marker({
-		                position: new google.maps.LatLng(data.latitude, data.longitude),
-		                map: map,
-		                icon: markerIcon,
-		                visible: true
-		            })
-		        };
-		    } else {
-		        //update 
-		        var p = players[pid];
-		        p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-		        //p.marker.setIcon(markerIcon);
-		    }	 
-		    
-		    
-	 //if current task != 1 change the status
-	 if (data.currentTask!=-1){
-	 	
-	 }
-		
-	
-}
 
-function updatePlayerState(){
+function handleTaskStatus(task){
+	//"1,2,3"
+	var picked_up=false;
+	var p=task.players.split();
 	
-
+	for (index in p){
+		var id=p[index];
+		if(id==$("#user_id").val()){
+			update_status_bar(p,task.type);
+			break;
+		}
+	}
 }
 
 

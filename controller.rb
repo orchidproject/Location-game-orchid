@@ -330,7 +330,8 @@ class Controller < Sinatra::Base
              :description=> t.description,
              :longitude => t.longitude.to_s('F'),
              :latitude => t.latitude.to_s('F'),
-			 :state => t.state
+			 :state => t.state,
+			 :players => t.players
          }
         #end
     end
@@ -516,7 +517,8 @@ end
               :longitude => t.longitude.to_s('F'),
 			  :type => t.type,
               :state => t.state,
-              :requirement => t.requirement
+              :requirement => t.requirement,
+              :players => t.players
               
           }
     end
