@@ -1,6 +1,6 @@
-
 var sys = require('util');
-url = require('url');
+var url = require('url');
+
 // Load the node-router library by creationix
 var http = require('./nodelib/node-router').getServer();
 
@@ -10,17 +10,20 @@ var fs = require('fs');
 
 //log system 
 function write_log(game_id,data){
+	var time = new Date();
+	data.time_stamp = time.getTime();
     var log = fs.createWriteStream('logs/log-'+game_id, {'flags': 'a'});
-    var time = new Date();
-    data.time_stamp = time.getTime();
-    log.write(JSON.stringify(data)+"\n");
+	log.write(JSON.stringify(data)+"\n");
     log.end();
+    
 }
 
 
 
 //-----Http server for pushing information from ruby
 
+var sessionTable = [];
+var ackid=0;
 
 http.post("/broadcast", function (request, response) {
     request.content = '';
@@ -31,14 +34,30 @@ http.post("/broadcast", function (request, response) {
 	request.addListener("end", function() {
         var ob=JSON.parse(request.content);
         content=JSON.parse(ob.data);
-        
+        ackid++;
+        content.data["ackid"]=ackid;
         var channel=content.channel;console.log(channel);
-        
+        var users=content.users;
         
         io.sockets.in(channel).emit('data', content.data);
+        
         write_log(channel,content.data);
         
-	});
+        
+        //send to indvidual users
+        if(users!=null){
+        	
+        	for(id in users){
+        		if (sessionTable[users[id]] != null){
+        			console.log["send to user " +  sessionTable[id]]
+        			io.sockets.socket(sessionTable[users[id]]).emit('data', content.data);
+        		}else
+        		{
+        			console.log(users[id] + " not found in session table");
+        		}
+        	}
+        }
+    });
     
     response.simpleText(200, "ok");
 });
@@ -77,8 +96,6 @@ http.post("/push_log", function (request, response){
 // Listen on port 8080 on localhost
 http.listen(process.argv[3], "0.0.0.0");
 
-
-
 //work around, cos no geo library exists for node.js. 
 /*
 var options = {
@@ -106,10 +123,10 @@ req.end();*/
 
 //-------------------mysql utility--------------------
 var mysql = require('mysql');
-var DATABASE = 'mapattack';
+var DATABASE = database;
 var client = mysql.createClient({
-    user: 'mapattack',
-    password: 'mapattack',
+    user: db_username,
+    password: db_password
 });
 client.query('USE '+DATABASE);
 
@@ -143,9 +160,6 @@ function get_game_status(game_layer_id,callback){
     );
    
 }
-
-
-
 
 function insert_request(request){
     client.query(
@@ -189,15 +203,41 @@ io.sockets.on('connection', function (socket) {
   socket.emit('game');
  
   socket.on('game-join', function (data){
-    socket.join(data);
-    socket.set("channel",data);
+  	if (data.channel==null){//support old client
+  		socket.join(data);
+  		socket.set("channel",data);
+  	}else{
+    	socket.join(data.channel);
+    	socket.set("channel",data.channel);
+    }
+    
+    if (data.id!=null){
+    	//sessionTable.push({data.id:socket.transport.sessionid});
+    	sessionTable[data.id]=socket.id;
+    	console.log('session id recorded ' + data.id + " " + socket.id);
+    }
+    
     socket.get("channel", function (err, content) {
         console.log('join game channel ' + content);
     });
     
   });
   
+  socket.on('ack', function (data) {
+  	 console.log('ack received ' + data);
+  	 write_log("ack-"+data.channel,data);
+  	 
+  });
   
+  socket.on('disconnect', function () { 
+  	//unregister
+  	for (i in sessionTable){
+  		if(sessionTable[i]==socket.id){
+  			delete sessionTable[i];
+  			console.log("client unregistered");
+  		}
+  	}
+  });
   
   //SINGLE location push
   socket.on('location-push', function (data) {
@@ -214,33 +254,22 @@ io.sockets.on('connection', function (socket) {
         //if(is_active==0){
         if(true){
             update_location(data.latitude,data.longitude,data.player_id);
-            
-            io.sockets.in(channel).emit('data', {location:data});
-            
-           
-            write_log(channel,{location:data});
+            //data["ackid"]=ackid++;
+            ackid++;
+            io.sockets.in(channel).emit('data', {"location":data,"ackid":ackid});
+            write_log(channel,{"location":data,"ackid":ackid});
         
         }
         else{
             console.log("game not active, broadcast blocked");
         }
     });
-   
-
     
-  });
+    //test from webview 
+    socket.on('message', function (data) {
+  	 	console.log('message' + data);
+  	});
+});
   
-  /*
-  socket.on('action-push', function (data) {
-    console.log(data); 
-    
-    //store in mysql 
-    if (data.type != "undefined"){
-        console.log(data.type);
-    }
-    data.id=1;
-    //broadcast 
-    io.sockets.in('game_1').emit('data',data);
-  });*/
   
 });

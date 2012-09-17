@@ -9,8 +9,9 @@ cache/*
 bin/*
 specifications/*
 vendor/*
-log
+log/*
 tmp
 logs/*
 config.yml
 Gemfile
+

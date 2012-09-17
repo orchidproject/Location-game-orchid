@@ -1,464 +1,7 @@
 class Controller < Sinatra::Base
-    
-  # #para latitude longitude.  
-  
-  get '/games/list' do
-    games=[]
-    Game.all.each do |g|
-        games << {"layer_id"=> g.layer_id , "name"=> g.name, "description"=> "", "is_active"=>g.is_active}
-
-    end
-    
-    {"games"=> games}.to_json
-  end 
-
-    
-  post '/game/:layer_id/dropCargo' do
-    game=Game.first :layer_id=>params[:layer_id]
-    if game.is_active<0
-          return {:error=>"game not active"}.to_json
-    end 
-
-    @truck= get_truck params[:layer_id]
-    if @truck.points_cache<0
-        return {status: "no points available"}
-    end
-
-    #-modification send to socket io
-
-    
-    cargo=@truck.cargos.create :latitude=>params[:latitude], :longitude=>params[:longitude], :radius=>100, :exposed=>false
-    
-
-    #notifications to all users
-    @truck.add_points -10
-   
-    socketIO.broadcast( 
-      { 
-        :channel=> params[:layer_id],             
-        :data=>{
-            :cargo=>{
-                :id => cargo.id,
-                :longitude => cargo.longitude.to_s('F'),
-                :latitude => cargo.latitude.to_s('F'),
-                :player_id => cargo.player_id,
-                :radius => cargo.radius,
-                :exposed => cargo.exposed
-            }
-        }
-    }.to_json)
-
-    #updatescore
-    socketIO.broadcast( 
-        { 
-            :channel=> params[:layer_id],             
-            :data=>{
-                       :player=>{
-                            :id=> @truck.id,
-                            :name=> @truck.name,
-                            :points_cache => @truck.points_cache,
-                            :team => @truck.team.name
-                       }
-                   }
-        }.to_json)
-        
-
-   return {status: "ok"}
-
-  end     
-  
- 
-    
-  #update truck locaiton save to database #para latitude longitude.  
-       #post '/game/:layer_id/moveTruck' 
-
-  get '/game/:layer_id/logout' do
-    
-    #delete user from database
-    game=Game.first :layer_id=>params[:layer_id]
-    player=game.players.first :id => params[:user_id]
-      
-        
-   
-     
-    socketIO.broadcast( 
-                         { 
-                            :channel=> params[:layer_id],             
-                            :data=>{
-                                :textMassage=>{:content=>"#{player.name} quitted game"},
-                                :player=>{:id=>player.id,:action=>"cleanup"}
-                            }
-                         }.to_json)
-    player.destroy
-    session.clear
-    redirect "/game/#{params[:layer_id]}/"
-   
-      
-  end
-
-
-
-  #post handler is for mobile device
-  post '/game/:layer_id/logout' do
-    
-    #delete user from database
-    game=Game.first :layer_id=>params[:layer_id]
-    player=game.players.first :id => params[:id]
-    
-   
-    
-    socketIO.broadcast( 
-                       { 
-                       :channel=> params[:layer_id],             
-                         :data=>{
-                            :cleanup=>{
-                                :player=>[player.id]
-                            }
-                         }
-                       }.to_json)
-    player.destroy
-    session.clear
-    
-   
-    {:status=> "ok"}.to_json
-              
-    
-  end
-
-
-  get '/game/:layer_id/webjoin' do
-    content_type :json
-    id=session[:id]
-      
-    game = Game.first :layer_id => params[:layer_id]
-    team = params[:team]  
-    puts game.is_active
-    if game.is_active>=0
-          
-          return {:error=>"game has already began"}.to_json
-    end 
-    
-    
-    if team=="admin" 
-        return {:error => "Not implemented yet"}.to_json 
-    elsif id
-        game.players.each do |existing_player|
-            if existing_player.id == id
-                return {:error => "Already in a team"}.to_json 
-            end
-        end
-    end
-    
-    #ensure only one user is joined for each team
-    team_game=game.teams.first :name=>team
-    current_player=game.players.first :team_id=>team_game.id
-    
-   
-    if  current_player
-       return {:error => "only one player allowed in that team"}.to_json 
-    else
-        #create a player
-        if team=="controller" 
-            player = game.players.create  :email =>params[:emails], :name => team.upcase, :team => game.pick_team(team)
-        elsif team=="truck"
-            player = game.players.create  :email =>params[:emails], :name => team.upcase, :team => game.pick_team(team), :latitude=>game.latitude , :longitude=>game.longitude
-        end
-        player.points_cache=1000
-        player.save
-       
-        session[:id]=player.id
-        
-        socketIO.broadcast( 
-                           { 
-                            :channel=> params[:layer_id],             
-                            :data=>{
-                                    :textMassage=>{:content=>"#{player.name} join the game"},
-                                    :player=>{
-                                        :id=> player.id,
-                                        :name=> player.name,
-                                        :points_cache => player.points_cache,
-                                        :team => player.team.name
-                                }
-                            }
-                           }.to_json)
-        return {:status=> "ok"}.to_json
-       
-    end
-    
-    
-end
-  
-                    
-  
-                
-
-
-  post '/game/:layer_id/investigate' do
-      latitude=params[:latitude]
-      longitude=params[:longitude]
-      user_id=params[:id]
-      
-      game = Game.first :layer_id => params[:layer_id]
-      if game.is_active<0
-          return {:error=>"game not active"}.to_json
-      end 
-      
-      
-      player = game.players.first :id=> user_id
-      @truck=get_truck params[:layer_id]
-      
-      
-      if !player 
-           puts "player do not exist"
-          
-          {:error=>:error}.to_json
-      else
-         
-          location = Geokit::LatLng.new latitude, longitude
-          threshold = 10
-          finding=false
-          @truck.cargos.each do |cargo|
-              if !cargo.exposed
-                  cargoLocation=Geokit::LatLng.new cargo.latitude, cargo.longitude
-                  temp_distance=location.distance_to cargoLocation, {:units=>:kms}
-              
-                 
-              
-                  if (temp_distance*1000)<threshold
-                      puts "cargo exposed and cleared"
-                      player.points_cache += 20
-                      cargo.update(:exposed=>true)
-                      finding=true;
-                 
-                  
-                      socketIO.broadcast( 
-                                     { 
-                                        :channel=> params[:layer_id],             
-                                            :data=>{
-                                                    :textMassage=>{:content=>"cargo exposed and cleared"},
-                                                    :cargo=>{
-                                                        :id => cargo.id,
-                                                        :longitude => cargo.longitude.to_s('F'),
-                                                        :latitude => cargo.latitude.to_s('F'),
-                                                        :player_id => cargo.player_id,
-                                                        :radius => cargo.radius,
-                                                        :exposed => cargo.exposed
-                                                    },
-                                         #update score
-                                                    :player=>{
-                                                        :id=> player.id,
-                                                        :name=> player.name,
-                                                        :points_cache => player.points_cache,
-                                                        :team => player.team.name
-                                                    }
-                                        }
-                                     }.to_json)
-                   end
-              end
-          end
-          
-          truckLocation= Geokit::LatLng.new @truck.latitude, @truck.longitude
-          temp_distance=location.distance_to truckLocation, {:units=>:kms}
-            
-          if (temp_distance*1000)<threshold
-              puts "truck exposed"
-              player.points_cache += 100
-              finding=true;
-              socketIO.broadcast( 
-                                 { 
-                                    :channel=> params[:layer_id],             
-                                    :data=>{
-                                        :textMassage=>{:content=>"truck captured"},
-                                    }
-                                 }.to_json)
-              endGame(game)
-
-          end
-          player.save
-          
-          if !finding
-              {:status=>"ok"}
-          end
-         
-      end
-  end 
-      
-
-post '/game/:layer_id/getReading' do
-    latitude=params[:latitude]
-    longitude=params[:longitude]
-    user_id=params[:id]
-    
-    game = Game.first :layer_id => params[:layer_id]
-    
-    if game.is_active<0
-        return {:error=>"game not active"}.to_json
-    end 
-    
-    
-    
-    player = game.players.first :id=> user_id
-    @truck=nil
-    @truck= get_truck params[:layer_id]
-    
-    
-    if !player 
-        puts "no player or truck found"
-        {:error=>:error}.to_json
-        elsif !@truck 
-        puts "no player or truck found"
-        {:error=>:error}.to_json
-        
-        else
-        location= Geokit::LatLng.new latitude, longitude
-        truckLocation= Geokit::LatLng.new @truck.latitude, @truck.longitude
-        distance = location.distance_to truckLocation, {:units=>:kms}
-        
-        
-        
-        @truck.cargos.each do |cargo|
-            if !cargo.exposed
-                cargoLocation=Geokit::LatLng.new cargo.latitude, cargo.longitude
-                temp_distance=location.distance_to cargoLocation, {:units=>:kms}
-                if temp_distance<distance
-                    distance=temp_distance
-                end
-                
-                puts temp_distance*1000
-            end 
-        end
-        
-        reading=100-1000*distance
-        if reading<0
-            reading=0
-        end
-        
-        #transfer to string
-        if reading<10
-            reading="0#{reading}"
-            else
-            reading=reading.to_s
-        end
-        
-        #only one reading is stored for one player, others are supposed to go to log
-        currentReading = player.readings.first
-        if !currentReading
-            #save to database
-            currentReading=player.readings.create :latitude=>latitude, :longitude=>longitude, :value=>reading
-            else
-            currentReading.update(:value=>reading, :latitude=>latitude, :longitude=>longitude)
-        end
-        
-        #check whether in a range of request
-        @controller=get_controller params[:layer_id]
-        if @controller
-            @controller.requests.each do |request|
-                inRange=request.inRange(latitude,longitude);
-                
-                if inRange
-                    
-                    player.points_cache+=10
-                    socketIO.broadcast(
-                                       { 
-                                       :channel=> params[:layer_id],             
-                                       :data=>{
-                                       :player=>{
-                                       :id=> player.id,
-                                       :name=> player.name,
-                                       :points_cache => player.points_cache,
-                                       :team => player.team.name
-                                       },
-                                       :cleaup=>{
-                                       :reading=>[request.id]
-                                       }
-                                       }
-                                       }.to_json)  
-                    request.destroy
-                end 
-            end
-        end 
-        
-        #-modification send a broadcaset
-        socketIO.broadcast( 
-                           { 
-                           :channel=> params[:layer_id],             
-                           :data=>{
-                           
-                           :reading=>{
-                           :id => currentReading.id,
-                           :longitude => currentReading.longitude.to_s('F'),
-                           :latitude => currentReading.latitude.to_s('F'),
-                           :player_id => currentReading.player_id,
-                           :value => currentReading.value
-                           }
-                           }
-                           }.to_json)
-        
-        {:distance=>distance, :reading=>reading}.to_json
-    end
-end
 
       
-  
-
-  get '/game/:layer_id/request' do
-      content_type :json
-      controller=get_controller params[:layer_id]
-      if controller.points_cache<0
-          return {status: "no points available"}
-      end
-          
-          
-      game = Game.first :layer_id => params[:layer_id]
-      if game.is_active<0
-          return {:error=>"game not active"}.to_json
-      end 
-      
-      
-      #-modify create request here
-      request=controller.requests.create :value=>10, :latitude=>params[:latitude], :longitude=>params[:longitude], :radius=>10          
-      
-      controller.add_points  -10
-      #-modify broadcast to socket io 
-     
-      socketIO.broadcast( 
-                         { 
-                            :channel=> params[:layer_id],             
-                            :data=>{
-                                :request=>{
-                                    :id => request.id,
-                                    :longitude => request.longitude.to_s('F'),
-                                    :latitude => request.latitude.to_s('F'),
-                                    :player_id => request.player_id,
-                                    :radius => request.radius,
-                                    :value => request.value
-                                }
-                            }
-                         }.to_json)
-      
-      #updatescore
-      socketIO.broadcast( 
-                         { 
-                            :channel=> params[:layer_id],             
-                                :data=>{
-                                    :player=>{
-                                        :id=> controller.id,
-                                        :name=> controller.name,
-                                        :points_cache => controller.points_cache,
-                                        :team => controller.team.name
-                                    }
-                                }
-                         }.to_json)
-
- 
-      
-      {status:"ok"}
-      
-      
-  end
-    
-  
-  #for development 
+  ################for development #####################
   get '/migrate' do
         DataMapper.auto_migrate!
   end 
@@ -468,9 +11,7 @@ end
      headers
   end
 
-  get '/test' do
-     
-  end 
+  
 
 
   before do
@@ -484,7 +25,7 @@ end
   end
 
   after do
-      #session[:geoloqi_auth] = geoloqi.auth
+      #do something
   end
 
   get '/?' do
@@ -493,80 +34,18 @@ end
 
   get '/admin/games' do
     @games = Game.all
-    erb :'admin/games/index', :layout => :'admin/layout'
+          
+      erb :'admin/games/index', :layout => :'admin/layout'
   end
 
-  get '/admin/games/new' do
-    @game = Game.new
-    erb :'admin/games/new', :layout => :'admin/layout'
-  end
-
-  get '/admin/games/:id/mapeditor' do
-    @game = Game.get params[:id]
-    erb :'admin/games/mapeditor', :layout => false
-  end
-
-  post '/admin/games' do
-    game = Game.new params[:game]
-    game.save
-    redirect "/admin/games/#{game.layer_id}/mapeditor"
-  end
-
-
-  get '/admin/games/:layer_id/setup.json' do
-    content_type :json
-    @game = Game.get params[:layer_id]
-    boxes =[]
-    @game.boundings.each do |p|
-        boxes<<{
-            :id=>p.id,
-            :neLatitude => p.neLatitude.to_s('F'),
-            :neLongitude => p.neLongitude.to_s('F'),
-            :swLatitude => p.swLatitude.to_s('F'),
-            :swLongitude => p.swLongitude.to_s('F')
-        }
-    end
-      
-    {:boundingBoxes=>boxes}.to_json
-      
-  end
-  
-  put '/admin/games/:layer_id/reset' do
-    game = Game.get params[:layer_id]
-      game.update(:is_active=>-1)
-    #result = geoloqi_app.get 'place/list', :layer_id => game.layer_id, :limit => 0
-      game.players.each do |p|
-          p.destroy
-      end 
-      #clear log
-      #I know I should not hard code file name here, but... 
-      oldFile="logs/log-#{params[:layer_id]}"
-      newFile="logs/log-#{params[:layer_id]}-#{Time.now.to_f}"
-      if FileTest.exist?(oldFile)
-          File.rename(oldFile,newFile)
-      end
-      
-      socketIO.broadcast( 
-                         { 
-                         :channel=> params[:layer_id],             
-                         :data=>{
-                         :system=>"reset"
-                         }
-                         }.to_json)
-    
-    redirect '/admin/games'
-  end
-
-
-#be careful for the layer id 
   get '/admin/games/:layer_id/edit' do
     @game = Game.get params[:layer_id]
     erb :'admin/games/edit', :layout => :'admin/layout'
+  
   end
 
   put '/admin/games/:layer_id/end_game' do
     @game = Game.get params[:layer_id]
-    geoloqi_app.post "group/message/#{@game.group_token}", :mapattack => {:gamestate => 'done'}
     redirect '/admin/games'
   end
 
@@ -582,22 +61,40 @@ end
       erb :'/admin/games/console', :layout => :'admin/layout'
   end 
 
-  post '/admin/games/:layer_id/massage' do
+  post '/game/mobile/:layer_id/message' do
       @game = Game.get params[:layer_id]
+	  player_id = params[:id]
+	  player = @game.players.first :id => player_id
+		
       socketIO.broadcast( 
                          { 
                             :channel=> params[:layer_id],             
-                            :data=>{
-                            :textMassage=>{:content=>params[:content]},
-                            }
+                            :data => { :message=>{:content=>params[:content], :player_initials=> player.initials, :player_name=> player.name} }                          
+                            
+                         }.to_json)
+      {"status"=>:ok}.to_json
+
+  end 
+  
+  
+   post '/admin/games/:layer_id/massage' do
+      @game = Game.get params[:layer_id]
+      socketIO.broadcast( 
+                         { 
+                            :channel=> params[:layer_id],          
+                            :data => { :message=>{:content=>params[:content], :player_initials=> :HQ, :player_name=> :controller} }                          
+                            
                          }.to_json)
       {"status"=>:ok}.to_json
 
   end 
 
+
   get '/admin/games/:layer_id/ready_check' do
     @game = Game.get params[:layer_id]
     players=[]
+    
+    puts :hello
     
     
     socketIO.broadcast( 
@@ -624,7 +121,7 @@ end
 
   get '/get_log/:layer_id/' do
     counter = 1
-    file = File.new("logs/log-#{params[:layer_id]}", "r")
+    file = File.new("logs/#{params[:layer_id]}", "r")
     log=""
     while (line = file.gets)
         log= "#{log}#{line}"
@@ -636,6 +133,9 @@ end
     log
     
   end
+  
+  
+ 
 
   get '/admin/games/:layer_id/ready_status' do
     @game = Game.get params[:layer_id]
@@ -682,25 +182,7 @@ end
     erb :'complete'
   end
 
-  get '/admin/games/:layer_id/start' do
-    game=Game.first :layer_id=>params[:layer_id]
-    if game.is_active!= -1
-        return {:error=>"game already begin"}.to_json
-        else
-        game.update(:is_active=>0)
-        socketIO.broadcast( 
-                           { 
-                           :channel=> params[:layer_id],             
-                           :data=>{
-                           :system=>"start"
-                           }
-                           }.to_json)
-        @games = Game.all
-        erb :'admin/games/index', :layout => :'admin/layout'
-    end
-    
-    
-  end 
+  
 
   get '/admin/games/:layer_id/end' do
     game=Game.first :layer_id=>params[:layer_id]
@@ -721,6 +203,24 @@ end
      game.boundings.create :swLatitude=> params[:swLatitude], :swLongitude=> params[:swLongitude], :neLatitude=> params[:neLatitude], :neLongitude=> params[:neLongitude]
      {:status=> "ok"}.to_json
   end 
+  
+  post '/admin/games/:layer_id/addRadiationBit' do
+     game=Game.first :layer_id=>params[:layer_id]
+     game.radiations.create :latitude=> params[:latitude], :longitude=> params[:longitude], :radius=>50
+     {:status=> "ok"}.to_json
+  end 
+   
+  post '/admin/games/:layer_id/addTask' do
+        game=Game.first :layer_id=>params[:layer_id]
+        task=game.tasks.create :latitude=> params[:latitude], :longitude=> params[:longitude], :type=> params[:task_type]
+        {:status=> "ok"}.to_json
+  end 
+  
+  post '/admin/games/:layer_id/addDropOffPoint' do
+        game=Game.first :layer_id=>params[:layer_id]
+        dropOffpoint=game.dropoffpoints.create :latitude=> params[:latitude], :longitude=> params[:longitude], :radius=> params[:radius]
+        {:status=> "ok"}.to_json
+  end 
 
   get '/admin/games/:layer_id/clearBoundingBox' do
       game=Game.first :layer_id=>params[:layer_id]
@@ -729,34 +229,26 @@ end
       end 
       {:status=>"ok"}.to_json
   end 
-
-  post '/admin/games/:layer_id/validate_position' do
-    game=Game.first :layer_id=>params[:layer_id]
-    validate = false
-    game.boundings.each do |bbox|
-        neLocation = Geokit::LatLng.new bbox.neLatitude, bbox.neLongitude
-        swLocation = Geokit::LatLng.new bbox.swLatitude, bbox.swLongitude
-        location = Geokit::LatLng.new params[latitude], params[longitude]
-        
-        bounds=Bounds.new(swLocation,neLocation)
-        bounds.contains?(location)
-        validate = true
-    end 
-    {:result => validate}.to_json
+#clear both dropoff points and tasks
+  get '/admin/games/:layer_id/clearRadiationBit' do
+      game=Game.first :layer_id=>params[:layer_id]
+      game.tasks.each do |bit|
+          bit.destroy
+      end 
+      
+      game.dropoffpoints.each do |bit|
+          bit.destroy
+      end 
+      {:status=>"ok"}.to_json
   end 
-
-
-
-
-
-  get '/player/:i1/:i2/:team/map_icon.png' do
+ 
+ get '/player/:i1/:i2/:role/map_icon.png' do
     a = params[:i1].upcase
     b = params[:i2].upcase
         
-    puts :fdsa
-    file_path = File.join Controller.root, "public", "icons", "#{a}#{b}_#{params[:team]}.png"
+    file_path = File.join Controller.root, "public", "icons", "#{a}#{b}_#{params[:role]}.png"
     file_path_tmp = "#{file_path}tmp"
-    marker_path = File.join Controller.root, "public", "img", "player-icon-" + params[:team] + ".png"
+    marker_path = File.join Controller.root, "public", "img", "#{params[:role]}.png"
     
     if File.exist?(file_path)
         send_file file_path
@@ -773,124 +265,109 @@ end
   end
 
 
-
  #object templates in this fuction
  get '/game/:layer_id/status.json' do
     content_type 'application/json'
     game = Game.first :layer_id => params[:layer_id]
     
-    requests = []
+    
     locations = []
-    cargos = []
-    readings = []
     players = []
+	tasks = []
+    exposures = []
+    healths = []
+    dropoffpoints = []
+     
     
     game.players.each do |player|
         players << {
             :id=> player.id,
             :name=> player.name,
             :points_cache => player.points_cache,
-            :team => player.team.name
+            :team => player.team.name,
+            :initials => player.initials,
+            :skill => player.skill_string(),
+            :status => player.status
+        }
+
+        healths << {
+            #exposure { player_id : integer , value : float }
+            :player_id => player.id,
+            :value => player.health
         }
         
-        if player.latitude && player.longitude && player.longitude!="" && player.latitude != "" 
-        locations << { 
-            :player_id=> player.id,
-            #get rid of scientic notation of numbers
-            
-            :latitude=> player.latitude.to_s('F'),
-            :longitude=>player.longitude.to_s('F')
+        exposures << {
+            #health { player_id : integer , value : integer }
+            :player_id => player.id,
+            :value => player.health
         }
-        end
         
-        player.cargos.each do |cargo| 
-            cargos << {
-                :id => cargo.id,
-                :longitude => cargo.longitude.to_s('F'),
-                :latitude => cargo.latitude.to_s('F'),
-                :player_id => cargo.player_id,
-                :radius => cargo.radius,
-                :exposed => cargo.exposed
-            }
-        end 
-        
-        player.readings.each do |reading|
-            readings << {
-                :id => reading.id,
-                :longitude => reading.longitude.to_s('F'),
-                :latitude => reading.latitude.to_s('F'),
-                :player_id => reading.player_id,
-                :value => reading.value
-            }
-        end 
-        
-        
-        player.requests.each do |request| 
-            requests << {
-                :id => request.id,
-                :longitude => request.longitude.to_s('F'),
-                :latitude => request.latitude.to_s('F'),
-                :player_id => request.player_id,
-                :radius => request.radius
-            }
-        end 
+        locations << {
+        	:player_id => player.id,
+        	:latitude => player.latitude,
+        	:longitude => player.longitude,
+        	:initials => player.initials,
+        	:skill => player.skill_string()
+        }
+       
         
     end
+	
+	game.radiations.each do |bit|
+		radiations << {
+			:id => bit.id,
+			:longitude => bit.longitude.to_s('F'),
+			:latitude => bit.latitude.to_s('F')
+		}
+	end
+     
+    game.tasks.each do |t|
+       	 # if t.status.eql? "active"
+         tasks << {
+             :id => t.id,
+             :type=>t.type,
+			 :requirement=>t.requirement,
+             :description=> t.description,
+             :longitude => t.longitude.to_s('F'),
+             :latitude => t.latitude.to_s('F'),
+			 :state => t.state,
+			 :players => t.players
+         }
+        #end
+    end
     
+    game.dropoffpoints.each do |d|
+    	dropoffpoints << {
+             :id => d.id,
+             :latitude=>d.latitude,
+             :longitude=>d.longitude,
+             :radius=>d.radius
+		}
+    end 
     
-    {:request => requests, :location => locations,:reading=>readings,:cargo=>cargos, :player=>players }.to_json
+    {:location => locations,:task=>tasks,:exposure=>exposures,:health=>healths,:player=>players, :dropoffpoint=>dropoffpoints}.to_json
     
 end
-  # TODO: mobile game join 
-
-  post '/game/:layer_id/join' do
-    content_type :json
-    game = Game.first :layer_id => params[:layer_id]
+  
+  
+ 
+  
+  get '/game/:layer_id/getLocations' do 
+  	game = Game.first :layer_id => params[:layer_id]
+  	game.players.each do |player| 
+  			players = []
+  			players << {
+	  			:player_id => player.id,
+    	    	:latitude => player.latitude,
+        		:longitude => player.longitude
+        		}
     
-    if game.is_active>=0
-          return {:error=>"game already begin"}.to_json
     end
-      
-    if params[:team]==nil
-        player = game.players.create  :email =>params[:email], :name => params[:name], :team => game.pick_team('runner')
-    else
-        player = game.players.create  :email =>params[:email], :name => params[:name], :team => game.pick_team(params[:team])
-    end
-    
-    if player
-      
-        #update player info, add game information.
-        #player.update(:game_layer_id=>game.layer_id,:team => game.pick_team('runner'))
-        #broadcast to socket.io
-        #session[:id]=player.id
-        
-        socketIO.broadcast( 
-                           { 
-                            :channel=> params[:layer_id],             
-                            :data=>{
-                                    :textMassage=>{:content=>"#{player.name} join the game"},
-                                    :player=>{
-                                        :id=> player.id,
-                                        :name=> player.name,
-                                        :points_cache => player.points_cache,
-                                        :team => player.team.name
-                                    }
-                            }
-                           }.to_json)
-    end
-    {'team_name' => player.team.name, 'user_id' => player.id}.to_json
-      
+    {:player => players}.to_json
   end
     
-  post '/create/player/runner' do
-      player = Player.create :email => params[:email], :name => params[:name].upcase, :game_layer_id => 0, :team_id => 0
-      #player.save
-     
-      {:player_id=>player.id}.to_json
-    
-  end
 
-
+  # A easy way to go back
   get '/game/:layer_id/?' do
     @game = Game.first :layer_id => params[:layer_id]
       
@@ -905,7 +382,7 @@ end
     if !player 
         #mobile users store id information in params 
         player = Player.first :id => params[:id], :game => @game
-        puts "find player #{params[:id]}"
+        puts "Try to find player #{params[:id]}"
         
     end
     
@@ -929,70 +406,367 @@ end
     @user_initials = player ? player.name : ''
     erb :'index'
   end
+  
+  get '/game/mobile/:layer_id/messages' do
+	@game = Game.first :layer_id => params[:layer_id]
+    #mobile users store id information in params 
+    player = Player.first :id => params[:id], :game => @game
+    @user_id = player.id
+    @user_initials = player ? player.name : ''
+    erb :'index_user_msgs', :layout => :'layout_user_msgs'
+	
+   end
 
 
-
-  get '/replay/:layer_id/?' do
+  
+  get '/game/mobile/:layer_id/?' do
     @game = Game.first :layer_id => params[:layer_id]
-    @user_id = nil
-    @user_team = 'replay'
-    @user_initials = ''
+    #mobile users store id information in params 
+    player = Player.first :id => params[:id], :game => @game
     
-    erb :'index'
+    if player
+    	@user_id = player.id
+   	    @user_initials = player ? player.name : ''
+   	end 
+   	
+    erb :'index_user', :layout => :'layout_user'
+  end
+  
+  
+  get '/test' do
+  	erb :'test'
+  end
+  
+  get '/game/:layer_id/dashboard' do
+    @game = Game.first :layer_id => params[:layer_id]
+   
+    erb :'dashboard'
   end
 
-  def update_score(game)
-      
-      scores = {}
-      game.players.each do |player|
-          scores[player.id] = player.points_cache
-      end
+
+
+  get '/replay/:layer_id/:filename' do
+  	 @game = Game.first :layer_id => params[:layer_id]
+  	  
+     #@replay_data = File.read("logs/#{params[:filename]}")
+     @replay_file=params[:filename]
+    erb :'replay'
+  end
+  
+  
+  #######################    mapeditor   ####################
+  post "/admin/games/:layer_id/setGameArea" do
+  		$game_area_top_left[Integer(params[:layer_id])]={:lat => Float(params[:latitude]),:lng=> Float(params[:longitude]) }
+  		return { :status => :ok }.to_json
+  end
+  
+  
+   get '/admin/games/new' do
+    @game = Game.new
+    erb :'admin/games/new', :layout => :'admin/layout'
   end
 
-  def get_truck(layer_id)
-      game=Game.first :layer_id=>layer_id
-      team = game.teams :name=>"truck"
-      
-      #only one truck player shoud be in the team 
-      truck= team.players.first
-      return truck
+  get '/admin/games/:id/mapeditor' do
+    @game = Game.get params[:id]
+    
+    if $game_area_top_left[@game.layer_id]
+    	@top_left_latitude = $game_area_top_left[@game.layer_id][:lat]
+    	@top_left_longitude = $game_area_top_left[@game.layer_id][:lng]
+    else
+    	@top_left_latitude = DEFAULT_SIM_LAT
+    	@top_left_longitude = DEFAULT_SIM_LNG
+    end
+    
+    puts @top_left_latitude
+    puts @top_left_longitude
+   
+    erb :'admin/games/mapeditor', :layout => false
   end
 
-  def get_controller(layer_id)
-      game=Game.first :layer_id=>layer_id
-      team = game.teams :name=>"controller"
+  post '/admin/games' do
+    game = Game.new params[:game]
+    game.save
+    redirect "/admin/games/#{game.layer_id}/mapeditor"
+  end
+
+
+  get '/admin/games/:layer_id/setup.json' do
+    content_type :json
+    @game = Game.get params[:layer_id]
+    boxes =[]
+	radiation = []
+    task = []
+    dropoffpoint = []
       
-      #only one truck player shoud be in the team 
-      controller= team.players.first
-      return controller 
+	
+	#obsolate now
+    @game.boundings.each do |p|
+        boxes<<{
+            :id=>p.id,
+            :neLatitude => p.neLatitude.to_s('F'),
+            :neLongitude => p.neLongitude.to_s('F'),
+            :swLatitude => p.swLatitude.to_s('F'),
+            :swLongitude => p.swLongitude.to_s('F')
+        }
+    end
+      
+    @game.tasks.each do |t|
+          task<<{
+              :id=>t.id,
+              :latitude => t.latitude.to_s('F'),
+              :longitude => t.longitude.to_s('F'),
+			  :type => t.type,
+              :state => t.state,
+              :requirement => t.requirement,
+              :players => t.players
+              
+          }
+    end
+    
+    @game.dropoffpoints.each do |d|
+          dropoffpoint<<{
+              :id=>d.id,
+              :latitude => d.latitude.to_s('F'),
+              :longitude => d.longitude.to_s('F'),
+			  :radius => d.radius,
+          }
+    end
 
-  end 
+      
+      {:boundingBoxes=>boxes,:radiationBits=>radiation,:tasks=>task,:dropoffpoints=>dropoffpoint}.to_json
+      
+  end
+  
+  #######################    user management   ####################
+  
+  # TODO: mobile game join 
 
-  def endGame(game)
-    game.update(:is_active=>1)
+  post '/game/:layer_id/join' do
+    content_type :json
+    
+    game = Game.first :layer_id => params[:layer_id]
+    
+    player_id = params[:id]
+    puts "client try to join game"
+      
+    if player_id
+        player = game.players.first :id => player_id
+        
+        if player
+            return {:status=>"ok"}.to_json
+        else
+            return {:error=>"your info not found, game may have been reset, try logout and login again"}.to_json
+        end
+        
+    
+    end 
+      
+    if params[:role_id]==nil
+        return {:error=>"error no role_id supplied"}.to_json
+    elsif params[:email]==nil
+    	return {:error=>"invalid email"}.to_json
+    elsif params[:name]==nil
+    	return {:error=>"invalid name"}.to_json
+    elsif params[:initials]==nil
+    	return {:error=>"invalid initials"}.to_json
+    else
+        player = game.players.create  :initials => params[:initials], :name => params[:name], :skill => params[:role_id], :team=>game.pick_team("runner")#team is a legacy
+    end
+      
+    
+    if player
+      
+        #update player info, add game information.
+        #player.update(:game_layer_id=>game.layer_id,:team => game.pick_team('runner'))
+        #broadcast to socket.io
+        #session[:id]=player.id
+        
+        player.broadcast(socketIO)
+        player.broadcast_health(socketIO)
+        
+        
+        
+        socketIO.broadcast( 
+                           { 
+                            :channel=> params[:layer_id],             
+                            :data=>{
+                                    :textMassage=>{:content=>"#{player.name} join the game"}
+                           	}
+                           }.to_json)
+    end
+    {'skill' => player.skill_string(), 'user_id' => player.id}.to_json
+      
+  end
+  
+  post '/game/:layer_id/logout' do
+    
+    #delete user from database
+    game=Game.first :layer_id=>params[:layer_id]
+    player=game.players.first :id => params[:id]
+    
+   
+    
     socketIO.broadcast( 
                        { 
                        :channel=> params[:layer_id],             
-                       :data=>{
-                       :system=>"end"
-                       }
+                         :data=>{
+                            :cleanup=>{
+                                :player=>[player.id]
+                            }
+                         }
                        }.to_json)
-    @games = Game.all
+    player.destroy
     session.clear
+    
+   
+    {:status=> "ok"}.to_json
+              
+    
+  end
+  
+  #######################    game management   ####################
+  
+  get '/games/list' do
+    games=[]
+    Game.all.each do |g|
+        games << {"layer_id"=> g.layer_id , "name"=> g.name, "description"=> "", "is_active"=>g.is_active}
+
+    end
+    
+    {"games"=> games}.to_json
   end 
 
-end
+  get '/admin/games/:layer_id/start' do
+    game=Game.first :layer_id=>params[:layer_id]
+    if game.is_active!= -1
+        return {:error=>"game already begin"}.to_json
+        
+    else
+        game.update(:is_active=>0)
+		
+		#CHANGE TO ADAPT TO GRID SIZE (400/X)
+		#Library Jubilee Campus (debugging) 52.953664,-1.188509
+		#Wollaton Park 52.9491938, -1.2144399
+		#North of Jubilee campus 52.956046,-1.18878
+		if $game_area_top_left[game.layer_id] == nil
+        	$simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", DEFAULT_SIM_LAT, DEFAULT_SIM_LNG, 8, Time.now, 0.3) #last para in mins
+        else
+        	$simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", 
+        												  $game_area_top_left[game.layer_id][:lat], 
+        												  $game_area_top_left[game.layer_id][:lng], 
+        												  8, 
+        												  Time.now, 
+        												  0.3)
+        end
+        
+        
+        
+        Thread.abort_on_exception = true
+         
+        $mainloops[game.layer_id]  = Thread.new {
+        	count=0
+        	
+        	game_id=params[:layer_id]
+        	#6 sec waiting, lett clients get ready
+        	sleep 6
+            
+            while(game.is_active==0) do
+            	#?seems cg will release game ob, so assgin a new one
+                game=Game.first :layer_id=>game_id
+                puts "game #{game_id}, loop running count #{count}"
+                #initial update of task
+                
+                if count==1 
+                	game.tasks.each do |t|
+                		t.broadcast(socketIO);
+                	end 
+                end
+                
+                update_game(game)
+				
+				if count%6==0
+                    #diffFrame can be nil, (when there is no diff between two frames) 
+					diffFrame=$simulations[game.layer_id].getIndexedDiffFrame(Time.now)
+					
+					if diffFrame
+                    	puts "heat map redraw in this loop"
+                    	socketIO.broadcast( 
+                                       { 
+                                       :channel=> "#{game_id}-1",             
+                                       :data=>{
+                                       #:heatmap=>@simulation.getTimeFrameWithLatLng(Time.now)
+                                        :heatmap=>diffFrame
+                                       }
+                                       }.to_json)
+                    end
 
-#-modification discarded function 
-#post '/trigger'
-#post '/admin/games/:layer_id/new_pellet.json' do
-#post '/admin/games/:layer_id/move_pellet.json' do
-#post '/admin/games/:layer_id/delete_pellet.json' do
-#post '/admin/games/:layer_id/batch_create_pellets.json' do
-#post '/admin/games/:layer_id/set_pellet_value.json' do
-#post '/admin/games/:layer_id/set_pellet_text.json' do
-#post '/contact_submit' do 
-#get '/game/:layer_id/player/:geoloqi_user_id' do
-#get '/authorize' do
-#def require_login
-#def geoloqi
+                    
+                end
+                
+                count=count+1
+                sleep 1
+                
+            end
+        }
+        
+        game.broadcast(socketIO, "start")
+        
+       
+        @games = Game.all
+        
+        erb :'admin/games/index', :layout => :'admin/layout'
+    end
+    
+    
+  end 
+  
+  put '/admin/games/:layer_id/reset' do
+    game = Game.get params[:layer_id]
+      game.update(:is_active=>-1)
+    #result = geoloqi_app.get 'place/list', :layer_id => game.layer_id, :limit => 0
+      game.players.each do |p|
+          p.destroy
+      end 
+	  game.tasks.each do |t|
+          t.destroy
+      end 
+      
+      
+      newDir="session-#{params[:layer_id]}-#{Time.now.to_s}"
+      Dir.chdir("logs")
+      Dir.mkdir(newDir)
+      
+      Dir.glob("log-#{params[:layer_id]}*").each do |f|
+      		system('mv', f, "#{newDir}/#{f}")
+      end
+      
+      Dir.chdir("..")
+      
+      
+      game.broadcast(socketIO,"reset")
+    
+      redirect '/admin/games'
+  end
+  
+   ############fall back plan#####################
+  post '/game/:layer_id/postLocation' do
+  	game = Game.first :layer_id => params[:layer_id]
+  	playerId = params[:id]
+    player = game.players.first :id => playerId
+    #current_exposure = $simulations[params[:layer_id]].getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
+    #exposure = player.exposure + current_exposure
+    player.latitude=params[:latitude]
+    player.longitude=params[:longitude]
+    player.save
+    {:status=> :ok}.to_json
+  end
+  
+  
+  post '/game/:layer_id/getReading' do
+  	game = Game.first :layer_id => params[:layer_id]
+    current_exposure = $simulations[params[:layer_id]].getReadingByLatLong(params[:latitude], params[:longitude], Time.now)
+    {:current_exposure => current_exposure}.to_json
+  end
+
+
+end

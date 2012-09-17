@@ -98,7 +98,7 @@ function mainloop(){
                 
 
     //move a truck along a path
-    var path=[helper.player,{lat:52.9542228,lng:-1.1877573},{lat:52.9544232,lng:-1.189549}];
+    var path=[helper.player,{lat:52.9542228,lng:-1.1877573},{lat:52.9536905,lng:-1.1885117},{lat:52.9542228,lng:-1.1877573},{lat:52.9544232,lng:-1.189549}];
     var section=0;
     
     //go along next section when previous section finished.
@@ -182,24 +182,29 @@ function moveOneStep() {
 }
 
 //join game
-helper.join('agent','a@agent.com','truck', function(p){
+helper.join('agent','a@agent.com','truck',1, function(p){
     
     
     if (p.user_id != null){
         //wait for starting signal 
-        console.log("wait for starting signal ");
+        /*console.log("wait for starting signal ");
         
         socket.on('data', function(data) {
             if(data.system == "start"){
                 game_playing=true;
                 console.log("start playing");
                 
-                //initialize
-                helper.player=p;
-                setHandler();
-                mainloop();
+                
             }
-        });
+        });*/
+        
+        //initialize
+        helper.player=p;
+        setHandler();
+        mainloop();
+        
+        //console.log("game join successful");
     }
+    console.log(p);
 });
 

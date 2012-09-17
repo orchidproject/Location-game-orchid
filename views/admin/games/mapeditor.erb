@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>PacMap Editor</title>
+	<title>Atomic Orchid Map Editor</title>
 	<style type="text/css">
 		body {
 			padding: 0;
@@ -64,7 +64,6 @@
 
 
 
-
 var cg = {
 	s: function(w,h) {
 		return new google.maps.Size(w,h);
@@ -113,8 +112,22 @@ var savedBoundingBox=[];
 var tempPointOne;
 var tempPointTwo;
 
+
+
+
+var chosen_task_type = 0;
+
+function addTask(value) {
+	
+	chosen_task_type = value;
+	
+	
+}
+
+//this fuction currently does nothing
+//bounding box is obsolate
 function addBoundingBox(){
-    
+    setGameArea();
     $(boundingBoxes).each(
         function(i,box){
     
@@ -135,6 +148,68 @@ function addBoundingBox(){
     });
 }
 
+function setGameArea(){
+	$.post("/admin/games/"+layerId+"/setGameArea", {
+                latitude: $("#top_left_lat").val(),
+                longitude: $("#top_left_lng").val()
+            }, function(data){
+                if(data.status != "ok") {
+                    alert("Something went wrong! :(");
+                    window.location = window.location;
+                }
+                else{
+                     window.location = window.location;
+                }
+            }, "json");
+}
+
+
+//this function has been changed to adapt task objects
+function addRadiationBits(){
+    
+    $(radiationBits).each(
+        function(i,bit){
+    
+            $.post("/admin/games/"+layerId+"/addTask", {
+                latitude: bit[0].lat(),
+                longitude: bit[0].lng(),
+                task_type: bit[1]
+            }, function(data){
+                if(data.status != "ok") {
+                    alert("Something went wrong! :(");
+                    window.location = window.location;
+                }
+                else{
+                     window.location = window.location;
+                }
+            }, "json");
+    });
+}
+
+function addDropOffPoints(){
+    
+    $(dropoffpoints).each(
+        function(i,bit){
+    
+            $.post("/admin/games/"+layerId+"/addDropOffPoint", {
+                latitude: bit[0].lat(),
+                longitude: bit[0].lng(),
+                radius: bit[1]
+            }, function(data){
+                if(data.status != "ok") {
+                    alert("Something went wrong! :(");
+                    window.location = window.location;
+                }
+                else{
+                     window.location = window.location;
+                }
+            }, "json");
+    });
+}
+
+
+
+
 function clearBoundingBox(){
     $.get("/admin/games/"+layerId+"/clearBoundingBox",
         function(data){
@@ -148,122 +223,252 @@ function clearBoundingBox(){
 		}, "json");
 }
 
-function receiveSavedBoundingBox(box){
-    var bounds = new google.maps.LatLngBounds();
-    var swLocation= new google.maps.LatLng(box.swLatitude,box.swLongitude);
-    var neLocation= new google.maps.LatLng(box.neLatitude,box.neLongitude);
-    var bounds= new google.maps.LatLngBounds(swLocation,neLocation);
-                    
-    var rectangle;  
-    rectangle = new google.maps.Rectangle();
-    var rectOptions = {
-            strokeColor: "#0000FF",
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: "#0000FF",
-            fillOpacity: 0.35,
-            map: map,
-            bounds: bounds,
-            clickable:false
-    };
-    rectangle.setOptions(rectOptions);
-    savedBoundingBox.push(rectangle);
+function clearRadiationBits(){
+    $.get("/admin/games/"+layerId+"/clearRadiationBit",
+        function(data){
+			if(data.status != "ok") {
+				alert("Something went wrong! :(");
+				window.location = window.location;
+			}
+            else{
+                window.location.reload();
+            }
+		}, "json");
+}
+
+// function receiveSavedBoundingBox(box){
+//     var bounds = new google.maps.LatLngBounds();
+//     var swLocation= new google.maps.LatLng(box.swLatitude,box.swLongitude);
+//     var neLocation= new google.maps.LatLng(box.neLatitude,box.neLongitude);
+//     var bounds= new google.maps.LatLngBounds(swLocation,neLocation);
+//                     
+//     var rectangle;  
+//     rectangle = new google.maps.Rectangle();
+//     var rectOptions = {
+//             strokeColor: "#0000FF",
+//             strokeOpacity: 0.8,
+//             strokeWeight: 2,
+//             fillColor: "#0000FF",
+//             fillOpacity: 0.35,
+//             map: map,
+//             bounds: bounds,
+//             clickable:false
+//     };
+//     rectangle.setOptions(rectOptions);
+//     savedBoundingBox.push(rectangle);
+// 
+// }
+
+function receiveRadiationBit(bit){
+
+		chosen_task_type = bit.type;
+
+		var taskIcon= getTaskIcon(chosen_task_type);
+		point = new google.maps.LatLng(bit.latitude,bit.longitude);
+                
+    	var marker = new google.maps.Marker({
+                	position: point,
+                	map: map,
+                	icon: taskIcon
+        });
 
 }
 
+function receiveDropoffpoints(bit){
+
+		point = new google.maps.LatLng(bit.latitude,bit.longitude);
+                	
+        var circle = new google.maps.Circle({
+                center:point,
+  				map: map,
+  				radius: bit.radius,    
+  				fillColor: '#0000FF',
+  				strokeColor: '#0000FF'
+		});
+
+}
+
+
 var layerId = "<%= @game.layer_id %>";
+var radiationBits = [];
+var dropoffpoints = [];
+
+
+
+//add a point for left top corner?
+function receiveBounding(data) {
+//var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
+// var lat_sw=52.94539363811494
+// 	var long_sw=-1.2085589719746395
+// 	
+// 	var lat_se=52.94539363811494
+// 	var long_se=-1.2144399
+// 	
+// 	var lat_nw=52.9491938
+// 	var long_nw=-1.2144399
+// 	
+// 	var lat_ne=52.9491938
+// 	var long_ne=-1.2085589719746395
+// 	
+// 	var path = [
+//         new google.maps.LatLng(lat_sw,long_sw),
+//         new google.maps.LatLng(lat_se,long_se), 
+//         new google.maps.LatLng(lat_nw,long_nw),
+//         new google.maps.LatLng(lat_ne,long_ne),
+//         new google.maps.LatLng(lat_sw,long_sw),
+//     ];
+// 	
+// 	var options= {
+//             strokeColor: "#FF0000",
+//             strokeOpacity: 0.8,
+//             strokeWeight: 2,
+//             path:path    
+//     }	
+// 	var rect = new google.maps.Polyline();
+// 	rect.setOptions(options);
+// 	rect.setMap(map);
+}
 
 $(function(){
 
 	var mapOptions = {
 		zoom: 15,
 		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
-		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		mapTypeControl: true
+		mapTypeId: google.maps.MapTypeId.HYBRID, //jef
+ 		mapTypeControl: true
 	};
 	
 	// Create the main map
 	map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
+	
 	$.getJSON("/admin/games/"+layerId+"/setup.json", {
 	}, function(data){
 	
-		$(data.boundingBoxes).each(function(i, box){
-			receiveSavedBoundingBox(box);
+		/*$(data.radiationBits).each(function(i, bit){
+			receiveRadiationBit(bit);
+		});*/
+        
+        
+        //
+        $(data.tasks).each(function(i, bit){
+			receiveRadiationBit(bit);
 		});
+		
+		$(data.dropoffpoints).each(function(i, bit){
+			receiveDropoffpoints(bit);
+		});
+		
+		receiveBounding(data.bounding);
+		
 	});
 	
 	GameMap.fitToRadius(<%= @game.radius %>);
 	
-	// Right click context menu
+	
+	 	
 	google.maps.event.addListener(map, 'rightclick', function(event) {
-                if (tempPointOne==null){
-                    tempPointOne=event.latLng;
+                if (chosen_task_type<100){
+                	var taskIcon= getTaskIcon(chosen_task_type);
+                	var icon = new google.maps.MarkerImage("/img/task_icon1.png", playerIconSize, playerIconOrigin, playerIconAnchor);
+                	tempPointOne=event.latLng;
+                	point = new google.maps.LatLng(tempPointOne.lat(),tempPointOne.lng());
+                
+                	var marker = new google.maps.Marker({
+                		position: point,
+                		map: map,
+                		icon: taskIcon
+                	});
+                	radiationBits.push([point,chosen_task_type]); 
                 }
-                else{
-                    tempPointTwo=event.latLng;
-                    //make it sw ne
-                    if(tempPointOne.lat()>tempPointTwo.lat()){
-                        var temp=tempPointOne;
-                        tempPointOne=tempPointTwo;
-                        tempPointTwo=temp;
-                       
-                    }
-                    if(tempPointOne.lng()>tempPointTwo.lng()){
-                            temp= tempPointOne.lng();
-                            tempPointOne= new google.maps.LatLng(tempPointOne.lat(),tempPointTwo.lng());
-                            tempPointTwo= new google.maps.LatLng(tempPointTwo.lat(),temp);
-                    }
-                    var bounds= new google.maps.LatLngBounds(tempPointOne,tempPointTwo);
-                    
-                    
-                    var rectangle;  
-                    rectangle = new google.maps.Rectangle();
-                    var rectOptions = {
-                        strokeColor: "#FF0000",
-                        strokeOpacity: 0.8,
-                        strokeWeight: 2,
-                        fillColor: "#FF0000",
-                        fillOpacity: 0.35,
-                        map: map,
-                        bounds: bounds,
-                        clickable:false
-                    };
-                    rectangle.setOptions(rectOptions);
-                    boundingBoxes.push(bounds);
-                    
-                    tempPointOne=null;
-                    tempPointTwo=null;
+                else if(chosen_task_type==100){
+                	tempPointOne=event.latLng;
+                	point = new google.maps.LatLng(tempPointOne.lat(),tempPointOne.lng());
+                	
+                	var radius=Number($("#drop-off-radius").val());
+                	var circle = new google.maps.Circle({
+                		center:point,
+  						map: map,
+  						radius: radius,    
+  						fillColor: '#0000FF',
+  						strokeColor: '#0000FF'
+					});
+                	dropoffpoints.push([point,radius]);
                 }
 		
 		
-		// Immediately create the pellet and open up the editor for it
-		/*
-		
-		$.post("/admin/games/"+layerId+"/new_pellet.json", {
-			points: 10,
-			latitude: event.latLng.lat(),
-			longitude: event.latLng.lng()
-		}, function(data){
-			addNewPellet(data);
-			startEditingPoint(data.place_id);
-		}, "json");
-                */
 
 	});
+	
+	// Right click context menu
+	// google.maps.event.addListener(map, 'rightclick', function(event) {
+//                 if (tempPointOne==null){
+//                     tempPointOne=event.latLng;
+//                 }
+//                 else{
+//                     tempPointTwo=event.latLng;
+//                     //make it sw ne
+//                     if(tempPointOne.lat()>tempPointTwo.lat()){
+//                         var temp=tempPointOne;
+//                         tempPointOne=tempPointTwo;
+//                         tempPointTwo=temp;
+//                        
+//                     }
+//                     if(tempPointOne.lng()>tempPointTwo.lng()){
+//                             temp= tempPointOne.lng();
+//                             tempPointOne= new google.maps.LatLng(tempPointOne.lat(),tempPointTwo.lng());
+//                             tempPointTwo= new google.maps.LatLng(tempPointTwo.lat(),temp);
+//                     }
+//                     var bounds= new google.maps.LatLngBounds(tempPointOne,tempPointTwo);
+//                     
+//                     
+//                     var rectangle;  
+//                     rectangle = new google.maps.Rectangle();
+//                     var rectOptions = {
+//                         strokeColor: "#FF0000",
+//                         strokeOpacity: 0.8,
+//                         strokeWeight: 2,
+//                         fillColor: "#FF0000",
+//                         fillOpacity: 0.35,
+//                         map: map,
+//                         bounds: bounds,
+//                         clickable:false
+//                     };
+//                     rectangle.setOptions(rectOptions);
+//                     boundingBoxes.push(bounds);
+//                     
+//                     tempPointOne=null;
+//                     tempPointTwo=null;
+//                 }
+// 		
+// 		
+// 		// Immediately create the pellet and open up the editor for it
+// 		/*
+// 		
+// 		$.post("/admin/games/"+layerId+"/new_pellet.json", {
+// 			points: 10,
+// 			latitude: event.latLng.lat(),
+// 			longitude: event.latLng.lng()
+// 		}, function(data){
+// 			addNewPellet(data);
+// 			startEditingPoint(data.place_id);
+// 		}, "json");
+//                 */
+// 
+// 	});
 
-	var placeHolderMarker = new google.maps.Marker({
-		draggable: true,
-		raiseOnDrag: false,
-		icon: coins[10]["grey"]
-	});
-	google.maps.event.addListener(placeHolderMarker, "dragend", function(event) {
-		$("#newPointLat").val(event.latLng.lat());
-		$("#newPointLng").val(event.latLng.lng());
-		$("#coordinates").html(
-			(Math.round(event.latLng.lat()*10000)/10000) + ", " + (Math.round(event.latLng.lng()*10000)/10000)
-		);
-	});
+	// var placeHolderMarker = new google.maps.Marker({
+// 		draggable: true,
+// 		raiseOnDrag: false,
+// 		icon: coins[10]["grey"]
+// 	});
+// 	google.maps.event.addListener(placeHolderMarker, "dragend", function(event) {
+// 		$("#newPointLat").val(event.latLng.lat());
+// 		$("#newPointLng").val(event.latLng.lng());
+// 		$("#coordinates").html(
+// 			(Math.round(event.latLng.lat()*10000)/10000) + ", " + (Math.round(event.latLng.lng()*10000)/10000)
+// 		);
+// 	});
 
 	pointEditorInfoWindow = new google.maps.InfoWindow({
             content: $("#pointToolbar").html(),
@@ -283,19 +488,53 @@ $(function(){
 
 
 </script>
+<link rel="stylesheet" href="/bootstrap.css">
 </head>
 
 <body>
 
 	<div id="lineToolbar">
+	
+		<div style="padding: 3px;">
+		  <div style="padding: 3px;">
+          <p><h5>Deploy target types</h5>To place target type on map click button once and then right click on location on map.</p>
+		  </div>
+          <input class="btn" type="button" value="Radioactive" onclick="addTask(0)"/>
+          <input class="btn" type="button" value="Animal" onclick="addTask(1)"/>
+          <input class="btn" type="button" value="Patient" onclick="addTask(2)"/>
+          <input class="btn" type="button" value="Fuel tank" onclick="addTask(3)"/>
+		</div>
+		
+		<div style="padding: 3px;">
+		  <div style="padding: 3px;">
+          <p><h5>Deploy drop-off points</h5></p>
+		  </div>
+		  <input class="btn" type="button" value="deploy points" onclick="addTask(100)"/>
+          radius:
+          <input  type="text" value=10 id="drop-off-radius" />
+          
+		</div>
+		
+		<div style="padding: 3px;">
+		  <div style="padding: 3px;">
+          <p><h5>Top left corner of game area</h5>Please put in vaild lat lng, or the system will crash.</p>
+		  </div>
+		  latitude:
+          <input  type="text" value="<%= @top_left_latitude %>" id="top_left_lat" />
+          longitude:
+          <input  type="text" value="<%= @top_left_longitude %>" id="top_left_lng" />   
+		</div>
+		
 		<div style="padding: 3px;">
 			<!--<input type="button" value="New Line" id="newLine" />-->
 			<!--<input type="button" value="Cancel Line" id="editingCancel" disabled="disabled" />-->
-          <input type="button" value="Save" onclick="addBoundingBox();"/>
-           <input type="button" value="Clear" onclick="clearBoundingBox();"/>
-		  <input type="button" value="Close" onclick="window.location = '/admin/games';"/>
+          <input class="btn" type="button" value="Save" onclick="addBoundingBox();addRadiationBits();addDropOffPoints()"/>
+           <input class="btn" type="button" value="Clear" onclick="clearBoundingBox();clearRadiationBits()"/>
+		  <input class="btn" type="button" value="Close" onclick="window.location = '/admin/games';"/>
 		</div>
+		
 	</div>
+	
 
 	<div style="display: none;" id="pointToolbar"><div style="width: 180px; padding-top: 10px;">
 

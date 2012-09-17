@@ -8,20 +8,26 @@ require 'rack/methodoverride'
 require "net/http"
 require "uri"
 
+
+require File.dirname(__FILE__) + '/simulation.rb'
+
 class SocketIO
     
     def initialize(url, port)
         @Socket_url=url
         @Socket_port=port
-        puts "#{@Socket_url}:#{@Socket_port}/broadcast"
+        puts "#{@Socket_url}:#{@Socket_port}/broadcast socket.io init"
     end
         
     def broadcast (data)
         url = @Socket_url
-        puts url
+        
         
         req = Net::HTTP::Post.new("/broadcast", initheader = {'Content-Type' =>'application/json'})
         req.body = {:data => data}.to_json
+        
+        #puts "broadcast to #{url}"
+        
         response = Net::HTTP.new(@Socket_url, @Socket_port).start {|http| http.request(req) }
         {:status=>"ok"}
 
@@ -53,10 +59,6 @@ class Controller < Sinatra::Base
     
     def socketIO
         @_socketIO ||= SocketIO.new SOCKET_URL,SORKET_PORT
-    end
-
-    def geoloqi_app
-      @_geoloqi_app ||= Geoloqi::Session.new :access_token => APPLICATION_ACCESS_TOKEN
     end
     
     def onclick_delete(msg='Are you sure?')
@@ -102,7 +104,7 @@ class Controller < Sinatra::Base
 
   configure do
     use Rack::MobileDetect
-    register Sinatra::Synchrony
+    
     if test?
       set :sessions, false
     else
@@ -117,29 +119,34 @@ class Controller < Sinatra::Base
     set :admin_usernames, {}
     
     mime_type :woff, 'application/octet-stream'
+    
+    #setup including dir
     Dir.glob(File.join(root, 'models', '**/*.rb')).each { |f| require f }
     config_hash = YAML.load_file(File.join(root, 'config.yml'))[environment.to_s]
     raise "in config.yml, the \"#{environment.to_s}\" configuration is missing" if config_hash.nil?
-    GA_ID = config_hash['ga_id']
-    APPLICATION_ACCESS_TOKEN = config_hash['oauth_token']
-    AWS_KEY = config_hash['aws_key']
-    AWS_SECRET = config_hash['aws_secret']
-    Faraday.default_adapter = :em_synchrony
-    Geoloqi.config :client_id => config_hash['client_id'],
-                   :client_secret => config_hash['client_secret'],
-                   :use_hashie_mash => true,
-                   :adapter => :em_synchrony
+
+    
     DataMapper.finalize
     DataMapper.setup :default, ENV['DATABASE_URL'] || config_hash['database']
     # DataMapper.auto_upgrade!
     DataMapper::Model.raise_on_save_failure = true
-    settings.admin_usernames = config_hash['admin_users'].nil? ? [] : config_hash['admin_users'].split(',')
+    GA_ID = config_hash['ga_id']
       
     SOCKET_URL = config_hash['socket_io_url']
     SORKET_PORT = config_hash['socket_io_port']
-
-     
+    DEFAULT_SIM_LAT = config_hash['default_sim_lat']
+    DEFAULT_SIM_LNG = config_hash['default_sim_lng']
+    
+    #sperating game instances
+    $simulations=[]
+    $mainloops=[]
+    $game_area_top_left=[]
+    
+    #puts "self instance number (for experiment)"
+    #ßputs self.object_id
+    
   end
+
 end
 
 module Rack
@@ -161,3 +168,4 @@ class Array; def sum; inject( nil ) { |sum,x| sum ? sum+x : x }; end; end
 
 require File.join(Controller.root, 'controller.rb')
 require File.join(Controller.root, 'agent_utility.rb')
+require File.join(Controller.root, 'controller-utility.rb')

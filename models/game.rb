@@ -14,6 +14,9 @@ class Game
   has n, :teams
   has n, :players
   has n, :boundings
+  has n, :radiations
+  has n, :tasks
+  has n, :dropoffpoints
 
     
   def self.team_names
@@ -45,5 +48,17 @@ class Game
     points.each {|p| total += p}
     total
   end
+  
+  def broadcast(socketIO,signal)
+  	socketIO.broadcast( 
+                           { 
+                           :channel=> self.layer_id,             
+                           :data=>{
+                           :system=>signal
+                           }
+                           }.to_json)
+  
+  
+  end 
   
 end
