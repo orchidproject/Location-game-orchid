@@ -1,15 +1,15 @@
 <html>
+
   <head>
   	<title>Atomic Orchid Dashboard</title>
 	  <meta name="viewport" content="initial-scale=1.0">
   	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry"></script>
   	<script type="text/javascript" src="/game-common.js"></script>
-  	<script type="text/javascript" src="/config.js"></script>
-  	
+  	<script> SOCKET_IO_ADDRESS = "<%= @socket_io_url %>";</script>
   	
   	<% if request.path =~ /\/game\// %>
     		   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-  	           <script type="text/javascript" src="http://holt.mrl.nott.ac.uk:49991/socket.io/socket.io.js"></script>
+  	           <script type="text/javascript" src="<%= @socket_io_url %>/socket.io/socket.io.js"></script>
                <script type="text/javascript" src="/web_controller.js" ></script>
 			   <script type="text/javascript" src="/game_controller.js" ></script>
 			  	<link rel="stylesheet" type="text/css" href="/reset.css" />
@@ -20,10 +20,14 @@
     <% if request.path =~ /\/replay\// %>
     	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     	  <script src="/replay.js"></script>
+    	  <script src="/replay_control.js"></script>
 		  <script type="text/javascript" src="/game_controller.js" ></script>
+		  
 		  <link rel="stylesheet" type="text/css" href="/reset.css" />
 		  <link rel="stylesheet" type="text/css" href="/style.css" /> 
 		  <link type="text/css" rel="stylesheet" href="/chatstyle.css" />
+		  <link type="text/css" rel="stylesheet" href="/replay_panel.css" />
+		  
   	<% end %>
   	
 

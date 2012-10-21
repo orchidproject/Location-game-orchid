@@ -31,8 +31,19 @@ class Controller < Sinatra::Base
   get '/?' do
     erb :'splash', :layout => false
   end
+  
+  get '/admin/replay' do
+    @logs=[]
+  	Dir.glob("./logs/session*") do |fname|
+  		@logs<<File.basename(fname)
+  	end 
+    @action="replay"
+          
+    erb :'admin/games/index', :layout => :'admin/layout'
+  end
 
   get '/admin/games' do
+  	@action="games"
     @games = Game.all
           
       erb :'admin/games/index', :layout => :'admin/layout'
@@ -119,18 +130,28 @@ class Controller < Sinatra::Base
     
   end 
 
-  get '/get_log/:layer_id/' do
-    counter = 1
-    file = File.new("logs/#{params[:layer_id]}", "r")
-    log=""
-    while (line = file.gets)
-        log= "#{log}#{line}"
-        counter = counter + 1
+  get '/get_log/:folder/:log_id' do
+  
+  	#e.g. log-(:layer_id), log-(:layer_id)-2
+  	puts "logs/#{params[:folder]}/log*"
+  	file= nil
+    Dir.glob("logs/#{params[:folder]}/log*") do |fname|
+    	decompose = File.basename(fname).split("-")
+    	if decompose[2] == nil &&  params[:log_id] == "1" 
+    		file = fname
+    	elsif decompose[2] == "2" && params[:log_id] == "2" 
+    		file = fname
+    	end 
+    	
+    	puts decompose
     end
     
-    file.close
-      
+    
+    
+    #file = File.new("logs/#{params[:layer_id]}/log-1-2", "r")
+    log=File.read(file)
     log
+    
     
   end
   
@@ -439,18 +460,28 @@ end
   
   get '/game/:layer_id/dashboard' do
     @game = Game.first :layer_id => params[:layer_id]
+    @socket_io_url=SOCKET_CLIENT_REF
    
     erb :'dashboard'
   end
 
 
 
-  get '/replay/:layer_id/:filename' do
+  get '/replay/:filename' do
   	 @game = Game.first :layer_id => params[:layer_id]
-  	  
-     #@replay_data = File.read("logs/#{params[:filename]}")
+  	 #@replay_data = File.read("logs/#{params[:filename]}")
      @replay_file=params[:filename]
-    erb :'replay'
+   	 erb :'replay'
+  end
+  
+  get '/replay/:filename/delete' do
+  	 require 'fileutils'
+  	 file=params[:filename]
+  	 #file.gsub!("%"," ")
+  	 puts file
+     FileUtils.rm_rf("logs/#{file}")
+     redirect "/admin/replay"
+   	
   end
   
   

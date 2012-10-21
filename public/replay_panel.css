@@ -1,0 +1,86 @@
+ 
+/* CSS Document */
+
+ 
+#control-wrapper {
+	
+	position: absolute;
+	z-index: 2;
+	bottom: 50px;
+	right: 60px;
+	
+	opacity: 0.9;
+	background:#ffffff;
+	
+	border:1px solid #ACD8F0; 
+}
+
+
+/* CSS Document */
+
+ 
+#scroll-bar {
+	position: relative;
+	height:12;
+	top:13px;
+}
+
+
+
+#dot {	
+	position: absolute;
+	width:4;
+	height:10;
+	z-index: 2;
+	opacity: 0.9;
+	background:#ff0000;
+	z-index:100;
+	cursor:hand;
+}
+
+#bar {
+	
+	margin-top:2;
+	z-index: 2;
+	opacity: 0.9;
+	background:#E1E1E1;
+	width:300px;
+	height:5px;
+	
+	float:left;
+	
+}
+
+#time_display {
+	font-size:12px;
+	float: left;
+	width:50px;
+	height:12px;
+	background:#ffffff;
+}
+
+#speed_display {
+	font-size:12px;
+	float: left;
+	width:50px;
+	height:12px;
+	background:#ffffff;
+	margin-left:5px;
+	margin-top:10px;
+}
+
+.control {
+	position:relative;
+	margin-left:5px;
+	float:left;
+	overflow:hidden;
+	cursor:hand;
+}
+
+ 
+
+ 
+
+ 
+ 
+ 
