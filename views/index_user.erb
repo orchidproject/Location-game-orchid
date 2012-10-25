@@ -152,6 +152,7 @@ jQuery.extend({
  	var skill=  players[parseInt($("#user_id").val())].skill;
 
  	$("#current-target").html(getTaskImage(task_type));
+ 	
  	if(p in team){
  		if(team[p]!=$("#user_id").val()){
  			$("#team-mate").html(cg.imageSrc(initials,skill));
@@ -159,8 +160,8 @@ jQuery.extend({
  	}
  	
  	
- 	/*$("#current-target").html("<img src='/player/a/b/firefighter/map_icon.png' >");
-	 /*$("#team-mate").html("<img src='/img/victim.png' >");
+ 	/*$("#current-target").html("<img src='/player/a/b/firefighter/map_icon.png' >");*/
+	 /*$("#team-mate").html("<img src='/img/victim.png' >");*/
  }
 
 
