@@ -698,7 +698,7 @@ end
         	count=0
         	#6 sec waiting, lett clients get ready
         	sleep 6
-            g= Game.get(:layer_id=> g.layer_id)
+            g= Game.get g.layer_id
             while(g.is_active==0) do
                
                 puts "game #{g.layer_id}, loop running count #{count}"
