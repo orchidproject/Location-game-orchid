@@ -14,7 +14,7 @@ class Controller < Sinatra::Base
       					  
       		  :task=>{
              	:id => params["id"],
-             	:type=>param["type"],
+             	:type=>params["type"],
 			 	:requirement=>params["requirement"],
              	:description=> "",
              	:longitude => params["long"],
