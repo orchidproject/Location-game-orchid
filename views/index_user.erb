@@ -152,9 +152,9 @@ jQuery.extend({
  function update_status_bar(team,task_type){
  	
  	$("#current-target").html("<img src=" + getTaskImage(task_type) + ">");
- 	alert("hello");
+
  	for(p in team){
- 		alert("teammate:"+team[p]);
+ 		
  		if(team[p]!=$("#user_id").val()){
  			alert("teammate:"+team[p]);
  			var initials = players[parseInt(team[p])].initials;
@@ -163,9 +163,10 @@ jQuery.extend({
  			
  			alert("teammaty:"+initials);
  			alert("teammaty:"+skill);
+ 			//this do not work, unkown reason
  			//alert(cg.imageSrc(initials,skill));
- 			//alert(cg.imageSrc("ab","medic"));
- 			alert("/player/"+initials[0]+"/"+initials[1]+"/"+skill+"/map_icon.png");
+ 			
+ 			//alert("/player/"+initials[0]+"/"+initials[1]+"/"+skill+"/map_icon.png");
  			$("#team-mate").html("<img src='/player/"+initials[0]+"/"+initials[1]+"/"+skill+"/map_icon.png' >");
  		}
  	}
