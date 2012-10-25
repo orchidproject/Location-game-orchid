@@ -743,9 +743,9 @@ end
         game.broadcast(socketIO, "start")
         
        
-        @games = Game.all
+        #@games = Game.all
         
-        erb :'admin/games/index', :layout => :'admin/layout'
+        redirect '/admin/games'
     end
     
     
