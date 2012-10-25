@@ -159,7 +159,9 @@ jQuery.extend({
  			alert(team[p]);
  			var initials = players[parseInt($("#user_id").val())].initials;
  			var skill=  players[parseInt($("#user_id").val())].skill;
- 			if(skill==null || initials==null){alert("can not find player when updating status bar");}
+ 			
+ 			
+ 			alert(cg.imageSrc(initials,skill));
  			$("#team-mate").html(cg.imageSrc(initials,skill));
  		}
  	}
