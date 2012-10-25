@@ -6,6 +6,29 @@ class Controller < Sinatra::Base
         DataMapper.auto_migrate!
   end 
   
+  get '/test/task' do
+        socket.broadcast(
+      	 { 
+            :channel=> param["game_id"],     
+      		:data=>{
+      					  
+      		  :task=>{
+             	:id => param["id"],
+             	:type=>param["type"],
+			 	:requirement=>param["requirement"],
+             	:description=> "",
+             	:longitude => param["long"],
+             	:latitude => param["lat"],
+			 	:state => param["status"],
+			 	:players => param["players"]
+			  }
+			}
+         }.to_json)
+  end 
+  
+  
+  #####################################################
+  
   def default_headers
      headers = {'Content-Type' => 'application/json', 'User-Agent' => "ruby", 'Accept' => 'application/json'}
      headers
@@ -14,6 +37,10 @@ class Controller < Sinatra::Base
   
 
 
+  
+  
+  
+  
   before do
   	@current_page = request.path[/(\w|-)+/]
     response.headers['Access-Control-Allow-Origin'] = '*'
