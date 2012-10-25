@@ -124,7 +124,7 @@ function receiveTaskData(task){
 			}
         }
         
-        alert("test1");
+       
         //handle task status
         handleTaskStatus(task);
 }

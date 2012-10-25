@@ -48,6 +48,7 @@ function handleSocketData(dataStr) {
     }
     
     if(typeof data.task != "undefined") {
+    	alert("received task");
     	receiveTaskData(data.task);
     }
     
@@ -64,6 +65,8 @@ function handleSocketData(dataStr) {
         receivePlayerInfoData(data.player);
         
     }
+    
+    alert("received data");
     
     
     
