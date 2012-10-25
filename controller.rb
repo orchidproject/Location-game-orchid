@@ -698,6 +698,8 @@ end
         	count=0
         	#6 sec waiting, lett clients get ready
         	sleep 6
+        	puts g.layer_id
+        	puts Game
             g= Game.get g.layer_id
             while(g.is_active==0) do
                
