@@ -302,7 +302,7 @@ function handleTaskStatus(task){
 	alert("received task 5");
 	//"1,2,3"
 	var picked_up=false;
-	var p=task.players.split();
+	var p=task.players.split(",");
 	
 	for (index in p){
 		
