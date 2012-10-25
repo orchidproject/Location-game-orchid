@@ -698,11 +698,10 @@ end
         	count=0
         	#6 sec waiting, lett clients get ready
         	sleep 6
-        	puts "game_id #{g.layer_id}"
-        	puts "game_ob #{Game}"
-            g= Game.get g.layer_id
+        	
             while(g.is_active==0) do
-               
+                
+            	g= Game.get g.layer_id
                 puts "game #{g.layer_id}, loop running count #{count}"
                 #initial update of task
                 
