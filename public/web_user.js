@@ -11,6 +11,9 @@ $(document).ready(function() {
 
 function handleSocketData(dataStr) {
     
+    
+    alert("received data 1");
+    
     //var data = dataStr;
     //parse string from native app
   	var dataStr0 = jQuery.stringify(dataStr);
@@ -19,6 +22,9 @@ function handleSocketData(dataStr) {
 	var data = jQuery.parseJSON(dataStr1);
     //alert('health at ' + data.health.value);
     //alert("after parse"+jQuery.stringify(data));
+    
+    
+     alert("received data 2");
     
     if(typeof data.health != "undefined") {
     	//alert('entering health');
@@ -66,7 +72,7 @@ function handleSocketData(dataStr) {
         
     }
     
-    alert("received data");
+    
     
     
     
