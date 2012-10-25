@@ -694,30 +694,27 @@ end
         
         Thread.abort_on_exception = true
          
-        $mainloops[game.layer_id]  = Thread.new {
+        $mainloops[game.layer_id]  = Thread.new(game) { |g|
         	count=0
-        	
-        	game_id=params[:layer_id]
         	#6 sec waiting, lett clients get ready
         	sleep 6
             
-            while(game.is_active==0) do
-            	#?seems cg will release game ob, so assgin a new one
-                game=Game.first :layer_id=>game_id
+            while(g.is_active==0) do
+               
                 puts "game #{game_id}, loop running count #{count}"
                 #initial update of task
                 
                 if count==1 
-                	game.tasks.each do |t|
+                	g.tasks.each do |t|
                 		t.broadcast(socketIO);
                 	end 
                 end
-                puts game_id
-                update_game(game)
+                puts g
+                update_game(g)
 				
 				if count%6==0
                     #diffFrame can be nil, (when there is no diff between two frames) 
-					diffFrame=$simulations[game.layer_id].getIndexedDiffFrame(Time.now)
+					diffFrame=$simulations[g.layer_id].getIndexedDiffFrame(Time.now)
 					
 					if diffFrame
                     	puts "heat map redraw in this loop"
