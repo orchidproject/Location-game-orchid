@@ -701,7 +701,7 @@ end
             
             while(g.is_active==0) do
                
-                puts "game #{game_id}, loop running count #{count}"
+                puts "game #{g.layer_id}, loop running count #{count}"
                 #initial update of task
                 
                 if count==1 
