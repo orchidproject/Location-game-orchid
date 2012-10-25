@@ -30,7 +30,7 @@ var cg = {
 	}
 }
 
-
+alert(cg.imageSrc("ab","medic"));
 
 function getPlayerIcon(initials, skill) {
 
