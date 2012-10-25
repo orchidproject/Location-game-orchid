@@ -299,7 +299,7 @@ function clearAll(){
 
 
 function handleTaskStatus(task){
-	alert("received task 5");
+	alert(task.type);
 	//"1,2,3"
 	var picked_up=false;
 	var p=task.players.split(",");
