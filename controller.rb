@@ -709,7 +709,7 @@ end
                 		t.broadcast(socketIO);
                 	end 
                 end
-                puts g
+                
                 update_game(g)
 				
 				if count%6==0
