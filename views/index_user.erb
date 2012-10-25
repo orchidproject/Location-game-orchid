@@ -152,8 +152,8 @@ jQuery.extend({
  function update_status_bar(team,task_type){
  	
 	alert("receive task 4");
-	alert(getTaskIcon(task_type));
- 	$("#current-target").html("<img src=" + getTaskIcon(task_type) + ">");
+	alert(getTaskImage(task_type));
+ 	$("#current-target").html("<img src=" + getTaskImage(task_type) + ">");
  	
  	if(p in team){
  		if(team[p]!=$("#user_id").val()){
