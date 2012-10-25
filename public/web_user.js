@@ -11,8 +11,7 @@ $(document).ready(function() {
 
 function handleSocketData(dataStr) {
     
-    
-    alert("received data 1");
+
     
     //var data = dataStr;
     //parse string from native app
@@ -24,7 +23,7 @@ function handleSocketData(dataStr) {
     //alert("after parse"+jQuery.stringify(data));
     
     
-     alert("received data 2");
+    
     
     if(typeof data.health != "undefined") {
     	//alert('entering health');
@@ -54,8 +53,9 @@ function handleSocketData(dataStr) {
     }
     
     if(typeof data.task != "undefined") {
-    	alert("received task");
+    	alert("received task 1");
     	receiveTaskData(data.task);
+    	alert("received task 2");
     }
     
     if(typeof data.message != "undefined") {
