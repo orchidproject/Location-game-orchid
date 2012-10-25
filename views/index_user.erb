@@ -151,13 +151,12 @@ jQuery.extend({
  
  function update_status_bar(team,task_type){
  	
-	alert("receive task 4");
-	alert(getTaskImage(task_type));
  	$("#current-target").html("<img src=" + getTaskImage(task_type) + ">");
  	
  	if(p in team){
+ 		alert("teammate:"+team[p]);
  		if(team[p]!=$("#user_id").val()){
- 			alert(team[p]);
+ 			alert("teammate:"+team[p]);
  			var initials = players[parseInt($("#user_id").val())].initials;
  			var skill=  players[parseInt($("#user_id").val())].skill;
  			

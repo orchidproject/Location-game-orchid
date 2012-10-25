@@ -299,7 +299,7 @@ function clearAll(){
 
 
 function handleTaskStatus(task){
-	alert(task.type);
+	//alert(task.type);
 	//"1,2,3"
 	var picked_up=false;
 	var p=task.players.split(",");
@@ -308,7 +308,7 @@ function handleTaskStatus(task){
 		
 		var id=p[index];
 		
-		alert(p[index]);
+		
 		if(id==$("#user_id").val()){
 			update_status_bar(p,task.type);
 			break;
