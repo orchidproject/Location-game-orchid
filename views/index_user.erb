@@ -160,7 +160,8 @@ jQuery.extend({
  			var initials = players[parseInt($("#user_id").val())].initials;
  			var skill=  players[parseInt($("#user_id").val())].skill;
  			
- 			
+ 			alert("teammate:"+initials);
+ 			alert("teammate:"+skills);
  			alert(cg.imageSrc(initials,skill));
  			$("#team-mate").html(cg.imageSrc(initials,skill));
  		}
