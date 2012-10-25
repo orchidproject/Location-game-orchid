@@ -9,18 +9,18 @@ class Controller < Sinatra::Base
   get '/test/task' do
         socketIO.broadcast(
       	 { 
-            :channel=> param["game_id"],     
+            :channel=> params["game_id"],     
       		:data=>{
       					  
       		  :task=>{
-             	:id => param["id"],
+             	:id => params["id"],
              	:type=>param["type"],
-			 	:requirement=>param["requirement"],
+			 	:requirement=>params["requirement"],
              	:description=> "",
-             	:longitude => param["long"],
-             	:latitude => param["lat"],
-			 	:state => param["status"],
-			 	:players => param["players"]
+             	:longitude => params["long"],
+             	:latitude => params["lat"],
+			 	:state => params["status"],
+			 	:players => params["players"]
 			  }
 			}
          }.to_json)
