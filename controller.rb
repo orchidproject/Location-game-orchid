@@ -7,7 +7,7 @@ class Controller < Sinatra::Base
   end 
   
   get '/test/task' do
-        socket.broadcast(
+        socketIO.broadcast(
       	 { 
             :channel=> param["game_id"],     
       		:data=>{
