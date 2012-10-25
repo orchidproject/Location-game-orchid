@@ -159,11 +159,12 @@ jQuery.extend({
  			alert("teammate:"+team[p]);
  			var initials = players[parseInt(team[p])].initials;
  			var skill=  players[parseInt(team[p])].skill;
- 			
+ 			alert(cg.imageSrc("ab","medic"));
  			alert("teammate:"+initials);
  			alert("teammate:"+skill);
  			//alert(cg.imageSrc(initials,skill));
- 			alert(cg.imageSrc("ab","medic"));
+ 			
+ 			
  			$("#team-mate").html("<img src="+cg.imageSrc("ab","medic")+">");
  		}
  	}
