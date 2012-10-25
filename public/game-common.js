@@ -28,7 +28,7 @@ var cg = {
 	imageSrc: function(name, skill) {
 		return "/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png";
 	}
-}
+};
 
 alert(cg.imageSrc("ab","medic"));
 
