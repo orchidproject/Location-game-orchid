@@ -712,7 +712,7 @@ end
                 		t.broadcast(socketIO);
                 	end 
                 end
-                puts game
+                puts game_id
                 update_game(game)
 				
 				if count%6==0
