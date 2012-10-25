@@ -53,9 +53,9 @@ function handleSocketData(dataStr) {
     }
     
     if(typeof data.task != "undefined") {
-    	alert("received task 1");
+    	
     	receiveTaskData(data.task);
-    	alert("received task 2");
+    	
     }
     
     if(typeof data.message != "undefined") {

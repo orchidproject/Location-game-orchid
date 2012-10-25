@@ -307,8 +307,6 @@ function handleTaskStatus(task){
 	for (index in p){
 		
 		var id=p[index];
-		
-		
 		if(id==$("#user_id").val()){
 			update_status_bar(p,task.type);
 			break;
