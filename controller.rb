@@ -211,7 +211,7 @@ class Controller < Sinatra::Base
         return {:error=>"game not active"}.to_json
     else
         endGame(game)
-        erb :'admin/games/index', :layout => :'admin/layout'
+        redirect :'admin/games'
     end
   end
 
