@@ -296,23 +296,31 @@ function clearAll(){
 
 }
 
-
-
+var UNLOAD_TARGET=-1;
+var chosen_target=null;
 function handleTaskStatus(task){
 	//alert(task.type);
 	//"1,2,3"
 	var picked_up=false;
 	var p=task.players.split(",");
 	
+	
+	var handled = false;
 	for (index in p){
 		var id=p[index];
-		alert(id);
-		alert($("#user_id").val());
+		
+		
 		if(id==$("#user_id").val()){
-			alert("status bar updated");
+			//alert("status bar updated");
+			chosen_target=task;
 			update_status_bar(p,task.type);
+			handled=true;
 			break;
 		}
+	}
+	//if task not handled, but prevously added to status bar, then clear it
+	if(!handled&&(chosen_target.id==task.id)){
+		clear_status_bar();
 	}
 }
 

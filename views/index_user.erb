@@ -149,6 +149,11 @@ jQuery.extend({
  	
  }
  
+ function clear_status_bar(){
+ 	$("#team-mate").html("-");
+ 	$("#current-target").html("-");
+ }
+ 
  function update_status_bar(team,task_type){
  	
  	$("#current-target").html("<img src=" + getTaskImage(task_type) + ">");
