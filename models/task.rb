@@ -95,7 +95,12 @@ class Task
   			self.players=""
   			eligiable_players.each do |p|
   				p.current_task=self.id
-  				self.players="#{self.players},#{p.id}"
+  				if (self.players=="")
+  					self.players="#{p.id}"
+  				else
+  					self.players="#{self.players},#{p.id}"
+  				end 
+  				
   				p.save
   			end
   			self.save

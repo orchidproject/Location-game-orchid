@@ -159,9 +159,9 @@ jQuery.extend({
  	$("#current-target").html("<img src=" + getTaskImage(task_type) + ">");
 	
  	for(p in team){
- 		alert(team[p]);
+ 		//alert(team[p]);
  		if(team[p]!=$("#user_id").val()){
- 			alert("teammate:"+team[p]);
+ 			//alert("teammate:"+team[p]);
  			var initials = players[parseInt(team[p])].initials;
  			var skill=  players[parseInt(team[p])].skill;
  			
@@ -221,7 +221,7 @@ jQuery.extend({
           		</div>
           		
           		<div id="current-target" style="position:relative;float:left;width:10%;height:100%;top:30%">
-          			
+          		-
           		</div>
           		
           		<div id="wedget3" style="background-color:#ffffff;position:relative;float:left;width:30%;height:100%">
@@ -231,6 +231,7 @@ jQuery.extend({
           		</div>
           		
           		<div id="team-mate" style="position:relative;float:left;width:10%;height:100%;top:30%">
+          		-
           		</div>
           
           	</div>
