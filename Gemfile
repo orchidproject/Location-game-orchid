@@ -8,7 +8,7 @@ gem 'dm-timestamps',     '1.2.0'
 gem 'dm-migrations',     '1.2.0'
 gem 'dm-mysql-adapter',  '1.2.0'
 gem 'rack-cache',        '1.0.1', :require => 'rack/cache'
-gem 'rake',              '0.8.7',  :require => nil
+gem 'rake',              '10.0.0',  :require => nil
 gem 'hashie',            '1.0.0'
 gem 'thin'
 gem 'shotgun'
