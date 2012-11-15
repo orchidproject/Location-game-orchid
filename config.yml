@@ -4,8 +4,8 @@ production:
   ga_id: 1
   socket_io_url: 0.0.0.0
   socket_io_port: 8080
-  default_sim_lat: 52.956046
-  default_sim_lng: -1.18878
+  default_sim_lat: 52.952665
+  default_sim_lng: -1.188639
   socket_io_client_ref: http://holt.mrl.nott.ac.uk:49991
 development:
   database: mysql://jtruck:jtruck@localhost/jtruck_db 
@@ -13,7 +13,7 @@ development:
   ga_id: 1
   socket_io_url: 0.0.0.0
   socket_io_port: 8080
-  default_sim_lat: 52.956046
-  default_sim_lng: -1.18878
+  default_sim_lat: 52.952665
+  default_sim_lng: -1.188639
   socket_io_client_ref: http://localhost:49991
 

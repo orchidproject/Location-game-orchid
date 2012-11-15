@@ -166,7 +166,7 @@ function setGameArea(){
 
 //this function has been changed to adapt task objects
 function addRadiationBits(){
-    
+    var count=0;
     $(radiationBits).each(
         function(i,bit){
     
@@ -180,7 +180,10 @@ function addRadiationBits(){
                     window.location = window.location;
                 }
                 else{
-                     window.location = window.location;
+			count++
+			if (count==radiationBits.length){
+                     		window.location = window.location;
+			}
                 }
             }, "json");
     });
@@ -213,14 +216,14 @@ function addDropOffPoints(){
 function clearBoundingBox(){
     $.get("/admin/games/"+layerId+"/clearBoundingBox",
         function(data){
-			if(data.status != "ok") {
+	    if(data.status != "ok") {
 				alert("Something went wrong! :(");
 				window.location = window.location;
-			}
+	    }
             else{
                 window.location.reload();
             }
-		}, "json");
+	}, "json");
 }
 
 function clearRadiationBits(){
@@ -234,6 +237,22 @@ function clearRadiationBits(){
                 window.location.reload();
             }
 		}, "json");
+}
+
+function saveSetting(){
+	
+	$.get("/admin/games/"+layerId+"/saveSetting?name=test",function(data){
+	    if(data.status != "ok") {
+			alert("Something went wrong! :(");
+			window.location = window.location;
+	    }
+            else{
+		alert("template created");
+                window.location.reload();
+            }	
+	
+
+	},"json");
 }
 
 // function receiveSavedBoundingBox(box){
@@ -368,6 +387,9 @@ $(function(){
 	
 	 	
 	google.maps.event.addListener(map, 'rightclick', function(event) {
+				
+
+
                 if (chosen_task_type<100){
                 	var taskIcon= getTaskIcon(chosen_task_type);
                 	var icon = new google.maps.MarkerImage("/img/task_icon1.png", playerIconSize, playerIconOrigin, playerIconAnchor);
@@ -380,6 +402,8 @@ $(function(){
                 		icon: taskIcon
                 	});
                 	radiationBits.push([point,chosen_task_type]); 
+			//disable "save as template" button
+			$("#saveSetting").attr("disabled", true);
                 }
                 else if(chosen_task_type==100){
                 	tempPointOne=event.latLng;
@@ -394,81 +418,14 @@ $(function(){
   						strokeColor: '#0000FF'
 					});
                 	dropoffpoints.push([point,radius]);
+			//disable "save as template" button
+			$("#saveSetting").attr("disabled", true);
                 }
 		
 		
 
 	});
 	
-	// Right click context menu
-	// google.maps.event.addListener(map, 'rightclick', function(event) {
-//                 if (tempPointOne==null){
-//                     tempPointOne=event.latLng;
-//                 }
-//                 else{
-//                     tempPointTwo=event.latLng;
-//                     //make it sw ne
-//                     if(tempPointOne.lat()>tempPointTwo.lat()){
-//                         var temp=tempPointOne;
-//                         tempPointOne=tempPointTwo;
-//                         tempPointTwo=temp;
-//                        
-//                     }
-//                     if(tempPointOne.lng()>tempPointTwo.lng()){
-//                             temp= tempPointOne.lng();
-//                             tempPointOne= new google.maps.LatLng(tempPointOne.lat(),tempPointTwo.lng());
-//                             tempPointTwo= new google.maps.LatLng(tempPointTwo.lat(),temp);
-//                     }
-//                     var bounds= new google.maps.LatLngBounds(tempPointOne,tempPointTwo);
-//                     
-//                     
-//                     var rectangle;  
-//                     rectangle = new google.maps.Rectangle();
-//                     var rectOptions = {
-//                         strokeColor: "#FF0000",
-//                         strokeOpacity: 0.8,
-//                         strokeWeight: 2,
-//                         fillColor: "#FF0000",
-//                         fillOpacity: 0.35,
-//                         map: map,
-//                         bounds: bounds,
-//                         clickable:false
-//                     };
-//                     rectangle.setOptions(rectOptions);
-//                     boundingBoxes.push(bounds);
-//                     
-//                     tempPointOne=null;
-//                     tempPointTwo=null;
-//                 }
-// 		
-// 		
-// 		// Immediately create the pellet and open up the editor for it
-// 		/*
-// 		
-// 		$.post("/admin/games/"+layerId+"/new_pellet.json", {
-// 			points: 10,
-// 			latitude: event.latLng.lat(),
-// 			longitude: event.latLng.lng()
-// 		}, function(data){
-// 			addNewPellet(data);
-// 			startEditingPoint(data.place_id);
-// 		}, "json");
-//                 */
-// 
-// 	});
-
-	// var placeHolderMarker = new google.maps.Marker({
-// 		draggable: true,
-// 		raiseOnDrag: false,
-// 		icon: coins[10]["grey"]
-// 	});
-// 	google.maps.event.addListener(placeHolderMarker, "dragend", function(event) {
-// 		$("#newPointLat").val(event.latLng.lat());
-// 		$("#newPointLng").val(event.latLng.lng());
-// 		$("#coordinates").html(
-// 			(Math.round(event.latLng.lat()*10000)/10000) + ", " + (Math.round(event.latLng.lng()*10000)/10000)
-// 		);
-// 	});
 
 	pointEditorInfoWindow = new google.maps.InfoWindow({
             content: $("#pointToolbar").html(),
@@ -526,11 +483,10 @@ $(function(){
 		</div>
 		
 		<div style="padding: 3px;">
-			<!--<input type="button" value="New Line" id="newLine" />-->
-			<!--<input type="button" value="Cancel Line" id="editingCancel" disabled="disabled" />-->
-          <input class="btn" type="button" value="Save" onclick="addBoundingBox();addRadiationBits();addDropOffPoints()"/>
-           <input class="btn" type="button" value="Clear" onclick="clearBoundingBox();clearRadiationBits()"/>
+                  <input class="btn" type="button" value="Save" onclick="addBoundingBox();addRadiationBits();addDropOffPoints();"/>
+                  <input class="btn" type="button" value="Clear" onclick="clearBoundingBox();clearRadiationBits()"/>
 		  <input class="btn" type="button" value="Close" onclick="window.location = '/admin/games';"/>
+		  <input class="btn" type="button" id="saveSetting" value="Save as a template" onclick="saveSetting()";>
 		</div>
 		
 	</div>

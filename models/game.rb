@@ -7,7 +7,8 @@ class Game
   property :longitude, String
   property :radius, String
   property :layer_id, Serial, :index => true
-
+  
+  property :template, Integer, :default => 0
   property :is_active, Integer, :default => -1
   property :created_at, DateTime
   property :updated_at, DateTime

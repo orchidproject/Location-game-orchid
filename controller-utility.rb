@@ -26,6 +26,53 @@ class Controller < Sinatra::Base
     @games = Game.all
     session.clear
   end 
+
+  def snapshot(game)
+	
+    boxes =[]
+	radiation = []
+    task = []
+    dropoffpoint = []
+      
+	
+	#obsolate now
+    game.boundings.each do |p|
+        boxes<<{
+            :id=>p.id,
+            :neLatitude => p.neLatitude.to_s('F'),
+            :neLongitude => p.neLongitude.to_s('F'),
+            :swLatitude => p.swLatitude.to_s('F'),
+            :swLongitude => p.swLongitude.to_s('F')
+        }
+    end
+      
+    game.tasks.each do |t|
+          task<<{
+              :id=>t.id,
+              :latitude => t.latitude.to_s('F'),
+              :longitude => t.longitude.to_s('F'),
+			  :type => t.type,
+              :state => t.state,
+              :requirement => t.requirement,
+              :players => t.players
+              
+          }
+    end
+    
+    game.dropoffpoints.each do |d|
+          dropoffpoint<<{
+              :id=>d.id,
+              :latitude => d.latitude.to_s('F'),
+              :longitude => d.longitude.to_s('F'),
+			  :radius => d.radius,
+          }
+    end
+
+      
+      {:boundingBoxes=>boxes,:radiationBits=>radiation,:tasks=>task,:dropoffpoints=>dropoffpoint}.to_json
+
+
+  end
             
   # def get_mainloops(game_id)
 #   
