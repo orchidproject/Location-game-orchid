@@ -187,7 +187,7 @@ function receivePlayerData(data) {
 		            marker: new google.maps.Marker({
 		                position: new google.maps.LatLng(data.latitude, data.longitude),
 		                map: map,
-		                icon: new google.maps.MarkerImage("/img/blue_dot.png", playerIconSize, playerIconOrigin, playerIconAnchor),
+		                icon: markerIcon,
 		                visible: true
 		            })
 		        };
@@ -199,6 +199,15 @@ function receivePlayerData(data) {
 		}	 
 }
 
+var test_icon={
+		           
+		            marker: new google.maps.Marker({
+		                position: new google.maps.LatLng(52, -1),
+		                map: map,
+		                icon: new google.maps.MarkerImage("/img/blue_dot.png", playerIconSize, playerIconOrigin, playerIconAnchor),
+		                visible: true
+		            })
+		        };
 
 
 var GameMap = {
