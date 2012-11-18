@@ -2,7 +2,7 @@ var playerIconSize = new google.maps.Size(32, 32);
 var playerIconOrigin = new google.maps.Point(0,0);
 var playerIconAnchor = new google.maps.Point(16, 32);
 var playerIcons = {
-	blue: new google.maps.MarkerImage("/img/blue_dot.png", playerIconSize, playerIconOrigin, playerIconAnchor)
+	blue: new google.maps.MarkerImage("/img/blue_dot.png", new google.maps.Size(18, 18), playerIconOrigin, playerIconAnchor)
 }
 
 var taskIcon1 = "/img/task_icon1.png";
@@ -173,7 +173,7 @@ function receivePlayerData(data) {
 			markerIcon = getPlayerIcon(data.initials,data.skill);
 		}else{
 			//an icon for player itself
-			markerIcon = getPlayerIcon(data.initials,data.skill);
+			markerIcon = playerIcons.blue;
 		}
 		
 		
@@ -198,15 +198,7 @@ function receivePlayerData(data) {
 		        //p.marker.setIcon(markerIcon);
 		}	
 		
-		var test_icon={
-		           
-		            marker: new google.maps.Marker({
-		                position: new google.maps.LatLng(52, -1),
-		                map: map,
-		                icon: new google.maps.MarkerImage("/img/blue_dot.png", playerIconSize, playerIconOrigin, playerIconAnchor),
-		                visible: true
-		            })
-		        };
+		
 }
 
 
