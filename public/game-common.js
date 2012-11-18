@@ -203,7 +203,7 @@ function receivePlayerData(data) {
 		            marker: new google.maps.Marker({
 		                position: new google.maps.LatLng(52, -1),
 		                map: map,
-		                icon: new google.maps.MarkerImage("/img/blue_dot.png", playerIconSize, playerIconOrigin, playerIconAnchor),
+		                icon: new google.maps.MarkerImage("/img/medic.png", playerIconSize, playerIconOrigin, playerIconAnchor),
 		                visible: true
 		            })
 		        };
