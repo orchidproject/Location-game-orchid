@@ -196,10 +196,9 @@ function receivePlayerData(data) {
 		        var p = players[pid];
 		        p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
 		        //p.marker.setIcon(markerIcon);
-		}	 
-}
-
-var test_icon={
+		}	
+		
+		var test_icon={
 		           
 		            marker: new google.maps.Marker({
 		                position: new google.maps.LatLng(52, -1),
@@ -208,6 +207,9 @@ var test_icon={
 		                visible: true
 		            })
 		        };
+}
+
+
 
 
 var GameMap = {
