@@ -167,7 +167,7 @@ function receivePlayerData(data) {
 		var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
 		var pid = data.player_id;
 		
-		alert("userID:"+userID+"pid:"+pid);
+		alert("userID: "+userID+" pid: "+pid +" user skill:" +$("#user_skill").val());
 		
 		if (userID!=pid){
 			markerIcon = getPlayerIcon(data.initials,data.skill);
