@@ -162,7 +162,7 @@ function getTaskIcon(task_type) {
 function receivePlayerData(data) {
 		var markerIcon;
 		
-		var userID=$("#user_id").value;
+		var userID=$("#user_id").val();
 		
 		var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
 		var pid = data.player_id;
