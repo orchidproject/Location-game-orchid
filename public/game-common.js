@@ -164,7 +164,7 @@ function receivePlayerData(data) {
 		
 		var userID=$("#user_id").val();
 		
-		var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
+		//var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
 		var pid = data.player_id;
 		
 		alert("userID: "+userID+" pid: "+pid +" user skill:" +$("#user_skill").val());
@@ -173,7 +173,7 @@ function receivePlayerData(data) {
 			markerIcon = getPlayerIcon(data.initials,data.skill);
 		}else{
 			//an icon for player itself
-			markerIcon = playerIcons.blue;
+			markerIcon = getPlayerIcon(data.initials,data.skill);
 		}
 		
 		
