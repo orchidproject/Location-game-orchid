@@ -674,7 +674,7 @@ end
   
   get '/games/list' do
     games=[]
-    g =  Game.get :template=>0
+    g =  Game.all :template=>0
     g.each do |g|
         games << {"layer_id"=> g.layer_id , "name"=> g.name, "description"=> "", "is_active"=>g.is_active}
 
