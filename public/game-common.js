@@ -2,7 +2,7 @@ var playerIconSize = new google.maps.Size(32, 32);
 var playerIconOrigin = new google.maps.Point(0,0);
 var playerIconAnchor = new google.maps.Point(16, 32);
 var playerIcons = {
-	blue: new google.maps.MarkerImage("/img/blue_dot.png", new google.maps.Size(16, 16), playerIconOrigin, new google.maps.Point(-8, -8))
+	blue: new google.maps.MarkerImage("/img/blue_dot.png", new google.maps.Size(16, 16), playerIconOrigin, new google.maps.Point(0, 0))
 }
 
 var taskIcon1 = "/img/task_icon1.png";
