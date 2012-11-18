@@ -154,8 +154,8 @@ jQuery.extend({
  	//map.panTo(new google.maps.LatLng(53,-1));
  	
  	var p=players[$("#user_id").val()];
- 	alert(p.marker.getPosition().lat());
- 	if(p.marker.getPosition().lat()==null||p.marker.getPosition().lng()==null){
+ 	//alert(p.marker.getPosition().lat());
+ 	if(p.marker.getPosition().lat()==0||p.marker.getPosition().lng()==0){
  		alert("your location not found, please wait for location update");
  	}else{
  		map.setCenter(p.marker.getPosition());
@@ -217,7 +217,7 @@ jQuery.extend({
         
         <div style="padding:2%;float:left;width:67%;height:12ex">
           Health
-          <div id="health_bar" style="height:40%"></div>
+          <div id="health_bar" style="height:20%"></div>
           		<div id="wedget" style="background-color:#ffffff;position:relative;float:left;width:20%;height:100%">
           			<div id="a" style="position:absolute;top:30%;left:0;font-size:10px">
           				Your role: 
