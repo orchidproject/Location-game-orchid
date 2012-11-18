@@ -154,7 +154,7 @@ jQuery.extend({
  	//map.panTo(new google.maps.LatLng(53,-1));
  	
  	var p=players[$("#user_id").val()];
- 	if(p==null){
+ 	if(p.marker.getPosition()==null){
  		alert("your location not found, please wait for location update");
  	}else{
  		map.setCenter(p.marker.getPosition());
