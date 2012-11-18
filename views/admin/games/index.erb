@@ -6,6 +6,14 @@
     padding-bottom: 5px;
   }
 </style>
+<script>
+function create_from_template(id){
+	var name=prompt("Name for new game");
+	if(name==null){return;}
+    window.location.href="/admin/games/"+id+"/create_from_setting?name="+name;
+}
+
+</script>
 
 
 
@@ -37,7 +45,10 @@
 	<tr>
 		<td><%= h game.name %></td>
 		<td><a href="/admin/games/<%= game.layer_id %>/mapeditor">Edit Map</a></td>
-		<td><a href="/admin/games/<%= game.layer_id %>/create_game_from_setting">Create from this template</a></td>
+		
+		
+		<td><a onclick="create_from_template(<%= game.layer_id %>);" style="cursor:hand" >Create from this template</a></td>
+		
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/games/<%= game.layer_id %>" onclick="<%= onclick_delete %>">Delete</a></td>
 	
 	</tr>

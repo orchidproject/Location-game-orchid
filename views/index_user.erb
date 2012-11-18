@@ -94,7 +94,8 @@ jQuery.extend({
   		mapTypeControl: true,
 		disableDoubleClickZoom: true,
 		streetViewControl:false,
-		panControl:false
+		panControl:false,
+		
   	};
 
 	mapHeight = $(document).height() - $('#radiation_reading').height() ;
@@ -114,12 +115,23 @@ jQuery.extend({
 	});
 
 
-    GameMap.fitToRadius(<%= @game.radius %>); // todo: replace ruby template var
+     GameMap.fitToRadius(<%= @game.radius %>); // todo: replace ruby template var
 
-	Android.showToast("android");
-	//Android.sendMessage("a test message sent from webview")
+	 map.controls[google.maps.ControlPosition.TOP_LEFT].push(new RelocateButton());
+	 
+	 
+	 //fill the role div
+	 $("#role").html("<img src='/player/m/e/"+$("#user_skill").val()+"/map_icon.png' >");
   });
 
+
+  function RelocateButton(){
+ 	var relocateButton = $('<input type="button" id="relocateButton"  value="find me" />');
+ 	relocateButton.click(relocate);
+ 	var div = $('<div></div>').append(relocateButton);
+ 	return div.get(0);
+ }
+ 
  function sendMessage(){
 	var pathname = window.location.pathname;
 	$.ajax({
@@ -133,7 +145,9 @@ jQuery.extend({
 	 });
  }
  
-
+ 
+ 
+ 
  function relocate(){
  	//test
  	//players[$("user_id").val()]
@@ -165,14 +179,7 @@ jQuery.extend({
  			var initials = players[parseInt(team[p])].initials;
  			var skill=  players[parseInt(team[p])].skill;
  			
- 			
- 			//alert("teammaty:"+initials);
- 			//alert("teammaty:"+skill);
- 			//this do not work, unkown reason
- 			//alert(cg.imageSrc(initials,skill));
- 			
- 			//alert("/player/"+initials[0]+"/"+initials[1]+"/"+skill+"/map_icon.png");
- 			$("#team-mate").html("<img src='/player/"+initials[0]+"/"+initials[1]+"/"+skill+"/map_icon.png' >");
+ 			$("#team-mate").html("<img src='/player/"+initials[0]+"/"+initials[1]+"/"+$("#user_skill").val()+"/map_icon.png' >");
  		}
  	}
  	
@@ -210,11 +217,15 @@ jQuery.extend({
         <div style="padding:2%;float:left;width:67%;height:12ex">
           Health
           <div id="health_bar" style="height:40%"></div>
-          	<div id="wedget" style="height:40%;position:relative;top:10">
-          		<div id="wedget1" style="float:left;width:20%;height:100%">
-          		
-          		<img id="aim" src="/img/aimpoint.jpeg" style="height:100%" ></div>
-          		<div id="wedget2" style="background-color:#ffffff;position:relative;float:left;width:30%;height:100%">
+          		<div id="wedget" style="background-color:#ffffff;position:relative;float:left;width:20%;height:100%">
+          			<div id="a" style="position:absolute;top:30%;left:0;font-size:10px">
+          				Your role: 
+          			</div> 
+          		</div>
+          		<div id="role" style="position:relative;float:left;width:10%;height:100%;top:30%">
+          		- 
+          		</div>
+          		<div id="wedget2" style="background-color:#ffffff;position:relative;float:left;width:20%;height:100%">
           			<div id="a" style="position:absolute;top:30%;left:0;font-size:10px">
           				Picked up: 
           			</div> 
@@ -224,7 +235,7 @@ jQuery.extend({
           		-
           		</div>
           		
-          		<div id="wedget3" style="background-color:#ffffff;position:relative;float:left;width:30%;height:100%">
+          		<div id="wedget3" style="background-color:#ffffff;position:relative;float:left;width:20%;height:100%">
           			<div id="a" style="position:absolute;top:30%;left:0;text-align:top;font-size:10px">
           				Teamed with:
           			</div>

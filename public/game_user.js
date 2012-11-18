@@ -16,30 +16,6 @@ var setup = false;
 
 var lastRequestTime = 0;
 
-var cg = {
-	s: function(w,h) {
-		return new google.maps.Size(w,h);
-	},
-	p: function(w,h) {
-		return new google.maps.Point(w,h);
-	},
-	playerImage: function(name, team) {
-//		if(typeof name == "undefined") name = "AA";
-//		if(typeof team == "undefined") team = "red";
-		return new google.maps.MarkerImage("/player/"+name[0]+"/"+name[1]+"/"+team+"/map_icon.png", new google.maps.Size(38, 31), new google.maps.Point(0,0), new google.maps.Point(10, 30));
-	}
-}
-
-var playerIconSize = new google.maps.Size(32, 32);
-var playerIconOrigin = new google.maps.Point(0,0);
-var playerIconAnchor = new google.maps.Point(16, 32);
-var playerIcons = {
-	blue: new google.maps.MarkerImage("http://www.google.com/intl/en_us/mapfiles/ms/icons/blue-dot.png", playerIconSize, playerIconOrigin, playerIconAnchor),
-	red: new google.maps.MarkerImage("http://www.google.com/intl/en_us/mapfiles/ms/icons/red-dot.png", playerIconSize, playerIconOrigin, playerIconAnchor)
-}
-
-
-
 var players = [];
 var boxes = [];
 var tasks = [];
@@ -335,33 +311,10 @@ function system(data){
     //js will try to communicate with naive code
     else if(data=="end"){
     	alert('game end, please return to base');
-        /* var results = "";
-        
-       $(players).each(function(i, player){
-            if(typeof player != "undefined"){
-                results=results+ player.name+ ":" + player.points_cache + "\n";
-            }
-        });
-        alert(log);
-        //push it back to server
-         $.ajax({ 
-            url: NODE_JS_ADDRESS+"/push_log",
-            type: "POST",
-            data: JSON.stringify({player_id:$("#user_id").val(),game_id:$("#layer_id").val(),data:log}),
-            dataType:"json",
-            success: function(data) {
-                           
-            }
-        });    
-        alert("Game ended\n Results: \n"+results);
-        
-        
-        window.location="myapp://app_action/end"
-        location.reload();*/
+       
     }
     else if(data=="reset"){
-        //window.location="myapp://app_action/reset"
-        //need to reset all;
+        
     }
     else if(data=="ready_check"){
         var ready=confirm("Ready check");

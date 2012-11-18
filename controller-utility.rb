@@ -73,6 +73,32 @@ class Controller < Sinatra::Base
 
 
   end
+  
+  def copy_game_record(game,name,is_template)
+  	 new_attributes = game.attributes
+     new_attributes.delete(:layer_id)
+     template=Game.create(new_attributes)
+     template.template=is_template
+     template.name=name
+     template.save
+     
+     game.tasks.each do |t|
+		new_attributes = t.attributes
+     	new_attributes.delete(:id)
+		new_task=Task.create(new_attributes)
+		new_task.game=template
+		new_task.save
+     end
+     
+     game.dropoffpoints.each do |d|
+		new_attributes = d.attributes
+     	new_attributes.delete(:id)
+		new_dropoffpoint=Dropoffpoint.create(new_attributes)
+		new_dropoffpoint.game=template
+		new_dropoffpoint.save
+     end
+  
+  end
             
   # def get_mainloops(game_id)
 #   

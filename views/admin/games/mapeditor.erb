@@ -240,8 +240,10 @@ function clearRadiationBits(){
 }
 
 function saveSetting(){
+	var name=prompt("please enter a name for this template");
+	if(name==null){return;}
 	
-	$.get("/admin/games/"+layerId+"/saveSetting?name=test",function(data){
+	$.get("/admin/games/"+layerId+"/saveSetting?name="+name,function(data){
 	    if(data.status != "ok") {
 			alert("Something went wrong! :(");
 			window.location = window.location;
@@ -349,7 +351,7 @@ function receiveBounding(data) {
 }
 
 $(function(){
-
+	
 	var mapOptions = {
 		zoom: 15,
 		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),

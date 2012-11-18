@@ -1,6 +1,9 @@
 var playerIconSize = new google.maps.Size(32, 32);
 var playerIconOrigin = new google.maps.Point(0,0);
 var playerIconAnchor = new google.maps.Point(16, 32);
+var playerIcons = {
+	blue: new google.maps.MarkerImage("/img/blue_dot.png", playerIconSize, playerIconOrigin, playerIconAnchor)
+}
 
 var taskIcon1 = "/img/task_icon1.png";
 var taskIcon2 =  "/img/task_icon2.png";
@@ -161,11 +164,18 @@ function receivePlayerData(data) {
 		
 		var userID=$("#user_id").value;
 		
-		markerIcon = getPlayerIcon(data.initials,data.skill);
-	    var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
+		var myLatLng = new google.maps.LatLng(data.latitude, data.longitude);
 		var pid = data.player_id;
 		
-		    if(typeof players[pid] == "undefined") {
+		if (userID!=pid){
+			markerIcon = getPlayerIcon(data.initials,data.skill);
+		}else{
+			//an icon for player itself
+			markerIcon = playerIcons.blue;
+		}
+		
+		
+		if(typeof players[pid] == "undefined") {
 		        
 		        players[pid] = {
 		            id: pid,
@@ -179,12 +189,12 @@ function receivePlayerData(data) {
 		                visible: true
 		            })
 		        };
-		    } else {
+		} else {
 		        //update 
 		        var p = players[pid];
 		        p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
 		        //p.marker.setIcon(markerIcon);
-		    }	 
+		}	 
 }
 
 

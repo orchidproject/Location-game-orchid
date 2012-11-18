@@ -91,27 +91,14 @@ class Controller < Sinatra::Base
   
   get '/admin/games/:layer_id/saveSetting' do
      @game = Game.get params[:layer_id]
-     new_attributes = @game.attributes
-     new_attributes.delete(:layer_id)
-     template=Game.create(new_attributes)
-     template.template=1
-     template.save
-     @game.tasks.each do |t|
-	new_attributes = t.attributes
-     	new_attributes.delete(:id)
-	new_task=Task.create(new_attributes)
-	new_task.game=template
-	new_task.save
-     end
-     @game.dropoffpoints.each do |d|
-	new_attributes = d.attributes
-     	new_attributes.delete(:id)
-	new_dropoffpoint=Dropoffpoint.create(new_attributes)
-	new_dropoffpoint.game=template
-	new_dropoffpoint.save
-     end
+     copy_game_record(@game,params['name'],1)
+  	 {"status"=>:ok}.to_json
+  end
   
-      {"status"=>:ok}.to_json
+   get '/admin/games/:layer_id/create_from_setting' do
+     @game = Game.get params[:layer_id]
+     copy_game_record(@game,params['name'],0)
+	 redirect '/admin/template'
   end
 
 
@@ -340,7 +327,7 @@ class Controller < Sinatra::Base
     
     if File.exist?(file_path)
         send_file file_path
-        else
+    else
         file_path_1 = File.join Controller.root, "public", "characters", a+".png"
         file_path_2 = File.join Controller.root, "public", "characters", b+".png"
         
@@ -515,6 +502,7 @@ end
     if player
     	@user_id = player.id
    	    @user_initials = player ? player.name : ''
+   	    @user_skill= player.skill_string()
    	end 
    	
     erb :'index_user', :layout => :'layout_user'
