@@ -178,7 +178,7 @@ function updateGame(oneTime) {
 		success: function(data) {
 			$("#num-players").html(data.player.length + " Players");
 			
-            
+            alert("modified");
             
             $(data.location).each(function(i, location){
                 var d=filter({"location":location});
@@ -187,6 +187,7 @@ function updateGame(oneTime) {
                 }
             });
              $(data.player).each(function(i, player){
+             	alert("player");
                 var d=filter({"player":player});
                 if(typeof d.player != "undefined"){
                     receivePlayerInfoData(d.player);
@@ -194,7 +195,7 @@ function updateGame(oneTime) {
             });
            
             $(data.task).each(function(i, task){
-            	
+            	alert("task");
                 var d=filter({"task":task});
                 if(typeof d.task != "undefined"){
                 	
@@ -203,7 +204,7 @@ function updateGame(oneTime) {
             });
             
             $(data.dropoffpoint).each(function(i, drop){
-            	
+            	alert("drop off");
                 var d=filter({"drop":drop});
                 if(typeof d.drop != "undefined"){
                 	
