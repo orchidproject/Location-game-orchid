@@ -61,7 +61,7 @@ class Task
   		self.game.players.each do |p|
   			
   			if (p.distance_to self.latitude, self.longitude) <10 #approxi check
-  				puts "player nearby detected #{p.distance_to self.latitude, self.longitude}"
+  				puts "player nearby detected #{p.distance_to self.latitude, self.longitude} task: #{p.current_task}"
   				if p.current_task == -1 #player is idle
   					
   					current_state.each_with_index do |i,index| #match skills and requirements
