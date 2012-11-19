@@ -155,6 +155,11 @@ class Task
   	
   		if drop_off_in_safe
   			self.players=""
+  			carriers = Player.all :current_task=>self.id
+  			carriers.each do |c|
+  				c.current_task=-1
+  			end 
+  			
   			self.state=State::DROPPED_DOWN
   		end
   		
