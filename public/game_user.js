@@ -196,7 +196,7 @@ function updateGame(oneTime) {
            
             alert(JSON.stringify(data.task));
             $(data.task).each(function(i, task){
-            	alert("task");
+            	alert(JSON.stringify(task));
                 var d=filter({"task":task});
                 if(typeof d.task != "undefined"){
                 	
