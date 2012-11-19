@@ -99,7 +99,7 @@ function receiveTaskData(task){
 				existing_task=tasks[i];
 			}
 		}
-		
+		alert("hit point 1");
 		if(existing_task==null){
 			
 			var taskIcon= getTaskIcon(task.type);
@@ -127,7 +127,7 @@ function receiveTaskData(task){
 			}
         }
         
-       
+       alert("hit point 2");
         //handle task status
         handleTaskStatus(task);
 }
