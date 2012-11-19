@@ -91,7 +91,7 @@ jQuery.extend({
         },
   		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
   		mapTypeId: google.maps.MapTypeId.HYBRID,
-  		mapTypeControl: true,
+  		mapTypeControl: false,
 		disableDoubleClickZoom: true,
 		streetViewControl:false,
 		panControl:false,
@@ -117,7 +117,7 @@ jQuery.extend({
 
      GameMap.fitToRadius(<%= @game.radius %>); // todo: replace ruby template var
 
-	 map.controls[google.maps.ControlPosition.TOP_LEFT].push(new RelocateButton());
+	 map.controls[google.maps.ControlPosition.TOP_RIGHT].push(new RelocateButton());
 	 
 	 
 	 //fill the role div
