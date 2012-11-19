@@ -178,7 +178,7 @@ function updateGame(oneTime) {
 		success: function(data) {
 			$("#num-players").html(data.player.length + " Players");
 			
-            alert("modified1");
+            alert(JSON.stringify(data));
             
             $(data.location).each(function(i, location){
                 var d=filter({"location":location});
