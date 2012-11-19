@@ -130,7 +130,7 @@ function receiveTaskData(task){
        
         //handle task status
         handleTaskStatus(task);
-        alert("hit point 2");
+       
 }
 
 function getTaskImage(task_type) {

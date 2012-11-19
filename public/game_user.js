@@ -177,8 +177,6 @@ function updateGame(oneTime) {
 		dataType: "json", 
 		success: function(data) {
 			$("#num-players").html(data.player.length + " Players");
-			
-            alert(JSON.stringify(data));
             
             $(data.location).each(function(i, location){
                 var d=filter({"location":location});
@@ -194,9 +192,9 @@ function updateGame(oneTime) {
                 }
             });
            
-            alert(JSON.stringify(data.task));
+            
             $(data.task).each(function(i, task){
-            	alert(JSON.stringify(task));
+            	
                 var d=filter({"task":task});
                 if(typeof d.task != "undefined"){
                 	
@@ -299,10 +297,10 @@ function handleTaskStatus(task){
 	
 	//if task not handled, but prevously added to status bar, then clear it
 	if((chosen_target!=null)&&!handled&&(chosen_target.id==task.id)){
-		alert("hit point 4");
+		
 		clear_status_bar();
 	}
-	alert("hit point 3");
+	
 }
 
 
