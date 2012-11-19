@@ -107,23 +107,19 @@ class Task
   		end
   		
   	elsif self.state==State::PICKED_UP
-  		count=0
+  		
   		lat=0
   		lng=0
   		dropped_off=false
-  		working_players=[]
+  		working_players= game.players.all :current_task=> self.id
   		
-  		game.players.each do |p|
-  			if p.current_task == self.id
-  				count=count+1
-  				lat=lat+p.latitude
-  				lng=lng+p.longitude
-  				#construct working players array
-  				working_players << p
-  			end
+  		working_players.each do |w|
+  			lat=lat + w.latitude
+  			lng=lng + w.longitude
   		end
-  		self.latitude=lat/count
-  		self.longitude=lng/count
+  		
+  		self.latitude=lat/working_players.length
+  		self.longitude=lng/working_players.length
   		
   		
   		
@@ -155,10 +151,10 @@ class Task
   	
   		if drop_off_in_safe
   			self.players=""
-  			carriers = Player.all :current_task=>self.id
-  			carriers.each do |c|
-  				c.current_task=-1
-  			end 
+  			working_players.each do |p|
+  				p.current_task=-1
+  				p.save
+  			end
   			
   			self.state=State::DROPPED_DOWN
   		end
