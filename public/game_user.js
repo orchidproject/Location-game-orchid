@@ -296,11 +296,13 @@ function handleTaskStatus(task){
 			break;
 		}
 	}
-	alert("hit point");
+	
 	//if task not handled, but prevously added to status bar, then clear it
 	if(!handled&&(chosen_target.id==task.id)){
+		alert("hit point 4");
 		clear_status_bar();
 	}
+	alert("hit point 3");
 }
 
 
