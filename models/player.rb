@@ -31,7 +31,7 @@ class Player
   
   
   def skill_string()
-  	return @@skill[self.skill-1]
+  	return @@skill[self.skill]
   
   end 
 
