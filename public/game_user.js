@@ -203,7 +203,7 @@ function updateGame(oneTime) {
             });
             
             $(data.dropoffpoint).each(function(i, drop){
-            	alert("drop off");
+            	
                 var d=filter({"drop":drop});
                 if(typeof d.drop != "undefined"){
                 	
