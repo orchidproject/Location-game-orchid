@@ -542,6 +542,7 @@ end
   
   #######################    mapeditor   ####################
   post "/admin/games/:layer_id/setGameArea" do
+  		#should be a property of game! this is non-sense
   		$game_area_top_left[Integer(params[:layer_id])]={:lat => Float(params[:latitude]),:lng=> Float(params[:longitude]) }
   		return { :status => :ok }.to_json
   end
