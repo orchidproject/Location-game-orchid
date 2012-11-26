@@ -60,7 +60,7 @@ class Task
   		
   		self.game.players.each do |p|
   			
-  			if (p.distance_to self.latitude, self.longitude) <10 #approxi check
+  			if (p.distance_to self.latitude, self.longitude) <20 #approxi check
   				puts "player nearby detected #{p.distance_to self.latitude, self.longitude} task: #{p.current_task}"
   				if p.current_task == -1 #player is idle
   					
@@ -123,7 +123,7 @@ class Task
   		
   		
   		
-  		#distance check, if one player goes too far, then task dropped off
+  		#distance check, if one player goes too far, then task dropped off, 25 meter 
   		working_players.each do |p|
   			if (p.distance_to(self.latitude,self.longitude) > 25)
   				dropped_off=true
