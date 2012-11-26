@@ -7,7 +7,7 @@ class Controller < Sinatra::Base
   end 
   
 
-  get '/game/:layer_id/test_frame'
+  get '/game/:layer_id/test_frame' do
 
   end 
 

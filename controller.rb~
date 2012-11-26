@@ -6,6 +6,12 @@ class Controller < Sinatra::Base
         DataMapper.auto_migrate!
   end 
   
+
+  get '/game/:layer_id/test_frame'
+
+  end 
+
+
   get '/test/task' do
         socketIO.broadcast(
       	 { 
