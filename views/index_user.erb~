@@ -180,7 +180,7 @@ jQuery.extend({
  			var initials = players[parseInt(team[p])].initials;
  			var skill=  players[parseInt(team[p])].skill;
  			
- 			$("#team-mate").html("<img src='/player/"+initials[0]+"/"+initials[1]+"/"+skill+"/map_icon.png' >");
+ 			//$("#team-mate").html("<img src='/player/"+initials[0]+"/"+initials[1]+"/"+skill+"/map_icon.png' >");
  		}
  	}
  	
@@ -226,17 +226,17 @@ jQuery.extend({
           		<div id="role" style="position:relative;float:left;width:10%;height:100%;top:10%">
           		- 
           		</div>
-          		<div id="wedget2" style="position:relative;float:left;width:20%;height:100%">
+          		<div id="wedget2" style="position:relative;float:left;width:20%;height:100%;left:5">
           			<div id="a" style="position:absolute;top:10%;left:0;font-size:10px">
           				Picked up: 
           			</div> 
           		</div>
           		
-          		<div id="current-target" style="position:relative;float:left;width:10%;height:100%;top:10%">
+          		<div id="current-target" style="position:relative;float:left;width:10%;height:100%;top:10%;left:5">
           		-
           		</div>
           		
-          		<div id="wedget3" style="position:relative;float:left;width:20%;height:100%">
+          		<!-- <div id="wedget3" style="position:relative;float:left;width:20%;height:100%">
           			<div id="a" style="position:absolute;top:10%;left:0;text-align:top;font-size:10px">
           				Teamed with:
           			</div>
@@ -244,7 +244,7 @@ jQuery.extend({
           		
           		<div id="team-mate" style="position:relative;float:left;width:10%;height:100%;top:10%">
           		-
-          		</div>
+          		</div>-->
           
           	</div>
           
