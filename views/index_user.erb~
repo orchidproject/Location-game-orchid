@@ -232,7 +232,7 @@ jQuery.extend({
           			</div> 
           		</div>
           		
-          		<div id="current-target" style="position:relative;float:left;width:10%;height:100%;top:10%;left:5">
+          		<div id="current-target" style="position:relative;float:left;width:10%;height:100%;top:10%;left:10">
           		-
           		</div>
           		
