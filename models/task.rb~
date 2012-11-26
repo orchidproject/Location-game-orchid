@@ -123,7 +123,7 @@ class Task
   		
   		
   		
-  		#distance check, if one player goes too far, then task dropped off, 25 meter 
+  		#distance check, if one player goes too far, then task dropped off
   		working_players.each do |p|
   			if (p.distance_to(self.latitude,self.longitude) > 25)
   				dropped_off=true

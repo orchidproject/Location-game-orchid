@@ -6,6 +6,12 @@ class Controller < Sinatra::Base
         DataMapper.auto_migrate!
   end 
   
+
+  get '/game/:layer_id/test_frame'
+
+  end 
+
+
   get '/test/task' do
         socketIO.broadcast(
       	 { 
@@ -543,35 +549,42 @@ end
   #######################    mapeditor   ####################
   post "/admin/games/:layer_id/setGameArea" do
   		#should be a property of game! this is non-sense
-  		$game_area_top_left[Integer(params[:layer_id])]={:lat => Float(params[:latitude]),:lng=> Float(params[:longitude]) }
+  		#$game_area_top_left[Integer(params[:layer_id])]={:lat => Float(params[:latitude]),:lng=> Float(params[:longitude]) }
+		game = Game.get params[:layer_id]
+		game.sim_lat=Float(params[:latitude])
+		game.sim_lng=Float(params[:longitude])
+		game.save
   		return { :status => :ok }.to_json
   end
   
   
-   get '/admin/games/new' do
-    @game = Game.new
+  get '/admin/games/new' do
+    @game=Game.new
+  
     erb :'admin/games/new', :layout => :'admin/layout'
   end
 
   get '/admin/games/:id/mapeditor' do
     @game = Game.get params[:id]
     
-    if $game_area_top_left[@game.layer_id]
-    	@top_left_latitude = $game_area_top_left[@game.layer_id][:lat]
-    	@top_left_longitude = $game_area_top_left[@game.layer_id][:lng]
-    else
-    	@top_left_latitude = DEFAULT_SIM_LAT
-    	@top_left_longitude = DEFAULT_SIM_LNG
-    end
+    #if $game_area_top_left[@game.layer_id]
+    #	@top_left_latitude = game.sim_lat
+    #	@top_left_longitude = game.sim_lng
+    #else
+    #	@top_left_latitude = DEFAULT_SIM_LAT
+    #	@top_left_longitude = DEFAULT_SIM_LNG
+    #end
     
-    puts @top_left_latitude
-    puts @top_left_longitude
+    @top_left_latitude=@game.sim_lat.to_s('F')
+    @top_left_longitude=@game.sim_lng.to_s('F')
    
     erb :'admin/games/mapeditor', :layout => false
   end
 
   post '/admin/games' do
     game = Game.new params[:game]
+    game.sim_lat=DEFAULT_SIM_LAT
+    game.sim_lng=DEFAULT_SIM_LNG
     game.save
     redirect "/admin/games/#{game.layer_id}/mapeditor"
   end
@@ -698,20 +711,18 @@ end
     else
         game.update(:is_active=>0)
 		
-		#CHANGE TO ADAPT TO GRID SIZE (400/X)
-		#Library Jubilee Campus (debugging) 52.953664,-1.188509
-		#Wollaton Park 52.9491938, -1.2144399
-		#North of Jubilee campus 52.956046,-1.18878
-		if $game_area_top_left[game.layer_id] == nil
-        	$simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", DEFAULT_SIM_LAT, DEFAULT_SIM_LNG, 8, Time.now, 0.3) #last para in mins
-        else
-        	$simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", 
-        	$game_area_top_left[game.layer_id][:lat], 
-        	$game_area_top_left[game.layer_id][:lng], 
-        	8, 
-        	Time.now, 
-        	0.3)
-        end
+	#CHANGE TO ADAPT TO GRID SIZE (400/X)
+	#Library Jubilee Campus (debugging) 52.953664,-1.188509
+	#Wollaton Park 52.9491938, -1.2144399
+	#North of Jubilee campus 52.956046,-1.18878
+		
+        $simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", 
+        game.sim_lat, 
+        game.sim_lng, 
+        8, 
+        Time.now, 
+        0.2)
+      
         
         
         
