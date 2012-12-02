@@ -35,7 +35,7 @@ var latestMsgId = 0;
 
 function receiveMessageData(data) {
 	Android.newMessage();
-	alert("pushed to android");
+	$("#new-msg").html("1");
 }
 
 function receiveHealthData(data) {

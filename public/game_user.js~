@@ -35,6 +35,7 @@ var latestMsgId = 0;
 
 function receiveMessageData(data) {
 	Android.newMessage();
+	
 }
 
 function receiveHealthData(data) {

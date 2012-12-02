@@ -159,7 +159,7 @@ jQuery.extend({
  		alert("your location not found, please wait for location update");
  	}else{
  		map.setCenter(p.marker.getPosition());
- 		map.setZoom(18);
+ 		map.setZoom(19);
  	}
  	
  }
