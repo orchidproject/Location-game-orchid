@@ -39,6 +39,10 @@ function receiveMessageData(data) {
 	$("#new-msg").html(new_msg);
 }
 
+function clearNewMessage(){
+	$("#new-msg").html(0);
+}
+
 function receiveHealthData(data) {
 	//schema: health { player_id : integer , value : integer }
 

@@ -40,6 +40,7 @@ function receiveMessageData(data) {
 }
 
 function clearNewMessage(){
+	new_msg=0;
 	$("#new-msg").html(0);
 }
 
