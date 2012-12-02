@@ -30,12 +30,17 @@ function saveLog(data){
 }
 
 
-
+var new_msg = 0;
 var latestMsgId = 0;
 
 function receiveMessageData(data) {
 	Android.newMessage();
-	$("#new-msg").html("1");
+	new_msg++;
+	$("#new-msg").html(new_msg);
+}
+
+function clearNewMessage(){
+	$("#new-msg").html(0);
 }
 
 function receiveHealthData(data) {
@@ -43,6 +48,8 @@ function receiveHealthData(data) {
 
 	//push the task to the comms list (as long as this task is meant for us)
 	//alert('checking health: ' + data.player_id + ' against ' + $('#user_id').val());
+
+
 	if(data.player_id == $('#user_id').val()) {
 		//update health image/indicator HTML element
 		var health = Number(data.value);
