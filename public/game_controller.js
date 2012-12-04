@@ -190,7 +190,7 @@ function receivePlayerInfoData(data){
 
 
 function receiveExposureData(data){
-    document.getElementById("exposure_"+data.player_id).innerHTML=data.value;
+    document.getElementById("exposure_"+data.player_id).innerHTML=Math.round(data.value);
     
     var level = document.getElementById("level_"+data.player_id);
     if (data.value <= 50) {
