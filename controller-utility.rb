@@ -148,7 +148,7 @@ class Controller < Sinatra::Base
              if(sim.isOnMap(p.latitude, p.longitude))
              
                 p.current_exposure = check_radiation(p.latitude,p.longitude,game.layer_id)
-                p.exposure = p.exposure + (p.current_exposure*0.1)
+                p.exposure = p.exposure + (p.current_exposure*0.2)
                 if (p.exposure > 1000 )
                 	p.status="incapacitated"
                 	p.broadcast(socketIO)
