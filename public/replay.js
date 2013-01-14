@@ -31,6 +31,7 @@ function get_data(){
                         log[i]=JSON.parse(value);
                    }
                 });
+		$("#loading_indicator").hide();
             }
                    
         }

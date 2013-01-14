@@ -31,6 +31,7 @@ function get_data(){
                         log[i]=JSON.parse(value);
                    }
                 });
+		$("#loading_indicator").hide();
             }
                    
         }
@@ -167,7 +168,7 @@ function setup_game() {
 		type: "GET",
 		dataType: "json", 
 		success: function(data) {
-			var data= JSON.parse(data);
+		        data= JSON.parse(data);
 			
             		$(data.tasks).each(function(i, task){
                 		var d=filter({"task":task});

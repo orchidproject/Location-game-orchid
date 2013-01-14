@@ -94,4 +94,4 @@
 
 </div> <!-- wrapper -->
 <input type="hidden" id="replay_file" value= "<%= @replay_file %>" />
-<input type="hidden" id="setup_file" value= "<%= @replay_file %>" />
+<input type="hidden" id="setup_file" value= "<%= @setup_file %>" />
