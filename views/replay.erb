@@ -5,8 +5,8 @@
   	}
 
   	var myOptions = {
-  		zoom: 15,
-  		center: new google.maps.LatLng(50.934619, -1.397155),
+  		zoom: 17,
+  		center: new google.maps.LatLng(52.951611,-1.184059),
   		mapTypeId: google.maps.MapTypeId.HYBRID,
   		mapTypeControl: true,
 		disableDoubleClickZoom: true
@@ -39,14 +39,14 @@
 
 
 	<div id="wrapper">
-		<section id="scoreboard-wrapper">
+		<!--<section id="scoreboard-wrapper">
 			<div id="scoreboard">				
 				<h1>Atomic Orchid</h1>
 				<h5 class="tagline"><span id="city">game name here</span></h5>
 				
 			</div>
 
-		</section>
+		</section>-->
 		
 		<section id="active-player-wrapper">
 			<div align="center">
@@ -94,4 +94,4 @@
 
 </div> <!-- wrapper -->
 <input type="hidden" id="replay_file" value= "<%= @replay_file %>" />
-
+<input type="hidden" id="setup_file" value= "<%= @setup_file %>" />

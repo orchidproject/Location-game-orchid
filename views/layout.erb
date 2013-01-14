@@ -7,7 +7,7 @@
   	<script type="text/javascript" src="/game-common.js"></script>
   	<script> SOCKET_IO_ADDRESS = "<%= @socket_io_url %>";</script>
   	
-  	<% if request.path =~ /\/game\// %>
+  	<% if request.path =~ /\/game\// || request.path =~ /\/replay2\// %>
     		   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   	           <script type="text/javascript" src="<%= @socket_io_url %>/socket.io/socket.io.js"></script>
                <script type="text/javascript" src="/web_controller.js" ></script>
@@ -16,6 +16,8 @@
 			  	<link rel="stylesheet" type="text/css" href="/style.css" /> 
 			  	<link type="text/css" rel="stylesheet" href="/chatstyle.css" />
   	<% end %>
+
+       
   	
     <% if request.path =~ /\/replay\// %>
     	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
@@ -29,6 +31,7 @@
 		  <link type="text/css" rel="stylesheet" href="/replay_panel.css" />
 		  
   	<% end %>
+
   	
 
   </head>

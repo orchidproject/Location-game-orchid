@@ -20,7 +20,7 @@ $('#dot').live('mousedown',function(e){
 	
 });
 
-$(document).bind('mouseup',function(e){
+/*$(document).bind('mouseup',function(e){
 	if(bind){
 		$(document).unbind('mousemove', dot_move(e));
 		var percent = ($('#dot').offset().left - $("#bar").offset().left)/$("#bar").width();
@@ -30,7 +30,7 @@ $(document).bind('mouseup',function(e){
 	
 	if(in_play)
 		play(setScrollBar);
-});
+});*/
 
 var in_play=false;
 $("#play-button").live('click',function(e){

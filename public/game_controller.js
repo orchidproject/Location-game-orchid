@@ -341,7 +341,7 @@ function updateGame(oneTime) {
 		data: {after: lastRequestTime},
 		dataType: "json", 
 		success: function(data) {
-			$("#num-players").html(data.player.length + " Players");
+			
 			
             $(data.task).each(function(i, task){
                 var d=filter({"task":task});

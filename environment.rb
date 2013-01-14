@@ -7,6 +7,7 @@ Bundler.require
 require 'rack/methodoverride'
 require "net/http"
 require "uri"
+require "./replay.rb"
 
 
 require File.dirname(__FILE__) + '/simulation.rb'
@@ -20,6 +21,7 @@ class SocketIO
     end
         
     def broadcast (data)
+	puts :here
         url = @Socket_url
         
         

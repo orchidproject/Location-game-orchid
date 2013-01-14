@@ -40,9 +40,11 @@ http.post("/broadcast", function (request, response) {
         content.data["ackid"]=ackid;
         var channel=content.channel;console.log(channel);
         var users=content.users;
+	var log_data = content.log_data;
         
         io.sockets.in(channel).emit('data', content.data);
         
+	if(log_data==null || log_data==true)
         write_log(channel,content.data);
         
         

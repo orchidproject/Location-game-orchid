@@ -1,7 +1,7 @@
 var replay = true;
 var log_session1=null;
 var log_session2=null;
-var merged_log=[];
+var log;
 
 var speed=1;
 var current_task=null;
@@ -13,117 +13,31 @@ var previous_percent=0;
 var stop=true;
 
 
-function merge_log(){
-	//one of the log not reaching the end.
-	while(log_session1.index<(log_session1.data.length-2)||log_session2.index<(log_session2.data.length-2)){
-		if(log_session1.index<(log_session1.data.length-2)&&log_session2.index<(log_session2.data.length-2)){
-			var temp_log=determine_log_to_perform();
-			merged_log.push(temp_log.data[temp_log.index]);
-			temp_log.index++;
-		}
-		else if(log_session1.index>=(log_session1.data.length-2)){
-			var temp_log=log_session2;
-			merged_log.push(temp_log.data[temp_log.index]);
-			temp_log.index++;
-		}
-		else if(log_session2.index>=(log_session2.data.length-2)){
-			var temp_log=log_session1;
-			merged_log.push(temp_log.data[temp_log.index]);
-			temp_log.index++;
-		}
-	}
-	
-	merged_log={data:merged_log,index:0};
-	start_time=merged_log.data[0].time_stamp;
-	end_time=merged_log.data[merged_log.data.length-1].time_stamp;
-}
 
-
-function determine_log_to_perform(){
-	var timestamp1=log_session1.data[log_session1.index].time_stamp;
-	var timestamp2=log_session2.data[log_session2.index].time_stamp;
-	if (timestamp1<timestamp2){
-		return log_session1;
-	}
-	else{
-		return log_session2;
-	}
-}
 
 function get_data(){
-	var log1;
-	var log2;
-	
+    
     $.ajax({ 
-		url: "/get_log/"+$("#replay_file").val()+"/1",
+		url: "/get_log/"+$("#replay_file").val(),
 		type: "GET",
 		success: function(data) {
             if (typeof data.error != 'undefined'){
                 alert(data.error);
             }
             else{
-                log1=data.split("\n");
-                $(log1).each(function(i,value){
-                   if(i!=log1.length-1){
-                        log1[i]=JSON.parse(value);
+                log=data.split("\n");
+                $(log).each(function(i,value){
+                   if(i!=log.length-1){
+                        log[i]=JSON.parse(value);
                    }
                 });
-                
-                
-
-                
-                log_session1= {data: log1, index:0 }
-                
-                if(log_session2 != null & log_session1 != null){
-            		merge_log();
-           		}
-                
-                //forward_to(temp);
-                //oneStep(0);
-                /* $(log).each(function(i,value){
-                    if(i!=log.length-1){
-                        var interval=(log[i].time_stamp-log[0].time_stamp)/100;
-                        setTimeout(function(){alert("a step");},interval);
-                    }
-                });*/
-
-               
             }
                    
         }
         
     });
     
-    $.ajax({ 
-		url: "/get_log/"+$("#replay_file").val()+"/2",
-		type: "GET",
-		success: function(data) {
-            if (typeof data.error != 'undefined'){
-                alert(data.error);
-            }
-            else{
-                log2=data.split("\n");
-                $(log2).each(function(i,value){
-                   if(i!=log2.length-1){
-                        log2[i]=JSON.parse(value);
-                   }
-                });
-                
-                //start_time= log2[0].time_stamp;
-                //end_time = log2[log2.length-2].time_stamp; //last line of log is always empty
-            }
-            
-          
-            
-            log_session2= {data: log2, index:0 }
-            
-            if(log_session2 != null & log_session1 != null){
-            	merge_log();
-            }
-                   
-        }
-        
-    });
+    
 }
 
 function get_time(percent){
@@ -167,10 +81,10 @@ function forward_to(percent){
 		in_process=false;
 	}
 }
-
+var index=0
 function play(callback){
 	stop=false;
-	oneStep(merged_log.index,callback);
+	oneStep(index,callback);
 }
 
 function pause(callback){
@@ -179,23 +93,24 @@ function pause(callback){
 
 function oneStep(i,callback){
   
-     var log=merged_log.data;
+     
      
      var interval;
-     if(i==0){
-        interval=0;
-     }
-     else if(i==log.length-2){
+    
+     if(i==log.length-1){
         return
      }
      else{
-        interval=(log[i].time_stamp-log[i-1].time_stamp);
+        interval=(log[i+1].time_stamp-log[i].time_stamp);
      } 
-     callback((log[i].time_stamp-start_time)/(end_time-start_time));
+
+     process_data(log[i]);
+     //callback((log[i].time_stamp-start_time)/(end_time-start_time));
      current_task=setTimeout(function(){
-        process_data(log[i]);
+        
         if(!stop){
-        	oneStep(++(merged_log.index),callback);
+		index=i;
+        	oneStep(++i,callback);
         }
        
      },interval/speed);
@@ -242,13 +157,56 @@ function process_data(data){
         if(typeof data.task != "undefined"){
                 receiveTaskData(data.task);
         }
+
         
+}
+
+function setup_game() {
+	$.ajax({ 
+		url: "/get_log/"+$("#setup_file").val()+"/json",
+		type: "GET",
+		dataType: "json", 
+		success: function(data) {
+		        data= JSON.parse(data);
+			
+            		$(data.tasks).each(function(i, task){
+                		var d=filter({"task":task});
+                		if(typeof d.task != "undefined"){
+                    			receiveTaskData(d.task);
+                		}
+           		 });
+                        
+            		$(data.locations).each(function(i, location){
+                		var d=filter({"location":location});
+                		if(typeof d.location != "undefined"){
+                    			receivePlayerData(d.location);
+                		}
+            		});
+            
+             		$(data.players).each(function(i, player){
+                		var d=filter({"player":player});
+                		if(typeof d.player != "undefined"){
+                    			receivePlayerInfoData(d.player);
+                		}
+           		 });
+            
+            		$(data.dropoffpoints).each(function(i, drop){
+                		var d=filter({"drop":drop});
+                		if(typeof d.drop != "undefined"){
+                    			receiveDropoffpointData(d.drop);
+                		}
+            		});
+            
+		}
+          
+	});
 }
 
 $(document).ready(function() {
 	setup = true;
 	//updateGame(true);
 	get_data();
+	setup_game();
 });
 
 

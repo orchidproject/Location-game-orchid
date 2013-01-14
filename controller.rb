@@ -179,27 +179,21 @@ class Controller < Sinatra::Base
     
   end 
 
-  get '/get_log/:folder/:log_id' do
+  get '/get_log/:folder' do
   
-  	#e.g. log-(:layer_id), log-(:layer_id)-2
-  	puts "logs/#{params[:folder]}/log*"
-  	file= nil
-    Dir.glob("logs/#{params[:folder]}/log*") do |fname|
-    	decompose = File.basename(fname).split("-")
-    	if decompose[2] == nil &&  params[:log_id] == "1" 
-    		file = fname
-    	elsif decompose[2] == "2" && params[:log_id] == "2" 
-    		file = fname
-    	end 
-    	
-    	puts decompose
-    end
-    
-    
-    
     #file = File.new("logs/#{params[:layer_id]}/log-1-2", "r")
-    log=File.read(file)
+    log=File.read("replay/"+params[:folder])
     log
+    
+    
+  end
+
+
+  get '/get_log/:folder/json' do
+  
+    #file = File.new("logs/#{params[:layer_id]}/log-1-2", "r")
+    log=File.read("replay/"+params[:folder])
+    log.to_json
     
     
   end
@@ -348,85 +342,17 @@ class Controller < Sinatra::Base
 
  #object templates in this fuction
  get '/game/:layer_id/status.json' do
-    content_type 'application/json'
-    game = Game.first :layer_id => params[:layer_id]
-    
-    
-    locations = []
-    players = []
-	tasks = []
-    exposures = []
-    healths = []
-    dropoffpoints = []
-     
-    
-    game.players.each do |player|
-        players << {
-            :id=> player.id,
-            :name=> player.name,
-            :points_cache => player.points_cache,
-            :team => player.team.name,
-            :initials => player.initials,
-            :skill => player.skill_string(),
-            :status => player.status
-        }
+    content_type :json
 
-        healths << {
-            #exposure { player_id : integer , value : float }
-            :player_id => player.id,
-            :value => player.health
-        }
-        
-        exposures << {
-            #health { player_id : integer , value : integer }
-            :player_id => player.id,
-            :value => player.health
-        }
-        
-        locations << {
-        	:player_id => player.id,
-        	:latitude => player.latitude,
-        	:longitude => player.longitude,
-        	:initials => player.initials,
-        	:skill => player.skill_string()
-        }
-       
-        
-    end
-	
-	game.radiations.each do |bit|
-		radiations << {
-			:id => bit.id,
-			:longitude => bit.longitude.to_s('F'),
-			:latitude => bit.latitude.to_s('F')
-		}
-	end
-     
-    game.tasks.each do |t|
-       	 # if t.status.eql? "active"
-         tasks << {
-             :id => t.id,
-             :type=>t.type,
-			 :requirement=>t.requirement,
-             :description=> t.description,
-             :longitude => t.longitude.to_s('F'),
-             :latitude => t.latitude.to_s('F'),
-			 :state => t.state,
-			 :players => t.players
-         }
-        #end
-    end
-    
-    game.dropoffpoints.each do |d|
-    	dropoffpoints << {
-             :id => d.id,
-             :latitude=>d.latitude,
-             :longitude=>d.longitude,
-             :radius=>d.radius
-		}
+    if params[:layer_id]=="-1"
+	return {}.to_json  #reserved for replay method 2
+    else
+	puts params[:layer_id]
     end 
-    
-    {:location => locations,:task=>tasks,:exposure=>exposures,:health=>healths,:player=>players, :dropoffpoint=>dropoffpoints}.to_json
+
+    @game = Game.get params[:layer_id]
+	#TODO make it for replay
+    snapshot @game
     
 end
   
@@ -528,10 +454,11 @@ end
 
 
 
-  get '/replay/:filename' do
+  get '/replay/:filename/:setup_file' do
   	 @game = Game.first :layer_id => params[:layer_id]
   	 #@replay_data = File.read("logs/#{params[:filename]}")
-     @replay_file=params[:filename]
+         @replay_file=params[:filename]
+	 @setup_file=params[:setup_file]
    	 erb :'replay'
   end
   
@@ -543,6 +470,24 @@ end
      FileUtils.rm_rf("logs/#{file}")
      redirect "/admin/replay"
    	
+  end
+
+  get '/replay2/:filename' do
+	replay_option = {:latitude => 52.49, 
+			 :longitude=> -1.0, 
+			 :layer_id => params[:filename], 
+			 :radius => "1594",
+			 :speed => 1.0}
+	
+	$replays ||= {}
+	$replays[params[:filename]] ||= Replay.new replay_option, socketIO
+  	
+	@game = $replays[params[:filename]]
+    	@socket_io_url=SOCKET_CLIENT_REF
+
+	$replays[params[:filename]].start
+   
+    	erb :'dashboard'
   end
   
   
@@ -592,6 +537,7 @@ end
 
   get '/admin/games/:layer_id/setup.json' do
     content_type :json
+
     @game = Game.get params[:layer_id]
     snapshot @game
       
