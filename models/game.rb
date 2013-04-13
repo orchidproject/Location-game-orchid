@@ -7,9 +7,9 @@ class Game
   property :longitude, String
   property :radius, String
   property :layer_id, Serial, :index => true
-  property :sim_lat, String
   property :sim_lng, Decimal, :precision=>10, :scale=>7
   property :sim_lat, Decimal, :precision=>10, :scale=>7
+  property :grid,String, :default => "" 
   
   property :template, Integer, :default => 0
   property :is_active, Integer, :default => -1
@@ -17,11 +17,8 @@ class Game
   property :updated_at, DateTime
   has n, :teams
   has n, :players
-  has n, :boundings
-  has n, :radiations
   has n, :tasks
   has n, :dropoffpoints
-
     
   def self.team_names
     %w{runner controller truck}
@@ -52,7 +49,7 @@ class Game
     points.each {|p| total += p}
     total
   end
-  
+	
   def broadcast(socketIO,signal)
   	socketIO.broadcast( 
                            { 

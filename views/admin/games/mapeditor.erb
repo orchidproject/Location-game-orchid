@@ -1,118 +1,21 @@
 <html>
 <head>
 	<title>Atomic Orchid Map Editor</title>
-	<style type="text/css">
-		body {
-			padding: 0;
-			margin: 0;
-		}
-		.coin {
-			float: left;
-			background: url(/img/coins-large.png) no-repeat;
-			width: 18px;
-			height: 18px;
-			cursor: pointer;
-			background-position: 0 -36px;
-			margin: 3px;
-		}
-		.coin-20 {
-			background-position: -18px -36px;
-		}
-		.coin-30 {
-			background-position: -36px -36px;
-		}
-		.coin-50 {
-			background-position: -54px -36px;
-		}
-		.coin-10.selected {
-			background-position: 0 0;
-		}
-		.coin-20.selected {
-			background-position: -18px 0;
-		}
-		.coin-30.selected {
-			background-position: -36px 0;
-		}
-		.coin-50.selected {
-			background-position: -54px 0;
-		}
-		#pointToolbar {
-			background: white;
-			padding: 3px;
-			position: absolute;
-		}
-		#lineToolbar {
-			position: absolute;
-			top: 8px;
-			left: 100px;
-			background: white;
-			z-index: 1000;
-			border: 1px #999 solid;
-			-moz-box-shadow: 2px 2px 3px #777;
-			-webkit-box-shadow: 2px 2px 3px #777;
-			box-shadow: 2px 2px 3px #777;
-		}
-	</style>
-	<script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" href="/mapeditor/style.css" />
+
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=geometry&sensor=false"></script>
-  <script type="text/javascript" src="/game-common.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<script type="text/javascript" src="/game-common.js"></script>
+	<script type="text/javascript" src="/mapeditor/interface.js"></script>
+	
 <script type="text/javascript">
-
-
-
-
-
-
-
-var cg = {
-	s: function(w,h) {
-		return new google.maps.Size(w,h);
-	},
-	p: function(w,h) {
-		return new google.maps.Point(w,h);
-	}
-}
-
-var coinSpriteURL = "/img/gameboard-sprite.png";
-var coinHeight = 25;
-var coins = {
-	10: {
-		red: new google.maps.MarkerImage(coinSpriteURL, cg.s(17,17),  cg.p(0, 277), cg.p(17/2, 17/2)),
-		blue: new google.maps.MarkerImage(coinSpriteURL, cg.s(17,17), cg.p(0, 301), cg.p(17/2, 17/2)),
-		grey: new google.maps.MarkerImage(coinSpriteURL, cg.s(17,17), cg.p(0, 327), cg.p(17/2, 17/2))
-	},
-	20: {
-		red: new google.maps.MarkerImage(coinSpriteURL, cg.s(19,19),  cg.p(17, 276), cg.p(19/2, 19/2)),
-		blue: new google.maps.MarkerImage(coinSpriteURL, cg.s(19,19), cg.p(17, 300), cg.p(19/2, 19/2)),
-		grey: new google.maps.MarkerImage(coinSpriteURL, cg.s(19,19), cg.p(17, 326), cg.p(19/2, 19/2))
-	},
-	30: {
-		red: new google.maps.MarkerImage(coinSpriteURL, cg.s(21,21),  cg.p(36, 275), cg.p(21/2, 21/2)),
-		blue: new google.maps.MarkerImage(coinSpriteURL, cg.s(21,21), cg.p(36, 299), cg.p(21/2, 21/2)),
-		grey: new google.maps.MarkerImage(coinSpriteURL, cg.s(21,21), cg.p(36, 325), cg.p(21/2, 21/2))
-	},
-	50: {
-		red: new google.maps.MarkerImage(coinSpriteURL, cg.s(25,25),  cg.p(57, 273), cg.p(25/2, 25/2)),
-		blue: new google.maps.MarkerImage(coinSpriteURL, cg.s(25,25), cg.p(57, 297), cg.p(25/2, 25/2)),
-		grey: new google.maps.MarkerImage(coinSpriteURL, cg.s(25,25), cg.p(57, 323), cg.p(25/2, 25/2))
-	}
-};
 
 var map;
 var pointEditorInfoWindow;
 var pellets = {};
 var activePoint;
-
-
-
-
-//for bounding box
-var boundingBoxes=[];
-var savedBoundingBox=[];
-var tempPointOne;
-var tempPointTwo;
-
-
 
 
 var chosen_task_type = 0;
@@ -257,29 +160,6 @@ function saveSetting(){
 	},"json");
 }
 
-// function receiveSavedBoundingBox(box){
-//     var bounds = new google.maps.LatLngBounds();
-//     var swLocation= new google.maps.LatLng(box.swLatitude,box.swLongitude);
-//     var neLocation= new google.maps.LatLng(box.neLatitude,box.neLongitude);
-//     var bounds= new google.maps.LatLngBounds(swLocation,neLocation);
-//                     
-//     var rectangle;  
-//     rectangle = new google.maps.Rectangle();
-//     var rectOptions = {
-//             strokeColor: "#0000FF",
-//             strokeOpacity: 0.8,
-//             strokeWeight: 2,
-//             fillColor: "#0000FF",
-//             fillOpacity: 0.35,
-//             map: map,
-//             bounds: bounds,
-//             clickable:false
-//     };
-//     rectangle.setOptions(rectOptions);
-//     savedBoundingBox.push(rectangle);
-// 
-// }
-
 function receiveRadiationBit(bit){
 
 		chosen_task_type = bit.type;
@@ -316,40 +196,8 @@ var dropoffpoints = [];
 
 
 
-//add a point for left top corner?
-function receiveBounding(data) {
-//var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
-// var lat_sw=52.94539363811494
-// 	var long_sw=-1.2085589719746395
-// 	
-// 	var lat_se=52.94539363811494
-// 	var long_se=-1.2144399
-// 	
-// 	var lat_nw=52.9491938
-// 	var long_nw=-1.2144399
-// 	
-// 	var lat_ne=52.9491938
-// 	var long_ne=-1.2085589719746395
-// 	
-// 	var path = [
-//         new google.maps.LatLng(lat_sw,long_sw),
-//         new google.maps.LatLng(lat_se,long_se), 
-//         new google.maps.LatLng(lat_nw,long_nw),
-//         new google.maps.LatLng(lat_ne,long_ne),
-//         new google.maps.LatLng(lat_sw,long_sw),
-//     ];
-// 	
-// 	var options= {
-//             strokeColor: "#FF0000",
-//             strokeOpacity: 0.8,
-//             strokeWeight: 2,
-//             path:path    
-//     }	
-// 	var rect = new google.maps.Polyline();
-// 	rect.setOptions(options);
-// 	rect.setMap(map);
-}
 
+//set up map and load data
 $(function(){
 	
 	var mapOptions = {
@@ -380,7 +228,6 @@ $(function(){
 			receiveDropoffpoints(bit);
 		});
 		
-		receiveBounding(data.bounding);
 		
 	});
 	
@@ -452,65 +299,70 @@ $(function(){
 
 <body>
 
-	<div id="lineToolbar">
+	<div id="editor-tabs">
+		<ul>
+		    <li><a href="#editor-tabs-1">Targets</a></li>
+		    <li><a href="#editor-tabs-2">Drop off zone</a></li>
+		    <li><a href="#editor-tabs-3">Game area</a></li>
+		    <li><a href="#editor-tabs-4">Cloud</a></li>
+
+		</ul>	
+		<div id="editor-tabs-1" >
+				  <div style="padding: 3px;">
+					  <p><h5>Deploy target types</h5> To place target type on map click button once and then right click on location on map.</p>
+				  </div>
+				  <input class="btn" type="button" value="Radioactive" onclick="addTask(0)"/>
+				  <input class="btn" type="button" value="Animal" onclick="addTask(1)"/>
+				  <input class="btn" type="button" value="Patient" onclick="addTask(2)"/>
+				  <input class="btn" type="button" value="Fuel tank" onclick="addTask(3)"/>
+		
+		</div>	
+		<div id="editor-tabs-2" >
+				  <div style="padding: 3px;">
+					  <p><h5>Deploy drop-off points</h5></p>
+				  </div>
+				  <input class="btn" type="button" value="deploy points" onclick="addTask(100)"/>
+					  radius:
+				  <input  type="text" value=10 id="drop-off-radius" />
 	
-		<div style="padding: 3px;">
-		  <div style="padding: 3px;">
-          <p><h5>Deploy target types</h5>To place target type on map click button once and then right click on location on map.</p>
-		  </div>
-          <input class="btn" type="button" value="Radioactive" onclick="addTask(0)"/>
-          <input class="btn" type="button" value="Animal" onclick="addTask(1)"/>
-          <input class="btn" type="button" value="Patient" onclick="addTask(2)"/>
-          <input class="btn" type="button" value="Fuel tank" onclick="addTask(3)"/>
 		</div>
-		
-		<div style="padding: 3px;">
-		  <div style="padding: 3px;">
-          <p><h5>Deploy drop-off points</h5></p>
-		  </div>
-		  <input class="btn" type="button" value="deploy points" onclick="addTask(100)"/>
-          radius:
-          <input  type="text" value=10 id="drop-off-radius" />
-          
+		<div id="editor-tabs-3" >
+				  <div style="padding: 3px;">
+					  <p><h5>Top left corner of game area</h5>Please put in vaild lat lng, or the system will crash.</p>
+				  </div>
+				  latitude:
+				  <input  type="text" value="<%= @top_left_latitude %>" id="top_left_lat" />
+				  longitude:
+				  <input  type="text" value="<%= @top_left_longitude %>" id="top_left_lng" />   
+				  <input class="btn" type="button" id="set-location"  value="set location"/>
+
+				  
+	
 		</div>
-		
-		<div style="padding: 3px;">
-		  <div style="padding: 3px;">
-          <p><h5>Top left corner of game area</h5>Please put in vaild lat lng, or the system will crash.</p>
-		  </div>
-		  latitude:
-          <input  type="text" value="<%= @top_left_latitude %>" id="top_left_lat" />
-          longitude:
-          <input  type="text" value="<%= @top_left_longitude %>" id="top_left_lng" />   
+		<div id="editor-tabs-4"> 
+				  grid size:
+				  <input type="text" value="3" />
+				  simulation file:
+				  <select id="simulation_file"> 
+					<option value="en-EN" selected="selected">simulation1.txt</option>
+					<option value="de-DE">simulation.txt</option>
+				  </select>
+				  <br>
+				  time interval
+				  <input type="text" value="0.2" />
+				  
 		</div>
-		
 		<div style="padding: 3px;">
-                  <input class="btn" type="button" value="Save" onclick="addBoundingBox();addRadiationBits();addDropOffPoints();"/>
-                  <input class="btn" type="button" value="Clear" onclick="clearBoundingBox();clearRadiationBits()"/>
-		  <input class="btn" type="button" value="Close" onclick="window.location = '/admin/games';"/>
-		  <input class="btn" type="button" id="saveSetting" value="Save as a template" onclick="saveSetting()";>
+			  <input class="btn" type="button" id="move-to-location"  value="move to location"/>
+			  <input class="btn" type="button" value="Save" onclick="addBoundingBox();addRadiationBits();addDropOffPoints();"/>
+			  <input class="btn" type="button" value="Clear" onclick="clearBoundingBox();clearRadiationBits()"/>
+			  <input class="btn" type="button" value="Close" onclick="window.location = '/admin/games';"/>
+			  <input class="btn" type="button" id="saveSetting" value="Save as a template" onclick="saveSetting()";>
 		</div>
-		
+	
 	</div>
 	
 
-	<div style="display: none;" id="pointToolbar"><div style="width: 180px; padding-top: 10px;">
-
-		<div style="float: right;">
-			<input type="button" class="editPointDelete" style="font-size: 9pt;" value="Delete" />
-		</div>
-
-		<div class="coin coin-10 selected" id="coin-10"></div>
-		<div class="coin coin-20" id="coin-20"></div>
-		<div class="coin coin-30" id="coin-30"></div>
-		<div class="coin coin-50" id="coin-50"></div>
-
-		<div>
-			<input type="text" class="coin_text" value="" style="width: 120px;" maxlength="140" />
-			<input type="button" class="editPointSave" style="font-size: 9pt; display: none;" value="Save" />
-		</div>
-
-	</div></div>
 
 	<div id="map" style="width: 100%; height: 600px;"></div>
 	

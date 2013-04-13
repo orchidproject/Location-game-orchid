@@ -1,5 +1,4 @@
-class Controller < Sinatra::Base
-
+class Controller < Sinatra::Base 
       
   ################for development #####################
   get '/migrate' do

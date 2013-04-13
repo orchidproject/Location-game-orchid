@@ -1,8 +1,11 @@
 <html>
   <head>
   	<title>Atomic Orchid</title>
-	  <meta name="viewport" content="initial-scale=1.0">
-  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<meta name="viewport" content="initial-scale=1.0">
+	<% if request.path =~ /\/mapeditor\// %>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<% end %>
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry"></script>
   	<script type="text/javascript" src="/game-common.js"></script>
   	<link rel="stylesheet" type="text/css" href="/reset.css" />

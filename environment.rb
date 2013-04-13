@@ -7,10 +7,8 @@ Bundler.require
 require 'rack/methodoverride'
 require "net/http"
 require "uri"
-require "./replay.rb"
-
-
-require File.dirname(__FILE__) + '/simulation.rb'
+require "./replay.rb" 
+require File.dirname(__FILE__) + '/lib/simulation.rb'
 
 class SocketIO
     
@@ -169,6 +167,6 @@ end
 
 class Array; def sum; inject( nil ) { |sum,x| sum ? sum+x : x }; end; end
 
-require File.join(Controller.root, 'controller.rb')
+require File.join(Controller.root, 'controllers/controller.rb')
 require File.join(Controller.root, 'agent_utility.rb')
-require File.join(Controller.root, 'controller-utility.rb')
+require File.join(Controller.root, 'controllers/controller-utility.rb')
