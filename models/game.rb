@@ -8,8 +8,12 @@ class Game
   property :radius, String
   property :layer_id, Serial, :index => true
   property :sim_lng, Decimal, :precision=>10, :scale=>7
-  property :sim_lat, Decimal, :precision=>10, :scale=>7
-  property :grid,String, :default => "" 
+  property :terrains,String, :default => "[]" 
+  property :simulation_file,String, :default=>""
+  property :grid_size, Decimal, :precision=>5, :scale=>3, :default=> 8 
+
+  property :sim_lat, Decimal, :precision=>10, :scale=>7  
+  property :sim_update_interval, Decimal, :precision=>5, :scale=>3, :default=>0.2
   
   property :template, Integer, :default => 0
   property :is_active, Integer, :default => -1

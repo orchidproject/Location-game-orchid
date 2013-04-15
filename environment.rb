@@ -7,7 +7,7 @@ Bundler.require
 require 'rack/methodoverride'
 require "net/http"
 require "uri"
-require "./replay.rb" 
+require "./lib/replay.rb" 
 require File.dirname(__FILE__) + '/lib/simulation.rb'
 
 class SocketIO

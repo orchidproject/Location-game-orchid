@@ -7,7 +7,8 @@
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=geometry&sensor=false"></script>
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-	<script type="text/javascript" src="/game-common.js"></script>
+	<script type="text/javascript" src="/js-model/models.js"></script>
+	<script type="text/javascript" src="/game-common.js"></script> 
 	<script type="text/javascript" src="/mapeditor/interface.js"></script>
 	
 <script type="text/javascript">
@@ -304,7 +305,7 @@ $(function(){
 		    <li><a href="#editor-tabs-1">Targets</a></li>
 		    <li><a href="#editor-tabs-2">Drop off zone</a></li>
 		    <li><a href="#editor-tabs-3">Game area</a></li>
-		    <li><a href="#editor-tabs-4">Cloud</a></li>
+		    <li><a href="#editor-tabs-4">Cloud and terrain</a></li>
 
 		</ul>	
 		<div id="editor-tabs-1" >
@@ -341,17 +342,17 @@ $(function(){
 		</div>
 		<div id="editor-tabs-4"> 
 				  grid size:
-				  <input type="text" value="3" />
-				  simulation file:
-				  <select id="simulation_file"> 
-					<option value="en-EN" selected="selected">simulation1.txt</option>
-					<option value="de-DE">simulation.txt</option>
-				  </select>
+				  <input id="grid-size" type="text" value="3" />
 				  <br>
 				  time interval
-				  <input type="text" value="0.2" />
-				  
-		</div>
+				  <input id="time-interval" type="text" value="0.2" />
+				  <br>
+				   simulation file:
+				  <select id="simulation-select"> 
+				  </select>
+				  <div id="simulation-size"> </div>
+				  <div id="simulation-frame"> </div>
+		</div> 
 		<div style="padding: 3px;">
 			  <input class="btn" type="button" id="move-to-location"  value="move to location"/>
 			  <input class="btn" type="button" value="Save" onclick="addBoundingBox();addRadiationBits();addDropOffPoints();"/>

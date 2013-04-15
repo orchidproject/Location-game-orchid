@@ -6,8 +6,7 @@ class Controller < Sinatra::Base
   end 
   
 
-  get '/game/:layer_id/test_frame' do
-
+  get '/game/test' do
   end 
 
 
@@ -39,13 +38,6 @@ class Controller < Sinatra::Base
      headers
   end
 
-  
-
-
-  
-  
-  
-  
   before do
   	@current_page = request.path[/(\w|-)+/]
     response.headers['Access-Control-Allow-Origin'] = '*'
@@ -177,6 +169,11 @@ class Controller < Sinatra::Base
     {"players"=>players}.to_json
     
   end 
+
+  get '/admin/simulation_files' do
+	simulation_files 
+  end 
+
 
   get '/get_log/:folder' do
   

@@ -1,25 +1,6 @@
 class Controller < Sinatra::Base
-	
-
- def get_truck(layer_id)
-       game=Game.first :layer_id=>layer_id
-       team = game.teams :name=>"truck"
-       
-       #only one truck player shoud be in the team 
-       truck= team.players.first
-       return truck
-   end
  
-   def get_controller(layer_id)
-       game=Game.first :layer_id=>layer_id
-       team = game.teams :name=>"controller"
        
-       #only one truck player shoud be in the team 
-       controller= team.players.first
-       return controller 
- 
-   end 
-
   def endGame(game)
     game.update(:is_active=>1)
     game.broadcast(socketIO, "end")
@@ -29,23 +10,9 @@ class Controller < Sinatra::Base
 
   def snapshot(game)
 	
-    boxes =[]
-	radiation = []
     task = []
     dropoffpoint = []
-      
 	
-	#obsolate now
-    game.boundings.each do |p|
-        boxes<<{
-            :id=>p.id,
-            :neLatitude => p.neLatitude.to_s('F'),
-            :neLongitude => p.neLongitude.to_s('F'),
-            :swLatitude => p.swLatitude.to_s('F'),
-            :swLongitude => p.swLongitude.to_s('F')
-        }
-    end
-      
     game.tasks.each do |t|
           task<<{
               :id=>t.id,
@@ -68,12 +35,26 @@ class Controller < Sinatra::Base
           }
     end
 
-      
-      {:boundingBoxes=>boxes,:radiationBits=>radiation,:tasks=>task,:dropoffpoints=>dropoffpoint}.to_json
-
+   #player data not loaded? 
+   # player = []
+   # game.players.each do |p|
+   #	player<<{
+   #	}
+puts game.sim_update_interval
+    {
+	:terrains=> game.terrains,
+	:sim_lat=> "%f" % game.sim_lat, 
+	:sim_lng=> "%f" % game.sim_lng,
+	:simulation_file=> game.simulation_file,
+	:sim_update_interval => game.sim_update_interval.to_s('F'),
+	:grid_size=> "%f" % game.grid_size,
+	:tasks=>task,
+	:dropoffpoints=>dropoffpoint
+    }.to_json
 
   end
   
+  #duplicate a game instance as a template 
   def copy_game_record(game,name,is_template)
   	 new_attributes = game.attributes
      new_attributes.delete(:layer_id)
@@ -100,36 +81,7 @@ class Controller < Sinatra::Base
   
   end
             
-  # def get_mainloops(game_id)
-#   
-#   		if !$mainloops
-#   			$mainloops=[]
-#   			
-#   		end 
-#   		
-#         if !$mainloops[game_id]
-#         	$mainloops[game_id]=nil
-#         end
-#         
-#         return $mainloops[game_id]
-#   end
-#   
-#   def get_simulations(game_id)
-#   		if !$simulations
-#   			$simulations=[]
-#   			puts "simulation: #{$simulations.object_id}"
-#   		end 
-#         
-#         if !$simulations[game_id]
-#         	 puts "set simulation to nil"
-#         	$simulations[game_id]=nil
-#         end
-#         
-#         puts "simulation: #{$simulations.object_id}"
-#         puts "simulation with #{game_id}: #{$simulations[game_id].object_id}"
-#         return $simulations[game_id]
-#   end
-            
+           
   def update_game(game)
          puts "game update"
          sim = $simulations[game.layer_id]
@@ -182,5 +134,20 @@ class Controller < Sinatra::Base
         distance = location1.distance_to location2
         return distance
   end
+
+  def simulation_files
+	files = []
+	#directory of including file, in this case environment.rb
+	Dir.new("./cloud").each do |fname|
+		next if File.directory?(fname)
+		f = File.open("./cloud/"+fname)
+		y_size = Integer(f.readline())	
+		x_size = Integer(f.readline())
+		t_size = Integer(f.readline())
+		file =  {:name => fname, :x_size => x_size, :y_size => y_size, :frame => t_size }
+		files << file	
+	end 
+	files.to_json
+  end 
 
 end
