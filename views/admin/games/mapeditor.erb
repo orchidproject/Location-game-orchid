@@ -205,7 +205,8 @@ $(function(){
 		zoom: 15,
 		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
 		mapTypeId: google.maps.MapTypeId.HYBRID, //jef
- 		mapTypeControl: true
+ 		mapTypeControl: true,
+		disableDoubleClickZoom: true
 	};
 	
 	// Create the main map
@@ -309,34 +310,45 @@ $(function(){
 
 		</ul>	
 		<div id="editor-tabs-1" >
-				  <div style="padding: 3px;">
-					  <p><h5>Deploy target types</h5> To place target type on map click button once and then right click on location on map.</p>
-				  </div>
-				  <input class="btn" type="button" value="Radioactive" onclick="addTask(0)"/>
-				  <input class="btn" type="button" value="Animal" onclick="addTask(1)"/>
-				  <input class="btn" type="button" value="Patient" onclick="addTask(2)"/>
-				  <input class="btn" type="button" value="Fuel tank" onclick="addTask(3)"/>
-		
+			<div style="padding: 3px;">
+					  <p><h5>Deploy target types</h5> To place target type on map click button once and then click on<br> location on map.</p>
+			</div>
+			<ol class="targets-selectable">
+					<li class="state-default" actionId=1 >Resource</li>
+					<li class="state-default" actionId=2 >Fuel</li>
+					<li class="state-default" actionId=3 >Person</li>
+					<li class="state-default" actionId=4 >Animal</li>
+					<li class="state-delete"  actionId=5 >Remove</li>
+	
+			</ol>
 		</div>	
 		<div id="editor-tabs-2" >
 				  <div style="padding: 3px;">
 					  <p><h5>Deploy drop-off points</h5></p>
 				  </div>
-				  <input class="btn" type="button" value="deploy points" onclick="addTask(100)"/>
+				  <ol class="targets-selectable">
+					<li class="state-default" actionId=6 >dropZone</li>  
+					<li class="state-delete"  actionId=7 >Remove</li> 
+				  </ol>
+				  <br>
 					  radius:
-				  <input  type="text" value=10 id="drop-off-radius" />
+				  <input  id="radius" type="text" value=10 id="drop-off-radius" />
 	
 		</div>
 		<div id="editor-tabs-3" >
 				  <div style="padding: 3px;">
-					  <p><h5>Top left corner of game area</h5>Please put in vaild lat lng, or the system will crash.</p>
+					  <p><h5>Top left corner of game area</h5></p>
 				  </div>
 				  latitude:
-				  <input  type="text" value="<%= @top_left_latitude %>" id="top_left_lat" />
+				  <input id="sim_lat"  type="text" value="<%= @top_left_latitude %>"  />
+				  <br>
 				  longitude:
-				  <input  type="text" value="<%= @top_left_longitude %>" id="top_left_lng" />   
-				  <input class="btn" type="button" id="set-location"  value="set location"/>
-
+				  <input id="sim_lng"  type="text" value="<%= @top_left_longitude %>" />   
+				  <input class="btn" type="button" id="set-location" disabled=true value="set"/>
+				  <ol class="targets-selectable">
+					<li class="state-default" actionId=8>drop</li>  
+				  </ol>
+ 
 				  
 	
 		</div>
@@ -347,16 +359,17 @@ $(function(){
 				  time interval
 				  <input id="time-interval" type="text" value="0.2" />
 				  <br>
-				   simulation file:
+				  simulation file:
 				  <select id="simulation-select"> 
 				  </select>
 				  <div id="simulation-size"> </div>
 				  <div id="simulation-frame"> </div>
 		</div> 
+		<br>
 		<div style="padding: 3px;">
 			  <input class="btn" type="button" id="move-to-location"  value="move to location"/>
-			  <input class="btn" type="button" value="Save" onclick="addBoundingBox();addRadiationBits();addDropOffPoints();"/>
-			  <input class="btn" type="button" value="Clear" onclick="clearBoundingBox();clearRadiationBits()"/>
+			  <input class="btn" type="button" value="Save" id="save-button" />
+			  <input class="btn" type="button" value="Reset" id="reset-button"/>
 			  <input class="btn" type="button" value="Close" onclick="window.location = '/admin/games';"/>
 			  <input class="btn" type="button" id="saveSetting" value="Save as a template" onclick="saveSetting()";>
 		</div>
@@ -365,7 +378,7 @@ $(function(){
 	
 
 
-	<div id="map" style="width: 100%; height: 600px;"></div>
+	<div id="map" ></div>
 	
 </body>
 

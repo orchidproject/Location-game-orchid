@@ -217,3 +217,47 @@ var GameMap = {
 	}
 }
 
+
+//new model based implementation
+function drawTask(task){
+	//dynamic attribute including location and task state
+	//state = 1:active 2:inactive
+	var taskIcon;
+	var point = new google.maps.LatLng(task.latitude,task.longitude);
+		
+	if (task.state==2){
+		taskIcon = new google.maps.MarkerImage(tick, playerIconSize, playerIconOrigin, playerIconAnchor);
+	}
+	else{
+		taskIcon = getTaskIcon(task.type); 
+
+	}	
+	
+	if (task.marker == null){
+     		task.marker = new google.maps.Marker({
+                	position: point,
+                	map: map,
+                	icon: taskIcon
+        	});
+       
+        }
+        else{
+        	task.marker.setPosition(taskIcon);
+        }
+}
+
+function drawDpZone(dpZone){
+	//dpzone is static
+	point = new google.maps.LatLng(dpZone.latitude,dpZone.longitude);
+        if(dpZone.marker == null){        	
+		dpZone.marker = new google.maps.Circle({
+				center:point,
+  				map: map,
+  				radius: dpZone.radius,    
+  				fillColor: '#0000FF',
+  				strokeColor: '#0000FF',
+  				clickable: true 
+		});
+	}
+
+}

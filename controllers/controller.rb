@@ -336,25 +336,7 @@ class Controller < Sinatra::Base
   end
 
 
- #object templates in this fuction
- get '/game/:layer_id/status.json' do
-    content_type :json
-
-    if params[:layer_id]=="-1"
-	return {}.to_json  #reserved for replay method 2
-    else
-	puts params[:layer_id]
-    end 
-
-    @game = Game.get params[:layer_id]
-	#TODO make it for replay
-    snapshot @game
-    
-end
-  
-  
  
-  
   get '/game/:layer_id/getLocations' do 
   	game = Game.first :layer_id => params[:layer_id]
   	game.players.each do |player| 
@@ -488,6 +470,50 @@ end
   
   
   #######################    mapeditor   ####################
+  post "/admin/games/:game_id/updateGameSettings" do
+	puts  params 
+	game = Game.get params[:game_id]
+	if params[:sim_lat] && params[:sim_lng]
+		game.sim_lat = Float(params[:sim_lat])
+		game.sim_lng = Float(params[:sim_lng])
+	end 
+	
+	if params[:terrains]
+		game.terrains=params[:terrains]
+	end 
+
+	if params[:simulation_file]
+		game.simulation_file = params[:simulation_file] 
+	end 
+
+	if params[:grid_size]
+		game.grid_size = Float(params[:grid_size])
+	end 
+
+	if params[:sim_update_interval]
+		game.sim_update_interval = Float(params[:sim_update_interval])
+	end 
+
+	if params[:dropOffPoints]
+		game.dropoffpoints.destroy
+		new_dpZones =  params[:dropOffPoints]
+		new_dpZones.each do |kay, d|
+			game.dropoffpoints.create :latitude=> d[:latitude], :longitude=> d[:longitude], :radius=> d[:radius]
+		end 	
+	end 
+
+	if params[:tasks]
+		game.tasks.destroy
+		new_tasks =  params[:tasks]
+		new_tasks.each do |key, t|
+			game.tasks.create :latitude=> t[:latitude], :longitude=> t[:longitude], :type=> t[:type]
+		end 
+	end 
+	
+	{ :saved => game.save}.to_json
+	
+  end 
+
   post "/admin/games/:layer_id/setGameArea" do
   		#should be a property of game! this is non-sense
   		#$game_area_top_left[Integer(params[:layer_id])]={:lat => Float(params[:latitude]),:lng=> Float(params[:longitude]) }
