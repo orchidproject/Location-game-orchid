@@ -3,6 +3,8 @@ var simulations;
 var global_bound;
 var loadCount=0;
 var edit_state=0;
+var previous_simulation_index = 0
+var heatMap = null;
 
 
 var widgets = {
@@ -156,7 +158,16 @@ function switch_tab(tab){
 		case 3:
 			showGrid();	
 		break;
-
+		case 4:
+			$("#sim-loading").show();
+			simulations.loadFileContent(
+				$("#simulation-select")[0].selectedIndex,
+				function(data){
+					$("#sim-loading").hide();
+					renderFrame($('#display-frame').val());
+				}
+			);
+		break;
 
 
 	}
@@ -176,6 +187,10 @@ function clear_tab(previous_tab){
 		break;
 		case 3:
 			clearGrid(false);	
+		break;
+		case 4:
+			heatMap.setMap(null);
+			heatMap=null;
 		break;
 
 	}
@@ -333,6 +348,41 @@ function loadData(){
 	});
 
 }
+
+function renderFrame(frame){
+	var x_size = simulations.x_size[simulations.previous_index];
+	var y_size = simulations.y_size[simulations.previous_index];
+	var offset = game.grid_size/2
+	
+	var heatMapData = [];
+	for(var i=0; i<(y_size);i++){
+		for(var j=0; j<x_size ; j++){
+			var value = simulations.getValue(frame, j,i);
+			var latLng = google.maps.geometry.spherical.computeOffset(
+				new google.maps.LatLng(game.sim_lat,game.sim_lng),
+				offset+(game.grid_size*(i-1)), 
+				90
+			); 
+			latLng = google.maps.geometry.spherical.computeOffset(
+				latLng,	
+				offset+(game.grid_size*(j-1)), 
+				180	
+			); 
+ 
+			heatMapData.push({
+				location: latLng,
+				weight: parseFloat(value)
+			});
+		}		
+	}
+	heatMap = new google.maps.visualization.HeatmapLayer({
+	    data: heatMapData 
+	});
+
+	heatMap.setMap(map);	
+}
+
+
 $(function(){
 	loadData();	
 
@@ -421,8 +471,9 @@ $(function(){
 		activate:function(event,ui){
 				var newIndex = ui.newTab.index();
 				var oldIndex = ui.oldTab.index();
-				switch_tab(newIndex);
+				
 				clear_tab(oldIndex);
+				switch_tab(newIndex);
 			}
 
 	}); 
@@ -461,6 +512,12 @@ $(function(){
 	$("#reset-button").click(function(){
 		window.location.reload(true);	
 	});
+	
+	$("#display-heatmap").click(function(){
+		heatMap.setMap(null);		
+		heatMap=null;
+		renderFrame($('#display-frame').val());
+	});	
 
 
 
@@ -469,3 +526,5 @@ $(function(){
 	game.dropOffZoneAdded = drawDpZone;
 	game.beforeSave = doBeforeSave;
 });
+
+

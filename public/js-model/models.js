@@ -92,38 +92,37 @@ function Game(game_id){
 		"json");
 
 	}
+	
+	this.loadData = function(callback){
+		var instance = this;
+		$.ajax({ 
+			url: "/game/"+this.id+"/status.json",
+			type: "GET",
+			dataType: "json", 
+			success: function(data) {
+				tasks = data.tasks;
+				dropOffZones = data.dropOffZones;
+				instance.simulation_file=data.simulation_file;
+				//TODO validation	
+				instance.sim_lat=parseFloat(data.sim_lat);
+				instance.sim_lng=parseFloat(data.sim_lng);
+				instance.grid_size=parseFloat(data.grid_size);
+				instance.sim_update_interval=parseFloat(data.sim_update_interval);
+				//terrain data is retrieved as a long string		
+				instance.terrains=jQuery.parseJSON(data.terrains);
+				if(callback!=null){ 
+					callback(instance); 
+				} 
+			}
+
+		});	
+
+	} 
 }
 
 
-Game.prototype.loadData = function(callback){
-	var instance = this;
-	$.ajax({ 
-		url: "/game/"+this.id+"/status.json",
-		type: "GET",
-		dataType: "json", 
-		success: function(data) {
-			instance.tasks = data.tasks;
-			instance.dropOffZones = data.dropOffZones;
-			instance.simulation_file=data.simulation_file;
-			//TODO validation	
-			instance.sim_lat=parseFloat(data.sim_lat);
-			instance.sim_lng=parseFloat(data.sim_lng);
-			instance.grid_size=parseFloat(data.grid_size);
-			instance.sim_update_interval=parseFloat(data.sim_update_interval);
-			//terrain data is retrieved as a long string		
-			instance.terrains=jQuery.parseJSON(data.terrains);
-			if(callback!=null){
-				callback(instance); 
-			} 
-		}
 
-	});	
 
-}
-
-Game.prototype.uploadData = function(){
-
-}
 
 //simulation_file_info
 function Simulations(){
@@ -131,6 +130,8 @@ function Simulations(){
 	this.x_size = [];
 	this.y_size = [];
 	this.frame = [];
+	this.content = null;
+	this.previous_index=null;
 }
 
 Simulations.prototype.loadData = function(callback){
@@ -155,6 +156,42 @@ Simulations.prototype.loadData = function(callback){
 	});	
 }
 
+Simulations.prototype.getValue = function(frame,y,x){ 
+	//x y is indexed from zero
+	var offset = 3;
+        var x_size = this.x_size[this.previous_index];
+	var y_size = this.y_size[this.previous_index];	
+	var frameOffset = x_size*y_size;
+	
+	return this.content[offset+frameOffset*(frame-1)+ x*(y_size) + y ];	
+} 
+//lazy load file 
+Simulations.prototype.loadFileContent = function(index,callback){
+	var instance = this;
+	if(this.previous_index == null || (this.previous_index!=index)) {
+		$.ajax({ 
+			url: "/admin/simulation_files/"+instance.filenames[index]+"/getFiles",
+			type: "GET",
+			dataType: "text", 
+			success: function(data) {
+				instance.content = data.split("\n");
+				alert(instance.content.length);	
+				if(callback!=null){
+					callback(instance.content);
+				}
+			}
+
+		});
+	}
+	else{
+		if(callback!=null){
+				callback(instance.content);
+		}
+
+	}	
+	this.previous_index = index;	
+
+}
 
 //model of task
 
@@ -165,3 +202,4 @@ Simulations.prototype.loadData = function(callback){
 
 
 //model of player
+

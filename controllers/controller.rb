@@ -170,11 +170,7 @@ class Controller < Sinatra::Base
     
   end 
 
-  get '/admin/simulation_files' do
-	simulation_files 
-  end 
-
-
+  
   get '/get_log/:folder' do
   
     #file = File.new("logs/#{params[:layer_id]}/log-1-2", "r")
@@ -470,6 +466,16 @@ class Controller < Sinatra::Base
   
   
   #######################    mapeditor   ####################
+  get '/admin/simulation_files' do
+	simulation_files 
+  end 
+
+  
+  get '/admin/simulation_files/:fname/getFiles' do
+  
+	File.read("cloud/"+params[:fname])
+  end
+
   post "/admin/games/:game_id/updateGameSettings" do
 	puts  params 
 	game = Game.get params[:game_id]
@@ -514,16 +520,7 @@ class Controller < Sinatra::Base
 	
   end 
 
-  post "/admin/games/:layer_id/setGameArea" do
-  		#should be a property of game! this is non-sense
-  		#$game_area_top_left[Integer(params[:layer_id])]={:lat => Float(params[:latitude]),:lng=> Float(params[:longitude]) }
-		game = Game.get params[:layer_id]
-		game.sim_lat=Float(params[:latitude])
-		game.sim_lng=Float(params[:longitude])
-		game.save
-  		return { :status => :ok }.to_json
-  end
-  
+    
   
   get '/admin/games/new' do
     @game=Game.new
