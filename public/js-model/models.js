@@ -71,7 +71,6 @@ function Game(game_id){
 			dpZones_to_upload.push(
 				{latitude:value.latitude,longitude:value.longitude,radius:value.radius});
 		});
-
 		var instance = this
 		$.post("/admin/games/" + instance.id + "/updateGameSettings",
 			{
@@ -156,7 +155,7 @@ Simulations.prototype.loadData = function(callback){
 	});	
 }
 
-Simulations.prototype.getValue = function(frame,y,x){ 
+Simulations.prototype.getValue = function(frame,x,y){ 
 	//x y is indexed from zero
 	var offset = 3;
         var x_size = this.x_size[this.previous_index];
@@ -175,7 +174,6 @@ Simulations.prototype.loadFileContent = function(index,callback){
 			dataType: "text", 
 			success: function(data) {
 				instance.content = data.split("\n");
-				alert(instance.content.length);	
 				if(callback!=null){
 					callback(instance.content);
 				}

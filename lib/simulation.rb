@@ -88,16 +88,15 @@ class Simulation
 		Integer((@lat_top_left-lat)*1.1119e+05/@grid_size_in_meters)
     end
 	
-	 def getYIndex(lat)
-		Integer((@lat_top_left-lat)*1.1119e+05/@grid_size_in_meters)
-    end
     
-    def getXIndex(long)
+       
+    
+     def getXIndex(long)
         
         Integer((long-@long_top_left)*Math.cos(@lat_top_left/180*Math::PI)*1.1119e+05/@grid_size_in_meters)
     end
     
-	def getLat(y_index)
+    def getLat(y_index)
         @lat_top_left - y_index*@grid_size_in_meters/1.1119e+05
     end
    
@@ -137,16 +136,7 @@ class Simulation
         
         return arrayWithLatLng
     end
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     #edge detection
     def getFrame(t)
         @data.get2DArray(t)
@@ -290,7 +280,42 @@ class Simulation
         return arrayWithLatLng
     	
     end 
+
+#temperary method, need to be removed
+    def getGridCoord(lat,lng)
+	return {:y=>getYIndex(lat), :x=>getXIndex(lng)}
+    end 
+
+    def getGridCirclePresentation(lat,lon,radius)
+	lat1 = lat/180*Math::PI
+	lon1 = lon/180*Math::PI 
+	brng = 0    # bearing (in radians), 0 mean go north
+	d    = radius   # distance to travel in m
+	r    = 6371000      # earth's radius in m
+	lat2 =	Math.asin(
+			Math.sin(lat1)*Math.cos(d/r) + 
+        		Math.cos(lat1)*Math.sin(d/r)*Math.cos(brng) 
+		)
+	lon2 = lon1 + Math.atan2(Math.sin(brng)*Math.sin(d/r)*Math.cos(lat1), 
+	Math.cos(d/r)-Math.sin(lat1)*Math.sin(lat2))
+
+	lat2 = lat2/Math::PI * 180	
+	lon2 = lon2/Math::PI * 180
+	ori =getGridCoord(lat,lon)
+	des = getGridCoord(lat2,lon2)
+
+	ori[:radius] = ori[:y]-des[:y]+1 #include center point	
+	return ori
 	
+    end 
+    
+    
+    
+    
+    
+    
+    
+    
 end
 
 

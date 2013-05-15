@@ -217,10 +217,10 @@ function showGrid(){
 	
 	var x_size = simulations.x_size[$("#simulation-select")[0].selectedIndex];
 	var y_size = simulations.y_size[$("#simulation-select")[0].selectedIndex];
-
-	for (var i=0; i<x_size;i++) {
+	
+	for (var i=0; i<y_size;i++) {
 		widgets.grid[i] = [];
-		for (var j=0; j<y_size; j++){
+		for (var j=0; j<x_size; j++){
 			
 			var bs = mapUtility.makebounds(nw,game.grid_size,game.grid_size);
 			if(global_bound == null){
@@ -228,7 +228,7 @@ function showGrid(){
 			}else{
 				global_bound.extend(bs.getNorthEast()).extend(bs.getSouthWest());
 			}
-			var terrain = widgets.terrains[i][j];
+			var terrain = widgets.terrains[j][i];
 			var color = "";
 			switch(terrain){
 				case 0:
@@ -238,7 +238,7 @@ function showGrid(){
 					color = "#000000";
 					break;		
 			}
-			var rec = createRec({bounds:bs,map:map,strokeWeight:1,fillColor:color}, i,j) 
+			var rec = createRec({bounds:bs,map:map,strokeWeight:1,fillColor:color}, j,i) 
 			widgets.grid[i].push(rec);	
 			//southeast of previous northwest of the nextgrid
 			nw = bs.getNorthEast();
@@ -309,10 +309,12 @@ function afterLoad(){
 			" is not found in the list of simulation files");
 		 return;
 	};
+	
+	var index = $("#simulation-select")[0].selectedIndex;
 	if(game.terrains.length == 0){
 		widgets.terrains = mapUtility.createArray2D(
-			simulations.x_size[$("#simulation-select")[0].selectedIndex],
-			simulations.y_size[$("#simulation-select")[0].selectedIndex],
+			simulations.x_size[index],
+			simulations.y_size[index],
 			0
 		);
 	}
@@ -320,6 +322,7 @@ function afterLoad(){
 		widgets.terrains=game.copyTerrains();
 	}
 	
+	$("#simulation-size").text("size: "+simulations.x_size[index] + "*" +simulations.y_size[index]);
 	$("#grid-size").val(game.grid_size);
 	$("#time-interval").val(game.sim_update_interval);
 
@@ -327,7 +330,7 @@ function afterLoad(){
 	
 function doBeforeSave(){
 	game.terrains = widgets.terrains;
-	game.simulation_file = simulations.filenames[$("#simulation-select")[0].selected_index];   
+	game.simulation_file = simulations.filenames[$("#simulation-select")[0].selectedIndex];   
 }
 
 function loadData(){
@@ -349,23 +352,24 @@ function loadData(){
 
 }
 
+
 function renderFrame(frame){
 	var x_size = simulations.x_size[simulations.previous_index];
 	var y_size = simulations.y_size[simulations.previous_index];
 	var offset = game.grid_size/2
 	
 	var heatMapData = [];
-	for(var i=0; i<(y_size);i++){
+	for(var i=0; i<y_size;i++){
 		for(var j=0; j<x_size ; j++){
 			var value = simulations.getValue(frame, j,i);
 			var latLng = google.maps.geometry.spherical.computeOffset(
 				new google.maps.LatLng(game.sim_lat,game.sim_lng),
-				offset+(game.grid_size*(i-1)), 
+				offset+(game.grid_size*(j-1)), 
 				90
 			); 
 			latLng = google.maps.geometry.spherical.computeOffset(
 				latLng,	
-				offset+(game.grid_size*(j-1)), 
+				offset+(game.grid_size*(i-1)), 
 				180	
 			); 
  

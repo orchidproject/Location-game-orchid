@@ -1,12 +1,48 @@
 class Controller < Sinatra::Base 
-      
   ################for development #####################
   get '/migrate' do
         DataMapper.auto_migrate!
   end 
   
 
-  get '/game/test' do
+  get '/game/:game_id/test' do
+	game= Game.get(params[:game_id])
+	sim = Simulation.new("cloud/simulation_data_03.txt", 
+        game.sim_lat, 
+        game.sim_lng, 
+        8, 
+        Time.now, 
+        0.2)
+	data=File.read("game_state.txt")
+	data=JSON.parse(data)
+	data["tasks"].each do |t| 
+		result =  sim.getGridCoord(Float(t["latitude"]),Float(t["longitude"]))
+
+		t["x"] = result[:x]
+		t["y"] = result[:y]
+		
+	end 
+
+	data["players"].each do |p| 
+		result =  sim.getGridCoord(Float(p["latitude"]),Float(p["longitude"]))
+
+		p["x"] = result[:x]
+		p["y"] = result[:y]
+		
+	end 
+
+	data["dropoffpoints"].each do |d|
+		result = sim.getGridCirclePresentation(
+			Float(d["latitude"]),
+			Float(d["longitude"]),
+			Float(d["radius"]))
+		d["x-center"]=result[:x]
+		d["y-center"]=result[:y]
+		d["grid-radius"]=result[:radius]
+	end  
+
+	file = File.open("revised_game_state.txt", "w")
+	file.write(data.to_json) 
   end 
 
 
@@ -415,9 +451,6 @@ class Controller < Sinatra::Base
   end
   
   
-  get '/test' do
-  	erb :'test'
-  end
   
   get '/game/:layer_id/dashboard' do
     @game = Game.first :layer_id => params[:layer_id]
@@ -507,6 +540,10 @@ class Controller < Sinatra::Base
 			game.dropoffpoints.create :latitude=> d[:latitude], :longitude=> d[:longitude], :radius=> d[:radius]
 		end 	
 	end 
+
+	if params[:simulation_file]
+		game.simulation_file = params[:simulation_file]
+	end
 
 	if params[:tasks]
 		game.tasks.destroy
