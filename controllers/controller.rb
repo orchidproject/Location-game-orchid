@@ -5,7 +5,7 @@ class Controller < Sinatra::Base
   end 
   
 
-  get '/game/:game_id/test' do
+  get '/game/:game_id/convertCoords' do
 	game= Game.get(params[:game_id])
 	sim = Simulation.new("cloud/simulation_data_03.txt", 
         game.sim_lat, 
