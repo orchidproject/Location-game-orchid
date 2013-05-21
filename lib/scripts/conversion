@@ -1,0 +1,10 @@
+{"player":{"id":84,"name":"Daniel","skill":"transporter","initials":"DR","status":"normal"},"ackid":71,"time_stamp":1355320660060}
+{"health":{"player_id":84,"value":100},"ackid":72,"time_stamp":1355320660062}
+{"textMassage":{"content":"Daniel join the game"},"ackid":73,"time_stamp":1355320660065}
+{"player":{"id":85,"name":"Dulitha","skill":"firefighter","initials":"DR","status":"normal"},"ackid":75,"time_stamp":1355320660698}
+{"health":{"player_id":85,"value":100},"ackid":76,"time_stamp":1355320660700}
+{"textMassage":{"content":"Dulitha join the game"},"ackid":77,"time_stamp":1355320660702}
+{"player":{"id":86,"name":"Jon","skill":"firefighter","initials":"JH","status":"normal"},"ackid":79,"time_stamp":1355320662168}
+{"health":{"player_id":86,"value":100},"ackid":80,"time_stamp":1355320662169}
+{"textMassage":{"content":"Jon join the game"},"ackid":81,"time_stamp":1355320662171}
+{"player":{"id":87,"name":"Aida","skill":"soldier","initials":"ky","status":"normal"},"ackid":83,"time_stamp":1355320665390}
