@@ -23,7 +23,7 @@ end
 
 class GameStateJsonLoader
 	def initialize(filename)
-		@data = File.read("filename")
+		@data = File.read(filename)
 	end 
 	
 	def load
