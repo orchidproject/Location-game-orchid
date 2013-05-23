@@ -308,6 +308,10 @@ class Simulation
 	return ori
 	
     end 
+
+    def getCoordsFromGrid(x,y)
+	return  {:lat => getLat(y), :lng => getLong(x)}
+    end 
     
     
     

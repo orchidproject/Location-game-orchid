@@ -7,6 +7,8 @@ class StateBreakdown
 		@states = data
 		@interval = updateInterval
 		
+		@roleMapping =  ["medic","firefighter","soldier","transporter"]
+		@taskMapping =  ["radioactive","animal","victim","fuel"]
 	end
 	
 	def convert(convertMapping)
@@ -23,6 +25,9 @@ class StateBreakdown
 =end
 
 			state["state"]["players"].each do |p|
+				p["skill"] = @roleMapping[ p["skill"]]
+				p["name"] = "agent"
+				p["initials"] = "AG"
 				output << {"health" => {"player_id" => p["player_id"], "value" => p["health"]},  "time_stamp" => artificialTimeStamp}
 				p.delete("health")
 				output << {"location" => p, "time_stamp" => artificialTimeStamp }
