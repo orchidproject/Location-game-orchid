@@ -99,8 +99,15 @@ function Game(game_id){
 			type: "GET",
 			dataType: "json", 
 			success: function(data) {
-				tasks = data.tasks;
-				dropOffZones = data.dropOffZones;
+				if(data.tasks != null){
+					tasks = data.tasks;
+				}
+				if(data.dropOffZones != null) {
+					dropOffZones = data.dropOffPoints;
+				}
+				if(data.players != null){
+					players = data.players
+				}
 				instance.simulation_file=data.simulation_file;
 				//TODO validation	
 				instance.sim_lat=parseFloat(data.sim_lat);

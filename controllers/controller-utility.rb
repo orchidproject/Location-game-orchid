@@ -12,7 +12,20 @@ class Controller < Sinatra::Base
 	
     task = []
     dropoffpoint = []
-	
+    player = []
+
+    game.players.each do |p|
+	 player <<{
+		:id => p.id,
+		:latitude => p.latitude,
+		:longitude => p.longitude,
+		:initials => p.initials,
+		:skill => p.skill,
+		:status => p.status,
+		:health => p.health
+	} 
+    end 
+
     game.tasks.each do |t|
           task<<{
               :id=>t.id,
