@@ -62,7 +62,8 @@ puts game.sim_update_interval
 	:sim_update_interval => game.sim_update_interval.to_s('F'),
 	:grid_size=> "%f" % game.grid_size,
 	:tasks=>task,
-	:dropoffpoints=>dropoffpoint
+	:dropoffpoints=>dropoffpoint,
+	:players => players
     }.to_json
 
   end
