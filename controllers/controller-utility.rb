@@ -53,7 +53,7 @@ class Controller < Sinatra::Base
    # game.players.each do |p|
    #	player<<{
    #	}
-puts players.to_json 
+puts player.to_json 
     {
 	:terrains=> game.terrains,
 	:sim_lat=> "%f" % game.sim_lat, 
@@ -63,7 +63,7 @@ puts players.to_json
 	:grid_size=> "%f" % game.grid_size,
 	:tasks=>task,
 	:dropoffpoints=>dropoffpoint,
-	:players => players
+	:players => player
     }.to_json
 
   end

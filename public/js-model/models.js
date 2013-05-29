@@ -103,7 +103,7 @@ function Game(game_id){
 					tasks = data.tasks;
 				}
 				if(data.dropOffZones != null) {
-					dropOffZones = data.dropOffPoints;
+					dropOffZones = data.dropoffpoints;
 				}
 				if(data.players != null){
 					players = data.players
