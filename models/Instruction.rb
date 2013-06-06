@@ -13,7 +13,7 @@ class Instruction
   property :next_x, Integer
   property :next_y, Integer
   property :action, String
- 
+  property :status, Integer, :default=>1 
 
   before :save do
 	puts "before save hooker"
