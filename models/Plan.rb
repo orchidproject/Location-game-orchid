@@ -38,7 +38,8 @@ class Plan
                                 :task=> instruction.task_id, 
 				:direction=> instruction.action,
 				:status => instruction.status,
-				:time => instruction.created_at.to_time.to_i
+				:time => instruction.created_at.to_time.to_i,
+				:id => instruction.id
                             }]
                         }
                      }.to_json)   
