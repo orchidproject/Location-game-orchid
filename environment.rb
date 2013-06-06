@@ -19,7 +19,7 @@ class SocketIO
     end
         
     def broadcast (data)
-	puts :here
+	puts "sent to socket io"
         url = @Socket_url
         
         
@@ -171,3 +171,6 @@ require File.join(Controller.root, 'controllers/controller-api.rb')
 require File.join(Controller.root, 'controllers/controller.rb')
 require File.join(Controller.root, 'agent_utility.rb')
 require File.join(Controller.root, 'controllers/controller-utility.rb')
+require File.join(Controller.root, 'controllers/controller-test.rb')
+
+

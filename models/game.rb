@@ -23,7 +23,8 @@ class Game
   has n, :players
   has n, :tasks
   has n, :dropoffpoints
-	    
+  has n, :plans	    
+
   def self.team_names
     %w{runner controller truck}
   end

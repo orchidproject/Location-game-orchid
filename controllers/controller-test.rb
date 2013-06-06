@@ -1,0 +1,139 @@
+#the code for development and testing 
+require 'uri'
+require 'net/http'
+require "./lib/plan-handler.rb"
+
+
+class Controller < Sinatra::Base 
+
+
+ get '/test/fetchplan' do
+	time1 = Time.now	
+	res = PlanHandler.new.load 1
+	time2 = Time.now
+	#parse json
+	p = Game.get(1).plans.create 
+	resJson = JSON.parse(res) 
+
+	resJson.each  do |frame| 
+		
+	    new_frame = p.frames.create(:count=> frame["time_frame"]) 	
+	    frame["players"].each do |player|
+		    
+		    new_frame.instructions.create(
+			:group => player["group"].to_s,
+			:task_id => player["task"],
+			:player_id => player["id"],
+			:next_x => player["next_x"],
+			:next_y => player["next_y"],
+			:action => player["action"]
+			)	
+	    end 
+	end 	
+
+	p.notifyPlayers socketIO 	
+	(time2-time1).to_s+" seconds result" + res
+ end 
+ get '/test/fetchplanonly' do
+	time1 = Time.now	
+	res = PlanHandler.new.load 1
+	time2 = Time.now
+	(time2-time1).to_s+" seconds result" + res
+ end
+
+ get '/test/fetchplanfake' do 
+	time1 = Time.now	
+	res = File.read('./fakePlan.json') 
+	time2 = Time.now
+	#parse json
+	p = Game.get(1).plans.create 
+	resJson = JSON.parse(res) 
+
+	resJson.each  do |frame| 
+		
+	    new_frame = p.frames.create(:count=> frame["time_frame"]) 	
+	    frame["players"].each do |player|
+		    
+		    new_frame.instructions.create(
+			:group => player["group"].to_s,
+			:task_id => player["task"],
+			:player_id => player["id"],
+			:next_x => player["next_x"],
+			:next_y => player["next_y"],
+			:action => player["action"]
+			)	
+	    end 
+	end 	
+
+	p.notifyPlayers socketIO 	
+	(time2-time1).to_s+" seconds result" + res
+
+ end 
+
+ get '/test/task' do
+
+        socketIO.broadcast(
+      	 { 
+            :channel=> params["game_id"],     
+      		:data=>{
+      					  
+      		  :task=>{
+             	:id => params["id"],
+             	:type=>params["type"],
+			 	:requirement=>params["requirement"],
+             	:description=> "",
+             	:longitude => params["long"],
+             	:latitude => params["lat"],
+			 	:state => params["status"],
+			 	:players => params["players"]
+			  }
+			}
+         }.to_json)
+  end 
+
+  get '/migrate' do
+        DataMapper.auto_migrate!
+  end 
+  
+  get '/game/:game_id/convertCoords' do
+	game= Game.get(params[:game_id])
+	sim = Simulation.new("cloud/simulation_data_03.txt", 
+        game.sim_lat, 
+        game.sim_lng, 
+        8, 
+        Time.now, 
+        0.2)
+	data=File.read("game_state.txt")
+	data=JSON.parse(data)
+	data["tasks"].each do |t| 
+		result =  sim.getGridCoord(Float(t["latitude"]),Float(t["longitude"]))
+
+		t["x"] = result[:x]
+		t["y"] = result[:y]
+		
+	end 
+
+	data["players"].each do |p| 
+		result =  sim.getGridCoord(Float(p["latitude"]),Float(p["longitude"]))
+
+		p["x"] = result[:x]
+		p["y"] = result[:y]
+		
+	end 
+
+	data["dropoffpoints"].each do |d|
+		result = sim.getGridCirclePresentation(
+			Float(d["latitude"]),
+			Float(d["longitude"]),
+			Float(d["radius"]))
+		d["x-center"]=result[:x]
+		d["y-center"]=result[:y]
+		d["grid-radius"]=result[:radius]
+	end  
+
+	file = File.open("revised_game_state.txt", "w")
+	file.write(data.to_json) 
+  end 
+
+end 
+

@@ -53,7 +53,6 @@ class Controller < Sinatra::Base
    # game.players.each do |p|
    #	player<<{
    #	}
-puts player.to_json 
     {
 	:terrains=> game.terrains,
 	:sim_lat=> "%f" % game.sim_lat, 

@@ -334,6 +334,7 @@ function handleTaskStatus(task){
 
 // Load the initial game state and place the pins on the map. Sample data in pellets.json
 // This function polls the game server for data.
+// obsolete
 function updateGame(oneTime) {
 	$.ajax({ 
 		url: "/game/"+$("#layer_id").val()+"/status.json",
@@ -343,14 +344,14 @@ function updateGame(oneTime) {
 		success: function(data) {
 			
 			
-            $(data.task).each(function(i, task){
+            $(data.tasks).each(function(i, task){
                 var d=filter({"task":task});
                 if(typeof d.task != "undefined"){
                     receiveTaskData(d.task);
                 }
             });
                         
-            $(data.location).each(function(i, location){
+            $(data.players).each(function(i, location){
                 var d=filter({"location":location});
                 if(typeof d.location != "undefined"){
                     receivePlayerData(d.location);
