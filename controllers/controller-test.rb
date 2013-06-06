@@ -19,6 +19,19 @@ class Controller < Sinatra::Base
 	return "latest instruction for player(id "+  params[:player_id] + "): " + status 
  end 
 
+ get '/test/instructionid/:player_id/' do
+	ins = Instruction.get(params[:id])
+	status = nil
+	if (ins.status == 1)	
+		status = "waiting for response"
+	elsif (ins.status == 2)
+		status = "accepted"
+	end 
+
+
+	return "latest instruction for (id "+  params[:id] + "): " + status 
+ end
+
  get '/test/fetchplan' do
 	time1 = Time.now	
 	res = PlanHandler.new.load 1
