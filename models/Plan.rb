@@ -37,7 +37,7 @@ class Plan
                                 :teammate=> teammate,
                                 :task=> instruction.task_id, 
 				:direction=> instruction.action,
-				:status => 1,
+				:status => instruction.status,
 				:time => instruction.created_at.to_time.to_i
                             }]
                         }
