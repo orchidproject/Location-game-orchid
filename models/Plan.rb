@@ -16,15 +16,17 @@ class Plan
 	
 	first_frame.instructions.each do |instruction|	
 		#get teammate
-		group = JSON.parse(instruction.group)
 		teammate = -1		
-		group.each do |id|
-			if (id == instruction.player_id)
-				next	
-			else 
-				teammate = id
+		if(group!= ""){
+			group = JSON.parse(instruction.group)
+			group.each do |id|
+				if (id == instruction.player_id)
+					next	
+				else 
+					teammate = id
+				end 
 			end 
-		end 
+		}
 
 		io.broadcast( 
                      { 
