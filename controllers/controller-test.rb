@@ -19,7 +19,7 @@ class Controller < Sinatra::Base
 	return "latest instruction for player(id "+  params[:player_id] + "): " + status 
  end 
 
- get '/test/instructionid/:player_id/' do
+ get '/test/instructionid/:id/' do
 	ins = Instruction.get(params[:id])
 	status = nil
 	if (ins.status == 1)	
