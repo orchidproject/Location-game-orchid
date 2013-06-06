@@ -144,6 +144,14 @@ function update_location(latitude, longitude, id){
   console.log(query);
 }
 
+function ack_instruction(id){
+  var query = 'UPDATE instructions SET status=2 WHERE id=' + id;
+  client.query(
+    query
+  );
+  console.log(query);
+}
+
 function get_game_status(game_layer_id,callback){
     if(!game_layer_id){
         return;
@@ -242,6 +250,20 @@ io.sockets.on('connection', function (socket) {
   		}
   	}
   });
+
+
+  socket.on('ack-instruction', function(data){
+    var channel;
+    console.log(data);
+    socket.get("channel", function (err, content) {
+        channel=content;
+    });
+
+    ack_instruction(data.id,data.status);
+    ackid++;
+    io.sockets.in(channel).emit('data', {"ack-instruction":data,"ackid":ackid});
+
+  });
   
   //SINGLE location push
   socket.on('location-push', function (data) {
@@ -250,11 +272,9 @@ io.sockets.on('connection', function (socket) {
     socket.get("channel", function (err, content) {
         channel=content;
     });
-    //console.log(channel);
     
     //save location
     get_game_status(channel,function(is_active){
-        //dconsole.log(is_active);
         //if(is_active==0){
         if(true){
             update_location(data.latitude,data.longitude,data.player_id);
