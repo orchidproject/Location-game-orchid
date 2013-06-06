@@ -13,15 +13,26 @@ class Plan
   def notifyPlayers(io)
 	puts "notify users"
 	first_frame = frames.first(:count => 0)
+	
 	first_frame.instructions.each do |instruction|	
 		#get teammate
+		group = JSON.parse(instruction.group)
+		
+		group.each do |id|
+			if (id == instruction.player_id)
+				next	
+			else 
+				teammate = id
+			end 
+		end 
+
 		io.broadcast( 
                      { 
                         :channel=> "#{self.game.layer_id}-2",  
                         :users=>[instruction.player_id], #send to a particular user
                         :data=>{
                             :instructions=>[{
-                                :teammate=> 58,
+                                :teammate=> teammate,
                                 :task=> instruction.task_id, 
 				:direction=> instruction.action,
 				:status => 1,
