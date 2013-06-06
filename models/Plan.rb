@@ -17,7 +17,7 @@ class Plan
 	first_frame.instructions.each do |instruction|	
 		#get teammate
 		teammate = -1		
-		if(group!= "")
+		if(instructions.group!= "")
 			group = JSON.parse(instruction.group)
 			group.each do |id|
 				if (id == instruction.player_id)
