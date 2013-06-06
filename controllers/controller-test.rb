@@ -7,8 +7,16 @@ require "./lib/plan-handler.rb"
 class Controller < Sinatra::Base 
 
  get '/test/instruction/:player_id/' do
-	ins = Instruction.all(:player_id => params[:player_id])
-	ins.last.to_s	
+	ins = Instruction.last(:player_id => params[:player_id])
+	status = nil
+	if (ins.status == 1)	
+		status = "waiting for response"
+	elsif (ins.status == 2)
+		status = "accepted"
+	end 
+
+	
+	return "latest instruction for player(id "+  params[:player_id] + "): " + status 
  end 
 
  get '/test/fetchplan' do
