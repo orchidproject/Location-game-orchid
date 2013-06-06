@@ -6,6 +6,10 @@ require "./lib/plan-handler.rb"
 
 class Controller < Sinatra::Base 
 
+ get '/test/instruction/:player_id/' do
+	ins = Instructions.all(:player_id => params[:player_id])
+	ins.last.to_s	
+ end 
 
  get '/test/fetchplan' do
 	time1 = Time.now	
