@@ -13,7 +13,7 @@ class Plan
   def notifyPlayers(io)
 	puts "notify users"
 	first_frame = frames.first(:count => 0)
-	
+
 	first_frame.instructions.each do |instruction|	
 		#get teammate
 		teammate = -1		

@@ -137,7 +137,9 @@ class Controller < Sinatra::Base
     DEFAULT_SIM_LAT = config_hash['default_sim_lat']
     DEFAULT_SIM_LNG = config_hash['default_sim_lng']
     SOCKET_CLIENT_REF = config_hash['socket_io_client_ref']
-    
+    PROXY_ADDRESS = config_hash['proxy_address']
+    PROXY_PORT = config_hash['proxy_port'] 
+
     #sperating game instances
     $simulations=[]
     $mainloops=[]
