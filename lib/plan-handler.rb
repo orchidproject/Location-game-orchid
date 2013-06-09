@@ -18,9 +18,9 @@ class PlanHandler
 			puts "load data with no proxy"
 			http = Net::HTTP.new(uri.host, uri.port)
 		else 
-			proxy = URI(PROXY::ADDRESS)
-			puts "load data with proxy " + Controller::PROXY_ADDRESS 
-			http = Net::HTTP.new(uri.host, uri.port,proxy.url,proxy.port)
+			proxy = URI(Controller::PROXY_ADDRESS)
+			puts "load data with proxy " + proxy.url + " " + proxy.port 
+			http = Net::HTTP.new(uri.host, uri.port, proxy.url, proxy.port)
 		end 
 		#uri = URI("http://www.google.com/")
 		headers = { }
