@@ -32,6 +32,16 @@ class Controller < Sinatra::Base
 	return "latest instruction for (id "+  params[:id] + "): " + status 
  end
 
+ get '/test/:game_id/fetchplan' do
+	#the final test 
+		
+
+ end 
+
+ get '/test/:game_id/snapshot' do
+	snapshot Game.get(params[:game_id]), true
+ end 
+
  get '/test/fetchplan' do
 	time1 = Time.now	
 	res = PlanHandler.new.load 1
@@ -44,21 +54,41 @@ class Controller < Sinatra::Base
 		
 	    new_frame = p.frames.create(:count=> frame["time_frame"]) 	
 	    frame["players"].each do |player|
-		    
-		    new_frame.instructions.create(
-			:group => player["group"].to_s,
-			:task_id => player["task"],
-			:player_id => player["id"],
-			:next_x => player["next_x"],
-			:next_y => player["next_y"],
-			:action => player["action"]
+		    puts "group is : " + player["group"].to_s 
+		    if player["group"] == nil  
+			puts "group null, abort <--------------------------------"
+	 		next 	
+		    end 
+
+		    ins= new_frame.instructions.new(
+				:group => player["group"].to_s,
+				:task_id => player["task"],
+				:player_id => player["id"],
+				:next_x => player["next_x"],
+				:next_y => player["next_y"],
+				:action => player["action"]
 			)	
+		    #compare the data
+		    #is it guarantee to be the latest?
+		    last_instruction = Instruction.last(:player_id => player["id"])
+		    if last_instruction&&!last_instruction.equals(ins)
+			ins.save
+			puts "instruction not same, saved <-------------------------" 
+		    elsif !last_instruction
+			puts "first plan, saved < -------------------------------"
+			ins.save
+		    else 
+			new_frame.instructions.delete(ins)
+			puts "same instruction abort <-----------------------------"
+		    end 
 	    end 
-	end 	
+	end
+	
 
 	p.notifyPlayers socketIO 	
 	(time2-time1).to_s+" seconds result" + res
  end 
+
  get '/test/fetchplanonly' do
 	time1 = Time.now	
 	res = PlanHandler.new.load 1
@@ -78,8 +108,13 @@ class Controller < Sinatra::Base
 		
 	    new_frame = p.frames.create(:count=> frame["time_frame"]) 	
 	    frame["players"].each do |player|
-		    
-		    new_frame.instructions.create(
+		    puts "group is : " + player["group"].to_s 
+		    if player["group"] == nil  
+			puts "group null, abort <------------------------"
+	 		next 	
+		    end 
+
+		    ins= new_frame.instructions.new(
 			:group => player["group"].to_s,
 			:task_id => player["task"],
 			:player_id => player["id"],
@@ -87,8 +122,24 @@ class Controller < Sinatra::Base
 			:next_y => player["next_y"],
 			:action => player["action"]
 			)	
+		    #compare the data
+		    #is it guarantee to be the latest?
+=begin
+		    last_instruction = Instruction.last(:player_id => player["id"])
+		   if last_instruction&&!last_instruction.equals(ins)
+			ins.save
+			puts "instruction not same, saved <-------------------------" 
+		    elsif !last_instruction
+			puts "first plan, saved < -------------------------------"
+			ins.save
+		    else 
+			new_frame.instructions.delete(ins)
+			puts "same instruction abort <-----------------------------"
+		    end 
+=end 
+		ins.save 
 	    end 
-	end 	
+	end
 
 	p.notifyPlayers socketIO 	
 	(time2-time1).to_s+" seconds result" + res

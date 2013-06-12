@@ -31,7 +31,7 @@ class Plan
 		io.broadcast( 
                      { 
                         :channel=> "#{self.game.layer_id}-2",  
-                        :users=>[instruction.player_id], #send to a particular user
+                        :users=>[instruction.player_id,teammate], #send to a particular user
                         :data=>{
                             :instructions=>[{
                                 :teammate=> teammate,

@@ -8,7 +8,7 @@ class Controller < Sinatra::Base
     session.clear
   end 
 
-  def snapshot(game)
+  def snapshot(game, agent_friendly = false)
 	
     task = []
     dropoffpoint = []
@@ -53,8 +53,7 @@ class Controller < Sinatra::Base
    # game.players.each do |p|
    #	player<<{
    #	}
-    {
-	:terrains=> game.terrains,
+    response = {
 	:sim_lat=> "%f" % game.sim_lat, 
 	:sim_lng=> "%f" % game.sim_lng,
 	:simulation_file=> game.simulation_file,
@@ -63,13 +62,21 @@ class Controller < Sinatra::Base
 	:tasks=>task,
 	:dropoffpoints=>dropoffpoint,
 	:players => player
-    }.to_json
+    }
+
+    if agent_friendly
+	response = { :time_frame => 0, :state => response }	
+    else
+	response[:terrains] =  game.terrains
+	
+    end 
+    response.to_json
 
   end
   
   #duplicate a game instance as a template 
   def copy_game_record(game,name,is_template)
-  	 new_attributes = game.attributes
+	 new_attributes = game.attributes
      new_attributes.delete(:layer_id)
      template=Game.create(new_attributes)
      template.template=is_template
@@ -78,7 +85,7 @@ class Controller < Sinatra::Base
      
      game.tasks.each do |t|
 		new_attributes = t.attributes
-     	new_attributes.delete(:id)
+		new_attributes.delete(:id)
 		new_task=Task.create(new_attributes)
 		new_task.game=template
 		new_task.save
@@ -86,7 +93,7 @@ class Controller < Sinatra::Base
      
      game.dropoffpoints.each do |d|
 		new_attributes = d.attributes
-     	new_attributes.delete(:id)
+		new_attributes.delete(:id)
 		new_dropoffpoint=Dropoffpoint.create(new_attributes)
 		new_dropoffpoint.game=template
 		new_dropoffpoint.save
