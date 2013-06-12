@@ -49,8 +49,8 @@ http.post("/broadcast", function (request, response) {
         //send to indvidual users
         if(users!=null){
         	
+		console.log("sent to users:"+users);
         	for(id in users){
-			console.log("sent to users:"+users);
         		if (sessionTable[users[id]] != null){
         			console.log("send to user " +  sessionTable[id]);
         			io.sockets.socket(sessionTable[users[id]]).emit('data', content.data);
