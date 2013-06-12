@@ -44,20 +44,6 @@ class Plan
                         }
                      }.to_json)   
 
-			{ 
-                        :channel=> "#{self.game.layer_id}-2",  
-                        :users=>[instruction.player_id,teammate], #send to a particular user
-                        :data=>{
-                            :instructions=>[{
-                                :teammate=> teammate,
-                                :task=> instruction.task_id, 
-				:direction=> instruction.action,
-				:status => instruction.status,
-				:time => instruction.created_at.to_time.to_i,
-				:id => instruction.id
-                            }]
-                        }
-                     }.to_json
 	end
   end 
 
