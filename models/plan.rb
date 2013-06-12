@@ -39,7 +39,8 @@ class Plan
 				:direction=> instruction.action,
 				:status => instruction.status,
 				:time => instruction.created_at.to_time.to_i,
-				:id => instruction.id
+				:id => instruction.id,
+				:player_id => instruction.player_id
                             }]
                         }
                      }.to_json)   
