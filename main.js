@@ -288,10 +288,15 @@ io.sockets.on('connection', function (socket) {
         }
     });
     
-    //test from webview 
     socket.on('message', function (data) {
-  	 	console.log('message' + data);
-  	});
+	socket.get("channel", function (err, content) {
+		channel=content;
+	});
+	
+        ackid++;
+        io.sockets.in(channel).emit('data', {"message":data,"ackid":ackid});
+
+    });
 });
   
   
