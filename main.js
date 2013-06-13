@@ -288,7 +288,10 @@ io.sockets.on('connection', function (socket) {
         }
     });
     
-    socket.on('message', function (data) {
+    
+  });
+
+  socket.on('message', function (data) {
 	socket.get("channel", function (err, content) {
 		channel=content;
 	});
@@ -296,8 +299,7 @@ io.sockets.on('connection', function (socket) {
         ackid++;
         io.sockets.in(channel).emit('data', {"message":data,"ackid":ackid});
 
-    });
-});
-  
+  });
   
 });
+
