@@ -1,6 +1,6 @@
-var database="wxj";
-var db_username="wxj";
-var db_password="t5*m3$A";var sys = require('util');
+var database="jtruck_db";
+var db_username="jtruck";
+var db_password="jtruck";var sys = require('util');
 var url = require('url');
 
 // Load the node-router library by creationix
@@ -51,9 +51,10 @@ http.post("/broadcast", function (request, response) {
         //send to indvidual users
         if(users!=null){
         	
+		console.log("sent to users:"+users);
         	for(id in users){
         		if (sessionTable[users[id]] != null){
-        			console.log["send to user " +  sessionTable[id]]
+        			console.log("send to user " +  sessionTable[id]);
         			io.sockets.socket(sessionTable[users[id]]).emit('data', content.data);
         		}else
         		{
@@ -289,11 +290,18 @@ io.sockets.on('connection', function (socket) {
         }
     });
     
-    //test from webview 
-    socket.on('message', function (data) {
-  	 	console.log('message' + data);
-  	});
-});
+    
+  });
+
+  socket.on('message', function (data) {
+	socket.get("channel", function (err, content) {
+		channel=content;
+	});
+	
+        ackid++;
+        io.sockets.in(channel).emit('data', {"message":data,"ackid":ackid});
+
+  });
   
-  
 });
+
