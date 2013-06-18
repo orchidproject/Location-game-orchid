@@ -1,6 +1,5 @@
 <script type="text/javascript">
-  
-  var truckUpdateID;
+  var layerId =  <%= @game.layer_id %>;
   $(function(){
   	if(!document.getElementById("map")) {
   		return;
@@ -30,51 +29,12 @@
 	});
 
 	$("#submitmsg").click(function(){	
-		var clientmsg = $("#usermsg").val();
-		$.ajax({ 
-            url: "/admin/games/"+  $("#layer_id").val() +"/massage",
-            type: "POST",
-            data: {"content":clientmsg},
-            dataType:"json",
-            success: function(data) {
-                           
-            }
-        });    			
+
+		var clientmsg = $("#usermsg").val(); 
+		sendMsg(clientmsg);		
 		$("#usermsg").attr("value", "");
 		return false;
 	});
-	
-	
-
-    if($("#user_team").val()=="replay"){
-		 $("#login-form").hide();
-		 $("#LoadingDiv").hide();
-            	$("#login-embedded").hide();
-		$("#waiting-massage").hide();	
-		$("#drop-cargo").hide();
-		$("#logout").hide();
-    
-    }
-    else if($("#user_team").val()!=""){
-        $("#login-form").hide();
-        if($("#game_status").val()=="0"){
-            $("#LoadingDiv").hide();
-            $("#login-embedded").hide();
-
-        }else if($("#game_status").val()=="1"){
-            getResults();
-            $("#waiting-massage").html("<center>game ended</center>");
-        }
-    }else{
-        if ($("#game_status").val()=="1"){
-            $("#login-form").hide();
-            $("#waiting-massage").html("<center>game ended</center>");
-        }
-        else{
-            $("#waiting-massage").hide();
-        }
-    }
-
 	
 	
 	GameMap.fitToRadius(<%= @game.radius %>);
@@ -84,53 +44,41 @@
 
 
 </script>
-
-
-
 	<div id="wrapper">
-		<section id="scoreboard-wrapper">
-			<div id="scoreboard">				
+		<div id="scoreboard-wrapper">
 				<h1>Atomic Orchid</h1>
-				<h5 class="tagline"><span id="city"><%= h @game.name %></span></h5>
-				<!--<h5 class="tagline"><span id="num-players"></span></h5>
-				<h5 class="tagline"><span id="user-info">Your role is <%= @user_team %> </span></h5>-->
+		</div>
+		
+		<div id="wedget-panel-1">
+			<div id="test-panel">
+				TEST 
+				<input type="text" value=0 id="txt-frame" size=5 />
+				<input type="button" value="set frame" id="btn-setframe" />
+				<input type="button" value="fetchplan" id="btn-fetchplan" />
 			</div>
-			<!--
-			<h3 id="drop-cargo" >drop cargo</h3> 
-			<h3 id="logout" class="clickable" >logout</h3> -->
-		</section>
-		
-		
-		
-
-
-		
-		
-		<section id="active-player-wrapper">
-			<div align="center">
-				<h2>Players</h2>
-			<table  id="players" >
-				<th>Active players  |</th>
-				<th>|  Role  |</th>
-				<th>|  Radioactive exposure  |</th>
-				<th>|  Level</th>
+			<div id="active-player-wrapper">
+				<div align="center">
+				<table  id="players" >
+					<th>Players&nbsp&nbsp&nbsp&nbsp</th>
+					<th>Health&nbsp&nbsp&nbsp&nbsp</th>
+					<th>Exposure&nbsp&nbsp&nbsp&nbsp</th>
+					<th>Instruction</th>
 				
-			 </table>
-			</div>
+				 </table>
+				</div>
 			
-		</section>
-		
-		<section id="chat-wrapper">
-			
-			<input name="collapse" type="button" id="collapse" value="collapse"/>
-			<div id="chat-window">
+			</div>	
+			<div id="chat-wrapper">
+				<input name="collapse" type="button" id="collapse" value="collapse"/>
+				<div id="chat-window">
 				
-				<div id="chatbox"></div>
+					<div id="chatbox"></div>
 			
-				<input name="usermsg" type="text" id="usermsg" size="63" />
-				<input name="submitmsg" type="button"  id="submitmsg" value="Send" />
+					<input name="usermsg" type="text" id="usermsg" size="63" />
+					<input name="submitmsg" type="button"  id="submitmsg" value="Send" />
+				</div>
 			</div>
-		</section>
+		</div>
 
 
 		<div id="map"></div>
@@ -139,7 +87,7 @@
 		
     
     	
-      </div> <!-- wrapper -->
+      </div> 
     <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
     <input type="hidden" id="user_id" value="<%= @user_id %>" />
     <input type="hidden" id="user_initials" value="<%= @user_initials %>" />

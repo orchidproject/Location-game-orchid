@@ -1,7 +1,29 @@
 var socket;
+var game;	
+function loadData(){
+	game = new Game(layerId);
+	game.loadData(function(data){
+		$(data.getPlayers()).each(function(i,p){
+			//translate to role id to role string
+			p.skill = ROLE_MAPPING[p.skill]
+			receivePlayerInfoData(p);
+			p.player_id = p.id;
+			receivePlayerData(p);
+		});
+		
+		$(data.getTasks()).each(function(i,t){
+			receiveTaskData(t);
+		});
+
+		$(data.getDropOffZones()).each(function(i,d){
+			receiveDropoffpointData(d);	
+		});
+
+	}); 
+}
 
 $(document).ready(function() {
-	updateGame(true);
+    loadData();
     
     socket = io.connect(SOCKET_IO_ADDRESS, {
             transports: ['websocket', 'flashsocket', 'htmlfile']
@@ -64,6 +86,9 @@ $(document).ready(function() {
 	});
 
 });
+function sendMsg(data){
+	socket.emit("message",{"content":data,"timeStamp":new Date().getTime(), "player_id":-1, "player_initials":"HQ", "skill":null});
+}
 
 function sendBackAck(ackid){
 	socket.emit("ack",{"ackid":ackid,"channel":$("#layer_id").val()});

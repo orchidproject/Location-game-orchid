@@ -8,7 +8,7 @@ class Controller < Sinatra::Base
     session.clear
   end 
 
-  def snapshot(game, agent_friendly = false)
+  def snapshot(game,json = true)
 	
     task = []
     dropoffpoint = []
@@ -64,13 +64,13 @@ class Controller < Sinatra::Base
 	:players => player
     }
 
-    if agent_friendly
-	response = { :time_frame => 0, :state => response }	
+    
+
+    if json
+	    response.to_json
     else
-	response[:terrains] =  game.terrains
-	
+	    response
     end 
-    response.to_json
 
   end
   

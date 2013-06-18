@@ -1,23 +1,9 @@
-
-
 var pollutantImageURL = "/img/skull.png";
 var playerIconSize = new google.maps.Size(32, 32);
 var playerIconOrigin = new google.maps.Point(0,0);
 var playerIconAnchor = new google.maps.Point(16, 32);	
 
 var setup = false;
-//duplication in game-common
-/*var GameMap = {
-	fitToRadius: function(radius) {
-	  var center = map.getCenter();
-	  var topMiddle = google.maps.geometry.spherical.computeOffset(center, radius, 0);
-	  var bottomMiddle = google.maps.geometry.spherical.computeOffset(center, radius, 180);
-	  var bounds = new google.maps.LatLngBounds();
-	  bounds.extend(topMiddle);
-	  bounds.extend(bottomMiddle);
-	  map.fitBounds(bounds);
-	}
-}*/
 
 var lastRequestTime = 0;
 
@@ -29,11 +15,13 @@ var playerIcons = {
 	red: new google.maps.MarkerImage("http://www.google.com/intl/en_us/mapfiles/ms/icons/red-dot.png", playerIconSize, playerIconOrigin, playerIconAnchor)
 }
 
+var ROLE_MAPPING = ["medic","firefighter","soldier","transporter"];
+
 var taskIcon = playerIcons['blue']; 
 var personSkillA = playerIcons['red'];
 var players = [];
 var boxes = [];
-
+var intructions = [];
 
 var lastGeigerPlayTime = 0;
 
@@ -42,7 +30,7 @@ var lastGeigerPlayTime = 0;
 //new heatmap drawing//
 //var backGroundRec;
 var heat_map=[];
-function receiveHeatmapData(data){
+function receiveHeatmapData_old(data){
     var i=0;
     for (i=0; i<data.length; i++){
        if(heat_map[data[i].index]==null){
@@ -57,6 +45,38 @@ function receiveHeatmapData(data){
        }
     }
 	
+}
+
+var heatMapData = [];
+var heatMap=null ;  
+function receiveHeatmapData(data){
+    var i=0;
+    for (i=0; i<data.length; i++){
+       if(heat_map[data[i].index]==null){
+       		if (data[i].value>0){
+			var point=new google.maps.LatLng(data[i].lat, data[i].lng);
+			heatMapData.push({
+				location: point,
+				weight: parseFloat(data[i].value)
+			});	
+			//remember the index
+			heat_map[data[i].index] = heatMapData.length-1;	
+       		}
+       }
+       else{
+		heatMapData[heat_map[data[i].index]].weight= parseFloat(data[i].value);
+       }
+    }
+
+    if(heatMap != null){
+	heatMap.setMap(null); 
+    }
+
+    heatMap = new google.maps.visualization.HeatmapLayer({
+	    data: heatMapData 
+    });
+	
+    heatMap.setMap(map);
 }
 
 var HEAT_MAP_COLORS = ["#202020","#3B3B3B","#3B3D64","#3F3CAD","#4B85F3","#3CBDC3","#56D355","#FFFB3D","#FF9F48","#FD3B3B","#FD3B3B"];
@@ -76,80 +96,6 @@ function pick_overlay(value, point){
 
 }
 
-//////old heatmap drawing//////
-/*
-function receiveHeatmapData(data){
-    //$(data.player).each(function(i,id)
-    //var
-    if (backGroundRec == null){
-        var bound=new google.maps.LatLngBounds(
-                                           new google.maps.LatLng(data[0][data[0].length-1].lat,data[0][data[0].length-1].lng),
-                                           new google.maps.LatLng(data[data.length-1][0].lat,data[data.length-1][0].lng)
-                                           
-                                           );
-    
-        var options= {
-            strokeColor: "#FF0000",
-            strokeOpacity: 0.8,
-            strokeWeight: 3,
-            clickable: false,
-            fillColor: "#FF0000",
-            fillOpacity: 0,
-            map: map,
-            bounds:bound
-        
-        }
-        backGroundRec=new google.maps.Rectangle();
-        backGroundRec.setOptions(options);
-    }
-    
-    $(heat_map).each(function(i,cell){
-        cell.setMap(null);
-        delete cell;
-    });
-    heat_map=[];
-    
-    var y=0;
-    var x=0;
-    for (y=0; y<data.length; y++){
-        for (x=0; x<data[y].length; x++){
-            
-            var test=data[y][x];
-            if (data[y][x].value>5.0){
-                var point=new google.maps.LatLng(data[y][x].lat, data[y][x].lng);
-                heat_map.push(new google.maps.Circle(pick_overlay( data[y][x].value, point)));
-            }
-        }
-    }
-    
-}
-
-function pick_overlay(reading_value, point){
-
-    if (reading_value==100.0) {
-        reading_value=99.9;
-    } 
-        
-    var heat_map_colors = ["#202020","#3B3B3B","#3B3D64","#3F3CAD","#4B85F3","#3CBDC3","#56D355","#FFFB3D","#FF9F48","#FD3B3B"];
-    
-    var temp=heat_map_colors[Math.floor(reading_value/10)];
-
-    var circleOptions = {
-        		strokeColor: heat_map_colors[Math.floor(reading_value/10)],
-        		strokeOpacity: 0.8,
-        		strokeWeight: 0,
-        		fillColor: heat_map_colors[Math.floor(reading_value/10)],
-        		fillOpacity: 0.35,
-        		map: map,
-        		center: point,
-                clickable:false,
-        		radius: 5//0.5*5.71
-        };
-    return circleOptions;
-
-}
-*/
-
 var log="";
 function saveLog(data){
     log=log+JSON.stringify(data)+"\n";
@@ -167,24 +113,82 @@ function receiveTextMassage(data){
 }
 
 var panel_item=[];
+var off_set = -1;
+var previous_path=null;
 function receivePlayerInfoData(data){
 
 	if(data.status=="incapacitated"){
 		//setIcon to dead ppl
 		if(players[data.id]==null){
-			//alert("error occur");
-		}
-		else{
+			//alert("error occur"); } else{
 			var markerIcon = getPlayerIcon(data.initials,"dead");
 			players[data.id].marker.setIcon(markerIcon);
 		}
 	}
-	
+
 	if(panel_item[data.id]==null){
-			panel_item[data.id]=true;
-			$("#players").append("<tr><td align='center'>"+data.name+"("+ data.initials +")</td> <td align='center'>"+ data.skill +"</td> <td align='center'><div id='exposure_"+data.id+"'></div> </td> <td align='center'> <div id='level_"+data.id+"'></div> </td><tr>");
+		panel_item[data.id]=true;
+		var image = "<img src = '" + cg.imageSrc(data.initials,data.skill) + "' >";	
+		var icon ="<td align='center'>"+image+"("+ data.initials +")</td>";
+		var health = "<td align='center'><div id='health_"+data.id+"'></div> </td>";
+		var level = "<td align='center'> <div id='level_"+data.id+"'></div> </td>";
+		var button = "<td align = 'center'> <input id= 'view_btn_"+data.id+"' type='button' value='view' id='view_ins_"+data.id+"'/> </td>"
+		$("#players").append("<tr>" + icon + health + level + button + "</tr>");
 	}
 	
+	
+	if(data.health!="undefined"){
+		receiveHealthData({player_id:data.id,value:data.health});
+	}
+
+	
+	//just for test	
+	if(off_set == -1){
+		off_set = data.id;
+	}
+	$("#view_btn_"+data.id).click(function(){
+		var lat = players[data.id].marker.getPosition().lat();	
+		var lng = players[data.id].marker.getPosition().lng();
+		var lat2 = tasks[data.id-off_set].marker.getPosition().lat();	
+		var lng2 = tasks[data.id-off_set].marker.getPosition().lng();	
+		var flightPlanCoordinates = [
+		      new google.maps.LatLng(lat, lng),
+		      new google.maps.LatLng(lat2, lng2),
+		  ];
+		  var flightPath = new google.maps.Polyline({
+		    path: flightPlanCoordinates,
+		    strokeColor: '#FFFF00',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 4 
+		  });
+		  if(previous_path!=null){
+			previous_path.setMap(null);
+		  } 
+		  previous_path = flightPath;
+		  flightPath.setMap(map);	
+	});	
+	
+}
+
+function receiveHealthData(data){
+   
+    var health = $("#health_"+data.player_id).html(data.value); 
+    var level = document.getElementById("level_"+data.player_id);
+    if (data.value <= 25) {
+    	level.innerHTML = "high"; 
+    }
+    else if (data.value > 25 && data.value <=50)   {
+    	level.innerHTML = "medium"; 
+    }
+    else if (data.value > 50 && data.value <=75)   {
+    	level.innerHTML = "low"; 
+    }
+    else if (data.value > 75 && data.value <100)   {
+    	level.innerHTML = "minor"; 
+    }
+    else if (data.value == 100){
+	level.innerHTML = "none";
+    }
 }
 
 
@@ -299,18 +303,26 @@ function system(data){
 }
 
 function receiveMessageData(data) {
-	pushToTaskHistory(data.content, "msg" + latestMsgId++, data.player_initials, data.player_name);
+	pushToTaskHistory(data.content, "msg" + latestMsgId++, data.player_initials, data.player_id,data.skill);
 	//alert(data.player_name + ": " + data.content);
 }
 var latestMsgId = 0;
 
 
-function pushToTaskHistory(message, identifier, player_initials, player_name) {
+function pushToTaskHistory(message, identifier, player_initials, player_id,player_skill) {
 	//pushes the string message to the task list (including the date time added)
 	//(called when new tasks and messages are received)
 	
 	var currentTime = new Date();
-	var line = $("<li id='" + identifier + "'>"+player_name+" ("+player_initials+"): " + message + "  (sent " + currentTime.getHours() +":"+currentTime.getMinutes()+")</li>"); //TODO: add intended recipients
+	var img = "";
+	if(player_id!=-1){
+		img = "<img src='" +cg.imageSrc(player_initials,player_skill)+ "'>";
+	}
+	else{
+		img = "controller";	
+	}
+
+	var line = $("<li id='" + identifier + "'>"+img+" ("+player_initials+"): " + message + "  (sent " + currentTime.getHours() +":"+currentTime.getMinutes()+")</li>"); //TODO: add intended recipients
 	var taskList = $('#chatbox');
 	taskList.append(line);
 	
@@ -332,52 +344,3 @@ function handleTaskStatus(task){
 };
 
 
-// Load the initial game state and place the pins on the map. Sample data in pellets.json
-// This function polls the game server for data.
-// obsolete
-function updateGame(oneTime) {
-	$.ajax({ 
-		url: "/game/"+$("#layer_id").val()+"/status.json",
-		type: "GET",
-		data: {after: lastRequestTime},
-		dataType: "json", 
-		success: function(data) {
-			
-			
-            $(data.tasks).each(function(i, task){
-                var d=filter({"task":task});
-                if(typeof d.task != "undefined"){
-                    receiveTaskData(d.task);
-                }
-            });
-                        
-            $(data.players).each(function(i, location){
-                var d=filter({"location":location});
-                if(typeof d.location != "undefined"){
-                    receivePlayerData(d.location);
-                }
-            });
-            
-             $(data.player).each(function(i, player){
-                var d=filter({"player":player});
-                if(typeof d.player != "undefined"){
-                    receivePlayerInfoData(d.player);
-                }
-            });
-            
-            $(data.dropoffpoint).each(function(i, drop){
-                var d=filter({"drop":drop});
-                if(typeof d.drop != "undefined"){
-                    receiveDropoffpointData(d.drop);
-                }
-            });
-            
-		
-            lastRequestTime = Math.round((new Date()).getTime() / 1000);
-			if(!oneTime)
-				setTimeout(updateGame, 5000);
-			else
-				setup = false;
-		}
-	});
-}

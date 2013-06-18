@@ -3,7 +3,7 @@
   "state": {
     "players": [
       {
-        "id": 0,
+        "id": 20,
         "health": 100,
         "status": "normal",
         "skill": 1,
@@ -12,7 +12,7 @@
         "y": 7
       },
       {
-        "id": 1,
+        "id": 21,
         "health": 100,
         "status": "normal",
         "skill": 1,
@@ -21,7 +21,7 @@
         "y": 7
       },
       {
-        "id": 2,
+        "id": 22,
         "health": 100,
         "status": "normal",
         "skill": 1,
@@ -30,7 +30,7 @@
         "y": 7
       },
       {
-        "id": 3,
+        "id": 22, 
         "health": 100,
         "status": "normal",
         "skill": 3,
@@ -39,7 +39,7 @@
         "y": 7
       },
       {
-        "id": 4,
+        "id": 23,
         "health": 100,
         "status": "normal",
         "skill": 3,
@@ -48,7 +48,7 @@
         "y": 7
       },
       {
-        "id": 5,
+        "id": 24,
         "health": 100,
         "status": "normal",
         "skill": 2,
@@ -57,7 +57,7 @@
         "y": 7
       },
       {
-        "id": 6,
+        "id": 25,
         "health": 100,
         "status": "normal",
         "skill": 2,
@@ -66,7 +66,7 @@
         "y": 7
       },
       {
-        "id": 7,
+        "id": 26,
         "health": 100,
         "status": "normal",
         "skill": 0,

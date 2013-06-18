@@ -5,10 +5,10 @@ var playerIcons = {
 	blue: new google.maps.MarkerImage("/img/blue_dot.png", new google.maps.Size(16, 16), playerIconOrigin, new google.maps.Point(8, 8))
 }
 
-var taskIcon1 = "/img/task_icon1.png";
-var taskIcon2 =  "/img/task_icon2.png";
-var taskIcon3 =  "/img/victim.png";
-var taskIcon4 = "/img/task_icon4.png";
+var taskIcon1 = "task_icon1";
+var taskIcon2 =  "task_icon2";
+var taskIcon3 =  "task_icon3";
+var taskIcon4 = "task_icon4";
 
 var medic = "/img/medic.png";
 var soldier =  "/img/soldier.png";
@@ -93,20 +93,20 @@ function receiveDropoffpointData(drop){
 
 var tasks = [];
 function receiveTaskData(task){
-		var existing_task=null;
-		for (i=0;i<tasks.length;i++) {
-			if (tasks[i].id==task.id){
-				existing_task=tasks[i];
-			}
+	var existing_task=null;
+	for (i=0;i<tasks.length;i++) {
+		if (tasks[i].id==task.id){
+			existing_task=tasks[i];
 		}
+	}
 		
-		if(existing_task==null){
+	if(existing_task==null){
 			
-			var taskIcon= getTaskIcon(task.type);
-			var point = new google.maps.LatLng(task.latitude,task.longitude);
-            if (task.state==2){
-				taskIcon=new google.maps.MarkerImage(tick, playerIconSize, playerIconOrigin, playerIconAnchor);
-			}
+		var taskIcon= getTaskIcon(task.type,task.id);
+		var point = new google.maps.LatLng(task.latitude,task.longitude);
+		if (task.state==2){
+			taskIcon=new google.maps.MarkerImage(tick, playerIconSize, playerIconOrigin, playerIconAnchor);
+		}
     		var marker = new google.maps.Marker({
                 	position: point,
                 	map: map,
@@ -124,7 +124,7 @@ function receiveTaskData(task){
         	if (task.state==2){
 				var taskIcon=new google.maps.MarkerImage(tick, playerIconSize, playerIconOrigin, playerIconAnchor);
 				existing_task.marker.setIcon(taskIcon);
-			}
+		}
         }
         
        
@@ -140,8 +140,7 @@ function getTaskImage(task_type) {
 	}
 	else if (task_type == 1) {
 		imageURL = taskIcon2;
-	}
-	else if (task_type == 2) {
+	} else if (task_type == 2) {
 		imageURL = taskIcon3;
 	}
 	else if (task_type == 3) {
@@ -151,11 +150,13 @@ function getTaskImage(task_type) {
 	return imageURL;
 }
 
-function getTaskIcon(task_type) {
+ 
+function getTaskIcon(task_type,task_id) {
 
 	var imageURL=getTaskImage(task_type);
-	
-    var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
+	var initials = String.fromCharCode(65 + task_id/26) + String.fromCharCode(65+ task_id%26); 	
+        //var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
+        var icon = cg.playerImage(initials,imageURL);  
 	return icon;
 }
 
@@ -229,7 +230,7 @@ function drawTask(task){
 		taskIcon = new google.maps.MarkerImage(tick, playerIconSize, playerIconOrigin, playerIconAnchor);
 	}
 	else{
-		taskIcon = getTaskIcon(task.type); 
+		taskIcon = getTaskIcon(task.type,task.id); 
 
 	}	
 	

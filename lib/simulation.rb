@@ -59,7 +59,7 @@ class Simulation
         y = getYIndex(lat)
         if (x < 0) | (x > @x_size-1) | (y < 0) | (y > @y_size-1)
             false
-            else
+        else
             true
         end
     end
@@ -224,6 +224,20 @@ class Simulation
     	
     	return false
     end 
+
+    def getIndexedFrame(frame)
+	
+        arrayWithLatLng=[]
+	(0..(@y_size-1)).each do |y|
+            	(0..(@x_size-1)).each do |x|
+                	lat=getLat(y)
+                	lng=getLong(x)
+                	value=(@data[frame,x,y]/10).floor
+                	arrayWithLatLng<<{:index=>"#{x}-#{y}",:value=>value,:lat=>lat,:lng=>lng}
+                end
+	end
+	arrayWithLatLng
+    end 
     
     def getIndexedDiffFrame(time)
     	frame_number= getTimeIndex(time)
@@ -312,13 +326,6 @@ class Simulation
     def getCoordsFromGrid(x,y)
 	return  {:lat => getLat(y), :lng => getLong(x)}
     end 
-    
-    
-    
-    
-    
-    
-    
     
 end
 

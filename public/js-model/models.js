@@ -19,7 +19,18 @@ function Game(game_id){
 	this.dropOffZoneAdded = null;
 	this.dropOffZoneRemobed = null;	
 	this.beforeSave = null;
-		
+	//dangerous to directly operate with arrays 
+	this.getTasks = function(){
+		return tasks;
+	}
+	this.getPlayers = function(){
+		return players;
+	}
+
+	this.getDropOffZones = function(){
+		return dropOffZones;
+	}
+
 	this.copyTerrains =  function(){
 		var array = [];
 		$(this.terrains).each(function(index,value){
@@ -32,6 +43,7 @@ function Game(game_id){
 		return array;
 
 	}
+
 	this.addTask= function(task){
 		tasks.push(task);
 		if(this.taskAdded != null){
@@ -42,11 +54,7 @@ function Game(game_id){
 	this.getTask = function(id){
 	}
 	
-	//dangerous to directly operate with tasks
-	this.getTasks = function(){
-		return tasks;
-	}
-	
+		
 	this.addDropOffZone= function(dpzone){
 		dropOffZones.push(dpzone);
 		if(this.dropOffZoneAdded!= null){
@@ -102,7 +110,7 @@ function Game(game_id){
 				if(data.tasks != null){
 					tasks = data.tasks;
 				}
-				if(data.dropOffZones != null) {
+				if(data.dropoffpoints != null) {
 					dropOffZones = data.dropoffpoints;
 				}
 				if(data.players != null){
@@ -197,6 +205,12 @@ Simulations.prototype.loadFileContent = function(index,callback){
 	this.previous_index = index;	
 
 }
+
+/*function Instruction(){
+	this.player_id,
+	this.teammate_id,
+	this.task_id,
+}*/
 
 //model of task
 

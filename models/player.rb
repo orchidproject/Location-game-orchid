@@ -6,9 +6,12 @@ class Player
     
   include DataMapper::Resource
   property :id, Serial, :index => true
-  
+
+  #legcay  
   property :points_cache, Integer, :default => 0
   property :profile_image, String, :length => 255
+
+
   property :name, String
   property :created_at, DateTime
   property :updated_at, DateTime

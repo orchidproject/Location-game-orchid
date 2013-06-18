@@ -649,12 +649,12 @@ class Controller < Sinatra::Base
 	#Wollaton Park 52.9491938, -1.2144399
 	#North of Jubilee campus 52.956046,-1.18878
 		
-        $simulations[game.layer_id] = Simulation.new("simulation_data_03.txt", 
+        $simulations[game.layer_id] ||= Simulation.new("./cloud/"+game.simulation_file, 
         game.sim_lat, 
         game.sim_lng, 
-        8, 
+        game.grid_size, 
         Time.now, 
-        0.2)
+        game.sim_update_interval)
       
         
         
@@ -680,9 +680,9 @@ class Controller < Sinatra::Base
                 
                 update_game(g)
 				
-				if count%6==0
+		if count%6==0
                     #diffFrame can be nil, (when there is no diff between two frames) 
-					diffFrame=$simulations[g.layer_id].getIndexedDiffFrame(Time.now)
+			diffFrame=$simulations[g.layer_id].getIndexedDiffFrame(Time.now)
 					
 					if diffFrame
                     	puts "heat map redraw in this loop"
@@ -693,7 +693,7 @@ class Controller < Sinatra::Base
                                        #:heatmap=>@simulation.getTimeFrameWithLatLng(Time.now)
                                         :heatmap=>diffFrame
                                        }
-                                       }.to_json)
+		       }.to_json)
                     end
 
                     
