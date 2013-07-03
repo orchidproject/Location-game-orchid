@@ -128,13 +128,17 @@ function receivePlayerInfoData(data){
 
 	if(panel_item[data.id]==null){
 		panel_item[data.id]=true;
-		var image = "<img src = '" + cg.imageSrc(data.initials,data.skill) + "' >";	
+		var image_url = cg.imageSrc(data.initials,data.skill);
+		var image = "<img id='player-icon-"+ data.id + "'  src = '" + image_url + "' >";	
 		var icon ="<td align='center'>"+image+"("+ data.initials +")</td>";
 		var health = "<td align='center'><div id='health_"+data.id+"'></div> </td>";
 		var level = "<td align='center'> <div id='level_"+data.id+"'></div> </td>";
 		var button = "<td align = 'center'> <input id= 'view_btn_"+data.id+"' type='button' value='view' id='view_ins_"+data.id+"'/> </td>"
 		$("#players").append("<tr>" + icon + health + level + button + "</tr>");
+
+
 	}
+
 	
 	
 	if(data.health!="undefined"){
@@ -143,6 +147,11 @@ function receivePlayerInfoData(data){
 
 	
 	//just for test	
+	if(true){
+		$("#player-icon-"+ data.id).click(function(){
+			beginEdit(image_url,data);
+		});
+	}
 	if(off_set == -1){
 		off_set = data.id;
 	}
@@ -213,44 +222,15 @@ function receiveExposureData(data){
     	level.innerHTML = "Incapacitated"; 
     }
 }
+function receiveInstructionData(data){
 
-////legacy but probably useful
-function filter(data){
-
-    if($("#user_team").val()=="truck"){
-        if(typeof data.request != "undefined"){
-            delete data.request
-        }
-         if(typeof data.reading != "undefined"){
-            delete data.reading
-        }
-        
-    }
-    
-    if($("#user_team").val()=="runner"){
-         if(typeof data.location != "undefined"){
-            if(players[data.location.player_id].team == "truck"){
-                delete data.location
-            }
-        }
-    }
-    
-    if($("#user_team").val()=="controller"){
-         if(typeof data.location != "undefined"){
-            if(players[data.location.player_id].team == "truck"){
-                delete data.location
-            }
-        }
-    }
-    
-    if($("#user_team").val()=="controller"){                
-        delete data.radiation
-    }
-    
-    
-    return data
+	//sameple:{"teammate":2,"task":117,"direction":"south east","status":1,"time":1372781334,"id":160,"player_id":6}
+	if(players[data.player_id]!=null){
+		player.instruction = data;
+	}
 
 }
+
 
 function system(data){
     

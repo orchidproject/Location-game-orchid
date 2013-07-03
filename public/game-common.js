@@ -133,6 +133,7 @@ function receiveTaskData(task){
        
 }
 
+
 function getTaskImage(task_type) {
 	var imageURL = ""
 	if (task_type == 0) {
@@ -154,8 +155,8 @@ function getTaskImage(task_type) {
 function getTaskIcon(task_type,task_id) {
 
 	var imageURL=getTaskImage(task_type);
-	var initials = String.fromCharCode(65 + task_id/26) + String.fromCharCode(65+ task_id%26); 	
-        //var icon = new google.maps.MarkerImage(imageURL, playerIconSize, playerIconOrigin, playerIconAnchor);
+	//var initials = String.fromCharCode(65 + task_id/26) + String.fromCharCode(65+ task_id%26); 	
+	var initials = (Math.floor((task_id/10)%10) + "" + task_id%10); 	
         var icon = cg.playerImage(initials,imageURL);  
 	return icon;
 }

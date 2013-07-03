@@ -33,13 +33,12 @@ $(document).ready(function() {
         //debug
         //alert("join " + $("#group_token").val());
         //channel and id pair needed for hand shaking 
+		socket.emit('game-join', {channel:$("#group_token").val()+"-1",id:-1});
+		socket.emit('game-join', {channel:$("#group_token").val()+"-2",id:-1});
 		socket.emit('game-join', {channel:$("#group_token").val(),id:-1});
-        socket.emit('game-join', {channel:$("#group_token").val()+"-1",id:-1});
-        socket.emit('game-join', {channel:$("#group_token").val()+"-2",id:-1});
 	});
     
 	socket.on('data', function(data) {
-        data=filter(data);
         saveLog(data);
         sendBackAck(data.ackid);
         
@@ -80,10 +79,12 @@ $(document).ready(function() {
         if(typeof data.task != "undefined"){
                 receiveTaskData(data.task);
         }
-			
-		       
-        
-	});
+
+	if(typeof data.instructions != "undefined"){
+                receiveInstructionData(data.instructions[0]);
+        }
+	
+    });
 
 });
 function sendMsg(data){

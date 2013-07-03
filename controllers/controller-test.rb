@@ -156,12 +156,12 @@ end
 	(time2-time1).to_s+" seconds result" + res
  end
 
- get '/test/fetchplanfake' do 
+ get '/test/:game_id/fetchplanfake' do 
 	time1 = Time.now	
 	res = File.read('./fakePlan.json') 
 	time2 = Time.now
 	#parse json
-	p = Game.get(4).plans.create 
+	p = Game.get(params[:game_id]).plans.create 
 	resJson = JSON.parse(res) 
 
 	resJson.each  do |frame| 
