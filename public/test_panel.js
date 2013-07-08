@@ -15,7 +15,28 @@ $(function(){
 		} 
 	});
 	$("#btn-fetchplan").click(function(){
-
+		if(isNaN($("#txt-frame").val())){
+				alert("frame not a number");
+				return;
+		}
+		
+		$("#btn-fetchplan").attr("value","fetching");
+		$("#btn-fetchplan").attr("disabled","true");
+		$.get("/test/" + GAME_ID + "/" +  $("#txt-frame").val() + "/fetchplan",
+			
+			function(data){
+				alert("data sent: " + JSON.stringify(data.sent));		
+				alert("received plan: "+JSON.stringify(data.plan));		
+				if(data.plan.plan!=null){
+					//plan is an array if multiple steps are specified
+					receiveInstructionData(data.plan.plan[0]); 
+				}
+				
+				$("#btn-fetchplan").attr("value","fetchplan");
+				$("#btn-fetchplan").removeAttr("disabled");
+			}				
+			,"json"
+		);
 
 	});
 }); 

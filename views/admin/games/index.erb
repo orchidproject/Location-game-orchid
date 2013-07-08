@@ -70,15 +70,19 @@ function create_from_template(id){
     <tr>
       <th>Game Title</th>
       <th>Date</th>
-      <th>Last pt.</th>
       <th>Status</th>
       <th>Players</th>
-      <th>Points</th>
+      <th>agent status</th>
+      <th>actions</th>
     </tr>
-    <% @games.each do |game| %>
-          <td><%= h game.name %></td>
+
+    
+    <% @games.each do |game| 
+		agent = PlanHandler.instances(game.layer_id)
+	%>
+	
+        <td><%= h game.name %></td>
         <td><%= h game.created_at.strftime('%D') %></td>
-        <td><%= h game.players(:order => :updated_at).first.updated_at.strftime('%D') if game.players.length > 0 %></td>
         <% if game.is_active==0 %>
             <td>active</td>
         <% elsif game.is_active==-1 %>
@@ -88,8 +92,18 @@ function create_from_template(id){
         <% end %>
 
         <td><%= h game.players.count %></td>
-        <td><%= h game.total_points %></td>
-        <!--<td><a href="/admin/games/<%= game.layer_id %>/edit">Setup</a></td> -->
+
+	<% if agent.status==0 %>
+            <td>uninitialized</td>
+        <% elsif agent.status==-1 %>
+            <td>error</td>
+        <% elsif agent.status==1 %>
+            <td>initializing</td>
+	<% elsif agent.status==2 %>
+            <td>ready</td>
+        <% end %>
+
+        <td><a href="/admin/games/<%= game.layer_id %>/init_agent">Init agent</a></td>
         <td><a href="/admin/games/<%= game.layer_id %>/mapeditor">Edit Map</a></td>
         <td><a href="/game/<%= game.layer_id %>/dashboard">Dashboard</a></td>
         

@@ -1,0 +1,6 @@
+[	
+{"id": 0,"name":"medic","task_types": [1,2]},
+{"id": 1,"name":"firefighter","task_types": [2,3]},
+{"id": 2,"name":"soldier","task_types": [0,3]},
+{"id": 3,"name":"transporter","task_types": [0,1]}
+]

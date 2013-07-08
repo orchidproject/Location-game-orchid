@@ -8,7 +8,7 @@ class Controller < Sinatra::Base
     session.clear
   end 
 
-  def snapshot(game,json = true)
+  def snapshot(game,json = true, action = nil)
 	
     task = []
     dropoffpoint = []
@@ -17,8 +17,8 @@ class Controller < Sinatra::Base
     game.players.each do |p|
 	 player <<{
 		:id => p.id,
-		:latitude => p.latitude,
-		:longitude => p.longitude,
+		:latitude => p.latitude.to_s('F'),
+		:longitude => p.longitude.to_s('F'),
 		:initials => p.initials,
 		:skill => p.skill,
 		:status => p.status,
@@ -44,7 +44,7 @@ class Controller < Sinatra::Base
               :id=>d.id,
               :latitude => d.latitude.to_s('F'),
               :longitude => d.longitude.to_s('F'),
-			  :radius => d.radius,
+		  :radius => d.radius,
           }
     end
 
@@ -53,18 +53,38 @@ class Controller < Sinatra::Base
    # game.players.each do |p|
    #	player<<{
    #	}
-    response = {
-	:sim_lat=> "%f" % game.sim_lat, 
-	:sim_lng=> "%f" % game.sim_lng,
-	:simulation_file=> game.simulation_file,
-	:sim_update_interval => game.sim_update_interval.to_s('F'),
-	:grid_size=> "%f" % game.grid_size,
-	:tasks=>task,
-	:dropoffpoints=>dropoffpoint,
-	:players => player
-    }
-
     
+
+    if action == "init"
+	response = {
+		:sim_lat=> "%f" % game.sim_lat, 
+		:sim_lng=> "%f" % game.sim_lng,
+		:simulation_file=> game.simulation_file,
+		:sim_update_interval => game.sim_update_interval.to_s('F'),
+		:grid_size=> "%f" % game.grid_size,
+		:tasks=>task,
+		:dropoffzones=>dropoffpoint,
+    	}
+	response[:terrains] = JSON.parse(game.terrains)
+
+    elsif action=="fetch"
+	response = {
+		:players => player
+    	}
+	
+    else
+	response = {
+		:sim_lat=> "%f" % game.sim_lat, 
+		:sim_lng=> "%f" % game.sim_lng,
+		:simulation_file=> game.simulation_file,
+		:sim_update_interval => game.sim_update_interval.to_s('F'),
+		:grid_size=> "%f" % game.grid_size,
+		:tasks=>task,
+		:dropoffpoints=>dropoffpoint,
+		:players => player
+    	}
+
+    end   
 
     if json
 	    response.to_json

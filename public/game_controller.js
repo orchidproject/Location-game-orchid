@@ -115,6 +115,7 @@ function receiveTextMassage(data){
 var panel_item=[];
 var off_set = -1;
 var previous_path=null;
+var previous_teammate_path=null;
 function receivePlayerInfoData(data){
 
 	if(data.status=="incapacitated"){
@@ -156,10 +157,21 @@ function receivePlayerInfoData(data){
 		off_set = data.id;
 	}
 	$("#view_btn_"+data.id).click(function(){
-		var lat = players[data.id].marker.getPosition().lat();	
-		var lng = players[data.id].marker.getPosition().lng();
-		var lat2 = tasks[data.id-off_set].marker.getPosition().lat();	
-		var lng2 = tasks[data.id-off_set].marker.getPosition().lng();	
+		if( players[data.id].instruction == null){
+			alert("no plan, fetch plan first");
+			return;
+		}
+
+		if( players[data.id].instruction.task == -1){
+			alert("no task assigned for this player");
+			return;
+		}
+		var p = players[data.id];
+		var lat = p.marker.getPosition().lat();	
+		var lng = p.marker.getPosition().lng();
+		var t = findTaskById(p.instruction.task);
+		var lat2 = t.marker.getPosition().lat();	
+		var lng2 = t.marker.getPosition().lng();	
 		var flightPlanCoordinates = [
 		      new google.maps.LatLng(lat, lng),
 		      new google.maps.LatLng(lat2, lng2),
@@ -175,8 +187,48 @@ function receivePlayerInfoData(data){
 		  } 
 		  previous_path = flightPath;
 		  flightPath.setMap(map);	
+	
+//draw teammate path	
+		lat = getTeammate(p.instruction).marker.getPosition().lat();		
+		lng = getTeammate(p.instruction).marker.getPosition().lng();		
+		flightPlanCoordinates = [
+		      new google.maps.LatLng(lat, lng),
+		      new google.maps.LatLng(lat2, lng2),
+		  ];
+
+
+		flightPath = new google.maps.Polyline({
+		    path: flightPlanCoordinates,
+		    strokeColor: '#FFFF00',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 4 
+		  });
+		if(previous_teammate_path!=null){
+			previous_teammate_path.setMap(null);
+		} 
+		previous_teammate_path = flightPath;
+		flightPath.setMap(map);
 	});	
 	
+}
+function getTeammate(instruction){
+	var t =  null;
+	$(instruction.group).each(function(index,value){
+		if(instruction.id != value){
+			t =  value;
+		}
+	});	
+	return players[t];
+}
+
+function findTaskById(task_id){
+	var t =  null;
+	$(tasks).each(function(index,value){
+		if(task_id == value.id){
+			t =  value;
+		}
+	});	
+	return t;
 }
 
 function receiveHealthData(data){
@@ -225,9 +277,11 @@ function receiveExposureData(data){
 function receiveInstructionData(data){
 
 	//sameple:{"teammate":2,"task":117,"direction":"south east","status":1,"time":1372781334,"id":160,"player_id":6}
-	if(players[data.player_id]!=null){
-		player.instruction = data;
-	}
+	$(data.players).each(function(index,value){
+		if(players[value.id]!=null){
+			players[value.id].instruction = value;
+		}
+	});
 
 }
 

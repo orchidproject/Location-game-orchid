@@ -36,11 +36,10 @@ class Controller < Sinatra::Base
   get '/admin/games' do
       @action="games"
       @games = Game.all :template=>0
-          
       erb :'admin/games/index', :layout => :'admin/layout'
   end
 
-   get '/admin/template' do
+  get '/admin/template' do
       @action="template" 
       @games = Game.all :template=>1
           
@@ -630,6 +629,16 @@ class Controller < Sinatra::Base
     {"games"=> games}.to_json
   end 
 
+  get '/admin/games/:layer_id/init_agent' do
+	@agent = PlanHandler.instances(params[:layer_id].to_i)	
+#	testData = File.read("./test_init.txt")
+#	result =  @agent.initPlanner(testData)	
+	result =  @agent.initPlanner(agentSnapshot(params[:layer_id],0,"init"))	
+	
+#	@agent.loadPlan(agentSnapshot(params[:layer_id],0,"fetch"))	
+	redirect '/admin/games'
+  end 
+
   get '/admin/games/:layer_id/start' do
     
 
@@ -638,11 +647,13 @@ class Controller < Sinatra::Base
     File.open("logs/log-#{params[:layer_id]}-0", 'w') {|f| f.write(snapshot(game).to_s) }
 
 
+
     if game.is_active!= -1
         return {:error=>"game already begin"}.to_json
         
     else
-        game.update(:is_active=>0)
+	game.update(:is_active=>0)
+
 		
 	#CHANGE TO ADAPT TO GRID SIZE (400/X)
 	#Library Jubilee Campus (debugging) 52.953664,-1.188509

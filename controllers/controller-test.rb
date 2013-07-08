@@ -32,14 +32,15 @@ class Controller < Sinatra::Base
 	return "latest instruction for (id "+  params[:id] + "): " + status 
  end
 
- get '/test/:game_id/fetchplan' do
+ get '/test/:game_id/:frame/fetchplan' do
 	#the final test 
 	time1 = Time.now	
-	gameState = agentSnapshot(params[:game_id],0,snapshot(Game.get(params[:game_id]), false))
-	res = PlanHandler.new.load 1, gameState
+	@agent = PlanHandler.instances(params[:game_id].to_i)	
+	data = agentSnapshot(params[:game_id],params[:frame].to_i,"fetch")
+	res = @agent.loadPlan(data)	
 	time2 = Time.now
 	#parse json
-	res
+	{:sent=> JSON.parse(data), :plan => JSON.parse(res)}.to_json
 =begin
 	resJson = JSON.parse(res) 
 	p = Game.get(params[:game_id]).plans.create 
@@ -248,7 +249,6 @@ end
 		t["y"] = result[:y]
 		
 	end 
-
 	data["players"].each do |p| 
 		result =  sim.getGridCoord(Float(p["latitude"]),Float(p["longitude"]))
 
@@ -271,7 +271,7 @@ end
 	file.write(data.to_json) 
   end 
 	
-  def agentSnapshot(game_id,sec,data)
+  def agentSnapshot(game_id,sec,action)
 	#data should be a ruby hash, comply to game state format
 	game= Game.get(game_id)
 
@@ -283,35 +283,51 @@ end
 		Time.now, 
 		0.2)
 
-	puts data
-	data[:tasks].each do |t| 
-		result =  sim.getGridCoord(Float(t[:latitude]),Float(t[:longitude]))
 
-		t["x"] = result[:x]
-		t["y"] = result[:y]
+ 
+
+	 
+
+	if action == "init"
+		data = snapshot(Game.get(game_id), false,"init")
+		data[:tasks].each do |t| 
+			result =  sim.getGridCoord(Float(t[:latitude]),Float(t[:longitude]))
+
+			t["x"] = result[:x]
+			t["y"] = result[:y]
 		
-	end 
+		end
+		data[:dropoffzones].each do |d|
+			result = sim.getGridCirclePresentation(
+				Float(d[:latitude]),
+				Float(d[:longitude]),
+				Float(d[:radius]))
+			d["x-center"]=result[:x]
+			d["y-center"]=result[:y]
+			d["grid-radius"]=result[:radius]
+		end
+		data[:skills] = JSON.parse(File.read("./skill_mapping.txt"))	
+		data[:session_id] = game_id 
+		response = data
+	elsif action == "fetch"
+		data = snapshot(Game.get(game_id), false,"fetch")
+		data[:players].each do |p| 
+			result =  sim.getGridCoord(Float(p[:latitude]),Float(p[:longitude]))
 
-	data[:players].each do |p| 
-		result =  sim.getGridCoord(Float(p[:latitude]),Float(p[:longitude]))
-
-		p["x"] = result[:x]
-		p["y"] = result[:y]
+			p["x"] = result[:x]
+			p["y"] = result[:y]
 		
+		end 
+
+		response = { 
+			:time_frame => sec, 
+			:session_id => game_id, 
+			:rejections => [], 
+			:step =>1,
+			:state => data  
+		}
+
 	end 
-
-	data[:dropoffpoints].each do |d|
-		result = sim.getGridCirclePresentation(
-			Float(d[:latitude]),
-			Float(d[:longitude]),
-			Float(d[:radius]))
-		d["x-center"]=result[:x]
-		d["y-center"]=result[:y]
-		d["grid-radius"]=result[:radius]
-	end 
-
-	response = { :time_frame => sec/12, :state => data}	
-
 	response.to_json
   end 
 
