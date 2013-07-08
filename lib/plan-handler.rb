@@ -92,7 +92,7 @@ class PlanHandler
 		if(result["status"] == "ok")
 			#for test
 			@status = 2 
-			checkStatus
+			#checkStatus
 		elsif(result["status"] == "error")
 			@status = -1 
 		end 
