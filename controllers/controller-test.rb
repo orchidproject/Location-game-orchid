@@ -6,6 +6,7 @@ require "./lib/plan-handler.rb"
 
 class Controller < Sinatra::Base 
 
+
  get '/test/instruction/:player_id/' do
 	ins = Instruction.last(:player_id => params[:player_id])
 	status = nil
@@ -32,15 +33,33 @@ class Controller < Sinatra::Base
 	return "latest instruction for (id "+  params[:id] + "): " + status 
  end
 
- get '/test/:game_id/:frame/fetchplan' do
+ post '/test/:game_id/updateTask' do
+	@agent = PlanHandler.instances(params[:game_id].to_i)	
+	t = Task.get(params[:id])
+	t.latitude = Float(params[:lat])
+	t.longitude = Float(params[:lng])
+	t.save
+	data = agentSnapshot(params[:game_id],0,"update")
+ 	res = @agent.updateSession(data.to_json)	
+	
+	t.broadcast(socketIO)
+	{:sent=> data, :result => res}.to_json
+ end 
+
+ post '/test/:game_id/:frame/fetchplan' do
 	#the final test 
 	time1 = Time.now	
 	@agent = PlanHandler.instances(params[:game_id].to_i)	
 	data = agentSnapshot(params[:game_id],params[:frame].to_i,"fetch")
-	res = @agent.loadPlan(data)	
+	
+	#append reject info 
+	puts params.to_s
+	data["rejections"] = JSON.parse(params[:rejections]) 	
+	
+	res = @agent.loadPlan(data.to_json)	
 	time2 = Time.now
 	#parse json
-	{:sent=> JSON.parse(data), :plan => JSON.parse(res)}.to_json
+	{:sent=> data, :plan => JSON.parse(res)}.to_json
 =begin
 	resJson = JSON.parse(res) 
 	p = Game.get(params[:game_id]).plans.create 
@@ -327,8 +346,21 @@ end
 			:state => data  
 		}
 
+	elsif action == "update"
+		data = snapshot(Game.get(game_id),false,"update")
+		data[:tasks].each do |t| 
+			result =  sim.getGridCoord(Float(t[:latitude]),Float(t[:longitude]))
+
+			t["x"] = result[:x]
+			t["y"] = result[:y]
+		
+		end
+		data[:session_id] = game_id
+		
+		response = data
 	end 
-	response.to_json
+
+	response
   end 
 
   

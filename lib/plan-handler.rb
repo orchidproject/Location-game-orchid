@@ -1,6 +1,6 @@
 require 'uri'
 require 'net/http'
-
+require 'json'
 class PlanHandler
 	@@instances = []	
 	#@status = 0 #0 for not init, -1 for error, 1 for initializing, 2 for initialized 
@@ -11,16 +11,20 @@ class PlanHandler
 	#private_class_method :new
 	attr_reader :status
 	def initialize(session_id)
-		@status = 0
+		@doing_ask=false
+		@query_queue = []
+		@status = 2
 		@session_id =session_id
 	end 
 
 	private
+
+	
 	def build_uri(path) 
 		uri = URI("http://aicvm-orchid1.ecs.soton.ac.uk/orchid/atomic/"+path)
 		http = nil
 
-		if (Controller::PROXY_ADDRESS == "no_proxy")	
+		if (defined?Controller && Controller::PROXY_ADDRESS == "no_proxy")	
 			puts "init with no proxy"
 			http = Net::HTTP.new(uri.host, uri.port)
 		else 
@@ -31,6 +35,11 @@ class PlanHandler
 		return http,uri
 
 	end 
+
+
+	
+
+
 	#not right seems 	
 	def checkStatus
 =begin
@@ -74,7 +83,72 @@ class PlanHandler
 		@checking_thread.run
 	end 
 
+	def doTask
+		if(!@query_queue.empty?  &&  !@doing_task) 	
+			puts "begin to execute task"
+			task = @query_queue.shift
+			@doing_task = true
+			if task[:type] == 1
+				puts "type 1"
+				t = Thread.new do
+					puts "do type 1 task in background"
+					res = loadPlan(task[:data])	
+					task[:callback].call(res)
+					@doing_task = false
+					doTask
+				end
+				t.run
+			elsif task[:type] == 2 
+				puts "type 2"
+				t = Thread.new do 
+					puts "do type 2 task"
+					res = updateSession(task[:data])
+					@doing_task = false
+					task[:callback].call(res)
+					doTask
+				end	
+				t.run
+			end
+		end	
+		
+	end 
+	
 	public
+	def pushFetchTask(data,&callback)
+		new_array = []
+		@query_queue.each do |value|
+			if(value[:type] != 1)	
+				new_array<<value	
+				puts "remove previous task"
+			end
+		end
+		@query_queue = new_array
+		@query_queue << {  :type => 1, :data=> data, :callback => callback} 
+		doTask	
+		
+	end
+
+	def pushUpdateTask(data, &callback)
+		@query_queue = Array.new 
+		@query_queue << {  :type => 2, :data=> data,:callback => callback} 
+		doTask
+	end 
+
+	def updateSession(data)
+		http = build_uri("update_session")
+		headers = { }
+		body = "data=" + data 
+		response = http[0].post(http[1].path,body,headers) 
+		result = JSON.parse(response.body)
+		puts "result: " + response.body
+		if(result["status"] == "ok")
+			@status = 2 
+		elsif(result["status"] == "error")
+			@status = -1 
+		end
+		result	
+	end 
+
 	def initPlanner(init_data = nil)
 		if init_data == nil 
 			return 
@@ -125,7 +199,7 @@ class PlanHandler
 		body = "data="+state
 		response = http[0].post(http[1].path,body,headers) 
 
-		puts response.body 
+	#	puts response.body 
 		response.body
 	end 
 		

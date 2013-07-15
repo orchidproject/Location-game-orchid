@@ -43,10 +43,11 @@ class Player
     reload
   end
 
-  def update
-  	self.health=100-(self.exposure/10)
-  	
-  
+  def updateHealth(so)
+	if (self.health >= 0 )
+		self.health=100-(self.exposure/10)
+  	end	
+ 	broadcast_health(so)	 
   end 
   
   def distance_to(lat,lng)

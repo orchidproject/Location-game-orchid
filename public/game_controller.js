@@ -24,7 +24,8 @@ var boxes = [];
 var intructions = [];
 
 var lastGeigerPlayTime = 0;
-
+//used for test only
+var rejections =[];
 
 
 //new heatmap drawing//
@@ -114,48 +115,74 @@ function receiveTextMassage(data){
 
 var panel_item=[];
 var off_set = -1;
+
 var previous_path=null;
 var previous_teammate_path=null;
+
 function receivePlayerInfoData(data){
 
 	if(data.status=="incapacitated"){
 		//setIcon to dead ppl
 		if(players[data.id]==null){
-			//alert("error occur"); } else{
+			//alert("error occur"); 
+		} else{
 			var markerIcon = getPlayerIcon(data.initials,"dead");
 			players[data.id].marker.setIcon(markerIcon);
 		}
 	}
 
 	if(panel_item[data.id]==null){
-		panel_item[data.id]=true;
+		panel_item[data.id]= data;
 		var image_url = cg.imageSrc(data.initials,data.skill);
 		var image = "<img id='player-icon-"+ data.id + "'  src = '" + image_url + "' >";	
 		var icon ="<td align='center'>"+image+"("+ data.initials +")</td>";
 		var health = "<td align='center'><div id='health_"+data.id+"'></div> </td>";
 		var level = "<td align='center'> <div id='level_"+data.id+"'></div> </td>";
 		var button = "<td align = 'center'> <input id= 'view_btn_"+data.id+"' type='button' value='view' id='view_ins_"+data.id+"'/> </td>"
-		$("#players").append("<tr>" + icon + health + level + button + "</tr>");
+		var plan_button = "<td align = 'center'> <input id= 'plan_btn_"+data.id+"' type='button' value='accept' id='plan_"+data.id+"'/> </td>"
+		$("#players").append("<tr>" + icon + health + level + button + plan_button +  "</tr>");
 
 
 	}
 
 	
 	
-	if(data.health!="undefined"){
-		receiveHealthData({player_id:data.id,value:data.health});
-	}
-
+	
 	
 	//just for test	
+
+
+
 	if(true){
 		$("#player-icon-"+ data.id).click(function(){
 			beginEdit(image_url,data);
 		});
+
+		
 	}
 	if(off_set == -1){
 		off_set = data.id;
 	}
+
+	rejections[data.id] = false;
+	$("#plan_btn_"+ data.id).click(function(){
+		if(!rejections[data.id]){ 
+			rejections[data.id]= true;		
+		}
+		else{ 
+			rejections[data.id]= false;
+		}
+		
+		if(!rejections[data.id]){ 
+			$("#plan_btn_"+ data.id).attr('value','accept');
+		}
+		else{ 
+			$("#plan_btn_"+ data.id).attr('value','reject');
+		}
+
+	});
+
+
 	$("#view_btn_"+data.id).click(function(){
 		if( players[data.id].instruction == null){
 			alert("no plan, fetch plan first");
@@ -211,6 +238,7 @@ function receivePlayerInfoData(data){
 	});	
 	
 }
+
 function getTeammate(instruction){
 	var t =  null;
 	$(instruction.group).each(function(index,value){
@@ -255,7 +283,7 @@ function receiveHealthData(data){
 
 
 function receiveExposureData(data){
-    document.getElementById("exposure_"+data.player_id).innerHTML=Math.round(data.value);
+   /* document.getElementById("exposure_"+data.player_id).innerHTML=Math.round(data.value);
     
     var level = document.getElementById("level_"+data.player_id);
     if (data.value <= 50) {
@@ -273,6 +301,7 @@ function receiveExposureData(data){
     else if (data.value >= 1000)   {
     	level.innerHTML = "Incapacitated"; 
     }
+*/
 }
 function receiveInstructionData(data){
 

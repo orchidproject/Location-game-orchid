@@ -633,7 +633,7 @@ class Controller < Sinatra::Base
 	@agent = PlanHandler.instances(params[:layer_id].to_i)	
 #	testData = File.read("./test_init.txt")
 #	result =  @agent.initPlanner(testData)	
-	result =  @agent.initPlanner(agentSnapshot(params[:layer_id],0,"init"))	
+	result =  @agent.initPlanner(agentSnapshot(params[:layer_id],0,"init").to_json)	
 	
 #	@agent.loadPlan(agentSnapshot(params[:layer_id],0,"fetch"))	
 	redirect '/admin/games'
@@ -688,12 +688,13 @@ class Controller < Sinatra::Base
                 		t.broadcast(socketIO);
                 	end 
                 end
-                
-                update_game(g)
+               	time = Time.new 
+		frame=$simulations[g.layer_id].getTimeIndex(time)
+                update_game(g,frame)
 				
 		if count%6==0
                     #diffFrame can be nil, (when there is no diff between two frames) 
-			diffFrame=$simulations[g.layer_id].getIndexedDiffFrame(Time.now)
+			diffFrame=$simulations[g.layer_id].getIndexedDiffFrame(time)
 					
 					if diffFrame
                     	puts "heat map redraw in this loop"
@@ -716,11 +717,7 @@ class Controller < Sinatra::Base
             end
         }
         
-        game.broadcast(socketIO, "start")
-        
-       
-        #@games = Game.all
-        
+        game.broadcast(socketIO, "start") 
         redirect '/admin/games'
     end
     

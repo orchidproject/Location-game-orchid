@@ -41,15 +41,13 @@ $(document).ready(function() {
 	socket.on('data', function(data) {
         saveLog(data);
         sendBackAck(data.ackid);
+
+	if(typeof data.health!="undefined"){
+		receiveHealthData(data.health);
+	}
+       
         
         
-        if(typeof data.acc_exposure != "undefined"){
-            receiveExposureData(data.acc_exposure);
-        }
-        
-        if(typeof data.system != "undefined"){
-            system(data.system); 
-        }
               
         if(typeof data.heatmap != "undefined"){
               receiveHeatmapData(data.heatmap);
@@ -81,9 +79,12 @@ $(document).ready(function() {
         }
 
 	if(typeof data.instructions != "undefined"){
-                receiveInstructionData(data.instructions[0]);
+		receiveInstructionData(data.instructions[0]);
         }
-	
+	if(typeof data.debug != "undefined"){
+		alert(data.debug);
+        }
+
     });
 
 });

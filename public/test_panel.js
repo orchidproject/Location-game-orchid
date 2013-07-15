@@ -1,3 +1,5 @@
+var test = true;
+
 $(function(){
 
 
@@ -22,8 +24,11 @@ $(function(){
 		
 		$("#btn-fetchplan").attr("value","fetching");
 		$("#btn-fetchplan").attr("disabled","true");
-		$.get("/test/" + GAME_ID + "/" +  $("#txt-frame").val() + "/fetchplan",
-			
+		//construct rejections data
+		
+		var rejects = 	getRejections();
+		$.post("/test/" + GAME_ID + "/" +  $("#txt-frame").val() + "/fetchplan",
+			{"rejections": JSON.stringify(rejects)},		
 			function(data){
 				alert("data sent: " + JSON.stringify(data.sent));		
 				alert("received plan: "+JSON.stringify(data.plan));		
@@ -39,7 +44,87 @@ $(function(){
 		);
 
 	});
+
+
+	
 }); 
+
+function setupTest(pid){
+	google.maps.event.addListener(players[pid].marker, "dragend", 
+				function(event) {
+				var lat = event.latLng.lat();
+				var lng = event.latLng.lng();
+				players[pid].marker.setIcon(getPlayerIcon("00","dead"));	
+				socket.emit("location-push", 
+				{  
+			
+					  player_id: players[pid].id,
+					  latitude:lat, 
+					  longitude:lng, 
+					  skill: players[pid].skill, 
+					  initials: players[pid].initials
+		 
+				});
+					
+				return false;
+				//alert(JSON.stringify(event));
+
+			});
+
+}
+
+function setupTest(pid){
+	google.maps.event.addListener(players[pid].marker, "dragend", 
+				function(event) {
+				var lat = event.latLng.lat();
+				var lng = event.latLng.lng();
+				players[pid].marker.setIcon(getPlayerIcon("xx","dead"));	
+				socket.emit("location-push", 
+				{  
+			
+					  player_id: players[pid].id,
+					  latitude:lat, 
+					  longitude:lng, 
+					  skill: players[pid].skill, 
+					  initials: players[pid].initials
+		 
+				});
+					
+				return false;
+
+			});
+
+}
+
+function setupTaskTest(task){
+	google.maps.event.addListener(task.marker, "dragend", 
+		function(event) {
+			var lat = event.latLng.lat();
+			var lng = event.latLng.lng();
+			task.marker.setIcon(getPlayerIcon("xx","dead"));	
+			$.post("/test/" + GAME_ID + "/updateTask",
+				{"lat":lat, "lng":lng, "id":task.id},
+				function(data){
+					alert("data sent: " + JSON.stringify(data.sent));
+					alert("result: "+JSON.stringify(data.result));
+				},
+				"json");
+			  
+	});
+
+	
+}
+
+function getRejections(){
+	var r =  [];
+	$(rejections).each(function(index,value){
+		if(value!=null&&value&&players[index]!=null&&players[index].instruction!=null){
+			instruction = players[index].instruction;
+			r.push({player:instruction.id , task:instruction.task , duration: 1});	
+		}
+	});
+	return r;
+}
 
 //alternative is a state model, could be mush better
 var edit = function(event){

@@ -19,14 +19,10 @@ class SocketIO
     end
         
     def broadcast (data)
-	puts "sent to socket io"
-        url = @Socket_url
-        
+        url = @Socket_url 
         
         req = Net::HTTP::Post.new("/broadcast", initheader = {'Content-Type' =>'application/json'})
         req.body = {:data => data}.to_json
-        
-        #puts "broadcast to #{url}"
         
         response = Net::HTTP.new(@Socket_url, @Socket_port).start {|http| http.request(req) }
         {:status=>"ok"}

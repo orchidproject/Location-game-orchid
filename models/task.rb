@@ -1,5 +1,5 @@
 class Task
-  #
+  
   module State
     PICKED_UP = 1
     DROPPED_DOWN = 2
@@ -39,7 +39,6 @@ class Task
 # has n, :players
     
   def requirement
-    puts "output2"
     puts self.type 
     return @@task_type[self.type]
   end
@@ -47,13 +46,14 @@ class Task
   def pick_type
     
     self.type = (self.id)%4
-    puts "output1"
     puts self.type
     self.save
   end
     
   def update(socket)
   
+	state_change = {:before=> self.state, :after=>nil}
+	
   	if self.state==State::IDLE
   		current_state = Array.new(@@task_type[self.type].length){ |i| 0 }
   		eligiable_players = []
@@ -77,7 +77,7 @@ class Task
   					end 
   				end 
   			else
-  			puts "distance: #{p.distance_to self.latitude, self.longitude}"
+#  			puts "distance: #{p.distance_to self.latitude, self.longitude}"
   			end
   		end
   		
@@ -103,7 +103,6 @@ class Task
   				
   				p.save
   			end
-  			self.save
   		end
   		
   	elsif self.state==State::PICKED_UP
@@ -134,6 +133,7 @@ class Task
   			#set the players
   			self.players=""
   			self.state=State::IDLE
+			
   			working_players.each do |p|
   				p.current_task=-1
   				p.save
@@ -157,13 +157,17 @@ class Task
   			end
   			
   			self.state=State::DROPPED_DOWN
-  		end
+  		end	
+			
   		
-  		self.save
   		#broadcast
   		self.broadcast(socket)
+	
   	end
-  	
+
+  	self.save	
+	state_change[:after] = self.state	
+	return  state_change
   end 
   
   
