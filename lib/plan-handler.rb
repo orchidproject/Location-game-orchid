@@ -24,7 +24,7 @@ class PlanHandler
 		uri = URI("http://aicvm-orchid1.ecs.soton.ac.uk/orchid/atomic/"+path)
 		http = nil
 
-		if (defined?Controller && Controller::PROXY_ADDRESS == "no_proxy")	
+		if (Controller::PROXY_ADDRESS == "no_proxy")	
 			puts "init with no proxy"
 			http = Net::HTTP.new(uri.host, uri.port)
 		else 
