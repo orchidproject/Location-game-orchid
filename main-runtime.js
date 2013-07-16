@@ -145,8 +145,8 @@ function update_location(latitude, longitude, id){
   console.log(query);
 }
 
-function ack_instruction(id){
-  var query = 'UPDATE instructions SET status=2 WHERE id=' + id;
+function ack_instruction(id,status){
+  var query = 'UPDATE instructions SET status=' + status + ' WHERE id=' + id;
   client.query(
     query
   );

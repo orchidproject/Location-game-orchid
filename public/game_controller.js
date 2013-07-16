@@ -168,9 +168,24 @@ function receivePlayerInfoData(data){
 	$("#plan_btn_"+ data.id).click(function(){
 		if(!rejections[data.id]){ 
 			rejections[data.id]= true;		
+			//send io message
+			if(players[data.id].instruction!=null){
+				var instruction_id = players[data.id].instruction.id
+				socket.emit("ack-instruction",{
+					id: instruction_id, 
+					status:3
+				});
+			}
 		}
 		else{ 
 			rejections[data.id]= false;
+			if(players[data.id].instruction!=null){
+				var instruction_id = players[data.id].instruction.id
+				socket.emit("ack-instruction",{
+					id: instruction_id,
+					status:2 
+				});
+			}
 		}
 		
 		if(!rejections[data.id]){ 
@@ -185,7 +200,7 @@ function receivePlayerInfoData(data){
 
 	$("#view_btn_"+data.id).click(function(){
 		if( players[data.id].instruction == null){
-			alert("no plan, fetch plan first");
+			alert("no task assigned for this player");
 			return;
 		}
 
@@ -216,8 +231,13 @@ function receivePlayerInfoData(data){
 		  flightPath.setMap(map);	
 	
 //draw teammate path	
-		lat = getTeammate(p.instruction).marker.getPosition().lat();		
-		lng = getTeammate(p.instruction).marker.getPosition().lng();		
+		var teammate = null
+		teammate = getTeammate(p.instruction);
+		if(getTeammate(p.instruction) ==null){
+			teammate = players[p.instruction.teammate];
+		}
+		lat = teammate.marker.getPosition().lat();		
+		lng = teammate.marker.getPosition().lng();		
 		flightPlanCoordinates = [
 		      new google.maps.LatLng(lat, lng),
 		      new google.maps.LatLng(lat2, lng2),
@@ -303,6 +323,7 @@ function receiveExposureData(data){
     }
 */
 }
+
 function receiveInstructionData(data){
 
 	//sameple:{"teammate":2,"task":117,"direction":"south east","status":1,"time":1372781334,"id":160,"player_id":6}
@@ -314,6 +335,15 @@ function receiveInstructionData(data){
 
 }
 
+function receiveInstructionDataV2(data){
+
+	//sameple:{"teammate":2,"task":117,"direction":"south east","status":1,"time":1372781334,"id":160,"player_id":6}
+	
+	if(players[data.player_id]!=null){
+		players[data.player_id].instruction = data;
+	}
+
+}
 
 function system(data){
     

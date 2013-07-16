@@ -79,8 +79,8 @@ $(document).ready(function() {
         }
 
 	if(typeof data.instructions != "undefined"){
-		receiveInstructionData(data.instructions[0]);
-        }
+		receiveInstructionDataV2(data.instructions[0]);
+	}
 	if(typeof data.debug != "undefined"){
 		alert(data.debug);
         }

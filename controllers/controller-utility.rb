@@ -31,7 +31,7 @@ class Controller < Sinatra::Base
               :id=>t.id,
               :latitude => t.latitude.to_s('F'),
               :longitude => t.longitude.to_s('F'),
-			  :type => t.type,
+	      :type => t.type,
               :state => t.state,
               :requirement => t.requirement,
               :players => t.players
@@ -69,7 +69,8 @@ class Controller < Sinatra::Base
 
     elsif action=="fetch"
 	response = {
-		:players => player
+		:players => player,
+		:tasks => task
     	}
 
     elsif action=="update"
@@ -230,7 +231,6 @@ class Controller < Sinatra::Base
 		puts resJson.to_json
 		puts "get data 2" 
 		resJson["plan"].each  do |frame| 
-			puts 	frame["time_frame"]
 		    new_frame = p.frames.create(:count=> frame["time_frame"]) 	
 		    frame["players"].each do |player|
 			    puts "group is : " + player["group"].to_s 
@@ -267,7 +267,6 @@ class Controller < Sinatra::Base
 		p.notifyPlayers socketIO
 	
 	end 
-	sleep 10
   end
 
   def agentUpdateSession(game_id, frame)

@@ -19,7 +19,9 @@ class Array3D
 end
 
 class Simulation
-	
+
+  attr_reader :x_size
+  attr_reader :y_size	
   def initialize(filename, lat_top_left, long_top_left, grid_size_in_meters, start_time, time_interval_in_minutes)
           
     f = File.open(filename)

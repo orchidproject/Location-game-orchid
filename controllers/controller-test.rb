@@ -53,56 +53,18 @@ class Controller < Sinatra::Base
 	data = agentSnapshot(params[:game_id],params[:frame].to_i,"fetch")
 	
 	#append reject info 
-	puts params.to_s
-	data["rejections"] = JSON.parse(params[:rejections]) 	
+	#data["rejections"] = JSON.parse(params[:rejections]) 	
 	
 	res = @agent.loadPlan(data.to_json)	
 	time2 = Time.now
+
+
+	#------------------------processing-------------------------
+	processResponse(params[:game_id], res)	
+
 	#parse json
 	{:sent=> data, :plan => JSON.parse(res)}.to_json
-=begin
-	resJson = JSON.parse(res) 
-	p = Game.get(params[:game_id]).plans.create 
 
-	resJson.each  do |frame| 
-		
-	    new_frame = p.frames.create(:count=> frame["time_frame"]) 	
-	    frame["players"].each do |player|
-		    puts "group is : " + player["group"].to_s 
-		    if player["group"] == nil  
-			puts "group null, abort <--------------------------------"
-	 		next 	
-		    end 
-
-		    ins= new_frame.instructions.new(
-				:group => player["group"].to_s,
-				:task_id => player["task"],
-				:player_id => player["id"],
-				:next_x => player["next_x"],
-				:next_y => player["next_y"],
-				:action => player["action"]
-			)	
-		    #compare the data
-		    #is it guarantee to be the latest?
-		    last_instruction = Instruction.last(:player_id => player["id"])
-		    if last_instruction&&!last_instruction.equals(ins)
-			ins.save
-			puts "instruction not same, saved <-------------------------" 
-		    elsif !last_instruction
-			puts "first plan, saved < -------------------------------"
-			ins.save
-		    else 
-			new_frame.instructions.delete(ins)
-			puts "same instruction abort <-----------------------------"
-		    end 
-	    end 
-	end
-	
-
-	p.notifyPlayers socketIO 	
-	(time2-time1).to_s+" seconds result" + res
-
-=end
  end 
 
  get '/test/:game_id/snapshot' do
@@ -226,6 +188,54 @@ end
 
  end 
 
+ def processResponse(game_id,res) 
+	puts "get data " 
+	#File.open("./testlog.txt","a") { |f|  f.write("get data")}
+	resJson = JSON.parse(res) 
+	p = Game.get(game_id).plans.create 
+	if(resJson["status"] == "error" )
+		 puts resJson["message"]
+		 return
+	end 
+
+	puts "get data 2" 
+	resJson["plan"].each  do |frame| 
+	    new_frame = p.frames.create(:count=> frame["time_frame"]) 	
+	    frame["players"].each do |player|
+			    puts "group is : " + player["group"].to_s 
+			    if player["task"] == -1 || player["group"] == nil  
+				player["group"] == "" 
+			    end 
+
+			    ins= new_frame.instructions.new(
+				:group => player["group"].to_s,
+				:task_id => player["task"],
+				:player_id => player["id"],
+				:next_x => player["next_x"],
+				:next_y => player["next_y"],
+				:action => player["action"]
+				)	
+			    #compare the data
+			    #is it guarantee to be the latest?
+			    last_instruction = Instruction.last(:player_id => player["id"])
+			    if last_instruction&&!last_instruction.equals(ins)
+				ins.save
+				puts "instruction not same, saved <-------------------------" 
+			    elsif !last_instruction
+				puts "first plan, saved < -------------------------------"
+				 ins.save
+			    else 
+				new_frame.instructions.delete(ins)
+				puts "same instruction abort <-----------------------------"
+			    end 
+		    end 
+	end
+	
+	p.notifyPlayers socketIO
+
+
+ end 
+
  get '/test/task' do
 
         socketIO.broadcast(
@@ -332,19 +342,31 @@ end
 		data = snapshot(Game.get(game_id), false,"fetch")
 		data[:players].each do |p| 
 			result =  sim.getGridCoord(Float(p[:latitude]),Float(p[:longitude]))
-
+			p.delete(:latitude)
+			p.delete(:longitude)
 			p["x"] = result[:x]
 			p["y"] = result[:y]
 		
 		end 
-
+		data[:tasks].each do |t| 
+			result =  sim.getGridCoord(Float(t[:latitude]),Float(t[:longitude]))
+			t.delete(:requirement)
+			t.delete(:latitude)
+			t.delete(:longitude)
+			t["x"] = result[:x]
+			t["y"] = result[:y]
+			t["status"] = t[:state]	
+			
+		end
 		response = { 
 			:time_frame => sec, 
 			:session_id => game_id, 
 			:rejections => [], 
 			:step =>1,
-			:state => data  
+			:state => checkCoords(data,game,sim)  
 		}
+		
+		response = appendRejections(response,game,sec)
 
 	elsif action == "update"
 		data = snapshot(Game.get(game_id),false,"update")
@@ -356,13 +378,79 @@ end
 		
 		end
 		data[:session_id] = game_id
-		
-		response = data
+	
+		response = data	
 	end 
 
 	response
   end 
+ 
+  def appendRejections(data,game,frame)
+	data["rejections"] = []
+	puts "-----------------------append instructions ---------------------"
+	game.plans.frames(:count.gt => frame-10).instructions(:status => 3).each do  |ins|
+		data["rejections"]<<{:player=> ins.player_id ,:task => ins.task_id, :duration=> 1}
+		puts "-----------------------find rejections---------------------"
+	end 
 
-  
+	return data
+  end 
+  def checkCoords(data,game,sim)
+	terrains = JSON.parse(game.terrains)
+	
+	data[:players].each do |p|
+		puts "------------------------------converting------------------------------"
+		isOnMap = (p["x"] <= sim.x_size&& p["x"] >= 0 && p["y"] <= sim.y_size && p["y"]>= 0)
+		isAccessible = (terrains[p["x"]]== nil || 
+				terrains[p["x"]][p["y"]]== nil || 
+				terrains[p["x"]][p["y"]] == 0)
+ 
+		if(!isOnMap)
+			point =  getLegalPoint(p["x"], p["y"], (sim.y_size/2).floor, (sim.x_size/2).floor,terrains)
+			p["x"] = point[0]
+			p["y"] = point[1]
+			puts "pid is " + p[:id].to_s	
+			player = Player.get(p[:id])
+			player.update(:x=> point[0], :y => point[1])	
+
+		elsif(!isAccessible)
+			player = Player.get(p[:id])
+			if(player.x == nil || player.y == nil)
+				point = getLegalPoint(p["x"], p["y"], (sim.y_size/2).floor, (sim.x_size/2).floor,terrains)
+			else
+				point = getLegalPoint(p["x"], p["y"], player.x , player.y ,terrains)
+			end
+
+			p["x"] = point[0] 
+			p["y"] = point[1]
+			player.x = point[0] 
+			player.y = point[1] 
+			player.save	
+		end 			
+	end	
+	return data
+  end 
+
+  def getLegalPoint(x1,y1,x2,y2,terrains) 
+	fx = x1
+	fy = y1
+	puts "target " + x2.to_s + " " + y2.to_s
+	while( fx <0 || fy<0 || terrains[fx] == nil || terrains[fx][fy] == nil ||terrains[fx][fy]!=0)
+		
+		if(fx<x2)	
+			fx += 1	
+		else
+			fx -= 1
+		end	
+
+		if(fy<y2)	
+			fy += 1	
+		else
+			fy -= 1
+		end
+		puts fx.to_s + ":" + fy.to_s 
+	end
+	return fx,fy
+  end 
 end 
 

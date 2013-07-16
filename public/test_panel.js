@@ -26,7 +26,7 @@ $(function(){
 		$("#btn-fetchplan").attr("disabled","true");
 		//construct rejections data
 		
-		var rejects = 	getRejections();
+		var rejects = []//getRejections();
 		$.post("/test/" + GAME_ID + "/" +  $("#txt-frame").val() + "/fetchplan",
 			{"rejections": JSON.stringify(rejects)},		
 			function(data){
@@ -34,7 +34,7 @@ $(function(){
 				alert("received plan: "+JSON.stringify(data.plan));		
 				if(data.plan.plan!=null){
 					//plan is an array if multiple steps are specified
-					receiveInstructionData(data.plan.plan[0]); 
+					//receiveInstructionData(data.plan.plan[0]); 
 				}
 				
 				$("#btn-fetchplan").attr("value","fetchplan");
@@ -73,28 +73,7 @@ function setupTest(pid){
 
 }
 
-function setupTest(pid){
-	google.maps.event.addListener(players[pid].marker, "dragend", 
-				function(event) {
-				var lat = event.latLng.lat();
-				var lng = event.latLng.lng();
-				players[pid].marker.setIcon(getPlayerIcon("xx","dead"));	
-				socket.emit("location-push", 
-				{  
-			
-					  player_id: players[pid].id,
-					  latitude:lat, 
-					  longitude:lng, 
-					  skill: players[pid].skill, 
-					  initials: players[pid].initials
-		 
-				});
-					
-				return false;
 
-			});
-
-}
 
 function setupTaskTest(task){
 	google.maps.event.addListener(task.marker, "dragend", 

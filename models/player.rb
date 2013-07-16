@@ -24,6 +24,8 @@ class Player
   property :current_task, Integer,:default => -1
   property :initials, String, :length => 255
   property :status, String, :default => "normal"
+  property :x , Integer
+  property :y , Integer
   belongs_to :game
   
   #lagecy 

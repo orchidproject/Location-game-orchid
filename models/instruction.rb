@@ -15,7 +15,7 @@ class Instruction
   property :next_y, Integer
   property :action, String
   property :status, Integer, :default=>1 
-
+  #1 idle, 2 rejected, 3 accept
   before :save do
 	puts "before save hooker"
   end   
@@ -24,6 +24,16 @@ class Instruction
 	if( player_id != other.player_id)
 		return false
 	end 
+
+	if ( task_id != other.task_id) 
+		return false
+	end
+ 
+	if ( task_id == -1 && other.task_id == task_id)
+		return true
+	end 
+	
+	
 	groupArray =  JSON.parse(group)
 	other_groupArray =  JSON.parse(other.group)	
 	groupArray.each do |p|
