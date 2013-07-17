@@ -176,21 +176,7 @@ class Controller < Sinatra::Base
     
   end 
 
-  get '/player/ready_check' do
-      player = Player.get params[:id]
-  
       
-      
-      if params[:ready] == "true"
-          #puts :bbb
-          player.update(:status=>1)
-      elsif params[:ready] == "false"
-          #puts :aaa
-          player.update(:status=>0)
-      end
-       puts :ccc
-  end
-
   delete '/admin/games/:layer_id' do
     @game = Game.get params[:layer_id]
    
@@ -562,15 +548,17 @@ class Controller < Sinatra::Base
     elsif params[:initials]==nil
     	return {:error=>"invalid initials"}.to_json
     else
-        player = game.players.create  :initials => params[:initials], :name => params[:name], :skill => params[:role_id], :team=>game.pick_team("runner")#team is a legacy
+        player = game.players.create  :initials => params[:initials], 
+					:name => params[:name], 
+					:skill => params[:role_id], 
+					:team=>game.pick_team("runner"), #team is a legacy
+					:latitude => game.sim_lat,
+					:longitude => game.sim_lng 
     end
       
     
     if player
       
-        #update player info, add game information.
-        #player.update(:game_layer_id=>game.layer_id,:team => game.pick_team('runner'))
-        #broadcast to socket.io
         #session[:id]=player.id
         
         player.broadcast(socketIO)
