@@ -14,7 +14,7 @@ var stop=true;
 
 
 
-
+var test = false;
 function get_data(){
     
     $.ajax({ 
@@ -171,31 +171,19 @@ function setup_game() {
 		        data= JSON.parse(data);
 			
             		$(data.tasks).each(function(i, task){
-                		var d=filter({"task":task});
-                		if(typeof d.task != "undefined"){
-                    			receiveTaskData(d.task);
-                		}
+                    			receiveTaskData(task);
            		 });
                         
             		$(data.locations).each(function(i, location){
-                		var d=filter({"location":location});
-                		if(typeof d.location != "undefined"){
-                    			receivePlayerData(d.location);
-                		}
+                    			receivePlayerData(location);
             		});
             
              		$(data.players).each(function(i, player){
-                		var d=filter({"player":player});
-                		if(typeof d.player != "undefined"){
-                    			receivePlayerInfoData(d.player);
-                		}
+                    			receivePlayerInfoData(player);
            		 });
             
             		$(data.dropoffpoints).each(function(i, drop){
-                		var d=filter({"drop":drop});
-                		if(typeof d.drop != "undefined"){
-                    			receiveDropoffpointData(d.drop);
-                		}
+                    			receiveDropoffpointData(drop);
             		});
             
 		}

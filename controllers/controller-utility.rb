@@ -173,7 +173,7 @@ class Controller < Sinatra::Base
                  
 			#broadcast exposure
 			p.updateHealth(socketIO)
-                 
+      			p.broadcast_curr_exposure(socketIO)           
 			p.save
 		end 
              else

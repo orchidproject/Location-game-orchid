@@ -396,7 +396,7 @@ function system(data){
 }
 
 function receiveMessageData(data) {
-	pushToTaskHistory(data.content, "msg" + latestMsgId++, data.player_initials, data.player_id,data.skill);
+	pushToTaskHistory(data.content, "msg" + latestMsgId++, data.player_initials, data.player_id,data.player_skill);
 	//alert(data.player_name + ": " + data.content);
 }
 var latestMsgId = 0;

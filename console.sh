@@ -1,0 +1,1 @@
+irb -r "./environment.rb"
