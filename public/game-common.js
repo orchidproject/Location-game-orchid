@@ -26,7 +26,7 @@ var cg = {
 		return new google.maps.Point(w,h);
 	},
 	playerImage: function(name, skill) {
-		return new google.maps.MarkerImage("/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png", new google.maps.Size(38, 31), new google.maps.Point(0,0), new google.maps.Point(10, 30));
+		return new google.maps.MarkerImage("/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png", new google.maps.Size(30 , 30), new google.maps.Point(0,0), new google.maps.Point(10, 30), new google.maps.Size(30 , 30));
 	},
 	imageSrc: function(name, skill) {
 		return "/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png";

@@ -13,9 +13,11 @@ class Controller < Sinatra::Base
     task = []
     dropoffpoint = []
     player = []
+    instruction = []
 
     game.players.each do |p|
-	 player <<{
+	next if (p.status == "incapacitated" && action == "fetch")
+	player <<{
 		:id => p.id,
 		:latitude => p.latitude.to_s('F'),
 		:longitude => p.longitude.to_s('F'),
@@ -24,6 +26,19 @@ class Controller < Sinatra::Base
 		:status => p.status,
 		:health => p.health
 	} 
+	
+	ins = Instruction.last(:player_id => p.id)
+	if(ins)
+		instruction << {
+			:teammate=> ins.getTeammate,
+			:task=> ins.task_id, 
+			:direction=> ins.action,
+			:status => ins.status,
+			:time => ins.created_at.to_time.to_i,
+			:id => ins.id,
+			:player_id => ins.player_id
+		 }
+	end	
     end 
 
     game.tasks.each do |t|
@@ -68,6 +83,8 @@ class Controller < Sinatra::Base
 	response[:terrains] = JSON.parse(game.terrains)
 
     elsif action=="fetch"
+		
+
 	response = {
 		:players => player,
 		:tasks => task
@@ -86,7 +103,9 @@ class Controller < Sinatra::Base
 		:grid_size=> "%f" % game.grid_size,
 		:tasks=>task,
 		:dropoffpoints=>dropoffpoint,
-		:players => player
+		:players => player,
+		:instructions => instruction,
+		:terrains => game.terrains
     	}
 
     end   
@@ -140,32 +159,47 @@ class Controller < Sinatra::Base
 	   agentFetchPlan(game.layer_id,frame)
 	   @init_plan_fetched=true
 	 end
-         
+        
+	 updatePlan = false 
+	 updateSession = false
          game.tasks.each do |t|
          	state_change =	t.update(socketIO)
 		puts state_change
 		if(3 == state_change[:after]&&1 == state_change[:before]) 
 			puts "update session"	
-			#socketIO.broadcast({:channel=>game.layer_id,:data=>{:debug=>"update session"}})
-			agentUpdateSession(game.layer_id,frame)
+			updateSession=true
 		elsif(2 == state_change[:after]&&1 == state_change[:before]) 
 			puts "fetch plan"
-			#socketIO.broadcast({:channel=>game.layer_id,:data=>{:debug=>"fetch plan"}})
-			agentFetchPlan(game.layer_id,frame)
+			updatePlan = true
 		end
 
          end
+	
+	 
          
          game.players.each do |p|
-         	 if (p.latitude == nil || p.longitude == nil)
-         	 	puts "no location for user #{p.id}"
-         	 	next
-         	 end 
+	     instruction =  Instruction.last(:player_id => p.id, :status => 3)
+	     if(instruction != nil)
+		instruction.status=4
+		instruction.save
+		puts " instruction for " + p.id.to_s + " is rejected *********************************************************************************************" + instruction.id.to_s
+		updatePlan = true
+	     else
+		puts "no instruction rejected*********************************************************************************************************"  
+	     end
+
+
+
+             if (p.latitude == nil || p.longitude == nil)
+         	puts "no location for user #{p.id}"
+         	next
+             end 
          	 
          	 
              if(sim.isOnMap(p.latitude, p.longitude))
 	        if (p.exposure > 1000 )
                 	p.status="incapacitated"
+			p.save
                 	p.broadcast(socketIO)
                 else
 			p.current_exposure = check_radiation(p.latitude,p.longitude,game.layer_id)
@@ -180,6 +214,12 @@ class Controller < Sinatra::Base
                 puts "unit not in the boundary"
              end
          end 
+	
+	 if(updateSession)
+		agentUpdateSession(game.layer_id,frame) 
+	 elsif(updatePlan)
+		agentFetchPlan(game.layer_id,frame) 
+	 end
   end
   
   def check_radiation(latitude, longitude, game_id) 
@@ -219,53 +259,8 @@ class Controller < Sinatra::Base
 	agent = PlanHandler.instances(game_id)
 	data = agentSnapshot(game_id,frame,"fetch")
 	agent.pushFetchTask(data.to_json) do |res|
-		puts "get data " 
-		#File.open("./testlog.txt","a") { |f|  f.write("get data")}
-		resJson = JSON.parse(res) 
-		p = Game.get(game_id).plans.create 
-		if(resJson["status"] == "error" )
-			 puts resJson["message"]
-			 return
-		end 
-
-		puts resJson.to_json
-		puts "get data 2" 
-		resJson["plan"].each  do |frame| 
-		    new_frame = p.frames.create(:count=> frame["time_frame"]) 	
-		    frame["players"].each do |player|
-			    puts "group is : " + player["group"].to_s 
-			    if player["group"] == nil  
-				puts "group null, abort <--------------------------------"
-				next 	
-			    end 
-
-			    ins= new_frame.instructions.new(
-				:group => player["group"].to_s,
-				:task_id => player["task"],
-				:player_id => player["id"],
-				:next_x => player["next_x"],
-				:next_y => player["next_y"],
-				:action => player["action"]
-				)	
-			    #compare the data
-			    #is it guarantee to be the latest?
-			    last_instruction = Instruction.last(:player_id => player["id"])
-			    if last_instruction&&!last_instruction.equals(ins)
-				ins.save
-				puts "instruction not same, saved <-------------------------" 
-			    elsif !last_instruction
-				puts "first plan, saved < -------------------------------"
-				 ins.save
-			    else 
-				new_frame.instructions.delete(ins)
-				puts "same instruction abort <-----------------------------"
-			    end 
-		    end 
-		end
-	
-
-		p.notifyPlayers socketIO
-	
+		puts "fetch plan"
+		processResponse(game_id,res)		
 	end 
   end
 

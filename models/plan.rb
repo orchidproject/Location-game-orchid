@@ -15,26 +15,16 @@ class Plan
 	first_frame = frames.first
 
 	first_frame.instructions.each do |instruction|	
-		#get teammate
-		teammate = -1		
-		if(instruction.group!= "")
-			group = JSON.parse(instruction.group)
-			group.each do |id|
-				if (id == instruction.player_id)
-					next	
-				else 
-					teammate = id
-				end 
-			end 
-		end
+		
+		
 
 		io.broadcast( 
                      { 
                         :channel=> "#{self.game.layer_id}-2",  
-                        :users=>[instruction.player_id,teammate], #send to a particular user
+                        :users=>[instruction.player_id,instruction.getTeammate], #send to a particular user
                         :data=>{
                             :instructions=>[{
-                                :teammate=> teammate,
+                                :teammate=> instruction.getTeammate,
                                 :task=> instruction.task_id, 
 				:direction=> instruction.action,
 				:status => instruction.status,
@@ -44,8 +34,7 @@ class Plan
                             }]
                         }
                      }.to_json)   
-
-	end
+end
   end 
 
 end 

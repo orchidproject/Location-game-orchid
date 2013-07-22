@@ -123,7 +123,12 @@ function Game(game_id){
 				instance.grid_size=parseFloat(data.grid_size);
 				instance.sim_update_interval=parseFloat(data.sim_update_interval);
 				//terrain data is retrieved as a long string		
-				instance.terrains=jQuery.parseJSON(data.terrains);
+				if(data.terrains!=null){
+					instance.terrains=jQuery.parseJSON(data.terrains);
+}
+else{
+	instance.terrains = []
+}
 				if(callback!=null){ 
 					callback(instance); 
 				} 

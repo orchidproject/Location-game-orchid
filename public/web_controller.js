@@ -89,7 +89,7 @@ $(document).ready(function() {
 
 });
 function sendMsg(data){
-	socket.emit("message",{"content":data,"timeStamp":new Date().getTime(), "player_id":-1, "player_initials":"HQ", "skill":null});
+	socket.emit("message",{"content":data,"timeStamp":Math.floor((new Date().getTime())/1000), "player_id":-1, "player_initials":"HQ", "skill":null});
 }
 
 function sendBackAck(ackid){

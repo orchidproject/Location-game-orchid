@@ -74,7 +74,8 @@ function receiveHeatmapData(data){
     }
 
     heatMap = new google.maps.visualization.HeatmapLayer({
-	    data: heatMapData 
+	    data: heatMapData, 
+	    radius: 20 
     });
 	
     heatMap.setMap(map);
@@ -128,6 +129,7 @@ function receivePlayerInfoData(data){
 		} else{
 			var markerIcon = getPlayerIcon(data.initials,"dead");
 			players[data.id].marker.setIcon(markerIcon);
+			return;
 		}
 	}
 

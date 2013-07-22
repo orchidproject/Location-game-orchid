@@ -36,7 +36,14 @@
 		return false;
 	});
 	
-	
+	$("#usermsg").keypress(function(event){
+		if(event.which == 13){
+			var clientmsg = $("#usermsg").val(); 
+			sendMsg(clientmsg);		
+			$("#usermsg").attr("value", "");
+		}	
+
+	});
 	GameMap.fitToRadius(<%= @game.radius %>);
     
 	

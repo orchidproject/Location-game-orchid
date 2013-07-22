@@ -19,6 +19,22 @@ class Instruction
   before :save do
 	puts "before save hooker"
   end   
+  
+  def getTeammate
+	#get teammate
+	teammate = -1		
+	if(self.group!= "")
+		the_group = JSON.parse(self.group)
+		the_group.each do |id|
+			if (id == self.player_id)
+				next	
+			else 
+				teammate = id
+			end 
+		end 
+	end 
+	return teammate
+  end 
 
   def equals(other)
 	if( player_id != other.player_id)

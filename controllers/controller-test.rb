@@ -46,11 +46,18 @@ class Controller < Sinatra::Base
 	{:sent=> data, :result => res}.to_json
  end 
 
- post '/test/:game_id/:frame/fetchplan' do
+post '/test/:game_id/:frame/fetchplan' do
 	#the final test 
+	if($simulations[params[:game_id].to_i]!=nil )
+		frame =	$simulations[params[:game_id].to_i].getTimeIndex(Time.now)
+		
+	else
+		frame = params[:frame].to_i	
+	end 
+
 	time1 = Time.now	
 	@agent = PlanHandler.instances(params[:game_id].to_i)	
-	data = agentSnapshot(params[:game_id],params[:frame].to_i,"fetch")
+	data = agentSnapshot(params[:game_id],frame,"fetch")
 	
 	#append reject info 
 	#data["rejections"] = JSON.parse(params[:rejections]) 	
@@ -190,15 +197,22 @@ end
 
  def processResponse(game_id,res) 
 	puts "get data " 
-	#File.open("./testlog.txt","a") { |f|  f.write("get data")}
-	resJson = JSON.parse(res) 
+	begin
+		resJson = JSON.parse(res) 
+	rescue 
+		puts "plan pause error"
+		return
+	end
 	p = Game.get(game_id).plans.create 
 	if(resJson["status"] == "error" )
 		 puts resJson["message"]
 		 return
 	end 
 
-	puts "get data 2" 
+	if(resJson["plan"]==nil)
+		puts "error no plan attribute"
+		return	
+	end	
 	resJson["plan"].each  do |frame| 
 	    new_frame = p.frames.create(:count=> frame["time_frame"]) 	
 	    frame["players"].each do |player|
@@ -217,6 +231,7 @@ end
 				)	
 			    #compare the data
 			    #is it guarantee to be the latest?
+=begin
 			    last_instruction = Instruction.last(:player_id => player["id"])
 			    if last_instruction&&!last_instruction.equals(ins)
 				ins.save
@@ -228,6 +243,9 @@ end
 				new_frame.instructions.delete(ins)
 				puts "same instruction abort <-----------------------------"
 			    end 
+=end
+		 	    saved = ins.save
+			    puts "instruction not same, saved <-------------------------" + saved.to_s 
 		    end 
 	end
 	
@@ -298,6 +316,7 @@ end
 
 	file = File.open("revised_game_state.txt", "w")
 	file.write(data.to_json) 
+	data.to_json
   end 
 	
   def agentSnapshot(game_id,sec,action)
@@ -387,10 +406,11 @@ end
  
   def appendRejections(data,game,frame)
 	data["rejections"] = []
-	puts "-----------------------append instructions ---------------------"
-	game.plans.frames(:count.gt => frame-10).instructions(:status => 3).each do  |ins|
+	puts "-----------------------append rejections---------------------"
+	game.plans.frames(:count.gt => frame-10).instructions(:status.gte => 3).each do  |ins|
 		data["rejections"]<<{:player=> ins.player_id ,:task => ins.task_id, :duration=> 1}
 		puts "-----------------------find rejections---------------------"
+		puts ins.status.to_s + " "	
 	end 
 
 	return data
