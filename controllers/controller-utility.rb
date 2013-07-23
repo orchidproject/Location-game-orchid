@@ -16,7 +16,7 @@ class Controller < Sinatra::Base
     instruction = []
 
     game.players.each do |p|
-	next if (p.status == "incapacitated" && action == "fetch")
+	next if (p.status == "incapacitated" && action == "fetch") 
 	player <<{
 		:id => p.id,
 		:latitude => p.latitude.to_s('F'),

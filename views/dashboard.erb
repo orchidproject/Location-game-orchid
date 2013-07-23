@@ -1,4 +1,5 @@
 <script type="text/javascript">
+  var test =  <%= @test %>
   var layerId =  <%= @game.layer_id %>;
   $(function(){
   	if(!document.getElementById("map")) {
@@ -58,7 +59,7 @@
 		
 		<div id="wedget-panel-1">
 			<div id="test-panel">
-				TEST 
+				
 				<input type="text" value=0 id="txt-frame" size=5 />
 				<input type="button" value="set frame" id="btn-setframe" />
 				<input type="button" value="fetchplan" id="btn-fetchplan" />

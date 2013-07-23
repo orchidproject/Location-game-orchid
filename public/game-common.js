@@ -107,11 +107,15 @@ function receiveTaskData(task){
 		if (task.state==2){
 			taskIcon=new google.maps.MarkerImage(tick, playerIconSize, playerIconOrigin, playerIconAnchor);
 		}
+		var drag = false;
+		if(test!=null&&test){
+			drag=test;
+		}	
     		var marker = new google.maps.Marker({
                 	position: point,
                 	map: map,
                 	icon: taskIcon,
-			draggable:true
+			draggable:drag
         	});
         
         	var the_task={id:task.id,marker:marker};
@@ -194,6 +198,11 @@ function receivePlayerData(data) {
 		
 		
 		if(typeof players[pid] == "undefined") {
+			var drag = false;
+			if(test!=null&&test){
+				drag = test;
+			}
+
 		        
 		        players[pid] = {
 		            id: pid,
@@ -203,9 +212,9 @@ function receivePlayerData(data) {
 		            marker: new google.maps.Marker({
 		                position: new google.maps.LatLng(data.latitude, data.longitude),
 		                map: map,
-				draggable: true,
+				draggable: drag,
 		                icon: markerIcon,
-		                visible: true
+		                visible: true 
 		            })
 		        };
 			

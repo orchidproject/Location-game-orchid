@@ -142,7 +142,11 @@ function receivePlayerInfoData(data){
 		var level = "<td align='center'> <div id='level_"+data.id+"'></div> </td>";
 		var button = "<td align = 'center'> <input id= 'view_btn_"+data.id+"' type='button' value='view' id='view_ins_"+data.id+"'/> </td>"
 		var plan_button = "<td align = 'center'> <input id= 'plan_btn_"+data.id+"' type='button' value='accept' id='plan_"+data.id+"'/> </td>"
-		$("#players").append("<tr>" + icon + health + level + button + plan_button +  "</tr>");
+		if(test){
+			$("#players").append("<tr>" + icon + health + level + button + plan_button +  "</tr>");
+		}else{ 
+			$("#players").append("<tr>" + icon + health + level + button +  "</tr>");
+		}
 
 
 	}
@@ -153,51 +157,47 @@ function receivePlayerInfoData(data){
 	
 	//just for test	
 
-
-
-	if(true){
+	if(test){
 		$("#player-icon-"+ data.id).click(function(){
 			beginEdit(image_url,data);
 		});
+		rejections[data.id] = false;
+		$("#plan_btn_"+ data.id).click(function(){
+			if(!rejections[data.id]){ 
+				rejections[data.id]= true;		
+				//send io message
+				if(players[data.id].instruction!=null){
+					var instruction_id = players[data.id].instruction.id
+					socket.emit("ack-instruction",{
+						id: instruction_id, 
+						status:3
+					});
+				}
+			}
+			else{ 
+				rejections[data.id]= false;
+				if(players[data.id].instruction!=null){
+					var instruction_id = players[data.id].instruction.id
+					socket.emit("ack-instruction",{
+						id: instruction_id,
+						status:2 
+						});
+					}
+			}
+		
+			if(!rejections[data.id]){ 
+				$("#plan_btn_"+ data.id).attr('value','accept');
+			}
+			else{ 
+				$("#plan_btn_"+ data.id).attr('value','reject');
+			}
 
+		});
 		
 	}
-	if(off_set == -1){
-		off_set = data.id;
-	}
 
-	rejections[data.id] = false;
-	$("#plan_btn_"+ data.id).click(function(){
-		if(!rejections[data.id]){ 
-			rejections[data.id]= true;		
-			//send io message
-			if(players[data.id].instruction!=null){
-				var instruction_id = players[data.id].instruction.id
-				socket.emit("ack-instruction",{
-					id: instruction_id, 
-					status:3
-				});
-			}
-		}
-		else{ 
-			rejections[data.id]= false;
-			if(players[data.id].instruction!=null){
-				var instruction_id = players[data.id].instruction.id
-				socket.emit("ack-instruction",{
-					id: instruction_id,
-					status:2 
-				});
-			}
-		}
-		
-		if(!rejections[data.id]){ 
-			$("#plan_btn_"+ data.id).attr('value','accept');
-		}
-		else{ 
-			$("#plan_btn_"+ data.id).attr('value','reject');
-		}
 
-	});
+	
 
 
 	$("#view_btn_"+data.id).click(function(){
@@ -332,6 +332,9 @@ function receiveInstructionData(data){
 	$(data.players).each(function(index,value){
 		if(players[value.id]!=null){
 			players[value.id].instruction = value;
+			if(value.task==-1){ 
+				
+			}
 		}
 	});
 
@@ -343,6 +346,10 @@ function receiveInstructionDataV2(data){
 	
 	if(players[data.player_id]!=null){
 		players[data.player_id].instruction = data;
+		if(data.task==-1){ 
+			$("#view_btn_"+data.player_id).val("no plan");	
+		}
+
 	}
 
 }

@@ -1,21 +1,23 @@
-var test = true;
 
 $(function(){
+	if(test){
 
-
-	$("#btn-setframe").click(function(){
+		$("#btn-setframe").click(function(){
 		
-		if(isNaN($("#txt-frame").val())){
-			alert("frame not a number");
-		//fetch frame 
-		}else{ 
-			$.get("/test/" + GAME_ID+ "/" + $("#txt-frame").val()  + "/getFrame",
+			if(isNaN($("#txt-frame").val())){
+				alert("frame not a number");
+			}else{ 
+				$.get("/test/" + GAME_ID+ "/" + $("#txt-frame").val()  + "/getFrame",
 				function(data){
 					receiveHeatmapData(JSON.parse(data));
 				}
-			); 
-		} 
-	});
+			); } 
+		});
+	}else{
+		$("#btn-setframe").hide();
+		$("#txt-frame").hide(); 
+	}
+
 	$("#btn-fetchplan").click(function(){
 		if(isNaN($("#txt-frame").val())){
 				alert("frame not a number");
