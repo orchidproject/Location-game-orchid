@@ -482,6 +482,12 @@ end
 	end 
 	result.to_json
   end  
-
+  get "/test/all/instruction/:layer_id/" do
+	result = []
+	Game.get(params[:layer_id]).plans.frames.all.each do |f| 
+		result << f.output
+	end 
+	result.to_json
+  end
 end 
 
