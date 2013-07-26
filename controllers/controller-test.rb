@@ -475,9 +475,9 @@ end
 
   get "/test/validate/instruction/:layer_id/" do
 	result = []
-	Game.get(param[:layer_id]).plans.frames.instructions.all.each do |instruction| 
+	Game.get(params[:layer_id]).plans.frames.instructions.all.each do |instruction| 
 		if !instruction.validate
-			result << instruction
+			result << instruction.output
 		end 
 	end 
 	result.to_json
