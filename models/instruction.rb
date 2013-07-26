@@ -19,7 +19,15 @@ class Instruction
   before :save do
 	puts "before save hooker"
   end   
-  
+
+  def validate
+	if (getTeammate == -1 && task_id != -1)
+		return false
+	else
+		return true
+	end	
+  end  
+
   def getTeammate
 	#get teammate
 	teammate = -1		

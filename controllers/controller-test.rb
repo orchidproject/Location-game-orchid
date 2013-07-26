@@ -472,5 +472,16 @@ end
 	end
 	return fx,fy
   end 
+
+  get "test/validate/instruction/:layer_id" do
+	result = []
+	Game.get(param[:layer_id]).plans.frames.instructions.all.each do |instruction| 
+		if !instruction.validate
+			result << instruction
+		end 
+	end 
+	result.to_json
+  end  
+
 end 
 

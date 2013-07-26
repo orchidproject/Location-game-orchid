@@ -39,8 +39,8 @@ class Plan
 
   def output 
 	result = {:step => self.step , :frames => []} 
-	result[:frames].each do |f|
-		result << f.output	
+	self.frames.each do |f|
+		result[:frames]<< f.output	
 	end 	
 	result
   end 
