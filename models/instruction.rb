@@ -67,4 +67,19 @@ class Instruction
 	return true 
   end 
 
+  def output
+	
+	{
+		:teammate=> getTeammate,
+		:task=> self.task_id, 
+		:direction=> self.action,
+		:status => self.status,
+		:time => self.created_at.to_time.to_i,
+		:id => self.id,
+		:player_id => self.player_id
+	}
+	
+
+  end 
+
 end 

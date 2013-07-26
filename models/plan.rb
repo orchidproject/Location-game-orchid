@@ -34,7 +34,14 @@ class Plan
                             }]
                         }
                      }.to_json)   
-end
+ 	end
   end 
 
+  def output 
+	result = {:step => self.step , :frames => []} 
+	result[:frames].each do |f|
+		result << f.output	
+	end 	
+	result
+  end 
 end 
