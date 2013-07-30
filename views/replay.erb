@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
 <script type="text/javascript">
   $(function(){
   	if(!document.getElementById("map")) {
@@ -29,16 +33,61 @@
 
 	$("#submitmsg").click(function(){});
 	
-	//GameMap.fitToRadius(5);
-    
+   
+	var playSelectedFile = function(event) {
+            var file = this.files[0];
+
+            var type = file.type;
+
+            //var videoNode = document.querySelector('#video_1');
+	    var clone_id = $(this).attr('id').split("_").pop();
+            var videoNode = $('#video_'+clone_id)[0];
+
+            var canPlay = videoNode.canPlayType(type);
+
+	    if(!canPlay) {
+		alert("can not play this file");
+		return;
+	    }
+
+	    var fileURL = URL.createObjectURL(file);
+
+            videoNode.src = fileURL;
+        } 
 	
-  });
+	$("#file_selector_0").change(playSelectedFile);		
+
+	var clone_count = 0;
+	$("#clone-video").click(function(){
+		var last_video = $("#video_wrapper_0").clone();
+
+		last_video.attr("id","video_wrapper_"+(++clone_count));	
+		last_video.children().eq(0).attr("id","file_selector_"+clone_count);
+		last_video.children().eq(2).attr("id","video_offset_"+clone_count);
+		last_video.children("video").attr("id","video_"+clone_count);
+		last_video.appendTo("#videos"); 
+		var selector = $("#file_selector_"+clone_count)
+		selector.change(playSelectedFile);		
+	});
+
+
+	$("#delete-video").click(function(){
+		
+		if(clone_count!=0) {
+			$("#video_wrapper_"+clone_count).remove();
+			clone_count--; 
+		}
+	});
+	
+	$( "#slider" ).slider(); 
+ });
+  
+  
 
 </script>
 
 
-
-	<div id="wrapper">
+<div id="wrapper">
 		<section id="loading_indicator">
 			<div id="scoreboard">				
 				<h1>loading data</h1>
@@ -48,45 +97,35 @@
 
 		</section>
 		
-<!--		<section id="active-player-wrapper">
-			<div align="center">
-				<h2>Players</h2>
+		<div id="videos">
+			<div id="video_wrapper_0" style = "float:left" >
+				<input id="file_selector_0" type="file" accept="video/*"/>
+				<br>
+				offset: <input id="video_offset_0" size=10 type="text" /> 
+				<br>
+				<video style="background-color:yellow" id="video_0" width="200" height="160" controls> 	
+					<source  type="video/mp4" >
+					Your browser does not support the video tag
+				</video>
 			
-			<table  id="players" >
-				<th>  Active players  </th>
-				<th>  Role  </th>
-				<th>  Radioactive exposure  </th>
-				<th>  Level </th>
-				
-			 </table>
-			</div>
-			
-		</section>
+			</div> 
 		
-		<section id="chat-wrapper">
-			
-			<input name="collapse" type="button" id="collapse" value="collapse"/>
-			<div id="chat-window">
-				
-				<div id="chatbox"></div>
-			
-				<input name="usermsg" type="text" id="usermsg" size="63" />
-				<input name="submitmsg" type="button"  id="submitmsg" value="Send" />
-			</div>
-		</section>
--->		
+			<input type="button" id="clone-video" value="+" />
+			<input type="button" id="delete-video" value="-" />
+		</div> 
 		<section id="control-wrapper">
 			<div class="control" id="backward-button" ><img src="/img/replay-control/forward.png"></div>
 			<div class="control" id="play-button" ><img src="/img/replay-control/play.png"></div>
 			<div class="control" id="forward-button" ><img src="/img/replay-control/backward.png"></div>
 			<div id="speed_display">x 1</div>
 			
-			<div id="scroll-bar" class="control">
+			<!--<div id="scroll-bar" class="control">
 				
 				<div id="dot"></div>
 				<div id="bar"></div>
 				<div id="time_display">0:00</div>
-			</div>
+			</div> -->
+			<div id="slider" class="control" ></div>
 		</section>
 
 

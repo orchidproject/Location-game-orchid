@@ -347,7 +347,9 @@ function receiveInstructionDataV2(data){
 	if(players[data.player_id]!=null){
 		players[data.player_id].instruction = data;
 		if(data.task==-1){ 
-			$("#view_btn_"+data.player_id).val("no plan");	
+			$("#view_btn_"+data.player_id).val("no task");	
+		}else{
+			$("#view_btn_"+data.player_id).val("view");	
 		}
 
 	}
