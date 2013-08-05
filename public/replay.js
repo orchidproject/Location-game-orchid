@@ -12,7 +12,7 @@ var in_process=false;
 var previous_percent=0;
 var stop=true;
 
-
+var base_time = -1;
 
 var test = false;
 function get_data(){
@@ -31,6 +31,8 @@ function get_data(){
                         log[i]=JSON.parse(value);
                    }
                 });
+
+		base_time = log[0].time_stamp;
 		$("#loading_indicator").hide();
             }
                    
@@ -106,7 +108,7 @@ function oneStep(i,callback){
      } 
 
      process_data(log[i]);
-     //callback((log[i].time_stamp-start_time)/(end_time-start_time));
+     callback(log[i+1].time_stamp-base_time);
      current_task=setTimeout(function(){
         
         if(!stop){
@@ -136,7 +138,7 @@ function process_data(data){
         
         //not sure whether this is implemented
         if(typeof data.textMassage != "undefined"){
-            receiveTextMassage(data.textMassage);
+            //receiveTextMassage(data.textMassage);
         }
         
         if(typeof data.message != "undefined") {
@@ -158,8 +160,16 @@ function process_data(data){
         if(typeof data.task != "undefined"){
                 receiveTaskData(data.task);
         }
-
+	
+        if(typeof data.instructions != "undefined"){
+                receiveInstructionDataV3(data.instructions[0]);
+        }
+	
         
+}
+
+function draw_stroke(p1, p2){
+
 }
 
 function setup_game() {

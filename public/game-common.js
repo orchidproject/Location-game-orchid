@@ -30,7 +30,12 @@ var cg = {
 	},
 	imageSrc: function(name, skill) {
 		return "/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png";
+	},
+	large_number: function(number){
+		return new google.maps.MarkerImage("/img/large_number/" + number + ".png", new google.maps.Size(30, 30), new google.maps.Point(0,0), new google.maps.Point(10, 30), new google.maps.Size(30 , 30));
+
 	}
+	
 };
 
 
@@ -77,10 +82,10 @@ TASK ICONS...
 */
 
 function receiveDropoffpointData(drop){
-		point = new google.maps.LatLng(drop.latitude,drop.longitude);
+	point = new google.maps.LatLng(drop.latitude,drop.longitude);
                 	
         var circle = new google.maps.Circle({
-                center:point,
+				center:point,
   				map: map,
   				radius: drop.radius,    
   				fillColor: '#0000FF',
@@ -88,6 +93,11 @@ function receiveDropoffpointData(drop){
   				clickable: false
 		});
 
+	var marker =  new google.maps.Marker({
+				position: point,
+				map:map, 
+				icon:cg.large_number((drop.id%10))
+	});
 }
 
 

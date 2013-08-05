@@ -3,7 +3,7 @@
 
  
 #control-wrapper {
-	
+	height:50;	
 	position: absolute;
 	z-index: 2;
 	bottom: 10px;
@@ -66,10 +66,17 @@
 	margin-left:5px;
 	margin-top:10px;
 }
+.slider {
+	font-size:12px;
+	width:1000px;
+	height:12px;
+	margin-top:5px;
+}
 
 .control {
 	position:relative;
 	margin-left:5px;
+	margin-top:5px;
 	float:left;
 	overflow:hidden;
 	cursor:hand;

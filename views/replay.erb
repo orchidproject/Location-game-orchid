@@ -3,7 +3,9 @@
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 <script type="text/javascript">
+  
   $(function(){
+	var test = false;
   	if(!document.getElementById("map")) {
   		return;
   	}
@@ -68,6 +70,13 @@
 		last_video.appendTo("#videos"); 
 		var selector = $("#file_selector_"+clone_count)
 		selector.change(playSelectedFile);		
+	
+		control.setVideo(
+			last_video.children("video"),
+			last_video.children().eq(2),
+			function(videos){
+			}
+		);
 	});
 
 
@@ -77,11 +86,64 @@
 			$("#video_wrapper_"+clone_count).remove();
 			clone_count--; 
 		}
+		control.offSets.pop();
+		control.videos.pop();
 	});
 	
-	$( "#slider" ).slider(); 
+
+	/*$("#video_0")[0].ontimeupdate = function(event){
+		var a = 1;
+	}*/
+
+	control.setVideo(
+			$("#video_0"),
+			$("#video_offset_0"),
+			function(videos,offSets){
+				//first main video
+				if(videos.length ==  1){
+					videos[0].bind("timeupdate", function(event){
+						//bind with progross bar	
+						control.current_time = this.currentTime-parseInt(offSets[0].val())
+						$( "#slider" ).slider(
+							"value",
+							this.currentTime-parseInt(offSets[0].val())
+						);
+					}); 
+				}	
+			}
+		);
+
+	$( "#slider" ).slider({max:600}); 
+
+	var paused_by_slider = false;
+	$( "#slider" ).slider({
+		 start: function(event, ui){
+			if(control.playing){
+				control.pause();
+				paused_by_slider = true; 
+			}
+			return true;
+
+		},
+		 stop: function( event, ui ) {
+			control.setTime(ui.value);
+			if(paused_by_slider){
+				paused_by_slider=false;
+				control.play(); 
+			} 
+			return true;
+
+		 }
+	});
+
+	$( "#slider-2" ).slider({max:600}); 
+	
  });
-  
+ 
+ 
+	
+
+ 
   
 
 </script>
@@ -101,9 +163,9 @@
 			<div id="video_wrapper_0" style = "float:left" >
 				<input id="file_selector_0" type="file" accept="video/*"/>
 				<br>
-				offset: <input id="video_offset_0" size=10 type="text" /> 
+				offset: <input value=0 id="video_offset_0" size=10 type="text" /> 
 				<br>
-				<video style="background-color:yellow" id="video_0" width="200" height="160" controls> 	
+				<video style="background-color:black" id="video_0" width="200" height="140" controls> 	
 					<source  type="video/mp4" >
 					Your browser does not support the video tag
 				</video>
@@ -125,7 +187,10 @@
 				<div id="bar"></div>
 				<div id="time_display">0:00</div>
 			</div> -->
-			<div id="slider" class="control" ></div>
+			<div class="control"> 
+				<div id="slider"   class = "slider"  ></div>
+				<div id="slider-2" class = "slider"  ></div>
+			</div>
 		</section>
 
 

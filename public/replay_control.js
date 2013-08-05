@@ -1,4 +1,56 @@
 var bind = false;
+
+function VideoControl(main,max){
+	this.current_time=0;
+	this.max_time=max;
+	this.playing = false;
+	this.videos = [];
+	this.offSets =  [];
+	this.volumes = [];
+
+	this.setVideo =  function(video,offSet,callback){
+		this.videos.push(video);
+		this.offSets.push(offSet);
+		callback(this.videos, this.offSets);
+	};	
+		
+	this.setTime = function(time){
+		var offSets = this.offSets;
+		this.current_time = time;
+		var ct = this.current_time;
+		 
+		$(this.videos).each(function(index,value){
+			value[0].currentTime = parseInt(offSets[index].val()) + ct;
+		});
+
+	}
+
+	this.play = function(callback){
+		var offSets = this.offSets;
+		var ct = this.current_time;
+		$(this.videos).each(function(index,value){
+			if(offSets[index]!=null&&!isNaN(offSets[index].val())){
+				value[0].currentTime = parseInt(offSets[index].val()) + ct;
+				value[0].play();
+				return true;
+			}
+			else{
+				alert("check offsets");
+				return false;
+			}
+		});	
+		this.playing = true;
+	}
+
+	this.pause= function(){
+		$(this.videos).each(function(index,value){
+			value[0].pause();
+		});	
+		this.playing =false;
+	}
+
+ }
+
 function dot_move(e){
 		if(e.pageX>$("#bar").offset().left&&e.pageX<($("#bar").offset().left+$("#bar").width())){
     		$('#dot').css({
@@ -20,17 +72,9 @@ $('#dot').live('mousedown',function(e){
 	
 });
 
-/*$(document).bind('mouseup',function(e){
-	if(bind){
-		$(document).unbind('mousemove', dot_move(e));
-		var percent = ($('#dot').offset().left - $("#bar").offset().left)/$("#bar").width();
-		forward_to(percent);
-		bind=false;
-	}
-	
-	if(in_play)
-		play(setScrollBar);
-});*/
+//max time shall be get from log file
+var control = new VideoControl(3600);
+
 
 var in_play=false;
 $("#play-button").live('click',function(e){
@@ -38,13 +82,28 @@ $("#play-button").live('click',function(e){
 		$("#play-button").html("<img src='/img/replay-control/play.png'>");
 		in_play=false;
 		pause();
+		control.pause();
 	}else{
 		$("#play-button").html("<img src='/img/replay-control/pause.png'>");
 		in_play=true;
-		play(setScrollBar);
+
+		//test value
+		var value=0
+		play(function(time_mili){
+			$( "#slider-2" ).slider(
+				"value",
+				time_mili/1000);
+				if(value>(time_mili/1000)){
+					alert("inconsistent state");
+				}	
+				value = time_mili/1000;
+			}
+		);
+
+		control.play();
 	}
-	//
 });
+
 
 $("#forward-button").live('click',function(e){
 	//need to pause and resume while the replay is in prograss, otherwise the speed change only take 
@@ -63,8 +122,6 @@ $("#backward-button").live('click',function(e){
 	$("#speed_display").html("x "+speed);
 	
 });
-
-
 
 function setScrollBar(percent){
 	$('#dot').css({

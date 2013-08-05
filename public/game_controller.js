@@ -346,7 +346,7 @@ function receiveInstructionDataV2(data){
 	
 	if(players[data.player_id]!=null){
 		players[data.player_id].instruction = data;
-		if(data.task==-1){ 
+		if(data.task<0){ 
 			$("#view_btn_"+data.player_id).val("no task");	
 		}else{
 			$("#view_btn_"+data.player_id).val("view");	
@@ -355,6 +355,48 @@ function receiveInstructionDataV2(data){
 	}
 
 }
+//for replay
+function receiveInstructionDataV3(data){
+
+	//sameple:{"teammate":2,"task":117,"direction":"south east","status":1,"time":1372781334,"id":160,"player_id":6}
+		
+	if(players[data.player_id]!=null){
+		players[data.player_id].instruction = data;
+		var p = players[data.player_id];
+		var lat = p.marker.getPosition().lat();	
+		var lng = p.marker.getPosition().lng();
+		if(p.previous_path!=null){
+			p.previous_path.setMap(null);
+		} 
+		if (data.task == -1){
+			return;	
+		}
+
+
+		var t = findTaskById(p.instruction.task);
+		var lat2 = t.marker.getPosition().lat();	
+		var lng2 = t.marker.getPosition().lng();	
+		var flightPlanCoordinates = [
+		      new google.maps.LatLng(lat, lng),
+		      new google.maps.LatLng(lat2, lng2),
+		  ];
+		  var flightPath = new google.maps.Polyline({
+		    path: flightPlanCoordinates,
+		    strokeColor: '#FFFF00',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 4 
+		  });
+
+		  p.previous_path = flightPath;
+		  flightPath.setMap(map);	
+	
+		
+	}
+
+}
+
+
+
 
 function system(data){
     
