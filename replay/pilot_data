@@ -21843,5 +21843,3 @@
 {"location":{"player_id":103,"longitude":-1.187162222340703,"latitude":52.953661512583494,"skill":"firefighter","initials":"BY","accuracy":0},"ackid":30222,"time_stamp":1374589333389}
 {"location":{"player_id":104,"longitude":-1.187350542869379,"latitude":52.95351695515478,"skill":"transporter","initials":"MY","accuracy":0},"ackid":30223,"time_stamp":1374589335305}
 {"location":{"player_id":102,"longitude":-1.1870902975420423,"latitude":52.9533774742597,"skill":"transporter","initials":"WT","accuracy":0},"ackid":30224,"time_stamp":1374589336395}
-""
-""

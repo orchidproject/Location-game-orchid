@@ -89,16 +89,7 @@ $("#play-button").live('click',function(e){
 
 		//test value
 		var value=0
-		play(function(time_mili){
-			$( "#slider-2" ).slider(
-				"value",
-				time_mili/1000);
-				if(value>(time_mili/1000)){
-					alert("inconsistent state");
-				}	
-				value = time_mili/1000;
-			}
-		);
+		play(slider_callback);
 
 		control.play();
 	}

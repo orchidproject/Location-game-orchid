@@ -100,7 +100,39 @@ function receiveDropoffpointData(drop){
 	});
 }
 
+function drawInstruction(pid,tid){
+	if(players[pid]!=null){
+		var p = players[pid];
+		var lat = p.marker.getPosition().lat();	
+		var lng = p.marker.getPosition().lng();
+		if(p.previous_path!=null){
+			p.previous_path.setMap(null);
+		} 
+		if (tid == -1){
+			return;	
+		}
 
+
+		var t = findTaskById(tid);
+		var lat2 = t.marker.getPosition().lat();	
+		var lng2 = t.marker.getPosition().lng();	
+		var flightPlanCoordinates = [
+		      new google.maps.LatLng(lat, lng),
+		      new google.maps.LatLng(lat2, lng2),
+		  ];
+		  var flightPath = new google.maps.Polyline({
+		    path: flightPlanCoordinates,
+		    strokeColor: '#FFFF00',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 4 
+		  });
+
+		  p.previous_path = flightPath;
+		  flightPath.setMap(map);
+	}
+
+
+}
 var tasks = [];
 function receiveTaskData(task){
 	var existing_task=null;
@@ -149,7 +181,7 @@ function receiveTaskData(task){
 				existing_task.marker.setIcon(taskIcon);
 		}
 
-	        else if(task.state == 1 && test!=null&&test){
+	        else if(task.state == 1 && ((test!=null&&test)||(replay!=null&&replay))){
 			var taskIcon= getTaskIcon(task.type,task.id);
 			existing_task.marker.setIcon(taskIcon); 
 		}
@@ -192,29 +224,28 @@ function getTaskIcon(task_type,task_id) {
 
 //SHOULD BE LOCATION DATA???////
 function receivePlayerData(data) {
-		var markerIcon;
+	var markerIcon;
 		
-		var userID=$("#user_id").val();
+	var userID=$("#user_id").val();
 		
-		var pid = data.player_id;
-		
-		
-		if (userID!=pid){
-			markerIcon = getPlayerIcon(data.initials,data.skill);
-		}else{
-			//an icon for player itself
-			markerIcon = playerIcons.blue;
-		}
+	var pid = data.player_id;
 		
 		
-		if(typeof players[pid] == "undefined") {
-			var drag = false;
-			if(test!=null&&test){
+	if (userID!=pid){
+		markerIcon = getPlayerIcon(data.initials,data.skill);
+	}else{
+		//an icon for player itself
+		markerIcon = playerIcons.blue;
+	}
+		
+		
+	if(typeof players[pid] == "undefined") {
+		var drag = false;
+		if(test!=null&&test){
 				drag = test;
-			}
+		}
 
-		        
-		        players[pid] = {
+		players[pid] = {
 		            id: pid,
 		            skill: data.skill,
 		            initials: data.initials,
@@ -226,22 +257,27 @@ function receivePlayerData(data) {
 		                icon: markerIcon,
 		                visible: true 
 		            })
-		        };
+		};
 			
-			if(test!=null&&test){
-				setupTest(pid);
-			}
+		if(test!=null&&test){
+			setupTest(pid);
+		}
 	
-		} else {
-		        //update 
-		        var p = players[pid];
-		        p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude));
-			
-			if(test!=null&&test){
-				p.marker.setIcon(markerIcon);
-			}
-		}	
-		
+	} else {
+		//update 
+		var p = players[pid];
+		p.marker.setPosition(new google.maps.LatLng(data.latitude, data.longitude)); 
+
+		if(test!=null&&test){
+			p.marker.setIcon(markerIcon);
+		}
+
+		if(replay){ 
+			if(p.instruction!=null){
+				drawInstruction(p.id,p.instruction.task);
+			}	
+		}
+	}	
 		
 }
 

@@ -305,26 +305,7 @@ function receiveHealthData(data){
 
 
 function receiveExposureData(data){
-   /* document.getElementById("exposure_"+data.player_id).innerHTML=Math.round(data.value);
-    
-    var level = document.getElementById("level_"+data.player_id);
-    if (data.value <= 50) {
-    	level.innerHTML = "Low"; 
-    }
-    else if (data.value > 50 && data.value <=350)   {
-    	level.innerHTML = "Increased"; 
-    }
-    else if (data.value > 350 && data.value <=750)   {
-    	level.innerHTML = "High"; 
-    }
-    else if (data.value > 750 && data.value <=999)   {
-    	level.innerHTML = "Critical"; 
-    }
-    else if (data.value >= 1000)   {
-    	level.innerHTML = "Incapacitated"; 
-    }
-*/
-}
+ }
 
 function receiveInstructionData(data){
 

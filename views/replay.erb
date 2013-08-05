@@ -6,6 +6,7 @@
   
   $(function(){
 	var test = false;
+	var replay = true;
   	if(!document.getElementById("map")) {
   		return;
   	}
@@ -113,8 +114,13 @@
 			}
 		);
 
-	$( "#slider" ).slider({max:600}); 
+	
+	
+ });
+ 
+function setupUI(){
 
+	$( "#slider" ).slider({max:Math.floor((end_time-base_time)/1000)}); 
 	var paused_by_slider = false;
 	$( "#slider" ).slider({
 		 start: function(event, ui){
@@ -136,15 +142,32 @@
 		 }
 	});
 
-	$( "#slider-2" ).slider({max:600}); 
-	
- });
- 
- 
-	
+	$( "#slider-2" ).slider( {max:Math.floor((end_time-base_time)/1000)}); 
+	$( "#slider-2" ).slider({
+		 start: function(event, ui){
+			
+			pause();
+			return true; 
+		 },
+		 stop: function( event, ui ) {
+			forward_to(ui.value, slider_callback);
+			return true; 
+		 }
+	});
 
- 
-  
+}	
+
+function slider_callback(time_mili){
+	$( "#slider-2" ).slider(
+		"value",
+	time_mili/1000);
+
+/*
+	if(value>(time_mili/1000)){
+		alert("inconsistent state");
+	}	
+*/
+}
 
 </script>
 

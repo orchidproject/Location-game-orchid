@@ -5,14 +5,12 @@ var log;
 
 var speed=1;
 var current_task=null;
-var start_time=-1;
-var end_time=-1;
 var time;
-var in_process=false;
 var previous_percent=0;
 var stop=true;
 
 var base_time = -1;
+var end_time=-1;
 
 var test = false;
 function get_data(){
@@ -21,20 +19,26 @@ function get_data(){
 		url: "/get_log/"+$("#replay_file").val(),
 		type: "GET",
 		success: function(data) {
-            if (typeof data.error != 'undefined'){
-                alert(data.error);
-            }
-            else{
-                log=data.split("\n");
-                $(log).each(function(i,value){
-                   if(i!=log.length-1){
-                        log[i]=JSON.parse(value);
-                   }
-                });
+		    if (typeof data.error != 'undefined'){
+				alert(data.error);
+		    }
+		    else{
+				var new_log = [];
+				log=data.split("\n");
+				$(log).each(function(i,value){
+				   if(i!=log.length-1){
+					if(value!=""){
+						new_log.push(JSON.parse(value));
+					}
+				   }
+				});
 
-		base_time = log[0].time_stamp;
-		$("#loading_indicator").hide();
-            }
+				log = new_log;	
+				base_time = log[0].time_stamp;
+				end_time = log[log.length - 1 ].time_stamp;
+				$("#loading_indicator").hide();
+		    }
+		    setupUI();
                    
         }
         
@@ -47,43 +51,45 @@ function get_time(percent){
 	return (end_time-start_time)*percent;
 }
 
-function forward_to(percent){
-	var time =  (end_time-start_time)*percent + start_time;
-	var forward;
-	if (previous_percent< percent){
-		forward=true;
+function forward_to(sec,callback){
+	var fast_forward=true;
+	var current_time = Math.floor((log[index].time_stamp - base_time)/1000);
+
+	if (sec < current_time){
+		index = 0; 
+		fast_forward=true;
 	}
 	else{
-		forward=false;
+		fast_forward=false;
 	}
-	previous_percent=percent;
-	
-	if(!in_process){
-		in_process=true;
-		run=true
-		while(run){
-			var session = merged_log;
-			
-			var log = session.data;
-			process_data(log[session.index]);
-			if(forward){
-				session.index++;
-			}
-			else{
-				session.index--;
-			}
-			
-			if(session.index>log.length-2){
-				run=false;
-			}
-			else if(log[session.index].time_stamp<time&&log[session.index+1].time_stamp>time){
-				run=false;
+
+	var forward = true;
+	while(forward){
+		index++;	
+		process_data(log[index]);	
+		var forward_time = (log[index].time_stamp-base_time)/1000;
+		if( forward_time >  sec){
+			forward = false;	
+		}
+	}
+/*
+	else{//reverse back to zero
+		var forward = true;
+		index = 0;
+		while(forward){
+			index++;	
+			process_data(log[index]);	
+			var forward_time = (log[index].time_stamp-base_time)/1000;
+			if( forward_time >  sec){
+				forward = false;	
 			}
 		}
-		
-		in_process=false;
 	}
+*/
 }
+	
+		
+
 var index=0
 function play(callback){
 	stop=false;
@@ -95,9 +101,6 @@ function pause(callback){
 }
 
 function oneStep(i,callback){
-  
-     
-     
      var interval;
     
      if(i==log.length-1){
