@@ -164,15 +164,22 @@ function setupUI(){
 		 }
 	});
 
+	var paused_log_by_slider = false;
 	$( "#slider-2" ).slider( {max:Math.floor((end_time-base_time)/1000)}); 
 	$( "#slider-2" ).slider({
-		 start: function(event, ui){
-			
-			pause();
+		 start: function(event, ui){ 
+			if(stop == false){
+				paused_log_by_slider = true;	
+				pause();
+			}
 			return true; 
 		 },
 		 stop: function( event, ui ) {
 			forward_to(ui.value, slider_callback);
+			if(paused_log_by_slider){
+				play(slider_callback); 
+				paused_log_by_slider = false;	
+			}
 			return true; 
 		 }
 	});
