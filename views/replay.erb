@@ -59,7 +59,7 @@
         } 
 	
 	$("#file_selector_0").change(playSelectedFile);		
-
+	
 	var clone_count = 0;
 	$("#clone-video").click(function(){
 		var last_video = $("#video_wrapper_0").clone();
@@ -76,8 +76,19 @@
 			last_video.children("video"),
 			last_video.children().eq(2),
 			function(videos){
+				
 			}
 		);
+		last_video.children("video").click(function(event){
+			var x =  $(this).attr("enlarged");
+			if($(this).attr("width")==200){
+				$(this).prop("height",280);
+				$(this).prop("width",400);
+			}else{
+				$(this).prop("height",140);
+				$(this).prop("width",200);
+			}
+		});
 	});
 
 
@@ -101,17 +112,28 @@
 			$("#video_offset_0"),
 			function(videos,offSets){
 				//first main video
-				if(videos.length ==  1){
-					videos[0].bind("timeupdate", function(event){
+				videos[0].bind("timeupdate", function(event){
 						//bind with progross bar	
 						control.current_time = this.currentTime-parseInt(offSets[0].val())
 						$( "#slider" ).slider(
 							"value",
 							this.currentTime-parseInt(offSets[0].val())
 						);
-					}); 
-				}	
-			}
+				}); 
+				$("#video_0").click(function(event){
+					var x =  $(this).attr("enlarged");
+					if($(this).attr("width")==200){
+						$(this).prop("height",280);
+						$(this).prop("width",400);
+					}else{
+						$(this).prop("height",140);
+						$(this).prop("width",200);
+					}
+
+				});
+
+			}	
+							
 		);
 
 	
@@ -182,13 +204,13 @@ function slider_callback(time_mili){
 
 		</section>
 		
-		<div id="videos">
+		<div id="videos" > 
 			<div id="video_wrapper_0" style = "float:left" >
 				<input id="file_selector_0" type="file" accept="video/*"/>
 				<br>
 				offset: <input value=0 id="video_offset_0" size=10 type="text" /> 
 				<br>
-				<video style="background-color:black" id="video_0" width="200" height="140" controls> 	
+				<video style="background-color:black" id="video_0" enlarged=false width="200" height="140" controls> 	
 					<source  type="video/mp4" >
 					Your browser does not support the video tag
 				</video>

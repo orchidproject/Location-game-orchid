@@ -56,6 +56,13 @@ function forward_to(sec,callback){
 	var current_time = Math.floor((log[index].time_stamp - base_time)/1000);
 
 	if (sec < current_time){
+		$(players).each(function(index,value){
+			
+			if(value!=null&&value.instruction!=null){
+				value.instruction = null;
+				value.previous_path.setMap(null)
+			}
+		});
 		index = 0; 
 		fast_forward=true;
 	}
