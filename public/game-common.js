@@ -181,7 +181,7 @@ function receiveTaskData(task){
 				existing_task.marker.setIcon(taskIcon);
 		}
 
-	        else if(task.state == 1 && ((test!=null&&test)||(replay!=null&&replay))){
+	        else if(task.state != 2 && ((test!=null&&test)||(replay!=null&&replay))){
 			var taskIcon= getTaskIcon(task.type,task.id);
 			existing_task.marker.setIcon(taskIcon); 
 		}

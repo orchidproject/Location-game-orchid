@@ -119,6 +119,7 @@
 							"value",
 							this.currentTime-parseInt(offSets[0].val())
 						);
+						$("#time_display").html(Math.floor(this.currentTime));
 				}); 
 				$("#video_0").click(function(event){
 					var x =  $(this).attr("enlarged");
@@ -191,6 +192,8 @@ function slider_callback(time_mili){
 		"value",
 	time_mili/1000);
 
+	$("#time_display_2").html(Math.floor(time_mili/1000));
+
 /*
 	if(value>(time_mili/1000)){
 		alert("inconsistent state");
@@ -237,8 +240,11 @@ function slider_callback(time_mili){
 				
 				<div id="dot"></div>
 				<div id="bar"></div>
-				<div id="time_display">0:00</div>
 			</div> -->
+			<div class="control"> 
+				<div id="time_display" class="timer">0:00</div>
+				<div id="time_display_2" class="timer" >0:00</div>
+			</div>
 			<div class="control"> 
 				<div id="slider"   class = "slider"  ></div>
 				<div id="slider-2" class = "slider"  ></div>

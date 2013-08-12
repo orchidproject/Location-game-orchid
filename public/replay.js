@@ -104,6 +104,9 @@ function play(callback){
 }
 
 function pause(callback){
+	if(current_task!=null){
+		clearInterval(current_task);
+	}
 	stop=true;
 }
 
@@ -118,7 +121,7 @@ function oneStep(i,callback){
      } 
 
      process_data(log[i]);
-     callback(log[i+1].time_stamp-base_time);
+     callback(log[i].time_stamp-base_time);
      current_task=setTimeout(function(){
         
         if(!stop){

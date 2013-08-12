@@ -49,9 +49,8 @@
 	
 }
 
-#time_display {
+.timer {
 	font-size:12px;
-	float: left;
 	width:50px;
 	height:12px;
 	background:#ffffff;
