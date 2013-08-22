@@ -170,5 +170,6 @@ require File.join(Controller.root, 'controllers/controller.rb')
 require File.join(Controller.root, 'agent_utility.rb')
 require File.join(Controller.root, 'controllers/controller-utility.rb')
 require File.join(Controller.root, 'controllers/controller-test.rb')
+require File.join(Controller.root, 'controllers/controller-visualization.rb')
 
 

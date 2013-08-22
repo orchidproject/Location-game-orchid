@@ -263,6 +263,7 @@ io.sockets.on('connection', function (socket) {
     ack_instruction(data.id,data.status);
     ackid++;
     io.sockets.in(channel).emit('data', {"ack-instruction":data,"ackid":ackid});
+    write_log(channel,{"ack-instruction":data,"ackid":ackid});
 
   });
   
@@ -300,6 +301,7 @@ io.sockets.on('connection', function (socket) {
 	
         ackid++;
         io.sockets.in(channel).emit('data', {"message":data,"ackid":ackid});
+        write_log(channel,{"message":data,"ackid":ackid});
 
   });
   

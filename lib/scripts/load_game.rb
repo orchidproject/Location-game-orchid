@@ -14,7 +14,7 @@ game = Game.create(:latitude => 52.952617, :longitude=> -1.188639,
 data["players"].each do |p|
 	game.players.create(
 		:name => "name",
-		:initials => "AA", 
+		:initials => p["initials"], 
 		:skill => p["skill"], 
 		:health => p["health"],	
 		:longitude => p["longitude"],
