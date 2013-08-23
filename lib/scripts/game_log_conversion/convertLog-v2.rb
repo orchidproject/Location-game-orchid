@@ -1,6 +1,8 @@
 require "../jsonLoaders.rb"
 require "json"
 
+
+
 class StateBreakdown
 
 	def initialize(data,updateInterval)
@@ -9,11 +11,22 @@ class StateBreakdown
 		
 		@roleMapping =  ["medic","firefighter","soldier","transporter"]
 		@taskMapping =  ["radioactive","animal","victim","fuel"]
+	#player mapping, for players
+		@player_mapping = {
+			99 => {:skill=>"firefighter" , :initials =>"LC" } , 
+			100 => {:skill=>"soldier" , :initials =>"NW" }, 
+			101 => {:skill=>"medic" , :initials => "LB"}, 
+			102 => {:skill=>"transporter" , :initials => "WT" },
+			103 => {:skill=>"firefighter" , :initials => "BY" }, 
+			104 => {:skill=>"transporter" , :initials => "MY" } 
+		}
+
 	end
 	
 	def convert(convertMapping)
 		output = [] 
-		@states.each do |state|
+		@states["plan"].each do |state|
+			puts state
 			artificialTimeStamp = @interval*state["time_frame"]	
 =begin try to add player object 
 			if (state["time_frame"]==0)
@@ -23,20 +36,21 @@ class StateBreakdown
 			end
 =end
 
-			state["state"]["players"].each do |p|
-				p["skill"] = @roleMapping[ p["skill"]]
+			state["players"].each do |p|
+				p["skill"] = @player_mapping[p["id"]][:skill] 
 				p["name"] = "agent"
-				p["initials"] = "AG"
-				output << {"health" => {"player_id" => p["player_id"], "value" => p["health"]},  "time_stamp" => artificialTimeStamp}
+				p["initials"] = @player_mapping[p["id"]][:initials]
+				p["player_id"] = p["id"]
+				#output << {"health" => {"player_id" => p["id"], "value" => p["health"]},  "time_stamp" => artificialTimeStamp}
 				p.delete("health")
 				output << {"location" => p, "time_stamp" => artificialTimeStamp }
 				
 			end 
 
-			state["state"]["tasks"].each do |t|
-				output << {"task" => t, "time_stamp" => artificialTimeStamp }
+		#	state["state"]["tasks"].each do |t|
+		#		output << {"task" => t, "time_stamp" => artificialTimeStamp }
 
-			end
+		# 	end
 		end
 	
 		return output_to_string(output)

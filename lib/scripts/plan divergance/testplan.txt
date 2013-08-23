@@ -1,0 +1,6536 @@
+{
+  "plan": [
+    {
+      "time_frame": 2,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 19,
+          "next_y": 11,
+          "action": "north",
+          "task": -1
+        },
+        {
+          "id": 348,
+          "next_x": 15,
+          "next_y": 9,
+          "action": "south west",
+          "task": 781,
+          "status": 3,
+          "path": [
+            [
+              15,
+              9
+            ],
+            [
+              14,
+              10
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 349,
+          "next_x": 23,
+          "next_y": 11,
+          "action": "north east",
+          "task": 782,
+          "status": 3,
+          "path": [
+            [
+              23,
+              11
+            ],
+            [
+              23,
+              10
+            ],
+            [
+              23,
+              9
+            ],
+            [
+              23,
+              8
+            ],
+            [
+              23,
+              7
+            ],
+            [
+              24,
+              6
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 22,
+          "next_y": 7,
+          "action": "north west",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 12,
+          "next_y": 9,
+          "action": "south west",
+          "task": 781,
+          "status": 3,
+          "path": [
+            [
+              12,
+              9
+            ],
+            [
+              11,
+              10
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 9,
+          "action": "north east",
+          "task": 782,
+          "status": 3,
+          "path": [
+            [
+              23,
+              9
+            ],
+            [
+              23,
+              8
+            ],
+            [
+              23,
+              7
+            ],
+            [
+              24,
+              6
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 3,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 18,
+          "next_y": 11,
+          "action": "west",
+          "task": -1
+        },
+        {
+          "id": 348,
+          "next_x": 14,
+          "next_y": 10,
+          "action": "south west",
+          "task": 781,
+          "status": 3,
+          "path": [
+            [
+              14,
+              10
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 349,
+          "next_x": 23,
+          "next_y": 10,
+          "action": "north",
+          "task": 782,
+          "status": 3,
+          "path": [
+            [
+              23,
+              10
+            ],
+            [
+              23,
+              9
+            ],
+            [
+              23,
+              8
+            ],
+            [
+              23,
+              7
+            ],
+            [
+              24,
+              6
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 21,
+          "next_y": 7,
+          "action": "west",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 11,
+          "next_y": 10,
+          "action": "south west",
+          "task": 781,
+          "status": 3,
+          "path": [
+            [
+              11,
+              10
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 8,
+          "action": "north",
+          "task": 782,
+          "status": 3,
+          "path": [
+            [
+              23,
+              8
+            ],
+            [
+              23,
+              7
+            ],
+            [
+              24,
+              6
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 4,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 17,
+          "next_y": 10,
+          "action": "north west",
+          "task": -1
+        },
+        {
+          "id": 348,
+          "next_x": 13,
+          "next_y": 10,
+          "action": "west",
+          "task": 781,
+          "status": 3,
+          "path": [
+            [
+              13,
+              10
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 349,
+          "next_x": 23,
+          "next_y": 9,
+          "action": "north",
+          "task": 782,
+          "status": 3,
+          "path": [
+            [
+              23,
+              9
+            ],
+            [
+              23,
+              8
+            ],
+            [
+              23,
+              7
+            ],
+            [
+              24,
+              6
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 22,
+          "next_y": 7,
+          "action": "east",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 10,
+          "next_y": 10,
+          "action": "west",
+          "task": 781,
+          "status": 3,
+          "path": [
+            [
+              10,
+              10
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 7,
+          "action": "north",
+          "task": 782,
+          "status": 3,
+          "path": [
+            [
+              23,
+              7
+            ],
+            [
+              24,
+              6
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 5,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 18,
+          "next_y": 11,
+          "action": "south east",
+          "task": -1
+        },
+        {
+          "id": 348,
+          "next_x": 12,
+          "next_y": 10,
+          "action": "west",
+          "task": 781,
+          "status": 3,
+          "path": [
+            [
+              12,
+              10
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 349,
+          "next_x": 23,
+          "next_y": 8,
+          "action": "north",
+          "task": 782,
+          "status": 3,
+          "path": [
+            [
+              23,
+              8
+            ],
+            [
+              23,
+              7
+            ],
+            [
+              24,
+              6
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 21,
+          "next_y": 7,
+          "action": "west",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 10,
+          "next_y": 10,
+          "action": "none",
+          "task": 781,
+          "status": 3,
+          "path": [
+            [
+              10,
+              10
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 24,
+          "next_y": 6,
+          "action": "north east",
+          "task": 782,
+          "status": 3,
+          "path": [
+            [
+              24,
+              6
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 6,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 18,
+          "next_y": 10,
+          "action": "north",
+          "task": -1
+        },
+        {
+          "id": 348,
+          "next_x": 11,
+          "next_y": 10,
+          "action": "west",
+          "task": 781,
+          "status": 3,
+          "path": [
+            [
+              11,
+              10
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 349,
+          "next_x": 23,
+          "next_y": 7,
+          "action": "north",
+          "task": 782,
+          "status": 3,
+          "path": [
+            [
+              23,
+              7
+            ],
+            [
+              24,
+              6
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 22,
+          "next_y": 8,
+          "action": "south east",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 10,
+          "next_y": 10,
+          "action": "none",
+          "task": 781,
+          "status": 3,
+          "path": [
+            [
+              10,
+              10
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 24,
+          "next_y": 6,
+          "action": "none",
+          "task": 782,
+          "status": 3,
+          "path": [
+            [
+              24,
+              6
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 7,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 19,
+          "next_y": 10,
+          "action": "east",
+          "task": -1
+        },
+        {
+          "id": 348,
+          "next_x": 10,
+          "next_y": 10,
+          "action": "west",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              10,
+              10
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 349,
+          "next_x": 24,
+          "next_y": 6,
+          "action": "north east",
+          "task": 782,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              24,
+              6
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 23,
+          "next_y": 8,
+          "action": "east",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 10,
+          "next_y": 10,
+          "action": "none",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              10,
+              10
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 24,
+          "next_y": 6,
+          "action": "none",
+          "task": 782,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              24,
+              6
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 8,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 18,
+          "next_y": 10,
+          "action": "west",
+          "task": -1
+        },
+        {
+          "id": 348,
+          "next_x": 11,
+          "next_y": 9,
+          "action": "north east",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              11,
+              9
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 349,
+          "next_x": 23,
+          "next_y": 5,
+          "action": "north west",
+          "task": 782,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              23,
+              5
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 22,
+          "next_y": 8,
+          "action": "west",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 11,
+          "next_y": 9,
+          "action": "north east",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              11,
+              9
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 5,
+          "action": "north west",
+          "task": 782,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              23,
+              5
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 9,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 18,
+          "next_y": 9,
+          "action": "north",
+          "task": -1
+        },
+        {
+          "id": 348,
+          "next_x": 12,
+          "next_y": 8,
+          "action": "north east",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              12,
+              8
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 349,
+          "next_x": 22,
+          "next_y": 5,
+          "action": "west",
+          "task": 782,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              22,
+              5
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 23,
+          "next_y": 9,
+          "action": "south east",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 12,
+          "next_y": 8,
+          "action": "north east",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              12,
+              8
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 22,
+          "next_y": 5,
+          "action": "west",
+          "task": 782,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              22,
+              5
+            ]
+          ],
+          "group": [
+            349,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 10,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 19,
+          "next_y": 10,
+          "action": "south east",
+          "task": -1
+        },
+        {
+          "id": 348,
+          "next_x": 13,
+          "next_y": 7,
+          "action": "north east",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              13,
+              7
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 349,
+          "next_x": 21,
+          "next_y": 5,
+          "action": "west",
+          "task": -1
+        },
+        {
+          "id": 350,
+          "next_x": 22,
+          "next_y": 8,
+          "action": "north west",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 13,
+          "next_y": 7,
+          "action": "north east",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              13,
+              7
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 21,
+          "next_y": 5,
+          "action": "west",
+          "task": -1
+        }
+      ]
+    },
+    {
+      "time_frame": 11,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 18,
+          "next_y": 9,
+          "action": "north west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              18,
+              9
+            ],
+            [
+              17,
+              9
+            ],
+            [
+              16,
+              9
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 14,
+          "next_y": 6,
+          "action": "north east",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              14,
+              6
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 349,
+          "next_x": 20,
+          "next_y": 6,
+          "action": "south west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              20,
+              6
+            ],
+            [
+              19,
+              7
+            ],
+            [
+              18,
+              8
+            ],
+            [
+              17,
+              9
+            ],
+            [
+              16,
+              9
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 22,
+          "next_y": 7,
+          "action": "north",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 14,
+          "next_y": 6,
+          "action": "north east",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              14,
+              6
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 22,
+          "next_y": 6,
+          "action": "south east",
+          "task": -1
+        }
+      ]
+    },
+    {
+      "time_frame": 12,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 17,
+          "next_y": 9,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              17,
+              9
+            ],
+            [
+              16,
+              9
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 15,
+          "next_y": 6,
+          "action": "east",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              15,
+              6
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 349,
+          "next_x": 19,
+          "next_y": 7,
+          "action": "south west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              19,
+              7
+            ],
+            [
+              18,
+              8
+            ],
+            [
+              17,
+              9
+            ],
+            [
+              16,
+              9
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 23,
+          "next_y": 8,
+          "action": "south east",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 15,
+          "next_y": 6,
+          "action": "east",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              15,
+              6
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 5,
+          "action": "north east",
+          "task": -1
+        }
+      ]
+    },
+    {
+      "time_frame": 13,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 9,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              16,
+              9
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 16,
+          "next_y": 5,
+          "action": "north east",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              16,
+              5
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 349,
+          "next_x": 18,
+          "next_y": 8,
+          "action": "south west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              18,
+              8
+            ],
+            [
+              17,
+              9
+            ],
+            [
+              16,
+              9
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 22,
+          "next_y": 8,
+          "action": "west",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 16,
+          "next_y": 5,
+          "action": "north east",
+          "task": 781,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              16,
+              5
+            ]
+          ],
+          "group": [
+            348,
+            351
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 22,
+          "next_y": 6,
+          "action": "south west",
+          "task": -1
+        }
+      ]
+    },
+    {
+      "time_frame": 14,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 10,
+          "action": "south west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              15,
+              10
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 17,
+          "next_y": 5,
+          "action": "east",
+          "task": -1
+        },
+        {
+          "id": 349,
+          "next_x": 17,
+          "next_y": 9,
+          "action": "south west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              17,
+              9
+            ],
+            [
+              16,
+              9
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 21,
+          "next_y": 9,
+          "action": "south west",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 17,
+          "next_y": 5,
+          "action": "east",
+          "task": -1
+        },
+        {
+          "id": 352,
+          "next_x": 21,
+          "next_y": 6,
+          "action": "west",
+          "task": -1
+        }
+      ]
+    },
+    {
+      "time_frame": 15,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 14,
+          "next_y": 10,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              14,
+              10
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 16,
+          "next_y": 6,
+          "action": "south west",
+          "task": -1
+        },
+        {
+          "id": 349,
+          "next_x": 16,
+          "next_y": 9,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              16,
+              9
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 20,
+          "next_y": 10,
+          "action": "south west",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 18,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              18,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 22,
+          "next_y": 5,
+          "action": "north east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              22,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 16,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 13,
+          "next_y": 10,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 15,
+          "next_y": 7,
+          "action": "south west",
+          "task": -1
+        },
+        {
+          "id": 349,
+          "next_x": 15,
+          "next_y": 10,
+          "action": "south west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              15,
+              10
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 20,
+          "next_y": 9,
+          "action": "north",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 19,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              19,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              23,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 17,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 12,
+          "next_y": 11,
+          "action": "south west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 14,
+          "next_y": 6,
+          "action": "north west",
+          "task": -1
+        },
+        {
+          "id": 349,
+          "next_x": 14,
+          "next_y": 10,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              14,
+              10
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 19,
+          "next_y": 8,
+          "action": "north west",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 20,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              20,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 24,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              24,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 18,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 11,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              11,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 15,
+          "next_y": 7,
+          "action": "south east",
+          "task": -1
+        },
+        {
+          "id": 349,
+          "next_x": 13,
+          "next_y": 10,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              13,
+              10
+            ],
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 19,
+          "next_y": 7,
+          "action": "north",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 21,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              21,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 25,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              25,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 19,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 10,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              10,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 16,
+          "next_y": 8,
+          "action": "south east",
+          "task": -1
+        },
+        {
+          "id": 349,
+          "next_x": 12,
+          "next_y": 11,
+          "action": "south west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              12,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 20,
+          "next_y": 7,
+          "action": "east",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              22,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 26,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              26,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 20,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 9,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              9,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 15,
+          "next_y": 7,
+          "action": "north west",
+          "task": -1
+        },
+        {
+          "id": 349,
+          "next_x": 11,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              11,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 19,
+          "next_y": 8,
+          "action": "south west",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 23,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              23,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 27,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              27,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 21,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 8,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              8,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 16,
+          "next_y": 7,
+          "action": "east",
+          "task": -1
+        },
+        {
+          "id": 349,
+          "next_x": 10,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              10,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 19,
+          "next_y": 9,
+          "action": "south",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 24,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              24,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 28,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              28,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 22,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 7,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              7,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 16,
+          "next_y": 6,
+          "action": "north",
+          "task": -1
+        },
+        {
+          "id": 349,
+          "next_x": 9,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              9,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 19,
+          "next_y": 8,
+          "action": "north",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 25,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              25,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 29,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              29,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 23,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 6,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              6,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 15,
+          "next_y": 7,
+          "action": "south west",
+          "task": -1
+        },
+        {
+          "id": 349,
+          "next_x": 8,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              8,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 19,
+          "next_y": 7,
+          "action": "north",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 26,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              26,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 29,
+          "next_y": 5,
+          "action": "none",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              29,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 24,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 5,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              5,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 15,
+          "next_y": 6,
+          "action": "north",
+          "task": -1
+        },
+        {
+          "id": 349,
+          "next_x": 7,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              7,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 18,
+          "next_y": 6,
+          "action": "north west",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 27,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              27,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 29,
+          "next_y": 5,
+          "action": "none",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              29,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 25,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 5,
+          "next_y": 11,
+          "action": "none",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              5,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 16,
+          "next_y": 7,
+          "action": "south east",
+          "task": -1
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 3,
+          "path": [
+            [
+              6,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 17,
+          "next_y": 6,
+          "action": "west",
+          "task": -1
+        },
+        {
+          "id": 351,
+          "next_x": 28,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              28,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 29,
+          "next_y": 5,
+          "action": "none",
+          "task": 783,
+          "status": 3,
+          "path": [
+            [
+              29,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 26,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 5,
+          "next_y": 11,
+          "action": "none",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              5,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 15,
+          "next_y": 8,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 5,
+          "next_y": 11,
+          "action": "west",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              5,
+              11
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 16,
+          "next_y": 7,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 29,
+          "next_y": 5,
+          "action": "east",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              29,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 29,
+          "next_y": 5,
+          "action": "none",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              29,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 27,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 6,
+          "next_y": 10,
+          "action": "north east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              6,
+              10
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 16,
+          "next_y": 8,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 10,
+          "action": "north east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              6,
+              10
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 17,
+          "next_y": 6,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 28,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              28,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 28,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              28,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 28,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 7,
+          "next_y": 9,
+          "action": "north east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              7,
+              9
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 16,
+          "next_y": 9,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 7,
+          "next_y": 9,
+          "action": "north east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              7,
+              9
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 17,
+          "next_y": 7,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 27,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              27,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 27,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              27,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 29,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 8,
+          "next_y": 8,
+          "action": "north east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              8,
+              8
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 15,
+          "next_y": 8,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 8,
+          "next_y": 8,
+          "action": "north east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              8,
+              8
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 16,
+          "next_y": 7,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 26,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              26,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 26,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              26,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 30,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 9,
+          "next_y": 7,
+          "action": "north east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              9,
+              7
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 14,
+          "next_y": 7,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 9,
+          "next_y": 7,
+          "action": "north east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              9,
+              7
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 15,
+          "next_y": 7,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 25,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              25,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 25,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              25,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 31,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 10,
+          "next_y": 7,
+          "action": "east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              10,
+              7
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 14,
+          "next_y": 8,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 10,
+          "next_y": 7,
+          "action": "east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              10,
+              7
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 14,
+          "next_y": 7,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 24,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              24,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 24,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              24,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 32,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 11,
+          "next_y": 7,
+          "action": "east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              11,
+              7
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 15,
+          "next_y": 9,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 11,
+          "next_y": 7,
+          "action": "east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              11,
+              7
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 13,
+          "next_y": 8,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 23,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              23,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              23,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 33,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 12,
+          "next_y": 7,
+          "action": "east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              12,
+              7
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 14,
+          "next_y": 9,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 12,
+          "next_y": 7,
+          "action": "east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              12,
+              7
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 12,
+          "next_y": 7,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              22,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        },
+        {
+          "id": 352,
+          "next_x": 22,
+          "next_y": 5,
+          "action": "west",
+          "task": 783,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              22,
+              5
+            ]
+          ],
+          "group": [
+            351,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "time_frame": 34,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 13,
+          "next_y": 7,
+          "action": "east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              13,
+              7
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 15,
+          "next_y": 9,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 13,
+          "next_y": 7,
+          "action": "east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              13,
+              7
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 11,
+          "next_y": 8,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 21,
+          "next_y": 5,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 21,
+          "next_y": 5,
+          "action": "west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 35,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 14,
+          "next_y": 6,
+          "action": "north east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              14,
+              6
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 15,
+          "next_y": 10,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 14,
+          "next_y": 6,
+          "action": "north east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              14,
+              6
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 10,
+          "next_y": 8,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 6,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 21,
+          "next_y": 6,
+          "action": "south",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 36,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 6,
+          "action": "east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              15,
+              6
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 16,
+          "next_y": 9,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 15,
+          "next_y": 6,
+          "action": "east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              15,
+              6
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 10,
+          "next_y": 9,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 23,
+          "next_y": 6,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 20,
+          "next_y": 6,
+          "action": "west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 37,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 5,
+          "action": "north east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              16,
+              5
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 348,
+          "next_x": 15,
+          "next_y": 9,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 16,
+          "next_y": 5,
+          "action": "north east",
+          "task": 780,
+          "status": 1,
+          "dropoff": 0,
+          "path": [
+            [
+              16,
+              5
+            ]
+          ],
+          "group": [
+            347,
+            349
+          ]
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 8,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 7,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 20,
+          "next_y": 5,
+          "action": "north",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 38,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 17,
+          "next_y": 5,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 16,
+          "next_y": 9,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 17,
+          "next_y": 5,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 10,
+          "next_y": 9,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 21,
+          "next_y": 7,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 19,
+          "next_y": 6,
+          "action": "south west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 39,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 5,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 17,
+          "next_y": 9,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 16,
+          "next_y": 6,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 8,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 21,
+          "next_y": 6,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 20,
+          "next_y": 5,
+          "action": "north east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 40,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 6,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 16,
+          "next_y": 9,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 15,
+          "next_y": 6,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 8,
+          "next_y": 9,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 21,
+          "next_y": 5,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 19,
+          "next_y": 6,
+          "action": "south west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 41,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 5,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 17,
+          "next_y": 10,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 16,
+          "next_y": 6,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 8,
+          "next_y": 8,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 5,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 19,
+          "next_y": 7,
+          "action": "south",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 42,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 17,
+          "next_y": 4,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 18,
+          "next_y": 10,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 16,
+          "next_y": 7,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 8,
+          "next_y": 9,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 20,
+          "next_y": 8,
+          "action": "south east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 43,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 17,
+          "next_y": 5,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 19,
+          "next_y": 9,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 17,
+          "next_y": 8,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 9,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 24,
+          "next_y": 5,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 19,
+          "next_y": 7,
+          "action": "north west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 44,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 17,
+          "next_y": 6,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 19,
+          "next_y": 8,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 16,
+          "next_y": 7,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 10,
+          "next_y": 8,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 23,
+          "next_y": 5,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 19,
+          "next_y": 6,
+          "action": "north",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 45,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 6,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 20,
+          "next_y": 8,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 15,
+          "next_y": 8,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 7,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 24,
+          "next_y": 4,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 19,
+          "next_y": 7,
+          "action": "south",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 46,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 6,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 21,
+          "next_y": 7,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 16,
+          "next_y": 8,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 8,
+          "next_y": 8,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 24,
+          "next_y": 5,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 18,
+          "next_y": 6,
+          "action": "north west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 47,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 7,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 21,
+          "next_y": 6,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 17,
+          "next_y": 7,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 7,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 25,
+          "next_y": 5,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 19,
+          "next_y": 6,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 48,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 17,
+          "next_y": 8,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 22,
+          "next_y": 5,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 18,
+          "next_y": 8,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 6,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 24,
+          "next_y": 6,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 18,
+          "next_y": 5,
+          "action": "north west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 49,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 9,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 22,
+          "next_y": 6,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 17,
+          "next_y": 9,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 5,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 23,
+          "next_y": 5,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 18,
+          "next_y": 6,
+          "action": "south",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 50,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 8,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 22,
+          "next_y": 7,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 18,
+          "next_y": 8,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 8,
+          "next_y": 5,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 18,
+          "next_y": 7,
+          "action": "south",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 51,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 9,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 21,
+          "next_y": 6,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 17,
+          "next_y": 7,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 4,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 4,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 19,
+          "next_y": 7,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 52,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 10,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 20,
+          "next_y": 5,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 16,
+          "next_y": 6,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 3,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 5,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 20,
+          "next_y": 6,
+          "action": "north east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 53,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 14,
+          "next_y": 9,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 19,
+          "next_y": 5,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 15,
+          "next_y": 6,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 4,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 21,
+          "next_y": 5,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 21,
+          "next_y": 5,
+          "action": "north east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 54,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 14,
+          "next_y": 8,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 20,
+          "next_y": 6,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 14,
+          "next_y": 7,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 8,
+          "next_y": 5,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 20,
+          "next_y": 6,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 22,
+          "next_y": 6,
+          "action": "south east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 55,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 9,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 21,
+          "next_y": 5,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 13,
+          "next_y": 7,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 5,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 21,
+          "next_y": 5,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 7,
+          "action": "south east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 56,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 8,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 20,
+          "next_y": 5,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 12,
+          "next_y": 7,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 8,
+          "next_y": 6,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 5,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 8,
+          "action": "south",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 57,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 7,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 19,
+          "next_y": 6,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 11,
+          "next_y": 8,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 7,
+          "next_y": 5,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 6,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 22,
+          "next_y": 8,
+          "action": "west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 58,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 6,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 19,
+          "next_y": 7,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 11,
+          "next_y": 7,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 8,
+          "next_y": 6,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 23,
+          "next_y": 5,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 21,
+          "next_y": 7,
+          "action": "north west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 59,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 5,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 20,
+          "next_y": 6,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 10,
+          "next_y": 6,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 5,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 20,
+          "next_y": 6,
+          "action": "north west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 60,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 4,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 21,
+          "next_y": 5,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 9,
+          "next_y": 6,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 4,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 4,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 21,
+          "next_y": 5,
+          "action": "north east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 61,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 17,
+          "next_y": 3,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 22,
+          "next_y": 4,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 8,
+          "next_y": 5,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 5,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 22,
+          "next_y": 4,
+          "action": "north east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 62,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 17,
+          "next_y": 2,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 8,
+          "next_y": 4,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 8,
+          "next_y": 5,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 4,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 63,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 17,
+          "next_y": 1,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 8,
+          "next_y": 3,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 8,
+          "next_y": 4,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 64,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 2,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 7,
+          "next_y": 3,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 7,
+          "next_y": 4,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 65,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 2,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 8,
+          "next_y": 3,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 8,
+          "next_y": 3,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 66,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 1,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 9,
+          "next_y": 2,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 7,
+          "next_y": 2,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 67,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 17,
+          "next_y": 1,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 8,
+          "next_y": 2,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 8,
+          "next_y": 1,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 68,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 16,
+          "next_y": 0,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 7,
+          "next_y": 1,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 9,
+          "next_y": 1,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 22,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "none",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 69,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 24,
+          "next_y": 4,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 1,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 8,
+          "next_y": 0,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 23,
+          "next_y": 4,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 24,
+          "next_y": 4,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 70,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 25,
+          "next_y": 3,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 7,
+          "next_y": 0,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 7,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 24,
+          "next_y": 4,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 25,
+          "next_y": 3,
+          "action": "north east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 71,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 26,
+          "next_y": 3,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 25,
+          "next_y": 3,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 26,
+          "next_y": 3,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 72,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 27,
+          "next_y": 3,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 7,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 7,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 26,
+          "next_y": 3,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 27,
+          "next_y": 3,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 73,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 28,
+          "next_y": 2,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 7,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 7,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 27,
+          "next_y": 3,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 28,
+          "next_y": 2,
+          "action": "north east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 74,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 29,
+          "next_y": 1,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 28,
+          "next_y": 2,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 29,
+          "next_y": 1,
+          "action": "north east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 75,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 30,
+          "next_y": 0,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 29,
+          "next_y": 1,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 30,
+          "next_y": 0,
+          "action": "north east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 76,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 31,
+          "next_y": 1,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 30,
+          "next_y": 0,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 29,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 77,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 32,
+          "next_y": 0,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 31,
+          "next_y": 1,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 30,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 78,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 33,
+          "next_y": 1,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 32,
+          "next_y": 1,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 29,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 79,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 34,
+          "next_y": 2,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 32,
+          "next_y": 0,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 30,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 80,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 35,
+          "next_y": 1,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 33,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 31,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 81,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 36,
+          "next_y": 0,
+          "action": "north east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 34,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 32,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 82,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 35,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 35,
+          "next_y": 1,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 33,
+          "next_y": 1,
+          "action": "south east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 83,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 36,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 36,
+          "next_y": 1,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 34,
+          "next_y": 1,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 84,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 35,
+          "next_y": 1,
+          "action": "south west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 36,
+          "next_y": 0,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 35,
+          "next_y": 0,
+          "action": "north east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 85,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 35,
+          "next_y": 0,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 35,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 34,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 86,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 36,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 34,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 35,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 87,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 36,
+          "next_y": 1,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 35,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 36,
+          "next_y": 1,
+          "action": "south east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 88,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 35,
+          "next_y": 0,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 36,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 37,
+          "next_y": 0,
+          "action": "north east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 89,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 36,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 35,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 37,
+          "next_y": 1,
+          "action": "south",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 90,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 37,
+          "next_y": 1,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 36,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 38,
+          "next_y": 1,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 91,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 37,
+          "next_y": 0,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 37,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 38,
+          "next_y": 0,
+          "action": "north",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 92,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 38,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 36,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 38,
+          "next_y": 1,
+          "action": "south",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 93,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 38,
+          "next_y": 1,
+          "action": "south",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 37,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 37,
+          "next_y": 0,
+          "action": "north west",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 94,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 39,
+          "next_y": 1,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 38,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 38,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 95,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 39,
+          "next_y": 0,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 39,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 39,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 96,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 38,
+          "next_y": 0,
+          "action": "west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 40,
+          "next_y": 1,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 40,
+          "next_y": 1,
+          "action": "south east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 97,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 39,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 41,
+          "next_y": 1,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 40,
+          "next_y": 0,
+          "action": "north",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 98,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 40,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 41,
+          "next_y": 0,
+          "action": "north",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 41,
+          "next_y": 1,
+          "action": "south east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 99,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 41,
+          "next_y": 1,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 42,
+          "next_y": 1,
+          "action": "south east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 41,
+          "next_y": 0,
+          "action": "north",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 100,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 40,
+          "next_y": 0,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 41,
+          "next_y": 0,
+          "action": "north west",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 42,
+          "next_y": 1,
+          "action": "south east",
+          "task": -2
+        }
+      ]
+    },
+    {
+      "time_frame": 101,
+      "players": [
+        {
+          "id": 347,
+          "next_x": 15,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 348,
+          "next_x": 41,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 349,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 350,
+          "next_x": 6,
+          "next_y": 0,
+          "action": "none",
+          "task": -2
+        },
+        {
+          "id": 351,
+          "next_x": 42,
+          "next_y": 0,
+          "action": "east",
+          "task": -2
+        },
+        {
+          "id": 352,
+          "next_x": 42,
+          "next_y": 0,
+          "action": "north",
+          "task": -2
+        }
+      ]
+    }
+  ]
+}

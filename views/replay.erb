@@ -5,8 +5,13 @@
 <script type="text/javascript">
   
   $(function(){
+
 	var test = false;
 	var replay = true;
+	$("#show_status").click(function(event){
+		alert(JSON.stringify(get_current_status())); 
+	});
+
   	if(!document.getElementById("map")) {
   		return;
   	}
@@ -201,10 +206,13 @@ function slider_callback(time_mili){
 */
 }
 
+
 </script>
 
 
 <div id="wrapper">
+		<input type="button" value="get status" id="show_status" />
+
 		<section id="loading_indicator">
 			<div id="scoreboard">				
 				<h1>loading data</h1>

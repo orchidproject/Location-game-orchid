@@ -1,0 +1,27 @@
+[
+{"action":"picked up","detail":{"id":100,"next_x":7,"next_y":21,"action":"none","task":177,"status":1,"dropoff":0,"path":[[7,21]],"group":[100,102],"time_frame":29}},
+{"action":"picked up","detail":{"id":102,"next_x":7,"next_y":21,"action":"south","task":177,"status":1,"dropoff":0,"path":[[7,21]],"group":[100,102],"time_frame":29}},
+{"action":"picked up","detail":{"id":101,"next_x":30,"next_y":19,"action":"none","task":182,"status":1,"dropoff":1,"path":[[30,19]],"group":[101,104],"time_frame":30}},
+{"action":"picked up","detail":{"id":104,"next_x":30,"next_y":19,"action":"south","task":182,"status":1,"dropoff":1,"path":[[30,19]],"group":[101,104],"time_frame":30}},
+{"action":"dropped off","detail":{"id":101,"next_x":30,"next_y":17,"action":"north","task":182,"status":1,"dropoff":1,"path":[[30,17]],"group":[101,104],"time_frame":32}},
+{"action":"dropped off","detail":{"id":104,"next_x":30,"next_y":17,"action":"north","task":182,"status":1,"dropoff":1,"path":[[30,17]],"group":[101,104],"time_frame":32}},
+{"action":"dropped off","detail":{"id":100,"next_x":14,"next_y":8,"action":"north east","task":177,"status":1,"dropoff":0,"path":[[14,8]],"group":[100,102],"time_frame":42}},
+{"action":"dropped off","detail":{"id":102,"next_x":14,"next_y":8,"action":"north east","task":177,"status":1,"dropoff":0,"path":[[14,8]],"group":[100,102],"time_frame":42}},
+{"action":"picked up","detail":{"id":101,"next_x":21,"next_y":28,"action":"south","task":183,"status":1,"dropoff":1,"path":[[21,28]],"group":[101,104],"time_frame":45}},
+{"action":"picked up","detail":{"id":104,"next_x":21,"next_y":28,"action":"south","task":183,"status":1,"dropoff":1,"path":[[21,28]],"group":[101,104],"time_frame":45}},
+{"action":"dropped off","detail":{"id":101,"next_x":30,"next_y":17,"action":"north","task":183,"status":1,"dropoff":1,"path":[[30,17]],"group":[101,104],"time_frame":56}},
+{"action":"dropped off","detail":{"id":104,"next_x":30,"next_y":17,"action":"north","task":183,"status":1,"dropoff":1,"path":[[30,17]],"group":[101,104],"time_frame":56}},
+{"action":"picked up","detail":{"id":100,"next_x":34,"next_y":25,"action":"none","task":180,"status":1,"dropoff":1,"path":[[34,25]],"group":[100,103],"time_frame":67}},
+{"action":"picked up","detail":{"id":103,"next_x":34,"next_y":25,"action":"south east","task":180,"status":1,"dropoff":1,"path":[[34,25]],"group":[100,103],"time_frame":67}},
+{"action":"picked up","detail":{"id":101,"next_x":47,"next_y":21,"action":"east","task":186,"status":1,"dropoff":1,"path":[[47,21]],"group":[101,104],"time_frame":74}},
+{"action":"picked up","detail":{"id":104,"next_x":47,"next_y":21,"action":"east","task":186,"status":1,"dropoff":1,"path":[[47,21]],"group":[101,104],"time_frame":74}},
+{"action":"dropped off","detail":{"id":100,"next_x":34,"next_y":17,"action":"north west","task":180,"status":1,"dropoff":1,"path":[[34,17]],"group":[100,103],"time_frame":75}},
+{"action":"dropped off","detail":{"id":103,"next_x":34,"next_y":17,"action":"north west","task":180,"status":1,"dropoff":1,"path":[[34,17]],"group":[100,103],"time_frame":75}},
+{"action":"dropped off","detail":{"id":101,"next_x":37,"next_y":12,"action":"west","task":186,"status":1,"dropoff":1,"path":[[37,12]],"group":[101,104],"time_frame":84}},
+{"action":"dropped off","detail":{"id":104,"next_x":37,"next_y":12,"action":"west","task":186,"status":1,"dropoff":1,"path":[[37,12]],"group":[101,104],"time_frame":84}},
+{"action":"picked up","detail":{"id":101,"next_x":47,"next_y":30,"action":"none","task":185,"status":1,"dropoff":1,"path":[[47,30]],"group":[101,103],"time_frame":107}},
+{"action":"picked up","detail":{"id":103,"next_x":47,"next_y":30,"action":"south","task":185,"status":1,"dropoff":1,"path":[[47,30]],"group":[101,103],"time_frame":107}},
+{"action":"dropped off","detail":{"id":101,"next_x":34,"next_y":17,"action":"north west","task":185,"status":1,"dropoff":1,"path":[[34,17]],"group":[101,103],"time_frame":120}},
+{"action":"dropped off","detail":{"id":103,"next_x":34,"next_y":17,"action":"north west","task":185,"status":1,"dropoff":1,"path":[[34,17]],"group":[101,103],"time_frame":120}}
+]
+

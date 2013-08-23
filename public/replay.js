@@ -214,6 +214,37 @@ function setup_game() {
 	});
 }
 
+function get_current_status(){
+	var mapping = { "firefighter": 1, "medic": 0, "transporter": 3, "soldier": 2};
+	var result = {players: [], tasks: []};
+	$(players).each(function(index,value){
+			if (value == null)
+				return;
+
+			var p = { 
+			  id : value.id, 
+			  latitude: value.marker.position.lat(), 
+			  longitude:value.marker.position.lng(), 
+			  health:100,
+			  skill: mapping[value.skill]
+			};
+			result.players.push(p);
+		});
+	$(tasks).each(function(index,value){
+			var t = { 
+			  id : value.id, 
+			  status: value.state
+			};
+			result.tasks.push(t);
+		});
+
+
+	
+	return  result;
+}
+
+
+
 $(document).ready(function() {
 	setup = true;
 	//updateGame(true);

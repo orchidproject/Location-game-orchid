@@ -1,15 +1,15 @@
 #this is a dirty script with dependency of exsitence of simulation file and datafile called marged data.
 #useage ruby [scriptfilename]
-require "../simulation.rb"
+require "../../simulation.rb"
 require 'json'
-require "./jsonLoaders.rb"
+require "../jsonLoaders.rb"
 
 
 class CoordsConverter
 	def initialize(original_data)
 		@data = original_data
 		
-		@sim = Simulation.new("../../cloud/simulation_data_03.txt",
+		@sim = Simulation.new("../../../cloud/simulation_data_03.txt",
 			52.952617,
 			-1.188639,
 			8,
@@ -42,29 +42,12 @@ class CoordsConverter
 		return output
 	end
 
-	def convert_game_state
-		data = @data["players"]
-		data.each_with_index do |item,index|
-			puts "processing " + (index+1).to_s + "/" + data.length.to_s
-		
-			
-			result =  @sim.getGridCoord(Float(item["latitude"]),Float(item["longitude"])) 
-			item.delete("latitude")	
-			item.delete("longitude")	
-			item["x"] = result[:x]	 
-			item["y"] = result[:y] 
-	
-		end
-		return @data.to_json
-
-	end
-
 end
 
 class ReverseCoordsConverter
 	def initialize(original_data)
 		@data = original_data
-		@sim = Simulation.new("../../cloud/simulation_data_03.txt",
+		@sim = Simulation.new("../../../cloud/simulation_data_03.txt",
 			52.952617,
 			-1.188639,
 			8,
@@ -85,7 +68,7 @@ class ReverseCoordsConverter
 				output =  "#{output}#{item.to_json}\n"
 				next
 			end	
-			result =  @sim.getCoordsFromGrid(target["x"],target["y"]) 
+			result =  @sim.getCoordsFromGrid(target["next_x"],target["next_y"]) 
 			target.delete("x")	
 			target.delete("y")	
 			target["latitude"] = result[:lat]	 
@@ -99,6 +82,7 @@ class ReverseCoordsConverter
 end 
  
 #write to new file
-loader = GameStateJsonLoader.new(ARGV[0]) 
-data = loader.load 
-File.open(ARGV[1], 'w') { |file| file.write(CoordsConverter.new(data).convert_game_state) }
+loader = AtomicOrchidJsonLoader.new(ARGV[0])
+data = loader.load
+
+File.open("output", 'w') { |file| file.write(ReverseCoordsConverter.new(data).convert_to_string) }

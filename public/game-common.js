@@ -160,7 +160,7 @@ function receiveTaskData(task){
 			draggable:drag
         	});
         
-        	var the_task={id:task.id,marker:marker};
+        	var the_task={id:task.id,state: task.state, marker:marker};
         
         	tasks.push(the_task);
 		if(test!=null&&test){
@@ -170,6 +170,7 @@ function receiveTaskData(task){
         else{
         	var new_postion = new google.maps.LatLng(task.latitude,task.longitude);
         	existing_task.marker.setPosition(new_postion);
+		existing_task.state = task.state;
         	
         	if (task.state==2){
 				var taskIcon=new google.maps.MarkerImage(
