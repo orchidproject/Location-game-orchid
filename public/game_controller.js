@@ -142,20 +142,24 @@ function receivePlayerInfoData(data){
 		var level = "<td align='center'> <div id='level_"+data.id+"'></div> </td>";
 		var button = "<td align = 'center'> <input id= 'view_btn_"+data.id+"' type='button' value='view' id='view_ins_"+data.id+"'/> </td>"
 		var plan_button = "<td align = 'center'> <input id= 'plan_btn_"+data.id+"' type='button' value='accept' id='plan_"+data.id+"'/> </td>"
+		var kick_button = "<td align = 'center'> <input id= 'kick_btn_"+data.id+"' type='button' value='kick' id='plan_"+data.id+"'/> </td>"
+
 		if(test){
-			$("#players").append("<tr>" + icon + health + level + button + plan_button +  "</tr>");
+			$("#players").append("<tr id = 'panel_element_"+data.id+"'>" + 
+				icon + 
+				health + 
+				level + 
+				button + 
+				plan_button + 
+				kick_button +
+			 "</tr>");
+
 		}else{ 
-			$("#players").append("<tr>" + icon + health + level + button +  "</tr>");
+			$("#players").append("<tr id = 'panel_element_"+data.id+"'>" + icon + health + level + button +  "</tr>");
 		}
 
 
 	}
-
-	
-	
-	
-	
-	//just for test	
 
 	if(test){
 		$("#player-icon-"+ data.id).click(function(){
@@ -180,8 +184,7 @@ function receivePlayerInfoData(data){
 					var instruction_id = players[data.id].instruction.id
 					socket.emit("ack-instruction",{
 						id: instruction_id,
-						status:2 
-						});
+						status:2 });
 					}
 			}
 		
@@ -193,7 +196,12 @@ function receivePlayerInfoData(data){
 			}
 
 		});
-		
+
+		$("#kick_btn_"+ data.id).click(function(){
+			$.get('/game/'+GAME_ID+'/delete_player/' + data.id ,function(data) {
+			});	
+		});
+
 	}
 
 
@@ -259,6 +267,16 @@ function receivePlayerInfoData(data){
 		flightPath.setMap(map);
 	});	
 	
+}
+
+function cleanup (player_id){
+	//when receiving clean up message
+	//delete player in array
+	players[player_id].marker.setMap(null);
+	players[player_id] = null;
+	//delete player in view panel 
+	var element = $("#panel_element_"+player_id);	
+	element.remove();
 }
 
 function getTeammate(instruction){

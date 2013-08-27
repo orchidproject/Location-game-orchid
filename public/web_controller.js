@@ -67,7 +67,7 @@ $(document).ready(function() {
         }
         
         if(typeof data.cleanup != "undefined"){
-                //cleanup(data.cleanup); not implemented now
+                cleanup(data.cleanup.player_id); 
         }
         
         if(typeof data.player != "undefined"){
