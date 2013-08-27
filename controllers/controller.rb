@@ -298,7 +298,24 @@ class Controller < Sinatra::Base
     end
     {:player => players}.to_json
   end
-    
+   
+
+  get '/game/:game_id/delete_player/:player_id' do
+	player_to_delete = Game.get(params[:game_id]).players.get(params[:player_id])
+	
+	if player_to_delete.destroy
+		socketIO.broadcast( 
+                           { 
+                            :channel=> params[:game_id],             
+                            :data=>{
+                                    :cleanup=>{:player_id=>params[:player_id]}
+                           	}
+                           }.to_json)
+
+	end
+	
+	{:status => :ok }.to_json	
+  end  
 
   # A easy way to go back
   get '/game/:layer_id/?' do
