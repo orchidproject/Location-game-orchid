@@ -1,0 +1,283 @@
+<style type="text/css">
+ 	body {
+ 		padding: 0;
+ 	}
+</style>
+
+<script type="text/javascript">
+  /**
+* converted stringify() to jQuery plugin.
+* serializes a simple object to a JSON formatted string.
+* Note: stringify() is different from jQuery.serialize() which URLEncodes form elements
+
+* UPDATES:
+* Added a fix to skip over Object.prototype members added by the prototype.js library
+* USAGE:
+* jQuery.ajax({
+* data : {serialized_object : jQuery.stringify (JSON_Object)},
+* success : function (data) {
+*
+* }
+* });
+*
+* CREDITS: http://blogs.sitepointstatic.com/examples/tech/json-serialization/json-serialization.js
+*/
+jQuery.extend({
+    stringify : function stringify(obj) {
+        var t = typeof (obj);
+        if (t != "object" || obj === null) {
+            // simple data type
+            if (t == "string") obj = '"' + obj + '"';
+            return String(obj);
+        } else {
+            // recurse array or object
+            var n, v, json = [], arr = (obj && obj.constructor == Array);
+
+            for (n in obj) {
+                v = obj[n];
+                t = typeof(v);
+                if (obj.hasOwnProperty(n)) {
+                    if (t == "string") v = '"' + v + '"'; else if (t == "object" && v !== null) v = jQuery.stringify(v);
+                    json.push((arr ? "" : '"' + n + '":') + String(v));
+                }
+            }
+            return (arr ? "[" : "{") + String(json) + (arr ? "]" : "}");
+        }
+    }
+});
+
+
+  
+  $(function(){
+  	if(!document.getElementById("map")) {
+  		return;
+  	}
+  	
+  	//test
+  	//update_status_bar();
+  	
+  	
+  	$("#aim").click(function(){
+  		relocate();
+  	
+  	});
+  	
+  	var menu_status=1;
+  	$("#slide-menu-control").click(function(){
+  		if(menu_status==0){	
+  			
+  			$('#slide-menu-control').animate({'width':"5%"},{queue:false, duration:200});
+  			$('#slide-menu-content').animate({'width':"0%"},{queue:false, duration:200});
+  				$('#slide-menu-control').html("<img id='control' style='height:100%;-webkit-transform: rotate(-180deg);' src='/img/arrow.png'>");
+  			menu_status=1;
+  		}
+  		else{
+  			
+  			$('#slide-menu-control').animate({'width':"20%"},{queue:false, duration:200});
+  			$('#slide-menu-control').html("<img id='control' style='height:100%;' src='/img/arrow.png'>");
+  			$('#slide-menu-content').animate({'width':"20%"},{queue:false, duration:200});
+  			menu_status=0;
+  		}
+  	});
+  	
+  	
+  
+  	var myOptions = {
+  		zoom: 15,
+  		zoomControl: true,
+  		zoomControlOptions: {
+            
+            position: google.maps.ControlPosition.TOP_LEFT
+        },
+  		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
+  		mapTypeId: google.maps.MapTypeId.HYBRID,
+  		mapTypeControl: false,
+		disableDoubleClickZoom: true,
+		streetViewControl:false,
+		panControl:false,
+		
+  	};
+
+	mapHeight = $(document).height() - $('#radiation_reading').height() ;
+ 	
+	//alert(mapHeight + "=" + $(window).height() + " - " + $('#header').height()+ " - " +$('#radiation_reading').height());
+ 	//alert("doc: " + $(document).height() + "window: " + $(window).height());
+
+ 	$('#map').css("height", mapHeight);
+
+
+  	// Create the main map
+  	map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+
+	$("#logout").click(function(){
+		document.location.href="/game/"+$("#layer_id").val()+"/logout?user_id="+$("#user_id").val();
+	});
+
+
+     GameMap.fitToRadius(<%= @game.radius %>); // todo: replace ruby template var
+
+	 map.controls[google.maps.ControlPosition.TOP_RIGHT].push(new RelocateButton());
+	 
+	 
+	 //fill the role div
+	 $("#role").html("<img src='/img/"+$("#user_skill").val()+".png' >");
+  });
+
+
+  function RelocateButton(){
+ 	var relocateButton = $('<input type="button" id="relocateButton"  value="find me" />');
+ 	relocateButton.click(relocate);
+ 	var div = $('<div></div>').append(relocateButton);
+ 	return div.get(0);
+ }
+ 
+ function sendMessage(){
+	var pathname = window.location.pathname;
+	$.ajax({
+		url: pathname+"/message",
+		type: "POST",
+		data: {"content":$('#message').val()}, <!-- JSON.parse($('#message').val()), "id":0, "player_id":[0,1,2,3,4,5,6,7,8,9] }, -->
+		dataType: "json",
+		success: function(data) {
+			$('#message').val("");
+		}
+	 });
+ }
+ 
+ 
+ 
+ 
+ function relocate(){
+ 	//test
+ 	//players[$("user_id").val()]
+ 	//map.panTo(new google.maps.LatLng(53,-1));
+ 	
+ 	var p=players[$("#user_id").val()];
+ 	//alert(p.marker.getPosition().lat());
+ 	if(p.marker.getPosition().lat()==0||p.marker.getPosition().lng()==0){
+ 		alert("your location not found, please wait for location update");
+ 	}else{
+ 		map.setCenter(p.marker.getPosition());
+ 		map.setZoom(19);
+ 	}
+ 	
+ }
+ 
+ function clear_status_bar(){
+ 	$("#team-mate").html("-");
+ 	$("#current-target").html("-");
+ }
+ 
+ function update_status_bar(team,task_type){
+ 	
+ 	$("#current-target").html("<img src=" + getTaskImage(task_type) + ">");
+	
+ 	for(p in team){
+ 		//alert(team[p]);
+ 		if(team[p]!=$("#user_id").val()){
+ 			//alert("teammate:"+team[p]);
+ 			var initials = players[parseInt(team[p])].initials;
+ 			var skill=  players[parseInt(team[p])].skill;
+ 			
+ 			//$("#team-mate").html("<img src='/player/"+initials[0]+"/"+initials[1]+"/"+skill+"/map_icon.png' >");
+ 		}
+ 	}
+ 	
+ 	
+ 	/*$("#current-target").html("<img src='/player/a/b/firefighter/map_icon.png' >");*/
+	 /*$("#team-mate").html("<img src='/img/victim.png' >");*/
+ }
+
+
+</script>
+<style type="text/css">
+	div.ui-content {
+		padding: 0;
+	}
+</style>
+
+<div id="main" data-role="page" style="height:100%">
+	
+	<div data-role="content" style="position:relative;height:100%">
+	
+	<div id="wrapper">
+		    <div id="status_bar" style="width:100%">
+        <div id="geiger_sound"></div>
+        
+        <div id="radiation_reading" style="padding:2%;float:left;width:25%;height:12ex;text-align:center">
+          Radiation<br/>
+          <div id="radiation_number" style="font-size : 300%">0</div>
+          <div id="radiation_images">
+            <img id="rad0" src="/img/radiation_gray.png" width="20pt"/>
+            <img id="rad1" src="/img/radiation_gray.png" width="20pt"/>
+            <img id="rad2" src="/img/radiation_gray.png" width="20pt"/>
+          </div>
+        </div>
+        
+        <div style="padding:2%;float:left;width:67%;height:12ex">
+          Health
+          <div id="health_bar" style="height:30%"></div>
+          		<div id="wedget" style="position:relative;float:left;width:20%;height:100%">
+          			<div id="a" style="position:absolute;top:10%;left:0;font-size:10px">
+          				Your role: 
+          			</div> 
+          		</div>
+          		<div id="role" style="position:relative;float:left;width:10%;height:100%;top:10%">
+          		- 
+          		</div>
+          		<div id="wedget2" style="position:relative;float:left;width:20%;height:100%;left:5">
+          			<div id="a" style="position:absolute;top:10%;left:0;font-size:10px">
+          				Picked up: 
+          			</div> 
+          		</div>
+          		
+          		<div id="current-target" style="position:relative;float:left;width:10%;height:100%;top:10%;left:10">
+          		-
+          		</div>
+          		
+          		<div id="wedget3" style="position:relative;float:left;width:20%;height:100%">
+          			<div id="a" style="position:absolute;top:10%;left:0;text-align:top;font-size:10px">
+          				New msg:
+          			</div>
+          		</div>
+          		
+          		<div id="new-msg" style="position:relative;float:left;width:10%;height:100%;top:10%">
+          		-
+          		</div>
+          
+          	</div>
+          
+        </div>
+        
+        <div style="clear:both"></div>
+   </div>
+
+	
+		
+	<div id="map" ></div>
+	
+
+	
+	<!--<div  id="slide-menu-control" style="position:absolute;top:0;right:0;width:5%;height:5%;background-color:rgb(255,255,255);z-index=0" >
+		<img id="control" style="height:100%;-webkit-transform: rotate(-180deg);" src="/img/arrow.png">
+	</div>-->
+	
+	<!--<div  id="slide-menu-content" style="position:absolute;top:5%;right:0;width:0%;height:95%;background-color:rgb(0,0,255);z-index=0" ></div>-->
+	
+	
+	
+  </div> <!-- wrapper -->
+      
+
+ </div> 
+</div>
+
+<input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
+<input type="hidden" id="user_id" value="<%= @user_id %>" />
+<input type="hidden" id="user_skill" value="<%= @user_skill %>" />
+<input type="hidden" id="user_initials" value="<%= @user_initials %>" />
+<input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
+<input type="hidden" id="game_status" value=<%= @game.is_active %> /> 
+   
+  

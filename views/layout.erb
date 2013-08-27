@@ -1,48 +1,46 @@
 <html>
+
   <head>
-  	<title>MapAttack</title>
+  	<title>Atomic Orchid Dashboard</title>
 	  <meta name="viewport" content="initial-scale=1.0">
-  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-  	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry"></script>
-  	<script type="text/javascript" src="/game.js"></script>
+
+  	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,visualization"></script>
+  	<script type="text/javascript" src="/game-common.js"></script>
+	<link rel="stylesheet" type="text/css" href="/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="/reset.css" />
+  	<script> SOCKET_IO_ADDRESS = "<%= @socket_io_url %>";</script>
+  	<script> GAME_ID = "<%= @game.layer_id %>";</script>
   	
-  	<% if request.path =~ /\/game\// %>
-            <% if ['iPhone', 'Android', 'iPod'].include?(request.env[Rack::MobileDetect::X_HEADER]) %>
-                <script type="text/javascript" src="https://subscribe.geoloqi.com/socket.io/socket.io.js"></script>
-                <script type="text/javascript" src="/mapattack-push.js"></script>
-            <% else %>
-                <script type="text/javascript" src="https://subscribe.geoloqi.com/socket.io/socket.io.js"></script>
-               <script type="text/javascript" src="/mapattack-web.js"></script>
-          
-            <% end %>
+  	<% if request.path =~ /\/game\// || request.path =~ /\/replay2\// %>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="<%= @socket_io_url %>/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="/web_controller.js" ></script>
+		<script type="text/javascript" src="/game_controller.js" ></script>
+		<script type="text/javascript" src="/js-model/models.js" ></script>
+		<script type="text/javascript" src="/test_panel.js" ></script>
+		<link type="text/css" rel="stylesheet" href="/chatstyle.css" />
   	<% end %>
+
+       
   	
-        <% if request.path =~ /\/replay\// %>
-    	  <script type="text/javascript" src="/mapattack-replay.js"></script>
-  	<% end %>
-  	
-  	<link rel="stylesheet" type="text/css" href="/reset.css" />
-  	<link rel="stylesheet" type="text/css" href="/style.css" />
+    <% if request.path =~ /\/replay\// %>
+    	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    	  <script src="/replay.js"></script>
+    	  <script src="/replay_control.js"></script>
+	  <script type="text/javascript" src="/game_controller.js" ></script>
+		  
+	  <link type="text/css" rel="stylesheet" href="/chatstyle.css" />
+	  <link type="text/css" rel="stylesheet" href="/replay_panel.css" />
+	 
+	  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-  	<% if Controller::GA_ID %>
-      <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', '<%= Controller::GA_ID %>']);
-        _gaq.push(['_trackPageview']);
-
-        <% if request.path =~ /^\/$/ %>
-		// geoloqi.com A/B Testing
-		_gaq.push(['gwo._setAccount', 'UA-25750303-7']);
-		_gaq.push(['gwo._trackPageview', '/0594274968/goal']);
-		<% end %>
-
-        (function() {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-      </script>
+	  
     <% end %>
+
+  	
+
   </head>
   <body>
     <%= yield %>

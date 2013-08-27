@@ -40,8 +40,8 @@ Helper.prototype.getSocket = function(){
 }
  
 
-Helper.prototype.join = function join(name,email,team,callback){
-    var content="name="+name+"&email="+email+"&team="+team;
+Helper.prototype.join = function join(name,email,team,role_id,initials,callback){
+    var content="name="+name+"&email="+email+"&team="+team+"&role_id="+role_id+"&initials="+initials;
     var length=content.length;
     console.log('parsed: ' + this.ruby_address);
     var options = {
@@ -60,6 +60,7 @@ Helper.prototype.join = function join(name,email,team,callback){
         res.on('data', function (chunk) {
             console.log('game join status: ' + chunk);
             player=JSON.parse(chunk);
+            player.initials=initials;
             callback(player);
         });
     });
@@ -117,15 +118,31 @@ Helper.prototype.pullGameStatus = function pullGameStatus(){
 
 
 
-function Helper(socket_address,ruby_address,ruby_port,game_id){
-    this.socket_address=socket_address;
-    this.ruby_address=ruby_address;
-    this.ruby_port=ruby_port;
+function Helper(game_id){
+    this.socket_address='http://localhost:49991';
+    this.ruby_address='localhost';
+    this.ruby_port=49992;
     this.player=new Object;
     this.game_id=game_id;
+    
+	this.socketAddress='http://localhost:49991';
+	this.nodeAddress='http://localhost:8080';
+	this.rubyAddress='localhost';
+	
+	this.pointSet= {
+	t1:{lat:50.936151,lng:-1.397983},
+	t2:{lat:50.935312,lng:-1.396825},
+	t3:{lat:50.934295,lng:-1.398466},
+	t4:{lat:50.934484,lng:-1.399518},
+	t5:{lat:50.935522,lng:-1.399005},
+	p0:{lat:50.935404,lng:-1.397983},
+	p1:{lat:50.9356,lng:-1.398273},
+	p2:{lat:50.93635,lng:-1.397785},
+	p3:{lat:50.936063,lng:-1.396685},
+	p4:{lat:50.935065,lng:-1.398987}
+	}
+	
     //this.socket=new Socket(socket_address);
-    
-    
 }
 
 module.exports=Helper;

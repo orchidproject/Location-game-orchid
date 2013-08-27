@@ -4,7 +4,7 @@
 
 <script type="text/javascript">
   $(function() {
-    var latlng = new google.maps.LatLng(<%= @game.new? ? "45.52, -122.681944" : "#{h @game.latitude}, #{h @game.longitude}" %>);
+    var latlng = new google.maps.LatLng(<%= @game.new? ? "52.94539363811494, -1.2085589719746395" : "#{h @game.latitude}, #{h @game.longitude}" %>);
     var myOptions = {
       zoom: 13,
       center: latlng,

@@ -1,0 +1,108 @@
+<style type="text/css">
+ 	body {
+ 		padding: 0;
+ 	}
+</style>
+
+<style type="text/css">
+	div.ui-content {
+		padding: 0;
+	}
+</style>
+
+<script text="javascript">
+
+var latestMsgId = 0;
+
+jQuery.extend({
+    stringify : function stringify(obj) {
+        var t = typeof (obj);
+        if (t != "object" || obj === null) {
+            // simple data type
+            if (t == "string") obj = '"' + obj + '"';
+            return String(obj);
+        } else {
+            // recurse array or object
+            var n, v, json = [], arr = (obj && obj.constructor == Array);
+
+            for (n in obj) {
+                v = obj[n];
+                t = typeof(v);
+                if (obj.hasOwnProperty(n)) {
+                    if (t == "string") v = '"' + v + '"'; else if (t == "object" && v !== null) v = jQuery.stringify(v);
+                    json.push((arr ? "" : '"' + n + '":') + String(v));
+                }
+            }
+            return (arr ? "[" : "{") + String(json) + (arr ? "]" : "}");
+        }
+    }
+});
+
+
+function handleSocketData(dataStr) {
+    
+    //var data = dataStr;
+   
+    //parse string from native app
+  	var dataStr0 = jQuery.stringify(dataStr);
+	var dataStr1 = dataStr0.substring(1,dataStr0.length-1);
+	//alert('string arrived for you: ' + dataStr1);
+	var data = jQuery.parseJSON(dataStr1);
+    //alert('health at ' + data.health.value);
+    //alert("after parse"+jQuery.stringify(data));
+    
+    if(typeof data.message != "undefined") {
+    	receiveMessageData(data.message);
+    }
+}
+
+function receiveMessageData(data) {
+	//schema: message { id: integer , player_id: [ array of integer ] , content: string }
+
+	//push the task to the comms list (as long as this task is meant for us)
+	//if(jQuery.inArray($('#user_id').val(), data.player_id)) {
+		pushToTaskHistory(data.content, "msg" + latestMsgId++, data.player_initials, data.player_name);
+		//alert(data.player_name + ": " + data.content);
+	//}
+        
+}
+
+function pushToTaskHistory(message, identifier, player_initials, player_name) {
+	//pushes the string message to the task list (including the date time added)
+	//(called when new tasks and messages are received)
+	
+	var currentTime = new Date();
+		
+	var line = $("<li id='" + identifier + "'>"+player_name+" ("+player_initials+"): " + message + "  (sent " + currentTime.getHours() +":"+currentTime.getMinutes()+")</li>"); //TODO: add intended recipients
+	var taskList = $('#task_list');
+	taskList.prepend(line);
+	taskList.listview( "refresh" );  
+}
+</script>
+
+<div id="msgs" data-role="page">
+    
+  <div data-role="content">
+	<div id="wrapper">
+       
+
+	    <div id="messageListDiv">
+	    
+	    	<h5>Messages</h5>
+	    	<ul id="task_list" class="ui-listview" data-role="listview" data-inset="true">												
+			</ul>
+			
+		</div>      
+ 	</div> 
+ </div>
+</div>
+ 
+<input type="text" name="message" id="message"/>
+<input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
+    <input type="hidden" id="user_id" value="<%= @user_id %>" />
+    <input type="hidden" id="user_skill" value="<%= @user_skill %>" />
+    <input type="hidden" id="user_initials" value="<%= @user_initials %>" />
+    <input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
+    <input type="hidden" id="game_status" value="<%= @game.is_active %>" /> 
+   
+  

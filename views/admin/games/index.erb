@@ -1,4 +1,4 @@
-<h1>MapAttack Game Editor</h1>
+<h1>Atomic Orchid Game Editor</h1>
 
 <style>
   table td {
@@ -6,24 +6,83 @@
     padding-bottom: 5px;
   }
 </style>
+<script>
+function create_from_template(id){
+	var name=prompt("Name for new game");
+	if(name==null){return;}
+    window.location.href="/admin/games/"+id+"/create_from_setting?name="+name;
+}
 
-<% if @games.empty? %>
+</script>
+
+
+
+
+<% if @action=="replay" %>
+  <p> <a href="/admin/games" >game </a>|  <a href="/admin/template" >template </a> | replay </p>
+  <table>
+    <tr>
+      <th>logs</th>
+      <th></th>
+      <th></th>
+    </tr>
+      <% @logs.each do |log| %>
+      	<tr>
+     	 <td><%= log %></td>
+     	 <td> <a href="/replay/<%= log %>/delete"> delete </a> </td>
+      	 <td> <a href="/replay/<%= log %>"> replay </a> </td>
+      	 </tr>
+      <% end %>
+  </table>
+<% elsif @action=="template"  %>
+ <p> <a href="/admin/games" >game </a>|template | <a href="/admin/replay" >replay </a> </p>
+   <table>
+    <tr>
+      <th>Template</th>
+	
+    </tr>
+    <% @games.each do |game| %>
+	<tr>
+		<td><%= h game.name %></td>
+		<td><a href="/admin/games/<%= game.layer_id %>/mapeditor">Edit Map</a></td>
+		
+		
+		<td><a onclick="create_from_template(<%= game.layer_id %>);" style="cursor:hand" >Create from this template</a></td>
+		
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/games/<%= game.layer_id %>" onclick="<%= onclick_delete %>">Delete</a></td>
+	
+	</tr>
+    <% end %>
+  </table>
+    
+
+
+<% elsif @action=="games" && @games.empty? %>
+  <p> game | <a href="/admin/template" >template </a>| <a href="/admin/replay" >replay </a> </p>
   No games yet!<br>
-<% else %>
+  
+  <br><br>
+
+  <a href="/admin/games/new">Create New Game</a>
+<% elsif @action=="games" && !@games.empty? %>
+  <p> game | <a href="/admin/template" >template </a>| <a href="/admin/replay" >replay </a> </p>
   <table>
     <tr>
       <th>Game Title</th>
       <th>Date</th>
-      <th>Last pt.</th>
       <th>Status</th>
       <th>Players</th>
-      <th>Points</th>
+      <th>agent status</th>
+      <th>actions</th>
     </tr>
-    <% @games.each do |game| %>
-      <tr>
-        <td><a href="/game/<%= game.layer_id %>"><%= h game.name %></a></td>
+
+    
+    <% @games.each do |game| 
+		agent = PlanHandler.instances(game.layer_id)
+	%>
+	
+        <td><%= h game.name %></td>
         <td><%= h game.created_at.strftime('%D') %></td>
-        <td><%= h game.players(:order => :updated_at).first.updated_at.strftime('%D') if game.players.length > 0 %></td>
         <% if game.is_active==0 %>
             <td>active</td>
         <% elsif game.is_active==-1 %>
@@ -33,24 +92,38 @@
         <% end %>
 
         <td><%= h game.players.count %></td>
-        <td><%= h game.total_points %></td>
-        <td><a href="/admin/games/<%= game.layer_id %>/edit">Setup</a></td>
+
+	<% if agent.status==0 %>
+            <td>uninitialized</td>
+        <% elsif agent.status==-1 %>
+            <td>error</td>
+        <% elsif agent.status==1 %>
+            <td>initializing</td>
+	<% elsif agent.status==2 %>
+            <td>ready</td>
+        <% end %>
+
+        <td><a href="/admin/games/<%= game.layer_id %>/init_agent">Init agent</a></td>
         <td><a href="/admin/games/<%= game.layer_id %>/mapeditor">Edit Map</a></td>
+        <td><a href="/game/<%= game.layer_id %>/dashboard">Dashboard</a></td>
         
-        <td>&nbsp;&nbsp;&nbsp;<a href="/admin/games/<%= game.layer_id %>/reset" onclick="<%= onclick_put ' Are you -really- sure?' %>">Reset Game</a></td>
+        
         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/games/<%= game.layer_id %>" onclick="<%= onclick_delete %>">Delete</a></td>
         <% if game.is_active==0 %>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/games/<%= game.layer_id %>/end" >end</a></td>
         <% elsif game.is_active==-1 %>
+	   
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/games/<%= game.layer_id %>/start" >start</a></td>
         <% elsif game.is_active==1 %>
-
+		 <td>&nbsp;&nbsp;&nbsp;<a href="/admin/games/<%= game.layer_id %>/reset" onclick="<%= onclick_put ' Are you -really- sure?' %>">Reset Game</a></td>
         <% end %>
         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/games/<%= game.layer_id %>/console" >console</a></td>
       </tr>
     <% end %>
   </table>
-<% end %>
-<br><br>
+  <br><br>
 
-<a href="/admin/games/new">Create New Game</a>
+	<a href="/admin/games/new">Create New Game</a>
+<% end %>
+
+

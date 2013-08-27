@@ -1,0 +1,3434 @@
+3
+parsed: localhost
+{ player: 
+   { id: 32,
+     name: 'agent',
+     skill: 'soldier',
+     initials: 'AA',
+     status: 'normal' },
+  ackid: 323 }
+{ textMassage: { content: 'agent join the game' }, ackid: 325 }
+{ player: 
+   { id: 33,
+     name: 'agent',
+     skill: 'firefighter',
+     initials: 'AA',
+     status: 'normal' },
+  ackid: 326 }
+{ textMassage: { content: 'agent join the game' }, ackid: 328 }
+STATUS: 200
+HEADERS: {"content-type":"application/json","access-control-allow-origin":"*","content-length":"36","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"firefighter","user_id":33}
+{ skill: 'firefighter',
+  user_id: 33,
+  initials: 'AA',
+  lat: 52.950978,
+  lng: -1.1STATUS: STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+0.1300012485{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.950980473822405,
+     longitude: -1.186269581705754,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.950980473822405,
+     longitude: -1.186269581705754,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 330 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95098356610041,
+     longitude: -1.1862478088379464,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 331 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95098356610041,
+     longitude: -1.1862478088379464,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 332 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95098665837842,
+     longitude: -1.1862260359701389,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95098665837842,
+     longitude: -1.1862260359701389,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 346 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.950989750656426,
+     longitude: -1.1862042631023313,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 347 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.950989750656426,
+     longitude: -1.1862042631023313,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ task: { task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1862043',
+     latitude: '52.9509898',
+     state: 1,
+     players: '32,33' },
+  ackid{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95099284293443,
+     longitude: -1.1861824902345237,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95099284293443,
+     longitude: -1.1861824902345237,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95099593521244,
+     longitude: -1.1861607173667161,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95099593521244,
+     longitude: -1.1861607173667161,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 365 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95099902749045,
+     longitude: -1.1861389444989086,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 366 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95099902749045,
+     longitude: -1.1861389444989086,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 367 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1861498',
+     latitude: '52.95099745',
+     state: 1,
+     players: '32,33' },
+  ackid: 368 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951002119768454,
+     longitude: -1.186117171631101,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 381 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951002119768454,
+     longitude: -1.186117171631101,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 382 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95100521204646,
+     longitude: -1.1860953987632934,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 383 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95100521204646,
+     longitude: -1.1860953987632934,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1860954',
+     latitude: '52.9510052',
+     state: 1,
+     players: '32,33' },
+  ackid: 385 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95100830432447,
+     longitude: -1.1860736258954858,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 398 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95100830432447,
+     longitude: -1.1860736258954858,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.951011396602475,
+     longitude: -1.1860518530276782,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 400 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951011396602475,
+     longitude: -1.1860518530276782,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.95101448888048,
+     longitude: -1.1860300801598707,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 402 }
+{ task: { task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1860519',
+     latitude: '52.9510114',
+     state: 1,
+     players: '32,33' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95101448888048,
+     longitude: -1.1860300801598707,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 407 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95101758115849,
+     longitude: -1.186008307292063,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 417 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95101758115849,
+     longitude: -1.186008307292063,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.951020673436496,
+     longitude: -1.1859865344242555,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 419 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951020673436496,
+     longitude: -1.1859865344242555,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 420 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1859865',
+     latitude: '52.9510207',
+     state: 1,
+     players: '32,33' },
+  ackid: 421 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.9510237657145,
+     longitude: -1.185964761556448,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 434 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.9510237657145,
+     longitude: -1.185964761556448,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95102685799251,
+     longitude: -1.1859429886886403,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95102685799251,
+     longitude: -1.1859429886886403,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 437 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95102995027052,
+     longitude: -1.1859212158208328,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 438 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95102995027052,
+     longitude: -1.1859212158208328,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1859321',
+     latitude: '52.95102845',
+     state: 1,
+     players: '32,33' },
+  ackid: 440 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951033042548524,
+     longitude: -1.1858994429530252,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.951033042548524,
+     longitude: -1.1858994429530252,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 455 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95103613482653,
+     longitude: -1.1858776700852176,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 456 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95103613482653,
+     longitude: -1.1858776700852176,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 457 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1858777',
+     latitude: '52.9510361',
+     state: 1,
+     players: '32,33' },
+  ackid: 458 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95103922710454,
+     longitude: -1.18585589721741,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95103922710454,
+     longitude: -1.18585589721741,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.951042319382545,
+     longitude: -1.1858341243496024,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 473 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951042319382545,
+     longitude: -1.1858341243496024,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.95104541166055,
+     longitude: -1.1858123514817949,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 475 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1858341',
+     latitude: '52.9510423',
+     state: 1,
+     players: '32,33' },
+  ackid: 476 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95104541166055,
+     longitude: -1.1858123514817949,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.95104850393856,
+     longitude: -1.1857905786139873,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 490 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95104850393856,
+     longitude: -1.1857905786139873,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.951051596216566,
+     longitude: -1.1857688057461797,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 492 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951051596216566,
+     longitude: -1.1857688057461797,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 493 }
+{ task: { task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1857688',
+     latitude: '52.9510516',
+     state: 1,
+     players: '32,33' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.95105468849457,
+     longitude: -1.1857470328783721,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 507 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95105468849457,
+     longitude: -1.1857470328783721,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.95105778077258,
+     longitude: -1.1857252600105646,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 509 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95105778077258,
+     longitude: -1.1857252600105646,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ task: { task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1857253',
+     latitude: '52.9510578',
+     state: 1,
+     players: '32,33' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.95106087305059,
+     longitude: -1.185703487142757,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 515 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95106087305059,
+     longitude: -1.185703487142757,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.95106396532859,
+     longitude: -1.1856817142749494,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 526 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95106396532859,
+     longitude: -1.1856817142749494,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 527 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.9510670576066,
+     longitude: -1.1856599414071418,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.9510670576066,
+     longitude: -1.1856599414071418,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 529 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1856599',
+     latitude: '52.9510671',
+     state: 1,
+     players: '32,33' },
+  ackid: 530 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95107014988461,
+     longitude: -1.1856381685393342,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 543 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95107014988461,
+     longitude: -1.1856381685393342,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 544 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951073242162614,
+     longitude: -1.1856163956715267,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 545 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951073242162614,
+     longitude: -1.1856163956715267,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 546 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1856164',
+     latitude: '52.9510732',
+     state: 1,
+     players: '32,33' },
+  ackid: 547 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95107633444062,
+     longitude: -1.185594622803719,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 554 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95107633444062,
+     longitude: -1.185594622803719,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 556 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95107942671863,
+     longitude: -1.1855728499359115,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95107942671863,
+     longitude: -1.1855728499359115,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 563 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951082518996635,
+     longitude: -1.185551077068104,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 564 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951082518996635,
+     longitude: -1.185551077068104,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 565 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1855511',
+     latitude: '52.9510825',
+     state: 1,
+     players: '32,33' },
+  ackid: 566 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95108561127464,
+     longitude: -1.1855293042002963,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 579 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95108561127464,
+     longitude: -1.1855293042002963,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 580 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95108870355265,
+     longitude: -1.1855075313324888,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 581 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95108870355265,
+     longitude: -1.1855075313324888,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 582 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1855075',
+     latitude: '52.9510887',
+     state: 1,
+     players: '32,33' },
+  ackid: 583 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951091795830656,
+     longitude: -1.1854857584646812,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 590 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951091795830656,
+     longitude: -1.1854857584646812,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 594 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95109488810866,
+     longitude: -1.1854639855968736,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 598 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95109488810866,
+     longitude: -1.1854639855968736,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 599 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95109798038667,
+     longitude: -1.185442212729066,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 600 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95109798038667,
+     longitude: -1.185442212729066,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1854422',
+     latitude: '52.951098',
+     state: 1,
+     players: '32,33' },
+  ackid: 602 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95110107266468,
+     longitude: -1.1854204398612584,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 615 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95110107266468,
+     longitude: -1.1854204398612584,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 616 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951104164942684,
+     longitude: -1.1853986669934509,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 617 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951104164942684,
+     longitude: -1.1853986669934509,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 618 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1853987',
+     latitude: '52.9511042',
+     state: 1,
+     players: '32,33' },
+  ackid: 619 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95110725722069,
+     longitude: -1.1853768941256433,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95110725722069,
+     longitude: -1.1853768941256433,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 630 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.9511103494987,
+     longitude: -1.1853551212578357,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 634 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.9511103494987,
+     longitude: -1.1853551212578357,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 635 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951113441776705,
+     longitude: -1.1853333483900281,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.951113441776705,
+     longitude: -1.1853333483900281,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 637 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1853333',
+     latitude: '52.9511134',
+     state: 1,
+     players: '32,33' },
+  ackid: 638 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95111653405471,
+     longitude: -1.1853115755222206,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 651 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95111653405471,
+     longitude: -1.1853115755222206,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 652 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95111962633272,
+     longitude: -1.185289802654413,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 653 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95111962633272,
+     longitude: -1.185289802654413,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 654 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1852898',
+     latitude: '52.9511196',
+     state: 1,
+     players: '32,33' },
+  ackid: 655 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951122718610726,
+     longitude: -1.1852680297866054,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 656 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951122718610726,
+     longitude: -1.1852680297866054,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 660 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95112581088873,
+     longitude: -1.1852462569187978,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 671 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95112581088873,
+     longitude: -1.1852462569187978,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 672 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95112890316674,
+     longitude: -1.1852244840509902,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 673 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95112890316674,
+     longitude: -1.1852244840509902,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 674 }
+{ task: { task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1852245',
+     latitude: '52.9511289',
+     state: 1,
+     players: '32,33' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.95113199544475,
+     longitude: -1.1852027111831827,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 688 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95113199544475,
+     longitude: -1.1852027111831827,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 689 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951135087722754,
+     longitude: -1.185180938315375,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 690 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951135087722754,
+     longitude: -1.185180938315375,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 691 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95113818000076,
+     longitude: -1.1851591654475675,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 692 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95113818000076,
+     longitude: -1.1851591654475675,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 693 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.18517005',
+     latitude: '52.95113665',
+     state: 1,
+     players: '32,33' },
+  ackid: 694 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95114127227877,
+     longitude: -1.18513739257976,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 707 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95114127227877,
+     longitude: -1.18513739257976,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 708 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951144364556775,
+     longitude: -1.1851156197119523,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.951144364556775,
+     longitude: -1.1851156197119523,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 710 }
+{ task: { task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1851156',
+     latitude: '52.9511444',
+     state: 1,
+     players: '32,33' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.95114745683478,
+     longitude: -1.1850938468441448,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 724 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95114745683478,
+     longitude: -1.1850938468441448,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 725 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95115054911279,
+     longitude: -1.1850720739763372,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95115054911279,
+     longitude: -1.1850720739763372,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 727 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951153641390796,
+     longitude: -1.1850503011085296,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1850721',
+     latitude: '52.9511505',
+     state: 1,
+     players: '32,33' },
+  ackid: 729 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951153641390796,
+     longitude: -1.1850503011085296,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 733 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.9511567336688,
+     longitude: -1.185028528240722,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 743 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.9511567336688,
+     longitude: -1.185028528240722,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 744 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95115982594681,
+     longitude: -1.1850067553729144,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95115982594681,
+     longitude: -1.1850067553729144,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 746 }
+{ task: { task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1850068',
+     latitude: '52.9511598',
+     state: 1,
+     players: '32,33' },
+  ackid{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95116291822482,
+     longitude: -1.1849849825051069,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95116291822482,
+     longitude: -1.1849849825051069,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 761 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951166010502824,
+     longitude: -1.1849632096372993,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 762 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951166010502824,
+     longitude: -1.1849632096372993,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 763 }
+{ task: { task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1849632',
+     latitude: '52.951166',
+     state: 1,
+     players: '32,33' },
+  ackid{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95116910278083,
+     longitude: -1.1849414367694917,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95116910278083,
+     longitude: -1.1849414367694917,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.95117219505884,
+     longitude: -1.1849196639016841,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 779 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95117219505884,
+     longitude: -1.1849196639016841,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 780 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951175287336845,
+     longitude: -1.1848978910338765,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 781 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951175287336845,
+     longitude: -1.1848978910338765,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1848979',
+     latitude: '52.9511753',
+     state: 1,
+     players: '32,33' },
+  ackid: 783 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95117837961485,
+     longitude: -1.184876118166069,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95117837961485,
+     longitude: -1.184876118166069,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 797 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95118147189286,
+     longitude: -1.1848543452982614,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95118147189286,
+     longitude: -1.1848543452982614,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 799 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951184564170866,
+     longitude: -1.1848325724304538,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 800 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951184564170866,
+     longitude: -1.1848325724304538,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 801 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.1848543',
+     latitude: '52.9511815',
+     state: 1,
+     players: '32,33' },
+  ackid: 802 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95118765644887,
+     longitude: -1.1848107995626462,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95118765644887,
+     longitude: -1.1848107995626462,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 816 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95119074872688,
+     longitude: -1.1847890266948387,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 817 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95119074872688,
+     longitude: -1.1847890266948387,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 818 }
+{ task: 
+   { id: 5,
+     type: 3,
+     requirement: [ 'firefighter', 'soldier' ],
+     description: null,
+     longitude: '-1.184789',
+     latitude: '52.9511907',
+     state: 2,
+     players: '' },
+  ackid: 819 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95119384100489,
+     longitude: -1.184767253827031,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 832 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95119384100489,
+     longitude: -1.184767253827031,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 833 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951196933282894,
+     longitude: -1.1847454809592235,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 834 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951196933282894,
+     longitude: -1.1847454809592235,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 835 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.9512000255609,
+     longitude: -1.184723708091416,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.9512000255609,
+     longitude: -1.184723708091416,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 843 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95120311783891,
+     longitude: -1.1847019352236083,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 850 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95120311783891,
+     longitude: -1.1847019352236083,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 851 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951206210116915,
+     longitude: -1.1846801623558008,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.951206210116915,
+     longitude: -1.1846801623558008,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 853 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95120930239492,
+     longitude: -1.1846583894879932,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 866 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95120930239492,
+     longitude: -1.1846583894879932,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 867 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95121239467293,
+     longitude: -1.1846366166201856,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 868 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95121239467293,
+     longitude: -1.1846366166201856,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 869 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951215486950936,
+     longitude: -1.184614843752378,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 870 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951215486950936,
+     longitude: -1.184614843752378,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.95121857922894,
+     longitude: -1.1845930708845704,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 885 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95121857922894,
+     longitude: -1.1845930708845704,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 886 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95122167150695,
+     longitude: -1.1845712980167629,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 887 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95122167150695,
+     longitude: -1.1845712980167629,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 888 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95122476378496,
+     longitude: -1.1845495251489553,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 901 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95122476378496,
+     longitude: -1.1845495251489553,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.951227856062964,
+     longitude: -1.1845277522811477,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 903 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951227856062964,
+     longitude: -1.1845277522811477,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.95123094834097,
+     longitude: -1.1845059794133401,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 914 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95123094834097,
+     longitude: -1.1845059794133401,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.95123404061898,
+     longitude: -1.1844842065455325,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 919 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95123404061898,
+     longitude: -1.1844842065455325,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.951237132896985,
+     longitude: -1.184462433677725,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 921 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951237132896985,
+     longitude: -1.184462433677725,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95124022517499,
+     longitude: -1.1844406608099174,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95124022517499,
+     longitude: -1.1844406608099174,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 936 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951243317453,
+     longitude: -1.1844188879421098,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 937 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951243317453,
+     longitude: -1.1844188879421098,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 32,
+     latitude: 52.951246409731006,
+     longitude: -1.1843971150743022,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 951 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951246409731006,
+     longitude: -1.1843971150743022,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid0 sectio0 section finish
+swithch STATUS: STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+0.1300012485{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95124888355341,
+     longitude: -1.1843796967800562,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95124888355341,
+     longitude: -1.1843796967800562,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95125197583142,
+     longitude: -1.1843579239122486,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid{ location: 
+   { player_id: 33,
+     latitude: 52.95125197583142,
+     longitude: -1.1843579239122486,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 962 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951255068109425,
+     longitude: -1.184336151044441,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 969 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951255068109425,
+     longitude: -1.184336151044441,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 970 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95125816038743,
+     longitude: -1.1843143781766334,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 971 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95125816038743,
+     longitude: -1.1843143781766334,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 972 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95126125266544,
+     longitude: -1.1842926053088259,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 985 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95126125266544,
+     longitude: -1.1842926053088259,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 986 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951264344943446,
+     longitude: -1.1842708324410183,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 987 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951264344943446,
+     longitude: -1.1842708324410183,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 988 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95126743722145,
+     longitude: -1.1842490595732107,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1001 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95126743722145,
+     longitude: -1.1842490595732107,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.95127052949946,
+     longitude: -1.1842272867054031,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1003 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95127052949946,
+     longitude: -1.1842272867054031,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1004 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95127362177747,
+     longitude: -1.1842055138375955,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95127362177747,
+     longitude: -1.1842055138375955,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1009 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951276714055474,
+     longitude: -1.184183740969788,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1019 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951276714055474,
+     longitude: -1.184183740969788,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1020 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95127980633348,
+     longitude: -1.1841619681019804,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1021 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95127980633348,
+     longitude: -1.1841619681019804,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1022 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95128289861149,
+     longitude: -1.1841401952341728,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95128289861149,
+     longitude: -1.1841401952341728,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1036 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951285990889495,
+     longitude: -1.1841184223663652,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1037 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951285990889495,
+     longitude: -1.1841184223663652,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1038 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.9512890831675,
+     longitude: -1.1840966494985576,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1048 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.9512890831675,
+     longitude: -1.1840966494985576,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1052 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95129217544551,
+     longitude: -1.18407487663075,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95129217544551,
+     longitude: -1.18407487663075,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1054 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951295267723516,
+     longitude: -1.1840531037629425,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1055 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951295267723516,
+     longitude: -1.1840531037629425,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.95129836000152,
+     longitude: -1.184031330895135,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1069 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95129836000152,
+     longitude: -1.184031330895135,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1070 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95130145227953,
+     longitude: -1.1840095580273273,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95130145227953,
+     longitude: -1.1840095580273273,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1072 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95130454455754,
+     longitude: -1.1839877851595197,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1085 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95130454455754,
+     longitude: -1.1839877851595197,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1086 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951307636835544,
+     longitude: -1.1839660122917122,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1087 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951307636835544,
+     longitude: -1.1839660122917122,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1088 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95131072911355,
+     longitude: -1.1839442394239046,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1089 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95131072911355,
+     longitude: -1.1839442394239046,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1093 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95131382139156,
+     longitude: -1.183922466556097,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95131382139156,
+     longitude: -1.183922466556097,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1104 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951316913669565,
+     longitude: -1.1839006936882894,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1105 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951316913669565,
+     longitude: -1.1839006936882894,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1106 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95132000594757,
+     longitude: -1.1838789208204819,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1119 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95132000594757,
+     longitude: -1.1838789208204819,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1120 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95132309822558,
+     longitude: -1.1838571479526743,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1121 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95132309822558,
+     longitude: -1.1838571479526743,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1122 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951326190503586,
+     longitude: -1.1838353750848667,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951326190503586,
+     longitude: -1.1838353750848667,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1136 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95132928278159,
+     longitude: -1.1838136022170591,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1137 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95132928278159,
+     longitude: -1.1838136022170591,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.9513323750596,
+     longitude: -1.1837918293492515,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1139 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.9513323750596,
+     longitude: -1.1837918293492515,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1140 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95133546733761,
+     longitude: -1.183770056481444,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95133546733761,
+     longitude: -1.183770056481444,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1154 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951338559615614,
+     longitude: -1.1837482836136364,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1155 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951338559615614,
+     longitude: -1.1837482836136364,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1156 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95134165189362,
+     longitude: -1.1837265107458288,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1160 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95134165189362,
+     longitude: -1.1837265107458288,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1164 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95134474417163,
+     longitude: -1.1837047378780212,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1171 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95134474417163,
+     longitude: -1.1837047378780212,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1172 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951347836449635,
+     longitude: -1.1836829650102136,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951347836449635,
+     longitude: -1.1836829650102136,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1174 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95135092872764,
+     longitude: -1.183661192142406,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1188 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95135092872764,
+     longitude: -1.183661192142406,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1189 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95135402100565,
+     longitude: -1.1836394192745985,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95135402100565,
+     longitude: -1.1836394192745985,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1191 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951357113283656,
+     longitude: -1.183617646406791,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1195 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951357113283656,
+     longitude: -1.183617646406791,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1199 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95136020556166,
+     longitude: -1.1835958735389833,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1206 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95136020556166,
+     longitude: -1.1835958735389833,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1207 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95136329783967,
+     longitude: -1.1835741006711757,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95136329783967,
+     longitude: -1.1835741006711757,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1209 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95136639011768,
+     longitude: -1.1835523278033682,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1222 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95136639011768,
+     longitude: -1.1835523278033682,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1223 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951369482395684,
+     longitude: -1.1835305549355606,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1224 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951369482395684,
+     longitude: -1.1835305549355606,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.95137257467369,
+     longitude: -1.183508782067753,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1238 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95137257467369,
+     longitude: -1.183508782067753,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1239 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.9513756669517,
+     longitude: -1.1834870091999454,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1240 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.9513756669517,
+     longitude: -1.1834870091999454,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1241 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951378759229705,
+     longitude: -1.1834652363321378,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951378759229705,
+     longitude: -1.1834652363321378,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1246 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95138185150771,
+     longitude: -1.1834434634643303,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1256 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95138185150771,
+     longitude: -1.1834434634643303,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1257 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95138494378572,
+     longitude: -1.1834216905965227,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95138494378572,
+     longitude: -1.1834216905965227,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1259 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951388036063726,
+     longitude: -1.1833999177287151,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1272 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951388036063726,
+     longitude: -1.1833999177287151,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.95139112834173,
+     longitude: -1.1833781448609075,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1274 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95139112834173,
+     longitude: -1.1833781448609075,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1275 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95139422061974,
+     longitude: -1.1833563719931,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1282 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95139422061974,
+     longitude: -1.1833563719931,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1286 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95139731289775,
+     longitude: -1.1833345991252924,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95139731289775,
+     longitude: -1.1833345991252924,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1291 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951400405175754,
+     longitude: -1.1833128262574848,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1292 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951400405175754,
+     longitude: -1.1833128262574848,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1293 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95140349745376,
+     longitude: -1.1832910533896772,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1306 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95140349745376,
+     longitude: -1.1832910533896772,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1307 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95140658973177,
+     longitude: -1.1832692805218696,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95140658973177,
+     longitude: -1.1832692805218696,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1309 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951409682009775,
+     longitude: -1.183247507654062,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951409682009775,
+     longitude: -1.183247507654062,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1323 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95141277428778,
+     longitude: -1.1832257347862545,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1324 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95141277428778,
+     longitude: -1.1832257347862545,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1325 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95141586656579,
+     longitude: -1.183203961918447,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1326 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95141586656579,
+     longitude: -1.183203961918447,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1327 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951418958843796,
+     longitude: -1.1831821890506393,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1340 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951418958843796,
+     longitude: -1.1831821890506393,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1341 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.9514220511218,
+     longitude: -1.1831604161828317,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1342 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.9514220511218,
+     longitude: -1.1831604161828317,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1343 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95142514339981,
+     longitude: -1.1831386433150242,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1356 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95142514339981,
+     longitude: -1.1831386433150242,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1357 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95142823567782,
+     longitude: -1.1831168704472166,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95142823567782,
+     longitude: -1.1831168704472166,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1359 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951431327955824,
+     longitude: -1.183095097579409,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1366 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951431327955824,
+     longitude: -1.183095097579409,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.95143442023383,
+     longitude: -1.1830733247116014,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1374 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95143442023383,
+     longitude: -1.1830733247116014,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1375 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95143751251184,
+     longitude: -1.1830515518437938,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1376 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95143751251184,
+     longitude: -1.1830515518437938,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1377 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951440604789845,
+     longitude: -1.1830297789759863,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1391 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951440604789845,
+     longitude: -1.1830297789759863,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95144369706785,
+     longitude: -1.1830080061081787,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95144369706785,
+     longitude: -1.1830080061081787,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1394 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95144678934586,
+     longitude: -1.182986233240371,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1407 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95144678934586,
+     longitude: -1.182986233240371,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1408 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951449881623866,
+     longitude: -1.1829644603725635,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1409 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951449881623866,
+     longitude: -1.1829644603725635,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.95145297390187,
+     longitude: -1.182942687504756,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1414 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95145297390187,
+     longitude: -1.182942687504756,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1418 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95145606617988,
+     longitude: -1.1829209146369484,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1425 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95145606617988,
+     longitude: -1.1829209146369484,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1426 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95145915845789,
+     longitude: -1.1828991417691408,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95145915845789,
+     longitude: -1.1828991417691408,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1428 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951462250735894,
+     longitude: -1.1828773689013332,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1441 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951462250735894,
+     longitude: -1.1828773689013332,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1442 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.9514653430139,
+     longitude: -1.1828555960335256,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1443 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.9514653430139,
+     longitude: -1.1828555960335256,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1444 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95146843529191,
+     longitude: -1.182833823165718,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95146843529191,
+     longitude: -1.182833823165718,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1455 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951471527569915,
+     longitude: -1.1828120502979105,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1459 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951471527569915,
+     longitude: -1.1828120502979105,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1460 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95147461984792,
+     longitude: -1.182790277430103,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1461 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95147461984792,
+     longitude: -1.182790277430103,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1462 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95147771212593,
+     longitude: -1.1827685045622953,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95147771212593,
+     longitude: -1.1827685045622953,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1476 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951480804403936,
+     longitude: -1.1827467316944877,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1477 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951480804403936,
+     longitude: -1.1827467316944877,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1478 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95148389668194,
+     longitude: -1.1827249588266802,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1491 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95148389668194,
+     longitude: -1.1827249588266802,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1492 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95148698895995,
+     longitude: -1.1827031859588726,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1493 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95148698895995,
+     longitude: -1.1827031859588726,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1494 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95149008123796,
+     longitude: -1.182681413091065,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95149008123796,
+     longitude: -1.182681413091065,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1499 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95149317351596,
+     longitude: -1.1826596402232574,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1509 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95149317351596,
+     longitude: -1.1826596402232574,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1510 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95149626579397,
+     longitude: -1.1826378673554498,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1511 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95149626579397,
+     longitude: -1.1826378673554498,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1512 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95149935807198,
+     longitude: -1.1826160944876423,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95149935807198,
+     longitude: -1.1826160944876423,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1526 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951502450349984,
+     longitude: -1.1825943216198347,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1527 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951502450349984,
+     longitude: -1.1825943216198347,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1528 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95150554262799,
+     longitude: -1.182572548752027,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1535 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95150554262799,
+     longitude: -1.182572548752027,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1539 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951508634906,
+     longitude: -1.1825507758842195,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951508634906,
+     longitude: -1.1825507758842195,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1544 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951511727184005,
+     longitude: -1.182529003016412,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1545 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951511727184005,
+     longitude: -1.182529003016412,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1546 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95151481946201,
+     longitude: -1.1825072301486044,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1559 }
+1 sectio1 section finish
+swithch STATUS: STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+0.1300012485{ location: 
+   { player_id: 33,
+     latitude: 52.95151481946201,
+     longitude: -1.1825072301486044,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1560 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95151234563961,
+     longitude: -1.1825246484428504,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1561 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95151234563961,
+     longitude: -1.1825246484428504,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1562 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.9515092533616,
+     longitude: -1.182546421310658,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.9515092533616,
+     longitude: -1.182546421310658,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1570 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95150616108359,
+     longitude: -1.1825681941784656,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95150616108359,
+     longitude: -1.1825681941784656,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1578 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951503068805586,
+     longitude: -1.1825899670462732,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1579 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951503068805586,
+     longitude: -1.1825899670462732,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1580 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95149997652758,
+     longitude: -1.1826117399140808,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1593 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95149997652758,
+     longitude: -1.1826117399140808,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95149688424957,
+     longitude: -1.1826335127818883,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95149688424957,
+     longitude: -1.1826335127818883,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1596 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951493791971565,
+     longitude: -1.182655285649696,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1597 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951493791971565,
+     longitude: -1.182655285649696,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1601 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95149069969356,
+     longitude: -1.1826770585175035,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1611 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95149069969356,
+     longitude: -1.1826770585175035,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.95148760741555,
+     longitude: -1.182698831385311,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1613 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95148760741555,
+     longitude: -1.182698831385311,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1614 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951484515137544,
+     longitude: -1.1827206042531186,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951484515137544,
+     longitude: -1.1827206042531186,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1628 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95148142285954,
+     longitude: -1.1827423771209262,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1629 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95148142285954,
+     longitude: -1.1827423771209262,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1630 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95147833058153,
+     longitude: -1.1827641499887338,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1631 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95147833058153,
+     longitude: -1.1827641499887338,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1635 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95147523830352,
+     longitude: -1.1827859228565414,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1645 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95147523830352,
+     longitude: -1.1827859228565414,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1646 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951472146025516,
+     longitude: -1.182807695724349,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951472146025516,
+     longitude: -1.182807695724349,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1648 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95146905374751,
+     longitude: -1.1828294685921565,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1661 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95146905374751,
+     longitude: -1.1828294685921565,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.9514659614695,
+     longitude: -1.1828512414599641,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1663 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.9514659614695,
+     longitude: -1.1828512414599641,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1664 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951462869191495,
+     longitude: -1.1828730143277717,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951462869191495,
+     longitude: -1.1828730143277717,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1672 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95145977691349,
+     longitude: -1.1828947871955793,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1679 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95145977691349,
+     longitude: -1.1828947871955793,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1680 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95145668463548,
+     longitude: -1.1829165600633869,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1681 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95145668463548,
+     longitude: -1.1829165600633869,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1682 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951453592357474,
+     longitude: -1.1829383329311944,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951453592357474,
+     longitude: -1.1829383329311944,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1697 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95145050007947,
+     longitude: -1.182960105799002,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1698 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95145050007947,
+     longitude: -1.182960105799002,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1699 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95144740780146,
+     longitude: -1.1829818786668096,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1703 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95144740780146,
+     longitude: -1.1829818786668096,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1707 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95144431552345,
+     longitude: -1.1830036515346172,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95144431552345,
+     longitude: -1.1830036515346172,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1715 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951441223245446,
+     longitude: -1.1830254244024248,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1716 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951441223245446,
+     longitude: -1.1830254244024248,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1717 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95143813096744,
+     longitude: -1.1830471972702323,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95143813096744,
+     longitude: -1.1830471972702323,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.95143503868943,
+     longitude: -1.18306897013804,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1732 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95143503868943,
+     longitude: -1.18306897013804,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1733 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951431946411425,
+     longitude: -1.1830907430058475,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951431946411425,
+     longitude: -1.1830907430058475,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1747 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95142885413342,
+     longitude: -1.183112515873655,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1748 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95142885413342,
+     longitude: -1.183112515873655,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1749 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95142576185541,
+     longitude: -1.1831342887414626,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95142576185541,
+     longitude: -1.1831342887414626,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1754 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951422669577404,
+     longitude: -1.1831560616092702,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951422669577404,
+     longitude: -1.1831560616092702,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1765 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.9514195772994,
+     longitude: -1.1831778344770778,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1766 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.9514195772994,
+     longitude: -1.1831778344770778,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1767 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95141648502139,
+     longitude: -1.1831996073448854,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95141648502139,
+     longitude: -1.1831996073448854,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1781 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95141339274338,
+     longitude: -1.183221380212693,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95141339274338,
+     longitude: -1.183221380212693,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.951410300465376,
+     longitude: -1.1832431530805005,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1787 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951410300465376,
+     longitude: -1.1832431530805005,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1791 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95140720818737,
+     longitude: -1.1832649259483081,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1798 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95140720818737,
+     longitude: -1.1832649259483081,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.95140411590936,
+     longitude: -1.1832866988161157,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1800 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95140411590936,
+     longitude: -1.1832866988161157,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1801 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951401023631355,
+     longitude: -1.1833084716839233,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1814 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951401023631355,
+     longitude: -1.1833084716839233,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1815 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95139793135335,
+     longitude: -1.1833302445517309,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1816 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95139793135335,
+     longitude: -1.1833302445517309,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95139483907534,
+     longitude: -1.1833520174195384,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95139483907534,
+     longitude: -1.1833520174195384,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1831 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951391746797334,
+     longitude: -1.183373790287346,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951391746797334,
+     longitude: -1.183373790287346,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1833 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95138865451933,
+     longitude: -1.1833955631551536,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1834 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95138865451933,
+     longitude: -1.1833955631551536,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.95138556224132,
+     longitude: -1.1834173360229612,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1848 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95138556224132,
+     longitude: -1.1834173360229612,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1849 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95138246996331,
+     longitude: -1.1834391088907688,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1850 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95138246996331,
+     longitude: -1.1834391088907688,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1851 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951379377685306,
+     longitude: -1.1834608817585763,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1864 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.951379377685306,
+     longitude: -1.1834608817585763,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 32,
+     latitude: 52.9513762854073,
+     longitude: -1.183482654626384,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1866 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.9513762854073,
+     longitude: -1.183482654626384,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1867 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95137319312929,
+     longitude: -1.1835044274941915,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95137319312929,
+     longitude: -1.1835044274941915,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1875 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951370100851285,
+     longitude: -1.183526200361999,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951370100851285,
+     longitude: -1.183526200361999,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1883 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95136700857328,
+     longitude: -1.1835479732298066,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1884 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95136700857328,
+     longitude: -1.1835479732298066,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1885 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95136391629527,
+     longitude: -1.1835697460976142,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1895 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95136391629527,
+     longitude: -1.1835697460976142,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1899 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.951360824017264,
+     longitude: -1.1835915189654218,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1901 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.951360824017264,
+     longitude: -1.1835915189654218,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1902 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95135773173926,
+     longitude: -1.1836132918332294,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1903 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95135773173926,
+     longitude: -1.1836132918332294,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1904 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95135463946125,
+     longitude: -1.183635064701037,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1917 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95135463946125,
+     longitude: -1.183635064701037,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1918 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95135154718324,
+     longitude: -1.1836568375688445,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1919 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95135154718324,
+     longitude: -1.1836568375688445,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1920 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95134845490524,
+     longitude: -1.1836786104366521,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1933 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95134845490524,
+     longitude: -1.1836786104366521,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1934 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95134536262723,
+     longitude: -1.1837003833044597,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1935 }
+{ locati{ location: 
+   { player_id: 33,
+     latitude: 52.95134536262723,
+     longitude: -1.1837003833044597,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid:{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.95134227034922,
+     longitude: -1.1837221561722673,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.95134227034922,
+     longitude: -1.1837221561722673,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1941 }
+{ locati{ location: 
+   { player_id: 32,
+     latitude: 52.951339178071215,
+     longitude: -1.1837439290400749,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid:{ location: 
+   { player_id: 33,
+     latitude: 52.951339178071215,
+     longitude: -1.1837439290400749,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1952 }
+{ location: 
+   { player_id: 32,
+     latitude: 52.95133608579321,
+     longitude: -1.1837657019078824,
+     skill: 'soldier',
+     initials: 'AA' },
+  ackid: 1953 }
+{ location: 
+   { player_id: 33,
+     latitude: 52.95133608579321,
+     longitude: -1.1837657019078824,
+     skill: 'firefighter',
+     initials: 'AA' },
+  ackid: 1954 }
+ 1954 }

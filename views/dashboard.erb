@@ -1,0 +1,100 @@
+<script type="text/javascript">
+  var test =  <%= @test %>
+  var layerId =  <%= @game.layer_id %>;
+  $(function(){
+  	if(!document.getElementById("map")) {
+  		return;
+  	}
+
+  	var myOptions = {
+  		zoom: 15,
+  		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
+  		mapTypeId: google.maps.MapTypeId.HYBRID,
+  		mapTypeControl: true,
+		disableDoubleClickZoom: true
+  	};
+
+  	// Create the main map
+  	map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+
+	$("#collapse").click(function(){
+		if($("#chat-window").is(':visible')){
+			$("#chat-window").hide();
+			$("#collapse").val("open chatting window");
+		}
+		else{
+			$("#chat-window").show();
+			$("#collapse").val("collapse");
+		}
+	});
+
+	$("#submitmsg").click(function(){	
+
+		var clientmsg = $("#usermsg").val(); 
+		sendMsg(clientmsg);		
+		$("#usermsg").attr("value", "");
+		return false;
+	});
+	
+	$("#usermsg").keypress(function(event){
+		if(event.which == 13){
+			var clientmsg = $("#usermsg").val(); 
+			sendMsg(clientmsg);		
+			$("#usermsg").attr("value", "");
+		}	
+
+	});
+	GameMap.fitToRadius(<%= @game.radius %>);
+    
+	
+  });
+
+
+</script>
+	<div id="wrapper">
+		<div id="scoreboard-wrapper">
+				<h1>Atomic Orchid</h1>
+		</div>
+		
+		<div id="wedget-panel-1">
+			<div id="test-panel">
+				
+				<input type="text" value=0 id="txt-frame" size=5 />
+				<input type="button" value="set frame" id="btn-setframe" />
+				<input type="button" value="fetchplan" id="btn-fetchplan" />
+			</div>
+			<div id="active-player-wrapper">
+				<div align="center">
+				<table  id="players" >
+					<th>Players&nbsp&nbsp&nbsp&nbsp</th>
+					<th>Health&nbsp&nbsp&nbsp&nbsp</th>
+					<th>Exposure&nbsp&nbsp&nbsp&nbsp</th>
+					<th>Instruction</th> 
+				 </table>
+				</div>
+			
+			</div>	
+			<div id="chat-wrapper">
+				<input name="collapse" type="button" id="collapse" value="collapse"/>
+				<div id="chat-window"> 
+					<div id="chatbox"></div> 
+					<input name="usermsg" type="text" id="usermsg" size="63" />
+					<input name="submitmsg" type="button"  id="submitmsg" value="Send" />
+				</div>
+			</div>
+		</div>
+
+
+		<div id="map"></div>
+
+
+		
+    
+    	
+      </div> 
+    <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
+    <input type="hidden" id="user_id" value="<%= @user_id %>" />
+    <input type="hidden" id="user_initials" value="<%= @user_initials %>" />
+    <input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
+    <input type="hidden" id="game_status" value=<%= @game.is_active %> />

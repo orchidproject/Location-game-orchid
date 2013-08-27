@@ -1,0 +1,138 @@
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" >
+
+var  data1  =  <%= @data1 %> ;
+var  data2  =  <%= @data2 %> ;
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+	  //preparing data
+	  var min_player_id = data1[0].detail.id;
+	  var max_player_id = data1[0].detail.id;
+
+	  var min_time_frame = data1[0].detail.time_frame;
+	  var max_time_frame = data1[0].detail.time_frame;
+
+	  var data_set1 = new google.visualization.DataTable();
+	  data_set1.addColumn('number', 'time_frame');
+	  data_set1.addColumn('number', 'pick up');
+	  data_set1.addColumn({type:'string', role:'tooltip'}); 
+	  data_set1.addColumn('number', 'drop off');
+	  data_set1.addColumn({type:'string', role:'tooltip'}); 
+
+
+	  $(data1).each(function(index,value){
+		if (value.detail.id <= min_player_id) {
+			min_player_id = value.detail.id; 
+		}else if( value.detail.id >= max_player_id ){
+			max_player_id = value.detail.id; 
+		}
+
+		if (value.detail.time_frame <= min_player_id) {
+			min_time_frame = value.detail.time_frame; 
+		}else if( value.detail.time_frame >= max_player_id ){
+			max_time_frame = value.detail.time_frame; 
+		}
+
+		if(value.action == "picked up"){
+			data_set1.addRow(
+				[value.detail.time_frame,
+				 value.detail.id,
+				 "player: " + value.detail.id + " task: " + value.detail.task + "",
+				 null ,
+				 null
+				]); 
+		}
+		else if( value.action == "dropped off"){
+			data_set1.addRow(
+				[value.detail.time_frame,
+				 null,
+				 null,
+				 value.detail.id, 
+				 "player: " + value.detail.id + " task: " + value.detail.task + ""
+				]  ); 
+
+							
+		}
+	  });
+
+	  var data_set2 = new google.visualization.DataTable();
+	  data_set2.addColumn('number', 'time_frame');
+	  data_set2.addColumn('number', 'pick up');
+	  data_set2.addColumn({type:'string', role:'tooltip'}); 
+	  data_set2.addColumn('number', 'drop off');
+	  data_set2.addColumn({type:'string', role:'tooltip'}); 
+
+
+
+	  $(data2).each(function(index,value){
+		if (value.detail.id <= min_player_id) {
+			min_player_id = value.detail.id; 
+		}else if( value.detail.id >= max_player_id ){
+			max_player_id = value.detail.id; 
+		}
+
+		if (value.detail.time_frame <= min_player_id) {
+			min_time_frame = value.detail.time_frame; 
+		}else if( value.detail.time_frame >= max_player_id ){
+			max_time_frame = value.detail.time_frame; 
+		}
+
+		if(value.action == "picked up"){
+			data_set2.addRow(
+				[value.detail.time_frame,value.detail.id, 
+				 "player: " + value.detail.id + " task: " + value.detail.task + "" ,
+				 null, null]);
+		}
+		else if( value.action == "dropped off"){
+			data_set2.addRow(
+				[value.detail.time_frame,
+				 null,null,
+				 value.detail.id,
+				 "player: " + value.detail.id + " task: " + value.detail.task + "" 
+				]); }
+	  });
+
+	
+	  //rendring data
+
+	  var options1 = {
+          	title: 'The plan',
+		hAxis: {title: 'time_frame', minValue: min_time_frame , maxValue: max_time_frame},
+		vAxis: {title: 'players', minValue: min_player_id, maxValue: max_player_id},
+		legend: 'none'
+          };
+
+          var chart = new google.visualization.ScatterChart(document.getElementById('chart1'));
+          chart.draw(data_set1, options1);
+
+	  options2 = {
+          	title: 'Real game play',
+		hAxis: {title: 'time_frame', minValue: min_time_frame , maxValue: max_time_frame},
+		vAxis: {title: 'players', minValue: min_player_id, maxValue: max_player_id},
+		legend: 'none'
+          };
+
+
+	  chart = new google.visualization.ScatterChart(document.getElementById('chart2'));
+          chart.draw(data_set2, options2);
+ 
+      }
+
+
+</script>
+
+
+<div id = "chart1" >
+
+
+</div>
+
+<div id = "chart2" >
+
+
+</div>

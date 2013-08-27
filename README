@@ -27,7 +27,7 @@ Team - define the role of players
 
 Player - game players including controller, street runner, and virtual  truck
 
-Reading, Request, Cargo - static entities in the game
+Dropoffpoints - static entity in the game
 
 For detailed attributes please refer to files in folder “models”
 
@@ -51,3 +51,16 @@ to run this agent
 
 
 A complete agent api documentation will be available shortly. 
+
+
+TODO 
+
+1. put initials on icon
+2. socketIO need to handle disconnect
+3. user logout
+3. mainloop inplementation.
+	- e.g. tasks only carried by specified players/roles etc.(done) 
+	- destination drop off point(new)
+4. virtual agent implementation (done)
+5. messaging system 
+	- add text field in mobile web view

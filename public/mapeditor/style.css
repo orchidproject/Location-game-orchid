@@ -1,0 +1,26 @@
+body {
+		padding: 0;
+		margin: 0;
+}
+
+#pointToolbar {
+		background: white;
+		padding: 3px;
+		position: absolute;
+}
+#editor-tabs {
+		position: absolute;
+		top: 8px;
+		left: 100px;
+		background: white;
+		z-index: 1000;
+		border: 1px #999 solid;
+		-moz-box-shadow: 2px 2px 3px #777;
+		-webkit-box-shadow: 2px 2px 3px #777;
+		box-shadow: 2px 2px 3px #777;
+}
+.ui-selected { border-style: solid;border-color:#ff0000  }
+.targets-selectable { list-style-type: none; margin: 0; padding: 0; height:40 }
+.targets-selectable li { margin: 6px; padding: 10px; float: left; width: 70px; height: 15px; font-size: 1em; text-align: center; } 
+.state-default { background: #00ff00}
+.state-delete { background: #C0C0C0}
