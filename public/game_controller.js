@@ -272,7 +272,9 @@ function receivePlayerInfoData(data){
 function cleanup (player_id){
 	//when receiving clean up message
 	//delete player in array
-	players[player_id].marker.setMap(null);
+	if( players[player_id] != null){
+		players[player_id].marker.setMap(null);
+	}
 	players[player_id] = null;
 	//delete player in view panel 
 	var element = $("#panel_element_"+player_id);	
