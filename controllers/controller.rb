@@ -262,12 +262,24 @@ class Controller < Sinatra::Base
   end 
  
  get '/player/:i1/:i2/:role/map_icon.png' do
+    role = params[:role]
+    if role == "0"
+	role = "medic"
+    elsif role =="1"
+	role = "firefighter"
+    elsif role =="2"
+	role = "soldier"	
+    elsif role =="3"
+	role = "transporter"
+    end
+
+
     a = params[:i1].upcase
     b = params[:i2].upcase
         
-    file_path = File.join Controller.root, "public", "icons", "#{a}#{b}_#{params[:role]}.png"
+    file_path = File.join Controller.root, "public", "icons", "#{a}#{b}_#{role}.png"
     file_path_tmp = "#{file_path}tmp"
-    marker_path = File.join Controller.root, "public", "img", "#{params[:role]}.png"
+    marker_path = File.join Controller.root, "public", "img", "#{role}.png"
     
     if File.exist?(file_path)
         send_file file_path

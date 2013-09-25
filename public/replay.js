@@ -140,9 +140,13 @@ function oneStep(i,callback){
 
 
 function process_data(data){
-    	 
-        if(typeof data.acc_exposure != "undefined"){
-            receiveExposureData(data.acc_exposure);
+
+    	if(typeof data.playerInfo != "undefined"){
+            receivePlayerInfoData(data.playerInfo);
+        }
+
+        if(typeof data.health != "undefined"){
+            receiveHealthData(data.health);
         }
         
         if(typeof data.system != "undefined"){
