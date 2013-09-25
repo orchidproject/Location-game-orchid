@@ -1,0 +1,102 @@
+
+<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization',
+       'version':'1','packages':['timeline']}]}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" >
+
+var  data1  =  <%= @data1 %> ;
+var  data2  =  <%= @data2 %> ;
+      google.load("visualization", "1", {packages:["corechart"]});
+
+
+
+      google.setOnLoadCallback(drawChart);
+	   	   
+
+      function sort(data){
+	   var temp = []; 
+	   var lindex = 0;
+	   while(data.length!=0){ 
+		$(data).each(function(index,value){
+			if(value.detail.id > data[lindex].detail.id){
+				lindex = index;	
+			}
+		});		
+	        var largest = data.splice(lindex,1)[0]; 
+		lindex = 0;
+		temp.push(largest);
+	   } 
+	   return temp; 
+      }
+
+      function drawChart() {
+	  data1 = sort(data1);
+	  data2 = sort(data2);
+	  var data_set1 = new google.visualization.DataTable();
+	  data_set1.addColumn('string', 'player');
+	  data_set1.addColumn('string', 'task');
+	  data_set1.addColumn('date', 'start');
+	  data_set1.addColumn('date', 'end');
+
+	  var tempdata = {};
+	  $(data1).each(function(index,value){
+		if(value.action == "picked up"){
+			tempdata[value.detail.id] = value; 
+		}
+		else{
+			var temp=tempdata[value.detail.id]
+			if(temp == null){
+				alert("there are unmatched events");
+			}
+			data_set1.addRow(["player" + value.detail.id, "task" + value.detail.task,new Date(0,0,0,0,0,temp.detail.time_frame*12),new Date(0,0,0,0,0,value.detail.time_frame*12)  ])
+		}
+	  });
+
+	  var data_set2 = new google.visualization.DataTable();
+	  data_set2.addColumn('string', 'player');
+	  data_set2.addColumn('string', 'task');
+	  data_set2.addColumn('date', 'start');
+	  data_set2.addColumn('date', 'end');
+
+	  $(data2).each(function(index,value){
+		if(value.action == "picked up"){
+			tempdata[value.detail.id] = value; 
+		}
+		else{
+			var temp=tempdata[value.detail.id]
+			if(temp == null){
+				alert("there are unmatched events");
+			}
+			data_set2.addRow(["player" + value.detail.id, "task" + value.detail.task,new Date(0,0,0,0,0,temp.detail.time_frame*12),new Date(0,0,0,0,0,value.detail.time_frame*12)  ])
+		}
+
+	  });
+
+	
+	  //rendring data
+
+	  var options1 = { height:400};
+
+          var chart = new google.visualization.Timeline(document.getElementById('chart1'));
+          chart.draw(data_set1, options1);
+
+	  var options2 = { height:400};
+	  
+	  chart = new google.visualization.Timeline(document.getElementById('chart2'));
+          chart.draw(data_set2, options2);
+ 
+      }
+
+
+</script>
+
+
+<div id = "chart1" >
+
+
+</div>
+
+<div id = "chart2" >
+
+
+</div>

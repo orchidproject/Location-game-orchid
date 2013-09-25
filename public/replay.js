@@ -56,6 +56,10 @@ function forward_to(sec,callback){
 	var current_time = Math.floor((log[index].time_stamp - base_time)/1000);
 
 	if (sec < current_time){
+		//clear heatmap data
+		heatMapData = [];
+		heat_map = [];
+
 		$(players).each(function(index,value){
 			
 			if(value!=null&&value.instruction!=null){
