@@ -63,7 +63,7 @@ class Controller < Sinatra::Base
 			end 
 
 			player.each do |p|		
-				if p.id == pid.to_i
+				if p["id"] == pid.to_i
 					p[:task] = t.id
 				end
 			end 
