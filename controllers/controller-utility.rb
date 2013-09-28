@@ -56,10 +56,14 @@ class Controller < Sinatra::Base
 
 	  #assign a new attribute "task to players" 
 	  if !t.players.nil? && t.players != ""
-		players = t.players.split(",")
-		players.each do |pid|
+		pids = t.players.split(",")
+		pids.each do |pid|
+			if pid == "" || pid.nil?
+				next
+			end 
+
 			player.each do |p|		
-				if p.id == pid
+				if p.id == pid.to_i
 					p[:task] = t.id
 				end
 			end 
