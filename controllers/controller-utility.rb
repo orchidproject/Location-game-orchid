@@ -36,7 +36,8 @@ class Controller < Sinatra::Base
 			:status => ins.status,
 			:time => ins.created_at.to_time.to_i,
 			:id => ins.id,
-			:player_id => ins.player_id
+			:player_id => ins.player_id,
+			:task => -1
 		 }
 	end	
     end 
@@ -52,6 +53,18 @@ class Controller < Sinatra::Base
               :players => t.players
               
           }
+
+	  #assign a new attribute "task to players" 
+	  if !t.players.nil? && t.players != ""
+		players = t.players.split(",")
+		players.each do |pid|
+			player.each do |p|		
+				if p.id == pid
+					p[:task] = t.id
+				end
+			end 
+	  	end 
+	  end 
     end
     
     game.dropoffpoints.each do |d|
@@ -83,8 +96,6 @@ class Controller < Sinatra::Base
 	response[:terrains] = JSON.parse(game.terrains)
 
     elsif action=="fetch"
-		
-
 	response = {
 		:players => player,
 		:tasks => task
