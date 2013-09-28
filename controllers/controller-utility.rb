@@ -63,7 +63,9 @@ class Controller < Sinatra::Base
 			end 
 
 			player.each do |p|		
-				if p["id"] == pid.to_i
+				puts p 
+				if p[:id] == pid.to_i
+					puts "got it !!!!!!"
 					p[:task] = t.id
 				end
 			end 
@@ -181,10 +183,8 @@ class Controller < Sinatra::Base
          	state_change =	t.update(socketIO)
 		puts state_change
 		if(3 == state_change[:after]&&1 == state_change[:before]) 
-			puts "update session"	
 			updateSession=true
 		elsif(2 == state_change[:after]&&1 == state_change[:before]) 
-			puts "fetch plan"
 			updatePlan = true
 		end
 
@@ -200,7 +200,7 @@ class Controller < Sinatra::Base
 		puts " instruction for " + p.id.to_s + " is rejected *********************************************************************************************" + instruction.id.to_s
 		updatePlan = true
 	     else
-		puts "no instruction rejected*********************************************************************************************************"  
+		puts "no instruction *********************************************************************************************************"  
 	     end
 
 
@@ -274,7 +274,6 @@ class Controller < Sinatra::Base
 	agent = PlanHandler.instances(game_id)
 	data = agentSnapshot(game_id,frame,"fetch")
 	agent.pushFetchTask(data.to_json) do |res|
-		puts "fetch plan"
 		processResponse(game_id,res)		
 	end 
   end
@@ -283,7 +282,6 @@ class Controller < Sinatra::Base
 	agent = PlanHandler.instances(game_id)
 	data = agentSnapshot(game_id,frame,"update")
 	agent.pushUpdateTask(data.to_json)	do |res|
-		puts "session updated" 
 		agentFetchPlan(game_id, frame) 
 	end 
 
