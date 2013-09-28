@@ -24,7 +24,8 @@ class Controller < Sinatra::Base
 		:initials => p.initials,
 		:skill => p.skill,
 		:status => p.status,
-		:health => p.health
+		:health => p.health,
+		:task => -1
 	} 
 	
 	ins = Instruction.last(:player_id => p.id)
@@ -36,8 +37,7 @@ class Controller < Sinatra::Base
 			:status => ins.status,
 			:time => ins.created_at.to_time.to_i,
 			:id => ins.id,
-			:player_id => ins.player_id,
-			:task => -1
+			:player_id => ins.player_id
 		 }
 	end	
     end 
