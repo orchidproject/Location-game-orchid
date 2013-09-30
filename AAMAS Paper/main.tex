@@ -1,5 +1,5 @@
 % This is "aamas2014.tex", a revised version of aamas2013.tex
-% This file should be compiled with "aamas2014.cls" 
+% This file should be compiled with "aamas2014.cls"
 % This example file demonstrates the use of the 'aamas2014.cls'
 % LaTeX2e document class file. It is for those submitting
 % articles to AAMAS 2014  conference. This file is based on
@@ -34,15 +34,18 @@
 % ONE 'self-contained' source file.
 %
 
-% This is the document class for full camera ready papers and extended abstracts repsectively 
+% This is the document class for full camera ready papers and extended abstracts repsectively
 
 \documentclass{aamas2014}
 
 % if you are using PDF LaTex and you cannot find a way for producing
 % letter, the following explicit settings may help
- 
+
 \pdfpagewidth=8.5truein
 \pdfpageheight=11truein
+
+\usepackage[ruled, vlined]{algorithm2e}
+\DontPrintSemicolon
 
 \begin{document}
 
@@ -219,12 +222,183 @@ Joel and Feng
 \item Explain the disaster response problem.
 \item Mathematical model of the problem
 \end{enumerate}
+
+%[[Feng]]
+The coordination problem with $n$ players and $m$ tasks can be
+formally modeled as a multi-agent Markov decision process (MMDP),
+$\langle I, S, \{A_i\}, P, R \rangle$, where:
+\begin{itemize}
+  \item $I$ is a set of $n$ game players. Each player is
+      associated with a unique identifier number, a health
+      level (between 0 to 100) indicating his health condition,
+      and a skill representing a role (medic, firefighter,
+      soldier, or transporter) in the game.
+  \item $S = S_r \times S_{p_1} \times \cdots \times S_{p_n}
+      \times S_{t_1} \times \cdots \times S_{t_m}$ is the state
+      space: $S_r$ is the state variable of the radiation cloud
+      to specify the radiation level (between 0 and 100) of
+      each grid; $S_{p_i}$ is the state variable for player $i$
+      to specify his current health level and location;
+      $S_{t_j}$ is the state variable for task $j$ to specify
+      its status (picked up, dropped off, or idle) and
+      location.
+  \item $A_i$ is a set of player $i$'s actions. Each player can
+      stay in his current grid, move to his 8 neighboring grids
+      (N, NE, E, SE, S, SW, W, NW), or pickup/drop a task
+      located in his current grid. A joint action is a list of
+      actions, $\vec{a}=\langle a_1, \cdots, a_n \rangle$, one
+      for each player.
+  \item $P = P_r \times P_{p_1} \times P_{p_n} \times P_{t_1}
+      \times P_{t_n}$ is the transition function:
+      $P_r(s'_r|s_r)$ is the probability for the radiation
+      cloud to expand from state variable $s_r$ to $s'_r$;
+      $P_{p_i}(s'_{p_i}|s_{p_i}, a_i)$ is the probability for
+      player $i$ to transit from state variable $s_{p_i}$ to
+      $s'_{p_i}$ when executing action $a_i$ (e.g., when a
+      player moves to north, his health level and location will
+      be updated based on his previous health level and
+      location); $P_{t_j}(s'_{t_j}|s_{t_j}, \vec{a})$ is the
+      transition probability for task $j$ and a task transits
+      to a new state only when all the necessarily skilled
+      players are located in the same grid as the task and
+      perform the ``pickup/drop" actions at the same time.
+  \item $R$ is the reward function. If a task has been dropped
+      off on any dropoff zone, a big reward is received. A huge
+      penalty is given if a player is killed. Each player's
+      action is associated with a small cost.
+\end{itemize}
+At each time step of the game, we assume the planning agent is
+fully observable of the current state. Thus, a plan (a.k.a policy)
+for the team is a mapping from states to joint actions, $\pi: S
+\rightarrow \vec{A}$. By given a plan, the players know how to act
+in the field. The expected value of a plan $\pi$ can be computed
+recursively by the Bellman equation:
+\begin{equation}
+  V^\pi(s) = R(s, \pi(s)) + \gamma \sum_{s'\in S} P(s'|s, \pi(s)) V^\pi(s')
+\end{equation}
+where $\pi(s)$ is a joint action selected by the plan and $\gamma
+\in (0, 1]$ is the discount factor. The goal of solving the game is
+to find an optimal plan $\pi^*$ that maximize the expected value
+given the initial state $s^0$, $\pi^* = \arg\max_{\pi} V^\pi(s^0)$.
+
 \section{Team Coordination Algorithm}
 Feng and Gopal
 \begin{enumerate}
 \item Feng's algorithm
 \item experimental results in simulation - computational performance + no. of tasks completed in simulated settings. If possible, compare against something else.
 \end{enumerate}
+
+%[[Feng]]
+Given a reasonable size of the game, the MMDP model can be huge.
+For example, with 8 players and 17 tasks in a 50$\times$55 grid,
+the number of possible states is more than $2\times 10^{400}$.
+Thus, it is computational intractable to find the optimal plan of
+the game. One useful observation is that, when making a decision,
+each player first selects a task to form a team and then move to
+the task location independently. In our planning algorithm, we use
+this hierarchical structure to decompose the decision making
+process into two level:
+\begin{itemize}
+  \item In the higher level, task planning algorithm is run for
+      the whole team to assign the best task to each players
+      given the current state.
+  \item In the lower level, by given a task, path planning
+      algorithm is run for each player to find the best path to
+      the task from his current location.
+\end{itemize}
+Given the huge state space, it is intractable to find the plan for
+all states offline. Therefore, we only compute plans for the
+queried states online. The main process of the online hierarchical
+planning algorithm is outlined in Algorithm~\ref{alg:coordination}.
+The following subsections will describe the algorithms in each
+level in more detail.
+
+\begin{algorithm}[t]
+  \caption{Team Coordination}
+  \KwIn{the MMDP model and the current state $s$}
+  \KwOut{the best joint action $\vec{a}$}
+  \tcp{The task planning}
+  $\{ t_i \} \gets$ compute the best task for each player $i\in I$ \;
+  \ForEach{$i\in I$} {
+    \tcp{The path planning}
+    $a_i \gets$ compute the best path to task $t_i$ \;
+  }
+  \Return{$\vec{a}$}
+  \label{alg:coordination}
+\end{algorithm}
+
+\subsection{Task planning}
+As mentioned above, each player in the game owns a type of skill
+and each task requires players with a certain combination of the
+skills. The goal is to assign a task to each player that maximize
+the overall performance given the current state. To do that, we
+first compute all possible coalitions $\{ C_{jk} \}$ for each task
+$j$ where a coalition $C_{jk} \subseteq I$ is a subset of the
+players with the required skills. Then, we solve the following
+optimization problem to find the best coalitions:
+\begin{equation}
+  \begin{array}{lll}
+    \max_{x_{jk}} & \sum_{j, k} x_{jk} \cdot v(C_{jk}) & \\
+    \mbox{s.t.} & x_{jk} \in \{0, 1\} & \\
+    & \forall j, \sum_{k} x_{jk} \leq 1 & \mbox{(i)} \\
+    & \forall i, \sum_{j, k} \delta_i(C_{jk}) \leq 1 & \mbox{(ii)}
+  \end{array}
+  \label{eq:cf}
+\end{equation}
+where $x_{jk}$ is the boolean variable to decide whether to select
+coalition $C_{jk}$ for task $j$ or not, $v(C_{jk})$ is the
+characteristic function for coalition $C_{jk}$, and
+$\delta_i(C_{jk}) = 1$ if $i\in C_{jk}$ and 0 otherwise. Constraint
+i ensures that a task $j$ is allocated at most to only one
+coalition (a task does not need more than one group of players).
+Constraint ii ensures that a player $i$ is assign to only one task
+(a player cannot do more than one task at the same time). In the
+optimization, we only consider the tasks that have not been done
+and the players that are still alive. Because the players do not
+change their skills and the requirements of the tasks are static
+during the game, the set of all possible coalitions for each task
+can be computed offline before the game.
+
+In Equation~\ref{eq:cf}, we need to compute the value of the
+characteristic function $v(C_{jk})$ for each coalition $C_{jk}$.
+This is the expected value when the players in $C_{jk}$ are
+assigned to task $j$. In order to compute this value, we need to
+know the plan after the completion of task $j$ because not all
+tasks can be done in one shot. As aforementioned, computing the
+optimal plan is intractable. Thus, we estimate the value by
+monte-carlo samples.
+
+[[More detail about sampling will be added.]]
+
+\subsection{Path planning}
+
+In the path planning, we compute the best path for a player given
+the location of his assigned task. This is a single-agent problem
+that can be modeled as a MDP, $\langle S_i, A_i, P_i, R_i \rangle$,
+where:
+\begin{itemize}
+  \item $S_i = S_r \times S_{p_i}$ is the state space. Player
+      $i$ only need to consider his own state variable
+      (location and health level) and the state variable of the
+      radiation cloud.
+  \item $A_i$ is the set of actions $i$. Player $i$ only need
+      to consider the actions of staying in the same grid or
+      moving to the 8 neighboring grids.
+  \item $P_i = P_r \times P_{p_i}$ is the transition function.
+      Player $i$ only need to consider the expanding of the
+      radiation cloud and the change of his location and health
+      level when moving in the grid map.
+  \item $R_i$ is the reward function. Player $i$ has a small
+      cost for moving around and a large penalty for being
+      killed by entering the radiation cloud.
+\end{itemize}
+This process terminates when the location of the assigned task is
+reached or the player is killed (the health level is 0) by the
+radiation cloud. This is a typical MDP and can be solved by
+state-of-the-art MDP solvers.
+
+[[More detail about solving MDP will be added.]]
+
 \section{The Atomic Orchid Platform}
 Joel and Wenchao
 \begin{enumerate}
@@ -236,8 +410,8 @@ AtomicOrchid is a location-based mobile game based on the fictitious scenario of
 
 In their mission to rescue all the targets from the radioactive zone, the field responders are supported by (at least one) person in a centrally located HQ room, and the planning agent that sends the next task to the team of field responders [assuming the agent will have been described in detail already].
 
-\subsection{Player interfaces} 
-Field responders are equipped with a `mobile responder tool' providing sensing and awareness capabilities in three tabs (geiger counter, map, messaging and tasks; see figure XX). One tab shows a reading of radioactivity, player health level (based on exposure), and a GPS-enabled map of the game area to locate fellow responders, the targets to be rescued and the drop off zones for the targets. Another tab provides a broadcast messaging interface to communicate with fellow responders (field responders and HQ). Another tab shows the team and task allocation dynamically provided by the agent. Notifications are used to alert both to new messages and task allocations. 
+\subsection{Player interfaces}
+Field responders are equipped with a `mobile responder tool' providing sensing and awareness capabilities in three tabs (geiger counter, map, messaging and tasks; see figure XX). One tab shows a reading of radioactivity, player health level (based on exposure), and a GPS-enabled map of the game area to locate fellow responders, the targets to be rescued and the drop off zones for the targets. Another tab provides a broadcast messaging interface to communicate with fellow responders (field responders and HQ). Another tab shows the team and task allocation dynamically provided by the agent. Notifications are used to alert both to new messages and task allocations.
 
 HQ is manned by at least one player who has at their disposal an `HQ dashboard' that provides an overview of the game area, including real-time information of the players' locations (see figure XX). The dashboard provides a broadcast messaging widget, and a player status widget so that the responders' exposure and health levels can be monitored. HQ can further monitor the   current team and task allocations by the agent. Importantly, only HQ has a view of the radioactive cloud, depicted as a heatmap. `Hotter' zones correspond with higher levels of radioactivity.
 
