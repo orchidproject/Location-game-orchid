@@ -1,5 +1,5 @@
 
-data = File.read("./lib/scripts/session/test.json")
+data = File.read("./lib/scripts/session/formal2.json")
 data = JSON.parse(data)
 game = Game.create(:latitude => 52.952617, :longitude=> -1.188639,
 	:radius => 1000,
