@@ -231,7 +231,6 @@ end
 				)	
 			    #compare the data
 			    #is it guarantee to be the latest?
-=begin
 			    last_instruction = Instruction.last(:player_id => player["id"])
 			    if last_instruction&&!last_instruction.equals(ins)
 				ins.save
@@ -243,7 +242,6 @@ end
 				new_frame.instructions.delete(ins)
 				puts "same instruction abort <-----------------------------"
 			    end 
-=end
 		 	    saved = ins.save
 			    puts "instruction not same, saved <-------------------------" + saved.to_s 
 		    end 
