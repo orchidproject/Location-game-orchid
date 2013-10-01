@@ -242,8 +242,6 @@ end
 				new_frame.instructions.delete(ins)
 				puts "same instruction abort <-----------------------------"
 			    end 
-		 	    saved = ins.save
-			    puts "instruction not same, saved <-------------------------" + saved.to_s 
 		    end 
 	end
 	
