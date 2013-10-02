@@ -1,0 +1,62 @@
+\section{The Disaster Scenario}
+%[[Feng]]
+\noindent We consider a disaster scenario involving a satellite, containing radioactive fuel, that has crashed in a sub-urban area (see Section \ref{atomic} to see how this helps implement a credible mixed-reality game). While debris is strewn around a large area, damaging buildings and causing accidents and injuring civilians, radioactive discharge from the debris is gradually spreading over the area, threatening to contaminate food reserves and people. Hence, emergency services, voluntary organisations, and the military are deployed to help evacuate the casualties and resources before these are engulfed by  radioactive cloud.  In what follows, we model this scenario formally and then describe the optimisation problem faced by the actors (i.e., including emergency services, volunteers, medics, and soldiers) in trying to save as many lives and resources as they can.
+
+\subsection{Formal Model}
+\noindent Let $G$ denote a grid overlaid on top of the disaster space, and the satellite and actors are located at various coordinates $(x,y) \in G$ in this grid. The set of field responders be denoted as $i_1, \cdots, i_n \in I$ and the set of rescue tasks as  $t_1,\cdots, t_m\in T$.  As responders enact tasks, they may become tired or get injured. Hence, we assign each responder  a health level $h_i\in [0,100]$. Moreover, each responder will have  a specific role  $r \in Roles$ (e.g., fire brigade, soldier, or medic) and this will determine the capabilities he or she has and therefore the tasks he or she can perform. We denote as $Roles(i)$ the role of responder $i$. In turn, to complete a given task $t$,  a set of responders $I' \subseteq I$ with specific roles $R_t \subseteq R$ is required. Thus, a task can only be completed by a team of responders $I'$ if $\{Roles(i) | i \in I'\} = R_t$. 
+
+Given this model, we next formulate the optimisation problem faced by the responders (and later solved in Section \ref{sec:algo}). To this end, we propose a Multi-Agent Markov Decision Process that captures XX and XX \textbf{Feng: add justification for MMDP approach and what uncertainties you capture - say how this is different from CFST for example}.
+
+
+\subsection{The Optimisation Problem}
+ Markov decision process (MMDP),
+$\langle I, S, \{A_i\}, P, R \rangle$, where:
+\begin{itemize}
+  \item $I$ is a set of $n$ game players. 
+  \item $S = S_r \times S_{p_1} \times \cdots \times S_{p_n}
+      \times S_{t_1} \times \cdots \times S_{t_m}$ is the state
+      space: $S_r$ is the state variable of the radiation cloud
+      to specify the radiation level (between 0 and 100) of
+      each grid; $S_{p_i}$ is the state variable for player $i$
+      to specify his current health level and location;
+      $S_{t_j}$ is the state variable for task $j$ to specify
+      its status (picked up, dropped off, or idle) and
+      location.
+  \item $A_i$ is a set of player $i$'s actions. Each player can
+      stay in his current grid, move to his 8 neighboring grids
+      (N, NE, E, SE, S, SW, W, NW), or pickup/drop a task
+      located in his current grid. A joint action is a list of
+      actions, $\vec{a}=\langle a_1, \cdots, a_n \rangle$, one
+      for each player.
+  \item $P = P_r \times P_{p_1} \times P_{p_n} \times P_{t_1}
+      \times P_{t_n}$ is the transition function:
+      $P_r(s'_r|s_r)$ is the probability for the radiation
+      cloud to expand from state variable $s_r$ to $s'_r$;
+      $P_{p_i}(s'_{p_i}|s_{p_i}, a_i)$ is the probability for
+      player $i$ to transit from state variable $s_{p_i}$ to
+      $s'_{p_i}$ when executing action $a_i$ (e.g., when a
+      player moves to north, his health level and location will
+      be updated based on his previous health level and
+      location); $P_{t_j}(s'_{t_j}|s_{t_j}, \vec{a})$ is the
+      transition probability for task $j$ and a task transits
+      to a new state only when all the necessarily skilled
+      players are located in the same grid as the task and
+      perform the ``pickup/drop" actions at the same time.
+  \item $R$ is the reward function. If a task has been dropped
+      off on any dropoff zone, a big reward is received. A huge
+      penalty is given if a player is killed. Each player's
+      action is associated with a small cost.
+\end{itemize}
+At each time step of the game, we assume the planning agent is
+fully observable of the current state. Thus, a plan (a.k.a policy)
+for the team is a mapping from states to joint actions, $\pi: S
+\rightarrow \vec{A}$. By given a plan, the players know how to act
+in the field. The expected value of a plan $\pi$ can be computed
+recursively by the Bellman equation:
+\begin{equation}
+  V^\pi(s) = R(s, \pi(s)) + \gamma \sum_{s'\in S} P(s'|s, \pi(s)) V^\pi(s')
+\end{equation}
+where $\pi(s)$ is a joint action selected by the plan and $\gamma
+\in (0, 1]$ is the discount factor. The goal of solving the game is
+to find an optimal plan $\pi^*$ that maximize the expected value
+given the initial state $s^0$, $\pi^* = \arg\max_{\pi} V^\pi(s^0)$.
