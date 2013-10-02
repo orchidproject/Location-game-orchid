@@ -1,0 +1,16 @@
+\subsection{Radiation Cloud Modelling}
+The radiation cloud diffusion process is modelled as a non-linear Markovian field stochastic differential 
+equation (which assumes the cloud is Gaussian distributed in log-space).  The cloud is driven by wind 
+forces which vary both spatially and temporally.  The wind velocity is modelled by two a priori independent 
+Gaussian processes, one GP for each Cartesian coordinate axis.  The GP captures both the spatial distribution 
+of wind velocity and also the dynamic process resulting from shifting wind patterns such as short term gusts 
+and longer term variations.  Both the radiation cloud and wind model priors are combined into a single joint 
+model called a Latent Force Model (Alvarez09) and predictions of the radiation cloud intensity are inferred 
+using the Kalman filter.  The KF provides both an estimate of the radiation cloud and wind conditions as well 
+as an indication of uncertainty in these estimates.  The KF state represents both the wind velocity and the log 
+radiation cloud density on a regular grid defined across the environment.  The temporal component of the wind 
+GP models are assumed Markovian and are thus converted to KF process models and corresponding process noise
+covariance matrices.   The corresponding wind KF prediction models, defined for all points on the grid, are 
+specified as per the KFGP (Reece10) and assume identical prior spatial GP models at consecutive time instances 
+but with a multiplicative correlation factor between them to model the non-stationary wind dynamics.  
+
