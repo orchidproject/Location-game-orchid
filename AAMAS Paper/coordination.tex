@@ -24,10 +24,10 @@ level in more detail.
 
 \begin{algorithm}[t]
   \caption{Team Coordination}
-  \KwIn{the MMDP model and the current state $s$}
-  \KwOut{the best joint action $\vec{a}$}
+  \KwIn{the MMDP model and the current state $s$.}
+  \KwOut{the best joint action $\vec{a}$.}
   \tcp{The task planning}
-  $\{ t_i \} \gets$ compute the best task for each player $i\in I$ \;
+  $\{ t_i \} \gets$ compute the best task for each responder $i\in I$ \;
   \ForEach{$i\in I$} {
     \tcp{The path planning}
     $a_i \gets$ compute the best path to task $t_i$ \;
@@ -37,6 +37,8 @@ level in more detail.
 \end{algorithm}
 
 \subsection{Task planning}
+\label{sec:taskplanning}
+
 As mentioned above, each player in the game owns a type of skill
 and each task requires players with a certain combination of the
 skills. The goal is to assign a task to each player that maximize
@@ -68,18 +70,73 @@ not change their skills and the requirements of the tasks are
 static during the game, the set of all possible coalitions for each
 task can be computed offline before the game.
 
-The main challenge of the optimisation problem in
+The key challenge of the optimisation problem in
 Equation~\ref{eq:cf} is to compute the value of the characteristic
 function $v(C_{jk})$ for each coalition $C_{jk}$. This is the
 expected value when the players in $C_{jk}$ are assigned to task
 $j$. In order to compute this value, we need to know the plan after
 the completion of task $j$ because not all tasks can be completed
 in one shot. As aforementioned, computing the optimal plan is
-intractable. Thus, we estimate the value by simulations.
+intractable given the huge state space. Thus, we estimate the value
+by simulations. In each simulation, we first assign the responders
+in $C_{jk}$ for task $k$ and run the simulator for this assignment
+starting from the current state $s$. After task $k$ is completed,
+we collect the reward $r$ and the new state $s'$. Then, we estimate
+the expected value of $s'$ by Monte-Carlo Tree Search (MCTS), which
+has been shown to be efficient for many large problems~\cite{?}.
+The basic idea of MCTS is to maintain a search tree where each node
+is associated with a state and each branch is an assignment for the
+responders.
 
-[[More detail about sampling will be added.]]
+In the task planning level, ``completing a task by a responder'' is
+treated as a macro action, assuming that each responder can find
+his or her best way to the task and back to the closest dropoff
+zone (computed by Section~\ref{sec:pathplanning}). Thus, the main
+step of MCTS is to compute an assignment for the free responders at
+each node of the search tree. We use Equation~\ref{eq:cf} to
+compute the assignment and use the UCT heuristic~\cite{?} to
+estimate the coalition value:
+\begin{equation}
+  v(C_{jk}) = \overline{v(C_{jk})} + c\sqrt{\frac{2N(s)}{N(s, C_{jk})}}
+\end{equation}
+where $\overline{v(C_{jk})}$ is the averaged value of coalition
+$C_{jk}$ at state $s$, $c$ is a constant, $N(s)$ is the visiting
+frequency of state $s$, and $N(s, C_{jk})$ is the frequency that
+coalition $C_{jk}$ has been selected at state $s$. Intuitively, if
+a coalition $C_{jk}$ has large averaged value or is rarely
+selected, it gets high chance to be chosen in the next visit of the
+node. Once a coalition $C_{jk}$ has been selected by the heuristic,
+the responders in $C_{jk}$ will be assigned to the corresponding
+task, i.e., task $k$. The constant $c$ is a tradeoff of the
+exploitation and exploration for the UCT heuristic.
+
+\begin{algorithm}[t]
+  \caption{Task Planning}
+  \KwIn{the current state $s$,
+  a set of unfinished tasks $T$,
+  and a set of free responders $I$.}
+  \KwOut{a task assignment for all responders.}
+  $\{ C_{jk} \} \gets$ compute all possible coalitions of $I$ for
+  $T$ \;
+  \ForEach{$C_{jk} \in \{C_{jk}\}$}{
+    \tcp{The $N$ simulations}
+    \For{$i=1$ \KwTo $N$}{
+        $(r, s') \gets$ simulate the process with the starting state $s$
+        until task $k$ is completed by the responders in $C_{jk}$ \;
+        $V(s') \gets$ estimate the value of $s'$ with MCTS \;
+        $v_i(C_{jk}) \gets r + \gamma V(s')$ \;
+    }
+    $v(C_{jk}) \gets \frac{1}{N} \sum_{i=1}^{N} v_i(C_{jk})$ \;
+  }
+  $\{ x_{jk} \} \gets$ compute a task assignment by
+  Equation~\ref{eq:cf} \;
+  \Return{$\{ x_{jk} \}$}
+\end{algorithm}
+
+%[[More detail about sampling will be added.]]
 
 \subsection{Path planning}
+\label{sec:pathplanning}
 
 In the path planning, we compute the best path for a player given
 the location of his assigned task. This is a single-agent problem
@@ -106,4 +163,4 @@ reached or the player is killed (the health level is 0) by the
 radiation cloud. This is a typical MDP and can be solved by
 state-of-the-art MDP solvers.
 
-[[More detail about solving MDP will be added.]]
+%[[More detail about solving MDP will be added.]]
