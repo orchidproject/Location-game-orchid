@@ -1,0 +1,56 @@
+\subsection{The Optimisation Problem}
+A Multi-agent Markov Decision Process (MMDP) is formally defined as
+a tuple $\langle I, S, \{A_i\}, P, R \rangle$, where:
+\begin{itemize}
+  \item $I$ is a set of $n$ responders. Each responder is
+      associated with a unique identifier number $i\in I$.
+  \item $S = S_r \times S_{p_1} \times \cdots \times S_{p_n}
+      \times S_{t_1} \times \cdots \times S_{t_m}$ is the state
+      space. $S_r$ is the state variable of the radiative cloud
+      to specify the radiative level (between 0 and 100) of
+      each grid. $S_{p_i}$ is the state variable for responder
+      $i$ to specify his current health level and location.
+      $S_{t_j}$ is the state variable for task $j$ to specify
+      its status (picked up, dropped off, or idle) and
+      location.
+  \item $A_i$ is a set of responder $i$'s actions. Each
+      responder can stay in his current grid, move to his 8
+      neighboring grids (north, northeast, east, southeast,
+      south, southwest, west, northwest), or pickup/drop a task
+      located in his current grid. A joint action is a list of
+      actions, $\vec{a}=\langle a_1, \cdots, a_n \rangle$, one
+      for each responder.
+  \item $P = P_r \times P_{p_1} \times P_{p_n} \times P_{t_1}
+      \times P_{t_n}$ is the transition function.
+      $P_r(s'_r|s_r)$ is the probability for the radiative
+      cloud to expand from state variable $s_r$ to $s'_r$.
+      $P_{p_i}(s'_{p_i}|s_{p_i}, a_i)$ is the probability for
+      responder $i$ to transit from state variable $s_{p_i}$ to
+      $s'_{p_i}$ when executing action $a_i$ (e.g., when a
+      responder moves to north, his health level and location
+      will be updated based on his previous health level and
+      location). $P_{t_j}(s'_{t_j}|s_{t_j}, \vec{a})$ is the
+      transition probability for task $j$ and a task transits
+      to a new state if and only if all the necessarily skilled
+      responders are located in the same grid as the task and
+      perform the ``pickup/drop" actions at the same time. This
+      implicitly model the requirements of tasks for teams of
+      skilled responders.
+  \item $R$ is the reward function. If a task has been dropped
+      off on any dropoff zone, a big reward is received. A huge
+      penalty is given if a responder is killed. Each
+      responder's action is associated with a small cost.
+\end{itemize}
+At each time step of the game, we assume the planning agent is
+fully observable of the current state. Thus, a plan (a.k.a policy)
+for the team is a mapping from states to joint actions, $\pi: S
+\rightarrow \vec{A}$. By given a plan, the responders know how to
+act in the field. The expected value of a plan $\pi$ can be
+computed recursively by the Bellman equation:
+\begin{equation}
+  V^\pi(s) = R(s, \pi(s)) + \gamma \sum_{s'\in S} P(s'|s, \pi(s)) V^\pi(s')
+\end{equation}
+where $\pi(s)$ is a joint action selected by the plan and $\gamma
+\in (0, 1]$ is the discount factor. The goal of solving the game is
+to find an optimal plan $\pi^*$ that maximize the expected value
+given the initial state $s^0$, $\pi^* = \arg\max_{\pi} V^\pi(s^0)$.

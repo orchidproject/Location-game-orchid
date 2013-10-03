@@ -1,0 +1,109 @@
+Given a reasonable size of the game, the MMDP model can be huge.
+For example, with 8 players and 17 tasks in a 50$\times$55 grid,
+the number of possible states is more than $2\times 10^{400}$.
+Thus, it is computational intractable to find the optimal plan of
+the game. One useful observation is that, when making a decision,
+each player first selects a task to form a team and then move to
+the task location independently. In our planning algorithm, we use
+this hierarchical structure to decompose the decision making
+process into two level:
+\begin{itemize}
+  \item In the higher level, task planning algorithm is run for
+      the whole team to assign the best task to each players
+      given the current state.
+  \item In the lower level, by given a task, path planning
+      algorithm is run for each player to find the best path to
+      the task from his current location.
+\end{itemize}
+Given the huge state space, it is intractable to find the plan for
+all states offline. Therefore, we only compute plans for the
+queried states online. The main process of the online hierarchical
+planning algorithm is outlined in Algorithm~\ref{alg:coordination}.
+The following subsections will describe the algorithms in each
+level in more detail.
+
+\begin{algorithm}[t]
+  \caption{Team Coordination}
+  \KwIn{the MMDP model and the current state $s$}
+  \KwOut{the best joint action $\vec{a}$}
+  \tcp{The task planning}
+  $\{ t_i \} \gets$ compute the best task for each player $i\in I$ \;
+  \ForEach{$i\in I$} {
+    \tcp{The path planning}
+    $a_i \gets$ compute the best path to task $t_i$ \;
+  }
+  \Return{$\vec{a}$}
+  \label{alg:coordination}
+\end{algorithm}
+
+\subsection{Task planning}
+As mentioned above, each player in the game owns a type of skill
+and each task requires players with a certain combination of the
+skills. The goal is to assign a task to each player that maximize
+the overall performance given the current state. To do that, we
+first compute all possible coalitions $\{ C_{jk} \}$ for each task
+$j$ where a coalition $C_{jk} \subseteq I$ is a subset of the
+players with the required skills. Then, we solve the following
+optimization problem to find the best coalitions:
+\begin{equation}
+  \begin{array}{lll}
+    \max_{x_{jk}} & \sum_{j, k} x_{jk} \cdot v(C_{jk}) & \\
+    \mbox{s.t.} & x_{jk} \in \{0, 1\} & \\
+    & \forall j, \sum_{k} x_{jk} \leq 1 & \mbox{(i)} \\
+    & \forall i, \sum_{j, k} \delta_i(C_{jk}) \leq 1 & \mbox{(ii)}
+  \end{array}
+  \label{eq:cf}
+\end{equation}
+where $x_{jk}$ is the boolean variable to decide whether to select
+coalition $C_{jk}$ for task $j$ or not, $v(C_{jk})$ is the
+characteristic function for coalition $C_{jk}$, and
+$\delta_i(C_{jk}) = 1$ if $i\in C_{jk}$ and 0 otherwise. Constraint
+(i) ensures that a task $j$ is allocated at most to only one
+coalition (a task does not need more than one group of players).
+Constraint (ii) ensures that a player $i$ is assign to only one
+task (a player cannot do more than one task at the same time). In
+the optimization, we only consider the tasks that have not been
+done and the players that are still alive. Because the players do
+not change their skills and the requirements of the tasks are
+static during the game, the set of all possible coalitions for each
+task can be computed offline before the game.
+
+The main challenge of the optimisation problem in
+Equation~\ref{eq:cf} is to compute the value of the characteristic
+function $v(C_{jk})$ for each coalition $C_{jk}$. This is the
+expected value when the players in $C_{jk}$ are assigned to task
+$j$. In order to compute this value, we need to know the plan after
+the completion of task $j$ because not all tasks can be completed
+in one shot. As aforementioned, computing the optimal plan is
+intractable. Thus, we estimate the value by simulations.
+
+[[More detail about sampling will be added.]]
+
+\subsection{Path planning}
+
+In the path planning, we compute the best path for a player given
+the location of his assigned task. This is a single-agent problem
+that can be modeled as a MDP, $\langle S_i, A_i, P_i, R_i \rangle$,
+where:
+\begin{itemize}
+  \item $S_i = S_r \times S_{p_i}$ is the state space. Player
+      $i$ only need to consider his own state variable
+      (location and health level) and the state variable of the
+      radiation cloud.
+  \item $A_i$ is the set of actions $i$. Player $i$ only need
+      to consider the actions of staying in the same grid or
+      moving to the 8 neighboring grids.
+  \item $P_i = P_r \times P_{p_i}$ is the transition function.
+      Player $i$ only need to consider the expanding of the
+      radiation cloud and the change of his location and health
+      level when moving in the grid map.
+  \item $R_i$ is the reward function. Player $i$ has a small
+      cost for moving around and a large penalty for being
+      killed by entering the radiation cloud.
+\end{itemize}
+This process terminates when the location of the assigned task is
+reached or the player is killed (the health level is 0) by the
+radiation cloud. This is a typical MDP and can be solved by
+state-of-the-art MDP solvers.
+
+[[More detail about solving MDP will be added.]]
