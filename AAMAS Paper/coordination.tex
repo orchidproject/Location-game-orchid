@@ -78,14 +78,17 @@ $j$. In order to compute this value, we need to know the plan after
 the completion of task $j$ because not all tasks can be completed
 in one shot. As aforementioned, computing the optimal plan is
 intractable given the huge state space. Thus, we estimate the value
-by simulations. In each simulation, we first assign the responders
-in $C_{jk}$ for task $k$ and run the simulator for this assignment
-starting from the current state $s$. After task $k$ is completed,
-we collect the reward $r$ and the new state $s'$. Then, we estimate
-the expected value of $s'$ by Monte-Carlo Tree Search (MCTS), which
-has been shown to be efficient for many large problems~\cite{?}.
-The basic idea of MCTS is to maintain a search tree where each node
-is associated with a state and each branch is an assignment for the
+by simulations. The main process is outlined in
+Algorithm~\ref{alg:tp}.
+
+In each simulation, we first assign the responders in $C_{jk}$ for
+task $k$ and run the simulator for this assignment starting from
+the current state $s$. After task $k$ is completed, we collect the
+reward $r$ and the new state $s'$. Then, we estimate the expected
+value of $s'$ by Monte-Carlo Tree Search (MCTS), which has been
+shown to be efficient for many large problems~\cite{?}. The basic
+idea of MCTS is to maintain a search tree where each node is
+associated with a state and each branch is an assignment for the
 responders.
 
 In the task planning level, ``completing a task by a responder'' is
@@ -119,18 +122,17 @@ exploitation and exploration for the UCT heuristic.
   $\{ C_{jk} \} \gets$ compute all possible coalitions of $I$ for
   $T$ \;
   \ForEach{$C_{jk} \in \{C_{jk}\}$}{
-    \tcp{The $N$ simulations}
+    \tcp{The $N$ trial simulations}
     \For{$i=1$ \KwTo $N$}{
-        $(r, s') \gets$ simulate the process with the starting state $s$
+        $(r, s') \gets$ simulate the process with the starting \\\Indp state $s$
         until task $k$ is completed by the responders in $C_{jk}$ \;
-        $V(s') \gets$ estimate the value of $s'$ with MCTS \;
+        $V(s') \gets$ estimate the value of $s'$ with MCTS \Indm \;
         $v_i(C_{jk}) \gets r + \gamma V(s')$ \;
     }
     $v(C_{jk}) \gets \frac{1}{N} \sum_{i=1}^{N} v_i(C_{jk})$ \;
   }
-  $\{ x_{jk} \} \gets$ compute a task assignment by
-  Equation~\ref{eq:cf} \;
-  \Return{$\{ x_{jk} \}$}
+  \Return the task assignment computed by Equation~\ref{eq:cf}
+  \label{alg:tp}
 \end{algorithm}
 
 %[[More detail about sampling will be added.]]
@@ -160,7 +162,50 @@ where:
 \end{itemize}
 This process terminates when the location of the assigned task is
 reached or the player is killed (the health level is 0) by the
-radiation cloud. This is a typical MDP and can be solved by
-state-of-the-art MDP solvers.
+radiation cloud. This is a typical MDP and can be solved by many
+state-of-the-art MDP solvers~\cite{?}. The key challenge is that
+the state space will blow up very quickly given a large map. To
+address this, we adopt Real-Time Dynamic Programming
+(RTDP)~\cite{?}. The main process is outline in
+Algorithm~\ref{alg:pp}.
+
+Instead of considering the whole state space, RTDP only visits the
+states that are reachable from the starting state $s^0$. If the
+loop cannot terminate in a fixed number of iterations, we assume
+there is not valid path between the two locations (either there are
+obstacle between them or the responder is killed by the radiative
+cloud on the path). There are several techniques we used to speed
+up the convergency of RTDP. In our problem, the map is static.
+Thus, we can initialize $V(s)$ by the cost value of the map,
+computed offline without considering the radiative cloud. This can
+be done by Value Iteration~\cite{?} assuming that any location on
+the map is the goal. The benefit of so doing is to help RTDP
+quickly navigate among the obstacles (e.g., buildings, water pools,
+blocked roads) without getting trapped in dead ends. Another
+technique is that, when traversing the reachable states ($s'\in
+S_i$ in Algorithm~\ref{alg:pp}), we only consider the responder's
+current location and his or her 8 neighboring grids since
+$P_i(s'|s,a) = 0$ for other locations. This will further speed up
+the algorithm because, as mentioned above, the main challenge of
+path planning in our problem is the huge state space.
+
+\begin{algorithm}[t]
+  \caption{Path Planning}
+  \KwIn{the starting state $s^0$ and the goal state $s^g$.}
+  \KwOut{a path from the starting location to the goal.}
+  $s \gets s^0$ \;
+  \Repeat{$s = s^g$}{
+    \ForEach{$a\in A_i$}{
+        $Q(s, a) \gets R_i(s, a) + \sum_{s'\in S_i} P_i(s'|s, a)
+        V(s')$ \;
+    }
+    $a \gets \arg\max_{a'\in A_i} Q(s, a')$ \;
+    $V(s) \gets Q(s, a)$ \;
+    $s' \sim P_i(s'|s, a)$ \;
+    $s \gets s'$ \;
+  }
+  \Return{$Q$}
+  \label{alg:pp}
+\end{algorithm}
 
 %[[More detail about solving MDP will be added.]]
