@@ -191,7 +191,7 @@ Paper  XXX
 \maketitle
 
 \begin{abstract}
-The problem of allocating emergency responders to rescue tasks is a key application area for agent-based coordination algorithms. However, to date, none of the proposed approaches take into account the uncertainty predominant in disaster scenarios and have been validated in a real-world deployment. Hence, in this paper, we propose a novel algorithm, using Multi-agent Markov Decision Processes to coordinate emergency responders and deploy this algorithm in a mixed-reality game to help an agent guide human players to complete rescue tasks. In our field trials, our algorithm is shown to improve human performance and our results allow us to elucidate some of the key challenges faced when  deploying of mixed-initiative team formation algorithms. \end{abstract}
+The problem of allocating emergency responders to rescue tasks is a key application area for agent-based coordination algorithms. However, to date, none of the proposed approaches take into account the uncertainty predominant in disaster scenarios and, crucially, none have been deployed in the real-world in order to understand how humans perform when instructed by an agent. Hence, in this paper, we propose a novel algorithm, using Multi-agent Markov Decision Processes to coordinate emergency responders. More importantly, we deploy this algorithm in a mixed-reality game to help an agent guide human players to complete rescue tasks. In our field trials, our algorithm is shown to improve human performance and our results allow us to elucidate some of the key challenges faced when  deploying of mixed-initiative team formation algorithms. \end{abstract}
 
 % Note that the category section should be completed after reference to the ACM Computing Classification Scheme available at
 % http://www.acm.org/about/class/1998/.
@@ -239,7 +239,7 @@ HQ is manned by at least one player who has at their disposal an `HQ dashboard' 
 
 \subsection{Planning agent}
 [Wenchao. Describe how the agent works (not implementation detail, add that in subsection below), i.e., when it is polled, what information is being exchanged, and how the team/task allocation is being constructed from that and sent.]
-
+\input{radiation_model.tex}
 \subsection{System architecture}
 [Wenchao: adapt this to version 2.0] AtomicOrchid is based on the open-sourced geo-fencing game MapAttack\footnote{http://mapattack.org} that has been iteratively developed for a responsive, (relatively) scalable experience.  The location-based game is realized by client-server architecture, relying on real-time data streaming between client and server.
 
