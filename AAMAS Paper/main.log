@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  5 OCT 2013 13:44
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  6 OCT 2013 17:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -483,28 +483,26 @@ LaTeX Warning: Citation `?' on page \thepage  undefined on input line 181.
 
 [4]) (./radiation_model.tex
 
-LaTeX Warning: Citation `alvarez09' on page \thepage  undefined on input line 4
-.
-
-
-LaTeX Warning: Citation `reece10' on page \thepage  undefined on input line 4.
-
-
 Package amsfonts Warning: Obsolete command \Bbb; \mathbb should be used instead
  on input line 4.
+
+
+Overfull \hbox (4.14618pt too wide) in paragraph at lines 4--5
+\T1/aer/m/n/9 EKF pro-vides both the mean and vari-ance of the log-radiation
+ []
 
 [5] <figures/radiation_ss_calm.png, id=37, 1507.6325pt x 803.0pt>
 File: figures/radiation_ss_calm.png Graphic file (type png)
 
 <use figures/radiation_ss_calm.png>
-Package pdftex.def Info: figures/radiation_ss_calm.png used on input line 10.
+Package pdftex.def Info: figures/radiation_ss_calm.png used on input line 9.
 (pdftex.def)             Requested size: 226.79846pt x 120.78787pt.
 
 <figures/radiation_ss_gust.png, id=38, 1508.63625pt x 805.0075pt>
 File: figures/radiation_ss_gust.png Graphic file (type png)
 
 <use figures/radiation_ss_gust.png>
-Package pdftex.def Info: figures/radiation_ss_gust.png used on input line 12.
+Package pdftex.def Info: figures/radiation_ss_gust.png used on input line 11.
 (pdftex.def)             Requested size: 226.79846pt x 121.01614pt.
 )
 Overfull \hbox (1.92259pt too wide) in paragraph at lines 265--266
@@ -521,14 +519,11 @@ png>] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  3984 strings out of 493633
  51531 string characters out of 3143378
- 134209 words of memory out of 3000000
+ 134215 words of memory out of 3000000
  7173 multiletter control sequences out of 15000+200000
  51016 words of font info for 70 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
@@ -553,7 +548,7 @@ s/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/times
 /utmr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/times/utmri8a.p
 fb>
-Output written on main.pdf (6 pages, 1469567 bytes).
+Output written on main.pdf (6 pages, 1470841 bytes).
 PDF statistics:
  103 PDF objects out of 1000 (max. 8388607)
  72 compressed objects within 1 object stream
