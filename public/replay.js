@@ -60,6 +60,7 @@ function forward_to(sec,callback){
 		heatMapData = [];
 		heat_map = [];
 
+		$("#chatbox").empty();
 		$(players).each(function(index,value){
 			
 			if(value!=null&&value.instruction!=null){

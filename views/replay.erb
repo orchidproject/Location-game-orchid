@@ -193,9 +193,10 @@ function setupUI(){
 }	
 
 function slider_callback(time_mili){
+	var percent = time_mili/1000;
 	$( "#slider-2" ).slider(
 		"value",
-	time_mili/1000);
+	percent);
 
 	$("#time_display_2").html(Math.floor(time_mili/1000));
 
