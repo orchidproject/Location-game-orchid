@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2011)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: abbrv.bst
+Database file #1: citations.bib
+Warning--I didn't find a database entry for "kitano"
+Warning--I didn't find a database entry for "ramchurn:teal:2010"
+Warning--I didn't find a database entry for "koes:teal:2005"
+Warning--I didn't find a database entry for "scerri:teal:200X"
+Warning--I didn't find a database entry for "ramchurn:robocup:2010"
+Warning--I didn't find a database entry for "chapman:teal:2010"
+Warning--I didn't find a database entry for "?"
+Warning--I didn't find a database entry for "csftp"
+Warning--I didn't find a database entry for "HTSSC"
+You've used 2 entries,
+            2118 wiz_defined-function locations,
+            521 strings with 4165 characters,
+and the built_in function-call counts, 854 in all, are:
+= -- 84
+> -- 36
+< -- 2
++ -- 15
+- -- 12
+* -- 52
+:= -- 135
+add.period$ -- 7
+call.type$ -- 2
+change.case$ -- 11
+chr.to.int$ -- 0
+cite$ -- 2
+duplicate$ -- 38
+empty$ -- 72
+format.name$ -- 12
+if$ -- 190
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 13
+num.names$ -- 4
+pop$ -- 17
+preamble$ -- 1
+purify$ -- 9
+quote$ -- 0
+skip$ -- 28
+stack$ -- 0
+substring$ -- 46
+swap$ -- 14
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 8
+warning$ -- 0
+while$ -- 10
+width$ -- 3
+write$ -- 25
+(There were 9 warnings)
