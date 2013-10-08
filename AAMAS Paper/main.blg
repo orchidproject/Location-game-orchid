@@ -12,45 +12,45 @@ Warning--I didn't find a database entry for "chapman:teal:2010"
 Warning--I didn't find a database entry for "?"
 Warning--I didn't find a database entry for "csftp"
 Warning--I didn't find a database entry for "HTSSC"
-You've used 2 entries,
+You've used 0 entries,
             2118 wiz_defined-function locations,
-            521 strings with 4165 characters,
-and the built_in function-call counts, 854 in all, are:
-= -- 84
-> -- 36
-< -- 2
-+ -- 15
-- -- 12
-* -- 52
-:= -- 135
-add.period$ -- 7
-call.type$ -- 2
-change.case$ -- 11
+            508 strings with 3830 characters,
+and the built_in function-call counts, 18 in all, are:
+= -- 0
+> -- 0
+< -- 0
++ -- 0
+- -- 0
+* -- 2
+:= -- 7
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 38
-empty$ -- 72
-format.name$ -- 12
-if$ -- 190
+cite$ -- 0
+duplicate$ -- 0
+empty$ -- 1
+format.name$ -- 0
+if$ -- 1
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 2
-newline$ -- 13
-num.names$ -- 4
-pop$ -- 17
+int.to.str$ -- 0
+missing$ -- 0
+newline$ -- 3
+num.names$ -- 0
+pop$ -- 0
 preamble$ -- 1
-purify$ -- 9
+purify$ -- 0
 quote$ -- 0
-skip$ -- 28
+skip$ -- 1
 stack$ -- 0
-substring$ -- 46
-swap$ -- 14
-text.length$ -- 2
+substring$ -- 0
+swap$ -- 0
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
+type$ -- 0
 warning$ -- 0
-while$ -- 10
-width$ -- 3
-write$ -- 25
+while$ -- 0
+width$ -- 0
+write$ -- 2
 (There were 9 warnings)
