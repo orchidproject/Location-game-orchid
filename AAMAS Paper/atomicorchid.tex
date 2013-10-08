@@ -81,11 +81,37 @@ How are remote messages used as a coordination resource? We use speech-act theor
 
 \paragraph{Structure}
 \begin{itemize}
-\item  \textit{Overall performance}. Draw on metrics below: tasks completed, number and categorisation of messages (only directives and assertives). 
+\item  \textit{Overall performance}. Draw on metrics below: tasks completed, number and categorisation of messages (only directives and assertives).
+
+
+task finished in 1.43 in agent-enabled session [session a 8] 
+task finished in 1.43 in agent-enabled session [session b 12, session c 11]
+average number of team reformation are 12.5 in agent-enabled session [session b 4 , session c 9]
+
+The avg health in agent condition is 80.75 (session b 89.75, session c 71.75
+The avg health in non-agent condition is 39.695
+
 \item \textit{Agent performance}. Metrics from below: Number of instructions sent, robustness etc. 
+Replan happened 32 times across 2 agent-enabled sessions [14,18]. Triggered by rejection 8 times, triggered by drop off 24 times [1 unsuccessful drop off, 23 successful drop off]
+
+
+[2 diagrams are ready agent teaming instruction, HQ directives classification, observed 2 violations of agent planning]. 
+
+
+
+
 \item \textit{Task allocation}: How task allocation unfolded in the agent vs. non-agent condition. (Message handling (from JSCWS paper) vs. task handling diagram...) This is where we'd show a fragment to illustrate? -> Shows overall performance increase in performance
+[begin looking for fragments now]
+
+
 \item \textit{Rejecting tasks}: When and why did it happen? (-> pick this up in the discussion re. Gopal's/Feng's point on adjustable planning?). 
+Players are more likely to reject plan if their proposed teammates are far away from them.
+For accepted instructions, the average distance between related players are 12 meters.
+For rejected instructions, the average distance between related players are 86 meters.
+
 \item \textit{The role of HQ}: monitoring, supporting and dealing with contingencies. Some example messages. Draw on HQ metrics. (-> Shows division of labour and the benefits of human-agent collaboration).
+HQ have to click "view" button to reveal agent plan. We observed 57 clicks in the 2 agent-enabled sessions. 
+
 \end{itemize} 
  
 Joel and Wenchao
