@@ -1,5 +1,7 @@
 \section{The Atomic Orchid Platform}
-In this section we describe the platform within which we embed the planning agent in order study the interactions between human responders and the agent and derive design guidelines for the implementation of such planning agents in real-world scenarios. (\textbf{Joel: please add justification for a mixed-reality game approach to testing this scenario v/s other approaches}). 
+In this section we describe the platform within which we embed the planning agent in order study the interactions between human responders and the agent and derive design guidelines for the implementation of such planning agents in real-world scenarios. 
+
+We adopt a serious mixed-reality games approach (Fischer et al., 2012) to counteract the limitations of computational simulations. For example, Simonovic highlights that simulations may rely on unrealistic geographical topography, and most importantly, may not account for ``human psychosocial characteristics and individual movement, and (...) learning ability'' (Simonovic, 2009: 89). The impact of emotional and physical responses likely in a disaster, such as stress, fear, exertion or panic (Drury et al., 2009) remains understudied in approaches that rely purely on computational simulation. Our approach creates a realistic setting in which participants experience physical exertion and stress through bodily activity and time pressure, mirroring aspects of a real disaster setting (PAHO, 2001); thus providing confidence in the efficacy of behavioural observations regarding team coordination supported by a planning agent.
 
 In more detail, AtomicOrchid is a location-based mobile game based on the fictitious scenario described in Section \ref{sec:scenario}. Field responders are assigned a specific role (e.g. `medic', `transporter', `soldier', `ambulance') 
 In their mission to rescue all the targets from the radioactive zone, the field responders are supported by (at least one) person in a centrally located HQ room, and the planning agent that sends the next task (as computed in the previous section) to the team of field responders. In what follows, we first present the player interfaces used, the interactions with the planning agent, and the modelling of the radiation cloud in the game.
@@ -8,6 +10,7 @@ In their mission to rescue all the targets from the radioactive zone, the field 
 Field responders are equipped with a `mobile responder tool' providing sensing and awareness capabilities in three tabs (geiger counter, map, messaging and tasks; see figure XX). One tab shows a reading of radioactivity, player health level (based on exposure), and a GPS-enabled map of the game area to locate fellow responders, the targets to be rescued and the drop off zones for the targets. Another tab provides a broadcast messaging interface to communicate with fellow responders (field responders and HQ). Another tab shows the team and task allocation dynamically provided by the agent. Notifications are used to alert both to new messages and task allocations.
 
 The HQ is manned by at least one player who has at her disposal an `HQ dashboard' that provides an overview of the game area, including real-time information of the players' locations (see figure XX). The dashboard provides a broadcast messaging widget, and a player status widget so that the responders' exposure and health levels can be monitored. HQ can further monitor the  current team and task allocations by the agent. Importantly, only the HQ has a view of the radioactive cloud, depicted as a heatmap. `Hotter' zones correspond with higher levels of radioactivity.
+
 \subsection{System architecture}
 AtomicOrchid is based on the open-sourced geo-fencing game MapAttack\footnote{http://mapattack.org} that has been iteratively developed for a responsive, (relatively) scalable experience.  The location-based game is realized by client-server architecture, relying on real-time data streaming between client and server.
 
@@ -16,20 +19,24 @@ The client-server architecture is depicted in figure XX. Client-side requests fo
 The platform is built using the geoloqi platform, Sinatra for Ruby, and state-of-the-art web technologies such as socket.io, node.js and the Google Maps API. Open source mobile client apps that are part native, part browser based exist for iPhone and Android; we adapted an Android app to build the mobile responder app.
 
 \subsection{Planning agent}
-[Wenchao. Describe how the agent works (not implementation detail, add that in subsection below), i.e., when it is polled, what information is being exchanged, and how the team/task allocation is being constructed from that and sent.]
-The planning agent is a standalone software agent designed to solve coordination problems in the AtomicOrhid game scenario. It takes game status as input and calculate solutions by running xxx Algorithms. 
+The planning agent is a standalone software agent designed to solve coordination problems in the AtomicOrhid game scenario. It takes game status as input and compute solutions by running xxx Algorithms. 
 
-\subsection{Integration with AtomicOrchid}
-The agent is implemented by JAVA [need Feng's confirmation] and deployed on a server separated from AtomicOrchid platform. The agent and AtomicOrhid communicate through a simple HTTP interface. The AtomicOrchid server send HTTP requests to pull plans from planning Agent whenever replans are triggered in game. 
+\subsection{Integrating with AtomicOrchid}
+The agent is implemented by Java [need Feng's info] and deployed on a server separated from AtomicOrchid platform. The agent and AtomicOrhid server communicate through a simple HTTP interface. The AtomicOrchid server can send HTTP requests to pull plans from planning. Updated game status is attached to the pull request in Json format. Pull request are sent whenever re-plans are triggered in game. There are two triggers of replanning in the game.
 
-There are two triggers of replanning in the game.
+
 \begin{itemize}
-\item \textit{Successful drop off}. explain more.....
-\item \textit{Explicit reject}. Field players can explicitly reject a plan by pressing reject button in mobile responder app. 
+\item \textit{Completion of task}. If field teams successfully rescue a target, AtomicOrchid server will pull a new plan from agent.
+\item \textit{Explicit reject}. Field players can explicitly reject a plan by pressing reject button in mobile responder app. The agent will take the rejection as part of the input for the next re-plan.
 \end{itemize} 
+
 The interactions between agent and players will be detailed in next section.
 \subsection{Interacting with planning agent}
+The agent can interact directly with field players through a task tab (Figure xx) and agent plans are also visible to HQ's dashboard interface.
 
+Once a plan are pulled from planning agent, the AtomicOrchid game engine will divide it into individual instruction messages for each player and send them to mobile responder app. The app presents the instruction in the task tab with following information: 1) the person to team up with, 2)the target they are assigned to (the target id), and 3) rough direction of the target (e.g. north, east). 
+
+There are also accept and reject buttons in the "task" tab. Players can send acknowledgements of the task allocations to their teammates by pressing the accept button, while the reject button can be used to request a different task assignment from agent. [preparing a diagram]
  
 \input{radiation_model.tex}
 
@@ -37,31 +44,29 @@ The interactions between agent and players will be detailed in next section.
 
 
 \section{Real-world evaluation}
-[Note: currently not sure whether to include the non-agent runs. Problematic because: a) unequal number of responders, b) HQ staffed by students in non-agent condition; researchers in agent-condition, c) not enough cases for a quantitative comparison anyways?.]
-(\textbf{Joel: the population type does not matter so much for AAMAS as tar as I've seen. So go ahead with the analysis of the no-agent condition.})
-We ran four sessions of AtomicOrchid with participants recruited from the local university to evaluate mixed-initiative coordination in a disaster response scenario. The following sections describe the participants, procedure, session configuration and methods used to collect and analyse quantitative and qualitative data.
+We ran three sessions of AtomicOrchid with participants recruited from the local university to evaluate mixed-initiative coordination in a disaster response scenario. The following sections describe the participants, procedure, session configuration and methods used to collect and analyse quantitative and qualitative data.
 
 \subsection{Participants}
-A total of 29 participants (XX of them were female) were recruited through posters and emails, and reimbursed with 15 pounds for 1.5-2 hours of study. The majority were students of the local university. [Say something about their map reading skills?]
+A total of 24 participants (XX of them were female) were recruited through posters and emails, and reimbursed with 15 pounds for 1.5-2 hours of study. The majority were students of the local university. [Say something about their map reading skills?]
 
 \subsection{Procedure}
 The procedure consisted of 30 minutes of game play, and about 1 hour of pre-game briefing, consent forms and a short training session, and post-game group discussion and questionnaire. 
 
 %Upon arrival in the HQ (set up in a meeting room at the local university), participants were briefed and asked to consent to participate. They were presented with a demographic questionnaire to record gender, occupation, experience of using smartphones and level of map navigation skills.
 
-At the end of the briefing in which mission objectives and rules were outlined, responder roles were randomly assigned to all participants (fire-fighter, medic, transporter, soldier). HQ in the agent condition was staffed by a different member of the research team in each session in order to mimick an experienced HQ whilst avoiding the same person running HQ every time. 
+At the end of the briefing in which mission objectives and rules were outlined, responder roles were randomly assigned to all participants (fire-fighter, medic, transporter, soldier). HQ was staffed by a different member of the research team in each session in order to mimick an experienced HQ whilst avoiding the same person running HQ every time. 
 
-Field responders were provided with a smartphone; HQ coordinators with a laptop. The team was given 5 minutes to discuss a common game strategy. (\textbf{Joel: where did the agent run ?})
+Field responders were provided with a smartphone; HQ coordinators with a laptop. The team was given 5 minutes to discuss a common game strategy. (\textbf{Joel: where did the agent run ? --> Gopal, this should be covered in the previous section I think?})
 
 Field responders were then accompanied to the starting point within the designated game area, about 1 minute walk from headquarters. Once field responders were ready to start, HQ sent a `game start' message. After 30 minutes of game play the field responders returned to the HQ for the post-game session, which consisted of a questionnaire aimed at collecting participants' feedback on (1) first impressions of the game; (2) usability of the system, and; (3) coordination issues in the game. A group interview was then conducted, before participants were debriefed and dismissed.
 
 \subsection{Game sessions}
-We ran two sessions without the planner agent, and two sessions with the planner agent to be able to compare team performance in the two conditions. We also ran a pilot study for each condition. The pilot study showed that this was a challenging, yet not too overwhelming number of targets to collect in a 30 min game session. There were four targets for each of the four target types.
+We ran one session without the planner agent, and two sessions with the planner agent to be able to compare team performance in the two conditions. We also ran a pilot study for each condition. The pilot study showed that this was a challenging, yet not too overwhelming number of targets to collect in a 30 min game session. There were four targets for each of the four target types.
 The target locations, pattern of cloud movement and expansion were kept constant for all game sessions. 
 
-The role allocation of the 8 field responders per session is depicted in table XX. One of the non-agent sessions only had 5 field responders due to drop outs. 
+The role allocation of the 8 field responders per session is depicted in table XX. 
 
-The terrain of the game area includes grassland, a lake, buildings, roads, and footpaths and lawns (see figure XX). There are two drop off zones and 16 targets.
+The terrain of the game area includes grassland, a lake, buildings, roads, and footpaths and lawns (see figure XX). There are two drop off zones and 16 targets in each session.
 
 \subsection{Methods}
 We took a mixed methods approach to data collection and analysis. In addition to quantitative questionnaires, a semi-structured group interview was conducted that aimed at eliciting important decision points, strategies and the overall decision-making process. Furthermore, researchers with camcorders recorded the game play. One researcher recorded action in the HQ, and four other researchers each shadowed a field responder team with a camcorder.
@@ -78,55 +83,53 @@ How are remote messages used as a coordination resource? We use speech-act theor
 \end{itemize}
 
 \subsection{Results}
+Overall, 8 targets were rescued in the non-agent condition (Session A), and respectively 12 targets (Session B), and 11 targets (Session C) were rescued in the agent condition. Teams (re-)formed six times in session A, four times in session B and nine times  in session C. Average player health after the game was 40/100 in Session B, and 81 for the agent-assisted sessions (B:80, C: 82) [\textbf{Wenchao: any deaths?}]. 
 
-\paragraph{Structure}
-\begin{itemize}
-\item  \textit{Overall performance}. Draw on metrics below: tasks completed, number and categorisation of messages (only directives and assertives).
+The agent dynamically re-planned 14 times in session B, and 18 times in session C. Most of the times, this was triggered when a target was dropped off in the safe zone (24 times), some times this was triggered by a player rejecting the agent's task allocation (8 times).  \textbf{Wenchao: Robustness measure missing, e.g., how often did the task allocations change when re-planning?}
 
-1 task pp in non-agent version [session a 8] 
-task finished in 1.43 in agent-enabled session [session b 12, session c 11]
-average number of team reformation are 12.5 in agent-enabled session [session b 4 , session c 9]
+\subsubsection{Handling task allocations}
+Fig. \ref{fig:msgs} shows how field responders handled task allocations in the agent and in the non-agent condition. In the non-agent condition, HQ sent 43 task allocation directives. Out of these, the recipient field responders addressed only 15 messages (bringing them up in conversation). Out of these 15, responders chose to ignore the instructions only once. The responder ignored the instruction because they were engaged in another task and did not want to abandon it. A further 4 HQ instructions were consistent with a decision to rescue a certain target that has already been made locally by the responders. In 10 cases field responders chose to follow the instructions. Although players were willing to follow HQ's instructions, they failed to correctly follow the instructions due to confusion and misunderstanding in the communication. In fact, only 2 instances of directives from the HQ led to task completion.The field responders accomplished task allocation of the other 6 saved targets locally without being instructed by HQ.
 
-The avg health in agent condition is 80.75 (session b 89.75, session c 71.75
-The avg health in non-agent condition is 39.695
+On the other hand, when task allocation was handled by the agent, responders accepted 24 tasks, out of which they completed 15 tasks successfully. Even if there was no response or consensus between the responders (in 17 cases), still six out of 17 tasks were completed successfully. In total, 20 task allocations were overridden by a the agent with a new task allocation. 
 
-\item \textit{Agent performance}. Metrics from below: Number of instructions sent, robustness etc. 
-Replan happened 32 times across 2 agent-enabled sessions [14,18]. Triggered by rejection 8 times, triggered by drop off 24 times [1 unsuccessful drop off, 23 successful drop off]
+[Could show a fragment to illustrate? -> Shows overall performance increase in performance]
 
 
-[2 diagrams are ready agent teaming instruction, HQ directives classification, observed 2 violations of agent planning]. 
+\begin{figure}[htbp]
+\includegraphics[width=\columnwidth]{message_handling.png}
+\label{fig:msgs}
+\caption{How task allocations were handled by field responders in the agent-condition (left) and in the non-agent condition(right).}
+\end{figure}
 
+[observed 4 violations of agent planning; \textbf{Wenchao}: where are these?]. 
 
+\paragraph{Rejecting tasks}
+[-> pick this up in the discussion re. Gopal's/Feng's point on adjustable planning?]
 
+Field responders rejected the agent's task allocation 11 times in the agent condition. All of the rejections happened when the task allocation would have split existing teams, or instructed responders to team up with physically more distant responders. In most cases (9 out of 11), the rejection triggered re-planning and adjusted the task allocation to become consistent with the responder's current team. In the other 2 cases, rejected the task allocation one more time to receive the desired task allocation. 
 
-\item \textit{Task allocation}: How task allocation unfolded in the agent vs. non-agent condition. (Message handling (from JSCWS paper) vs. task handling diagram...) This is where we'd show a fragment to illustrate? -> Shows overall performance increase in performance
-[begin looking for fragments now]
+Overall, players were more likely to reject plan if their proposed teammates were far away from them. For accepted instructions, the average distance between suggested teammates was 12 metres. For rejected instructions, the average distance between suggested teammates was 86 metres.
 
+\subsubsection{The role of HQ}
+The role of HQ changed in that in the non-agent condition HQ was responsible for handling task allocations, whereas task allocation was handled by the agent in the other condition. HQ frequently monitored the agent's task allocation in the two agent-supported sessions (57 clicks on `show task' in UI responder status widget). Whereas 43 directives in the non-agent session were task allocations, only 16 directives were directly related to task allocations in the agent condition. Out of these, HQ reinforced the agent instruction 6 times (e.g., ``SS and LT retrieve 09''), and complemented the agent's task allocation 5 times (``DP and SS, as soon as you can head to 20 before the radiation cloud gets there first''). HQ did `override' the agent instruction in 5 cases.  
 
-\item \textit{Rejecting tasks}: When and why did it happen? (-> pick this up in the discussion re. Gopal's/Feng's point on adjustable planning?). 
-Players are more likely to reject plan if their proposed teammates are far away from them.
-For accepted instructions, the average distance between related players are 12 meters.
-For rejected instructions, the average distance between related players are 86 meters.
+The majority of HQ's directives (52 out of 68) (\textbf{Wenchao, should this include assertives??}) focussed on providing situational awareness and safely routing the responders to avoid exposing them to radiation. For example, ``Nk and JL approach drop off 6 by navigating via 10 and 09.'', or ``Radiation cloud is at the east of the National College''. (-> Shows division of labour and the benefits of human-agent collaboration).
 
-\item \textit{The role of HQ}: monitoring, supporting and dealing with contingencies. Some example messages. Draw on HQ metrics. (-> Shows division of labour and the benefits of human-agent collaboration).
-HQ have to click "view" button to reveal agent plan. We observed 57 clicks in the 2 agent-enabled sessions. 
-
-\end{itemize} 
  
-Joel and Wenchao
-\begin{enumerate}
-\item Explain setup of experiment - area of interest + setup of tasks
-\item Explain evaluation = quantitative and qualitative.
-\end{enumerate}
-\paragraph{Metrics}
-\begin{itemize}
-\item{Comparisons between with/without agent versions for the below:}
-\item{Performance of FR: number of tasks completed, time on task?, number of messages sent, number of teams formed and disbanded, time on team, acknowledgements of tasks}
-\item{Messages: classification}
-\item{Health}
-\item{Distance travelled}
-\item{HQ: number of agent monitoring actions (clicks), number of 'supporting'/related messages (e.g., enforcement, contradictions/overriding)}
-\item{Agent performance: number of instructions, number of replanning steps, replanning robustness (diversion of task allocation compared to previous step)}
-\item{Following instructions ('obedience'): number of instructions followed vs. not followed (incl. number of HQ interventions/overriding agent allocation), instruction handling diagram}
-\item
-\end{itemize}
+%Joel and Wenchao
+%\begin{enumerate}
+%\item Explain setup of experiment - area of interest + setup of tasks
+%\item Explain evaluation = quantitative and qualitative.
+%\end{enumerate}
+%\paragraph{Metrics}
+%\begin{itemize}
+%\item{Comparisons between with/without agent versions for the below:}
+%\item{Performance of FR: number of tasks completed, time on task?, number of messages sent, number of teams formed and disbanded, time on team, acknowledgements of tasks}
+%\item{Messages: classification}
+%\item{Health}
+%\item{Distance travelled}
+%\item{HQ: number of agent monitoring actions (clicks), number of 'supporting'/related messages (e.g., enforcement, contradictions/overriding)}
+%\item{Agent performance: number of instructions, number of replanning steps, replanning robustness (diversion of task allocation compared to previous step)}
+%\item{Following instructions ('obedience'): number of instructions followed vs. not followed (incl. number of HQ interventions/overriding agent allocation), instruction handling diagram}
+%\item
+%\end{itemize}
