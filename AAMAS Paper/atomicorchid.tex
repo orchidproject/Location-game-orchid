@@ -8,6 +8,7 @@ In their mission to rescue all the targets from the radioactive zone, the field 
 Field responders are equipped with a `mobile responder tool' providing sensing and awareness capabilities in three tabs (geiger counter, map, messaging and tasks; see figure XX). One tab shows a reading of radioactivity, player health level (based on exposure), and a GPS-enabled map of the game area to locate fellow responders, the targets to be rescued and the drop off zones for the targets. Another tab provides a broadcast messaging interface to communicate with fellow responders (field responders and HQ). Another tab shows the team and task allocation dynamically provided by the agent. Notifications are used to alert both to new messages and task allocations.
 
 The HQ is manned by at least one player who has at her disposal an `HQ dashboard' that provides an overview of the game area, including real-time information of the players' locations (see figure XX). The dashboard provides a broadcast messaging widget, and a player status widget so that the responders' exposure and health levels can be monitored. HQ can further monitor the  current team and task allocations by the agent. Importantly, only the HQ has a view of the radioactive cloud, depicted as a heatmap. `Hotter' zones correspond with higher levels of radioactivity.
+
 \subsection{System architecture}
 AtomicOrchid is based on the open-sourced geo-fencing game MapAttack\footnote{http://mapattack.org} that has been iteratively developed for a responsive, (relatively) scalable experience.  The location-based game is realized by client-server architecture, relying on real-time data streaming between client and server.
 
@@ -16,20 +17,24 @@ The client-server architecture is depicted in figure XX. Client-side requests fo
 The platform is built using the geoloqi platform, Sinatra for Ruby, and state-of-the-art web technologies such as socket.io, node.js and the Google Maps API. Open source mobile client apps that are part native, part browser based exist for iPhone and Android; we adapted an Android app to build the mobile responder app.
 
 \subsection{Planning agent}
-[Wenchao. Describe how the agent works (not implementation detail, add that in subsection below), i.e., when it is polled, what information is being exchanged, and how the team/task allocation is being constructed from that and sent.]
-The planning agent is a standalone software agent designed to solve coordination problems in the AtomicOrhid game scenario. It takes game status as input and calculate solutions by running xxx Algorithms. 
+The planning agent is a standalone software agent designed to solve coordination problems in the AtomicOrhid game scenario. It takes game status as input and compute solutions by running xxx Algorithms. 
 
-\subsection{Integration with AtomicOrchid}
-The agent is implemented by JAVA [need Feng's confirmation] and deployed on a server separated from AtomicOrchid platform. The agent and AtomicOrhid communicate through a simple HTTP interface. The AtomicOrchid server send HTTP requests to pull plans from planning Agent whenever replans are triggered in game. 
+\subsection{Integrating with AtomicOrchid}
+The agent is implemented by Java [need Feng's info] and deployed on a server separated from AtomicOrchid platform. The agent and AtomicOrhid server communicate through a simple HTTP interface. The AtomicOrchid server can send HTTP requests to pull plans from planning. Updated game status is attached to the pull request in Json format. Pull request are sent whenever re-plans are triggered in game. There are two triggers of replanning in the game.
 
-There are two triggers of replanning in the game.
+
 \begin{itemize}
-\item \textit{Successful drop off}. explain more.....
-\item \textit{Explicit reject}. Field players can explicitly reject a plan by pressing reject button in mobile responder app. 
+\item \textit{Completion of task}. If field teams successfully rescue a target, AtomicOrchid server will pull a new plan from agent.
+\item \textit{Explicit reject}. Field players can explicitly reject a plan by pressing reject button in mobile responder app. The agent will take the rejection as part of the input for the next re-plan.
 \end{itemize} 
+
 The interactions between agent and players will be detailed in next section.
 \subsection{Interacting with planning agent}
+The agent can interact directly with field players through a task tab (Figure xx) and agent plans are also visible to HQ's dashboard interface.
 
+Once a plan are pulled from planning agent, the AtomicOrchid game engine will divide it into individual instruction messages for each player and send them to mobile responder app. The app presents the instruction in the task tab with following information: 1) the person to team up with, 2)the target they are assigned to (the target id), and 3) rough direction of the target (e.g. north, east). 
+
+There are also accept and reject buttons in the "task" tab. Players can send acknowledgements of the task allocations to their teammates by pressing the accept button, while the reject button can be used to request a different task assignment from agent. [preparing a diagram]
  
 \input{radiation_model.tex}
 
@@ -84,27 +89,29 @@ How are remote messages used as a coordination resource? We use speech-act theor
 \item  \textit{Overall performance}. Draw on metrics below: tasks completed, number and categorisation of messages (only directives and assertives).
 
 
-task finished in 1.43 in agent-enabled session [session a 8] 
-task finished in 1.43 in agent-enabled session [session b 12, session c 11]
-average number of team reformation are 12.5 in agent-enabled session [session b 4 , session c 9]
+task finished in 1 pp in agent-enabled session [session a 8] 
+task finished in 1.43 pp in agent-enabled session [session b 12, session c 11]
 
-The avg health in agent condition is 80.75 (session b 89.75, session c 71.75
+number of team reformation are 6 in the non-agent session 
+average number of team reformation are 6.5 in agent-enabled session [session b 4 , session c 9]
+
+The avg health in agent condition is 80.75 (session b 79.75, session c 81.75)
 The avg health in non-agent condition is 39.695
 
 \item \textit{Agent performance}. Metrics from below: Number of instructions sent, robustness etc. 
 Replan happened 32 times across 2 agent-enabled sessions [14,18]. Triggered by rejection 8 times, triggered by drop off 24 times [1 unsuccessful drop off, 23 successful drop off]
 
 
-[2 diagrams are ready agent teaming instruction, HQ directives classification, observed 2 violations of agent planning]. 
-
-
-
+[2 diagrams are ready agent teaming instruction, HQ directives classification, observed 4 violations of agent planning]. 
 
 \item \textit{Task allocation}: How task allocation unfolded in the agent vs. non-agent condition. (Message handling (from JSCWS paper) vs. task handling diagram...) This is where we'd show a fragment to illustrate? -> Shows overall performance increase in performance
 [begin looking for fragments now]
 
 
 \item \textit{Rejecting tasks}: When and why did it happen? (-> pick this up in the discussion re. Gopal's/Feng's point on adjustable planning?). 
+11 rejections happened in two sessions. All rejections happened when the planning agent tried to split existing teams, and instructing them to team up with distant players. In most cases (9 out of 11), the rejection will lead to an adapted plan which consistent with their current teaming. In the other 2 cases, players consecutively reject plan twice in order to get the satisfactory plan. 
+ 
+
 Players are more likely to reject plan if their proposed teammates are far away from them.
 For accepted instructions, the average distance between related players are 12 meters.
 For rejected instructions, the average distance between related players are 86 meters.
