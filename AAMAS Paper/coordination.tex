@@ -250,35 +250,36 @@ MDP solvers~\cite{?}. We choose the Real-Time Dynamic Programming
 that is, a goal-directed MDP with large number of states. Instead
 of exploring the whole state space, RTDP only visits the states
 that are reachable from the initial state $s^0$ (the start location
-of the responder). The main process is outline in
-Algorithm~\ref{alg:pathplanning}. We first compute the $Q$ value
-for each action (Line 3-4) and select the best action (Line 5).
-Then, we update the value function (Line 6) and simulate the next
-state (Line 7). This process repeats until the goal state is
-reached (Line 9). If the goal is not reached, we assume there does
-not exist a path between the start location of the responder and
-the location of the task (either there are obstacles on the path or
-the responder will be killed by the radioactivity on the road).
-\begin{algorithm}[htbp]
-  \caption{Path Planning}
-  \label{alg:pathplanning}
-  \Indm
-  \KwIn{the starting state $s^0$ and the goal state $s^g$.}
-  \KwOut{a path from the starting location to the goal.}
-  \Indp\BlankLine
-  $s \gets s^0$ \;
-  \Repeat{$s = s^g$}{
-    \ForEach{$a\in A_i$}{
-        $Q(s, a) \gets R_i(s, a) + \sum_{s'\in S_i} P_i(s'|s, a)
-        V(s')$ \;
-    }
-    $a \gets \arg\max_{a'\in A_i} Q(s, a')$ \;
-    $V(s) \gets Q(s, a)$ \;
-    $s' \sim P_i(s'|s, a)$ \;
-    $s \gets s'$ \;
-  }
-  \Return{$Q$}
-\end{algorithm}
+of the responder). In each iteration of RTDP, we first compute the
+$Q$ value for each action and select the best action for the
+responder. Then, we update the value function and simulate the next
+state. This process repeats until the goal state is reached. If the
+goal is not reached, we assume there does not exist a path between
+the start location of the responder and the location of the task
+(either there are obstacles on the path or the responder will be
+killed by the radioactivity on the road).
+%\begin{algorithm}[htbp]
+%  \caption{Path Planning}
+%  \label{alg:pathplanning}
+%  \Indm
+%  \KwIn{the starting state $s^0$ and the goal state $s^g$.}
+%  \KwOut{a path from the starting location to the goal.}
+%  \Indp\BlankLine
+%  \While{not out of time}{
+%      $s \gets s^0$ \;
+%      \Repeat{$s = s^g$}{
+%        \ForEach{$a\in A_i$}{
+%            $Q(s, a) \gets R_i(s, a) + \sum_{s'\in S_i} P_i(s'|s, a)
+%            V(s')$ \;
+%        }
+%        $a \gets \arg\max_{a'\in A_i} Q(s, a')$ \;
+%        $V(s) \gets Q(s, a)$ \;
+%        $s' \sim P_i(s'|s, a)$ \;
+%        $s \gets s'$ \;
+%      }
+%  }
+%  \Return{$Q$}
+%\end{algorithm}
 
 There are several techniques we use to speed up the convergency of
 RTDP. In our problem, the terrain of the field is static. Thus, we
@@ -294,8 +295,37 @@ location and the neighbouring points, since $P_i(s'|s,a) = 0$ for
 other points. This will further speed up the algorithm where the
 main bottleneck is the huge state space.
 
-(\textbf{Feng: just provide a graph depicting the performance of
-the algorithm compared to greedy and say more extensive evaluations
-are beyond the scope of this paper as the focus is on the use of
-the algorithm in a real-world deployment to test how humans take up
-advice computed in sophisticated ways by an agent-based planner)}.
+\subsection{Simulation results}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\linewidth]{simulation}
+  \caption{Experimental results for the MMDP, myopic, greedy
+  algorithms in simulation.}
+  \label{fig:simulation}
+\end{figure}
+
+\noindent To test the performance of our algorithm, we compare it
+with a greedy and a myopic method for task planning using a
+simulator. For each method, we use our path planning algorithm to
+compute the path for each responder so that they can reach the task
+location as fast as possible. In the greedy method, the responders
+are uncoordinated and select the closest tasks that they can do. In
+the myopic method, the responders are coordinated to select the
+tasks but have no lookahead for the future tasks.
+Figure~\ref{fig:simulation} shows the results for a problem with 17
+tasks and 8 responders on a 50$\times$55 grid. As we can see, our
+MMDP algorithm can complete more tasks than the myopic and greedy
+methods. More importantly, our algorithm can guarantee the safety
+of the responders while in the myopic method, only 25\% of the
+responders are survived and in the greedy method all responders are
+killed by the radioactive cloud. More extensive evaluations are
+beyond the scope of this paper as the focus is on the use of the
+algorithm in a real-world deployment to test how humans take up
+advice computed in sophisticated ways by an agent-based planner.
+
+%(\textbf{Feng: just provide a graph depicting the performance of
+%the algorithm compared to greedy and say more extensive evaluations
+%are beyond the scope of this paper as the focus is on the use of
+%the algorithm in a real-world deployment to test how humans take up
+%advice computed in sophisticated ways by an agent-based planner)}.
