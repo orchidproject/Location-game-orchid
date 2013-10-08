@@ -1,45 +1,39 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.7)  7 OCT 2013 18:57
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  8 OCT 2013 10:51
 entering extended mode
- \write18 enabled.
- file:line:error style messages enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
-LaTeX2e <2009/09/24>
-Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
-rman-x-2009-06-19, ngerman-x-2009-06-19, ancientgreek, ibycus, arabic, armenian
-, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danish, dutch, u
-kenglish, usenglishmax, esperanto, estonian, farsi, finnish, french, galician, 
-german, ngerman, swissgerman, monogreek, greek, hungarian, icelandic, assamese,
- bengali, gujarati, hindi, kannada, malayalam, marathi, oriya, panjabi, tamil, 
-telugu, indonesian, interlingua, irish, italian, kurmanji, lao, latin, latvian,
- lithuanian, mongolian, mongolianlmc, bokmal, nynorsk, polish, portuguese, roma
-nian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, turkish,
- turkmen, ukrainian, uppersorbian, welsh, loaded.
-(./aamas2014.cls
-(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/epsfig.sty
+**\input main.tex
+(./main.tex (./aamas2014.cls
+(/usr/local/texlive/2011/texmf-dist/tex/latex/graphics/epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/local/texlive/2010/texmf-dist/tex/latex/latexconfig/graphics.cfg
+(/usr/local/texlive/2011/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2010/02/14 v0.04n Graphics/color for pdfTeX
+(/usr/local/texlive/2011/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+)
 \Gread@gobject=\count79
 ))
 \Gin@req@height=\dimen102
@@ -48,10 +42,10 @@ File: pdftex.def 2010/02/14 v0.04n Graphics/color for pdfTeX
 \epsfxsize=\dimen104
 \epsfysize=\dimen105
 )
-(/usr/local/texlive/2010/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2009/06/22 v3.00
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 \@emptytoks=\toks15
 \symAMSa=\mathgroup4
@@ -59,24 +53,24 @@ Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
-(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amsmath.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip41
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen106
 ))
-(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen107
 )
-(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amsopn.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count80
@@ -150,7 +144,7 @@ LaTeX Warning: You have requested document class `aamas2014',
 
 Document Class: aamas2013 2009/24/07 - V1.9 - based on acmproc.cls V1.3 <Nov. 3
 0 '99>
-(/usr/local/texlive/2010/texmf-dist/tex/latex/base/latexsym.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
@@ -184,29 +178,29 @@ Using 'Abbrev' bibliography style
 \boilerplateBefore=\toks36
 \boilerplateAfter=\toks37
 \copyrightetc=\toks38
-(/usr/local/texlive/2010/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/base/t1enc.def
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 )
 LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/ae/t1aer.fd
+(/usr/local/texlive/2011/texmf-dist/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
 )))
-(/usr/local/texlive/2010/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2008/00/00 v3.10 algorithms environments
 \c@AlgoLine=\count109
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/usr/local/texlive/2010/texmf-dist/tex/latex/tools/xspace.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
 )
-(/usr/local/texlive/2010/texmf-dist/tex/latex/relsize/relsize.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2003/07/04 ver 3.1
 
 
@@ -267,7 +261,7 @@ LaTeX Font Info:    ... okay on input line 52.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
 
-(/usr/local/texlive/2010/texmf-dist/tex/context/base/supp-pdf.mkii
+(/usr/local/texlive/2011/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count113
 \scratchdimen=\dimen129
@@ -278,39 +272,41 @@ LaTeX Font Info:    ... okay on input line 52.
 \MPscratchCnt=\count116
 \MPscratchDim=\dimen130
 \MPnumerator=\count117
+\makeMPintoPDFobject=\count118
 \everyMPtoPDFconversion=\toks40
-) (/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2010/04/01 v0.9 Utility functions of pdfTeX for LuaTeX (HO)
+) (/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/04/22 v0.16 Utilities of pdfTeX for LuaTeX (HO)
 
-
-(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
-)
-(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
-(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2010/04/26 v1.7 LaTeX kernel commands for general use (HO)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
 )
-(/usr/local/texlive/2010/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2007/09/30 v1.0 Managing graphics extensions (HO)
-)
-(/usr/local/texlive/2010/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2010/02/22 v3.7 Keyval support for LaTeX options (HO)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Managing graphics extensions (HO)
 
-(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2010/03/01 v1.9 Key value parser (HO)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Defining keys (HO)
+))
+(/usr/local/texlive/2011/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2010/12/23 v3.10 Keyval support for LaTeX options (HO)
 
-(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2010/01/28 v1.3 Prefix for e-TeX command names (HO)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2011/04/07 v1.13 Key value parser (HO)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Prefix for e-TeX command names (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
 (etexcmds)             that some package has redefined \expanded.
@@ -319,31 +315,31 @@ Package etexcmds Info: Could not find \expanded.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 436.
+(grfext)             \AppendGraphicsExtensions on input line 452.
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/local/texlive/2011/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    Try loading font information for U+msa on input line 191.
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 191.
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for U+lasy on input line 191.
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/base/ulasy.fd
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    Try loading font information for OMS+aer on input line 191.
 
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/ae/omsaer.fd
+(/usr/local/texlive/2011/texmf-dist/tex/latex/ae/omsaer.fd
 File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <9> not available
@@ -381,7 +377,7 @@ t line 4.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [1{/usr/local/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+ [1{/usr/local/texlive/2011/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
@@ -430,6 +426,9 @@ LaTeX Warning: Reference `sec:atomic' on page \thepage  undefined on input line
 <scenario.jpg, id=14, 480.79625pt x 237.88875pt>
 File: scenario.jpg Graphic file (type jpg)
  <use scenario.jpg>
+Package pdftex.def Info: scenario.jpg used on input line 8.
+(pdftex.def)             Requested size: 240.0pt x 118.74806pt.
+
 Overfull \hbox (3.83192pt too wide) in paragraph at lines 14--15
 \T1/aer/m/n/9 model also cap-tures dif-fer-ent modes of con-trol: (i) cen-trali
 sed:
@@ -471,7 +470,7 @@ it/9 A[]\OMS/cmsy/m/n/9 g\OML/cmm/m/it/9 ; P; R\OMS/cmsy/m/n/9 i$\T1/aer/m/n/9
 )) (./coordination.tex [3]
 LaTeX Font Info:    Try loading font information for T1+aett on input line 40.
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/ae/t1aett.fd
+(/usr/local/texlive/2011/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 
@@ -495,80 +494,28 @@ LaTeX Warning: Citation `?' on page \thepage  undefined on input line 204.
 
 LaTeX Warning: Citation `?' on page \thepage  undefined on input line 205.
 
-[5]) (./atomicorchid.tex
+[5])
 
-LaTeX Warning: Reference `sec:scenario' on page \thepage  undefined on input li
-ne 4.
+! LaTeX Error: File `atomicorchid.tex' not found.
 
-(./radiation_model.tex
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
 
-Package amsfonts Warning: Obsolete command \Bbb; \mathbb should be used instead
- on input line 4.
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.223 \input{atomicorchid.tex}
+                              ^^M
+*** (cannot \read from terminal in nonstop modes)
 
-)
-Overfull \hbox (4.14618pt too wide) in paragraph at lines 4--15
-\T1/aer/m/n/9 EKF pro-vides both the mean and vari-ance of the log-radiation
- []
-
-[6]
-Overfull \hbox (4.42494pt too wide) in paragraph at lines 69--70
-\T1/aer/m/n/9 com-pleted, num-ber and cat-e-gori-sa-tion of mes-sages (only
- []
-
-[7]
-Overfull \hbox (1.92259pt too wide) in paragraph at lines 88--89
-\T1/aer/m/n/9 ber of 'sup-port-ing'/related mes-sages (e.g., en-force-ment,
- []
-
-
-Overfull \hbox (3.01309pt too wide) in paragraph at lines 90--92
-[]\T1/aer/m/n/9 Following in-struc-tions ('obe-di-ence'): num-ber of in-struc-
- []
-
-) (./main.bbl) [8
-
-] (./main.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+ 
 Here is how much of TeX's memory you used:
- 3843 strings out of 493747
- 48935 string characters out of 3143547
- 131197 words of memory out of 3000000
- 7014 multiletter control sequences out of 15000+200000
+ 3988 strings out of 493633
+ 51294 string characters out of 3143378
+ 134207 words of memory out of 3000000
+ 7171 multiletter control sequences out of 15000+200000
  60454 words of font info for 89 fonts, out of 3000000 for 9000
- 714 hyphenation exceptions out of 8191
- 39i,17n,26p,2045b,432s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2010/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/tex
-live/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texli
-ve/2010/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/te
-xlive/2010/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local
-/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/t
-exlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/tex
-live/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texli
-ve/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive
-/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/20
-10/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2010/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2010/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2010/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2010/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2010/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2010/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2010/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2010/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2010/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2010/texmf-dist/fonts/typ
-e1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2010/texmf-dist/fonts
-/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/
-urw/helvetic/uhvr8a.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/urw/tim
-es/utmb8a.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/urw/times/utmr8a.
-pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (8 pages, 349032 bytes).
-PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
- 96 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+ 831 hyphenation exceptions out of 8191
+ 41i,17n,26p,2052b,432s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!
