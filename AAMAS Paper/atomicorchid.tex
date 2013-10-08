@@ -8,18 +8,33 @@ In their mission to rescue all the targets from the radioactive zone, the field 
 Field responders are equipped with a `mobile responder tool' providing sensing and awareness capabilities in three tabs (geiger counter, map, messaging and tasks; see figure XX). One tab shows a reading of radioactivity, player health level (based on exposure), and a GPS-enabled map of the game area to locate fellow responders, the targets to be rescued and the drop off zones for the targets. Another tab provides a broadcast messaging interface to communicate with fellow responders (field responders and HQ). Another tab shows the team and task allocation dynamically provided by the agent. Notifications are used to alert both to new messages and task allocations.
 
 The HQ is manned by at least one player who has at her disposal an `HQ dashboard' that provides an overview of the game area, including real-time information of the players' locations (see figure XX). The dashboard provides a broadcast messaging widget, and a player status widget so that the responders' exposure and health levels can be monitored. HQ can further monitor the  current team and task allocations by the agent. Importantly, only the HQ has a view of the radioactive cloud, depicted as a heatmap. `Hotter' zones correspond with higher levels of radioactivity.
-
-\subsection{Planning agent}
-[Wenchao. Describe how the agent works (not implementation detail, add that in subsection below), i.e., when it is polled, what information is being exchanged, and how the team/task allocation is being constructed from that and sent.]
-\input{radiation_model.tex}
 \subsection{System architecture}
-[Wenchao: adapt this to version 2.0] AtomicOrchid is based on the open-sourced geo-fencing game MapAttack\footnote{http://mapattack.org} that has been iteratively developed for a responsive, (relatively) scalable experience.  The location-based game is realized by client-server architecture, relying on real-time data streaming between client and server.
+AtomicOrchid is based on the open-sourced geo-fencing game MapAttack\footnote{http://mapattack.org} that has been iteratively developed for a responsive, (relatively) scalable experience.  The location-based game is realized by client-server architecture, relying on real-time data streaming between client and server.
 
 The client-server architecture is depicted in figure XX. Client-side requests for for less dynamic content use HTTP. Frequent events, such as location updates and radiation exposure, are streamed to clients to avoid the overhead of HTTP. In this way, field responders are kept informed in near real-time.
 
-The planning agent agent ... [add implementation detail]
+The platform is built using the geoloqi platform, Sinatra for Ruby, and state-of-the-art web technologies such as socket.io, node.js and the Google Maps API. Open source mobile client apps that are part native, part browser based exist for iPhone and Android; we adapted an Android app to build the mobile responder app.
 
-The platform is built using the geoloqi platform, Sinatra for Ruby, and state-of-the-art web technologies such as socket.io, node.js, redis and Synchrony for Sinatra, and the Google Maps API. Open source mobile client apps that are part native, part browser based exist for iPhone and Android; we adapted an Android app to build the mobile responder app.
+\subsection{Planning agent}
+[Wenchao. Describe how the agent works (not implementation detail, add that in subsection below), i.e., when it is polled, what information is being exchanged, and how the team/task allocation is being constructed from that and sent.]
+The planning agent is a standalone software agent designed to solve coordination problems in the AtomicOrhid game scenario. It takes game status as input and calculate solutions by running xxx Algorithms. 
+
+\subsection{Integration with AtomicOrchid}
+The agent is implemented by JAVA [need Feng's confirmation] and deployed on a server separated from AtomicOrchid platform. The agent and AtomicOrhid communicate through a simple HTTP interface. The AtomicOrchid server send HTTP requests to pull plans from planning Agent whenever replans are triggered in game. 
+
+There are two triggers of replanning in the game.
+\begin{itemize}
+\item \textit{Successful drop off}. explain more.....
+\item \textit{Explicit reject}. Field players can explicitly reject a plan by pressing reject button in mobile responder app. 
+\end{itemize} 
+The interactions between agent and players will be detailed in next section.
+\subsection{Interacting with planning agent}
+
+ 
+\input{radiation_model.tex}
+
+
+
 
 \section{Real-world evaluation}
 [Note: currently not sure whether to include the non-agent runs. Problematic because: a) unequal number of responders, b) HQ staffed by students in non-agent condition; researchers in agent-condition, c) not enough cases for a quantitative comparison anyways?.]
