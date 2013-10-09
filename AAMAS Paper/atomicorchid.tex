@@ -1,22 +1,26 @@
 \section{The Atomic Orchid Platform}
-In this section we describe the platform within which we embed the planning agent in order study the interactions between human responders and the agent and derive design guidelines for the implementation of such planning agents in real-world scenarios. 
+In this section we describe the platform used to embed the planning agent in order to trial mixed-initiative coordination in a real-world scenario.
+
+%and to study the interactions between human responders and the agent
 
 We adopt a serious mixed-reality games approach (Fischer et al., 2012) to counteract the limitations of computational simulations. For example, Simonovic highlights that simulations may rely on unrealistic geographical topography, and most importantly, may not account for ``human psychosocial characteristics and individual movement, and (...) learning ability'' (Simonovic, 2009: 89). The impact of emotional and physical responses likely in a disaster, such as stress, fear, exertion or panic (Drury et al., 2009) remains understudied in approaches that rely purely on computational simulation. Our approach creates a realistic setting in which participants experience physical exertion and stress through bodily activity and time pressure, mirroring aspects of a real disaster setting (PAHO, 2001); thus providing confidence in the efficacy of behavioural observations regarding team coordination supported by a planning agent.
 
 In more detail, AtomicOrchid is a location-based mobile game based on the fictitious scenario described in Section \ref{sec:scenario}. Field responders are assigned a specific role (e.g. `medic', `transporter', `soldier', `ambulance') 
-In their mission to rescue all the targets from the radioactive zone, the field responders are supported by (at least one) person in a centrally located HQ room, and the planning agent that sends the next task (as computed in the previous section) to the team of field responders. In what follows, we first present the player interfaces used, the interactions with the planning agent, and the modelling of the radiation cloud in the game.
+In their mission to rescue all the targets from the radioactive zone, the field responders are supported by (at least) one person in a centrally located HQ room, and the planning agent that sends the next task (as described in the previous section) to the team of field responders. In what follows, we first present the player interfaces used, the interactions with the planning agent, and the modelling of the radiation cloud in the game.
 
 \subsection{Player interfaces}
-Field responders are equipped with a `mobile responder tool' providing sensing and awareness capabilities in three tabs (geiger counter, map, messaging and tasks; see figure XX). One tab shows a reading of radioactivity, player health level (based on exposure), and a GPS-enabled map of the game area to locate fellow responders, the targets to be rescued and the drop off zones for the targets. Another tab provides a broadcast messaging interface to communicate with fellow responders (field responders and HQ). Another tab shows the team and task allocation dynamically provided by the agent. Notifications are used to alert both to new messages and task allocations.
+Field responders are equipped with a `mobile responder tool' providing sensing and awareness capabilities in three tabs (geiger counter, map, messaging and tasks; see figure XX). The first tab shows a reading of radioactivity, player health level (based on exposure), and a GPS-enabled map of the game area to locate fellow responders, the targets to be rescued and the drop off zones for the targets. The second tab provides a broadcast messaging interface to communicate with fellow field responders and HQ. The third tab shows the team and task allocation dynamically provided by the agent. Notifications are used to alert both to new messages and task allocations.
 
 The HQ is manned by at least one player who has at her disposal an `HQ dashboard' that provides an overview of the game area, including real-time information of the players' locations (see figure XX). The dashboard provides a broadcast messaging widget, and a player status widget so that the responders' exposure and health levels can be monitored. HQ can further monitor the  current team and task allocations by the agent. Importantly, only the HQ has a view of the radioactive cloud, depicted as a heatmap. `Hotter' zones correspond with higher levels of radioactivity.
 
 \subsection{System architecture}
 AtomicOrchid is based on the open-sourced geo-fencing game MapAttack\footnote{http://mapattack.org} that has been iteratively developed for a responsive, (relatively) scalable experience.  The location-based game is realized by client-server architecture, relying on real-time data streaming between client and server.
 
-The client-server architecture is depicted in figure XX. Client-side requests for for less dynamic content use HTTP. Frequent events, such as location updates and radiation exposure, are streamed to clients to avoid the overhead of HTTP. In this way, field responders are kept informed in near real-time.
+Client-side requests for less dynamic content use HTTP. Frequent events, such as location updates and radiation exposure, are streamed to clients to avoid the overhead of HTTP. In this way, field responders are kept informed in near real-time.
 
-The platform is built using the geoloqi platform, Sinatra for Ruby, and state-of-the-art web technologies such as socket.io, node.js and the Google Maps API. Open source mobile client apps that are part native, part browser based exist for iPhone and Android; we adapted an Android app to build the mobile responder app.
+%The platform is built using the geoloqi platform, Sinatra for Ruby, and state-of-the-art web technologies such as socket.io, node.js and the Google Maps API. 
+
+Open source mobile client apps that are part native, part browser based exist for iPhone and Android; we adapted an Android app to build the mobile responder app.
 
 \subsection{Planning agent}
 The planning agent is a standalone software agent designed to solve coordination problems in the AtomicOrhid game scenario. It takes game status as input and compute solutions by running xxx Algorithms. 
@@ -43,13 +47,12 @@ There are also accept and reject buttons in the "task" tab. Players can send ack
 
 
 
-\section{Real-world evaluation}
+\section{Real-world trial}
 We ran three sessions of AtomicOrchid with participants recruited from the local university to evaluate mixed-initiative coordination in a disaster response scenario. The following sections describe the participants, procedure, session configuration and methods used to collect and analyse quantitative and qualitative data.
 
-\subsection{Participants}
+\subsection{Participants and procedure}
 A total of 24 participants (XX of them were female) were recruited through posters and emails, and reimbursed with 15 pounds for 1.5-2 hours of study. The majority were students of the local university. [Say something about their map reading skills?]
 
-\subsection{Procedure}
 The procedure consisted of 30 minutes of game play, and about 1 hour of pre-game briefing, consent forms and a short training session, and post-game group discussion and questionnaire. 
 
 %Upon arrival in the HQ (set up in a meeting room at the local university), participants were briefed and asked to consent to participate. They were presented with a demographic questionnaire to record gender, occupation, experience of using smartphones and level of map navigation skills.
@@ -83,7 +86,7 @@ How are remote messages used as a coordination resource? We use speech-act theor
 \end{itemize}
 
 \subsection{Results}
-Overall, 8 targets were rescued in the non-agent condition (Session A), and respectively 12 targets (Session B), and 11 targets (Session C) were rescued in the agent condition. Teams (re-)formed six times in session A, four times in session B and nine times  in session C. Average player health after the game was 40/100 in Session B, and 81 for the agent-assisted sessions (B:80, C: 82) [\textbf{One "death" happened in session A, and no "death" happened in session B and session C, (I think we need a paragraph to explain death and health)}]. 
+Overall, 8 targets were rescued in the non-agent condition (Session A), and respectively 12 targets (Session B), and 11 targets (Session C) were rescued in the agent condition. Teams (re-)formed six times in session A, four times in session B and nine times  in session C. Average player health after the game was 40/100 in Session B, and 81 for the agent-assisted sessions (B:80, C: 82) [\textbf{Wenchao: any deaths?}]. 
 
 The agent dynamically re-planned 14 times in session B, and 18 times in session C. Most of the times, this was triggered when a target was dropped off in the safe zone (24 times), some times this was triggered by a player rejecting the agent's task allocation (8 times).  \textbf{Wenchao: Robustness measure missing, e.g., how often did the task allocations change when re-planning?}
 
@@ -101,7 +104,7 @@ On the other hand, when task allocation was handled by the agent, responders acc
 \caption{How task allocations were handled by field responders in the agent-condition (left) and in the non-agent condition(right).}
 \end{figure}
 
-[A total of 4 violations of agent planning are observed; \textbf{Players approach targets without being instructed by players. They succeed twice (shown in diagram) and failed twice}]. 
+[observed 4 violations of agent planning; \textbf{Wenchao}: where are these?]. 
 
 \paragraph{Rejecting tasks}
 [-> pick this up in the discussion re. Gopal's/Feng's point on adjustable planning?]
@@ -111,9 +114,9 @@ Field responders rejected the agent's task allocation 11 times in the agent cond
 Overall, players were more likely to reject plan if their proposed teammates were far away from them. For accepted instructions, the average distance between suggested teammates was 12 metres. For rejected instructions, the average distance between suggested teammates was 86 metres.
 
 \subsubsection{The role of HQ}
-The role of HQ changed in that in the non-agent condition HQ was responsible for handling task allocations, whereas task allocation was handled by the agent in the other condition. HQ frequently monitored the agent's task allocation in the two agent-supported sessions (59 clicks on `show task' in UI responder status widget [\textbf{need to explain this more in section 4.1}]). Whereas 43 directives in the non-agent session were task allocations, only 16 directives were directly related to task allocations in the agent condition. Out of these, HQ reinforced the agent instruction 6 times (e.g., ``SS and LT retrieve 09''), and complemented the agent's task allocation 5 times (``DP and SS, as soon as you can head to 20 before the radiation cloud gets there first''). HQ did `override' the agent instruction in 5 cases.  
+The role of HQ changed in that in the non-agent condition HQ was responsible for handling task allocations, whereas task allocation was handled by the agent in the other condition. HQ frequently monitored the agent's task allocation in the two agent-supported sessions (57 clicks on `show task' in UI responder status widget). Whereas 43 directives in the non-agent session were task allocations, only 16 directives were directly related to task allocations in the agent condition. Out of these, HQ reinforced the agent instruction 6 times (e.g., ``SS and LT retrieve 09''), and complemented the agent's task allocation 5 times (``DP and SS, as soon as you can head to 20 before the radiation cloud gets there first''). HQ did `override' the agent instruction in 5 cases.  
 
-The majority of HQ's directives and assertives (x out of y) (\textbf{Wenchao, should this include assertives. Yes, but classification of assertives have not been done, will do it soon}) focussed on providing situational awareness and safely routing the responders to avoid exposing them to radiation. For example, ``Nk and JL approach drop off 6 by navigating via 10 and 09.'', or ``Radiation cloud is at the east of the National College''. (-> Shows division of labour and the benefits of human-agent collaboration).
+The majority of HQ's directives (52 out of 68) (\textbf{Wenchao, should this include assertives??}) focussed on providing situational awareness and safely routing the responders to avoid exposing them to radiation. For example, ``Nk and JL approach drop off 6 by navigating via 10 and 09.'', or ``Radiation cloud is at the east of the National College''. (-> Shows division of labour and the benefits of human-agent collaboration).
 
  
 %Joel and Wenchao
