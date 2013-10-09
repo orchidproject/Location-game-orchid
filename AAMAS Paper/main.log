@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  8 OCT 2013 11:53
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  9 OCT 2013 18:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -245,22 +245,28 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \c@algocf=\count112
 \algocf@algoframe=\box35
 \algocf@algobox=\box36
+) (/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 51.
 
+(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
 (/usr/local/texlive/2011/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count113
@@ -321,247 +327,145 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+msa on input line 191.
+LaTeX Font Info:    Try loading font information for U+msa on input line 190.
 
 (/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 191.
+LaTeX Font Info:    Try loading font information for U+msb on input line 190.
 
 (/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 191.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 190.
 
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for OMS+aer on input line 191.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 190.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 190.
 
 
-(/usr/local/texlive/2011/texmf-dist/tex/latex/ae/omsaer.fd
-File: omsaer.fd 1999/12/27
+(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
 )
-LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 191.
-
-Overfull \hbox (1.85751pt too wide) in paragraph at lines 210--211
-\T1/aer/m/n/9 Human-Agent In-ter-ac-tion, Co-or-di-na-tion, De-ci-sion un-der U
-n-
- []
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 190.
 
 (./introduction.tex
-
-LaTeX Warning: Citation `kitano' on page \thepage  undefined on input line 2.
-
-
-LaTeX Warning: Citation `ramchurn:teal:2010' on page \thepage  undefined on inp
-ut line 4.
-
-
-LaTeX Warning: Citation `koes:teal:2005' on page \thepage  undefined on input l
-ine 4.
-
-
-LaTeX Warning: Citation `scerri:teal:200X' on page \thepage  undefined on input
- line 4.
-
-
-LaTeX Warning: Citation `ramchurn:robocup:2010' on page \thepage  undefined on 
-input line 4.
-
-
-LaTeX Warning: Citation `chapman:teal:2010' on page \thepage  undefined on inpu
-t line 4.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [1{/usr/local/texlive/2011/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-
-
-]
-Overfull \hbox (6.66794pt too wide) in paragraph at lines 8--9
-\T1/aer/m/n/9 for-ma-tion un-der un-cer-tainty us-ing a Multi-agent Markov
+Overfull \hbox (5.29288pt too wide) in paragraph at lines 9--10
+\T1/ptm/m/n/9 for-ma-tion un-der un-cer-tainty us-ing the con-cept of mixed-rea
+lity
  []
 
-
-Overfull \hbox (5.47888pt too wide) in paragraph at lines 12--13
-\T1/aer/m/n/9 how agent-based co-or-di-na-tion al-go-rithms for dis-as-ter re-s
-ponse
- []
+[1{/usr/local/texlive/2011/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
-LaTeX Warning: Reference `sec:scenario' on page \thepage  undefined on input li
-ne 14.
-
-
-LaTeX Warning: Reference `sec:algorithm' on page \thepage  undefined on input l
-ine 14.
-
-
-LaTeX Warning: Reference `sec:atomic' on page \thepage  undefined on input line
- 14.
-
-
-LaTeX Warning: Reference `sec:evaluation' on page \thepage  undefined on input 
-line 14.
-
-
-LaTeX Warning: Reference `sec:conclusions' on page \thepage  undefined on input
- line 14.
-
-) (./scenario.tex
-
-LaTeX Warning: Reference `atomic' on page \thepage  undefined on input line 3.
-
-
-LaTeX Warning: Reference `sec:algo' on page \thepage  undefined on input line 3
-.
-
-
-LaTeX Warning: Reference `sec:atomic' on page \thepage  undefined on input line
- 3.
-
-<scenario.jpg, id=14, 480.79625pt x 237.88875pt>
+])
+(./scenario.tex <scenario.jpg, id=12, 480.79625pt x 237.88875pt>
 File: scenario.jpg Graphic file (type jpg)
- <use scenario.jpg>
-Package pdftex.def Info: scenario.jpg used on input line 8.
+
+<use scenario.jpg>
+Package pdftex.def Info: scenario.jpg used on input line 7.
 (pdftex.def)             Requested size: 240.0pt x 118.74806pt.
-
-Overfull \hbox (3.83192pt too wide) in paragraph at lines 14--15
-\T1/aer/m/n/9 model also cap-tures dif-fer-ent modes of con-trol: (i) cen-trali
-sed:
- []
-
-[2 <./scenario.jpg>]
-
-LaTeX Warning: Reference `sec:algo' on page \thepage  undefined on input line 1
-6.
-
-
-LaTeX Warning: Citation `?' on page \thepage  undefined on input line 16.
-
-
-LaTeX Warning: Citation `csftp' on page \thepage  undefined on input line 16.
-
-
-LaTeX Warning: Citation `HTSSC' on page \thepage  undefined on input line 16.
-
-
-LaTeX Warning: Citation `?' on page \thepage  undefined on input line 16.
-
-
-LaTeX Warning: Citation `?' on page \thepage  undefined on input line 16.
-
-
-LaTeX Warning: Citation `?' on page \thepage  undefined on input line 16.
-
-(./mmdp_model.tex
+ [2 <./scenario.jpg>] (./mmdp_model.tex
 Missing character: There is no £ in font cmr9!
 
-Overfull \hbox (10.04964pt too wide) in paragraph at lines 2--10
-\T1/aer/m/n/9 (MMDP) for-mally rep-re-sented by tu-ple $\OMS/cmsy/m/n/9 M \OT1/
-cmr/m/n/9 = \OMS/cmsy/m/n/9 h\OML/cmm/m/it/9 I; S; \OMS/cmsy/m/n/9 f\OML/cmm/m/
-it/9 A[]\OMS/cmsy/m/n/9 g\OML/cmm/m/it/9 ; P; R\OMS/cmsy/m/n/9 i$\T1/aer/m/n/9 
-,
+Overfull \hbox (2.80765pt too wide) in paragraph at lines 36--41
+[]$\OML/cmm/m/it/9 P[]\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 s[]\OMS/cmsy/m/n/9 j\OML/
+cmm/m/it/9 s[]\OT1/cmr/m/n/9 )$ \T1/ptm/m/n/9 is the prob-a-bil-ity for the ra-
+dioac-tive cloud to spread
  []
 
-)) (./coordination.tex [3]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 57.
+)) (./coordination.tex
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 55.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 58.
 
-(/usr/local/texlive/2011/texmf-dist/tex/latex/ae/t1aett.fd
-File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-
-LaTeX Warning: Reference `sec:model' on page \thepage  undefined on input line 
-69.
-
-
-LaTeX Warning: Citation `?' on page \thepage  undefined on input line 155.
-
-
-LaTeX Warning: Citation `?' on page \thepage  undefined on input line 166.
-
-[4]
-
-LaTeX Warning: Reference `sec:evaluation' on page \thepage  undefined on input 
-line 222.
-
-
-LaTeX Warning: Citation `?' on page \thepage  undefined on input line 248.
-
-
-LaTeX Warning: Citation `?' on page \thepage  undefined on input line 249.
-
-) (./atomicorchid.tex [5]
-
-LaTeX Warning: Reference `sec:scenario' on page \thepage  undefined on input li
-ne 4.
-
-
-Overfull \hbox (1.98639pt too wide) in paragraph at lines 23--24
-\T1/aer/m/n/9 server send HTTP re-quests to pull plans from plan-ning Agent
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 59.
+ [3] [4])
+(./atomicorchid.tex (./components.tex
+Overfull \hbox (9.99934pt too wide) in paragraph at lines 2--3
+\T1/ptm/m/n/9 vid-ing sens-ing and aware-ness ca-pa-bil-i-ties in three tabs (g
+eiger counter,
  []
 
-(./radiation_model.tex [6])
-Overfull \hbox (4.42494pt too wide) in paragraph at lines 84--85
-\T1/aer/m/n/9 com-pleted, num-ber and cat-e-gori-sa-tion of mes-sages (only
+<UI.png, id=36, 1260.71pt x 912.40875pt>
+File: UI.png Graphic file (type png)
+ <use UI.png>
+Package pdftex.def Info: UI.png used on input line 5.
+(pdftex.def)             Requested size: 240.0pt x 173.69359pt.
+ [5 <./UI.png>]
+Overfull \hbox (5.40985pt too wide) in paragraph at lines 26--27
+\T1/ptm/m/n/9 player and send them to their mo-bile re-spon-der app. The app pr
+esents
  []
 
-[7]
-Overfull \hbox (1.92259pt too wide) in paragraph at lines 129--130
-\T1/aer/m/n/9 ber of 'sup-port-ing'/related mes-sages (e.g., en-force-ment,
+) (./radiation_model.tex
+Overfull \hbox (15.06305pt too wide) in alignment at lines 3--5
+ [][][] []
+ []
+
+) (./evaluation.tex [6]
+<message_handling.png, id=47, 1049.9225pt x 640.3925pt>
+File: message_handling.png Graphic file (type png)
+
+<use message_handling.png>
+Package pdftex.def Info: message_handling.png used on input line 61.
+(pdftex.def)             Requested size: 240.0pt x 146.37842pt.
+ [7 <./message_handling.png>]
+Overfull \hbox (1.09879pt too wide) in paragraph at lines 81--82
+[]\T1/ptm/m/n/9 Field re-spon-ders per-formed bet-ter (res-cued more tar-gets),
+ and
  []
 
 
-Overfull \hbox (3.01309pt too wide) in paragraph at lines 131--133
-[]\T1/aer/m/n/9 Following in-struc-tions ('obe-di-ence'): num-ber of in-struc-
+Overfull \hbox (6.31009pt too wide) in paragraph at lines 83--84
+\T1/ptm/m/n/9 safely route field re-spon-ders around dan-ger zones; thus demon-
+
  []
 
-) (./main.bbl) [8] (./main.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+)) (./conclusions.tex) (./main.bbl) [8] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 4014 strings out of 493633
- 51579 string characters out of 3143378
- 135219 words of memory out of 3000000
- 7178 multiletter control sequences out of 15000+200000
- 65719 words of font info for 98 fonts, out of 3000000 for 9000
+ 4064 strings out of 493633
+ 52596 string characters out of 3143378
+ 135522 words of memory out of 3000000
+ 7235 multiletter control sequences out of 15000+200000
+ 63127 words of font info for 79 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 41i,18n,27p,2080b,498s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/tex
-live/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texli
-ve/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive
-/2011/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texl
-ive/2011/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/t
-exlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/tex
-live/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
-ve/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
-/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2
-011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2011
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2011/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2011/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2011/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2011/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2011/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2011/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2011/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2011/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1
-/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
-ype1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/ur
-w/helvetic/uhvr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/times
-/utmb8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/times/utmr8a.pf
-b></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (8 pages, 365111 bytes).
+ 41i,18n,26p,2026b,498s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2011/
+texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2011/texmf-dist/font
+s/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2011/texmf-dist/fonts/
+type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2011/texmf-dist/fon
+ts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2011/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2011/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2011/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2011/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2011/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr9.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy5.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy6.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy8.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy9.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/
+symbols/msam10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/courier/
+ucrr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.
+pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
+sr/local/texlive/2011/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/t
+exlive/2011/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/201
+1/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (8 pages, 2252818 bytes).
 PDF statistics:
- 137 PDF objects out of 1000 (max. 8388607)
- 99 compressed objects within 1 object stream
+ 126 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -3,54 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: abbrv.bst
 Database file #1: citations.bib
-Warning--I didn't find a database entry for "kitano"
-Warning--I didn't find a database entry for "ramchurn:teal:2010"
-Warning--I didn't find a database entry for "koes:teal:2005"
-Warning--I didn't find a database entry for "scerri:teal:200X"
-Warning--I didn't find a database entry for "ramchurn:robocup:2010"
-Warning--I didn't find a database entry for "chapman:teal:2010"
-Warning--I didn't find a database entry for "?"
-Warning--I didn't find a database entry for "csftp"
-Warning--I didn't find a database entry for "HTSSC"
-You've used 0 entries,
+You've used 12 entries,
             2118 wiz_defined-function locations,
-            508 strings with 3830 characters,
-and the built_in function-call counts, 18 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+            574 strings with 5596 characters,
+and the built_in function-call counts, 4752 in all, are:
+= -- 474
+> -- 198
+< -- 6
++ -- 78
+- -- 66
+* -- 323
+:= -- 735
+add.period$ -- 37
+call.type$ -- 12
+change.case$ -- 69
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 12
+duplicate$ -- 194
+empty$ -- 393
+format.name$ -- 66
+if$ -- 1039
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 3
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 12
+missing$ -- 11
+newline$ -- 62
+num.names$ -- 24
+pop$ -- 82
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 57
 quote$ -- 0
-skip$ -- 1
+skip$ -- 151
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 338
+swap$ -- 65
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 48
 warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 2
-(There were 9 warnings)
+while$ -- 46
+width$ -- 14
+write$ -- 133
