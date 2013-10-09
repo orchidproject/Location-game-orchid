@@ -1,12 +1,14 @@
 \subsection{The Optimisation Problem}
-\noindent Here we formalise the optimisation problem that needs to
-be solved to coordinate the responders optimally. Hence, we define
-this problem as a  Multi-agent Markov Decision Process (MMDP)
-formally represented by tuple $\mathcal{M} = \langle I, S, \{A_i\},
-P, R \rangle$, where $I$ is the set of actors as defined in the
-previous section,  $S$ is the state space, $A_i$ is a set of
-responder $p_i$'s actions, $P$ is the transition function, and $R£$
-is the reward function. We elaborate on each of these below.
+\label{sec:model}
+\noindent Here we formalise the optimisation
+problem that needs to be solved to coordinate the responders
+optimally. Hence, we define this problem as a  Multi-agent Markov
+Decision Process (MMDP)~\cite{boutilier1996planning} formally
+represented by tuple $\mathcal{M} = \langle I, S, \{A_i\}, P, R
+\rangle$, where $I$ is the set of actors as defined in the previous
+section,  $S$ is the state space, $A_i$ is a set of responder
+$p_i$'s actions, $P$ is the transition function, and $R£$ is the
+reward function. We elaborate on each of these below.
 
 More specifically, $S= S_r \times S_{p_1} \times \cdots \times
 S_{p_n} \times S_{t_1} \times \cdots \times S_{t_m}$ where $S_r =

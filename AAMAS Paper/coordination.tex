@@ -153,9 +153,10 @@ too high a radioactive dose), the simulation is terminated (Line
 5). Otherwise, we estimate the expected value of $s'$ using
 Monte-Carlo Tree Search (MCTS) (Line 8), which provides good
 tradeoff between exploitation and exploration of the policy space
-and has been shown to be efficient for large MDPs~\cite{?}. After
-$N$ simulations, the averaged value is returned as an approximation
-of the coalition value (Line 10).
+and has been shown to be efficient for large
+MDPs~\cite{kocsis2006bandit}. After $N$ simulations, the averaged
+value is returned as an approximation of the coalition value (Line
+10).
 
 The basic idea of MCTS is to maintain a search tree where each node
 is associated with a state $s$ and each branch is a task assignment
@@ -164,7 +165,7 @@ an assignment for the free responders (a responder is free when he
 or she is capable of doing tasks but not assigned to any task) at
 each node of the search tree. This can be computed by
 Equation~\ref{eq:cf} using the coalition values estimated by the
-UCT heuristic~\cite{?}:
+UCB1 heuristic~\cite{auer2002finite}:
 \begin{equation}
   v(C_{jk}) = \overline{v(C_{jk})} + c\sqrt{\frac{2N(s)}{N(s, C_{jk})}}
 \end{equation}
@@ -244,10 +245,10 @@ moving in the filed $P_{p_i}$, which are defined earlier in the
 MMDP. $R_i$ is the reward function. At this level, responder $p_i$
 only needs to consider the cost of moving to a task and the penalty
 of receiving high radiation doses. This is a typical MDP that can
-be solved by many state-of-the-art MDP solvers~\cite{?}. We choose
-the Real-Time Dynamic Programming (RTDP)~\cite{?} approach because
-it particularly fits  our problem, that is, a goal-directed MDP
-with large number of states.
+be solved by many state-of-the-art MDP solvers. We choose the
+Real-Time Dynamic Programming (RTDP)~\cite{barto1995learning}
+approach because it particularly fits  our problem, that is, a
+goal-directed MDP with large number of states.
 
 There are several techniques we use to speed up the convergency of
 RTDP. In our problem, the terrain of the field is static. Thus, we
