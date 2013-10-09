@@ -1,5 +1,5 @@
-\section{Team Coordination Algorithm}
-\label{sec:algo} \noindent The  MMDP model proposed in the previous
+\section{Team Coordination Algorithm}\label{sec:algo} 
+\noindent The  MMDP model proposed in the previous
 section results in a very large search space even for small-sized
 problems. For example, with 8 responders and 17 tasks in a
 50$\times$55 grid, the number of possible states is more than
@@ -61,7 +61,8 @@ sections will describe the procedures of each level in more detail.
     \tcp{The path planning}
     $a_i \gets$ compute the best path to task $t_i$ \;
   }
-  \Return{$\vec{a}$}
+  \Return{$\vec{a}$}\vspace{-1mm}
+
 \end{algorithm}
 
 \subsection{Task Allocation}
@@ -209,7 +210,7 @@ cannot do more than one task at the same time). This is a standard
 MILP that can be efficiently solved  using standard solvers such as
 IBM ILOG's CPLEX.
 
-\subsubsection{Adapting to Responders}
+\subsubsection{Adapting to Responders}\label{sec:adaptive}
 One main advantage of our approach is that it can easily
 incorporate the preferences of the responders. For example, if a
 responder rejects  a task allocated to it by the planning agent, we
@@ -273,21 +274,6 @@ bottleneck is the huge state space.
 %  \label{fig:simulation}
 %\end{figure}
 
-\begin{table}[htbp]
-  \centering\vspace{-15pt}
-  \caption{Experimental results for the MMDP, myopic, greedy
-  algorithms in simulation.}
-  \begin{tabular}{|l||l|l|l|}
-  \hline
-   & {\bf MMDP} & {\bf myopic} & {\bf greedy} \\
-  \hline\hline
-  {\bf Completed Tasks} & 71\% & 65\% & 41\% \\
-  \hline
-  {\bf Survived Responders} & 100\% & 25\% & 0\% \\
-  \hline
-  \end{tabular}
-  \label{tab:simulation}
-\end{table}
 
 \noindent To test the performance of our algorithm, we compare it
 with a greedy and a myopic method for task planning using a
@@ -307,3 +293,20 @@ killed by the radioactive cloud. More extensive evaluations are
 beyond the scope of this paper as the focus is on the use of the
 algorithm in a real-world deployment to test how humans take up
 advice computed in sophisticated ways by an agent-based planner.
+
+\begin{table}[htbp]
+  \centering\vspace{-15pt}
+  \caption{Experimental results for the MMDP, myopic, greedy
+  algorithms in simulation.}
+  \begin{tabular}{|l||l|l|l|}
+  \hline
+   & {\bf MMDP} & {\bf myopic} & {\bf greedy} \\
+  \hline\hline
+  {\bf Completed Tasks} & 71\% & 65\% & 41\% \\
+  \hline
+  {\bf Survived Responders} & 100\% & 25\% & 0\% \\
+  \hline
+  \end{tabular}
+  \label{tab:simulation}
+\end{table}
+
