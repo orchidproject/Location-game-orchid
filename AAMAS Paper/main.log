@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.7)  10 OCT 2013 12:51
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.7)  10 OCT 2013 22:41
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -362,32 +362,78 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 191.
 
 (./introduction.tex
-Overfull \hbox (5.29288pt too wide) in paragraph at lines 9--10
-\T1/ptm/m/n/9 for-ma-tion un-der un-cer-tainty us-ing the con-cept of mixed-rea
-lity
+Overfull \hbox (3.75316pt too wide) in paragraph at lines 8--9
+\T1/ptm/m/n/9 the Multi-agent Markov De-ci-sion Pro-cess (MMDP) paradigm.
  []
 
 [1{/usr/local/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ])
-(./scenario.tex
-
-LaTeX Warning: Citation `scerri:etal:2005' on page \thepage  undefined on input
- line 16.
-
-(./mmdp_model.tex [2])) (./coordination.tex
+(./scenario.tex (./mmdp_model.tex [2])) (./coordination.tex
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 55.
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 58.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 48.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 51.
 
 (/usr/local/texlive/2010/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 59.
- [3] [4])
-(./atomicorchid.tex (./components.tex
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 52.
+ [3]
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 161.
+
+LaTeX Font Info:    Calculating math sizes for size <> on input line 163.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <> not available
+(Font)              size <5> substituted on input line 163.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 163.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 163.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <> not available
+(Font)              size <5> substituted on input line 163.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.7> not available
+(Font)              size <5> substituted on input line 163.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.5> not available
+(Font)              size <5> substituted on input line 163.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <> not available
+(Font)              size <5> substituted on input line 163.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 163.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 163.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <> not available
+(Font)              size <5> substituted on input line 163.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 163.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 163.
+
+[4]) (./atomicorchid.tex (./components.tex
 Overfull \hbox (9.99934pt too wide) in paragraph at lines 2--3
 \T1/ptm/m/n/9 vid-ing sens-ing and aware-ness ca-pa-bil-i-ties in three tabs (g
 eiger counter,
@@ -395,71 +441,68 @@ eiger counter,
 
 <UI.png, id=35, 1260.71pt x 912.40875pt>
 File: UI.png Graphic file (type png)
- <use UI.png> [5])
-(./radiation_model.tex
+ <use UI.png>
+Overfull \hbox (5.99141pt too wide) in paragraph at lines 10--11
+[]$\OML/cmm/m/it/9 H$ \T1/ptm/m/n/9 has at her dis-posal an `HQ dash-board' tha
+t pro-vides an overview
+ []
+
+[5 <./UI.png>]) (./radiation_model.tex
 Overfull \hbox (15.06305pt too wide) in alignment at lines 3--5
  [][][] []
  []
 
 
-Overfull \hbox (8.76514pt too wide) in paragraph at lines 5--7
-\T1/ptm/m/n/9 the wind pro-cess co-vari-ance func-tion is, $[]\OT1/cmr/m/n/9 (\
-OML/cmm/m/it/9 w[]\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 G; ^^\\OT1/cmr/m/n/9 )\OML/cm
-m/m/it/9 ; w[]\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 G; ^^\[]\OT1/cmr/m/n/9 )) =
+Overfull \hbox (4.9959pt too wide) in paragraph at lines 10--11
+\T1/ptm/m/n/9 for the HQ (agent and com-man-der) and the re-spon-ders on the gr
+ound,
  []
 
-) (./evaluation.tex [6 <./UI.png>]
+) (./evaluation.tex [6]
 <message_handling.png, id=46, 1049.9225pt x 640.3925pt>
 File: message_handling.png Graphic file (type png)
 
 <use message_handling.png> [7 <./message_handling.png>]
-
-LaTeX Warning: Reference `sec:algorithm' on page \thepage  undefined on input l
-ine 78.
-
-
-Overfull \hbox (1.09879pt too wide) in paragraph at lines 78--79
-[]\T1/ptm/m/n/9 Field re-spon-ders per-formed bet-ter (res-cued more tar-gets),
- and
- []
-
-
-Overfull \hbox (6.31009pt too wide) in paragraph at lines 82--83
-\T1/ptm/m/n/9 safely route field re-spon-ders around dan-ger zones; thus demon-
-
- []
-
-
-Overfull \hbox (5.18488pt too wide) in paragraph at lines 85--86
+Overfull \hbox (5.18488pt too wide) in paragraph at lines 84--85
 \T1/ptm/m/n/9 for-ma-tion should not only model the un-cer-tainty in player be-
 haviours
  []
 
 
-Overfull \hbox (6.05745pt too wide) in paragraph at lines 87--88
-[]\T1/ptm/m/n/9 Adaptivity: our re-sults sug-gest that plan-ning al-go-rithms s
-hould
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+
  []
 
 
-LaTeX Warning: Citation `scerri:etal:2005' on page \thepage  undefined on input
- line 91.
+Overfull \hbox (1.53964pt too wide) in paragraph at lines 86--87
+\T1/ptm/b/n/9 Adaptivity\T1/ptm/m/n/9 : our ex-pe-ri-ence sug-gest that plan-ni
+ng al-go-rithms should
+ []
 
-)) (./conclusions.tex) (./main.bbl [8]) [9
 
-] (./main.aux)
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
-LaTeX Warning: There were undefined references.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
+
+ []
+
+)) (./conclusions.tex) (./main.bbl) [8] (./main.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 4.5pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 3975 strings out of 493747
- 50929 string characters out of 3143547
- 134593 words of memory out of 3000000
- 7140 multiletter control sequences out of 15000+200000
- 63748 words of font info for 81 fonts, out of 3000000 for 9000
+ 3999 strings out of 493747
+ 51242 string characters out of 3143547
+ 135590 words of memory out of 3000000
+ 7163 multiletter control sequences out of 15000+200000
+ 65992 words of font info for 91 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 39i,18n,26p,2685b,498s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,18n,26p,2712b,492s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2010/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/tex
 live/2010/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/
@@ -482,10 +525,10 @@ st/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2010/texmf-dist/fonts
 urw/helvetic/uhvr8a.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/urw/times/utmr8a.
 pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (9 pages, 2221258 bytes).
+Output written on main.pdf (8 pages, 2222291 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
+ 125 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
