@@ -1,7 +1,7 @@
 \subsection{The Optimisation Problem}
 \label{sec:model}
 \noindent Previous agent-based models that aim to solve the allocation of tasks to first responders typically require the process of task executions to be deterministic and explicitly model the task deadlines as deterministic constraints \cite{ramchurn:etal:2010b,Scerri2005}. However, in order to evaluate agent-guided coordination in a real-world environment, it is important to consider real-world uncertainties due to player behaviours and the environment (as discussed in the previous section). Given this, we propose novel representation for the task allocation problem in disaster response that does take into account such uncertainties. More specifically, we represent the problem as a Multi-Agent Markov Decision Process (MMDP) that captures the uncertainties of the radioactive cloud and the responders' behaviours ~\cite{boutilier1996planning}. We model the spreading of the radioactive cloud as a random process over the disaster space and allow the actions requested from the responders to  fail (because they refuse to go to a  task) or incur delays (because they are too slow) during the rescue process. Thus in the MMDP model, we represent  task executions as stochastic processes of state transitions while the uncertainties of the radioactive cloud and the responders' behaviours can be easily captured with transition probabilities.  More formally, the MMDP is
-represented by tuple $\mathcal{M} = \langle I, S, \{A_i\}, P, R
+represented by tuple $\mathcal{M} = \langle I, S, \{A_i\}_{p_i\in I}, P, R
 \rangle$, where $I$ is the set of actors as defined in the previous
 section,  $S$ is the state space, $A_i$ is a set of responder
 $p_i$'s actions, $P$ is the transition function, and $R$ is the
