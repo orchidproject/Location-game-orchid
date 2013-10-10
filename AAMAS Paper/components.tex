@@ -15,7 +15,7 @@ The HQ is manned by at least one player (the HQ commander) who has at her dispos
 %The platform is built using the geoloqi platform, Sinatra for Ruby, and state-of-the-art web technologies such as socket.io, node.js and the Google Maps API. 
 
 \subsection{Integrating the Planning agent}
-\noindent The planning agent as described in Section \ref{sec:algo} takes the game status (i.e., positions of players, know status of the cloud, and messages received from players - see below) as input and produces a plan of optimal team-task allocation for the current state. The agent is deployed on a separate server. The AtomicOrchid server requests a plan from the agent via a stateless HTTP interface by transmitting the game status in JSON format. Polling (and thus re-planning) is triggered by two kinds of game events:
+\noindent The planning agent as described in Section \ref{sec:algo} takes the game status (i.e., positions of players, known status of the cloud, and messages received from players - see below) as input and produces a plan of optimal coalition to task allocation for the current state. The agent is deployed on a separate server. The AtomicOrchid server requests a plan from the agent via a stateless HTTP interface by transmitting the game status in JSON format. Polling (and thus re-planning) is triggered by two kinds of game events:
 \begin{itemize}
 \item \textit{Completion of task}. On successful rescue of a target, a new plan (i.e., allocation of tasks to each responder) is requested from the agent.
 \item \textit{Explicit reject}. On rejection of a task allocation by field responders, a new plan is requested. More importantly, the rejected allocation is, in turn, used as a constraint within the optimisation run by the planner agent (as described in Section \ref{sec:adaptive}).
@@ -23,7 +23,7 @@ The HQ is manned by at least one player (the HQ commander) who has at her dispos
 
 %\subsection{Interacting with planning agent}
 %There can interact directly with field players through a task tab (Figure xx) and agent plans are also visible to HQ's dashboard interface.
-Once a plan is pulled from the planning agent, the AtomicOrchid game engine splits the plan into individual task allocations for each player and send them to their mobile responder app. The app presents the task allocation in the task tab, detailing: 1) the responder to team up with, 2) the allocated target (using target id), and 3) approximate direction of the target (e.g., north, east). 
+Once a plan is pulled from the planning agent, the AtomicOrchid game engine splits the plan for a given coalition into individual task allocations for each player and send them to their mobile responder app. The app presents the task allocation in the task tab, detailing: 1) the responder to team up with, 2) the allocated target (using target id), and 3) approximate direction of the target (e.g., north, east). 
 
 Once a player accepts a task, an acknowledgement is sent to their teammates, while rejecting a task triggers a task assignment from the agent. Furthermore, the HQ commander is provided with a visualisation of task allocations for each player on demand (by button press), to help monitor the task allocation computed by the agent.
 
