@@ -23,7 +23,7 @@ The HQ is manned by at least one player (the HQ commander) who has at her dispos
 
 %\subsection{Interacting with planning agent}
 %There can interact directly with field players through a task tab (Figure xx) and agent plans are also visible to HQ's dashboard interface.
-Once a plan is pulled from the planning agent, the AtomicOrchid game engine splits the plan for a given coalition into individual task allocations for each player and sends them to their mobile responder app. The app presents the task allocation in the task tab, detailing: i) the responder to team up with, ii) the allocated target (using target id), and iii) approximate direction of the target (e.g., north, east). 
+Once a plan is received from the planning agent, the AtomicOrchid game engine splits the plan for a given coalition into individual task allocations for each player and sends them to their mobile responder app. The app presents the task allocation in the task tab, detailing: i) the responder to team up with, ii) the allocated target (using target id), and iii) approximate direction of the target (e.g., north, east). 
 
-Once a player accepts a task, an acknowledgement is sent to their teammates, while rejecting a task triggers a task assignment from the agent. Furthermore, the HQ commander is provided with a visualisation of task allocations for each player on demand (by button press), to help monitor the task allocation computed by the agent.
+Once a player accepts a task, an acknowledgement is sent to their teammates, while rejecting a task triggers a new task assignment from the agent. Furthermore, the HQ commander is provided with a visualisation of task allocations for each player on demand (by button press), to help monitor the task allocation computed by the agent.
 
