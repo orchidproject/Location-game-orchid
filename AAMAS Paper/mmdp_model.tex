@@ -1,7 +1,7 @@
 \subsection{The Optimisation Problem}
 \label{sec:model}
 \noindent Previous agent-based models that aim to solve the allocation of tasks to first responders typically require the process of task executions to be deterministic and explicitly model the task deadlines as deterministic constraints \cite{ramchurn:etal:2010b,Scerri2005}. However, in order to evaluate agent-guided coordination in a real-world environment, it is important to consider real-world uncertainties due to player behaviours and the environment (as discussed in the previous section). Given this, we propose novel representation for the task allocation problem in disaster response that does take into account such uncertainties. More specifically, we represent the problem as a Multi-Agent Markov Decision Process (MMDP) that captures the uncertainties of the radioactive cloud and the responders' behaviours ~\cite{boutilier1996planning}. We model the spreading of the radioactive cloud as a random process over the disaster space and allow the actions requested from the responders to  fail (because they refuse to go to a  task) or incur delays (because they are too slow) during the rescue process. Thus in the MMDP model, we represent  task executions as stochastic processes of state transitions while the uncertainties of the radioactive cloud and the responders' behaviours can be easily captured with transition probabilities.  More formally, the MMDP is
-represented by tuple $\mathcal{M} = \langle I, S, \{A_i\}_{p_i\in I}, P, R
+represented by tuple $\mathcal{M} = \langle I, S, \{A_i\}, P, R
 \rangle$, where $I$ is the set of actors as defined in the previous
 section,  $S$ is the state space, $A_i$ is a set of responder
 $p_i$'s actions, $P$ is the transition function, and $R$ is the
@@ -24,7 +24,7 @@ are: (i) {\em stay} in the current location $(x_i, y_i)$, (ii) {\em
 move} to the 8 neighbouring locations, or (iii) {\em complete} a
 task located in $(x_i, y_i)$. A joint action $\vec{a}=\langle a_1,
 \cdots, a_n \rangle$ is a set of actions where $a_i\in A_i$, one
-for each responder. 
+for each responder.
 
 The transition function $P$ is defined in more detail as: $P= P_r
 \times P_{p_1} \times P_{p_n} \times P_{t_1} \times P_{t_n}$ where:
@@ -35,14 +35,14 @@ The transition function $P$ is defined in more detail as: $P= P_r
         It captures the uncertainty of the  radioactive
         levels in the environment due to  noisy sensor
         readings and the variations in wind speed and direction.
-    \item $P_{p_i}(s'_{p_i}|s, a_i)$ is the probability 
+    \item $P_{p_i}(s'_{p_i}|s, a_i)$ is the probability
         responder $p_i$ transitions to a new state $s'_{p_i}$
         when executing action $a_i$. For example, when a
         responder is asked to go to a new location, he or she
         may not end up there because he or she becomes tired, gets
         injured, or receives radiation doses that are life
         threatening.
-    \item $P_{t_j}(s'_{t_j}|s, \vec{a})$ is the probability 
+    \item $P_{t_j}(s'_{t_j}|s, \vec{a})$ is the probability
         task $t_j$ being completed. A task $t_j$ can only be completed by a
         team of responders with the required roles ($Roles(t_j)$) located at the
         same position as $t_j$.
@@ -65,12 +65,13 @@ the problem. The quality of a policy $\pi$ is usually measured by
 its expected value $V^\pi$, which can be computed recursively by
 the Bellman equation:
 \begin{equation}
-  V^\pi(s) = R(s, \pi(s)) + \gamma\sum_{s'\in S} P(s'|s, \pi(s)) V^\pi(s')
+  V^\pi(s^t) = R(s^t, \pi(s^t)) + \!\!\!\sum_{s^{t+1}\in S}\!\!\!
+  P(s^{t+1}|s^t, \pi(s^t)) V^\pi(s^{t+1})
 \end{equation}
-where $\pi(s)$ is a joint action given $s$ and $\gamma\in(0, 1]$ is
-the discount factor representing XXX. The goal of solving the MMDP is to find an
-optimal policy $\pi^*$ that maximises the expected value with the
-initial state $s^0$, $\pi^* = \arg\max_{\pi} V^\pi(s^0)$.
+where $\pi(s^t)$ is a joint action given $s^t$. The goal of solving
+the MMDP is to find an optimal policy $\pi^*$ that maximises the
+expected value with the initial state $s^0$, $\pi^* =
+\arg\max_{\pi} V^\pi(s^0)$.
 
 At each decision step, we assume the planning agent can fully
 observe the state of the environment $s$ by collecting sensor
@@ -78,4 +79,4 @@ readings of the radioactive cloud and GPS locations of the
 responders. Given a policy $\pi$ of the MMDP, a joint action
 $\vec{a}=\pi(s)$ can be selected and broadcast to the responders
 (as mentioned earlier). By so doing, each responder can be
-instructed by the agent and know how to act in the field. 
+instructed by the agent and know how to act in the field.
