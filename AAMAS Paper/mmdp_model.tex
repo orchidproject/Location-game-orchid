@@ -1,6 +1,6 @@
 \subsection{The Optimisation Problem}
 \label{sec:model}
-\noindent Previous agent-based models that aim to solve the allocation of tasks to first responders typically require the process of task executions to be deterministic and explicitly model the task deadlines as deterministic constraints \cite{ramchurn:etal:2010b,Scerri2005}. However, in order to evaluate agent-guided coordination in a real-world environment, it is important to consider real-world uncertainties due to player behaviours and the environment (as discussed in the previous section). Given this, we propose novel representation for the task allocation problem in disaster response that does take into account such uncertainties. More specifically, we represent the problem as a Multi-Agent Markov Decision Process (MMDP) that captures the uncertainties of the radioactive cloud and the responders' behaviours ~\cite{boutilier1996planning}. We model the spreading of the radioactive cloud as a random process over the disaster space and allow the actions requested from the responders to  fail (because they refuse to go to a  task) or incur delays (because they are too slow) during the rescue process. Thus in the MMDP model, we represent  task executions as stochastic processes of state transitions while the uncertainties of the radioactive cloud and the responders' behaviours can be easily captured with transition probabilities.  More formally, the MMDP is
+\noindent Previous agent-based models for team coordination in disaster response typically assume deterministic task executions and environments \cite{ramchurn:etal:2010,Scerri2005}. However, in order to evaluate agent-guided coordination in a real-world environment, it is important to consider uncertainties due to player behaviours and the environment (as discussed in the previous section). Given this, we propose novel representation for the task allocation problem in disaster response that does take into account such uncertainties. More specifically, we provide a novel representation for this problem using a Multi-Agent Markov Decision Process (MMDP) that captures the uncertainties of the radioactive cloud and the responders' behaviours ~\cite{boutilier1996planning}. We model the spreading of the radioactive cloud as a random process over the disaster space and allow the actions requested from the responders to  fail (because they refuse to go to a  task) or incur delays (because they are too slow) during the rescue process. Thus in the MMDP model, we represent  task executions as stochastic processes of state transitions while the uncertainties of the radioactive cloud and the responders' behaviours can be easily captured with transition probabilities.  More formally, the MMDP is
 represented by tuple $\mathcal{M} = \langle I, S, \{A_i\}, P, R
 \rangle$, where $I$ is the set of actors as defined in the previous
 section,  $S$ is the state space, $A_i$ is a set of responder
@@ -24,9 +24,7 @@ are: (i) {\em stay} in the current location $(x_i, y_i)$, (ii) {\em
 move} to the 8 neighbouring locations, or (iii) {\em complete} a
 task located in $(x_i, y_i)$. A joint action $\vec{a}=\langle a_1,
 \cdots, a_n \rangle$ is a set of actions where $a_i\in A_i$, one
-for each responder.
-
-The transition function $P$ is defined in more detail as: $P= P_r
+for each responder (a responder may just \emph{stay} at its current position if it has no targets to rescue). The transition function $P$ is defined in more detail as: $P= P_r
 \times P_{p_1} \times P_{p_n} \times P_{t_1} \times P_{t_n}$ where:
 \begin{itemize}
     \itemsep=-2pt
@@ -44,14 +42,14 @@ The transition function $P$ is defined in more detail as: $P= P_r
         threatening.
     \item $P_{t_j}(s'_{t_j}|s, \vec{a})$ is the probability
         task $t_j$ being completed. A task $t_j$ can only be completed by a
-        team of responders with the required roles ($Roles(t_j)$) located at the
+        team of responders with the required types ($\Theta_{t_j}$) located at the
         same position as $t_j$.
 \end{itemize}
 
-Now,  if a task $t_j$ is completed (i.e., in $s_{t_j}$, the status
-$st_j$ is marked as ``dropped off'' and the coordinate $(x_j, y_j)$
-is within a drop off zone), the team will be rewarded using
-function $R$. There will be a penalty for the team if a responder
+Now,  if  $t_j$ is completed (i.e., in $s_{t_j}$, the status
+$st_j$ is marked as ``dropped off'' and its position $(x_j, y_j)$
+is within a safe zone), the team will be rewarded using
+function $R$. The team is penalised if a responder
 $p_i$ gets injured or receives a high dose of radiation (i.e., in
 $s_{p_i}$, the health level $h_i$ is 0). Moreover, we attribute a
 cost to each of the responders' actions since the each  action require them to

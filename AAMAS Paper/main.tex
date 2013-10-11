@@ -42,7 +42,7 @@
 
 \pdfpagewidth=8.5truein
 \pdfpageheight=11truein
-
+\def\baselinestretch{0.98}
 \usepackage[ruled, vlined, linesnumbered]{algorithm2e}
 \DontPrintSemicolon
 
@@ -191,14 +191,14 @@ Tracking No. 577
 \maketitle
 
 \begin{abstract}
-The allocation of emergency responders to rescue tasks is a key application area for agent-based coordination algorithms. However, to date, none of the proposed approaches take into account the inherent uncertainty predominant in disaster scenarios and, crucially, none have been field-trialled in order to understand how humans perform when instructed by an agent. Hence, in this paper, we propose a novel algorithm, using Multi-agent Markov Decision Processes, to coordinate emergency responders uncertain settings. In empirical evaluations our algorithm (under simulation) is shown that  outperform a baseline greedy approach. Moreover,  we deploy our algorithm in a mixed-reality game  with an agent that works alongside a human commander to guide human players to complete rescue tasks. In our  trials, our algorithm is shown to improve  performance significantly (compared to a no-agent setting) and our results allow us to elucidate some of the key challenges faced when developing systems involving human-agent collaboration for team coordination.
- \end{abstract}
+The allocation of emergency responders to rescue tasks is a key application area for agent-based coordination algorithms. However, to date, none of the proposed approaches take into account the inherent uncertainty predominant in disaster scenarios and, crucially, none have been field-trialled in order to understand how humans perform when instructed by an agent. Hence, in this paper, we propose a novel representation and an algorithm, using Multi-agent Markov Decision Processes, to solve the problem of  coordinating emergency responders uncertain environments. Moreover,  we deploy our algorithm in a mixed-reality game  with an agent that works alongside a human commander to guide human players to complete rescue tasks. In our  trials, our algorithm is shown to improve  performance significantly (compared to a no-agent setting) and our results allow us to elucidate some of the key challenges faced when developing systems involving human-agent collaboration for team coordination.
+ \end{abstract}\vspace{-3mm}
 
 % Note that the category section should be completed after reference to the ACM Computing Classification Scheme available at
 % http://www.acm.org/about/class/1998/.
 
-\keywords{Human-Agent Interaction, Agents for improving human cooperative activities, Multi-user/Multi-virtual-agent interaction, Disaster Response.}
-
+\keywords{Human-Agent Interaction, Agents for improving human cooperative activities, Disaster Response.}
+\vspace{-2mm}
 \input{introduction.tex}
 \input{scenario.tex}
 \input{coordination.tex}

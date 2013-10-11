@@ -38,8 +38,8 @@ H.~Kitano and S.~Tadokoro.
 \bibitem{kocsis2006bandit}
 L.~Kocsis and C.~Szepesv{\'a}ri.
 \newblock Bandit based monte-carlo planning.
-\newblock In {\em Proceedings of the 17th European Conference on Machine
-  Learning}, pages 282--293, 2006.
+\newblock In {\em Proc. of the 17th European Conf. on Machine Learning}, pages
+  282--293, 2006.
 
 \bibitem{kolobov2012planning}
 Mausam and A.~Kolobov.
@@ -59,12 +59,7 @@ S.~Proper and P.~Tadepalli.
 \bibitem{ramchurn:etal:2010}
 S.~D. Ramchurn, A.~Farinelli, K.~S. Macarthur, and N.~R. Jennings.
 \newblock Decentralized coordination in robocup rescue.
-\newblock {\em Comput. J.}, 53(9):1447--1461, 2010.
-
-\bibitem{ramchurn:etal:2010b}
-S.~D. Ramchurn, M.~Polukarov, A.~Farinelli, N.~C. Truong, and N.~R. Jennings.
-\newblock Coalition formation with spatial and temporal constraints.
-\newblock In {\em AAMAS}, pages 1181--1188, 2010.
+\newblock {\em The Computer Journal}, 53(9):1447--1461, 2010.
 
 \bibitem{Scerri2005}
 P.~Scerri, A.~Farinelli, S.~Okamoto, and M.~Tambe.

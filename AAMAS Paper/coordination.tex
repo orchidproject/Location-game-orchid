@@ -5,11 +5,10 @@ even for small-sized problems. For example, with 8 responders and
 more than $2\times 10^{400}$. Therefore, it is practically
 impossible to compute the optimal solution. In such cases, we need
 to consider approximate solutions that result in high quality
-allocations.  To this end, our point of departure for our
-approximate solution comes from the observations that when making a
-decision the responders first need to {\em cooperatively} select a
+allocations.  To this end, we develop an
+approximate solution using  the observation that responders first need to {\em cooperatively} select a
 task to form a team with others (i.e., agree on who will do what),
-and they can {\em independently} compute the best path to the task.
+and  that they can {\em independently} compute the best path to the task.
 In our planning algorithm, we use this observation to decompose the
 decision-making process into a hierarchical structure with two
 levels: at the top level, a task planning algorithm is run for the
@@ -20,7 +19,7 @@ path to the task from his or her current location.
 
 Furthermore, not all states of MMDPs are relevant to the problem
 (e.g., if a responder gets injured, she is incapable of doing any
-task in the future and therefore his or her states are irrelevant
+task in the future and therefore her state is irrelevant
 to other responders) and we only need to consider the reachable
 states given the current global state $S$ of the problem. Hence,
 given the current state, we compute the policy online only for
@@ -56,29 +55,28 @@ sections describe the procedures of each level in more detail.
     $a_i \gets$ compute the best path to task $t_i$ \;
   }
   \Return{$\vec{a}$}\vspace{-1mm}
-
 \end{algorithm}
+
 
 \subsection{Task Planning}
 \label{sec:taskplanning}
-
 \noindent As described in Section \ref{sec:model}, each responder
-$p_i$ has a specific role $r_i \in Roles$ to determine which task
+$p_i$ is of a specific type $\theta_i \in \Theta$ that determines which task
 she can perform and  a task $t$ can only be completed by a team of
-responders with the required roles $Roles(t)$. If, at some point in
+responders with the required types $\Theta_t$. If, at some point in
 the execution of a plan, a responder $p_i$ is incapable of
 performing a task (e.g., because she is tired or suffered a high
 radiation dose), she will be removed from the set of responders
-under consideration that is $I = I \setminus p_i$ if $p_i$. This
+under consideration that is $I = I \setminus p_i$. This
 information can be obtained from the state $s \in S$. When a task
 is completed by a chosen team, the task is simply removed from the
 set, that is $T = T\setminus t_k$ if $t_k$ has been completed.
 
 Now, to capture the efficiency of groupings of responders at
-performing tasks, we define the notion of a team $C$ as a subset of
+performing tasks, we define  $C$ as a subset (or sub-team) of
 responders, that is, $C \subseteq I$. Thus, we can identify all
-possible coalitions $\{ C_{jk} \}$ for each task $t_j$ where $\{r_i
-| p_i \in C_{jk}\} = Roles(t_j)$. Crucially, we define the value of
+possible teams $\{ C_{jk} \}$ for each task $t_j$ where $\{r_i
+| p_i \in C_{jk}\} = \Theta_{t_j}$. Crucially, we define the value of
 a team $v(C_{jk})$ that reflects the level of performance of a team
 $C_k$ in performing task $t_k$.  Then, the goal of the task
 planning algorithm is to assign a task to each team that maximises
@@ -87,7 +85,7 @@ $\sum_{j=1}^m v(C_j)$ where $C_j$ is a team for task $t_j$ and $\{
 C_1, \cdots, C_m \}$ is a {\em partition} of $I$ ($\forall j\neq
 j', C_j \bigcap C_{j'} = \emptyset$ and $\bigcup_{j=1}^m C_j=I$).
 In what follows, we first detail the procedure to compute the value
-of all coalitions that are valid in a given state and then proceed
+of all teams that are valid in a given state and then proceed
 to detail the main algorithm to allocate tasks. Note that these
 algorithms take into account the uncertainties captured by the
 transition function of the MMDP.
@@ -116,7 +114,7 @@ The main process is outlined in Algorithm~\ref{alg:taskplanning}.
   and a set of free responders $I$.}
   \KwOut{a task assignment for all responders.}
   \Indp\BlankLine
-  $\{ C_{jk} \} \gets$ compute all possible coalitions of $I$ for
+  $\{ C_{jk} \} \gets$ compute all possible teams of $I$ for
   $T$ \;
   \ForEach{$C_{jk} \in \{C_{jk}\}$}{
     \tcp{The $N$ trial simulations}
@@ -160,7 +158,7 @@ node of the search tree. This can be computed by
 Equation~\ref{eq:cf} using the team values estimated by the UCB1
 heuristic~\cite{auer2002finite} to balance exploitation and
 exploration:
-\begin{equation}
+\begin{equation}\small
   v(C_{jk}) = \overline{v(C_{jk})} + c\sqrt{\frac{2N(s)}{N(s, C_{jk})}}
 \end{equation}
 where $\overline{v(C_{jk})}$ is the averaged value of team $C_{jk}$
@@ -174,7 +172,7 @@ higher chance to be selected in the next visit of the tree node.
 As we assume that the role of a responder and the role requirements
 of each task are static, we can compute all possible team values
 offline. Therefore, in the online phase, we only need to filter out
-the coalitions for completed tasks and those containing
+the teams for completed tasks and those containing
 incapacitated responders to compute the team set $\{ C_{jk} \}$.
 
 \subsubsection{Coordinated Task Allocation}
@@ -201,17 +199,17 @@ at the same time). This is a standard Mixed Integer Linear Program
 (MILP) that can be efficiently solved  using solvers such as IBM
 ILOG's CPLEX or LPSOLVE.
 
-\subsubsection{Adapting to Responders}\label{sec:adaptive}
-One important characteristic of our approach is that it can easily
+\subsubsection{Adapting to Responder Requests}\label{sec:adaptive}
+\noindent One important characteristic of our approach is that it can easily
 incorporate the preferences of the responders. For example, if a
 responder rejects a task allocated to it by the planning agent, we
-simply filter out the coalitions for the task that contain this
+simply filter out the teams for the task that contain this
 responder. By so doing, the responder will not be assigned to the
 task. Moreover, if a responder prefers to do the tasks with another
-responder, we can increase the weights of the coalitions that
-contain them in Equation~\ref{eq:cf} (By default, all coalitions
+responder, we can increase the weights of the teams that
+contain them in Equation~\ref{eq:cf} (by default, all teams
 have identical weights of 1.0). Thus, our approach is adaptive to
-various preferences of human responders.
+ preferences of human responders.
 
 \subsection{Path Planning}
 \label{sec:pathplanning}
@@ -263,12 +261,10 @@ huge state space.
 %\end{figure}
 
 
-\noindent The goal of our algorithm is to instruct the responders
-so that they can complete as many tasks as possible without
-receiving too many radioactive doses. Before deploying it, we want
-to test its performance on a simulator. However, there is no
-existing solution in the literature that can solve our problem.
-Thus, we compare our algorithm with a greedy and a myopic method.
+\noindent Before deploying our solution (as part of $PA$) to advise human responders, it is important to 
+to test its performance to ensure it can return efficient solutions on simulations of the real-world problem. Given that there is no
+comparable solution that takes into account uncertainty in team coordination for emergency response as we do,
+we compare our algorithm with a greedy and a myopic method.
 For each method, we use our path planning algorithm to compute the
 path for each responder so that they can reach the task location as
 fast as possible. In the greedy method, the responders are
@@ -277,16 +273,14 @@ myopic method, the responders are coordinated to select the tasks
 but have no lookahead for the future tasks (Line 8 in
 Algorithm~\ref{alg:taskplanning}). Table~\ref{tab:simulation} shows
 the results for a problem with 17 tasks and 8 responders on a
-50$\times$55 grid. As we can see, our MMDP algorithm can complete
-more tasks than the myopic and greedy methods. More importantly,
+50$\times$55 grid. Results show that our MMDP algorithm can complete
+more tasks than the myopic and greedy methods (see Table \ref{tab:simulation}). More importantly,
 our algorithm guarantees the safety of the responders, while in the
 myopic method, only 25\% of the responders survive and in the
 greedy method all responders are killed by the radioactive cloud.
 More extensive evaluations are beyond the scope of this paper as
 our focus here is on the use of the algorithm in a field deployment
-to test how humans take up advice computed by an agent-based
-planner.
-
+to test how humans take up advice computed by the planning agent $PA$.
 \begin{table}[htbp]
   \centering
   \caption{Experimental results for the MMDP, myopic, greedy
