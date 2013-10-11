@@ -47,9 +47,9 @@ L.~Kocsis and C.~Szepesv{\'a}ri.
 
 \bibitem{kolobov2012planning}
 Mausam and A.~Kolobov.
-\newblock Planning with markov decision processes: An ai perspective.
-\newblock {\em Synthesis Lectures on Artificial Intelligence and Machine
-  Learning}, 6(1):1--210, 2012.
+\newblock Planning with markov decision processes: An {AI} perspective.
+\newblock {\em Synthesis Lectures on {AI} and Machine Learning}, 6(1):1--210,
+  2012.
 
 \bibitem{paho:2001}
 {Pan American Health Organization}.
@@ -57,7 +57,7 @@ Mausam and A.~Kolobov.
 
 \bibitem{proper2009solving}
 S.~Proper and P.~Tadepalli.
-\newblock Solving multiagent assignment markov decision processes.
+\newblock Solving multi-agent assignment \text{Markov} decision processes.
 \newblock In {\em Proc. of AAMAS 2009}, pages 681--688, 2009.
 
 \bibitem{ramchurn:etal:2010}

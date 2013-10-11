@@ -29,11 +29,11 @@ To assess how humans interact with each other and with $PA$, we focused on colle
 
 \subsection{Results}
 \noindent Overall, 8 targets were rescued in the non-agent condition (Session A), and respectively 12 targets (Session B) and 11 targets (Session C) were rescued in the agent condition. Teams (re-)formed six times in session A, four times in session B and nine times  in session C. Average player health after the game was much higher (more than double) for the agent-assisted sessions (80 for Session B and 82 for Session C) compared to the non-agent assisted session (40 in Session A). In fact, one responder `died' in Session A.
-$PA$ dynamically re-planned 14 times in session B and 18 times in session C. In most cases, this was triggered when a target was dropped off in the safe zone (24 times) -- as this would free up resources for the algorithm to recompute an allocation. In the remaining cases, this was triggered by a player declining the agent's task allocation (8 times). 
+$PA$ dynamically re-planned 14 times in session B and 18 times in session C. In most cases, this was triggered when a target was dropped off in the safe zone (24 times) -- as this frees up resources for  $PA$ to recompute an allocation. In the remaining cases, this was triggered by a player declining the agent's task allocation (8 times). 
 
 
 
-\begin{table}[htbp]\footnotesize
+\begin{table}[ht]\small\centering
 \begin{tabular}{c | c c | c c c c | c}
  & \multicolumn{2}{c|}{no agent} &  \multicolumn{4}{c|}{agent} & Total \\
  \hline
@@ -46,21 +46,23 @@ $PA$ dynamically re-planned 14 times in session B and 18 times in session C. In 
   Total & 122 & 6 & 60 & 18 & 58 & 16 & 280 \\
 \end{tabular}
 \vspace{-2mm}
- \caption{Message classification.} \label{tab:msgs}
-\end{table}\vspace{-2mm}
+ \caption{Message classification. FR: First Responder.} \label{tab:msgs}
+\end{table}
 
 Table \ref{tab:msgs} shows the remote message directives (mainly related to task allocation and execution) and assertives (mainly related to situational awareness) sent in the sessions. The following discussion draws on how these messages were handled to give a sense of mixed-initiative coordination in the game sessions.
+
 
 %\subsubsection{Handling Task Allocations}
 In particular, Figure \ref{fig:msgs} shows how first responders handled task allocations in the agent and  non-agent conditions. In the non-agent condition, the HQ commander sent 43 task allocation directives. Of these, the recipient first responders addressed only 15 messages (bringing them up in conversation). Of these 15, responders chose to ignore the instructions only once. The responders ignored the instruction because they were engaged in another task and did not want to abandon it. A further 4 $H$ instructions were consistent with a decision to rescue a certain target that had already been agreed locally by the responders. In the remaining 10 cases, first responders chose to follow the instructions. Although players were willing to follow $H$'s instructions, they failed to correctly follow the instructions due to confusion and misunderstanding in the communication. In fact, only 2 instances of directives from $H$ led to task completion. The first responders performed 6 rescue operations (tasks) without being instructed by $H$.
 
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{message_handling.png}
+\vspace{-5mm}
+\caption{How task allocations were handled by first responders in the version with agent (left), and without agent (right).\vspace{-3mm}}\label{fig:msgs}
+\end{figure}
+
 In contrast, when task allocation was handled by the agent (52 tasks allocated in two trials on average), responders explicitly accepted 24 tasks,  of which they completed 15  successfully. Although there was either no response or no consensus between the responders (in 17 tasks allocated), they still completed 6 of these tasks successfully. In total, 20 task allocations were withdrawn by the agent as a result of re-planning. 
 
-\begin{figure}[htbp]
-\includegraphics[width=\columnwidth]{message_handling.png}
-\vspace{-3mm}
-\caption{How task allocations were handled by first responders in the version with agent (left), and without agent (right).\vspace{-1mm}}\label{fig:msgs}
-\end{figure}
 
 
 %\paragraph{Rejecting task allocations}
@@ -84,10 +86,10 @@ In summary, these results suggest three key observations with regard to  human-a
 
 Given the above observation we argue that a planning agent for team formation should not only model the uncertainty in player behaviours and in the environment, but that interactional challenges also need to be addressed  if such a technology is to be accepted in practice. In particular, we propose the following design guidelines for human-agent collaborations:\\
 
-\noindent \textbf{Adaptivity}: our experiences suggest that planning algorithms should be designed to take in human input, and more importantly, be \emph{responsive} to the needs of the users. As we saw in AtomicOrchid, players repeatedly requested new tasks and this would not have been possible unless our algorithm  was computationally efficient but could dynamically assimilate updates, requests, and constraints dynamically. We believe this makes the algorithm more acceptable.\\
+\noindent \textbf{Adaptivity}: our experiences suggest that planning algorithms should be designed to take in human input, and more importantly, be \emph{responsive} to the needs of the users. As we saw in AtomicOrchid, players repeatedly requested new tasks and this would not have been possible unless our algorithm  was computationally efficient but could dynamically assimilate updates, requests, and constraints dynamically. We believe this makes the algorithm more acceptable to the users.\\
 
 \noindent \textbf{Interaction Simplicity}: our agent was designed to issue simple commands (Do X with Y) and respond to simple requests (OK or Reject Task). Such simple messages were shown to be far more effective at guiding players to do the right task than the unstructured human communication in the non-agent assisted case that was fraught with inconsistencies and inaccuracies. In fact, we would suggest that agents should be designed with minimal options to simplify the reasoning users have to do to interact with the agent, particularly when they are under pressure to act.\\
 
-\noindent \textbf{Flexbile autonomy}: the HQ dashboard proved to be a key tool for the HQ coordinator $H$ to \emph{check} and \emph{correct for} the allocations of $PA$, taking into account the real-world constraints that the players on the ground faced. In particular, letting the human oversee the agent (i.e., ``on-the-loop") at times and actively instructing  the players (and bypassing the agent) at other times (i.e., ``in-the-loop") as and when needed, was seen to be particularly effective. This was achieved by $H$ \emph{without the agent} defining when such transfers of control should happen (as in \cite{scerri:etal:2005}) and, therefore, left the coordinator the option of taking control when she judged it was needed. Hence, we suggest that such deployed autonomous systems should be built for flexible autonomy. Specifically, interfaces should be designed to pass control \emph{seamlessly} between human and agents.
+\noindent \textbf{Flexbile autonomy}: the HQ dashboard proved to be a key tool for the HQ coordinator $H$ to \emph{check} and \emph{correct for} the allocations of $PA$, taking into account the real-world constraints that the players on the ground faced. In particular, letting the human oversee the agent (i.e., ``on-the-loop") at times and actively instructing  the players (and bypassing the agent) at other times (i.e., ``in-the-loop") as and when needed, was seen to be particularly effective. This was achieved by $H$ \emph{without the agent} defining when such transfers of control should happen (as in \cite{scerri:etal:2005}) and, therefore, left the coordinator the option of taking control when she judged it was needed. Hence, we suggest that such deployed autonomous systems should be built for flexible autonomy. Specifically, interfaces should be designed to pass control \emph{seamlessly} between humans and agents.
 
 
