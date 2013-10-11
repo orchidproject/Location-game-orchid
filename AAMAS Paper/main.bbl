@@ -41,9 +41,20 @@ L.~Kocsis and C.~Szepesv{\'a}ri.
 \newblock In {\em Proceedings of the 17th European Conference on Machine
   Learning}, pages 282--293, 2006.
 
+\bibitem{kolobov2012planning}
+Mausam and A.~Kolobov.
+\newblock Planning with markov decision processes: An ai perspective.
+\newblock {\em Synthesis Lectures on Artificial Intelligence and Machine
+  Learning}, 6(1):1--210, 2012.
+
 \bibitem{paho:2001}
 {Pan American Health Organization}.
 \newblock Stress management in disasters, 2001.
+
+\bibitem{proper2009solving}
+S.~Proper and P.~Tadepalli.
+\newblock Solving multiagent assignment markov decision processes.
+\newblock In {\em Proc. of AAMAS 2009}, pages 681--688, 2009.
 
 \bibitem{ramchurn:etal:2010}
 S.~D. Ramchurn, A.~Farinelli, K.~S. Macarthur, and N.~R. Jennings.
@@ -59,6 +70,19 @@ S.~D. Ramchurn, M.~Polukarov, A.~Farinelli, N.~C. Truong, and N.~R. Jennings.
 P.~Scerri, A.~Farinelli, S.~Okamoto, and M.~Tambe.
 \newblock {Allocating tasks in extreme teams}.
 \newblock In {\em Proc. of AAMAS 2005}, pages 727--734. ACM, 2005.
+
+\bibitem{scerri:etal:2005}
+P.~Scerri, M.~Tambe, and D.~V. Pynadath.
+\newblock Towards adjustable autonomy for the real-world.
+\newblock {\em Journal of Artificial Intelligence Research}, 17(1):171--228,
+  2002.
+
+\bibitem{searle:1975}
+J.~Searle.
+\newblock A taxonomy of illocutionary acts.
+\newblock In K.~G\"{u}nderson, editor, {\em Language, Mind, and Knowledge,
+  (Minneapolis Studies in the Philosophy of Science}, volume~7, pages 344--69.
+  University of Minneapolis Press, 1975.
 
 \bibitem{simonovic:2009}
 S.~P. Simonovic.
