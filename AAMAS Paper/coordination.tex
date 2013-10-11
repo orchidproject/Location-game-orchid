@@ -6,8 +6,7 @@ more than $2\times 10^{400}$. Therefore, it is practically
 impossible to compute the optimal solution. In such cases, we need
 to consider approximate solutions that result in high quality
 allocations.  To this end, we develop an
-approximate solution using  the observation that responders first need to {\em cooperatively} select a
-task to form a team with others (i.e., agree on who will do what),
+approximate solution using  the observation that responders first need to {\em cooperatively}  form teams (i.e., agree on who will do what),
 and  that they can {\em independently} compute the best path to the task.
 In our planning algorithm, we use this observation to decompose the
 decision-making process into a hierarchical structure with two
@@ -32,8 +31,8 @@ locations out of the 50$\times$55 grid. Jointly, the reduction is
 huge, from $(50\times 55)^8$ to $9^8$ for 8 responders. Another
 advantage of online planning is that it allows us to refine the
 model as more information is obtained or unexpected events happen.
-For example, if the wind speed increases or the direction of wind
-changes, the uncertainty about the radioactive cloud may increase.
+For example, given that wind speed or the direction of wind
+ may change, the uncertainty about the radioactive cloud may increase.
 If a responder becomes tired, the outcome of his or her actions may
 be liable to greater uncertainty.
 
@@ -42,7 +41,7 @@ outlined in Algorithm~\ref{alg:coordination}. The following
 sections describe the procedures of each level in more detail.
 
 \begin{algorithm}[t]
-  \caption{Team Coordination}\small
+  \caption{Team Coordination Algorithm}\small
   \label{alg:coordination}
   \Indm
   \KwIn{the MMDP model and the current state $s$.}
@@ -67,21 +66,18 @@ responders with the required types $\Theta_t$. If, at some point in
 the execution of a plan, a responder $p_i$ is incapable of
 performing a task (e.g., because she is tired or suffered a high
 radiation dose), she will be removed from the set of responders
-under consideration that is $I = I \setminus p_i$. This
+under consideration that is $I \to I \setminus p_i$. This
 information can be obtained from the state $s \in S$. When a task
 is completed by a chosen team, the task is simply removed from the
-set, that is $T = T\setminus t_k$ if $t_k$ has been completed.
+set, that is $T \to T\setminus t_k$ if $t_k$ has been completed.
 
 Now, to capture the efficiency of groupings of responders at
-performing tasks, we define  $C$ as a subset (or sub-team) of
-responders, that is, $C \subseteq I$. Thus, we can identify all
-possible teams $\{ C_{jk} \}$ for each task $t_j$ where $\{\theta_i
-| p_i \in C_{jk}\} = \Theta_{t_j}$. Crucially, we define the value
+performing tasks, we define the value
 of a team $v(C_{jk})$ that reflects the level of performance of a
-team $C_k$ in performing task $t_k$.  Then, the goal of the task
+team $C_k$ in performing task $t_j$ and is computed from the estimated rewards the team obtains for performing $t_j$ (as we show below).  Then, the goal of the task
 planning algorithm is to assign a task to each team that maximises
 the overall team performance given the current state $s$, i.e.,
-$\sum_{j=1}^m v(C_j)$ where $C_j$ is a team for task $t_j$ and $\{
+$\sum_{j=1}^m v(C_{j})$ where $C_j$ is a team for task $t_j$ and $\{
 C_1, \cdots, C_m \}$ is a {\em partition} of $I$ ($\forall j\neq
 j', C_j \bigcap C_{j'} = \emptyset$ and $\bigcup_{j=1}^m C_j=I$).
 In what follows, we first detail the procedure to compute the value
@@ -94,7 +90,7 @@ transition function of the MMDP.
 \subsubsection{Team Value Calculation}
 \noindent The computation of values  $v(C_{jk})$ for each team
 $C_{jk}$ is challenging because not all tasks can be completed by
-one allocation (there are usually more tasks than responders) and
+one allocation (there are usually more targets than responders) and
 the policy after completing task $t_j$ must also be computed by the
 agent, which is time-consuming given the number of states and joint
 actions. Given this, we propose to estimate the value through
@@ -144,10 +140,10 @@ too high a radioactive dose), the simulation is terminated (Line
 Monte-Carlo Tree Search (MCTS)~\cite{kocsis2006bandit} (Line 8),
 which provides a good tradeoff between exploitation and exploration
 of the policy space and has been shown to be efficient for large
-MDPs~\footnote{Other methods such as sequential greedy assignment
+MDPs.\footnote{Other methods such as sequential greedy assignment
 or swap-based hill climbing as discussed
 in~\cite{proper2009solving} may also be useful. However, they do
-not explore the policy space as well as MCTS.}. After $N$
+not explore the policy space as well as MCTS.} After $N$
 simulations, the averaged value is returned as an approximation of
 the team value (Line 10).
 
@@ -164,14 +160,14 @@ exploration:
   v(C_{jk}) = \overline{v(C_{jk})} + c\sqrt{\frac{2N(s)}{N(s, C_{jk})}}
 \end{equation}
 where $\overline{v(C_{jk})}$ is the averaged value of team $C_{jk}$
-at state $s$ so far, $c$ is a tradeoff constant, $N(s)$ is the
+at state $s$ so far, $c$ is a trade-off constant, $N(s)$ is the
 visiting frequency of state $s$, and $N(s, C_{jk})$ is the
 frequency that team $C_{jk}$ has been selected at state $s$.
-Intuitively, if a team $C_{jk}$ has higher averaged value of the
+Intuitively, if a team $C_{jk}$ has  a higher average value in the
 trials so far or is rarely selected in the previous visits, it has
 higher chance to be selected in the next visit of the tree node.
 
-As we assume that the role of a responder and the role requirements
+As we assume that the type of a responder and the role requirements
 of each task are static, we can compute all possible team values
 offline. Therefore, in the online phase, we only need to filter out
 the teams for completed tasks and those containing
@@ -264,16 +260,15 @@ huge state space.
 
 
 \noindent Before deploying our solution (as part of $PA$) to advise
-human responders, it is important to to test its performance to
+human responders, it is important  to test its performance to
 ensure it can return efficient solutions on simulations of the
 real-world problem. Given that there is no comparable solution that
 takes into account uncertainty in team coordination for emergency
 response as we do, we compare our algorithm with a greedy and a
 myopic method to evaluate the benefits of coordination and
 lookahead. For each method, we use our path planning algorithm to
-compute the path for each responder so that they can reach the task
-location as fast as possible. In the greedy method, the responders
-are uncoordinated and select the closest tasks that they can do. In
+compute the path for each responder. In the greedy method, the responders
+are uncoordinated and select the closest tasks they can do. In
 the myopic method, the responders are coordinated to select the
 tasks but have no lookahead for the future tasks (Line 8 in
 Algorithm~\ref{alg:taskplanning}). Table~\ref{tab:simulation} shows
@@ -291,12 +286,12 @@ advice computed by the planning agent $PA$.
   \centering
   \caption{Experimental results for the MMDP, myopic, greedy
   algorithms in simulation.}
-  \begin{tabular}{c|c|c|c}
+  \begin{tabular}{l|c|c|c}
    & MMDP & myopic & greedy \\
   \hline
-  Completed Tasks & 71\% & 65\% & 41\% \\
+  No. of completed tasks & 71\% & 65\% & 41\% \\
   \hline
-  Survived Responders & 100\% & 25\% & 0\% \\
+  No. responders alive at the end & 100\% & 25\% & 0\% \\
   \end{tabular}
   \label{tab:simulation}\vspace{-3mm}
 \end{table}

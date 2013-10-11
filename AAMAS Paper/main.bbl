@@ -14,8 +14,7 @@ A.~G. Barto, S.~J. Bradtke, and S.~P. Singh.
 C.~Boutilier.
 \newblock Planning, learning and coordination in multi-agent decision
   processes.
-\newblock In {\em Proceedings of the 6th conference on Theoretical aspects of
-  rationality and knowledge}, pages 195--210, 1996.
+\newblock In {\em Proc. of TARK 1996}, pages 195--210, 1996.
 
 \bibitem{Chapman2009}
 A.~Chapman, R.~A. Micillo, R.~Kota, and N.~R. Jennings.
@@ -29,6 +28,12 @@ J.~Drury, C.~Cocking, and S.~Reicher.
   among emergency survivors.
 \newblock {\em The British journal of social psychology}, 48(3):487--506, 2009.
 
+\bibitem{Fischer:etal:2012}
+J.~E. Fischer, M.~Flintham, D.~Price, J.~Goulding, N.~Pantidi, and T.~Rodden.
+\newblock Serious mixed reality games.
+\newblock In {\em Mixed Reality games Workshop at the 2012 ACM Conference on
+  Computer Supported Cooperative Work}, 2012.
+
 \bibitem{kitano:2001}
 H.~Kitano and S.~Tadokoro.
 \newblock Robocup rescue: A grand challenge for multiagent and intelligent
@@ -38,8 +43,7 @@ H.~Kitano and S.~Tadokoro.
 \bibitem{kocsis2006bandit}
 L.~Kocsis and C.~Szepesv{\'a}ri.
 \newblock Bandit based monte-carlo planning.
-\newblock In {\em Proc. of the 17th European Conf. on Machine Learning}, pages
-  282--293, 2006.
+\newblock In {\em Proc. of ECML 2006}, pages 282--293, 2006.
 
 \bibitem{kolobov2012planning}
 Mausam and A.~Kolobov.
