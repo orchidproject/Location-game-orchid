@@ -1,56 +1,46 @@
-This is BibTeX, Version 0.99d (TeX Live 2011)
+This is BibTeX, Version 0.99d (TeX Live 2010)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: abbrv.bst
 Database file #1: citations.bib
-Warning--I didn't find a database entry for "kitano"
-Warning--I didn't find a database entry for "ramchurn:teal:2010"
-Warning--I didn't find a database entry for "koes:teal:2005"
-Warning--I didn't find a database entry for "scerri:teal:200X"
-Warning--I didn't find a database entry for "ramchurn:robocup:2010"
-Warning--I didn't find a database entry for "chapman:teal:2010"
-Warning--I didn't find a database entry for "?"
-Warning--I didn't find a database entry for "csftp"
-Warning--I didn't find a database entry for "HTSSC"
-You've used 0 entries,
+You've used 15 entries,
             2118 wiz_defined-function locations,
-            508 strings with 3830 characters,
-and the built_in function-call counts, 18 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+            595 strings with 6063 characters,
+and the built_in function-call counts, 5768 in all, are:
+= -- 585
+> -- 225
+< -- 8
++ -- 89
+- -- 73
+* -- 390
+:= -- 895
+add.period$ -- 47
+call.type$ -- 15
+change.case$ -- 81
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 15
+duplicate$ -- 238
+empty$ -- 483
+format.name$ -- 73
+if$ -- 1258
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 3
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 15
+missing$ -- 14
+newline$ -- 77
+num.names$ -- 32
+pop$ -- 92
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 66
 quote$ -- 0
-skip$ -- 1
+skip$ -- 183
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 423
+swap$ -- 76
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 60
 warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 2
-(There were 9 warnings)
+while$ -- 61
+width$ -- 17
+write$ -- 168
