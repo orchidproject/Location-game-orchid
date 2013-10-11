@@ -7,38 +7,42 @@ section,  $S$ is the state space, $A_i$ is a set of responder
 $p_i$'s actions, $P$ is the transition function, and $R$ is the
 reward function. We elaborate on each of these below.
 
-More specifically, $S= S_r \times S_{p_1} \times \cdots \times
-S_{p_n} \times S_{t_1} \times \cdots \times S_{t_m}$ where $S_r =
+More specifically, $S= S^G_r \times S_{p_1} \times \cdots \times
+S_{p_n} \times S_{t_1} \times \cdots \times S_{t_m}$ where $S^G_r =
 \{l_{(x,y)}| (x, y) \in G\}$ is the state variable of the
-radioactive cloud that specifies the radioactive level $l_{(x,y)}\in[0,
-100]$ at every point $(x, y)\in G$. $S_{p_i} = \langle h_i, (x_i,
-y_i), t_j \rangle$ is the state variable for each responder $p_i$
-that specifies his or her health level $h_i\in[0, 100]$, its present position
-$(x_i, y_j)$, and the task $t_j$ they are carrying out. $S_{t_j}
-= \langle st_j, (x_j, y_j) \rangle$ is then the state variable for
-task $t_j$ to specify its status $st_j$ (picked up, dropped off, or
-idle) and position $(x_j, y_j)$.
+radioactive cloud that specifies the radioactive level
+$l_{(x,y)}\in[0, 100]$ at every point $(x, y)\in G$. $S_{p_i} =
+\langle h_i, (x_i, y_i), t_j \rangle$ is the state variable for
+each responder $p_i$ that specifies his or her health level
+$h_i\in[0, 100]$, its present position $(x_i, y_i)$, and the task
+$t_j$ they are carrying out. $S_{t_j} = \langle st_j, (x_j, y_j)
+\rangle$ is then the state variable for task $t_j$ to specify its
+status $st_j$ (picked up, dropped off, or idle) and position $(x_j,
+y_j)$.
 
 The three types of actions  (in set $A_i$) a responder can take
 are: (i) {\em stay} in the current location $(x_i, y_i)$, (ii) {\em
 move} to the 8 neighbouring locations, or (iii) {\em complete} a
 task located in $(x_i, y_i)$. A joint action $\vec{a}=\langle a_1,
 \cdots, a_n \rangle$ is a set of actions where $a_i\in A_i$, one
-for each responder (a responder may just \emph{stay} at its current position if it has no targets to rescue). The transition function $P$ is defined in more detail as: $P= P_r
-\times P_{p_1} \times P_{p_n} \times P_{t_1} \times P_{t_n}$ where:
+for each responder (a responder may just \emph{stay} at its current
+position if it has no targets to rescue). The transition function
+$P$ is defined in more detail as: $P= P_r \times P_{p_1} \times
+\cdots \times P_{p_n} \times P_{t_1} \times \cdots \times P_{t_m}$
+where:
 \begin{itemize}
     \itemsep=-2pt
-    \item $P_r(s'_r|s_r)$ is the probability the
-        radioactive cloud spreads from state $s_r$ to $s'_r$.
-        It captures the uncertainty of the  radioactive
-        levels in the environment due to  noisy sensor
-        readings and the variations in wind speed and direction.
+    \item $P_r(s'_r|s_r)$ is the probability the radioactive
+        cloud spreads from state $s_r\in S^G_r$ to $s'_r\in
+        S^G_r$. It captures the uncertainty of the  radioactive
+        levels in the environment due to  noisy sensor readings
+        and the variations in wind speed and direction.
     \item $P_{p_i}(s'_{p_i}|s, a_i)$ is the probability
-        responder $p_i$ transitions to a new state $s'_{p_i}$
-        when executing action $a_i$. For example, when a
-        responder is asked to go to a new location, he or she
-        may not end up there because he or she becomes tired, gets
-        injured, or receives radiation doses that are life
+        responder $p_i$ transitions to a new state $s'_{p_i}\in
+        S_{p_i}$ when executing action $a_i$. For example, when
+        a responder is asked to go to a new location, he or she
+        may not end up there because he or she becomes tired,
+        gets injured, or receives radiation doses that are life
         threatening.
     \item $P_{t_j}(s'_{t_j}|s, \vec{a})$ is the probability
         task $t_j$ being completed. A task $t_j$ can only be completed by a
@@ -46,13 +50,13 @@ for each responder (a responder may just \emph{stay} at its current position if 
         same position as $t_j$.
 \end{itemize}
 
-Now,  if  $t_j$ is completed (i.e., in $s_{t_j}$, the status
-$st_j$ is marked as ``dropped off'' and its position $(x_j, y_j)$
-is within a safe zone), the team will be rewarded using
-function $R$. The team is penalised if a responder
-$p_i$ gets injured or receives a high dose of radiation (i.e., in
-$s_{p_i}$, the health level $h_i$ is 0). Moreover, we attribute a
-cost to each of the responders' actions since the each  action require them to
+Now,  if  $t_j$ is completed (i.e., in $s_{t_j}\in S_{t_j}$, the
+status $st_j$ is marked as ``dropped off'' and its position $(x_j,
+y_j)$ is within a safe zone), the team will be rewarded using
+function $R$. The team is penalised if a responder $p_i$ gets
+injured or receives a high dose of radiation (i.e., in $s_{p_i}$,
+the health level $h_i$ is 0). Moreover, we attribute a cost to each
+of the responders' actions since the each  action require them to
 exert some effort (e.g., running or carrying objects).
 
 

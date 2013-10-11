@@ -49,10 +49,10 @@ sections describe the procedures of each level in more detail.
   \KwOut{the best joint action $\vec{a}$.}
   \Indp\BlankLine
   \tcp{The task planning}
-  $\{ t_i \} \gets$ compute the best task for each responder $i\in I$ \;
-  \ForEach{$i\in I$} {
+  $\{ t^i \} \gets$ compute the best task for each responder $p_i\in I$ \;
+  \ForEach{$p_i\in I$} {
     \tcp{The path planning}
-    $a_i \gets$ compute the best path to task $t_i$ \;
+    $a_i \gets$ compute the best path to task $t^i$ \;
   }
   \Return{$\vec{a}$}\vspace{-1mm}
 \end{algorithm}
@@ -75,18 +75,18 @@ set, that is $T = T\setminus t_k$ if $t_k$ has been completed.
 Now, to capture the efficiency of groupings of responders at
 performing tasks, we define  $C$ as a subset (or sub-team) of
 responders, that is, $C \subseteq I$. Thus, we can identify all
-possible teams $\{ C_{jk} \}$ for each task $t_j$ where $\{r_i
-| p_i \in C_{jk}\} = \Theta_{t_j}$. Crucially, we define the value of
-a team $v(C_{jk})$ that reflects the level of performance of a team
-$C_k$ in performing task $t_k$.  Then, the goal of the task
+possible teams $\{ C_{jk} \}$ for each task $t_j$ where $\{\theta_i
+| p_i \in C_{jk}\} = \Theta_{t_j}$. Crucially, we define the value
+of a team $v(C_{jk})$ that reflects the level of performance of a
+team $C_k$ in performing task $t_k$.  Then, the goal of the task
 planning algorithm is to assign a task to each team that maximises
 the overall team performance given the current state $s$, i.e.,
 $\sum_{j=1}^m v(C_j)$ where $C_j$ is a team for task $t_j$ and $\{
 C_1, \cdots, C_m \}$ is a {\em partition} of $I$ ($\forall j\neq
 j', C_j \bigcap C_{j'} = \emptyset$ and $\bigcup_{j=1}^m C_j=I$).
 In what follows, we first detail the procedure to compute the value
-of all teams that are valid in a given state and then proceed
-to detail the main algorithm to allocate tasks. Note that these
+of all teams that are valid in a given state and then proceed to
+detail the main algorithm to allocate tasks. Note that these
 algorithms take into account the uncertainties captured by the
 transition function of the MMDP.
 
@@ -221,18 +221,18 @@ a responder to her assigned task. This phase is stochastic as there
 are uncertainties in the radioactive cloud and the responders'
 actions. We model this problem as a single-agent MDP that can be
 defined as a tuple, $\mathcal{M}_i = \langle S_i, A_i, P_i, R_i
-\rangle$, where: (1) $S_i = S_r \times S_{p_i}$ is the state space,
-(2) $A_i$ is the set of $p_i$'s actions, (3) $P_i = P_r \times
-P_{p_i}$ is the transition function, and (4) $R_i$ is the reward
-function. In this level, responder $p_i$ only needs to consider the
-states of the radioactive cloud $S_r$ and her own states $S_{p_i}$
-and her moving actions. Similarly, the transition function only
-needs to consider the spreading of the radioactive cloud $P_r$ and
-the changes of her locations and health levels when moving in the
-filed $P_{p_i}$, and the reward function only needs to consider the
-cost of moving to a task and the penalty of receiving high
-radiation doses. This is a typical MDP that can be solved by many
-existing solvers (see the most recent
+\rangle$, where: (1) $S_i = S^G_r \times S_{p_i}$ is the state
+space, (2) $A_i$ is the set of $p_i$'s actions, (3) $P_i = P_r
+\times P_{p_i}$ is the transition function, and (4) $R_i$ is the
+reward function. In this level, responder $p_i$ only needs to
+consider the states of the radioactive cloud $S^G_r$ and her own
+states $S_{p_i}$ and her moving actions. Similarly, the transition
+function only needs to consider the spreading of the radioactive
+cloud $P_r$ and the changes of her locations and health levels when
+moving in the filed $P_{p_i}$, and the reward function only needs
+to consider the cost of moving to a task and the penalty of
+receiving high radiation doses. This is a typical MDP that can be
+solved by many existing solvers (see the most recent
 survey~\cite{kolobov2012planning}). We choose Real-Time Dynamic
 Programming (RTDP)~\cite{barto1995learning} because it is simple
 and particularly fits our problem, that is, a goal-directed MDP
