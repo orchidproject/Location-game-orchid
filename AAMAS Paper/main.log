@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.7)  11 OCT 2013 23:59
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.7)  12 OCT 2013 09:41
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -441,20 +441,10 @@ LaTeX Font Warning: Font shape `U/lasy/m/n' in size <0.5> not available
 (Font)              size <5> substituted on input line 155.
 
 [4]) (./atomicorchid.tex (./components.tex
-Overfull \hbox (9.99934pt too wide) in paragraph at lines 2--3
-\T1/ptm/m/n/9 vid-ing sens-ing and aware-ness ca-pa-bil-i-ties in three tabs (g
-eiger counter,
- []
-
 <UI.png, id=37, 1260.71pt x 912.40875pt>
 File: UI.png Graphic file (type png)
- <use UI.png>
-Overfull \hbox (5.99141pt too wide) in paragraph at lines 10--11
-[]$\OML/cmm/m/it/9 H$ \T1/ptm/m/n/9 has at her dis-posal an `HQ dash-board' tha
-t pro-vides an overview
- []
-
-[5 <./UI.png>]) (./radiation_model.tex
+ <use UI.png> [5 <./UI.png>])
+(./radiation_model.tex
 Overfull \hbox (15.06305pt too wide) in alignment at lines 3--5
  [][][] []
  []
@@ -522,7 +512,7 @@ e1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/urw/
 helvetic/uhvr8a.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/urw/times/u
 tmb8a.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 </usr/local/texlive/2010/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (8 pages, 2233380 bytes).
+Output written on main.pdf (8 pages, 2233411 bytes).
 PDF statistics:
  133 PDF objects out of 1000 (max. 8388607)
  94 compressed objects within 1 object stream
