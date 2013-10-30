@@ -14,8 +14,7 @@ A.~G. Barto, S.~J. Bradtke, and S.~P. Singh.
 C.~Boutilier.
 \newblock Planning, learning and coordination in multi-agent decision
   processes.
-\newblock In {\em Proceedings of the 6th conference on Theoretical aspects of
-  rationality and knowledge}, pages 195--210, 1996.
+\newblock In {\em Proc. of TARK 1996}, pages 195--210, 1996.
 
 \bibitem{Chapman2009}
 A.~Chapman, R.~A. Micillo, R.~Kota, and N.~R. Jennings.
@@ -29,6 +28,12 @@ J.~Drury, C.~Cocking, and S.~Reicher.
   among emergency survivors.
 \newblock {\em The British journal of social psychology}, 48(3):487--506, 2009.
 
+\bibitem{Fischer:etal:2012}
+J.~E. Fischer, M.~Flintham, D.~Price, J.~Goulding, N.~Pantidi, and T.~Rodden.
+\newblock Serious mixed reality games.
+\newblock In {\em Mixed Reality games Workshop at the 2012 ACM Conference on
+  Computer Supported Cooperative Work}, 2012.
+
 \bibitem{kitano:2001}
 H.~Kitano and S.~Tadokoro.
 \newblock Robocup rescue: A grand challenge for multiagent and intelligent
@@ -38,27 +43,45 @@ H.~Kitano and S.~Tadokoro.
 \bibitem{kocsis2006bandit}
 L.~Kocsis and C.~Szepesv{\'a}ri.
 \newblock Bandit based monte-carlo planning.
-\newblock In {\em Proceedings of the 17th European Conference on Machine
-  Learning}, pages 282--293, 2006.
+\newblock In {\em Proc. of ECML 2006}, pages 282--293, 2006.
+
+\bibitem{kolobov2012planning}
+Mausam and A.~Kolobov.
+\newblock Planning with markov decision processes: An {AI} perspective.
+\newblock {\em Synthesis Lectures on {AI} and Machine Learning}, 6(1):1--210,
+  2012.
 
 \bibitem{paho:2001}
 {Pan American Health Organization}.
 \newblock Stress management in disasters, 2001.
 
+\bibitem{proper2009solving}
+S.~Proper and P.~Tadepalli.
+\newblock Solving multi-agent assignment \text{Markov} decision processes.
+\newblock In {\em Proc. of AAMAS 2009}, pages 681--688, 2009.
+
 \bibitem{ramchurn:etal:2010}
 S.~D. Ramchurn, A.~Farinelli, K.~S. Macarthur, and N.~R. Jennings.
 \newblock Decentralized coordination in robocup rescue.
-\newblock {\em Comput. J.}, 53(9):1447--1461, 2010.
-
-\bibitem{ramchurn:etal:2010b}
-S.~D. Ramchurn, M.~Polukarov, A.~Farinelli, N.~C. Truong, and N.~R. Jennings.
-\newblock Coalition formation with spatial and temporal constraints.
-\newblock In {\em AAMAS}, pages 1181--1188, 2010.
+\newblock {\em The Computer Journal}, 53(9):1447--1461, 2010.
 
 \bibitem{Scerri2005}
 P.~Scerri, A.~Farinelli, S.~Okamoto, and M.~Tambe.
 \newblock {Allocating tasks in extreme teams}.
-\newblock In {\em Proc. of AAMAS 2005}, pages 727--734. ACM, 2005.
+\newblock In {\em Proc. of AAMAS}, pages 727--734. ACM, 2005.
+
+\bibitem{scerri:etal:2005}
+P.~Scerri, M.~Tambe, and D.~V. Pynadath.
+\newblock Towards adjustable autonomy for the real-world.
+\newblock {\em Journal of Artificial Intelligence Research}, 17(1):171--228,
+  2002.
+
+\bibitem{searle:1975}
+J.~Searle.
+\newblock A taxonomy of illocutionary acts.
+\newblock In K.~G\"{u}nderson, editor, {\em Language, Mind, and Knowledge,
+  (Studies in the Philosophy of Science}, volume~7, pages 344--69. University
+  of Minneapolis Press, 1975.
 
 \bibitem{simonovic:2009}
 S.~P. Simonovic.

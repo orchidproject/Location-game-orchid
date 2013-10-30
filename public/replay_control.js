@@ -1,5 +1,7 @@
 var bind = false;
 
+
+
 function VideoControl(main,max){
 	this.current_time=0;
 	this.max_time=max;
@@ -7,6 +9,13 @@ function VideoControl(main,max){
 	this.videos = [];
 	this.offSets =  [];
 	this.volumes = [];
+
+	this.hideVideos = function(){
+		var main = this;
+		$(this.videos).each(function(index,value){
+			$(value).hide();
+		});
+	}
 
 	this.setVideo =  function(video,offSet,callback){
 		this.videos.push(video);

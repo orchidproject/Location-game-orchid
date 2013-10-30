@@ -1,0 +1,21 @@
+The "sys" module is now called "util". It should have a similar interface.
+info: socket.io started
+node-router server instance at unix:8080
+debug: client authorized
+info: handshake authorized 7CJszgsyaGMfhTh_AE2R
+debug: setting request GET /socket.io/1/websocket/7CJszgsyaGMfhTh_AE2R
+debug: set heartbeat interval for client 7CJszgsyaGMfhTh_AE2R
+debug: client authorized for 
+debug: websocket writing 1::
+debug: websocket writing 5:::{"name":"game"}
+session id recorded 87 7CJszgsyaGMfhTh_AE2R
+join game channel 24
+debug: got disconnection packet
+info: transport end by forced client disconnection
+debug: websocket writing 0::
+info: transport end (booted)
+debug: set close timeout for client 7CJszgsyaGMfhTh_AE2R
+debug: cleared close timeout for client 7CJszgsyaGMfhTh_AE2R
+debug: cleared heartbeat interval for client 7CJszgsyaGMfhTh_AE2R
+client unregistered
+debug: discarding transport
