@@ -1,6 +1,6 @@
-var database="jtruck_db";
-var db_username="jtruck";
-var db_password="jtruck";var sys = require('util');
+var database="wxj";
+var db_username="wxj";
+var db_password="t5*m3$A";var sys = require('util');
 var url = require('url');
 
 // Load the node-router library by creationix
