@@ -8,10 +8,10 @@
   	<script type="text/javascript" src="/game-common.js"></script>
 	<link rel="stylesheet" type="text/css" href="/style.css" /> 
 	<link rel="stylesheet" type="text/css" href="/reset.css" />
-  	<script> SOCKET_IO_ADDRESS = "<%= @socket_io_url %>";</script>
-  	<script> GAME_ID = "<%= @game.layer_id %>";</script>
   	
   	<% if request.path =~ /\/game\// || request.path =~ /\/replay2\// %>
+		<script> SOCKET_IO_ADDRESS = "<%= @socket_io_url %>";</script>
+		<script> GAME_ID = "<%= @game.layer_id %>";</script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script type="text/javascript" src="<%= @socket_io_url %>/socket.io/socket.io.js"></script>
 		<script type="text/javascript" src="/web_controller.js" ></script>
@@ -22,7 +22,9 @@
   	<% end %>
 
     <% if request.path =~ /\/replay\// %>
-    	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	  <script> SOCKET_IO_ADDRESS = "<%= @socket_io_url %>";</script>
+	  <script> GAME_ID = "<%= @game.layer_id %>";</script>
+	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     	  <script src="/replay.js"></script>
     	  <script src="/replay_control.js"></script>
 	  <script type="text/javascript" src="/game_controller.js" ></script>
@@ -31,10 +33,26 @@
 	  <link type="text/css" rel="stylesheet" href="/replay_panel.css" />
 	 
 	  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 	  
+    <% end %>
+
+    <% if request.path =~ /\/charts\// %>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>	
+	<script src="/pixelKit/js/libs/modernizr.min.js"></script>
+	<script src="/pixelKit/js/libs/jquery-1.10.0.js"></script>
+	<script src="/pixelKit/js/libs/jquery-ui.min.js"></script>
+	<script src="/pixelKit/js/libs/bootstrap.min.js"></script>
+
+	<!-- Style CSS -->
+	<link href="/pixelKit/css/bootstrap.css" media="screen" rel="stylesheet">
+	<link href="/pixelKit/style.css" media="screen" rel="stylesheet">
+
+	<!-- scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	<script src="/pixelKit/js/general.js"></script>
+	<script src="/charts/dashboard.js"></script>
     <% end %>
 
   	
