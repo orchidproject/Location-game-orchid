@@ -59,7 +59,7 @@ function VideoControl(main,max){
 	}
 
  }
-
+/*
 function dot_move(e){
 		if(e.pageX>$("#bar").offset().left&&e.pageX<($("#bar").offset().left+$("#bar").width())){
     		$('#dot').css({
@@ -80,13 +80,17 @@ $('#dot').live('mousedown',function(e){
 		pause();
 	
 });
+*/
 
 //max time shall be get from log file
 var control = new VideoControl(3600);
 
 
 var in_play=false;
-$("#play-button").live('click',function(e){
+
+$(function(){
+
+$("#play-button").click(function(e){
 	if(in_play){
 		$("#play-button").html("<img src='/img/replay-control/play.png'>");
 		in_play=false;
@@ -104,8 +108,7 @@ $("#play-button").live('click',function(e){
 	}
 });
 
-
-$("#forward-button").live('click',function(e){
+$("#forward-button").click(function(e){
 	//need to pause and resume while the replay is in prograss, otherwise the speed change only take 
 	//effect after current setTimeout task is finished which might be very slow.
 	
@@ -115,12 +118,13 @@ $("#forward-button").live('click',function(e){
 	
 });
 
-$("#backward-button").live('click',function(e){
+$("#backward-button").click(function(e){
 	
 	if (speed>0.24)
 		speed=speed/2;
 	$("#speed_display").html("x "+speed);
 	
+});
 });
 
 function setScrollBar(percent){
