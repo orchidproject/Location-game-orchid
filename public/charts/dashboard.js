@@ -39,9 +39,11 @@ $(function(){
 		g_log_data = new_log;	
 		
 	}); 
+
 	//load google chart
 	
 });
+
 
 function get_player_by_id(id){
 	var p = null;
@@ -86,7 +88,7 @@ analysisApp.controller('PlayerListCtrl', function PlayerListCtrl($scope) {
 		$scope.$apply();
 	}); 
 
-
+	
 	$scope.analyseTask = function(task){
 		var data = new google.visualization.DataTable();
 		data.addColumn('number', 'mins'); // Implicit domain label col.
@@ -147,6 +149,62 @@ analysisApp.controller('PlayerListCtrl', function PlayerListCtrl($scope) {
 		data.addRows(distance_data);
 		new google.visualization.LineChart(document.getElementById("distance2task")).
 	      	draw( data, option);		
+	};
+	
+	$scope.showOverview = function(){ 
+		var player_status = []; //[-1, g_base_time,-1,g_base_time];//task,time 
+		var timeline_chart_data = []; 
+		
+		//pupulate with initial state
+		$($scope.players).each(function(index,value){
+			player_status[value.id] =  [-1, g_base_time,-1,g_base_time,value.initials];
+		});
+
+		$(g_log_data).each(function(index,value){
+			if(value.task != null){
+				//test whether it is related to this player
+				var relvant_players = value.task.players.split(",");
+				$(relvant_players).each(function(index,pid){
+					if(pid != "") { 
+						if(pid == 94) { pid = 89;}
+						var p_status = player_status[pid];
+						if( p_status[0]==-1){
+							p_status[0] = value.task.id;
+							p_status[1] = value.time_stamp;
+						}
+
+						/*else if(value.task.p_status[0] == value.task.id){
+							p_status[0] = -1;
+							timeline_chart_data.push([
+								pid,
+								value.task.id+"",
+								new Date(p_status[1] - g_base_time),
+								new Date(value.time_stamp - g_base_time)
+							]); 
+							p_status[1] = value.time_stamp; 
+						}*/ 
+					}else{
+						$(player_status).each(function(index,p_status){
+							if(p_status!=null){
+							if(p_status[0] == value.task.id){
+								p_status[0] = -1;
+								timeline_chart_data.push([
+									p_status[4],
+									value.task.id+"",
+									new Date(p_status[1] - g_base_time),
+									new Date(value.time_stamp - g_base_time)
+								]); 
+								p_status[1] = value.time_stamp; 	
+							}
+							}
+						}); 
+					}
+				}); 
+			}
+		});
+
+		$scope.draw_timeline_chart(timeline_chart_data,"overview_timeline_chart");
+
 	};
 
 	$scope.analysePlayer = function(player){
@@ -256,7 +314,7 @@ analysisApp.controller('PlayerListCtrl', function PlayerListCtrl($scope) {
 		}; 
 
 		$scope.draw_line_chart(instruction_chart_data,option,"instruction_chart"); 
-		$scope.draw_timeline_chart(timeline_chart_data);
+		$scope.draw_timeline_chart(timeline_chart_data,"timeline_chart");
 
 		option = {
 			title:"speed chart",
@@ -275,7 +333,7 @@ analysisApp.controller('PlayerListCtrl', function PlayerListCtrl($scope) {
 
 	}
 
-	$scope.draw_timeline_chart = function(dataArray){
+	$scope.draw_timeline_chart = function(dataArray,dom){
 		var dataTable = new google.visualization.DataTable();
 
 		dataTable.addColumn({ type: 'string', id: 'Task' });
@@ -286,8 +344,8 @@ analysisApp.controller('PlayerListCtrl', function PlayerListCtrl($scope) {
 		dataTable.addRows(dataArray); 
 		//dataTable.addRows([["tasks","413",new Date(0), new Date(144999)]]); 
 		
-		new google.visualization.Timeline(document.getElementById('timeline_chart')).
-	      	draw(dataTable,{width:900,title:"actions"});		
+		new google.visualization.Timeline(document.getElementById(dom)).
+	      	draw(dataTable,{height:700,width:900,title:"actions"});		
 	} 
 
 });  

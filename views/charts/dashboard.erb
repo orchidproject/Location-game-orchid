@@ -10,8 +10,11 @@
 <!-- content -->
   <div class="content" >
     <div class="row" ng-controller = "PlayerListCtrl">
-      <div class="col-xs-2">
-	 <!-- Dropdown Menu -->
+      <div class="col-xs-2"> 
+        <ul class="dropdown clearfix boxed boxed-blue">
+           <li ng-click="showOverview()" class="link-more"><a href="#"><i></i></a></li>
+        </ul>
+	<!-- Dropdown Menu -->
 	<div  class=" dropdownMenu ">
           <a id="player_drop_label" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{selectedPlayer.initials}}</a>
           <ul id="player_menu" class="dropdown-menu" role="menu" aria-labelledby="drop">
@@ -35,6 +38,8 @@
 
 
       <div class="col-xs-10">
+        <div id="overview_timeline_chart">
+        </div>
         <div id="instruction_chart">
         </div>
 	<div id="distance2task">
