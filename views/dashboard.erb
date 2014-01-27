@@ -53,12 +53,10 @@
 
 </script>
 
-	<div id="wrapper">
-		<div id="scoreboard-wrapper">
-				<h1>Atomic Orchid</h1>
-		</div>
-		
-		<div id="wedget-panel-1">
+	<div id="row wrapper">
+
+		<div id="map" class="col-sm-6 col-lg-6"></div>
+		<div id="wedget-panel-1" class="col-sm-6 col-lg-6">
 			<div id="test-panel">
 				
 				<input type="text" value=0 id="txt-frame" size=5 />
@@ -85,17 +83,9 @@
 				</div>
 			</div>
 		</div>
-
-
-		<div id="map"></div>
-
-
-		
-    
-    	
-      </div> 
-    <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
-    <input type="hidden" id="user_id" value="<%= @user_id %>" />
-    <input type="hidden" id="user_initials" value="<%= @user_initials %>" />
-    <input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
-    <input type="hidden" id="game_status" value=<%= @game.is_active %> />
+</div> 
+<input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
+<input type="hidden" id="user_id" value="<%= @user_id %>" />
+<input type="hidden" id="user_initials" value="<%= @user_initials %>" />
+<input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
+<input type="hidden" id="game_status" value=<%= @game.is_active %> />
