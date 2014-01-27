@@ -129,7 +129,9 @@ html, body {
 }
 
 
-
+#wedget-panel-1 {
+	height:100%;
+}
 
 
 #active-player-wrapper {	
