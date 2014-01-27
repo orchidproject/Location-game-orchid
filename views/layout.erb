@@ -24,7 +24,7 @@
     <% if request.path =~ /\/replay\// %>
 	  <script> SOCKET_IO_ADDRESS = "<%= @socket_io_url %>";</script>
 	  <script> GAME_ID = "<%= @game.layer_id %>";</script>
-	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     	  <script src="/replay.js"></script>
     	  <script src="/replay_control.js"></script>
 	  <script type="text/javascript" src="/game_controller.js" ></script>
@@ -32,10 +32,8 @@
 	  <link type="text/css" rel="stylesheet" href="/chatstyle.css" />
 	  <link type="text/css" rel="stylesheet" href="/replay_panel.css" />
 	 
-	  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-	  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
-	  
+	  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css">
+	  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <% end %>
 
     <% if request.path =~ /\/charts\// %>
