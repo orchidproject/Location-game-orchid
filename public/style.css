@@ -101,6 +101,18 @@ html, body {
 	height:100%;
 }
 
+
+#active-player-wrapper {
+	height:60%;
+}
+
+#agent-wrapper {
+	height:40%;
+	background-color: black
+}
+
+
+
 #test-panel {	
 	background: blue;
 	z-index: 2;
