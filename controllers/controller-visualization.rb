@@ -15,4 +15,12 @@ class Controller < Sinatra::Base
 		erb :'charts/two_timelines', :layout =>false 
 
 	end 
+
+	get '/charts/dashboard/:log/:setup' do 
+		@log =  params[:log] 
+		@setup =  params[:setup] 
+
+		erb :'charts/dashboard' 
+	end 
+
 end 

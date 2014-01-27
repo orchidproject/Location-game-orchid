@@ -180,17 +180,22 @@ function process_data(data){
         }
         
         if(typeof data.task != "undefined"){
-		check_task(data.task);
+		var task = data.task;
+		task["time_stamp"] = data.time_stamp;
+		check_task(task);
                 receiveTaskData(data.task);
         }
 	
         if(typeof data.instructions != "undefined"){
                 receiveInstructionDataV3(data.instructions[0]);
-		ana_push_instructions(data.instructions[0]);
+		var instruction = data.instructions[0];
+		instruction["time_stamp"] = data.time_stamp;
+		ana_push_instructions(instruction);
         }
 
 	if(typeof data["ack-instruction"] != "undefined"){
 		var ack = data["ack-instruction"]
+		ack["time_stamp"] = data.time_stamp;
 		ana_push_instrucition_ack(ack);
         }
 
@@ -229,18 +234,23 @@ function ana_push_instrucition_ack(ack){
 	if(teammate!=null){ 
 		var p1 = players[ins.player_id]
 		var p2 = players[ins.teammate];
-		var distance = ana_get_distance(p1.marker.position,p2.marker.position);
+		p1.instruction.status = ack.status;
+		//update instruction display 
+		drawInstruction(ins.player_id,ins.task);
+
+		var distance = ana_get_distance(p1.marker.position,p2.marker.position); 
+
 		if(ack.status == 2 && teammate.status == 2){
 			metrics.acceptance++;
 			ana_accept_distance+= distance;
 			var avg = ana_accept_distance/metrics.acceptance; 
-			alert("accept " + metrics.acceptance + " avg_distance: " + avg);
+			//alert("accept " + metrics.acceptance + " avg_distance: " + avg + "ins: " + p1.initials);
 		}
 		else if (ack.status == 3 && teammate.status != 3){
 			metrics.rejection++;
 			ana_rejection_distance+= distance;
 			var avg = ana_rejection_distance/metrics.rejection; 
-			alert("rejection " + metrics.rejection + " avg_distance: " + avg); 
+			//alert("rejection " + metrics.rejection + " avg_distance: " + avg + " player:" +p1.initials); 
 		}	
 	}
 	
@@ -257,8 +267,7 @@ function get_ins_by_player(id){
 			ins = value			
 		}
 	});	
-	return ins;
-
+	return ins; 
 }
 
 function get_ins_by_task(id){
@@ -283,17 +292,32 @@ function ana_get_task_by_id(id){
 
 }
 
+var ana_time = 0;
+var ana_time_count = 0;
 function check_task(task){
 	var t = ana_get_task_by_id(task.id);
 	if(t.state ==1 && task.state == 2){
 		var ins = get_ins_by_task(task.id);
-		
-		if(ins.length == 2 && ins[0].status == 2 && ins[1].status ==2){
+		//bypass the AD bug, remove in future	
+		if(ins.length >= 2 && ins.length <= 3&& ins[0].status == 2 && ins[1].status ==2){
 			metrics.finish_accepted++;	
-			//alert("accepted and finished " + metrics.finish_accepted);
+			ana_time_count++;
+			ana_time += (task.time_stamp - ins[0].time_stamp); 
+		//	alert("accepted and finished " + metrics.finish_accepted + 
+		//		"  time : " + (task.time_stamp - ins[0].time_stamp) +
+	//			" avg_time : " + ana_time/ana_time_count 
+	//		);
 		}
-		else{
-			//alert("just finished ");
+		else if(ins.length > 0) {
+			ana_time_count++;
+			ana_time += (task.time_stamp - ins[0].time_stamp); 
+	//		alert( "  time : " + (task.time_stamp - ins[0].time_stamp) +
+	//			" avg_time : " + ana_time/ana_time_count 
+	//		);
+
+		}
+		else if(ins.length == 0) {
+			//alert("not instructed to do so ");
 		}
 	}
 }

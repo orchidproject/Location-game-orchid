@@ -103,6 +103,15 @@ function receiveDropoffpointData(drop){
 function drawInstruction(pid,tid){
 	if(players[pid]!=null){
 		var p = players[pid];
+		var color = '#FFFF00';
+
+		if (p.instruction.status == 3){
+			color = '#000000';
+		}
+		else if(p.instruction.status == 2){
+			color = '#FFFFFF';
+		}
+
 		var lat = p.marker.getPosition().lat();	
 		var lng = p.marker.getPosition().lng();
 		if(p.previous_path!=null){
@@ -122,7 +131,7 @@ function drawInstruction(pid,tid){
 		  ];
 		  var flightPath = new google.maps.Polyline({
 		    path: flightPlanCoordinates,
-		    strokeColor: '#FFFF00',
+		    strokeColor: color,
 		    strokeOpacity: 1.0,
 		    strokeWeight: 4 
 		  });

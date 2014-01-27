@@ -1,0 +1,58 @@
+<script> var log = "<%= @log %>";</script>
+<script>
+	var setup= "<%= @setup %>"; 
+	google.load("visualization", "1", {packages:["corechart","timeline"]});	
+
+</script>
+
+
+<div ng-app = "analysisApp" class="container" >
+<!-- content -->
+  <div class="content" >
+    <div class="row" ng-controller = "PlayerListCtrl">
+      <div class="col-xs-2"> 
+        <ul class="dropdown clearfix boxed boxed-blue">
+           <li ng-click="showOverview()" class="link-more"><a href="#"><i></i></a></li>
+        </ul>
+	<!-- Dropdown Menu -->
+	<div  class=" dropdownMenu ">
+          <a id="player_drop_label" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{selectedPlayer.initials}}</a>
+          <ul id="player_menu" class="dropdown-menu" role="menu" aria-labelledby="drop">
+             <li ng-repeat = "p in players"role="presentation"><a role="menuitem" tabindex="-1" ng-click = "selectPlayer(p)"  href="#"> {{p.initials}} </a></li> 
+          </ul>
+        </div>
+        <!--/ Dropdown Menu -->
+
+
+        <!-- Dropdown Menu -->
+	<div  class=" dropdownMenu ">
+          <a id="player_drop_label" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{selectedTask.id}}</a>
+          <ul id="player_menu" class="dropdown-menu" role="menu" aria-labelledby="drop">
+             <li ng-repeat = "t in tasks"role="presentation"><a role="menuitem" tabindex="-1" ng-click = "selectTask(t)"  href="#"> {{t.id}} </a></li> 
+          </ul>
+        </div>
+        <!--/ Dropdown Menu -->
+
+      </div>
+
+
+
+      <div class="col-xs-10">
+        <div id="overview_timeline_chart">
+        </div>
+        <div id="instruction_chart">
+        </div>
+	<div id="distance2task">
+        </div>
+	<div id="timeline_chart">
+ 	
+        </div> 
+	
+	<div id="speed">
+        </div> 
+
+      </div>
+    </div>
+  </div>
+<!--/ content -->
+</div>
