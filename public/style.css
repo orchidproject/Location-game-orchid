@@ -103,11 +103,11 @@ html, body {
 
 
 #active-player-wrapper {
-	height:50%;
+	height:70%;
 }
 
 #agent-wrapper {
-	background-color: green
+	height:30%;
 }
 
 
