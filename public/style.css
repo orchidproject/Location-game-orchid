@@ -223,19 +223,6 @@ html, body {
 	text-shadow: 0 -1px 0px #183c6a;
 }
 
-#truck-score {
-	background: url('img/gameboard-sprite.png') no-repeat 0px 0px;
-	width: 96px;
-	height: 60px;
-	color: #9bc1ef;
-	padding: 32px 4px 3px 28px;
-	text-align: center;
-	position: absolute;
-	top:58px;
-	right: -45px;
-	text-shadow: 0 -1px 0px #183c6a;
-}
-
 h1, h2,h3 {
 	font-family: 'LeagueGothicRegular';
 	line-height: 1em;
@@ -363,85 +350,7 @@ Common Team Styles
 	overflow: hidden;
 }
 
-/*********************
-Red Team
-*********************/
 
-#red-team .team-players {
-	color: #a42f2a;
-	text-shadow: 0 -1px 0	px #fff;
-}
-
-#red-team .team-players img {
-	background: url('img/gameboard-sprite.png') no-repeat -199px -273px;
-	float: left;
-	padding:3px 13px 19px 3px;
-	margin:0 10px 0 -15px;
-}
-
-#red-team h2 {
-	color: #e8a9a7;
-	text-shadow: 0px -1px 2px #792727;
-	background: url('img/gameboard-sprite.png') no-repeat 0px -98px;
-	top: -20px;
-	left: -33px;
-	padding:0 20px 0 0;
-	width: 234px;
-}
-
-/*********************
-Blue Team
-*********************/
-
-#blue-team h2 {
-	color: #9bc1ef;
-	text-shadow: 0px -1px 2px #16355c;
-	background: url('img/gameboard-sprite.png') no-repeat 0px -186px;
-	top:-20px;
-	left:-49px;
-	width: 234px;
-	padding:0 0 0 20px;
-}
-
-#blue-team .team-players {
-	color: #1c477c;
-	text-shadow: 0 -1px 0	px #fff;
-	text-align: right;
-}
-
-#blue-team .team-players img {
-	background: url('img/gameboard-sprite.png') no-repeat -141px -273px;
-	float: right;
-	padding:3px 3px 19px 13px;
-	margin:0 -15px 0 10px;
-}
-
-/*********************
-Truck Team
-*********************/
-
-#truck-team h2 {
-	color: #9bc1ef;
-	text-shadow: 0px -1px 2px #16355c;
-	background: url('img/gameboard-sprite.png') no-repeat 0px -186px;
-	top:-20px;
-	left:-49px;
-	width: 234px;
-	padding:0 0 0 20px;
-}
-
-#truck-team .team-players {
-	color: #1c477c;
-	text-shadow: 0 -1px 0	px #fff;
-	text-align: right;
-}
-
-#truck-team .team-players img {
-	background: url('img/gameboard-sprite.png') no-repeat -141px -273px;
-	float: right;
-	padding:3px 3px 19px 13px;
-	margin:0 -15px 0 10px;
-}
 
 
 /*********************
