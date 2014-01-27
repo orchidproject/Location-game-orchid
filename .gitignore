@@ -14,4 +14,5 @@ tmp
 logs/*
 config.yml
 Gemfile
+*~
 
