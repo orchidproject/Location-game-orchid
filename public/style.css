@@ -123,7 +123,6 @@ html, body {
 
 #map {
 	height: 100%;
-	position: absolute;
 	background: white;
 	z-index: 1;
 }
