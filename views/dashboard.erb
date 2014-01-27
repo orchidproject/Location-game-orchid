@@ -64,24 +64,49 @@
 				<input type="button" value="fetchplan" id="btn-fetchplan" />
 			</div>
 			<div id="active-player-wrapper">
-				<div align="center">
-				<table  id="players" >
-					<th>Players&nbsp&nbsp&nbsp&nbsp</th>
-					<th>Health&nbsp&nbsp&nbsp&nbsp</th>
-					<th>Exposure&nbsp&nbsp&nbsp&nbsp</th>
-					<th>Instruction</th> 
-				 </table>
+				<div class="row" >
+					<div class = "col-lg-3">
+						Icon
+					</div>
+
+					<div class = "col-lg-3">
+						health
+					</div>
+
+					<div class = "col-lg-3">
+						mode
+					</div>
+					<div class = "col-lg-3">
+						chat 
+					</div>
+
 				</div>
-			
+				<div class="row" >
+					<div class = "col-lg-3">
+						<image src = "/image/soldier.png">
+					</div>
+
+					<div class = "col-lg-3">
+						health
+					</div>
+
+					<div class = "col-lg-3">
+						mode
+					</div>
+					<div class = "col-lg-3">
+						chat 
+					</div>
+
+				</div>			
 			</div>	
-			<div id="chat-wrapper">
+			<!--<div id="chat-wrapper">
 				<input name="collapse" type="button" id="collapse" value="collapse"/>
 				<div id="chat-window"> 
 					<div id="chatbox"></div> 
 					<input name="usermsg" type="text" id="usermsg" size="63" />
 					<input name="submitmsg" type="button"  id="submitmsg" value="Send" />
 				</div>
-			</div>
+			</div>-->
 		</div>
 </div> 
 <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
