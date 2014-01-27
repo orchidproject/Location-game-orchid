@@ -101,14 +101,6 @@ html, body {
 	height:100%;
 }
 
-
-#active-player-wrapper {	
-	background: blue;
-	z-index: 2;
-	background-color: #E1E1E1;
-	opacity: 0.9;
-}
-
 #test-panel {	
 	background: blue;
 	z-index: 2;
