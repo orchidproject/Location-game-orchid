@@ -1,10 +1,8 @@
 \section{Team Coordination Algorithm}
 \label{sec:algo}
-
 Although the MMDP model can capture the uncertainties of our
-problem, it results in a very large search space. Therefore, it is
-practically impossible to compute the optimal solution. In such
-cases, we need to consider approximate solutions that result in
+problem, it results in a very large search space making it
+practically impossible to compute the optimal solution. Hence, we consider approximate solutions that result in
 high quality allocations. To this end, we decompose the overall
 decision-making process into a hierarchical structure with two
 levels: at the top level, a {\em task planning} algorithm is run
@@ -14,17 +12,14 @@ the current state of the world; at the lower level, given a task, a
 best path to the task from her current location. Furthermore,
 because not all states of MMDPs are relevant to the problem, we
 only need to consider the reachable states given the current state.
-Hence, we compute the policy online starting from the current state
+Hence, we compute the policy online, starting from the current state
 of the problem. This saves a considerable amount of computation
 because the size of the reachable states is usually much smaller
 than the overall state space. The following sections describe each
 level of our {\em online hierarchical planning} algorithm in more
 detail.
 
-\subsection{Task Planning}
-\label{sec:taskplanning}
-
-As described earlier, each responder $p_i$ is of a specific type
+\subsection{Task Planning} \label{sec:taskplanning} As described earlier, each responder $p_i$ is of a specific type
 $\theta_i \in \Theta$ that determines which task she can perform
 and  a task $t$ can only be completed by a team of responders with
 the required types $\Theta_t$. If, at some point in the execution

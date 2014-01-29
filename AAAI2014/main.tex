@@ -5,7 +5,7 @@
 %File: formatting-instruction.tex
 \documentclass[letterpaper]{article}
 \usepackage{aaai}
-\usepackage{times}
+%\usepackage{times}
 \usepackage[ruled, vlined, linesnumbered]{algorithm2e}
 \DontPrintSemicolon
 
@@ -14,7 +14,7 @@
 \usepackage{url}
 
 \nocopyright
-
+ \def\baselinestretch{0.95}
 \setlength{\pdfpagewidth}{8.5in}
 \setlength{\pdfpageheight}{11in}
 \pdfinfo{
@@ -23,7 +23,7 @@
 \setcounter{secnumdepth}{0}
 \frenchspacing
  \begin{document}
- \def\baselinestretch{0.9}
+
 % The file aaai.sty is the style file for AAAI Press
 % proceedings, working notes, and technical reports.
 %
@@ -34,9 +34,7 @@
  \maketitle
 
 \begin{abstract}
-\begin{quote}
-The allocation of emergency responders to rescue tasks is a key application area for agent-based coordination algorithms. However, to date, none of the proposed approaches take into account the inherent uncertainty  in disaster scenarios and, crucially, none have been field-trialled in order to understand how humans perform when instructed by an agent. Hence, in this paper, we propose a novel representation and an algorithm, using Multi-agent Markov Decision Processes, to solve the problem of  coordinating emergency responders in uncertain environments. Moreover,  we deploy our algorithm in a mixed-reality game called AtomicOrchid, with an agent that works alongside a human commander to guide human players to complete rescue tasks. In our  trials, our algorithm is shown to improve  performance significantly (compared to a no-agent setting) and our results allow us to elucidate some of the key challenges faced when developing systems involving human-agent collaboration.
-\end{quote}
+In this paper, we develop an algorithm to solve the problem of  coordinating emergency responders in uncertain environments and evaluate it in a novel mixed-reality game called AtomicOrchid. Specifically, the algorithm is used by a software  agent that works alongside a human commander to guide human players to complete rescue tasks. More importantly, we study the interactions between the human players and the agent in real-time and show that it improves  performance significantly (compared to a no-agent setting). Our results allow us to specify design guidelines for human-agent collaboration in such settings.
  \end{abstract}\vspace{-3mm}
 
 % Note that the category section should be completed after reference to the ACM Computing Classification Scheme available at
@@ -52,7 +50,7 @@ The allocation of emergency responders to rescue tasks is a key application area
 \input{conclusions.tex}
 
 
-\newpage
+\clearpage
 \bibliographystyle{aaai}
 \fontsize{9.5pt}{10.5pt}
 {
