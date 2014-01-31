@@ -13,9 +13,9 @@ best path to the task from her current location. Furthermore,
 because not all states of MMDPs are relevant to the problem, we
 only need to consider the reachable states given the current state.
 Hence, we compute the policy online, starting from the current state
-of the problem. This saves a considerable amount of computation
-because the size of the reachable states is usually much smaller
-than the overall state space. The following sections describe each
+of the problem. This reduces computation significantly
+because the number of the reachable states is usually much smaller
+than the overall state space. In what follows, we describe each
 level of our {\em online hierarchical planning} algorithm in more
 detail.
 
@@ -47,15 +47,13 @@ proceed to detail the main algorithm to allocate tasks.
 
 
 \subsubsection{Team Value Calculation}
-
 The computation of  $v(C_{jk})$ for each team $C_{jk}$ is
-challenging because not all tasks can be completed by one
-allocation (there are usually more tasks than responders).
+challenging because one allocation does not suffice for all tasks (i.e., there are more tasks than responders).
 Moreover, the policy after completing task $t_j$ must also be
 computed by the agent, which is time-consuming given the number of
 states and joint actions. Given this, we propose to estimate
-$v(C_{jk})$ through several simulations. This is much cheaper
-computationally as it avoids computing the complete policy to come
+$v(C_{jk})$ through several simulations. This saves
+computation as it avoids computing the complete policy to come
 up with a good estimate of the team value, though we may not be
 able to evaluate all possible future outcomes. According to the
 central limit theorem, if the number of simulations is sufficiently
@@ -110,14 +108,12 @@ task. Moreover, if a responder prefers to do the tasks with another
 responder, we can increase the weights of the teams that contain
 them in Equation~\ref{eq:cf} (by default, all teams have identical
 weights of 1.0). Thus, our approach is adaptive to the
- preferences of human responders.
+ preferences of human responders.\vspace{-2mm}
 
 \subsection{Path Planning}
 \label{sec:pathplanning}
-
 In the path planning phase, we compute the best path for a
-responder to her assigned task. This phase is stochastic as there
-are uncertainties in the radioactive cloud and the responders'
+responder to her assigned task. This phase is stochastic due to uncertainties in the radioactive cloud and the responders'
 actions. We model this problem as a single-agent MDP that can be
 solved by many existing solvers. Among them, we choose {\em
 real-time dynamic programming} (RTDP)~\cite{barto1995learning}
@@ -153,14 +149,14 @@ to test how humans take up advice computed by the planning agent
 $PA$.
 \begin{table}[htbp]
   \centering\small
-  \caption{Results for the MMDP, myopic, greedy
-  algorithms.}\vspace{2pt}
+  
   \begin{tabular}{l|c|c|c}
    & MMDP & myopic & greedy \\
   \hline
   \#completed tasks & 71\% & 65\% & 41\% \\
   \hline
   \#responders alive at the end & 100\% & 25\% & 0\% \\
-  \end{tabular}
+  \end{tabular}\caption{Results for the MMDP, myopic, greedy
+  algorithms.}
   \label{tab:simulation}\vspace{-3mm}
 \end{table}
