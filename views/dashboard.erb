@@ -9,7 +9,7 @@
   	var myOptions = {
   		zoom: 15,
   		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
-  		mapTypeId: google.maps.MapTypeId.HYBRID,
+  		mapTypeId: google.maps.MapTypeId.MAP,
   		mapTypeControl: true,
 		disableDoubleClickZoom: true
   	};
@@ -51,12 +51,15 @@
   });
 
 
-</script>
-
-	<div id="row wrapper">
+</script> 
+<div ng-controller = "panelController" >
+		<div id="loading-div" ng-show="loadingIndicator">
+			<div class="well col-lg-offset-3 col-lg-6"> Requesting plan from agent ...... </div>
+		</div>
 
 		<div id="map" class="col-sm-6 col-lg-6"></div>
-		<div id="wedget-panel-1" class="col-sm-6 col-lg-6">
+
+		<div id="wedget-panel-1" class="col-sm-6 col-lg-6"  >
 			<div id="active-player-wrapper" class="col-lg-12">
 				<div class="row" >
 					<div class = "col-lg-1">
@@ -73,9 +76,14 @@
 					<div class = "col-lg-3">
 						communication 
 					</div>
+					<div class = "col-lg-3">
+						response 
+					</div>
 
 				</div>
-				<div class="row alert alert-info" >
+
+
+				<div class="row well well-sm" >
 					<div class = "col-lg-1">
 						<image src = "/img/soldier.png" height=20 width=20>
 					</div>
@@ -92,52 +100,85 @@
 					</div>
 
 					<div class = "col-lg-3">
-						<button href="#" id="callapse" class="btn btn-default btn-xs" role="button">message </button> <span class="badge">42</span> 
+						<button ng-click= "toggleChatbox(0)" href="#" id="callapse" class="btn btn-default btn-xs" role="button">message </button> <span class="badge">42</span> 
 					</div>
 
+					<div class = "col-lg-3">
+						accepted
+					</div>
 				</div>
-				
 
-				<div id="chat-wrapper">
+				<div id="chat-wrapper" ng-show = "showChatbox[0]">
 					<div id="chat-window"> 
 						<div id="chatbox"></div> 
 						<input name="usermsg" type="text" id="usermsg" size="63" />
 						<input name="submitmsg" type="button"  id="submitmsg" value="Send" />
 					</div>
-				</div>
+				</div>	
 
-				<div class="row alert alert-info" >
+				<div class="row well well-sm" >
 					<div class = "col-lg-1">
 						<image src = "/img/soldier.png" height=20 width=20>
 					</div>
 
 					<div class = "col-lg-2">
 						100%
-					</div>
-
-					<div class = "col-lg-1">
-						<image src = "/img/firefighter.png" height=20 width=20>
-					</div>
-
-					<div class = "col-lg-1">
-						<image src = "/img/task_icon1.png" height=20 width=20>
+					</div> 
+					<div class = "col-lg-3">
+  						<div class="btn-group btn-group-xs" data-toggle="buttons">
+  						<label class="btn btn-primary" ng-click="showPlanEditor[1] = false">
+    						<input type="radio" name="options" id="option1"> Auto
+  						</label>
+  						<label class="btn btn-primary" ng-click="showPlanEditor[1] = true">
+    						<input type="radio" name="options" id="option2"> Manual
+  						</label>
+						</div>
 					</div>
 
 					<div class = "col-lg-3">
-						<div class="btn-group btn-group-xs">
-  							<button type="button" class="btn btn-default">Auto</button>
-  							<button type="button" class="btn btn-default ">Manual</button>
-  						</div>
+						<button href="#" class="btn btn-default btn-xs" ng-click = "toggleChatbox(1)" role="button">message </button> <span class="badge">42</span> 
 					</div>
 
 					<div class = "col-lg-3">
-						<button href="#" class="btn btn-default btn-xs" role="button">message </button> <span class="badge">42</span> 
+						rejected 
 					</div>
+				</div>	
 
-				</div>		
-				<div class="row" >
+				<div id="chat-wrapper" ng-show = "showChatbox[1]">
+					<div id="chat-window"> 
+						<div id="chatbox"></div> 
+						<div class="input-group">
+							<input type="text" class="form-control">
+      						<span class="input-group-btn">
+        						<button class="btn btn-default" id="submitmsg" type="button">Send</button>
+      						</span>
+						</div>
+					</div>
+				</div>	
+				
+				<div  id="chat-wrapper" ng-repeat="a in constraints" ng-show="showPlanEditor[1]" >
+					Should go to xx with yy 
+					<a class="btn btn-default btn-xs" ng-click = "deleteConstrain()" > <span class="glyphicon glyphicon-minus"></span> </a>
+				</div>
+
+
+
+				<div  id="chat-wrapper" ng-show="showPlanEditor[1]" >
+					<row>
+					<div class="btn-group btn-group-xs" >
+							
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						should go to			
+						<span class="caret"></span>
+						</button>
+					
+							<ul class="dropdown-menu">
+							<li><a href="#">should go to </a></li>
+							<li><a href="#">should not go to</a></li>
+						</ul>
+					</div>
 					Target:
-					<div class="btn-group" >
+					<div class="btn-group btn-group-xs" >
 						
 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
       						13
@@ -145,13 +186,13 @@
     					</button>
 					
 						<ul class="dropdown-menu">
-      						<li><a href="#">15</a></li>
-      						<li><a href="#">18</a></li>
+      						<li ><a href="#" ng-mouseover="map.moveToTask()">15</a></li>
+      						<li><a href="#" ng-mouseover="map.moveToTask()" >18</a></li>
     					</ul>
     					
     				</div>	
-    				Teammate:
-    				<div class="btn-group" >
+				With Teammate:
+    				<div class="btn-group btn-group-xs" >
     					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
       						AA
       					<span class="caret"></span>
@@ -162,28 +203,32 @@
       						<li><a href="#">BB</a></li>
     					</ul>		
 					</div>	
+					</row>
+					<a    class="btn btn-default btn-xs" ng-click="addConstrain()"> <span class="glyphicon glyphicon-plus"></span> </a>
 				</div>
+
+				
 			</div>
 			<!---->
 			<div id="agent-wrapper" class="col-lg-12 alert alert-warning" >
 				<div class="row">
-					<button href="#" class="col-lg-2  btn btn-danger btn-sm" role="button">Get plan</button> 
-					<div class="col-lg-10" >
-						agent messages: 2 targets will be discarded given current constraint. 
+					<button href="#" class="col-lg-2  btn btn-danger btn-sm"  ng-click = "loadPlan()" role="button">Get plan</button> 
+					<div class="col-lg-4" >
 					</div>
-				</div>
-				<div class="row">
 					
 					<button href="#" class="col-lg-2 btn btn-danger btn-sm" role="button">Confirm Plan</button> 
 					
-					<div class=" col-lg-10">
-						plan status: new plan from agent, waiting to be confirmed
+					<div class=" col-lg-4">
 					</div>
 				</div>
 
 			</div>
+			
 		</div>
+
 </div> 
+
+
 <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
 <input type="hidden" id="user_id" value="<%= @user_id %>" />
 <input type="hidden" id="user_initials" value="<%= @user_initials %>" />

@@ -6,16 +6,15 @@
 
   	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,visualization"></script>
   	<script type="text/javascript" src="/game-common.js"></script>
-	<link rel="stylesheet" type="text/css" href="/style.css" /> 
-	<link rel="stylesheet" type="text/css" href="/reset.css" />
-  	
+	<link rel="stylesheet" type="text/css" href="/reset.css" /> 
+
   	<% if request.path =~ /\/game\// || request.path =~ /\/replay2\// %>
 		<script> SOCKET_IO_ADDRESS = "<%= @socket_io_url %>";</script>
 		<script> GAME_ID = "<%= @game.layer_id %>";</script>
 		
 
-		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>-->
-		 <script src="https://code.jquery.com/jquery.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js" ></script>
+		<script src="https://code.jquery.com/jquery.js"></script>
 		<script type="text/javascript" src="<%= @socket_io_url %>/socket.io/socket.io.js"></script>
 		<script type="text/javascript" src="/web_controller.js" ></script>
 		<script type="text/javascript" src="/game_controller.js" ></script>
@@ -25,6 +24,7 @@
 		<link type="text/css" rel="stylesheet" href="/bs/css/bootstrap.min.css" />
 
 		<script type="text/javascript" src="/bs/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/angularjs/controllers.js" ></script>
 		
   	<% end %>
 
@@ -61,9 +61,10 @@
     <% end %>
 
   	
+    <link rel="stylesheet" type="text/css" href="/style.css" /> 
 
   </head>
-  <body>
+  <body ng-app = "AtomicOrchidJs">
     <%= yield %>
   </body>
 </html>

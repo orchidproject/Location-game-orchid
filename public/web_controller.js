@@ -19,6 +19,15 @@ function loadData(){
 			receiveDropoffpointData(d);	
 		});
 
+         var bounds = new google.maps.LatLngBounds();
+                        $(tasks).each(function(index,value){
+                                bounds.extend(new google.maps.LatLng(value.marker.getPosition().lat(), value.marker.getPosition().lng()));
+                        });     
+
+                        //set 
+                        map.fitBounds(bounds);
+
+
 	}); 
 }
 
