@@ -1,8 +1,8 @@
 \section{Team Coordination Algorithm}
 \label{sec:algo}
-Although the MMDP model captures the uncertainties of our
+While the MMDP model captures the uncertainties of our
 problem, it results in a very large search space making it
-practically impossible to compute the optimal solution. Hence, we consider approximate solutions that result in
+practically impossible to compute the optimal solution. Hence, we consider approximate solutions that still provide
 high quality allocations. To this end, we decompose $PA$'s
 decision-making process into a hierarchical planning process: at the top level, a {\em task planning} algorithm is run
 for the whole team to assign the best task to each responder given
@@ -25,9 +25,9 @@ of a plan, a responder $p_i$ is incapable of performing a task
 (e.g., because she is tired or unclear where the task is), she
 is removed from the set of responders under consideration
 (that is $I \to I \setminus p_i$). This information can be obtained
-from the state $s \in S$. When a task is completed by a chosen
+from the state $s \in S$. When a task $t$ is completed by a chosen
 team, the task is simply removed from the set (that is $T \to
-T\setminus t_k$ if $t_k$ has been completed).
+T\setminus t$ if $t$ has been completed).
 
 Now, to capture the efficiency of groupings of responders at
 performing tasks, we define the value of a team $v(C_{jk})$ that
@@ -44,7 +44,7 @@ the value of all teams that are valid in a given state and then
 detail the task allocation algorithm.
 
 
-\subsubsection{Team Value Calculation}
+\subsubsection{Team Value Calculation.}
 The computation of  $v(C_{jk})$ for each team $C_{jk}$ is
 challenging since there are many ways to configure teams and this needs to be done repeatedly (since there are more tasks than responders).
 Moreover, a new policy must be computed after a given task $t_j$ is completed. This is time-consuming given the number of
@@ -53,7 +53,7 @@ $v(C_{jk})$ through several simulations. This saves
 computation as it avoids computing the complete policy to come
 up with a good estimate of the team value, though we may not be
 able to evaluate all possible future outcomes. According to the
-central limit theorem, if the number of simulations is sufficiently
+law of large numbers, if the number of simulations is sufficiently
 large, the estimated value will converge to the true $v(C_{jk})$.
 
 Specifically, in each simulation, we first assign the responders in
@@ -61,8 +61,7 @@ $C_{jk}$ to task $t_j$ and run the simulator starting from the
 current state $s$. After task $t_j$ is completed, the simulator
 returns the sum of the rewards $r$ and the new state $s'$. If all
 the responders in $C_{jk}$ are incapable of doing other tasks
-(e.g., suffered radiation burns), the simulation is terminated.
-Otherwise, we estimate the expected value of $s'$ using Monte-Carlo
+(e.g., because they suffered radiation burns), the simulation is terminated. Otherwise, we estimate the expected value of $s'$ using Monte-Carlo
 Tree Search (MCTS)~\cite{kocsis2006bandit}, which provides a good
 trade-off between exploitation and exploration of the policy space
 and has been shown to be efficient for large MDPs.\footnote{Other
@@ -72,7 +71,7 @@ do not explore the policy space as well as MCTS.} After $N$
 simulations, the average value is returned as an approximation of
 the team value.
 
-\subsubsection{Coordinated Task Allocation}
+\subsubsection{Coordinated Task Allocation.}
 Given the team values computed above, we then solve the following
 optimisation problem to find the best solution:
 \begin{equation}
@@ -93,7 +92,7 @@ task does not need more than one group of responders) and
 constraint (ii) ensures that a responder $p_i$ is assigned to only
 one task (a responder cannot do more than one task at the same
 time). This is a standard {\em mixed integer linear program} that
-can be efficiently solved using solvers (e.g., CPLEX).
+can be efficiently solved using solvers (e.g., CPLEX or LP-Solve).
 
 \subsubsection{Adapting to Responder Requests}\label{sec:adaptive}
 An important characteristic of our approach is that it can easily
@@ -114,29 +113,27 @@ responder to her assigned task. This phase is stochastic due to uncertainties in
 actions. We model this problem as a single-agent MDP that can be
 solved by many existing solvers. Among them, we choose {\em
 real-time dynamic programming} (RTDP)~\cite{barto1995learning}
-because it is simple and particularly fits our problem, that is, a
-goal-directed MDP with large number of states. However, other
+because it is simple and particularly fits our problem (that is, a goal-directed MDP with large number of states). However, other
 approaches for solving large MDPs  could equally be used here.
 
 \subsection{Simulation Results}
-While our main focus in this paper is the evaluation of our planning agent in the real-world, it is important  to ensure it
-performs better than  greedy or myopic methods (particularly, given there is no extant solution that takes into account
-uncertainty in team coordination for emergency response in the way we do).  In
-the greedy method, the responders are uncoordinated and select the
+While our main focus  is the evaluation of $PA$ in the real-world, it is important  to ensure it
+performs acceptably. There are no state of the art methods to benchmark against given that other approaches assume deterministic task execution and environments \cite{koes2006constraint,ramchurn:etal:2010b,Scerri2005,Chapman2009}. However, it should be clearly better than simple alternatives such as  greedy or myopic methods.  In
+the greedy method, the responders are uncoordinated and simply select the
 closest tasks they can do. In the myopic method, the responders are
-coordinated to select the tasks but have no lookahead for the
+coordinated to  select the tasks but have no lookahead for
 future tasks. For each method, we use our
-path planning algorithm to compute the path for each responder.
+path planning algorithm to compute the path for each responder. 
 
 Table~\ref{tab:simulation} shows the results for a problem with 17
 tasks and 8 responders on a 50$\times$55 grid. As can be seen, our
 MMDP algorithm completes more tasks than the myopic and greedy
-methods (see Table \ref{tab:simulation}). More importantly, our
+methods. More importantly, our
 algorithm guarantees the safety of the responders (i.e., by avoiding the radioactive cloud), while in the
 myopic method  only 25\% of the responders survive and in the
 greedy method none survived.
-More extensive evaluations are beyond the scope of this paper as
-our focus here is on the use of the algorithm in a field deployment
+More extensive evaluations are not reported here because
+our focus  is on the use of the algorithm in a field deployment
 to test how humans take up advice computed by the planning agent
 $PA$.\vspace{-2mm}
 \begin{table}[htbp]
