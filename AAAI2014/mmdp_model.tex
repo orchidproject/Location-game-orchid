@@ -4,7 +4,7 @@ Previous agent-based models for team coordination in disaster
 response typically assume deterministic task executions and
 environments \cite{ramchurn:etal:2010,Scerri2005}. However, to evaluate agent-guided coordination in the real-world, it is important to consider uncertainties due to
 player behaviours and the environment. Given this, we represent the
-task allocation problem using a {\em multi-agent Markov decision
+task allocation problem using a {\em Multi-agent Markov decision
 process} (MMDP) that captures the uncertainties of the radioactive
 cloud and the responders' behaviours. Specifically, we model
 the spreading of the radioactive cloud as a random process over the
@@ -27,7 +27,7 @@ policy $\pi$ is measured by its expected value $V^\pi$, which can
 be computed recursively using the Bellman equation. The goal of
 solving the MMDP is to find an optimal policy $\pi^*$ that
 maximises the expected value with the initial state $s^0$. At each
-step, we assume the $PA$ can fully observe the
+step, we assume $PA$ can fully observe the
 state of the environment $s$ using sensor readings of the
 radioactive cloud and GPS locations of the responders. Given a
 policy $\pi$ of the MMDP, a joint action $\vec{a}$ can be selected
