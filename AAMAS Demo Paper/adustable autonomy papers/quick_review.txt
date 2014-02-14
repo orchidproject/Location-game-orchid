@@ -1,0 +1,25 @@
+Key points:
+
+Trust in systems - bradshaw
+
+mistrust signatures - should be easy to spot
+automation may be working as it should but should not be used - e.g., when agent does not understand player context
+- interrogating the machine to establish basis for trust- e.g., check allocations but no visibility of worker performance
+- how to simplify trust analysis? understand basics of allocation mechanism
+- help operator ask the right questions about the operation of the system but also simplify these questions and answers
+
+--
+Scerri:
+
+Transfer of control strategy - pre-defined sequence of actions to ensure human input is best used.
+Prescriptions for how plans should be managed - this works for autonomous agents as the team enacting the plan but what about humans enacting the plan? Can they implement such rules and transfer of control strategies?
+- based on STEAM - joint intentions
+- not tested in reality
+
+-----
+
+Tambe:
+-- identified issues with privacy in particular
+---
+Lockheed:
+- use a policy based approach to human-robot teaming - designed interfaces and simulations.

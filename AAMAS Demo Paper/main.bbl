@@ -1,0 +1,41 @@
+\begin{thebibliography}{1}
+
+\bibitem{Chapman2009}
+A.~Chapman, R.~A. Micillo, R.~Kota, and N.~R. Jennings.
+\newblock Decentralised dynamic task allocation: A practical game-theoretic
+  approach.
+\newblock In {\em Proc. of AAMAS 2009}, pages 915--922, May 2009.
+
+\bibitem{drury:etal:2009}
+J.~Drury, C.~Cocking, and S.~Reicher.
+\newblock Everyone for themselves? a comparative study of crowd solidarity
+  among emergency survivors.
+\newblock {\em The British journal of social psychology}, 48(3):487--506, 2009.
+
+\bibitem{Fischer:etal:2012}
+J.~E. Fischer, M.~Flintham, D.~Price, J.~Goulding, N.~Pantidi, and T.~Rodden.
+\newblock Serious mixed reality games.
+\newblock In {\em Mixed Reality games Workshop at the 2012 ACM Conference on
+  Computer Supported Cooperative Work}, 2012.
+
+\bibitem{kitano:2001}
+H.~Kitano and S.~Tadokoro.
+\newblock Robocup rescue: A grand challenge for multiagent and intelligent
+  systems.
+\newblock {\em AI Magazine}, 22(1):39--52, 2001.
+
+\bibitem{paho:2001}
+{Pan American Health Organization}.
+\newblock Stress management in disasters, 2001.
+
+\bibitem{ramchurn:etal:2010}
+S.~D. Ramchurn, A.~Farinelli, K.~S. Macarthur, and N.~R. Jennings.
+\newblock Decentralized coordination in robocup rescue.
+\newblock {\em The Computer Journal}, 53(9):1447--1461, 2010.
+
+\bibitem{Scerri2005}
+P.~Scerri, A.~Farinelli, S.~Okamoto, and M.~Tambe.
+\newblock {Allocating tasks in extreme teams}.
+\newblock In {\em Proc. of AAMAS}, pages 727--734. ACM, 2005.
+
+\end{thebibliography}
