@@ -1,12 +1,34 @@
 \section{The A\lowercase{tomic}O\lowercase{rchid} Game}\label{sec:atomicorchid}
-\noindent The AtomicOrchid game was used to embed the planning agent in order to trial mixed-initiative coordination.
-We adopt a serious mixed-reality games approach to counteract the limitations of computational simulations \cite{Fischer:etal:2012}. The impact of emotional and physical responses, such as stress, fear, exertion or panic remains understudied in approaches that rely purely on computational simulation \cite{drury:etal:2009}. For example, \citeauthor{simonovic:2009} (\citeyear{simonovic:2009}) highlights that simulations may not account for ``human psychosocial characteristics and individual movement, and (...) learning ability''. In contrast, our approach creates a realistic setting in that participants experience physical exertion and stress through bodily activity and time pressure, mirroring aspects of a real disaster setting \cite{paho:2001}. This, in turn, provides greater confidence in the efficacy of behavioural observations of team coordination.
+\noindent We adopt a serious mixed-reality games approach to counteract the limitations of computational simulations \cite{Fischer:etal:2012}. The impact of emotional and physical responses likely in a disaster, such as stress, fear, exertion or panic remains understudied in approaches that rely purely on computational simulation \cite{drury:etal:2009}. In contrast, our approach creates a realistic setting in the sense that participants experience physical exertion and stress through bodily activity and time pressure, mirroring aspects of a real disaster setting \cite{paho:2001}. This, in turn, provides greater confidence in the efficacy of behavioural observations regarding team coordination supported by a planning agent.
+\subsection{Interacting with the Planning Agent}
+\noindent To permit the interaction between First Responders and the planning agent, the former are equipped with a `mobile responder tool' providing sensing and awareness capabilities in three tabs (geiger cou\-nter, map, messaging and tasks; see Figure \ref{fig:ui}). The first tab shows a reading of radioactivity, player health level (based on exposure), and a GPS-enabled map of the game area to locate fellow responders, the targets to be rescued and the drop off zones for the targets. The second tab provides a broadcast messaging interface to communicate with fellow first responders and the commander $H$. The third tab shows the team and task allocation dynamically provided by the agent $PA$ that can be accepted or rejected. Notifications are used to alert both to new messages and task allocations.
 
-In more detail, AtomicOrchid is a location-based mobile game based on the fictitious scenario described earlier. First responders are assigned a specific type: medic, fire-fighter, soldier, or transporter. Their mission is to evacuate all four types of targets: victim (requires medic and fire-fighter), animal (requires medic and transporter), fuel (requires soldier and fire-fighter), or other resource (requires soldier and transporter) before they are engulfed by the radio-active cloud.\footnote{The radiation cloud diffusion process is modelled using the Smoluchowski drift-diffusion equation. Details are given in the supplemental material.}  The first responders are supported by (at least) one person $H$ in a centrally located HQ room, and the planning agent $PA$ that sends the next task (as described in the previous section) to the team of first responders. A video of AtomicOrchid can be viewed at: {\small \url{http://bit.ly/1ebNYty}}.
+\subsection{Running the Demo}
+\noindent For the purposes of a demo at AAMAS, it was envisaged that conference attendees will be recruited as players of the game during the demo session and that the game will be run live. As it stands, the venue for the conference is in a location where there will be poor GPS reception and lack of space for a live game to take place. We will therefore endeavour to run sessions of the game in the Garden of the Observatory (Boulevard de l'Arago)  (7 mins walk from the conference centre) provided approval is granted for this. Otherwise, we will run videos of the demo and allow attendees to play with the mobile app and interact with the planning agent in simulated scenarios.
 
-\input{components.tex}
+
+ %AtomicOrchid is based on the open-sourced geo-fencing game MapAttack\footnote{\url{http://mapattack.org}.} that has been iteratively developed for a responsive, (relatively) scalable experience.  The location-based game is underpinned by client-server architecture, that relies on real-time data streaming between client and server. Client-side requests for less dynamic content use HTTP. Frequent events (e.g., location updates and radiation exposure) are streamed to clients to avoid the overhead of HTTP. In this way, first responders are kept informed in near real-time. Finally,  to build the mobile app, we adapted the existing MapAttack Android app.
+
+
+\begin{figure}[htbp]
+\includegraphics[width=\columnwidth]{UI.png}
+\caption{Mobile first responder and HQ interfaces.\vspace{-3mm}
+\label{fig:ui}
+}\end{figure}
+
+For live runs, the headquarters will be located in the conference centre. $H$ will have at her disposal an `HQ dashboard' that provides an over\-view of the game area, including real-time information of the players' locations (see Figure \ref{fig:ui}). The dashboard provides a broadcast messaging widget, and a player status widget so that the responders' exposure and health levels can be monitored. $H$ can further monitor the  current team and task allocations to individual responders by $PA$ (by clicking on a button). Crucially, only $H$ and $PA$ have a view of the radioactive cloud, graphically depicted as a heatmap (`Hotter'  (red) zones correspond to higher levels of radiation).
+
+First responders will be assigned a specific type: medic, fire-fighter, soldier, or transporter. Their mission is to evacuate all four types of targets: victim (requires medic and fire-fighter), animal (requires medic and transporter), fuel (requires soldier and fire-fighter), or other resource (requires soldier and transporter).  The first responders are supported by (at least) one person $H$ in a centrally located HQ room, and the planning agent $PA$ that sends the next task (as described in the previous section) to the team of first responders. 
+
+The game will last for a maximum 30 mins. Participants will be briefed and asked to consent to participate. They will be presented with a demographic questionnaire to record gender, occupation, experience of using smartphones and level of map navigation skills. At the end of the briefing in which mission objectives and rules will be outlined, responder roles will be randomly assigned to all participants (fire-fighter, medic, transporter, soldier).
+
+
+
+
+
+
 %\input{radiation_model.tex}
-\input{evaluation.tex}
+%\input{evaluation.tex}
 
 
 %\section{Real-world trial}

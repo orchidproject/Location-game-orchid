@@ -1,27 +1,24 @@
-\subsubsection{The Optimisation Problem}
+\subsubsection{The Optimisation Problem.}
 \label{sec:model}
-
 Previous agent-based models for team coordination in disaster
 response typically assume deterministic task executions and
-environments \cite{ramchurn:etal:2010,Scerri2005}. However, in
-order to evaluate agent-guided coordination in a real-world
-environment, it is important to consider uncertainties due to
+environments \cite{ramchurn:etal:2010,Scerri2005}. However, to evaluate agent-guided coordination in the real-world, it is important to consider uncertainties due to
 player behaviours and the environment. Given this, we represent the
-task allocation problem using a {\em multi-agent Markov decision
+task allocation problem using a {\em Multi-agent Markov decision
 process} (MMDP) that captures the uncertainties of the radioactive
-cloud and the responders' behaviours. More specifically, we model
+cloud and the responders' behaviours. Specifically, we model
 the spreading of the radioactive cloud as a random process over the
 disaster space and allow the actions requested from the responders
-to  fail (because they decline to go to a  task) or incur delays
+to  fail (because they decline to do a  task) or incur delays
 (because they are too slow) during the rescue process. Thus in the
-MMDP model, we represent  task executions as stochastic processes
+MMDP, we represent  task executions as stochastic processes
 of state transitions, while the uncertainties of the radioactive
-cloud and the responders' behaviours can be easily captured with
+cloud and the responders' behaviours can easily captured with
 transition probabilities.
 
-More formally, the MMDP is represented by tuple $\mathcal{M} =
+More formally, the MMDP is noted as tuple $\mathcal{M} =
 \langle I, S, \{A_i\}, P, R \rangle$, where $I$ is the set of
-actors as defined in the previous section,  $S$ is the state space,
+actors as defined earlier,  $S$ is the state space,
 $A_i$ is a set of responder $p_i$'s actions, $P$ is the transition
 function, and $R$ is the reward function. A policy $\pi$ is a
 mapping from states to joint actions so that the responders know
@@ -30,8 +27,8 @@ policy $\pi$ is measured by its expected value $V^\pi$, which can
 be computed recursively using the Bellman equation. The goal of
 solving the MMDP is to find an optimal policy $\pi^*$ that
 maximises the expected value with the initial state $s^0$. At each
-decision step, we assume the planning agent can fully observe the
-state of the environment $s$ by collecting sensor readings of the
+step, we assume $PA$ can fully observe the
+state of the environment $s$ using sensor readings of the
 radioactive cloud and GPS locations of the responders. Given a
 policy $\pi$ of the MMDP, a joint action $\vec{a}$ can be selected
 and broadcast to the responders.

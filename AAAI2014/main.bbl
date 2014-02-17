@@ -1,12 +1,5 @@
 \begin{thebibliography}{}
 
-\bibitem[\protect\citeauthoryear{Auer, Cesa-Bianchi, and
-  Fischer}{2002}]{auer2002finite}
-Auer, P.; Cesa-Bianchi, N.; and Fischer, P.
-\newblock 2002.
-\newblock Finite-time analysis of the multi-armed bandit problem.
-\newblock {\em Machine learning} 47(2-3):235--256.
-
 \bibitem[\protect\citeauthoryear{Barto, Bradtke, and
   Singh}{1995}]{barto1995learning}
 Barto, A.~G.; Bradtke, S.~J.; and Singh, S.~P.
@@ -57,15 +50,18 @@ Kitano, H., and Tadokoro, S.
   Szepesv{\'a}ri}{2006}]{kocsis2006bandit}
 Kocsis, L., and Szepesv{\'a}ri, C.
 \newblock 2006.
-\newblock Bandit based monte-carlo planning.
+\newblock Bandit based {M}onte-carlo planning.
 \newblock In {\em Proc. of ECML 2006},  282--293.
 
-\bibitem[\protect\citeauthoryear{Mausam and
-  Kolobov}{2012}]{kolobov2012planning}
-Mausam, and Kolobov, A.
-\newblock 2012.
-\newblock Planning with markov decision processes: An {AI} perspective.
-\newblock {\em Synthesis Lectures on {AI} and Machine Learning} 6(1):1--210.
+\bibitem[\protect\citeauthoryear{Koes, Nourbakhsh, and
+  Sycara}{2006}]{koes2006constraint}
+Koes, M.; Nourbakhsh, I.; and Sycara, K.
+\newblock 2006.
+\newblock Constraint optimization coordination architecture for search and
+  rescue robotics.
+\newblock In {\em Proceedings of IEEE Intl. Conf. on Robotics and Automation},
+  3977--3982.
+\newblock IEEE.
 
 \bibitem[\protect\citeauthoryear{{Pan American Health
   Organization}}{2001}]{paho:2001}
@@ -81,11 +77,19 @@ Proper, S., and Tadepalli, P.
 \newblock In {\em Proc. of AAMAS 2009},  681--688.
 
 \bibitem[\protect\citeauthoryear{Ramchurn \bgroup et al\mbox.\egroup
-  }{2010}]{ramchurn:etal:2010}
+  }{2010a}]{ramchurn:etal:2010}
 Ramchurn, S.~D.; Farinelli, A.; Macarthur, K.~S.; and Jennings, N.~R.
-\newblock 2010.
+\newblock 2010a.
 \newblock Decentralized coordination in robocup rescue.
 \newblock {\em The Computer Journal} 53(9):1447--1461.
+
+\bibitem[\protect\citeauthoryear{Ramchurn \bgroup et al\mbox.\egroup
+  }{2010b}]{ramchurn:etal:2010b}
+Ramchurn, S.~D.; Polukarov, M.; Farinelli, A.; Truong, N.~C.; and Jennings,
+  N.~R.
+\newblock 2010b.
+\newblock Coalition formation with spatial and temporal constraints.
+\newblock In {\em AAMAS},  1181--1188.
 
 \bibitem[\protect\citeauthoryear{Scerri \bgroup et al\mbox.\egroup
   }{2005}]{Scerri2005}

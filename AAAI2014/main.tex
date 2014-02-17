@@ -23,18 +23,23 @@
 \setcounter{secnumdepth}{0}
 \frenchspacing
  \begin{document}
-
+\setlength{\abovecaptionskip}{2pt}
+\setlength{\belowcaptionskip}{-6pt}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\floatsep}{0pt}
+\setlength{\textfloatsep}{10pt}
 % The file aaai.sty is the style file for AAAI Press
 % proceedings, working notes, and technical reports.
 %
 
 \title{Human-Agent Collaboration for Real-World Disaster Response}
-\author{Tracking No. XXX}
+\author{Tracking No. 1505}
 
  \maketitle
 
 \begin{abstract}
-In this paper, we develop an algorithm to solve the problem of  coordinating emergency responders in uncertain environments and evaluate it in a novel mixed-reality game called AtomicOrchid. Specifically, the algorithm is used by a software  agent that works alongside a human commander to guide human players to complete rescue tasks. More importantly, we study the interactions between the human players and the agent in real-time and show that it improves  performance significantly (compared to a no-agent setting). Our results allow us to specify design guidelines for human-agent collaboration in such settings.
+We develop an algorithm to assist with the task of coordinating emergency responders in uncertain environments and evaluate it in a novel mixed-reality game called AtomicOrchid. Specifically, the algorithm is used by a software  agent that works alongside a human commander to guide human players to complete rescue tasks. Moreover, we study the interactions between the human players and the agent in real-time and show that our algorithm improves  performance significantly (compared to a non-agent setting). Our results allow us to specify design guidelines for human-agent collaboration in such settings.
  \end{abstract}\vspace{-3mm}
 
 % Note that the category section should be completed after reference to the ACM Computing Classification Scheme available at
@@ -43,7 +48,7 @@ In this paper, we develop an algorithm to solve the problem of  coordinating eme
 %\keywords{Human-Agent Interaction, Agents for improving human cooperative activities, Disaster Response.}
 %\vspace{-2mm}
 \input{introduction.tex}
-\input{scenario.tex}
+\input{scenario.tex}\vspace{-2mm}
 \input{coordination.tex}
 \input{atomicorchid.tex}
 \vspace{-2mm}
