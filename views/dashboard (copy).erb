@@ -24,38 +24,6 @@
 
 
 </script> 
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog">
-      <div class="modal-content"> 
-
-  
-
-
-  
-        <div class="modal-body tab-pane active" id = "login-form">
-    
-      <div class="form-group" >
-        <label for="exampleInputEmail1">Messages</label>
-        <input ng-model="user.email"  type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter messages">
-   
-      
-     
-     <button ng-click="signup(user.email,user.password,user.passwordConfirm)" type="submit" class="btn btn-default">Send</button>
-   
-         </div><!-- /.form-group signup-form --> 
-  </div>
-
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-
-
 <div  ng-controller = "NewAssignmentCtrl">
 
 	
@@ -88,26 +56,17 @@
 
           <!-- assignment list -->
           <div class="row" ng-repeat = "a in aCopy"  ng-init="initD()" >
-				 	  <div class="col-sm-3 card task-card task-draggable" ng-show="taskExist(a)" taskId = "{{a.task_id}}" assignmentId = "{{a.id}}" ng-mouseover="focus(a.task_id)" ng-mouseout="unFocus(a.task_id)" ng-class = "getClass(a.task_id)"> 
+				 	  <div class="col-sm-3 card task-card task-draggable" ng-show="taskExist(a)" taskId = "{{a.task_id}}" assignmentId = "{{a.id}}"> 
               <img ng-src = "{{getTaskIcon(a.task_id)}}" >
 						  <span class="glyphicon glyphicon-move corner"></span> 
             </div>
-            <div class="col-sm-3 card task-card exisiting-task-droppable" ng-hide="taskExist(a)" assignmentId = "{{a.id}}" > 
+            <div class="col-sm-3 card task-card exisiting-task-droppable"  ng-hide="taskExist(a)" assignmentId = "{{a.id}}" > 
               <span class="glyphicon glyphicon-plus corner "></span> 
             </div>
-
             <div class="col-sm-6"> 
 
               <!-- player list -->
-              <div 
-              class = "card player-card player-draggable player-droppable" 
-              ng-show = "playerExist(a,1)" 
-              playerHolder = "1" 
-              playerId = {{a.player1}} 
-              assignmentId = "{{a.id}}" 
-              ng-mouseover="focus(0-a.player1-1)" 
-              ng-mouseout="unFocus(0-a.player1-1)" 
-              ng-class = "getClass(0-a.player1-1)">
+              <div class = "card player-card player-draggable player-droppable" ng-show = "playerExist(a,1)" playerHolder = "1" playerId = {{a.player1}} assignmentId = "{{a.id}}" >
                 <img ng-src = "{{getPlayerIcon(a.player1)}}" >
                 <span class="glyphicon glyphicon-move corner"></span>
               </div>
@@ -117,16 +76,7 @@
               </div>
               <!-- player 1 2 deliminator -->
 
-              <div 
-              class = "card player-card player-draggable player-droppable" 
-              ng-show = "playerExist(a,2)" 
-              playerHolder = "2" 
-              playerId = {{a.player2}} 
-              assignmentId = "{{a.id}}" 
-              ng-mouseover="focus(0-a.player2-1)" 
-              ng-mouseout="unFocus(0-a.player2-1)" 
-              ng-class = "getClass(0-a.player2-1)"
-              >
+              <div class = "card player-card player-draggable player-droppable" ng-show = "playerExist(a,2)" playerHolder = "2" playerId = {{a.player2}} assignmentId = "{{a.id}}" >
                 <img ng-src = "{{getPlayerIcon(a.player2)}}" >
                 <span class="glyphicon glyphicon-move corner"></span>
               </div>
@@ -164,24 +114,15 @@
           <!-- new indicator end -->
 
           <div class="row">
-              <div class="well well-sm">Unassigned tasks and players</div>
+              Unassigned tasks and players
           </div>
-
 
           <div class="row">
           <!-- the idle tasks -->
           <div class="col-sm-3" style="width:60;position:relative">
-            <div 
-            class = " card task-card task-draggable" 
-            ng-repeat = "t in tasks | filter: filterUnassignedTasks" 
-            taskId = "{{t.id}}" 
-            ng-init="initD()" 
-            ng-mouseover="focus(t.id)" 
-            ng-mouseout="unFocus(t.id)" 
-            ng-class = "getClass(t.id)"
-            >
+            <div class = " card task-card task-draggable" ng-repeat = "t in tasks | filter: filterUnassignedTasks" taskId = "{{t.id}}" ng-init="initD()">
               <img ng-src = "{{getTaskIcon(t.id)}}" /> 
-              
+              idle
               <span class="glyphicon glyphicon-move corner"></span> 
             </div>
           </div> 
@@ -189,16 +130,8 @@
           <!-- idle player list -->
           <div class="col-sm-6" style="margin-left:2" >
               <!-- player list -->
-              <div 
-              class = "card player-card player-draggable player-droppable"  
-              ng-repeat = "p in players | filter: filterIdlePlayers" 
-              ng-init="initD()" 
-              playerId = "{{p.id}}"
-              ng-mouseover="focus(0-p.id-1)" 
-              ng-mouseout="unFocus(0-p.id-1)" 
-              ng-class = "getClass(0-p.id-1)"
-              >
-                <img ng-src = "{{getPlayerIcon(p.id)}}" > No task
+              <div class = "card player-card player-draggable player-droppable" playerHolder = "-1" ng-repeat = "p in players | filter: filterIdlePlayers" ng-init="initD()" playerId = "{{p.id}}">
+                <img ng-src = "{{getPlayerIcon(p.id)}}" > Idle
                 <span class="glyphicon glyphicon-move corner"></span>
               </div>
           </div>
@@ -208,23 +141,23 @@
 	
 				<div class="col-sm-6 column "> 
           <div class = "row" ng-repeat = "a in prev_assignments" >
-					<div class="col-sm-3 card task-card" ng-class="getClass(a.task_id)" > 
+					<div class="col-sm-3 card task-card"  > 
             <img ng-src="{{getTaskIcon(a.task_id)}}" /> 
           </div>
 					<div class="col-sm-8" > 
 						<div class="row">
-							<div class="col-sm-7 card player-card" ng-class="getClass(0-a.player1-1)">
+							<div class="col-sm-7 card player-card">
 								<img ng-src="{{getPlayerIcon(a.player1)}}" /> 
-								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal" >msg</div>
+								<div class="btn btn-primary btn-sm" >msg</div>
 							</div >
 							<div class="col-sm-4 card player-card">
 								reject 
 							</div >
 						</div>
 						<div class="row">
-							<div class="col-sm-7 card player-card" ng-class="getClass(0-a.player2-1)">
+							<div class="col-sm-7 card player-card">
 								<img ng-src="{{getPlayerIcon(a.player2)}}" /> 
-								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal">msg</div>
+								<div class="btn btn-primary btn-sm" >msg</div>
 							</div >
 							<div class="col-sm-4 card player-card">
 								accept
@@ -234,23 +167,23 @@
         </div>
 
         <div class="row">
-              <div class="well well-sm">Unassigned tasks and players</div>
+              Unassigned tasks and players
         </div>
 
         <div class="row">
           <!-- the idle tasks -->
           <div class="col-sm-3" style="width:60;position:relative">
-            <div class = " card task-card " ng-repeat = "t in tasks | filter: filterPrevUnassignedTasks" taskId = "{{t.id}}" ng-init="initD()" ng-class="getClass(t.id)">
-              <img ng-src = "{{getTaskIcon(t.id)}}"  /> 
-             
+            <div class = " card task-card " ng-repeat = "t in tasks | filter: filterPrevUnassignedTasks" taskId = "{{t.id}}" ng-init="initD()">
+              <img ng-src = "{{getTaskIcon(t.id)}}" /> 
+              idle
             </div>
           </div> 
           <!-- the idle tasks end-->
           <!-- idle player list -->
           <div class="col-sm-5" style="margin-left:2" >
               <!-- player list -->
-              <div class = "card player-card " playerHolder = "-1" ng-repeat = "p in players | filter: filterPrevIdlePlayers" ng-init="initD()" playerId = "{{p.id}}" ng-class="getClass(0-p.id-1)">
-                <img ng-src = "{{getPlayerIcon(p.id)}}" > No task <div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal">msg</div>
+              <div class = "card player-card " playerHolder = "-1" ng-repeat = "p in players | filter: filterPrevIdlePlayers" ng-init="initD()" playerId = "{{p.id}}">
+                <img ng-src = "{{getPlayerIcon(p.id)}}" > Idle <div class="btn btn-primary btn-sm" >msg</div>
               </div>
           </div>
           <!-- idle player list end -->
