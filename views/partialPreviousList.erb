@@ -1,0 +1,60 @@
+<div class="col-sm-6 column drag-container"> 
+          <div class = "row" ng-repeat = "a in prev_assignments" >
+					<div class="col-sm-3 card task-card" ng-class="getClass(a.task_id)" > 
+            <img ng-src="{{getTaskIcon(a.task_id)}}" /> 
+          </div>
+					<div class="col-sm-8" > 
+						<div class="row">
+							<div class="col-sm-7 card player-card" ng-class="getClass(0-a.player1-1)">
+								<img ng-src="{{getPlayerIcon(a.player1)}}" /> 
+								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal" >msg</div>
+                <span class="label label-default">0</span>
+							</div >
+							<div class="col-sm-4 card player-card">
+								reject 
+							</div >
+						</div>
+						<div class="row">
+							<div class="col-sm-7 card player-card" ng-class="getClass(0-a.player2-1)">
+								<img ng-src="{{getPlayerIcon(a.player2)}}" /> 
+								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal">msg</div>
+                <span class="label label-default">0</span>
+							</div >
+							<div class="col-sm-4 card player-card">
+								accept
+							</div >
+						</div>
+					</div>
+          <div class="col-sm-2 card task-card" > 
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Keep
+              </label>
+            </div>
+          </div > 
+        </div>
+
+        <div class="row">
+              <div class="well well-sm">Unassigned tasks and players</div>
+        </div>
+
+        <div class="row">
+          <!-- the idle tasks -->
+          <div class="col-sm-3" style="width:60;position:relative">
+           
+          </div> 
+          <!-- the idle tasks end-->
+          
+          <!-- idle player list -->
+          <div class="col-sm-5" style="margin-left:2" >
+              <!-- player list -->
+              <div class = "card player-card " playerHolder = "-1" ng-repeat = "p in players | filter: filterPrevIdlePlayers" ng-init="initD()" playerId = "{{p.id}}" ng-class="getClass(0-p.id-1)">
+                <img ng-src = "{{getPlayerIcon(p.id)}}" > No task <div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal">msg</div>
+                <span class="label label-default">0</span>
+              </div>
+          </div>
+          <!-- idle player list end -->
+
+         
+        </div>
+			</div>

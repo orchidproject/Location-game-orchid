@@ -2,6 +2,7 @@
 html, body {
 	height: 100%;
 	width: 100%;
+	 overflow: hidden;
 }
 
 #map {
@@ -16,7 +17,7 @@ html, body {
 
 .container .drag-container {
 	padding:3px;
-	height: 70%;
+	height:100%;
 	overflow: scroll;
 }
 
@@ -28,6 +29,7 @@ html, body {
 	cursor: move;
 	position: relative;
 }
+
 
 
 .player-card {
@@ -59,7 +61,13 @@ div[class*="row"] {
 	bottom:0;
 }
 
-.bottom {
+.bottom-right{
+	position:absolute;
+	bottom:0;
+	margin-left: 50%
+}
+
+.bottom-left {
 	position:absolute;
 	bottom:0;
 }

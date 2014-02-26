@@ -782,5 +782,19 @@ class Controller < Sinatra::Base
     {:current_exposure => current_exposure}.to_json
   end
 
+  ############agents##################
+  get '/agent_utility/list_scripts' do 
+    names = []
+    Dir.glob("./agent/exposed_scripts/*.js") do |f|
+      names << File.basename(f)
+    end
+    names.to_json
+  end
 
+  post '/agent_utility/execute' do 
+    
+    data =JSON.parse(request.body.read)
+    puts "look at this !!!!!!!!!!!!!!!!!!! " + data["command"]
+    system("node ./agent/exposed_scripts/" + data["command"] + " > ./agent/exposed_scripts/logs &")
+  end
 end

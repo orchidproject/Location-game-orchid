@@ -2,21 +2,29 @@ var app = angular.module('AtomicOrchidJs',[]);
 app.factory("dataService",function(){
 	return {
 		//sample data 
-		tasks: [{id:0,type:0},{id:1,type:2},{id:2, type:3},{id:3,type:2}],
-		players: [
-				{id:0,skill:"firefighter"},
-				{id:1,skill:"medic"},
-				{id:2,skill:"soldier"},
-				{id:3,skill:"transporter"},
-				{id:4,skill:"transporter"}
+		role_string: ["firefighter","medic","soldier","transporter"],
+		requirements: [[0,1],[1,2],[2,3],[3,0]],
 
+		tasks: [{id:0,type:0},{id:1,type:1},{id:2, type:2},{id:3,type:3},
+				{id:4,type:0},{id:5,type:1},{id:6, type:2},{id:7,type:3},
+				{id:8,type:0},{id:9,type:1},{id:10, type:2},{id:11,type:3},
+				{id:12,type:0},{id:13,type:1},{id:14, type:2},{id:15,type:3}],
+		players: [
+				{id:0,skill:"firefighter",skill_id:0},
+				{id:1,skill:"medic",skill_id:1},
+				{id:2,skill:"soldier",skill_id:2},
+				{id:3,skill:"transporter",skill_id:3},
+				{id:4,skill:"transporter",skill_id:3},
+				{id:5,skill:"firefighter",skill_id:0},
+				{id:6,skill:"medic",skill_id:1},
+				{id:7,skill:"soldier",skill_id:2},
 			],
 		instructions: [
-				{id:0,task_id: 0,  player1:0,player2:1},
+				{id:0,task_id: 0,  player1:4,player2:2},
 				{id:1,task_id: 1,  player1:2,player2:3}
 			],
 		previous_instructions: [
-				{id:2,task_id: 3,  player1:2,player2:0},
+				{id:2,task_id: 3,  player1:1,player2:0},
 				{id:3,task_id: 0,  player1:4,player2:2}
 			],
 		focus:null	
@@ -60,8 +68,40 @@ app.factory("dataService",function(){
 	} 
 	return service; 
 
+}).factory("httpService",function($http){
+
+	var service = {
+		getScriptsList: function(){
+			return $http.get("/agent_utility/list_scripts");
+		},
+		executeScript: function(data){
+			$http.defaults.headers.post["Content-Type"] = "application/json";
+			return $http.post("/agent_utility/execute", data);
+		}
+
+	}
+
+	return service;
 });
 
+
+app.controller("AgentPanelCtrl", function($scope,httpService){
+	$scope.scripts = [];
+	$scope.selected_scripte = " ";
+	$scope.par= "";
+	httpService.getScriptsList().then(function(result){
+		
+		$(result.data).each(function(index,value){
+			$scope.scripts.push({id:value,name:value});
+		});
+	});
+	$scope.execute = function(){
+		httpService.executeScript(JSON.stringify({"command" :($scope.selected_script + " " + $scope.par)}))
+		.then(function(){
+			$scope.par= "";
+		});
+	}
+})
 
 
 app.controller("NewAssignmentCtrl", function($scope,dataService){
@@ -83,8 +123,25 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
 		return data;
 	}
 
-	var requirement = function(){
-		//get reuqirement from a assignmen.
+	var getRequirement = function(a){
+		var task = getById($scope.tasks,a.task_id);
+		var currentR = dataService.requirements[task.type].slice();
+
+		$(currentR).each(function(index,value){
+				if(a.player1!=-1){
+					if(getById($scope.players,a.player1).skill_id == value){
+						currentR[index]=-1;
+					}
+				}
+				if(a.player2!=-1){
+					if(getById($scope.players,a.player2).skill_id == value){
+						currentR[index]=-1;
+					}
+			}
+
+		});
+
+		return currentR;
 	}
 
 	var clearEmptyAssignments = function(){
@@ -149,7 +206,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
 	var createNewAssignments = function(task_id,player1,player2){
 		//when droppble dropped on the creation tag
 		//insert a new assigment with 
-		$scope.aCopy.push({id:count--, task_id: task_id, type:getTask(task_id).type, player1:-1,player2:-1});
+		$scope.aCopy.push({id:count--, task_id: task_id, player1:-1,player2:-1});
 		
 	}
 
@@ -203,8 +260,20 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
       		var target_player_id = $(target)[0].attributes.playerId.nodeValue;
       			
       		//assign target
-      		getById($scope.aCopy, target_assignment_id)["player"+target_player_holder] = player_id;
+      		var target_assignment = getById($scope.aCopy, target_assignment_id);
+      		if(checkRequirement(getRequirement(target_assignment),getById($scope.players,player_id).skill_id)){
+      			target_assignment["player"+target_player_holder] = player_id;
+      		}
       		
+      		
+        }
+
+        var dropPlayerIdle = function(target,event,ui){
+        	//delete
+        	var assignment_id = ui.helper[0].attributes.assignmentId.nodeValue;
+        	var player_holder = ui.helper[0].attributes.playerHolder.nodeValue;
+        	//erase original card
+      		getById($scope.aCopy, assignment_id)["player"+player_holder] = -1;
         }
 
         var dropPlayer = function(target,event,ui){
@@ -214,16 +283,46 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
       		var target_assignment_id = $(target)[0].attributes.assignmentId.nodeValue;
       		var target_player_holder = $(target)[0].attributes.playerHolder.nodeValue;
       		var target_player_id = $(target)[0].attributes.playerId.nodeValue;
-      			
-      		//erase original card
-      		getById($scope.aCopy, assignment_id)["player"+player_holder] = target_player_id ;
-      		//assign target
-      		getById($scope.aCopy, target_assignment_id)["player"+target_player_holder] = player_id;
 
+      		var target_slot = getById($scope.aCopy, target_assignment_id)["player"+target_player_holder];
+      		//if slot is empty check requirement then put
+      		if(target_slot == -1){
+      			//assign target
+      			var target_assignment = getById($scope.aCopy, target_assignment_id);
+      			if(checkRequirement(getRequirement(target_assignment),getById($scope.players,player_id).skill_id)){
+      				//erase original card
+      				getById($scope.aCopy, assignment_id)["player"+player_holder] = target_player_id ;
+      				//assign target
+      				getById($scope.aCopy, target_assignment_id)["player"+target_player_holder] = player_id;
+      			}
+
+      		}
+      		else{
+    			//if two players have some skill id then ok to exchange.
+      			if(getById($scope.players,player_id).skill_id==getById($scope.players,target_player_id).skill_id){
+      				//erase original card
+      				getById($scope.aCopy, assignment_id)["player"+player_holder] = target_player_id ;
+      				//assign target
+      				getById($scope.aCopy, target_assignment_id)["player"+target_player_holder] = player_id;
+      			}
+      		}
+      			
+      	}
+
+	
+
+		var checkRequirement = function(r,skill){
+			var result = false;
+			$(r).each(function(index,value){
+				if(skill == value){
+					result = true;
+				}
+			});
+
+			return result;
 		}
 
-
-  		$( ".task-draggable" ).draggable({
+		$( ".task-draggable" ).draggable({
   			zIndex:100,revert:true
         });
   		$( ".player-draggable" ).draggable({
@@ -266,10 +365,14 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
   		$( ".player-droppable" ).droppable({
       		drop: function( event, ui ) {
       			var assignment = ui.helper[0].attributes.assignmentId;
-      			if(assignment != null){
+      			var target_assignment = $(this)[0].attributes.assignmentId;
+      			if(assignment != null && target_assignment != null){
       				dropPlayer(this,event,ui);	
       			}
-      			else{
+      			else if(target_assignment == null && assignment != null){
+      				dropPlayerIdle(this,event,ui);
+      			}
+      			else if(target_assignment != null) {
       				dropIdlePlayer(this,event,ui);
       			}
 
@@ -309,10 +412,56 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
 			dataService.focus = null;
 		}
 	}
+
+	$scope.unchanged = function(a){
+		var found = false;
+		$($scope.prev_assignments).each(function(index,value){
+			if(value.task_id == a.task_id){
+				if( (a.player1 == value.player1 && a.player2 == value.player2 ) ||
+					(a.player2 == value.player1 && a.player1 == value.player2 ) ){
+					found = true;
+				}
+				
+			}
+		});
+		return found;
+	}
+
+	$scope.changed = function(a){
+		var found = true;
+		$($scope.prev_assignments).each(function(index,value){
+			if(value.task_id == a.task_id){
+				if( (a.player1 == value.player1 && a.player2 == value.player2 ) ||
+					(a.player2 == value.player1 && a.player1 == value.player2 ) ){
+					found = false;
+				}
+				
+			}
+		});
+		return found;
+	}
+
+	$scope.showRequirement = function(a,preference){
+		var r = getRequirement(a);
+		var mark_index=null;
+		$(r).each(function(index,value){
+			if(value == -1){
+				mark_index = index;
+			}
+		});
+
+		if(mark_index == null){
+			return dataService.role_string[r[preference]];
+		}
+		else{
+			return dataService.role_string[r[1-mark_index]];
+		}
+		/*var r1 = dataService.requirements[getById($scope.tasks,a.task_id).type][0];
+		var r2 = dataService.requirements[getById($scope.tasks,a.task_id).type][1];*/
+		//return {r1:dataService.role_string[r1],r2:dataService.role_string[r2]};
+	}
 	
 });
 
-app.controller("prevTaskListCtrl", function($scope,dataService){
-	
-});
+
 

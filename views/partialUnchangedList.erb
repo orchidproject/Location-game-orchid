@@ -1,0 +1,60 @@
+ <div class="row">
+              <div class="well well-sm">Unchanged assignments</div>
+          </div>
+
+          <!-- assignment list -->
+          <div class="row transparent-5" ng-repeat = "a in aCopy | filter: unchanged"  ng-init="initD()" >
+            <div class="col-sm-3 card task-card task-draggable" ng-show="taskExist(a)" taskId = "{{a.task_id}}" assignmentId = "{{a.id}}" ng-mouseover="focus(a.task_id)" ng-mouseout="unFocus(a.task_id)" ng-class = "getClass(a.task_id)"> 
+              <img ng-src = "{{getTaskIcon(a.task_id)}}" >
+              <span class="glyphicon glyphicon-move corner"></span> 
+            </div>
+            <div class="col-sm-3 card task-card exisiting-task-droppable" ng-hide="taskExist(a)" assignmentId = "{{a.id}}" > 
+              <span class="glyphicon glyphicon-plus corner "></span> 
+            </div>
+
+            <div class="col-sm-6"> 
+
+              <!-- player list -->
+              <div 
+              class = "card player-card player-draggable player-droppable" 
+              ng-show = "playerExist(a,1)" 
+              playerHolder = "1" 
+              playerId = {{a.player1}} 
+              assignmentId = "{{a.id}}" 
+              ng-mouseover="focus(0-a.player1-1)" 
+              ng-mouseout="unFocus(0-a.player1-1)" 
+              ng-class = "getClass(0-a.player1-1)">
+                <img ng-src = "{{getPlayerIcon(a.player1)}}" >
+                <span class="glyphicon glyphicon-move corner"></span>
+              </div>
+
+              <div class = "card player-card player-droppable" ng-hide="playerExist(a,1)" playerHolder = "1" playerId = "{{a.player1}}" assignmentId = "{{a.id}}">
+                <span class="glyphicon glyphicon-plus corner"></span>
+              </div>
+              <!-- player 1 2 deliminator -->
+
+              <div 
+              class = "card player-card player-draggable player-droppable" 
+              ng-show = "playerExist(a,2)" 
+              playerHolder = "2" 
+              playerId = {{a.player2}} 
+              assignmentId = "{{a.id}}" 
+              ng-mouseover="focus(0-a.player2-1)" 
+              ng-mouseout="unFocus(0-a.player2-1)" 
+              ng-class = "getClass(0-a.player2-1)"
+              >
+                <img ng-src = "{{getPlayerIcon(a.player2)}}" >
+                <span class="glyphicon glyphicon-move corner"></span>
+              </div>
+              <div class = "card player-card player-droppable" ng-hide = "playerExist(a,2)" playerHolder = "2" playerId = {{a.player2}} assignmentId = "{{a.id}}">
+                <span class="glyphicon glyphicon-plus corner"></span>
+              </div>
+            </div>
+            <!--player list end -->
+            <div class="col-sm-2 card task-card"> 
+              <div class = "col-sm-12 btn btn-default btn-sm" ng-click = "deleteA(a)">
+                Delete
+              </div>
+            </div>
+          </div >
+          <!-- assignment list end -->

@@ -1,6 +1,7 @@
 <script type="text/javascript">
   var test =  <%= @test %>
   var layerId =  <%= @game.layer_id %>;
+
   $(function(){
   	if(!document.getElementById("map")) {
   		return;
@@ -18,60 +19,26 @@
   	map = new google.maps.Map(document.getElementById("map"), myOptions);
     GameMap.fitToRadius(<%= @game.radius %>);
 
- 
-
 });
 
 
 </script> 
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog">
-      <div class="modal-content"> 
-
-  
-
-
-  
-        <div class="modal-body tab-pane active" id = "login-form">
-    
-      <div class="form-group" >
-        <label for="exampleInputEmail1">Messages</label>
-        <input ng-model="user.email"  type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter messages">
-   
-      
-     
-     <button ng-click="signup(user.email,user.password,user.passwordConfirm)" type="submit" class="btn btn-default">Send</button>
-   
-         </div><!-- /.form-group signup-form --> 
-  </div>
-
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-
-
+<%= erb(:partialMsg, :layout => false) %>
+<%= erb(:partialAgentPanel, :layout => false) %>
 <div  ng-controller = "NewAssignmentCtrl">
-
-	
 	<div class="row">
 		<div id ="map" class="col-sm-6 col-lg-6"></div>
 		<div class="container col-sm-6 col-lg-6"> 
 			
 			<div class="row">
-				<div class="col-sm-5 label"> New Assignments </div>
-				<div class="col-sm-4 label"> Current Assignments </div>
-				<div class="col-sm-2 label"> Feedbacks </div>
+				<div class="col-sm-6 h5"> New Assignments </div>
+				<div class="col-sm-3 h5"  data-toggle="modal" data-target="#agentModal"> Current Assignments </div>
+				<div class="col-sm-2 h5"> Feedbacks </div>
 			</div>
 
       <div class="row">
         <div class="col-sm-6"> 
-          <div class="col-sm-3 btn btn-sm btn-primary"> 
+          <div class="col-sm-3 btn btn-sm btn-primary" > 
             Confirm all
           </div>
           <div class="col-sm-3 btn btn-sm btn-danger" ng-click="undoAll()"> 
@@ -86,93 +53,16 @@
 			<div class = "row"   >
 				<div  class="col-sm-6 drag-container" >
 
-          <!-- assignment list -->
-          <div class="row" ng-repeat = "a in aCopy"  ng-init="initD()" >
-				 	  <div class="col-sm-3 card task-card task-draggable" ng-show="taskExist(a)" taskId = "{{a.task_id}}" assignmentId = "{{a.id}}" ng-mouseover="focus(a.task_id)" ng-mouseout="unFocus(a.task_id)" ng-class = "getClass(a.task_id)"> 
-              <img ng-src = "{{getTaskIcon(a.task_id)}}" >
-						  <span class="glyphicon glyphicon-move corner"></span> 
-            </div>
-            <div class="col-sm-3 card task-card exisiting-task-droppable" ng-hide="taskExist(a)" assignmentId = "{{a.id}}" > 
-              <span class="glyphicon glyphicon-plus corner "></span> 
-            </div>
-
-            <div class="col-sm-6"> 
-
-              <!-- player list -->
-              <div 
-              class = "card player-card player-draggable player-droppable" 
-              ng-show = "playerExist(a,1)" 
-              playerHolder = "1" 
-              playerId = {{a.player1}} 
-              assignmentId = "{{a.id}}" 
-              ng-mouseover="focus(0-a.player1-1)" 
-              ng-mouseout="unFocus(0-a.player1-1)" 
-              ng-class = "getClass(0-a.player1-1)">
-                <img ng-src = "{{getPlayerIcon(a.player1)}}" >
-                <span class="glyphicon glyphicon-move corner"></span>
-              </div>
-
-              <div class = "card player-card player-droppable" ng-hide="playerExist(a,1)" playerHolder = "1" playerId = "{{a.player1}}" assignmentId = "{{a.id}}">
-                <span class="glyphicon glyphicon-plus corner"></span>
-              </div>
-              <!-- player 1 2 deliminator -->
-
-              <div 
-              class = "card player-card player-draggable player-droppable" 
-              ng-show = "playerExist(a,2)" 
-              playerHolder = "2" 
-              playerId = {{a.player2}} 
-              assignmentId = "{{a.id}}" 
-              ng-mouseover="focus(0-a.player2-1)" 
-              ng-mouseout="unFocus(0-a.player2-1)" 
-              ng-class = "getClass(0-a.player2-1)"
-              >
-                <img ng-src = "{{getPlayerIcon(a.player2)}}" >
-                <span class="glyphicon glyphicon-move corner"></span>
-              </div>
-              <div class = "card player-card player-droppable" ng-hide = "playerExist(a,2)" playerHolder = "2" playerId = {{a.player2}} assignmentId = "{{a.id}}">
-                <span class="glyphicon glyphicon-plus corner"></span>
-              </div>
-            </div>
-            <!--player list end -->
-
-            <!-- buttons -->
-            <div class="col-sm-2 card task-card"> 
-              <div class = "col-sm-12 btn btn-primary btn-sm" ng-click = "confirmA()">
-                Go
-              </div>
-              <div class = "col-sm-12 btn btn-default btn-sm" ng-click = "deleteA(a)">
-                Delete
-              </div>
-            </div>
-            <!-- buttons end-->
-
-          </div >
-          <!-- assignment list end -->
-
-          <!-- new indicator -->
-          <div class="row transparent-5" >
-            <div class="col-sm-2 card task-card task-droppable"> 
-              Drop task here 
-              <span class="glyphicon glyphicon-plus corner"></span> 
-            </div>
-            <div class="col-sm-6"> 
-              <div class = "card player-card" playerHolder = "1"></div>
-              <div class = "card player-card" playerHolder = "2"></div>
-            </div>
+          <%= erb(:partialAssignmentList, :layout => false) %>
+          <%= erb(:partialIdlePlayerList, :layout => false) %>
+          <%= erb(:partialUnchangedList, :layout => false) %>
+          <div class="bottom-left" style="background-color:white">
+          <div class = "row" >
+            Unassigned Tasks:
           </div>
-          <!-- new indicator end -->
-
-          <div class="row">
-              <div class="well well-sm">Unassigned tasks and players</div>
-          </div>
-
-
-          <div class="row">
-          <!-- the idle tasks -->
-          <div class="col-sm-3" style="width:60;position:relative">
+          <div class = "row ">  
             <div 
-            class = " card task-card task-draggable" 
+            class = "col-sm-1 card task-card task-draggable" 
             ng-repeat = "t in tasks | filter: filterUnassignedTasks" 
             taskId = "{{t.id}}" 
             ng-init="initD()" 
@@ -184,108 +74,43 @@
               
               <span class="glyphicon glyphicon-move corner"></span> 
             </div>
-          </div> 
-          <!-- the idle tasks end-->
-          <!-- idle player list -->
-          <div class="col-sm-6" style="margin-left:2" >
-              <!-- player list -->
-              <div 
-              class = "card player-card player-draggable player-droppable"  
-              ng-repeat = "p in players | filter: filterIdlePlayers" 
-              ng-init="initD()" 
-              playerId = "{{p.id}}"
-              ng-mouseover="focus(0-p.id-1)" 
-              ng-mouseout="unFocus(0-p.id-1)" 
-              ng-class = "getClass(0-p.id-1)"
-              >
-                <img ng-src = "{{getPlayerIcon(p.id)}}" > No task
-                <span class="glyphicon glyphicon-move corner"></span>
-              </div>
           </div>
-          <!-- idle player list end -->
+          
           </div>
         </div>
 	
-				<div class="col-sm-6 column "> 
-          <div class = "row" ng-repeat = "a in prev_assignments" >
-					<div class="col-sm-3 card task-card" ng-class="getClass(a.task_id)" > 
-            <img ng-src="{{getTaskIcon(a.task_id)}}" /> 
+       <%= erb(:partialPreviousList, :layout => false) %>
+       <div class="bottom-right" style="background-color:white">
+          <div class = "row" >
+            Unassigned Tasks:
           </div>
-					<div class="col-sm-8" > 
-						<div class="row">
-							<div class="col-sm-7 card player-card" ng-class="getClass(0-a.player1-1)">
-								<img ng-src="{{getPlayerIcon(a.player1)}}" /> 
-								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal" >msg</div>
-							</div >
-							<div class="col-sm-4 card player-card">
-								reject 
-							</div >
-						</div>
-						<div class="row">
-							<div class="col-sm-7 card player-card" ng-class="getClass(0-a.player2-1)">
-								<img ng-src="{{getPlayerIcon(a.player2)}}" /> 
-								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal">msg</div>
-							</div >
-							<div class="col-sm-4 card player-card">
-								accept
-							</div >
-						</div>
-					</div>
-        </div>
-
-        <div class="row">
-              <div class="well well-sm">Unassigned tasks and players</div>
-        </div>
-
-        <div class="row">
-          <!-- the idle tasks -->
-          <div class="col-sm-3" style="width:60;position:relative">
-            <div class = " card task-card " ng-repeat = "t in tasks | filter: filterPrevUnassignedTasks" taskId = "{{t.id}}" ng-init="initD()" ng-class="getClass(t.id)">
+          <div class = "row ">  
+            <div class = "col-sm-1 card task-card " ng-repeat = "t in tasks | filter: filterPrevUnassignedTasks" taskId = "{{t.id}}" ng-init="initD()" ng-class="getClass(t.id)">
               <img ng-src = "{{getTaskIcon(t.id)}}"  /> 
              
             </div>
-          </div> 
-          <!-- the idle tasks end-->
-          <!-- idle player list -->
-          <div class="col-sm-5" style="margin-left:2" >
-              <!-- player list -->
-              <div class = "card player-card " playerHolder = "-1" ng-repeat = "p in players | filter: filterPrevIdlePlayers" ng-init="initD()" playerId = "{{p.id}}" ng-class="getClass(0-p.id-1)">
-                <img ng-src = "{{getPlayerIcon(p.id)}}" > No task <div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal">msg</div>
-              </div>
           </div>
-          <!-- idle player list end -->
+          <div class = "row" >
+            Finished tasks:
+          </div>
+          <div class = "row transparent-5">  
+            <div class = "col-sm-1 card task-card">
+              <img src = "/img/task_icon2.png" /> 
+            </div>
+            <div class = "col-sm-1 card task-card">
+              <img src = "/img/task_icon3.png" /> 
+            </div>
+            <div class = "col-sm-1 card task-card">
+              <img src = "/img/task_icon4.png" /> 
+            </div>
+          </div>
         </div>
-			</div>
-
-			</div>
-			<div class = "row">
-				<div class="col-sm-12 bottom ">
-					<div class = "row" > 
-						<!-- here -->
-					 </div>
-					 <div class = "row">
-					 	Finished tasks:
-					 </div>
-					<div class = "row transparent-5">  
-						<div class = "col-sm-1 card task-card">
-							<img src = "/img/task_icon2.png" /> 
-						</div>
-						<div class = "col-sm-1 card task-card">
-							<img src = "/img/task_icon3.png" /> 
-						</div>
-						<div class = "col-sm-1 card task-card">
-							<img src = "/img/task_icon4.png" /> 
-						</div>
-
-					</div>
-				</div>
 			</div>
 		</div>
 
 	</div>
 	
 </div> 
-
 
 <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
 <input type="hidden" id="user_id" value="<%= @user_id %>" />
