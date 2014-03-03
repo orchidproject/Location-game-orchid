@@ -22,7 +22,7 @@ html, body {
 }
 
 
-.container .card {
+.card {
 	background-color: #FFFFFF;
 	margin: 1px;
 	box-shadow: 2px 2px 2px;
@@ -43,7 +43,7 @@ html, body {
 
 .task-card {
 	height: 71;
-	width:60;
+	width:50;
 }
 
 
@@ -68,7 +68,7 @@ div[class*="row"] {
 }
 
 .bottom-left {
-	position:absolute;
+	position:fixed;
 	bottom:0;
 }
 

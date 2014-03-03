@@ -413,9 +413,9 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
 		}
 	}
 
-	$scope.unchanged = function(a){
+	var compareAssignments = function(a,set){
 		var found = false;
-		$($scope.prev_assignments).each(function(index,value){
+		$(set).each(function(index,value){
 			if(value.task_id == a.task_id){
 				if( (a.player1 == value.player1 && a.player2 == value.player2 ) ||
 					(a.player2 == value.player1 && a.player1 == value.player2 ) ){
@@ -424,23 +424,27 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
 				
 			}
 		});
-		return found;
+		return found; 
 	}
+
+	$scope.unchanged = function(a){
+		return compareAssignments(a,$scope.prev_assignments);
+	}
+
 
 	$scope.changed = function(a){
-		var found = true;
-		$($scope.prev_assignments).each(function(index,value){
-			if(value.task_id == a.task_id){
-				if( (a.player1 == value.player1 && a.player2 == value.player2 ) ||
-					(a.player2 == value.player1 && a.player1 == value.player2 ) ){
-					found = false;
-				}
-				
+		return !compareAssignments(a,$scope.prev_assignments);
 			}
-		});
-		return found;
+
+	$scope.pUnchanged = function(a){
+		return compareAssignments(a,$scope.aCopy);
 	}
 
+
+	$scope.pChanged = function(a){
+		return !compareAssignments(a,$scope.aCopy);
+	}
+	
 	$scope.showRequirement = function(a,preference){
 		var r = getRequirement(a);
 		var mark_index=null;

@@ -50,16 +50,45 @@
         </div>
       </div>
 
-			<div class = "row"   >
-				<div  class="col-sm-6 drag-container" >
+	<div class = "row"   >
+	<div  class="col-sm-6 drag-container" >
 
           <%= erb(:partialAssignmentList, :layout => false) %>
-          <%= erb(:partialIdlePlayerList, :layout => false) %>
           <%= erb(:partialUnchangedList, :layout => false) %>
-          <div class="bottom-left" style="background-color:white">
+	 <!-- new indicator -->
+          <div class="row transparent-5" >
+            <div class="col-sm-2 card task-card task-droppable"> 
+              Drop task here 
+              <span class="glyphicon glyphicon-plus corner"></span> 
+            </div>
+            <div class="col-sm-6"> 
+              <div class = "card player-card" playerHolder = "1"></div>
+              <div class = "card player-card" playerHolder = "2"></div>
+            </div>
+          </div>
+          <!-- new indicator end -->
+          <%= erb(:partialIdlePlayerList, :layout => false) %>
+                  </div>
+	
+       <%= erb(:partialPreviousList, :layout => false) %>
+       <div class="bottom-right" style="background-color:white">
+
+<!--
           <div class = "row" >
             Unassigned Tasks:
           </div>
+          <div class = "row ">  
+            <div class = "col-sm-1 card task-card " ng-repeat = "t in tasks | filter: filterPrevUnassignedTasks" taskId = "{{t.id}}" ng-init="initD()" ng-class="getClass(t.id)">
+              <img ng-src = "{{getTaskIcon(t.id)}}"  /> 
+             
+            </div>
+          </div>
+-->
+          			</div>
+		</div>
+
+	</div>
+	<div class="bottom-left" style="background-color:white">
           <div class = "row ">  
             <div 
             class = "col-sm-1 card task-card task-draggable" 
@@ -71,45 +100,17 @@
             ng-class = "getClass(t.id)"
             >
               <img ng-src = "{{getTaskIcon(t.id)}}" /> 
-              
               <span class="glyphicon glyphicon-move corner"></span> 
             </div>
-          </div>
-          
-          </div>
-        </div>
-	
-       <%= erb(:partialPreviousList, :layout => false) %>
-       <div class="bottom-right" style="background-color:white">
-          <div class = "row" >
-            Unassigned Tasks:
-          </div>
-          <div class = "row ">  
-            <div class = "col-sm-1 card task-card " ng-repeat = "t in tasks | filter: filterPrevUnassignedTasks" taskId = "{{t.id}}" ng-init="initD()" ng-class="getClass(t.id)">
-              <img ng-src = "{{getTaskIcon(t.id)}}"  /> 
-             
-            </div>
-          </div>
-          <div class = "row" >
-            Finished tasks:
-          </div>
-          <div class = "row transparent-5">  
-            <div class = "col-sm-1 card task-card">
+  <div class = " transparent-5 col-sm-1 card task-card">
               <img src = "/img/task_icon2.png" /> 
             </div>
-            <div class = "col-sm-1 card task-card">
-              <img src = "/img/task_icon3.png" /> 
-            </div>
-            <div class = "col-sm-1 card task-card">
-              <img src = "/img/task_icon4.png" /> 
-            </div>
-          </div>
-        </div>
-			</div>
-		</div>
 
-	</div>
-	
+          </div>
+	  
+                      </div>
+          </div>
+
 </div> 
 
 <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
