@@ -22,6 +22,7 @@
               ng-mouseout="unFocus(0-a.player1-1)" 
               ng-class = "getClass(0-a.player1-1)">
                 <img ng-src = "{{getPlayerIcon(a.player1)}}" >
+                <div class = "health"><div></div></div>
                 <span class="glyphicon glyphicon-move corner"></span>
               </div>
 
@@ -41,6 +42,7 @@
               ng-class = "getClass(0-a.player2-1)"
               >
                 <img ng-src = "{{getPlayerIcon(a.player2)}}" >
+                <div class = "health"><div></div></div>
                 <span class="glyphicon glyphicon-move corner"></span>
               </div>
               <div class = "card player-card player-droppable" ng-hide = "playerExist(a,2)" playerHolder = "2" playerId = {{a.player2}} assignmentId = "{{a.id}}">
@@ -50,7 +52,7 @@
             <!--player list end -->
             <div class="col-sm-2 card task-card"> 
               <div class = "col-sm-12 btn btn-default btn-sm" ng-click = "deleteA(a)">
-                Delete
+                Unassign
               </div>
             </div>
           </div >

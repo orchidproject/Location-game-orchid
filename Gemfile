@@ -17,7 +17,7 @@ gem 'aws-ses',                     :require => 'aws/ses'
 
 
 group :development do
-  gem 'ruby-debug19', :require => 'ruby-debug'
+#  gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 group :test do

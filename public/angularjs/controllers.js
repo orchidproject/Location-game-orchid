@@ -1,88 +1,5 @@
-var app = angular.module('AtomicOrchidJs',[]);
-app.factory("dataService",function(){
-	return {
-		//sample data 
-		role_string: ["firefighter","medic","soldier","transporter"],
-		requirements: [[0,1],[1,2],[2,3],[3,0]],
-
-		tasks: [{id:0,type:0},{id:1,type:1},{id:2, type:2},{id:3,type:3},
-				{id:4,type:0},{id:5,type:1},{id:6, type:2},{id:7,type:3},
-				{id:8,type:0},{id:9,type:1},{id:10, type:2},{id:11,type:3},
-				{id:12,type:0},{id:13,type:1},{id:14, type:2},{id:15,type:3}],
-		players: [
-				{id:0,skill:"firefighter",skill_id:0},
-				{id:1,skill:"medic",skill_id:1},
-				{id:2,skill:"soldier",skill_id:2},
-				{id:3,skill:"transporter",skill_id:3},
-				{id:4,skill:"transporter",skill_id:3},
-				{id:5,skill:"firefighter",skill_id:0},
-				{id:6,skill:"medic",skill_id:1},
-				{id:7,skill:"soldier",skill_id:2},
-			],
-		instructions: [
-				{id:0,task_id: 0,  player1:4,player2:2},
-				{id:1,task_id: 1,  player1:2,player2:3}
-			],
-		previous_instructions: [
-				{id:2,task_id: 3,  player1:1,player2:0},
-				{id:3,task_id: 0,  player1:4,player2:2}
-			],
-		focus:null	
-	};
-}).factory("mapService", function(){
-	var service = {
-		setGameArea:function(){
 
 
-			var bounds = new google.maps.LatLngBounds();
-			$(tasks).each(function(index,value){
-				bounds.extend(new google.maps.LatLng(value.marker.getPosition().lat(), value.marker.getPosition().lng()));	
-			});	
-			//set 
-			map.fitBounds(bounds);
-		},
-		moveToTask: function(id){
-			var task_id = id;
-			if (id==null){
-				//random number for demo
-				task_id = Math.floor(Math.random()*10)%tasks.length;
-			}
-			map.panTo(new google.maps.LatLng(tasks[task_id].marker.getPosition().lat(), tasks[task_id].marker.getPosition().lng()));
-
-		},
-		renderPlans: function(){
-			var task_id = 0;
-			$(players).each(function(index,value){
-				if(value!=null){
-				task_id = Math.floor(Math.random()*10)%tasks.length;
-				new google.maps.Polyline ({
-					map:map,
-					path:[
-						tasks[task_id].marker.getPosition(),
-						value.marker.getPosition()]
-					}); 
-				}
-			});
-		}
-
-	} 
-	return service; 
-
-}).factory("httpService",function($http){
-
-	var service = {
-		getScriptsList: function(){
-			return $http.get("/agent_utility/list_scripts");
-		},
-		executeScript: function(data){
-			$http.defaults.headers.post["Content-Type"] = "application/json";
-			return $http.post("/agent_utility/execute", data);
-		}
-
-	}
-
-	return service;
-});
 
 
 app.controller("AgentPanelCtrl", function($scope,httpService){
@@ -103,13 +20,51 @@ app.controller("AgentPanelCtrl", function($scope,httpService){
 	}
 })
 
+app.controller("testPanelCtrl", function($scope,httpService){
+	$scope.frame = 0;
 
-app.controller("NewAssignmentCtrl", function($scope,dataService){
+	$scope.getFrame = function(){
+		$.get("/test/" + G_game_id+ "/" + $scope.frame  + "/getFrame",
+			function(data){
+				receiveHeatmapData(JSON.parse(data));
+			}
+		);
+	}			
+	
+	$scope.getPlan = function(){
+		$.post("/test/" + G_game_id + "/" +  $scope.frame + "/fetchplan",
+			{},		
+			function(data){
+				alert("data sent: " + JSON.stringify(data.sent));		
+				alert("received plan: "+JSON.stringify(data.plan));		
+				if(data.plan.plan!=null){
+					//plan is an array if multiple steps are specified
+					//receiveInstructionData(data.plan.plan[0]); 
+				}
+				
+				$("#btn-fetchplan").attr("value","fetchplan");
+				$("#btn-fetchplan").removeAttr("disabled");
+			}				
+			,"json"
+		);
+	}
+})
+
+
+app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parseService){
+	$scope.socketIO = sIOService;
 	$scope.assignments = dataService.instructions;
 	$scope.players = dataService.players;
 	$scope.tasks = dataService.tasks;
 	$scope.aCopy = $.extend(true,[],$scope.assignments);
 	$scope.prev_assignments = dataService.previous_instructions;
+
+	$scope.loadData=function(){
+		dataService.loadData().then(function(result){
+			$scope.players = dataService.players;
+		});
+
+	}
 
 	var count = -1;
 
@@ -124,6 +79,8 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
 	}
 
 	var getRequirement = function(a){
+		if (a.task_id == -1) return null;
+
 		var task = getById($scope.tasks,a.task_id);
 		var currentR = dataService.requirements[task.type].slice();
 
@@ -261,7 +218,10 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
       			
       		//assign target
       		var target_assignment = getById($scope.aCopy, target_assignment_id);
-      		if(checkRequirement(getRequirement(target_assignment),getById($scope.players,player_id).skill_id)){
+      		//skip check if task_id is -1
+      		if( target_assignment.task_id == -1 ||
+      			checkRequirement(getRequirement(target_assignment),getById($scope.players,player_id).skill_id)
+      		){
       			target_assignment["player"+target_player_holder] = player_id;
       		}
       		
@@ -298,7 +258,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
 
       		}
       		else{
-    			//if two players have some skill id then ok to exchange.
+    			//if two players have same skill id then ok to exchange.
       			if(getById($scope.players,player_id).skill_id==getById($scope.players,target_player_id).skill_id){
       				//erase original card
       				getById($scope.aCopy, assignment_id)["player"+player_holder] = target_player_id ;
@@ -320,6 +280,25 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
 			});
 
 			return result;
+		}
+
+		var validateAssigments = function(a){
+			var type = getById($scope.tasks, a.task_id).type;
+			var r = dataService.requirements[type];
+			var p1 = getById($scope.players, a.player1);
+			var p2 = getById($scope.players, a.player2);
+			p1_validated = false;
+			p2_validated = false;
+			$(r).each(function(index,value){
+				if(p1!=null&&value == p1.skill_id){
+					p1_validated = true;
+				}
+				if(p2!=null&&value == p2.skill_id){
+					p2_validated = true;
+				}
+			});
+			if(!p1_validated) a.player1 = -1;
+			if(!p2_validated) a.player2 = -1;
 		}
 
 		$( ".task-draggable" ).draggable({
@@ -351,8 +330,9 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
 
       			eraseOriginalGrid(ui);
       			//assign target
-      			getById($scope.aCopy, target_assignment_id).task_id = task_id;
-
+      			var assig = getById($scope.aCopy, target_assignment_id)
+      			assig.task_id = task_id;
+      			validateAssigments(assig);
 
       			clearEmptyAssignments();
       			$scope.$apply();
@@ -446,6 +426,9 @@ app.controller("NewAssignmentCtrl", function($scope,dataService){
 	}
 	
 	$scope.showRequirement = function(a,preference){
+		if(a.task_id == -1){
+			return "-"
+		}
 		var r = getRequirement(a);
 		var mark_index=null;
 		$(r).each(function(index,value){

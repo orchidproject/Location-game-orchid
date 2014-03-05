@@ -2,14 +2,12 @@ GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.2.8)
-    archive-tar-minitar (0.5.2)
     aws-ses (0.4.4)
       builder
       mail (> 2.2.5)
       mime-types
       xml-simple
     builder (3.1.4)
-    columnize (0.3.6)
     daemons (1.1.9)
     data_objects (0.10.10)
       addressable (~> 2.1)
@@ -32,8 +30,6 @@ GEM
     hashie (1.0.0)
     i18n (0.6.1)
     json (1.5.3)
-    linecache19 (0.5.12)
-      ruby_core_source (>= 0.1.4)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -46,16 +42,6 @@ GEM
     rack-mobile-detect (0.3.0)
       rack
     rake (10.0.0)
-    ruby-debug-base19 (0.11.25)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby_core_source (>= 0.1.4)
-    ruby-debug19 (0.11.6)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby-debug-base19 (>= 0.11.19)
-    ruby_core_source (0.1.5)
-      archive-tar-minitar (>= 0.5.2)
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.2.6)
@@ -86,7 +72,6 @@ DEPENDENCIES
   rack-cache (= 1.0.1)
   rack-mobile-detect (= 0.3.0)
   rake (= 10.0.0)
-  ruby-debug19
   shotgun
   sinatra (= 1.2.6)
   thin

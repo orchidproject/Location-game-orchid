@@ -17,4 +17,4 @@ development:
   default_sim_lat: 52.952617
   default_sim_lng: -1.188639
   socket_io_client_ref: http://localhost:49991
-  proxy_address: no_proxy
+  proxy_address: http://mainproxy.nottingham.ac.uk:8080

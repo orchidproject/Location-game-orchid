@@ -1,5 +1,5 @@
  <div class="row">
-              <div class="well well-sm">Unassigned tasks and players</div>
+              <div class="well well-sm ">Unassigned players</div>
           </div>
 
 
@@ -11,9 +11,14 @@
           <!-- the idle tasks end-->
           <!-- idle player list -->
           <div class="col-sm-6" style="margin-left:2" >
+              <div 
+              class = "card-fixed player-card player-draggable player-droppable transparent-5"  
+              >
+                Drop here to unassign players
+              </div>
               <!-- player list -->
               <div 
-              class = "card player-card player-draggable player-droppable"  
+              class = "card player-card player-draggable player-droppable transparent-5"  
               ng-repeat = "p in players | filter: filterIdlePlayers" 
               ng-init="initD()" 
               playerId = "{{p.id}}"
@@ -21,7 +26,9 @@
               ng-mouseout="unFocus(0-p.id-1)" 
               ng-class = "getClass(0-p.id-1)"
               >
+                
                 <img ng-src = "{{getPlayerIcon(p.id)}}" > No task
+                 <div class = "health"><div></div></div>
                 <span class="glyphicon glyphicon-move corner"></span>
               </div>
           </div>

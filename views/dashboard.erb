@@ -24,27 +24,26 @@
 
 </script> 
 <%= erb(:partialMsg, :layout => false) %>
-<%= erb(:partialAgentPanel, :layout => false) %>
-<div  ng-controller = "NewAssignmentCtrl">
+<%= erb(:partialModals, :layout => false) %>
+<div  ng-controller = "NewAssignmentCtrl" id="main">
 	<div class="row">
 		<div id ="map" class="col-sm-6 col-lg-6"></div>
 		<div class="container col-sm-6 col-lg-6"> 
-			
 			<div class="row">
-				<div class="col-sm-6 h5"> New Assignments </div>
-				<div class="col-sm-3 h5"  data-toggle="modal" data-target="#agentModal"> Current Assignments </div>
-				<div class="col-sm-2 h5"> Feedbacks </div>
+				<div class="col-sm-6 h5 well well-sm"> New Assignments </div>
+				<div class="col-sm-4 h5 well well-sm"  data-toggle="modal" data-target="#agentModal"> Current Assignments </div>
+				<div class="col-sm-1 h5 well well-sm"  data-toggle="modal" data-target="#testModal"> Feedbacks </div>
 			</div>
 
-      <div class="row">
+      <div class="row ">
         <div class="col-sm-6"> 
-          <div class="col-sm-3 btn btn-sm btn-primary" > 
+          <div class="big-btn col-sm-3 btn btn-sm btn-primary" ng-click="loadData()"> 
             Confirm all
           </div>
-          <div class="col-sm-3 btn btn-sm btn-danger" ng-click="undoAll()"> 
+          <div class="big-btn col-sm-3 btn btn-sm btn-danger " ng-click="undoAll()"> 
             Undo all
           </div>
-          <div class="col-sm-3 btn btn-sm btn-info" ng-click="undoAll()"> 
+          <div class="big-btn col-sm-3 btn btn-sm btn-info " ng-click="undoAll()"> 
             Request replan
           </div>
         </div>
@@ -55,15 +54,15 @@
 
           <%= erb(:partialAssignmentList, :layout => false) %>
           <%= erb(:partialUnchangedList, :layout => false) %>
-	 <!-- new indicator -->
+<!-- new indicator -->
           <div class="row transparent-5" >
-            <div class="col-sm-2 card task-card task-droppable"> 
+            <div class="col-sm-2 card-fixed task-card task-droppable"> 
               Drop task here 
               <span class="glyphicon glyphicon-plus corner"></span> 
             </div>
             <div class="col-sm-6"> 
-              <div class = "card player-card" playerHolder = "1"></div>
-              <div class = "card player-card" playerHolder = "2"></div>
+              <div class = "card-fixed player-card" playerHolder = "1"></div>
+              <div class = "card-fixed player-card" playerHolder = "2"></div>
             </div>
           </div>
           <!-- new indicator end -->
@@ -72,7 +71,6 @@
 	
        <%= erb(:partialPreviousList, :layout => false) %>
        <div class="bottom-right" style="background-color:white">
-
 <!--
           <div class = "row" >
             Unassigned Tasks:
@@ -110,11 +108,12 @@
 	  
                       </div>
           </div>
-
-</div> 
-
 <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
 <input type="hidden" id="user_id" value="<%= @user_id %>" />
 <input type="hidden" id="user_initials" value="<%= @user_initials %>" />
 <input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
-<input type="hidden" id="game_status" value=<%= @game.is_active %> />
+<input type="hidden" id="game_status" value="<%= @game.is_active %>" />
+
+</div> 
+
+

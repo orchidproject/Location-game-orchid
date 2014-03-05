@@ -18,3 +18,24 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="testModal" ng-controller="testPanelCtrl" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-title">
+      <label>Agents</label> 
+    </div>
+    <div class="modal-content"> 
+      <div class="modal-body" >
+          <label>The frame</label>
+          <input type="text" class = "form-control" ng-model = "frame" >
+          </select>
+          <div class = "btn btn-primary" ng-click="getFrame()" > Set Frame</div>      
+          <div class = "btn btn-primary" ng-click="getPlan()" > Fetch Plan</div>      
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
