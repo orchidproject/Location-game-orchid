@@ -30,8 +30,10 @@ class Instruction
 
   def getTeammate
 	#get teammate
-	teammate = -1		
-	if(self.group!= "")
+	teammate = -1	
+	#be defensive for different ruby versions	
+	if(self.group!= "" && self.group != "null" && self.group != nil)
+		#ßputs "the thing that needs to be parsed:" + self.group
 		the_group = JSON.parse(self.group)
 		the_group.each do |id|
 			if (id == self.player_id)
@@ -84,7 +86,8 @@ class Instruction
 		:status => self.status,
 		:time => self.created_at.to_time.to_i,
 		:id => self.id,
-		:player_id => self.player_id
+		:player_id => self.player_id,
+		:frame_id => self.frame.id
 	}
 	
 

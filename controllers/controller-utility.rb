@@ -35,7 +35,7 @@ class Controller < Sinatra::Base
 			:task=> ins.task_id, 
 			:direction=> ins.action,
 			:status => ins.status,
-			:time => ins.created_at.to_time.to_i,
+			#:time => ins.created_at.to_time.to_i,
 			:id => ins.id,
 			:player_id => ins.player_id
 		 }

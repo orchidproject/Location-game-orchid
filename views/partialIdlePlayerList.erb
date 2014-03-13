@@ -12,24 +12,25 @@
           <!-- idle player list -->
           <div class="col-sm-6" style="margin-left:2" >
               <div 
-              class = "card-fixed player-card player-draggable player-droppable transparent-5"  
+               ng-show="editMode" class = "card-fixed player-card player-draggable player-droppable transparent-5"  
               >
                 Drop here to unassign players
               </div>
               <!-- player list -->
               <div 
-              class = "card player-card player-draggable player-droppable transparent-5"  
+              class = "player-card player-draggable player-droppable transparent-5"  
               ng-repeat = "p in players | filter: filterIdlePlayers" 
-              ng-init="initD()" 
+              
               playerId = "{{p.id}}"
               ng-mouseover="focus(0-p.id-1)" 
               ng-mouseout="unFocus(0-p.id-1)" 
-              ng-class = "getClass(0-p.id-1)"
+            
+              ng-class = "{'focus':getClass(0-p.id-1),'card':editMode,'card-fixed':!editMode}"
               >
-                
+
                 <img ng-src = "{{getPlayerIcon(p.id)}}" > No task
                  <div class = "health"><div></div></div>
-                <span class="glyphicon glyphicon-move corner"></span>
+                <span ng-show="editMode" class="glyphicon glyphicon-move corner"></span>
               </div>
           </div>
           <!-- idle player list end -->

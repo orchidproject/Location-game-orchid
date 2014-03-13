@@ -35,23 +35,38 @@ app.controller("testPanelCtrl", function($scope,httpService){
 		$.post("/test/" + G_game_id + "/" +  $scope.frame + "/fetchplan",
 			{},		
 			function(data){
-				alert("data sent: " + JSON.stringify(data.sent));		
-				alert("received plan: "+JSON.stringify(data.plan));		
-				if(data.plan.plan!=null){
-					//plan is an array if multiple steps are specified
-					//receiveInstructionData(data.plan.plan[0]); 
-				}
-				
-				$("#btn-fetchplan").attr("value","fetchplan");
-				$("#btn-fetchplan").removeAttr("disabled");
+				//alert("data sent: " + JSON.stringify(data.sent));		
+				alert("received plan: "+JSON.stringify(data.plan));					
 			}				
 			,"json"
 		);
 	}
 })
 
+app.controller("MsgCtrl",function($scope,dataService,sIOService){
+	$scope.sendMsg = function(data){
+		sIOService.sendMsg(data);
+		$scope.msg_field = "";
+	}
+	sIOService.callback = function(){$scope.$apply()};
+	$scope.msg_field = "";
+	$scope.msgs = dataService.msgs;;
+});
+
+//requester to socketIO Listen to all kinds of data 
+
+/*
+sIOService.pushListener("event", listener);
+
+
+*/
+
 
 app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parseService){
+	$scope.editMode = false;
+	$scope.edit_indicator = "Edit";
+	
+
 	$scope.socketIO = sIOService;
 	$scope.assignments = dataService.instructions;
 	$scope.players = dataService.players;
@@ -59,14 +74,43 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	$scope.aCopy = $.extend(true,[],$scope.assignments);
 	$scope.prev_assignments = dataService.previous_instructions;
 
+	var destroyD = function(){
+		$( ".player-droppable" ).droppable("destroy");
+		$( ".exisiting-task-droppable" ).droppable("destroy");
+		$( ".task-droppable" ).droppable("destroy");
+		$( ".task-draggable" ).draggable("destroy");
+		$( ".player-draggable" ).draggable("destroy");
+	}
+
+	$scope.toggleEditMode = function(){
+		if($scope.editMode){
+			$scope.editMode = false;
+			$scope.edit_indicator = "Edit";
+			destroyD();
+		}else{
+			$scope.editMode = true;
+			$scope.edit_indicator = "Finish Editing";
+			$scope.initD();
+		}
+	}
+
 	$scope.loadData=function(){
 		dataService.loadData().then(function(result){
 			$scope.players = dataService.players;
+			$scope.tasks= dataService.tasks;
 		});
 
 	}
 
 	var count = -1;
+	//watch the change in the data set
+	$scope.$watch(function(){ return dataService.instruction_frame.current_size}, function(newVal,oldVal){
+		if(newVal == dataService.instruction_frame.size){
+			$scope.assignments = dataService.instructions;
+			$scope.aCopy = $.extend(true,[],$scope.assignments);
+			console.log("data changed");
+		}
+	})
 
 	var getTask = function(id){
 		var data = null;
@@ -136,13 +180,18 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	}
 
 	$scope.getPlayerIcon = function(id){
+			if (id == -1 || id == 0) {return ""}
+			var p = getById($scope.players,id);
+			
 			var img = "";
-			$($scope.players).each(function(index,value){
+			//if (p == null){console.log(id);return ""}
+			img = "/player/"+p.initials[0]+"/" + p.initials[1] + "/" + p.skill + "/map_icon.png"
+			/*$($scope.players).each(function(index,value){
 				if(value.id == id){
 					img = "/img/" + value.skill + ".png";
 				}
-			});
-			return img;//"/img/firefighter.png";
+			});*/
+			return img;
 	}
 
 	$scope.undoAll = function(){
@@ -364,6 +413,9 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 
 
 	}
+
+
+
 	$scope.confirmA = function(){}
 	$scope.deleteA = function(a){
 		$scope.aCopy.splice($scope.aCopy.indexOf(a),1);
@@ -372,15 +424,22 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 
 	//hightlight
 	$scope.getClass = function(f){
-
+	
 		if (dataService.focus == f ){
-			return "focus";
+			return true;
 		}
-		else{
-			return ""
-		}
+		return false;
+		
 	}
 
+	$scope.getEditClass = function(){
+		if($scope.editMode){
+			return "card"
+		}
+		else {
+			return "card-fixed"
+		}
+	}
 
 	$scope.focus=function(f){
 		//players id mapped to [-1 -infinite], tasks mapped to [1 infinite]
@@ -406,6 +465,8 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		});
 		return found; 
 	}
+
+
 
 	$scope.unchanged = function(a){
 		return compareAssignments(a,$scope.prev_assignments);

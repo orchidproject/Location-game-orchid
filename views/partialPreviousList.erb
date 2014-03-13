@@ -8,23 +8,25 @@
               </label>
             </div>
           </div > 
-					<div class="col-sm-3 card-fixed task-card" ng-class="getClass(a.task_id)" > 
+					<div class="col-sm-3 card-fixed task-card" ng-class="{'focus':getClass(a.task_id)}" > 
             <img ng-src="{{getTaskIcon(a.task_id)}}" /> 
+            {{a.task_id}}
           </div>
 					<div class="col-sm-8" > 
 						<div class="row">
-							<div class="col-sm-7 card-fixed player-card" ng-class="getClass(0-a.player1-1)">
+							<div class="col-sm-7 card-fixed player-card" ng-class="{'focus':getClass(0-a.player1-1)}">
 								<img ng-src="{{getPlayerIcon(a.player1)}}" /> 
+
                  <div class = "health"><div></div></div>
 								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal" >msg</div>
                 <span class="label label-default">0</span>
 							</div >
-							<div class="col-sm-4 card-fixed player-card">
+							<div class="card-fixed col-sm-4 player-card">
 								reject 
 							</div >
 						</div>
 						<div class="row">
-							<div class="col-sm-7 card-fixed player-card" ng-class="getClass(0-a.player2-1)">
+							<div class="col-sm-7 card-fixed player-card" ng-class="{'focus':getClass(0-a.player2-1)}">
 								<img ng-src="{{getPlayerIcon(a.player2)}}" /> 
                  <div class = "health"><div></div></div>
 								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal">msg</div>
@@ -90,7 +92,7 @@
           <!-- idle player list -->
           <div class="col-sm-5 transparent-5" style="margin-left:2" >
               <!-- player list -->
-              <div class = "card-fixed player-card " playerHolder = "-1" ng-repeat = "p in players | filter: filterPrevIdlePlayers" ng-init="initD()" playerId = "{{p.id}}" ng-class="getClass(0-p.id-1)">
+              <div class = "card-fixed player-card " playerHolder = "-1" ng-repeat = "p in players | filter: filterPrevIdlePlayers"  playerId = "{{p.id}}"  ng-class = "{'focus':getClass(0-p.id-1),'card':editMode,'card-fixed':!editMode}">
                 <img ng-src = "{{getPlayerIcon(p.id)}}" > 
                 <div class = "health"><div></div></div>
                 <div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal">msg</div>

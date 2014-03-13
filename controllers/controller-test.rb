@@ -197,12 +197,15 @@ end
 
  def processResponse(game_id,res) 
 	puts "get data " 
+	puts res
 	begin
 		resJson = JSON.parse(res) 
 	rescue 
 		puts "plan pause error"
 		return
 	end
+
+
 	p = Game.get(game_id).plans.create 
 	if(resJson["status"] == "error" )
 		 puts resJson["message"]
@@ -222,7 +225,7 @@ end
 			    end 
 
 			    ins= new_frame.instructions.new(
-				:group => player["group"].to_s,
+				:group => player["group"].to_json,
 				:task_id => player["task"],
 				:player_id => player["id"],
 				:next_x => player["next_x"],

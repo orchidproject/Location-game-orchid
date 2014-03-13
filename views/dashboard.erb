@@ -29,24 +29,39 @@
 	<div class="row">
 		<div id ="map" class="col-sm-6 col-lg-6"></div>
 		<div class="container col-sm-6 col-lg-6"> 
-			<div class="row">
-				<div class="col-sm-6 h5 well well-sm"> New Assignments </div>
-				<div class="col-sm-4 h5 well well-sm"  data-toggle="modal" data-target="#agentModal"> Current Assignments </div>
-				<div class="col-sm-1 h5 well well-sm"  data-toggle="modal" data-target="#testModal"> Feedbacks </div>
-			</div>
+			
 
       <div class="row ">
-        <div class="col-sm-6"> 
-          <div class="big-btn col-sm-3 btn btn-sm btn-primary" ng-click="loadData()"> 
+          <div class="big-btn col-sm-4 ">
+          <div class="btn btn-sm btn-primary full-btn" ng-click="loadData()"> 
             Confirm all
           </div>
-          <div class="big-btn col-sm-3 btn btn-sm btn-danger " ng-click="undoAll()"> 
-            Undo all
           </div>
-          <div class="big-btn col-sm-3 btn btn-sm btn-info " ng-click="undoAll()"> 
+          <div class="big-btn col-sm-4 ">
+          <div class="btn btn-sm btn-warning full-btn" ng-click="undoAll()"> 
             Request replan
           </div>
         </div>
+         <div class="big-btn col-sm-4">
+          <div class="btn btn-sm btn-danger full-btn" ng-click="toggleEditMode()"> 
+            {{edit_indicator}}
+          </div>
+        </div>
+
+      </div>
+      <div class="row " ng-show="editMode">
+           <div class="big-btn col-sm-4 ">
+           <div class="btn btn-sm btn-danger full-btn" ng-click="undoAll()"> 
+            Undo all
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 h5 well well-sm"> New Assignments </div>
+
+        <div class="col-sm-4 h5 well well-sm"  data-toggle="modal" data-target="#agentModal"> Current Assignments </div>
+        <div class="col-sm-1 h5 well well-sm"  data-toggle="modal" data-target="#testModal"> Feedbacks </div>
       </div>
 
 	<div class = "row"   >
@@ -55,7 +70,7 @@
           <%= erb(:partialAssignmentList, :layout => false) %>
           <%= erb(:partialUnchangedList, :layout => false) %>
 <!-- new indicator -->
-          <div class="row transparent-5" >
+          <div class="row transparent-5" ng-show = "editMode" >
             <div class="col-sm-2 card-fixed task-card task-droppable"> 
               Drop task here 
               <span class="glyphicon glyphicon-plus corner"></span> 
@@ -86,21 +101,22 @@
 		</div>
 
 	</div>
-	<div class="bottom-left" style="background-color:white">
+	<div class="bottom-left" style="background-color:#BFE8E8">
           <div class = "row ">  
             <div 
-            class = "col-sm-1 card task-card task-draggable" 
+            class = "col-sm-1 task-card task-draggable" 
             ng-repeat = "t in tasks | filter: filterUnassignedTasks" 
             taskId = "{{t.id}}" 
-            ng-init="initD()" 
+            
             ng-mouseover="focus(t.id)" 
             ng-mouseout="unFocus(t.id)" 
-            ng-class = "getClass(t.id)"
+            ng-class = "{'focus':getClass(t.id),'card':editMode,'card-fixed':!editMode}"
+
             >
               <img ng-src = "{{getTaskIcon(t.id)}}" /> 
-              <span class="glyphicon glyphicon-move corner"></span> 
+              <span ng-show="editMode" class="glyphicon glyphicon-move corner"></span> {{t.id}}
             </div>
-  <div class = " transparent-5 col-sm-1 card task-card">
+  <div class = " transparent-5 col-sm-1 card-fixed task-card">
               <img src = "/img/task_icon2.png" /> 
             </div>
 

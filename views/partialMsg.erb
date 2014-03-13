@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" ng-controller = "MsgCtrl" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
     <div class="modal-dialog">
       <div class="modal-content"> 
@@ -8,10 +8,13 @@
         <div class="form-group" >
         <label>Messages</label>
         
-          <textarea class="form-control" cols="10" rows="10"></textarea>
-          <input  type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter messages">
+          <li ng-model = "msgs" class="form-control" style="height:500; overflow:scroll" cols="10" >
+            <ul ng-repeat = "m in msgs"> {{m}} </ul>
 
-          <button ng-click="signup(user.email,user.password,user.passwordConfirm)" type="submit" class="btn btn-default">Send</button>   
+          </li>
+          <input  type="text"  ng-model = "msg_field" class="form-control" id="exampleInputEmail1" placeholder="Enter messages">
+
+          <button ng-click="sendMsg(msg_field)" type="submit" class="btn btn-default">Send</button>   
         </div><!-- /.form-group signup-form --> 
         </div>
 

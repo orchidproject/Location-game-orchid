@@ -42,71 +42,7 @@ function sendBackAck(ackid){
 
 
 
-var setupSocketIO = function(){
 
-    socket = io.connect(SOCKET_IO_ADDRESS, {
-            transports: ['websocket', 'flashsocket', 'htmlfile']
-    });
-    
-    socket.on('game', function(data) {
-        //debug
-        //alert("join " + $("#group_token").val());
-        //channel and id pair needed for hand shaking 
-        socket.emit('game-join', {channel:$("#group_token").val()+"-1",id:-1});
-        socket.emit('game-join', {channel:$("#group_token").val()+"-2",id:-1});
-        socket.emit('game-join', {channel:$("#group_token").val(),id:-1});
-    });
-    
-    socket.on('data', function(data) {
-        saveLog(data);
-        sendBackAck(data.ackid);
-
-    if(typeof data.health!="undefined"){
-        receiveHealthData(data.health);
-    }
-       
-        
-        
-              
-        if(typeof data.heatmap != "undefined"){
-              receiveHeatmapData(data.heatmap);
-        }
-        
-        //not sure whether this is implemented
-        if(typeof data.textMassage != "undefined"){
-            receiveTextMassage(data.textMassage);
-        }
-        
-        if(typeof data.message != "undefined") {
-            receiveMessageData(data.message);
-        }
-        
-        if(typeof data.location != "undefined"){
-            receivePlayerData(data.location);
-        }
-        
-        if(typeof data.cleanup != "undefined"){
-                cleanup(data.cleanup.player_id); 
-        }
-        
-        if(typeof data.player != "undefined"){
-                receivePlayerInfoData(data.player);
-        }
-        
-        if(typeof data.task != "undefined"){
-                receiveTaskData(data.task);
-        }
-
-    if(typeof data.instructions != "undefined"){
-        receiveInstructionDataV2(data.instructions[0]);
-    }
-    if(typeof data.debug != "undefined"){
-        alert(data.debug);
-        }
-
-    });
-
-}
 
 var G_game_id;
 $(document).ready(function() {

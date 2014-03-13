@@ -36,16 +36,17 @@ http.post("/broadcast", function (request, response) {
         content=JSON.parse(ob.data);
         ackid++;
         content.data["ackid"]=ackid;
-        var channel=content.channel;console.log(channel);
+        var channel=content.channel;
+        console.log(channel);
         var users=content.users;
+
 	var log_data = content.log_data;
         
-        io.sockets.in(channel).emit('data', content.data);
+  if(channel !=null) { io.sockets.in(channel).emit('data', content.data);}
         
 	if(log_data==null || log_data==true)
         write_log(channel,content.data);
-        
-        
+         
         //send to indvidual users
         if(users!=null){
         	
