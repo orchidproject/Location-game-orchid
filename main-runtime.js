@@ -48,8 +48,7 @@ http.post("/broadcast", function (request, response) {
         
 	if(log_data==null || log_data==true)
         write_log(channel,content.data);
-        
-        
+         
         //send to indvidual users
         if(users!=null){
         	

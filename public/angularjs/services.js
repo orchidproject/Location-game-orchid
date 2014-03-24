@@ -11,6 +11,10 @@ app.factory("httpService",function($http){
 		executeScript: function(data){
 			$http.defaults.headers.post["Content-Type"] = "application/json";
 			return $http.post("/agent_utility/execute", data);
+		},
+		confirmPlan: function(data){
+			$http.defaults.headers.post["Content-Type"] = "application/json";
+			return $http.post("/game/"+G_game_id+"/confirm_plan", data);
 		}
 
 	}
@@ -20,13 +24,15 @@ app.factory("httpService",function($http){
 	var socket;
 
 	var legReceivers =  function(){
+		G_socket = socket;
 		socket.on('data', function(data) {
         	//saveLog(data);
         	//sendBackAck(data.ackid);
 
+
     		if(typeof data.health!="undefined"){
-        		receiveHealthData(data.health);
-        		
+        		//receiveHealthData(data.health);
+        		aHandleHealthData(data.health);
     		}
         
         	if(typeof data.heatmap != "undefined"){
@@ -47,7 +53,8 @@ app.factory("httpService",function($http){
         	}
         
         	if(typeof data.location != "undefined"){
-            	receivePlayerData(data.location);
+        		aHandleLocationData(data.location);
+            	receivePlayerData(data.location);      	
         	}
         
         	if(typeof data.cleanup != "undefined"){
@@ -61,8 +68,7 @@ app.factory("httpService",function($http){
         	}
         
         	if(typeof data.task != "undefined"){
-                receiveTaskData(data.task);
-                
+                receiveTaskData(data.task);              
         	}
 
     		if(typeof data.instructions != "undefined"){
@@ -74,6 +80,18 @@ app.factory("httpService",function($http){
        		}
        		service.callback();
     	});
+	}
+
+	var aHandleLocationData = function(data){
+		var player = dataService.getPlayerById(data.player_id);
+		player.latitude = data.latitude;
+		player.longitude = data.longitude;
+	}
+
+	var aHandleHealthData = function(data){
+		//{"health":{"player_id":1,"value":100.0},"time_stamp":12000}
+		var player = dataService.getPlayerById(data.player_id);
+		player.health = data.value;
 	}
 
 	var aHandleInstructionData = function(data){
@@ -128,6 +146,7 @@ app.factory("httpService",function($http){
     	});
     
     	legReceivers();
+
     	return socket;
 
 	}
@@ -135,6 +154,9 @@ app.factory("httpService",function($http){
 	var listeners = []
 	
 	var socket = setupSocketIO();
+
+
+	
 
 	var service = {
 		pushListener: function(key, call){
@@ -151,12 +173,13 @@ app.factory("httpService",function($http){
 
 }).factory("parseService",function(){
 	return {
-		role_string: ["firefighter","medic","soldier","transporter"],
-		requirements: [[0,1],[1,2],[2,3],[3,0]],
+		role_string: ["medic","firefighter","soldier","transporter"],
+		requirements: [[2,3],[3,0],[1,0],[1,2]],
 		parsePlayer: function(data){
 			for(i = 0; i<data.length;i++){
 				data[i].skill_id = data[i].skill;
 				data[i].skill = this.role_string[data[i].skill];
+				data[i].health = 100;
 			}
 			return data;
 		}
@@ -216,6 +239,22 @@ app.factory("httpService",function($http){
 				}
 			});
 			return i;
+		},
+
+		getPlayerById: function(player_id){
+			var data = null;
+			$(this.players).each(function(i,d){
+				if (d.id ==  player_id){ data = d; }
+			})
+			return data;
+		},
+
+		getTaskById: function(task_id){
+			var data = null;
+			$(this.tasks).each(function(i,d){
+				if (d.id ==  task_id){ data = d; }
+			})
+			return data;
 		}
 	};
 

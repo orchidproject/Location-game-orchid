@@ -1,6 +1,6 @@
 
           <!-- assignment list -->
-          <div class="row transparent-5" ng-repeat = "a in aCopy | filter: unchanged"  ng-init="initD()" >
+          <div class="row transparent-5" ng-repeat = "a in aCopy | filter: unchanged"   >
             <div class="col-sm-3 task-card task-draggable" 
             ng-show="taskExist(a)" 
             taskId = "{{a.task_id}}" 
@@ -8,6 +8,7 @@
             ng-mouseover="focus(a.task_id)" 
             ng-mouseout="unFocus(a.task_id)" 
             ng-class = "{'focus':getClass(a.task_id),'card':editMode,'card-fixed':!editMode}"
+            ng-init = "initEditables()"
             > 
               <img ng-src = "{{getTaskIcon(a.task_id)}}" >
               <span ng-show="editMode" class="glyphicon glyphicon-move corner"></span> 
@@ -28,14 +29,16 @@
               ng-mouseover="focus(0-a.player1-1)" 
               ng-mouseout="unFocus(0-a.player1-1)" 
               ng-class = "{'focus':getClass(0-a.player1-1),'card':editMode,'card-fixed':!editMode}"
+              ng-init = "initEditables()"
               >
+               
                 <img ng-src = "{{getPlayerIcon(a.player1)}}" >
-                <div class = "health"><div></div></div>
-                <span class="glyphicon glyphicon-move corner"></span>
+               <div class = "health" ><div style="height:{{getHealth(a.player1)}}"></div></div>
+                <span ng-show="editMode" class="glyphicon glyphicon-move corner"></span>
               </div>
 
-              <div class = "card-fixed player-card player-droppable" ng-hide="playerExist(a,1)" playerHolder = "1" playerId = "{{a.player1}}" assignmentId = "{{a.id}}">
-                <span class="glyphicon glyphicon-plus corner"></span>
+              <div class = "card-fixed player-card player-droppable" ng-hide="playerExist(a,1)" playerHolder = "1" playerId = "{{a.player1}}" assignmentId = "{{a.id}}" ng-init = "initEditables()">
+                <span  class="glyphicon glyphicon-plus corner"></span>
               </div>
               <!-- player 1 2 deliminator -->
 
@@ -48,12 +51,13 @@
               ng-mouseover="focus(0-a.player2-1)" 
               ng-mouseout="unFocus(0-a.player2-1)" 
               ng-class = "{'focus':getClass(0-a.player2-1),'card':editMode,'card-fixed':!editMode}"
+              ng-init = "initEditables()"
               >
+                <div class = "health" ><div style="height:{{getHealth(a.player2)}}"></div></div>
                 <img ng-src = "{{getPlayerIcon(a.player2)}}" >
-                <div class = "health"><div></div></div>
-                <span class="glyphicon glyphicon-move corner"></span>
+                <span ng-show="editMode" class="glyphicon glyphicon-move corner"></span>
               </div>
-              <div class = "card-fixed player-card player-droppable" ng-hide = "playerExist(a,2)" playerHolder = "2" playerId = {{a.player2}} assignmentId = "{{a.id}}">
+              <div class = "card-fixed player-card player-droppable" ng-hide = "playerExist(a,2)" playerHolder = "2" playerId = {{a.player2}} assignmentId = "{{a.id}}" ng-init = "initEditables()">
                 <span class="glyphicon glyphicon-plus corner"></span>
               </div>
             </div>

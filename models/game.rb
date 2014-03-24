@@ -22,6 +22,7 @@ class Game
   has n, :teams
   has n, :players
   has n, :tasks
+  has n, :confirmed_plans
   has n, :dropoffpoints
   has n, :plans	    
 

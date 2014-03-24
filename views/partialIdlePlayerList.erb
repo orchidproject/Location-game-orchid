@@ -24,12 +24,12 @@
               playerId = "{{p.id}}"
               ng-mouseover="focus(0-p.id-1)" 
               ng-mouseout="unFocus(0-p.id-1)" 
-            
+              ng-init = "initEditables()"
               ng-class = "{'focus':getClass(0-p.id-1),'card':editMode,'card-fixed':!editMode}"
               >
 
                 <img ng-src = "{{getPlayerIcon(p.id)}}" > No task
-                 <div class = "health"><div></div></div>
+                 <div class = "health"><div style="height:{{getHealth(p.id)}}"></div></div>
                 <span ng-show="editMode" class="glyphicon glyphicon-move corner"></span>
               </div>
           </div>

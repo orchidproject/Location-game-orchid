@@ -1,3 +1,5 @@
+var G_socket = null;
+
 var playerIconSize = new google.maps.Size(32, 32);
 var playerIconOrigin = new google.maps.Point(0,0);
 var playerIconAnchor = new google.maps.Point(16, 32);
@@ -173,7 +175,7 @@ function receiveTaskData(task){
         
         	tasks.push(the_task);
 		if(test!=null&&test){
-			setupTaskTest(the_task);
+			//setupTaskTest(the_task);
 		}
         }
         else{
@@ -292,6 +294,32 @@ function receivePlayerData(data) {
 }
 
 
+var setupTest = function(pid){
+	google.maps.event.addListener(players[pid].marker, "dragend", 
+		function(event) {
+			var lat = event.latLng.lat();
+			var lng = event.latLng.lng();
+			players[pid].marker.setIcon(getPlayerIcon("00","dead"));	
+			
+			G_socket.emit("location-push", 
+			{  
+
+					  player_id: players[pid].id,
+					  latitude:lat, 
+					  longitude:lng, 
+					  skill: players[pid].skill, 
+					  initials: players[pid].initials
+
+			});
+
+			return false;
+				//alert(JSON.stringify(event));
+
+		});
+}
+
+
+
 
 
 var GameMap = {
@@ -348,5 +376,54 @@ function drawDpZone(dpZone){
   				clickable: true 
 		});
 	}
+
+}
+
+var G_getPixelFromMap = function(latlng){
+	var overlay = new google.maps.OverlayView();
+	overlay.draw = function() {};
+	overlay.setMap(map);
+	var p = overlay.getProjection();
+	p = overlay.getProjection();
+	return p.fromLatLngToContainerPixel(latlng); 
+
+}
+
+var G_fcount
+var G_d3HighLight = function(a,b){
+	var width = 300;
+	var height = 300;
+	var inner = 0;
+	var final_radius = 70;
+
+	var arc = d3.svg.arc()
+    .innerRadius(inner)
+    .outerRadius(inner+2)
+    .startAngle(0) //converting from degs to radians
+    .endAngle(2*Math.PI); //just radians
+
+    var arc_generator = d3.svg.arc()
+    .innerRadius(function(d){ 
+    	return d;})
+    .outerRadius(function(d){ 
+    	return d+2;})
+    .startAngle(0) //converting from degs to radians
+    .endAngle(2*Math.PI); //just radians
+
+
+    var c = G_fcount++;
+	d3.select("html").append("svg")
+	.attr("id","fsvg-"+c)
+	.attr("style", "width:"+width+"px;height:"+height+"px;position:absolute;z-index:999999999;left:"+(a-width/2)+"px;top:"+(b-height/2)+"px")
+	.append("path").data([1])
+	.attr("transform", "translate("+(width/2)+","+(height/2)+")")
+	.attr("d",arc).transition().duration(500)
+	.attrTween("d",function(){
+		var i = d3.interpolate(0,final_radius);
+		return function(t){
+			return arc_generator(i(t));
+		}
+	})
+	.each("end",function(){ d3.select("#fsvg-"+c).remove();} );
 
 }

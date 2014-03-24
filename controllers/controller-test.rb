@@ -74,6 +74,16 @@ post '/test/:game_id/:frame/fetchplan' do
 
  end 
 
+ post '/game/:game_id/confirm_plan' do 
+ 	#store into database
+ 	#compare before and after
+ 	#stream changed part
+ 	data = request.body.read
+ 	puts data.to_json
+ 	processConfirmedResponse(params[:game_id],data)
+
+ end 
+
  get '/test/:game_id/snapshot' do
 	(snapshot Game.get(params[:game_id]), false ).to_s
  end 
@@ -195,9 +205,64 @@ end
 
  end 
 
+ def processConfirmedResponse(game_id,res)
+ 	resJson = nil
+ 	begin
+		resJson = JSON.parse(res) 
+	rescue 
+		puts "plan pause error"
+		return
+	end
+	g = Game.get(game_id)
+	p = g.confirmed_plans.create 
+	#plan_id is for get around the bug
+	puts resJson.to_json
+	new_frame = p.frames.create(:count=> -1,:plan_id => 0) 
+	resJson["plan"].each  do |assignment| 
+		ins1= new_frame.instructions.new(
+			:group => [assignment["player1"], assignment["player2"]].to_json,
+			:task_id => assignment["task_id"],
+			:player_id => assignment["player1"],
+			:next_x => -1 ,
+			:next_y => -1 ,
+			:action => "go"
+		)
+
+		ins2= new_frame.instructions.new(
+			:group => [assignment["player1"], assignment["player2"]].to_json,
+			:task_id => assignment["task_id"],
+			:player_id => assignment["player2"],
+			:next_x => -1 ,
+			:next_y => -1 ,
+			:action => "go"
+		)	
+		compareInstructions g, new_frame, ins1
+		compareInstructions g, new_frame, ins2
+	end
+
+	p.notifyPlayers socketIO
+
+ end 
+
+ def compareInstructions(g,f,ins)
+ 	#if it is same then, do not save 
+ 	#compare the data
+	#is it guarantee to be the latest?
+	last_instruction = g.confirmed_plans.frames(:confirmed_plan_id.gt =>0).instructions.last(:player_id => ins.player_id)
+	if last_instruction&&!last_instruction.equals(ins)
+		ins.save
+		puts "instruction not same, saved <-------------------------" 
+	elsif !last_instruction
+		puts "first plan, saved < -------------------------------"
+		ins.save
+	else 
+		f.instructions.delete(ins)
+		puts "same instruction abort <-----------------------------"
+	end 
+
+ end 
+
  def processResponse(game_id,res) 
-	puts "get data " 
-	puts res
 	begin
 		resJson = JSON.parse(res) 
 	rescue 
@@ -216,36 +281,44 @@ end
 		puts "error no plan attribute"
 		return	
 	end	
-	resJson["plan"].each  do |frame| 
-	    new_frame = p.frames.create(:count=> frame["time_frame"]) 	
-	    frame["players"].each do |player|
-			    puts "group is : " + player["group"].to_s 
-			    if player["task"] == -1 || player["group"] == nil  
-				player["group"] == "" 
-			    end 
 
-			    ins= new_frame.instructions.new(
+	resJson["plan"].each  do |frame| 
+		#alright, this will be a bit confusing. the required false for Old DM is not working , so confirmed_plan_id has to be set a value.
+		#since index in DB start from 1 anyway, why not use 0 instead of null? cool, done
+	    new_frame = p.frames.create(:count=> frame["time_frame"],:confirmed_plan_id => 0) 	
+	 
+	    frame["players"].each do |player|
+			puts "group is : " + player["group"].to_s 
+			if player["task"] == -1 || player["group"] == nil  
+				player["group"] == "" 
+			end 
+
+			ins= new_frame.instructions.new(
 				:group => player["group"].to_json,
 				:task_id => player["task"],
 				:player_id => player["id"],
 				:next_x => player["next_x"],
 				:next_y => player["next_y"],
 				:action => player["action"]
-				)	
-			    #compare the data
-			    #is it guarantee to be the latest?
-			    last_instruction = Instruction.last(:player_id => player["id"])
-			    if last_instruction&&!last_instruction.equals(ins)
+			)	
+
+			ins.save
+			#compare the data
+			#is it guarantee to be the latest?
+=begin
+			last_instruction = Instruction.last(:player_id => player["id"])
+			if last_instruction&&!last_instruction.equals(ins)
 				ins.save
 				puts "instruction not same, saved <-------------------------" 
-			    elsif !last_instruction
+			elsif !last_instruction
 				puts "first plan, saved < -------------------------------"
 				 ins.save
-			    else 
+			else 
 				new_frame.instructions.delete(ins)
 				puts "same instruction abort <-----------------------------"
-			    end 
-		    end 
+			end 
+=end
+		end 
 	end
 	
 	p.notifyPlayers socketIO

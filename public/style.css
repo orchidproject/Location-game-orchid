@@ -28,15 +28,14 @@ html, body {
 .card {
 	background-color: #FFFFFF;
 	margin: 1px;
-	box-shadow: 2px 2px 2px;
-	cursor: move;
+	box-shadow: 2px 2px 2px;	
 	position: relative;
+	cursor: move;
 }
 
 .card-fixed{
 	background-color: #FFFFFF;
 	margin: 1px;
-	cursor: move;
 	position: relative;
 	box-shadow: 0px 0px 0px !important;
 }
@@ -54,6 +53,7 @@ html, body {
 .task-card {
 	height: 71;
 	width:50;
+	
 }
 
 

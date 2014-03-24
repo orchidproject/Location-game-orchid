@@ -1,4 +1,4 @@
-class Plan
+class ConfirmedPlan
 
   include DataMapper::Resource
   property :id, Serial, :index => true

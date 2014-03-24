@@ -18,7 +18,7 @@
   	// Create the main map
   	map = new google.maps.Map(document.getElementById("map"), myOptions);
     GameMap.fitToRadius(<%= @game.radius %>);
-
+    G_getPixelFromMap(new google.maps.LatLng(52.954384, -1.191799));
 });
 
 
@@ -32,21 +32,24 @@
 			
 
       <div class="row ">
-          <div class="big-btn col-sm-4 ">
-          <div class="btn btn-sm btn-primary full-btn" ng-click="loadData()"> 
-            Confirm all
-          </div>
-          </div>
-          <div class="big-btn col-sm-4 ">
-          <div class="btn btn-sm btn-warning full-btn" ng-click="undoAll()"> 
+        <div class="big-btn col-sm-4 ">
+          <div class="btn btn-sm btn-primary full-btn" ng-click="getPlan()"> 
             Request replan
           </div>
+
         </div>
-         <div class="big-btn col-sm-4">
-          <div class="btn btn-sm btn-danger full-btn" ng-click="toggleEditMode()"> 
+        <div class="big-btn col-sm-4">
+          <div class="btn btn-sm btn-primary full-btn" ng-click="toggleEditMode()"> 
             {{edit_indicator}}
           </div>
         </div>
+          <div class="big-btn col-sm-4 ">
+          <div class="btn btn-sm btn-primary full-btn" ng-click="confirmAll()"> 
+            Confirm all
+          </div>
+          </div>
+          
+         
 
       </div>
       <div class="row " ng-show="editMode">
@@ -65,7 +68,7 @@
       </div>
 
 	<div class = "row"   >
-	<div  class="col-sm-6 drag-container" >
+	<div  class="col-sm-6 drag-container" ng-show="planPending" >
 
           <%= erb(:partialAssignmentList, :layout => false) %>
           <%= erb(:partialUnchangedList, :layout => false) %>
@@ -82,7 +85,10 @@
           </div>
           <!-- new indicator end -->
           <%= erb(:partialIdlePlayerList, :layout => false) %>
-                  </div>
+  </div>
+  <div  class="col-sm-6 drag-container" ng-show="!planPending" >
+    <!-- place holder -->
+  </div>
 	
        <%= erb(:partialPreviousList, :layout => false) %>
        <div class="bottom-right" style="background-color:white">
@@ -116,9 +122,7 @@
               <img ng-src = "{{getTaskIcon(t.id)}}" /> 
               <span ng-show="editMode" class="glyphicon glyphicon-move corner"></span> {{t.id}}
             </div>
-  <div class = " transparent-5 col-sm-1 card-fixed task-card">
-              <img src = "/img/task_icon2.png" /> 
-            </div>
+  
 
           </div>
 	  

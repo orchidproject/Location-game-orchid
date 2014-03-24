@@ -12,6 +12,7 @@
 	
 
   	<% if request.path =~ /\/game\// || request.path =~ /\/replay2\// %>
+  		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script> SOCKET_IO_ADDRESS = "<%= @socket_io_url %>";</script>
 		<script> GAME_ID = "<%= @game.layer_id %>";</script>
 		
@@ -71,5 +72,7 @@
   </head>
   <body ng-app = "AtomicOrchidJs">
     <%= yield %>
+
   </body>
+
 </html>
