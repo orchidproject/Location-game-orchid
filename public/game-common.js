@@ -284,11 +284,11 @@ function receivePlayerData(data) {
 			p.marker.setIcon(markerIcon);
 		}
 
-		if(replay){ 
+		//if(replay){ 
 			if(p.instruction!=null){
 				drawInstruction(p.id,p.instruction.task);
 			}	
-		}
+		//}
 	}	
 		
 }

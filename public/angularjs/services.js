@@ -64,6 +64,8 @@ app.factory("httpService",function($http){
         
         	if(typeof data.player != "undefined"){
                 receivePlayerInfoData(data.player);
+                aHandlePlayerInfoData(data.player);
+
                 service.callback();
         	}
         
@@ -80,6 +82,14 @@ app.factory("httpService",function($http){
        		}
        		service.callback();
     	});
+	}
+
+	var aHandlePlayerInfoData = function(data){
+		alert(JSON.stringify(data));
+		//assign to players 
+		data.skill_id = dataService.role_string.indexOf(data.skill);
+		data.health = 100;
+		dataService.players.push(data);
 	}
 
 	var aHandleLocationData = function(data){

@@ -12,7 +12,7 @@ var events = require('events');
 var RUBY_PORT = 49992;
 var game_id=process.argv[2];
 
-var Helper = require('./agent_helper');
+var Helper = require('../agent_helper');
 var helper = new Helper(game_id);
 // get a socket io connection to server
 var socket = helper.getSocket();
@@ -36,12 +36,12 @@ function setHandler(){
 
     //act on events
     socket.on('data', function(data) {
-        if(typeof data.system != "undefined"){
+        /*if(typeof data.system != "undefined"){
             if(data.system == "end"){
                 game_playing=false;
                 clearInterval(truckUpdateID);
             }
-        }
+        }*/
         
         if(typeof data.player != "undefined"){
             //receivePlayerData(data.player);

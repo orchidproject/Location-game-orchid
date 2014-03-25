@@ -29,10 +29,10 @@ Helper.prototype.getSocket = function(){
     
 
         so.on('data', function(data) {
-            console.log(data);
+            //console.log(data);
         });
         
-        console.log(this.game_id);
+        //console.log(this.game_id);
     }
     
     return so;
