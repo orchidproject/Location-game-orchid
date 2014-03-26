@@ -286,4 +286,18 @@ class Controller < Sinatra::Base
 	end 
 
   end 
+
+
+  def cell_to_coords(x,y,game)
+	$simulations[game.layer_id] ||= Simulation.new("./cloud/"+game.simulation_file, 
+        game.sim_lat, 
+        game.sim_lng, 
+        game.grid_size, 
+        Time.now, 
+        game.sim_update_interval)
+	sim = $simulations[game.layer_id]	
+	return sim.getCoordsFromGrid(x,y)
+end 
+
+
 end

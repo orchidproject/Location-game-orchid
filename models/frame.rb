@@ -7,7 +7,7 @@ class Frame
   property :count, Integer 
   belongs_to :plan   
   #required do not work, this is a bug in old DM 
-  belongs_to :confirmedPlan , :required => false
+  belongs_to :confirmed_plan , :required => false
 
   has n, :instructions
 

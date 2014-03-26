@@ -14,6 +14,7 @@ class Instruction
   property :next_x, Integer
   property :next_y, Integer
   property :action, String
+  property :path, String, :length => 5000
   property :status, Integer, :default=>1 
   #1 idle, 2 rejected, 3 accept
   before :save do

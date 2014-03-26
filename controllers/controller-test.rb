@@ -225,7 +225,8 @@ end
 			:player_id => assignment["player1"],
 			:next_x => -1 ,
 			:next_y => -1 ,
-			:action => "go"
+			:action => "go",
+			:path => assignment["path1"] == nil ? nil : assignment["path1"].to_json
 		)
 
 		ins2= new_frame.instructions.new(
@@ -234,7 +235,8 @@ end
 			:player_id => assignment["player2"],
 			:next_x => -1 ,
 			:next_y => -1 ,
-			:action => "go"
+			:action => "go",
+			:path => assignment["path2"] == nil ? nil : assignment["path2"].to_json
 		)	
 		compareInstructions g, new_frame, ins1
 		compareInstructions g, new_frame, ins2
@@ -270,8 +272,8 @@ end
 		return
 	end
 
-
-	p = Game.get(game_id).plans.create 
+	g = Game.get(game_id)
+	p = g.plans.create 
 	if(resJson["status"] == "error" )
 		 puts resJson["message"]
 		 return
@@ -292,6 +294,20 @@ end
 			if player["task"] == -1 || player["group"] == nil  
 				player["group"] == "" 
 			end 
+			puts player.to_json 
+
+			coord_path = [] 
+			if player["path"] != nil 
+				player["path"].each do |point|
+					coord_path << cell_to_coords(point[0],point[1],g)
+				end 
+			end
+
+			#add task location anyway
+			if player["task"] != -1
+				t = Task.get(player["task"])
+				coord_path << {:lat => t.latitude,:lng => t.longitude}
+			end
 
 			ins= new_frame.instructions.new(
 				:group => player["group"].to_json,
@@ -299,7 +315,8 @@ end
 				:player_id => player["id"],
 				:next_x => player["next_x"],
 				:next_y => player["next_y"],
-				:action => player["action"]
+				:action => player["action"],
+				:path => coord_path.to_json #serialze it to json 
 			)	
 
 			ins.save
@@ -322,9 +339,11 @@ end
 	end
 	
 	p.notifyPlayers socketIO
+end 
 
 
- end 
+
+
 
  get '/test/task' do
 

@@ -23,8 +23,13 @@ Helper.prototype.getSocket = function(){
         });
         var so = this.socket;
         var game_id=this.game_id;
-        so.on('game', function(data) {
-            so.emit('game-join', game_id);
+       so.on('game', function(data) {
+            //debug
+            //alert("join " + $("#group_token").val());
+            //channel and id pair needed for hand shaking 
+            so.emit('game-join', {channel:game_id+"-1",id:-2});
+            so.emit('game-join', {channel:game_id+"-2",id:-2});
+            so.emit('game-join', {channel:game_id,id:-2});
         });
     
 

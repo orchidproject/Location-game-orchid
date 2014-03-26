@@ -1,7 +1,3 @@
-
-
-
-
 app.controller("AgentPanelCtrl", function($scope,httpService){
 	$scope.scripts = [];
 	$scope.selected_scripte = " ";
@@ -166,7 +162,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 			function(data){	
 				//alert("New plan delivered");	
 				//$scope.planPending = true;
-				alert("received plan: "+JSON.stringify(data.plan));		
+				alert("received plan: "+JSON.stringify(data));		
 				$scope.$apply();				
 			}				
 			,"json"

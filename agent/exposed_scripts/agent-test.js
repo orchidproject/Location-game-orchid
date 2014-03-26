@@ -35,13 +35,16 @@ var RUBY_ADDRESS = helper.ruby_address;
 var game_playing=false;
 var truckUpdateID;
 
+var handler_set = false;
 function setHandler(){
-
+    var test_count = 0;
+    if(!handler_set) { handler_set=true }else{ return; } 
     //act on events
     socket.on('data', function(data) {
        
         if(typeof data.instructions != "undefined"){
                revInstruction(data.instructions[0]);
+               console.log("test: "+test_count++);
         }
 
         if(typeof data.player != "undefined"){
@@ -72,9 +75,7 @@ function setHandler(){
                 //cleanup(data.cleanup);
         }
 
-        if(typeof data.instructions!= null != "undefined"){
-                //executePlan(meetup,path)
-        }
+        
     
     });
     
@@ -84,8 +85,12 @@ function setHandler(){
 //handlers
 var frame_id = -1;
 function revInstruction(data){
+    if(data.confirmed == 0) return ;
     //var path = ???
-    pick_up(data.player_id,data.teammate,path);
+    console.log(JSON.stringify(data));
+    //insert current location
+    data.path.unshift({lat:players[data.player_id].lat,lng:players[data.player_id].lng})
+    pickup(data.player_id,data.teammate,data.path);
 }
 
 var pid = null;
@@ -97,7 +102,10 @@ function mainloop(id){
     }, 500);
     
    
-
+    p.lat = 52.9521738;
+    p.lng = -1.1862338;
+    
+    /*
     var path = null;
     //setupMovement(id) ;  
      if(id%2 == 0){
@@ -121,7 +129,7 @@ function mainloop(id){
         pickup(id, id-1 , path);
     }
 
-    pid = id; 
+    pid = id; */
 }
 
 
@@ -149,6 +157,7 @@ function setupMovement(id,path){
             p.current_section=0;
             event.removeAllListeners('section-finish-'+id);
             event.emit('movement-finish-'+id);
+            console.log("movement finished");
             
         }
     });
@@ -159,7 +168,7 @@ function setupMovement(id,path){
 
 
 function updateTruckLocation(id){
-    //sync protection?
+    
     socket.emit('location-push',{"player_id":players[id].user_id,"latitude":players[id].lat,"longitude":players[id].lng,"skill":players[id].skill,"initials":players[id].initials});
     //if(id%2==0) {console.log(id + ":" + players[id].lat + "," + players[id].lng)};
 }
@@ -174,7 +183,7 @@ MoveEvent.prototype=new events.EventEmitter;
 var event= new MoveEvent;
 
 function moveTruck(ori,des,id){
-    var speed = 10; //5 m/s
+    var speed = 8; //5 m/s
     var p = players[id];
 
     //if(id%2==0) {console.log("from " +JSON.stringify(ori)+ " to " + JSON.stringify(des));}
@@ -218,9 +227,9 @@ function moveOneStep(lat,lng,id) {
         }    
 }
 
-function startAgents(){
+function startAgents(role){
     //join game
-    helper.join('agent','a@agent.com','truck',0,'AA', function(p){
+    helper.join('agent','a@agent.com','truck',role,'AA', function(p){
         if (p.user_id != null){
             //wait for starting signal 
             /*comnsole.log("wait for starting signal ");
@@ -236,8 +245,9 @@ function startAgents(){
         
             //initialize
             players[p.user_id] =  p;
+            p.previousMoveId = -1;
             //helper.player=p;
-            //setHandler();
+            setHandler();
             mainloop(p.user_id);
         }
         //console.log(p);
@@ -245,8 +255,46 @@ function startAgents(){
 }
 
 
-setTimeout(startAgents,1000);
-setTimeout(startAgents,2000);
+setTimeout(function(){
+    startAgents(0);
+},1000);
+
+
+
+setTimeout(function(){
+    startAgents(0);
+},2000);
+
+setTimeout(function(){
+    startAgents(1);
+},1000);
+
+
+
+setTimeout(function(){
+    startAgents(1);
+},2000);
+
+setTimeout(function(){
+    startAgents(2);
+},1000);
+
+
+
+setTimeout(function(){
+    startAgents(2);
+},2000);
+
+setTimeout(function(){
+    startAgents(3);
+},1000);
+
+
+
+setTimeout(function(){
+    startAgents(3);
+},2000);
+
 
 
 
@@ -276,6 +324,7 @@ function dropoff(id1,id2){
 
             var path1 = [{lat:p1.lat,lng:p1.lng},d];
             var path2 = [{lat:p2.lat,lng:p2.lng},d];
+
             setupMovement(id1,path1);
             setupMovement(id2,path2);
             console.log("begin drop off");

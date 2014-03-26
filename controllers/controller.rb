@@ -794,7 +794,6 @@ class Controller < Sinatra::Base
   post '/agent_utility/execute' do 
     
     data =JSON.parse(request.body.read)
-    puts "look at this !!!!!!!!!!!!!!!!!!! " + data["command"]
     system("node ./agent/exposed_scripts/" + data["command"] + " > ./agent/exposed_scripts/logs &")
   end
 end

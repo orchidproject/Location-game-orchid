@@ -63,10 +63,10 @@ app.factory("httpService",function($http){
         	}
         
         	if(typeof data.player != "undefined"){
-                receivePlayerInfoData(data.player);
+                //receivePlayerInfoData(data.player);
                 aHandlePlayerInfoData(data.player);
 
-                service.callback();
+                //service.callback();
         	}
         
         	if(typeof data.task != "undefined"){
@@ -74,8 +74,11 @@ app.factory("httpService",function($http){
         	}
 
     		if(typeof data.instructions != "undefined"){
-        		receiveInstructionDataV3(data.instructions[0]);
-        		aHandleInstructionData(data.instructions[0])
+    			if(data.instructions[0].confirmed == 1){
+        			receiveInstructionDataV3(data.instructions[0]);
+        		}else{
+        			aHandleInstructionData(data.instructions[0]);
+        		}
     		}
     		if(typeof data.debug != "undefined"){
         		alert(data.debug);
@@ -85,7 +88,7 @@ app.factory("httpService",function($http){
 	}
 
 	var aHandlePlayerInfoData = function(data){
-		alert(JSON.stringify(data));
+		//alert(JSON.stringify(data));
 		//assign to players 
 		data.skill_id = dataService.role_string.indexOf(data.skill);
 		data.health = 100;
@@ -124,12 +127,14 @@ app.factory("httpService",function($http){
 					id2:-1, 
 					player1:data.player_id, 
 					player2:-1,
-					task_id : data.task
+					task_id : data.task,
+					path1: data.path
 				});
 			}
 			else{
 				assignment.player2 = data.player_id;
 				assignment.id2 = data.id;
+				assignment.path2 = data.path;
 			}
 		}
 		

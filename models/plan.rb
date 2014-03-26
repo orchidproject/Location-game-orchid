@@ -16,6 +16,12 @@ class Plan
 
   count =0 
 	first_frame.instructions.each do |instruction|	
+    path = nil
+    if instruction.path != nil
+      path = JSON.parse(instruction.path)
+    else
+      path = []
+    end
 
 		io.broadcast( 
           { 
@@ -27,11 +33,12 @@ class Plan
                                 :task=> instruction.task_id, 
 				                        :direction=> instruction.action,
 				                        :status => instruction.status,
-			
+			                          :path => path,
 				                        :id => instruction.id,
 				                        :player_id => instruction.player_id,
                                 :frame_id => instruction.frame.id,
-                                :frame_size => first_frame.instructions.size
+                                :frame_size => first_frame.instructions.size,
+                                :confirmed => 0
                             }]
                   }
               }.to_json) 

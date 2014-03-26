@@ -16,6 +16,12 @@ class ConfirmedPlan
 
   count =0 
 	first_frame.instructions.each do |instruction|	
+    path = nil
+    if instruction.path != nil
+      path = JSON.parse(instruction.path)
+    else
+      path = []
+    end
 
 		io.broadcast( 
           { 
@@ -31,7 +37,10 @@ class ConfirmedPlan
 				                        :id => instruction.id,
 				                        :player_id => instruction.player_id,
                                 :frame_id => instruction.frame.id,
-                                :frame_size => first_frame.instructions.size
+                                :frame_size => first_frame.instructions.size,
+                                :path => path,
+                                #to indentify whether it is confirmed
+                                :confirmed => 1
                             }]
                   }
               }.to_json) 
