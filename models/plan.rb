@@ -17,7 +17,8 @@ class Plan
   count =0 
 	first_frame.instructions.each do |instruction|	
     path = nil
-    if instruction.path != nil
+    if instruction.path != nil && instruction.path != "null"
+      puts instruction.path + "hehehehehe"
       path = JSON.parse(instruction.path)
     else
       path = []

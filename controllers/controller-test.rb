@@ -47,6 +47,8 @@ class Controller < Sinatra::Base
  end 
 
 post '/test/:game_id/:frame/fetchplan' do
+	
+
 	#the final test 
 	if($simulations[params[:game_id].to_i]!=nil )
 		frame =	$simulations[params[:game_id].to_i].getTimeIndex(Time.now)
@@ -58,6 +60,8 @@ post '/test/:game_id/:frame/fetchplan' do
 	time1 = Time.now	
 	@agent = PlanHandler.instances(params[:game_id].to_i)	
 	data = agentSnapshot(params[:game_id],frame,"fetch")
+	keeps = JSON.parse(request.body.read)
+	data = keepAssignments(data,keeps)
 	
 	#append reject info 
 	#data["rejections"] = JSON.parse(params[:rejections]) 	
@@ -67,11 +71,43 @@ post '/test/:game_id/:frame/fetchplan' do
 
 
 	#------------------------processing-------------------------
-	processResponse(params[:game_id], res)	
+	processResponse(params[:game_id], res , keeps)	
 
 	#parse json
 	{:sent=> data, :plan => JSON.parse(res)}.to_json
 
+ end 
+
+ def keepAssignments(data,keeps)
+ 	#two nested loops
+ 	keeps.each do |a|
+ 		if a["keep"] == true 
+ 			puts "yes"
+ 			task = nil
+ 			data[:state][:tasks].each do |t|
+ 				if t[:id] == a["task_id"]
+ 					t["status"] = 2 
+ 					task = t
+ 				end
+ 			end 
+
+ 			to_delete = []
+ 			data[:state][:players].each do |p|
+ 				if p[:id] == a["player1"] or p[:id] == a["player2"]
+ 					to_delete << p
+ 					#p[:task] = a["task_id"] 
+ 					#p["x"] = task["x"]
+ 					#p["y"] = task["y"]
+ 				end
+ 			end
+
+ 			to_delete.each do |d|
+ 				data[:state][:players].delete(d)
+ 			end
+ 		end
+ 	end 
+
+ 	return data
  end 
 
  post '/game/:game_id/confirm_plan' do 
@@ -79,7 +115,7 @@ post '/test/:game_id/:frame/fetchplan' do
  	#compare before and after
  	#stream changed part
  	data = request.body.read
- 	puts data.to_json
+ 
  	processConfirmedResponse(params[:game_id],data)
 
  end 
@@ -213,12 +249,34 @@ end
 		puts "plan pause error"
 		return
 	end
+
 	g = Game.get(game_id)
 	p = g.confirmed_plans.create 
+
 	#plan_id is for get around the bug
 	puts resJson.to_json
 	new_frame = p.frames.create(:count=> -1,:plan_id => 0) 
+	occupied_players = []
+
 	resJson["plan"].each  do |assignment| 
+		#add task location anyway
+		path1 = assignment["path1"]
+		path2 = assignment["path2"]
+		if assignment["task_id"] != -1
+			t = Task.get(assignment["task_id"])
+			if path1!=nil 
+				path1 << {:lat => t.latitude,:lng => t.longitude}
+			else 
+				path1 = [{:lat => t.latitude,:lng => t.longitude}]
+			end
+
+			if path2!=nil
+				path2 << {:lat => t.latitude,:lng => t.longitude}
+			else
+				path2 = [{:lat => t.latitude,:lng => t.longitude}]
+			end
+		end
+
 		ins1= new_frame.instructions.new(
 			:group => [assignment["player1"], assignment["player2"]].to_json,
 			:task_id => assignment["task_id"],
@@ -226,7 +284,7 @@ end
 			:next_x => -1 ,
 			:next_y => -1 ,
 			:action => "go",
-			:path => assignment["path1"] == nil ? nil : assignment["path1"].to_json
+			:path => path1 == nil ? nil : path1.to_json
 		)
 
 		ins2= new_frame.instructions.new(
@@ -236,14 +294,35 @@ end
 			:next_x => -1 ,
 			:next_y => -1 ,
 			:action => "go",
-			:path => assignment["path2"] == nil ? nil : assignment["path2"].to_json
-		)	
+			:path => path2 == nil ? nil : path2.to_json
+		)
+
+		occupied_players << assignment["player1"]
+		occupied_players << assignment["player2"]
+
 		compareInstructions g, new_frame, ins1
 		compareInstructions g, new_frame, ins2
 	end
 
-	p.notifyPlayers socketIO
+	#after the loop, find out idle player
+	idle_players = g.players.all(:id.not => occupied_players)
 
+	idle_players.each do |i|
+		ins = new_frame.instructions.new(
+			:group => [],
+			:task_id => -1,
+			:player_id => i.id,
+			:next_x => -1 ,
+			:next_y => -1 ,
+			:action => "stop",
+			:path => [].to_json
+		)
+		compareInstructions g, new_frame, ins
+	end
+
+
+	p.notifyPlayers socketIO
+	"updated"
  end 
 
  def compareInstructions(g,f,ins)
@@ -264,7 +343,7 @@ end
 
  end 
 
- def processResponse(game_id,res) 
+ def processResponse(game_id,res,keeps) 
 	begin
 		resJson = JSON.parse(res) 
 	rescue 
@@ -304,10 +383,10 @@ end
 			end
 
 			#add task location anyway
-			if player["task"] != -1
-				t = Task.get(player["task"])
-				coord_path << {:lat => t.latitude,:lng => t.longitude}
-			end
+			#if player["task"] != -1
+				#t = Task.get(player["task"])
+				#coord_path << {:lat => t.latitude,:lng => t.longitude}
+			#end
 
 			ins= new_frame.instructions.new(
 				:group => player["group"].to_json,
@@ -335,6 +414,35 @@ end
 				puts "same instruction abort <-----------------------------"
 			end 
 =end
+			keeps.each do |a|
+				if(a["keep"] == true)
+				ins= new_frame.instructions.new(
+					:group => [a["player1"],a["player2"]].to_json,
+					:task_id => a["task_id"],
+					:player_id => a["player1"],
+					:next_x => 0,
+					:next_y => 0,
+					:action => "go",
+					:path => a["path1"].to_json #serialze it to json 
+				)	
+
+				ins.save
+
+				ins= new_frame.instructions.new(
+					:group => [a["player1"],a["player2"]].to_json,
+					:task_id => a["task_id"],
+					:player_id => a["player2"],
+					:next_x => 0,
+					:next_y => 0,
+					:action => "go",
+					:path => a["path2"].to_json #serialze it to json 
+				)	
+
+				ins.save
+				end
+			end
+
+
 		end 
 	end
 	
@@ -414,18 +522,21 @@ end
 	#data should be a ruby hash, comply to game state format
 	game= Game.get(game_id)
 
-	#TODO not creating new instance is not efficient
-	sim = Simulation.new("cloud/simulation_data_03.txt", 
-		game.sim_lat, 
-		game.sim_lng, 
-		8, 
-		Time.now, 
-		0.2)
 
+    $simulations[game.layer_id] ||= Simulation.new("./cloud/"+game.simulation_file, 
+        game.sim_lat, 
+        game.sim_lng, 
+        game.grid_size, 
+        Time.now, 
+        game.sim_update_interval)
 
- 
+	#if game not begin, time frame should be always be 0
+	if game.is_active == -1
+		$simulations[game.layer_id].resetStart(Time.now)
+	end
 
-	 
+	sim = $simulations[game.layer_id]
+
 
 	if action == "init"
 		data = snapshot(Game.get(game_id), false,"init")

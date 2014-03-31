@@ -15,6 +15,10 @@ app.factory("httpService",function($http){
 		confirmPlan: function(data){
 			$http.defaults.headers.post["Content-Type"] = "application/json";
 			return $http.post("/game/"+G_game_id+"/confirm_plan", data);
+		},
+		requestPlan: function(data){
+			//frame set to 0 , does not matter, if game has began, frame will be ignored
+			return $http.post("/test/" + G_game_id + "/" +  0 + "/fetchplan", data);
 		}
 
 	}
@@ -70,13 +74,18 @@ app.factory("httpService",function($http){
         	}
         
         	if(typeof data.task != "undefined"){
+        		aHandleTaskData(data.task);
                 receiveTaskData(data.task);              
+        	}
+
+        	if(typeof data["ack-instruction"] != "undefined"){
+        		aHandleAckData(data["ack-instruction"]);             
         	}
 
     		if(typeof data.instructions != "undefined"){
     			if(data.instructions[0].confirmed == 1){
         			receiveInstructionDataV3(data.instructions[0]);
-        		}else{
+        		}else if(data.instructions[0].confirmed == 0){
         			aHandleInstructionData(data.instructions[0]);
         		}
     		}
@@ -87,12 +96,78 @@ app.factory("httpService",function($http){
     	});
 	}
 
+	var aHandleAckData = function(data){
+		//fine assume they have player_id
+		var a = dataService.getPreAssignmentByPlayerId(data.player_id);
+		if(a.player1 == data.player_id){
+			a.response1 = (data.status == 2)? "accept": "reject" ;
+		}
+		else if(a.player2 == data.player_id){
+			a.response2 = (data.status == 2)? "accept": "reject" ;
+		}
+		if(a.response1 == "accept" && a.response2 == "accept"){
+			a.keep = true;
+		}
+		
+	}
+
+	var aHandleTaskData = function(data){
+		var t = dataService.getTaskById(data.id);
+
+		if(t!=null){
+			t.latitude = data.latitude;
+			t.longitude = data.longitude;
+			t.state = data.state;
+		//idle do noting
+		}
+
+
+		if(data.state == 1 ){//pick up
+			//updata status
+			var a = dataService.getPreAssignmentByTaskId(data.id);
+			if(data.players == "") { alert("data error"); return;}
+			var players = data.players.split(",");
+
+			if(a == null){
+				//unexpected, push it in array
+				dataService.previous_instructions.push({id:-1, task_id: data.id, player1: players[0], player2:players[1]});
+			}
+			else{
+				a.player1 = players[0];
+				a.player2 = players[1];
+			}
+			
+		}
+		else if(data.state == 2){//dropped off
+			//delete entry
+			var a = dataService.getPreAssignmentByTaskId(data.id);
+			if(a == null){
+				//already deleted
+				return;
+			}
+			else{
+				var index = dataService.previous_instructions.indexOf(a);
+				dataService.previous_instructions.splice(index,1);
+			}
+			
+			/*if(t!=null){
+				//remove it 
+				var index = dataService.tasks.indexOf(t);
+				dataService.tasks.splice(index,1);
+			}*/
+		}
+
+		
+	}
+
 	var aHandlePlayerInfoData = function(data){
 		//alert(JSON.stringify(data));
 		//assign to players 
-		data.skill_id = dataService.role_string.indexOf(data.skill);
-		data.health = 100;
-		dataService.players.push(data);
+		if(dataService.getPlayerById(data.id) == null){
+			data.skill_id = dataService.role_string.indexOf(data.skill);
+			data.health = 100;
+			dataService.players.push(data);
+		}
 	}
 
 	var aHandleLocationData = function(data){
@@ -270,7 +345,25 @@ app.factory("httpService",function($http){
 				if (d.id ==  task_id){ data = d; }
 			})
 			return data;
+		},
+
+		getPreAssignmentByTaskId: function(task_id){
+			var data = null;
+			$(this.previous_instructions).each(function(i,d){
+				if (d.task_id ==  task_id){ data = d; }
+			})
+			return data;
+		},
+
+		getPreAssignmentByPlayerId: function(pid){
+			var data = null;
+			$(this.previous_instructions).each(function(i,d){
+				if (d.player1 ==  pid || d.player2 ==  pid){ data = d; }
+			})
+			return data;
 		}
+
+
 	};
 
 

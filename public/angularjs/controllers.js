@@ -16,6 +16,8 @@ app.controller("AgentPanelCtrl", function($scope,httpService){
 	}
 })
 
+
+
 app.controller("testPanelCtrl", function($scope,httpService){
 	$scope.frame = 0;
 
@@ -28,11 +30,12 @@ app.controller("testPanelCtrl", function($scope,httpService){
 	}			
 	
 	$scope.getPlan = function(){
+
 		$.post("/test/" + G_game_id + "/" +  $scope.frame + "/fetchplan",
 			{},		
 			function(data){
 				//alert("data sent: " + JSON.stringify(data.sent));		
-				alert("received plan: "+JSON.stringify(data.plan));					
+				//alert("received plan: "+JSON.stringify(data.plan));					
 			}				
 			,"json"
 		);
@@ -50,7 +53,6 @@ app.controller("MsgCtrl",function($scope,dataService,sIOService){
 });
 
 //requester to socketIO Listen to all kinds of data 
-
 /*
 sIOService.pushListener("event", listener);
 
@@ -62,7 +64,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	$scope.editMode = false;
 	$scope.edit_indicator = "Edit";
 	$scope.planPending = false;
-	
+	$scope.fetching = false;
 
 	$scope.socketIO = sIOService;
 	$scope.assignments = dataService.instructions;
@@ -76,6 +78,10 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 			$scope.planPending = true;
 		}
 	});
+
+	$scope.rejected = function(a,b){
+		return (a==="reject"||b==="reject");
+	}
 
 	//watch the change in the data set
 	$scope.$watch(function(){ return dataService.instruction_frame.current_size}, function(newVal,oldVal){
@@ -110,10 +116,18 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		$( ".player-draggable" ).draggable("destroy");
 	}
 
+	$scope.allowConfirm = function(){
+		var allow = true;
+		$($scope.aCopy).each(function(i,d){
+			if(d.player1 == -1 || d.player2 == -1) { allow = false };
+		});
+
+		if(!$scope.planPending){ return false; }
+
+		return allow;
+	}
+
 	$scope.toggleEditMode = function(option){
-
-
-
 
 		if(option == false){
 			if(!$scope.editMode){return};
@@ -143,30 +157,73 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 
 	$scope.confirmAll = function(){
 		if($scope.aCopy.length == 0){return;}
-		alert(JSON.stringify($scope.aCopy));
+
+		//alert(JSON.stringify($scope.aCopy));
+		//numberising data
+		//must need to be number, otherwise there would be bug!!!! do not know why
+		$($scope.aCopy).each(function(i,d){
+			d.player1 = parseInt(d.player1);
+			d.player2 = parseInt(d.player2);
+		});
+		
+		$($scope.aCopy).each(function(i,d){
+			d.response1 = "no response";
+			d.response2 = "no response";
+			d.keep = false;
+		});
+
 		httpService.confirmPlan({"plan":$scope.aCopy});
 
+		//copy status
+		copyStatus($scope.aCopy,dataService.previous_instructions);
 		dataService.previous_instructions = $scope.aCopy;
+
 		$scope.prev_assignments = dataService.previous_instructions;
+
+
 		dataService.instructions = [];
+
+		//this is just a set of copy for undo
 		$scope.assignments = dataService.instructions;
+
+		//aCopy is for editing, will snyc with assignments, but should not be a pointer to same thing
 		$scope.aCopy = [];
 		$scope.planPending = false;
 		$scope.toggleEditMode(false);
 
 	}
 
+	var copyStatus =function(copyee,copyer){
+		$(copyee).each(function(i,c1){
+			$(copyer).each(function(i,c2){
+				if(compareAssignments(c1,c2)){
+					c1.response1 = c2.response1;
+					c1.response2 = c2.response2;
+					c1.keep = c2.keep;
+				}
+			});
+		});
+	}
+
 	$scope.getPlan = function(){
-		$.post("/test/" + G_game_id + "/" +  $scope.frame + "/fetchplan",
+		$scope.fetching = true;
+		/*$.post("/test/" + G_game_id + "/" +  $scope.frame + "/fetchplan",
 			{},		
 			function(data){	
 				//alert("New plan delivered");	
 				//$scope.planPending = true;
-				alert("received plan: "+JSON.stringify(data));		
+				//alert("received plan: "+JSON.stringify(data));
+				$scope.fetching = false;		
 				$scope.$apply();				
 			}				
 			,"json"
-		);
+		);*/
+		alert(JSON.stringify(dataService.previous_instructions));
+		httpService.requestPlan(dataService.previous_instructions).then(function(result){
+			$scope.fetching = false;		
+			$scope.$apply();
+			alert(JSON.stringify(result.data.sent));
+		});
 		
 	}
 
@@ -286,12 +343,15 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	}
 
 	$scope.filterUnassignedTasks = function(task){
+		if(task.state == 2) return false;
 		var data = null 
 		$($scope.aCopy).each(function(index,value){
 			if(value.task_id == task.id){
 				data = value;
 			}
 		});
+
+		
 		return  (data === null)? true:false;
 	}
 
@@ -549,8 +609,6 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		});
 		return found; 
 	}
-
-
 
 	$scope.unchanged = function(a){
 		return compareAssignments(a,$scope.prev_assignments);

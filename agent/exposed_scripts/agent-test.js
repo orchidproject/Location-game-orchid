@@ -43,7 +43,9 @@ function setHandler(){
     socket.on('data', function(data) {
        
         if(typeof data.instructions != "undefined"){
-               revInstruction(data.instructions[0]);
+               var data = considerInstruction(data.instructions[0]);
+               exeInstruction(data);
+
                console.log("test: "+test_count++);
         }
 
@@ -74,23 +76,65 @@ function setHandler(){
         if(typeof data.cleanup != "undefined"){
                 //cleanup(data.cleanup);
         }
-
-        
-    
     });
     
 }
 
 
+var rejections = {};
+function considerInstruction(data){
+    if(data.confirmed == 0) return data;
+    //if teammate have rejected it.
+    if(rejections[data.teammate] != null){
+        if(rejections[data.teammate]){
+            //reject it
+            data.task= -1;
+            socket.emit('ack-instruction',{id: data.id , status: 3, player_id:data.player_id});
+            delete rejections[data.teammate];
+            return data;
+        }else{
+            return data;
+        }
+    }
+
+    if(Math.random()*100<40){
+        //reject it
+        data.task = -1;
+        socket.emit('ack-instruction',{id: data.id , status: 3, player_id:data.player_id});
+        //let teammate know this
+        rejections[data.player_id] = true;
+        return data;
+    }
+
+    rejections[data.player_id] = false;
+    return data;
+}
+
+function clearMovement(id, tm){
+    if(players[id].previousMoveId != -1 ){
+        clearInterval(players[id].previousMoveId);
+        players[id].previousMoveId = -1;
+    } 
+    event.removeAllListeners("section-finish-"+ id);
+    event.removeAllListeners("movement-finish-"+ tm);
+}
+
 //handlers
 var frame_id = -1;
-function revInstruction(data){
+function exeInstruction(data){
     if(data.confirmed == 0) return ;
+    console.log("instruction: "+ JSON.stringify(data));
+    clearMovement(data.player_id,data.teammate);
+    if(data.task == -1) return;
+
     //var path = ???
     console.log(JSON.stringify(data));
     //insert current location
     data.path.unshift({lat:players[data.player_id].lat,lng:players[data.player_id].lng})
     pickup(data.player_id,data.teammate,data.path);
+
+    //accept
+    socket.emit('ack-instruction',{id: data.id , status: 2, player_id:data.player_id});
 }
 
 var pid = null;
@@ -227,9 +271,9 @@ function moveOneStep(lat,lng,id) {
         }    
 }
 
-function startAgents(role){
+function startAgents(role,initials){
     //join game
-    helper.join('agent','a@agent.com','truck',role,'AA', function(p){
+    helper.join('agent','a@agent.com','truck',role,initials, function(p){
         if (p.user_id != null){
             //wait for starting signal 
             /*comnsole.log("wait for starting signal ");
@@ -256,54 +300,54 @@ function startAgents(role){
 
 
 setTimeout(function(){
-    startAgents(0);
+    startAgents(0,'AA');
 },1000);
 
 
 
 setTimeout(function(){
-    startAgents(0);
+    startAgents(0,'BB');
 },2000);
 
 setTimeout(function(){
-    startAgents(1);
+    startAgents(1,'CC');
 },1000);
 
 
 
 setTimeout(function(){
-    startAgents(1);
+    startAgents(1,'DD');
 },2000);
 
 setTimeout(function(){
-    startAgents(2);
+    startAgents(2,'EE');
 },1000);
 
 
 
 setTimeout(function(){
-    startAgents(2);
+    startAgents(2,'FF');
 },2000);
 
 setTimeout(function(){
-    startAgents(3);
+    startAgents(3,'GG');
 },1000);
 
 
 
 setTimeout(function(){
-    startAgents(3);
+    startAgents(3,'HH');
 },2000);
 
 
 
 
 function pickup(id1,id2,path){
-
+    console.log("begin drop off "+ id1 + " : " + id2) //" path " + JSON.stringify(path1) + ":" + JSON.stringify(path2));
     event.once('movement-finish-'+id2, function(){
         if(players[id1].previousMoveId == -1){
             dropoff(id1,id2);
-
+            console.log(id2 + " wait for " + id1)
         }
     });
 
@@ -327,7 +371,8 @@ function dropoff(id1,id2){
 
             setupMovement(id1,path1);
             setupMovement(id2,path2);
-            console.log("begin drop off");
+
+            console.log("begin drop off "+ id1 + " : " + id2 + " path " + JSON.stringify(path1) + ":" + JSON.stringify(path2));
             
         });
     });

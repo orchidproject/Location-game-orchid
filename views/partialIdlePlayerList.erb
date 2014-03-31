@@ -1,16 +1,16 @@
- <div class="row">
+          <div class="row " ng-show="editMode"  >
               <div class="well well-sm ">Unassigned players</div>
           </div>
 
 
-          <div class="row">
+          <div class="row" ng-show="editMode">
           <!-- the idle tasks -->
           <div class="col-sm-3" style="width:60;position:relative">
             
           </div> 
           <!-- the idle tasks end-->
           <!-- idle player list -->
-          <div class="col-sm-6" style="margin-left:2" >
+          <div class="col-sm-6 " style="margin-left:2" >
               <div 
                ng-show="editMode" class = "card-fixed player-card player-draggable player-droppable transparent-5"  
               >

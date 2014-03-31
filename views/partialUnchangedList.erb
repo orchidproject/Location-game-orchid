@@ -1,6 +1,6 @@
 
           <!-- assignment list -->
-          <div class="row transparent-5" ng-repeat = "a in aCopy | filter: unchanged"   >
+          <div class="row" ng-repeat = "a in aCopy | filter: unchanged" ng-show="editMode"  >
             <div class="col-sm-3 task-card task-draggable" 
             ng-show="taskExist(a)" 
             taskId = "{{a.task_id}}" 

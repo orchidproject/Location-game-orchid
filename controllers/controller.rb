@@ -682,7 +682,7 @@ class Controller < Sinatra::Base
 	#Wollaton Park 52.9491938, -1.2144399
 	#North of Jubilee campus 52.956046,-1.18878
 		
-        $simulations[game.layer_id] ||= Simulation.new("./cloud/"+game.simulation_file, 
+        $simulations[game.layer_id] = Simulation.new("./cloud/"+game.simulation_file, 
         game.sim_lat, 
         game.sim_lng, 
         game.grid_size, 

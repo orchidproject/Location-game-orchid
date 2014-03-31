@@ -138,6 +138,7 @@ class Controller < Sinatra::Base
 
     #sperating game instances
     $simulations=[]
+    $simulation_utility=[]
     $mainloops=[]
     $game_area_top_left=[]
     

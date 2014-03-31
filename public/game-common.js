@@ -40,8 +40,6 @@ var cg = {
 	
 };
 
-
-
 function getPlayerIcon(initials, skill) {
 
     var icon = cg.playerImage(initials,skill);
@@ -164,24 +162,24 @@ function receiveTaskData(task){
 		if(test!=null&&test){
 			drag=test;
 		}	
-    		var marker = new google.maps.Marker({
+    	var marker = new google.maps.Marker({
                 	position: point,
                 	map: map,
                 	icon: taskIcon,
-			draggable:drag
-        	});
+					draggable:drag
+        });
         
-        	var the_task={id:task.id,state: task.state, marker:marker};
+        var the_task={id:task.id,state: task.state, marker:marker};
         
         	tasks.push(the_task);
-		if(test!=null&&test){
+			if(test!=null&&test){
 			//setupTaskTest(the_task);
-		}
-        }
-        else{
+			}
+    }
+    else{
         	var new_postion = new google.maps.LatLng(task.latitude,task.longitude);
         	existing_task.marker.setPosition(new_postion);
-		existing_task.state = task.state;
+			
         	
         	if (task.state==2){
 				var taskIcon=new google.maps.MarkerImage(
@@ -191,16 +189,22 @@ function receiveTaskData(task){
 					playerIconAnchor
 				);
 				existing_task.marker.setIcon(taskIcon);
-		}
+				if(existing_task.state!=2){
+					setTimeout(function(){
+						existing_task.marker.setMap(null);
+					},5000);
+				}
+			}
 
-	        else if(task.state != 2 && ((test!=null&&test)||(replay!=null&&replay))){
-			var taskIcon= getTaskIcon(task.type,task.id);
-			existing_task.marker.setIcon(taskIcon); 
-		}
+	        else if(task.state != 2){
+				var taskIcon= getTaskIcon(task.type,task.id);
+				existing_task.marker.setIcon(taskIcon); 
+			}
+
+			existing_task.state = task.state;
 
         }
-        
-       
+           
         //handle task status
         handleTaskStatus(task);
        
@@ -427,3 +431,19 @@ var G_d3HighLight = function(a,b){
 	.each("end",function(){ d3.select("#fsvg-"+c).remove();} );
 
 }
+
+
+setInterval(function(){
+				
+	d3.selectAll(".flickable").attr("style", "opacity:1")
+	.transition().duration(500).attr("style", "opacity:0.5")
+	.transition().duration(500).attr("style", "opacity:1");
+},1000);
+
+setInterval(function(){
+				
+	d3.selectAll(".attention").attr("style", "background-color: white")
+	.transition().duration(500).attr("style", "background-color: red")
+	.transition().duration(500).attr("style", "background-color: white");
+
+},1000);

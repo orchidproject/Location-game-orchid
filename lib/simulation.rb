@@ -22,6 +22,7 @@ class Simulation
 
   attr_reader :x_size
   attr_reader :y_size	
+
   def initialize(filename, lat_top_left, long_top_left, grid_size_in_meters, start_time, time_interval_in_minutes)
           
     f = File.open(filename)
@@ -55,8 +56,13 @@ class Simulation
     } 
 		
   end
+  
+  def resetStart(start_time)
+     @start_time = start_time
+
+  end 
 	
-    def isOnMap(lat, long)
+  def isOnMap(lat, long)
         x = getXIndex(long)
         y = getYIndex(lat)
         if (x < 0) | (x > @x_size-1) | (y < 0) | (y > @y_size-1)

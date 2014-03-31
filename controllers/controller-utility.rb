@@ -29,7 +29,7 @@ class Controller < Sinatra::Base
 	} 
 	
 	ins = Instruction.last(:player_id => p.id)
-	if(ins)
+		if(ins)
 		instruction << {
 			:teammate=> ins.getTeammate,
 			:task=> ins.task_id, 
@@ -39,7 +39,7 @@ class Controller < Sinatra::Base
 			:id => ins.id,
 			:player_id => ins.player_id
 		 }
-	end	
+		end	
     end 
 
     game.tasks.each do |t|
@@ -63,7 +63,6 @@ class Controller < Sinatra::Base
 			end 
 
 			player.each do |p|		
-				puts p 
 				if p[:id] == pid.to_i
 					puts "got it !!!!!!"
 					p[:task] = t.id
@@ -192,20 +191,20 @@ class Controller < Sinatra::Base
 	
 	 
          
-         game.players.each do |p|
-	     instruction =  Instruction.last(:player_id => p.id, :status => 3)
-	     if(instruction != nil)
-		instruction.status=4
-		instruction.save
-		puts " instruction for " + p.id.to_s + " is rejected *********************************************************************************************" + instruction.id.to_s
-		updatePlan = true
-	     else
-		puts "no instruction *********************************************************************************************************"  
-	     end
+        game.players.each do |p|
+	    	instruction =  Instruction.last(:player_id => p.id, :status => 3)
+	    	if(instruction != nil)
+				instruction.status=4
+				instruction.save
+				puts " instruction for " + p.id.to_s + " is rejected *********************************************************************************************" + instruction.id.to_s
+				updatePlan = true
+	    	else
+				puts "no instruction *********************************************************************************************************"  
+	    	end
 
 
 
-             if (p.latitude == nil || p.longitude == nil)
+        if (p.latitude == nil || p.longitude == nil)
          	puts "no location for user #{p.id}"
          	next
              end 
@@ -233,7 +232,8 @@ class Controller < Sinatra::Base
 	 if(updateSession)
 		agentUpdateSession(game.layer_id,frame) 
 	 elsif(updatePlan)
-		agentFetchPlan(game.layer_id,frame) 
+	 	#commented out for human mediation
+		#agentFetchPlan(game.layer_id,frame)
 	 end
   end
   
@@ -295,6 +295,12 @@ class Controller < Sinatra::Base
         game.grid_size, 
         Time.now, 
         game.sim_update_interval)
+
+	#if game not begin, time frame should be always be 0
+	if game.is_active == -1
+		$simulations[game.layer_id].resetStart(Time.now)
+	end
+
 	sim = $simulations[game.layer_id]	
 	return sim.getCoordsFromGrid(x,y)
 end 
