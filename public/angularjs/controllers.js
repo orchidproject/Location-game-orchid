@@ -73,6 +73,15 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	$scope.aCopy = $.extend(true,[],$scope.assignments);
 	$scope.prev_assignments = dataService.previous_instructions;
 
+	//so bad, so bad
+	dataService.taskCallback = function(to_remove){   
+        $($scope.aCopy).each(function(i,d){
+        	if(compareAssignments(to_remove,d)){
+        		$scope.aCopy.splice($scope.aCopy.indexOf(d),1);
+        	}
+        });    
+    }
+
 	$scope.$watch(function(){ return dataService.instruction_frame.id; }, function(oldVal,newVal){
 		if(oldVal != newVal){
 			$scope.planPending = true;
@@ -88,7 +97,27 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		if(newVal == dataService.instruction_frame.size){
 			$scope.assignments = dataService.instructions;
 			$scope.aCopy = $.extend(true,[],$scope.assignments);
-			//console.log("data changed");
+			var all_same = true;
+
+			if(dataService.previous_instructions.length == 0 
+				&& scope.aCopy.length == 0) 
+			{alert("No more plans"); return;} ;
+
+			$($scope.aCopy).each(function(i,d1){
+				var same = false;
+				$(dataService.previous_instructions).each(function(i,d2){
+				 	if(compareAssignments(d1,d2)){
+				 		same = true;
+				 	}
+				});
+				if(!same){
+					all_same = false;
+				}
+			});
+
+			if(all_same){
+				alert("Plan unchanged, please click edit to edit manaually");
+			}
 		}
 	});
 
@@ -210,7 +239,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		/*$.post("/test/" + G_game_id + "/" +  $scope.frame + "/fetchplan",
 			{},		
 			function(data){	
-				//alert("New plan delivered");	
+				//("New plan delivered");	
 				//$scope.planPending = true;
 				//alert("received plan: "+JSON.stringify(data));
 				$scope.fetching = false;		
@@ -218,11 +247,11 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 			}				
 			,"json"
 		);*/
-		alert(JSON.stringify(dataService.previous_instructions));
+		//alert(JSON.stringify(dataService.previous_instructions));
 		httpService.requestPlan(dataService.previous_instructions).then(function(result){
 			$scope.fetching = false;		
 			$scope.$apply();
-			alert(JSON.stringify(result.data.sent));
+			//alert(JSON.stringify(result.data.sent));
 		});
 		
 	}

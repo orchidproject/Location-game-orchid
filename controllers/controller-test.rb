@@ -93,11 +93,10 @@ post '/test/:game_id/:frame/fetchplan' do
 
  			to_delete = []
  			data[:state][:players].each do |p|
- 				if p[:id] == a["player1"] or p[:id] == a["player2"]
+ 				puts "keep compare " + p[:id].to_s + " " + a["player1"].to_s + " " + a["player2"].to_s
+ 				if p[:id].to_i == a["player1"].to_i or p[:id] == a["player2"].to_i
+ 					puts "keep compare marched"
  					to_delete << p
- 					#p[:task] = a["task_id"] 
- 					#p["x"] = task["x"]
- 					#p["y"] = task["y"]
  				end
  			end
 

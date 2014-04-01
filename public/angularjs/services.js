@@ -147,7 +147,9 @@ app.factory("httpService",function($http){
 			}
 			else{
 				var index = dataService.previous_instructions.indexOf(a);
+				dataService.taskCallback(a);
 				dataService.previous_instructions.splice(index,1);
+				//delete data in aCopy
 			}
 			
 			/*if(t!=null){
@@ -361,8 +363,8 @@ app.factory("httpService",function($http){
 				if (d.player1 ==  pid || d.player2 ==  pid){ data = d; }
 			})
 			return data;
-		}
-
+		},
+		taskCallback: null
 
 	};
 

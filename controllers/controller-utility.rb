@@ -271,18 +271,18 @@ class Controller < Sinatra::Base
 
 
   def agentFetchPlan(game_id,frame)
-	agent = PlanHandler.instances(game_id)
-	data = agentSnapshot(game_id,frame,"fetch")
-	agent.pushFetchTask(data.to_json) do |res|
-		processResponse(game_id,res)		
-	end 
+	#agent = PlanHandler.instances(game_id)
+	#data = agentSnapshot(game_id,frame,"fetch")
+	#agent.pushFetchTask(data.to_json) do |res|
+		#processResponse(game_id,res,[])		
+	#end 
   end
 
   def agentUpdateSession(game_id, frame)
 	agent = PlanHandler.instances(game_id)
 	data = agentSnapshot(game_id,frame,"update")
 	agent.pushUpdateTask(data.to_json)	do |res|
-		agentFetchPlan(game_id, frame) 
+		#agentFetchPlan(game_id, frame) 
 	end 
 
   end 

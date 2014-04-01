@@ -8,6 +8,8 @@ it moves an agent along a fix route
 
 */
 
+
+
 var events = require('events');
 var RUBY_PORT = 49992;
 var game_id=process.argv[2];
@@ -82,8 +84,19 @@ function setHandler(){
 
 
 var rejections = {};
+var instruction_count = 0;
 function considerInstruction(data){
+
+
     if(data.confirmed == 0) return data;
+
+    var chance = 20;
+    console.log("count:" + instruction_count + " ratio:" + instruction_count/8);
+    if((instruction_count/8) < 1){ chance = 0}
+    else if((instruction_count/8) == 1){ chance = 100}
+    else if((instruction_count/8) < 2){ chance = 0};
+    instruction_count++;
+
     //if teammate have rejected it.
     if(rejections[data.teammate] != null){
         if(rejections[data.teammate]){
@@ -97,7 +110,7 @@ function considerInstruction(data){
         }
     }
 
-    if(Math.random()*100<40){
+    if(Math.random()*100<chance){
         //reject it
         data.task = -1;
         socket.emit('ack-instruction',{id: data.id , status: 3, player_id:data.player_id});
@@ -106,6 +119,7 @@ function considerInstruction(data){
         return data;
     }
 
+    
     rejections[data.player_id] = false;
     return data;
 }
@@ -227,7 +241,7 @@ MoveEvent.prototype=new events.EventEmitter;
 var event= new MoveEvent;
 
 function moveTruck(ori,des,id){
-    var speed = 8; //5 m/s
+    var speed = 2; //1 m/s
     var p = players[id];
 
     //if(id%2==0) {console.log("from " +JSON.stringify(ori)+ " to " + JSON.stringify(des));}
