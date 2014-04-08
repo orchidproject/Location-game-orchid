@@ -241,7 +241,7 @@ MoveEvent.prototype=new events.EventEmitter;
 var event= new MoveEvent;
 
 function moveTruck(ori,des,id){
-    var speed = 2; //1 m/s
+    var speed = 3; //1 m/s
     var p = players[id];
 
     //if(id%2==0) {console.log("from " +JSON.stringify(ori)+ " to " + JSON.stringify(des));}

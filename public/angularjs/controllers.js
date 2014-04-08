@@ -1,3 +1,12 @@
+var messages = ["road blocked.",
+"unsafe structure. too dangerous",
+"too tired. need rest",
+"I cannot work with this guy",
+"Cannot find the target",
+"No visual. Can you confirm target exists."];
+var G_msg_player = -1;
+
+
 app.controller("AgentPanelCtrl", function($scope,httpService){
 	$scope.scripts = [];
 	$scope.selected_scripte = " ";
@@ -40,6 +49,8 @@ app.controller("testPanelCtrl", function($scope,httpService){
 			,"json"
 		);
 	}
+
+
 })
 
 app.controller("MsgCtrl",function($scope,dataService,sIOService){
@@ -49,7 +60,24 @@ app.controller("MsgCtrl",function($scope,dataService,sIOService){
 	}
 	sIOService.callback = function(){$scope.$apply()};
 	$scope.msg_field = "";
-	$scope.msgs = dataService.msgs;;
+	$scope.msgs = dataService.msgs;
+
+	var count = 0;
+	var senders = [];
+	sIOService.rejectionCallback = function(id){
+		senders.push(id);
+		$scope.msgs.push( {sender:id,msg: count + ":" + messages[(Math.floor(Math.random()*100))%6]});
+		count++;
+	}
+
+	$scope.filterMsg = function(data){
+		
+		if(G_msg_player == data.sender) {
+			return true;
+		}
+	}
+
+
 });
 
 //requester to socketIO Listen to all kinds of data 
@@ -73,6 +101,17 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	$scope.aCopy = $.extend(true,[],$scope.assignments);
 	$scope.prev_assignments = dataService.previous_instructions;
 
+	$scope.msgCount = function(id){
+		var count = 0;
+		$(dataService.msgs).each(function(i,d){
+			if(d.sender == id){
+				count ++ ;
+			}
+		});
+		return count;
+	};
+
+
 	//so bad, so bad
 	dataService.taskCallback = function(to_remove){   
         $($scope.aCopy).each(function(i,d){
@@ -80,6 +119,10 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
         		$scope.aCopy.splice($scope.aCopy.indexOf(d),1);
         	}
         });    
+    }
+
+    $scope.openMsg = function(id){
+    	G_msg_player = id;
     }
 
 	$scope.$watch(function(){ return dataService.instruction_frame.id; }, function(oldVal,newVal){
@@ -116,7 +159,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 			});
 
 			if(all_same){
-				alert("Plan unchanged, please click edit to edit manaually");
+				alert("No new task assignments for rejecting team. Press Edit to assign task manually.");
 			}
 		}
 	});

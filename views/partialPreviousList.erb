@@ -23,8 +23,8 @@
 								<img ng-src="{{getPlayerIcon(a.player1)}}" /> 
 
                  <div class = "health"><div style="height:{{getHealth(a.player1)}}"></div></div>
-								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal" >msg</div>
-                <span class="label label-default">0</span>
+								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal" ng-click = "openMsg(a.player1)">msg</div>
+                <span class="label label-default">{{msgCount(a.player1)}}</span>
 							</div >
 							<div class="card-fixed col-sm-4 player-card"   ng-class="{'attention':rejected(a.response1,a.response2)}">
 								{{a.response1}}
@@ -37,8 +37,8 @@
                   >
 								<img ng-src="{{getPlayerIcon(a.player2)}}" /> 
                  <div class = "health"><div style="height:{{getHealth(a.player2)}}"></div></div>
-								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal">msg</div>
-                <span class="label label-default">0</span>
+								<div class="btn btn-primary btn-sm" data-toggle="modal" ng-click = "openMsg(a.player2)" data-target="#msgModal">msg</div>
+                <span class="label label-default">{{msgCount(a.player2)}}</span>
 							</div >
 
 							<div class="col-sm-4 card-fixed player-card"   ng-class="{'attention':rejected(a.response1,a.response2)}">
@@ -70,8 +70,8 @@
 								<img ng-src="{{getPlayerIcon(a.player1)}}" /> 
                
                  <div class = "health"><div style="height:{{getHealth(a.player1)}}"></div></div>
-								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal" >msg</div>
-                <span class="label label-default">0</span>
+								<div class="btn btn-primary btn-sm" data-toggle="modal" ng-click = "openMsg(a.player1)" data-target="#msgModal" >msg</div>
+                <span class="label label-default">{{msgCount(a.player1)}}</span>
 							</div >
 							<div class="col-sm-4 card-fixed player-card" ng-class="{'attention':rejected(a.response1,a.response2)}">
 								{{a.response1}}
@@ -84,8 +84,8 @@
                    >
 								<img ng-src="{{getPlayerIcon(a.player2)}}" /> 
                  <div class = "health"><div style="height:{{getHealth(a.player2)}}"></div></div>
-								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal">msg</div>
-                <span class="label label-default">0</span>
+								<div class="btn btn-primary btn-sm" data-toggle="modal" ng-click = "openMsg(a.player2)" data-target="#msgModal">msg</div>
+                <span class="label label-default">{{msgCount(a.player2)}}</span>
 							</div >
 							<div class="col-sm-4 card-fixed player-card" ng-class="{'attention':rejected(a.response1,a.response2)}">
 								{{a.response2}}
@@ -115,8 +115,8 @@
               ng-mouseover="focus(0-p.id-1)">
                 <img ng-src = "{{getPlayerIcon(p.id)}}" > 
                 <div class = "health"><div style="height:{{getHealth(p.id)}}"></div></div>
-                <div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal">msg</div>
-                <span class="label label-default">0</span>
+                <div class="btn btn-primary btn-sm" data-toggle="modal" ng-click = "openMsg(p.id)" data-target="#msgModal">msg</div>
+                <span class="label label-default">{{msgCount(p.id)}}</span>
               </div>
           </div>
           <!-- idle player list end -->

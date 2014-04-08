@@ -99,12 +99,17 @@ app.factory("httpService",function($http){
 	var aHandleAckData = function(data){
 		//fine assume they have player_id
 		var a = dataService.getPreAssignmentByPlayerId(data.player_id);
+
 		if(a.player1 == data.player_id){
 			a.response1 = (data.status == 2)? "accept": "reject" ;
+			if(data.status != 2&&service.rejectionCallback != null) service.rejectionCallback(a.player1);
 		}
 		else if(a.player2 == data.player_id){
 			a.response2 = (data.status == 2)? "accept": "reject" ;
+			if(data.status != 2&&service.rejectionCallback != null) service.rejectionCallback(a.player2);
 		}
+
+
 		if(a.response1 == "accept" && a.response2 == "accept"){
 			a.keep = true;
 		}
@@ -258,7 +263,8 @@ app.factory("httpService",function($http){
 		callback: function(){},
 		sendMsg: function(data){
 			socket.emit("message",{"content":data,"timeStamp":Math.floor((new Date().getTime())/1000), "player_id":-1, "player_initials":"HQ", "skill":null});
-		}
+		},
+		rejectionCallback: null
 	}
 	
 	return service;
