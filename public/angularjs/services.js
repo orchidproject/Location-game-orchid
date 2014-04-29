@@ -99,7 +99,7 @@ app.factory("httpService",function($http){
 	var aHandleAckData = function(data){
 		//fine assume they have player_id
 		var a = dataService.getPreAssignmentByPlayerId(data.player_id);
-
+		if(a==null) return;
 		if(a.player1 == data.player_id){
 			a.response1 = (data.status == 2)? "accept": "reject" ;
 			if(data.status != 2&&service.rejectionCallback != null) service.rejectionCallback(a.player1);

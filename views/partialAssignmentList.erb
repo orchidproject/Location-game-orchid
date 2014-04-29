@@ -74,7 +74,7 @@
 
             <!-- buttons -->
             <div ng-show="editMode" class="col-sm-2 card task-card"> 
-              <div class = "col-sm-12 btn btn-primary btn-sm" ng-click = "confirmA()">
+              <div class = "col-sm-12 btn btn-primary btn-sm" ng-disabled="allowConfirmSingle(a)" ng-click = "confirmSingle(a)">
                 confirm
               </div>
               <div class = "col-sm-12 btn btn-default btn-sm" ng-click = "deleteA(a)">

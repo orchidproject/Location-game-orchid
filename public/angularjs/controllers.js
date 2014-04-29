@@ -143,7 +143,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 			var all_same = true;
 
 			if(dataService.previous_instructions.length == 0 
-				&& scope.aCopy.length == 0) 
+				&& $scope.aCopy.length == 0) 
 			{alert("No more plans"); return;} ;
 
 			$($scope.aCopy).each(function(i,d1){
@@ -227,7 +227,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		}
 	}
 
-	$scope.confirmAll = function(){
+	$scope.confirmAll = function(clear){
 		if($scope.aCopy.length == 0){return;}
 
 		//alert(JSON.stringify($scope.aCopy));
@@ -238,30 +238,35 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 			d.player2 = parseInt(d.player2);
 		});
 		
-		$($scope.aCopy).each(function(i,d){
+		
+
+		if(clear){
+			$($scope.aCopy).each(function(i,d){
 			d.response1 = "no response";
 			d.response2 = "no response";
 			d.keep = false;
-		});
+			});
 
-		httpService.confirmPlan({"plan":$scope.aCopy});
+			//copy status
+			copyStatus($scope.aCopy,dataService.previous_instructions);
+			dataService.previous_instructions = $scope.aCopy;
 
-		//copy status
-		copyStatus($scope.aCopy,dataService.previous_instructions);
-		dataService.previous_instructions = $scope.aCopy;
+			httpService.confirmPlan({"plan":dataService.previous_instructions});
 
-		$scope.prev_assignments = dataService.previous_instructions;
+			$scope.prev_assignments = dataService.previous_instructions;
+			
+			dataService.instructions = [];
+			//this is just a set of copy for undo
+			$scope.assignments = dataService.instructions;
 
-
-		dataService.instructions = [];
-
-		//this is just a set of copy for undo
-		$scope.assignments = dataService.instructions;
-
-		//aCopy is for editing, will snyc with assignments, but should not be a pointer to same thing
-		$scope.aCopy = [];
-		$scope.planPending = false;
-		$scope.toggleEditMode(false);
+			//aCopy is for editing, will snyc with assignments, but should not be a pointer to same thing
+			$scope.aCopy = [];
+			$scope.planPending = false;
+			$scope.toggleEditMode(false);
+		}
+		else{
+			httpService.confirmPlan({"plan":dataService.previous_instructions});
+		}
 
 	}
 
@@ -723,7 +728,58 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		var r2 = dataService.requirements[getById($scope.tasks,a.task_id).type][1];*/
 		//return {r1:dataService.role_string[r1],r2:dataService.role_string[r2]};
 	}
-	
+
+	var checkoutSingle = function(assignment){
+		var to_delete = [];
+		$($scope.prev_assignments).each(function(index,value){
+			if(value.task_id == assignment.task_id){
+				to_delete.push(value);
+			}
+
+			if(
+				value.player1 == assignment.player1 || 
+				value.player1 == assignment.player2 ||
+				value.player2 == assignment.player1 ||
+				value.player2 == assignment.player2 
+			){
+				to_delete.push(value);
+			}
+		});
+
+		$(to_delete).each(function(index,value){
+			var index = $scope.prev_assignments.indexOf(value);
+			$scope.prev_assignments.splice(index,1);
+		})
+
+		//make a copy
+		assignment.response1 = "no response";
+		assignment.response2 = "no response";
+		var new_assignment = JSON.parse(JSON.stringify(assignment));
+		
+		$scope.prev_assignments.push(new_assignment);
+
+	}
+
+	$scope.confirmSingle = function(assignment){
+		//checkout single 
+		checkoutSingle(assignment);
+		//confirm_all
+		$scope.confirmAll(false);
+	}
+
+	$scope.emergencyStop = function(a){
+		var index = $scope.prev_assignments.indexOf(a);
+		$scope.prev_assignments.splice(index,1);
+		$scope.confirmAll(false);
+	}
+
+	$scope.allowConfirmSingle = function(a){
+		if(a.task!=-1 && a.player1 != -1 && a.player2!= -1){
+			return false;
+		}
+		return true;
+	}
+
 });
 
 
