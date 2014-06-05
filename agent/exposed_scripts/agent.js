@@ -6,9 +6,13 @@ node agent.js [game_id]
 
 it moves an agent along a fix route
 
-*/
+*/ 
 
-
+//record the pid of the agent script so that it can be killed
+var fs = require('fs');
+var f = fs.createWriteStream("./agent/pids.txt", {flags:"a"});
+f.write(process.pid + ",");
+f.end();
 
 var events = require('events');
 var RUBY_PORT = 49992;
