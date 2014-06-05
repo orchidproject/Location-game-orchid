@@ -9,7 +9,7 @@
         <label>Messages</label>
         
           <li ng-model = "msgs" class="form-control" style="height:500; overflow:scroll" cols="10" >
-            <ul ng-repeat = "m in msgs | filter: filterMsg"> {{m.msg}} </ul>
+            <ul ng-repeat = "m in msgs | filter: filterMsg"> {{m.player_initials}}:{{m.content}} </ul>
 
           </li>
           <input  type="text"  ng-model = "msg_field" class="form-control" id="exampleInputEmail1" placeholder="Enter messages">

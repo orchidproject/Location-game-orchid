@@ -5,6 +5,8 @@ var messages = ["road blocked.",
 "Cannot find the target",
 "No visual. Can you confirm target exists."];
 var G_msg_player = -1;
+var G_msg_assignment1 = -1;
+var G_msg_assignment2 = -1;
 
 
 app.controller("AgentPanelCtrl", function($scope,httpService){
@@ -71,10 +73,17 @@ app.controller("MsgCtrl",function($scope,dataService,sIOService){
 	}
 
 	$scope.filterMsg = function(data){
-		
-		if(G_msg_player == data.sender) {
+		console.log(data);
+
+		if( G_msg_player == data.target 
+			|| G_msg_assignment1 == data.instruction1
+			|| G_msg_assignment1 == data.instruction2
+			|| G_msg_assignment2 == data.instruction1
+			|| G_msg_assignment2 == data.instruction2
+		) {
 			return true;
 		}
+		return false;
 	}
 
 
@@ -103,7 +112,9 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 
 	$scope.msgCount = function(id){
 		var count = 0;
+
 		$(dataService.msgs).each(function(i,d){
+
 			if(d.sender == id){
 				count ++ ;
 			}
@@ -121,8 +132,11 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
         });    
     }
 
-    $scope.openMsg = function(id){
-    	G_msg_player = id;
+    $scope.openMsg = function(player_id){
+    	G_msg_player = player_id;
+    	var aid = dataService.getPreAssignmentByPlayerId(player_id);
+    	G_msg_assignment1 = (aid!=null)? aid.id1 : -1;
+    	G_msg_assignment2 = (aid!=null)? aid.id2 : -1;
     }
 
 	$scope.$watch(function(){ return dataService.instruction_frame.id; }, function(oldVal,newVal){
