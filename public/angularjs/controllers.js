@@ -20,7 +20,7 @@ app.controller("AgentPanelCtrl", function($scope,httpService){
 		});
 	});
 	$scope.execute = function(){
-		httpService.executeScript(JSON.stringify({"command" :($scope.selected_script + " " + $scope.par)}))
+		httpService.executeScript(JSON.stringify({"command" :($scope.selected_script + " " + G_game_id)}))
 		.then(function(){
 			$scope.par= "";
 		});
