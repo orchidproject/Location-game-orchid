@@ -1,34 +1,7 @@
 parsed: localhost
-STATUS: 200
-HEADERS: {"content-length":"31","access-control-allow-origin":"*","content-type":"application/json","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-game join status: {"skill":"medic","user_id":112}
-STATUS: 200
-HEADERS: {"content-length":"31","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
 parsed: localhost
-STATUS: 200
-HEADERS: {"content-length":"31","access-control-allow-origin":"*","content-type":"application/json","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-game join status: {"skill":"medic","user_id":113}
-STATUS: 200
-HEADERS: {"content-length":"31","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"31","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:1
-STATUS: 200
-HEADERS: {"content-length":"31","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"31","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-begin drop off
-STATUS: 200
-HEADERS: {"content-length":"31","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"31","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
+parsed: localhost
+parsed: localhost
+STATUS: 500
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"30","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: <h1>Internal Server Error</h1>

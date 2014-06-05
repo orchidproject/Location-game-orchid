@@ -9,7 +9,7 @@ game = Game.create(:latitude => 52.952617, :longitude=> -1.188639,
 	:terrains => data["terrains"].to_s
 ) 
 
-
+=begin
 data["players"].each do |p|
 	game.players.create(
 		:name => "name",
@@ -23,6 +23,7 @@ data["players"].each do |p|
 		:status => p["status"]
 	) 
 end
+=end
 
 data["tasks"].each do |p|
 	game.tasks.create(

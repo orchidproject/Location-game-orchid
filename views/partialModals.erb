@@ -12,7 +12,7 @@
           <select class = "form-control" ng-model = "selected_script" ng-options="script.id as script.name for script in scripts">
           </select>
           <label>Parameters</label>
-          <input class = "form-control" type="text" placeholder="parameters" ng-model="par"/>
+          <input ng-hide= "true" ng-disabled = "true"  " class = "form-control" type="text" placeholder="parameters" ng-model="par"/>
           <div class = "btn btn-primary" ng-click="execute()" > execute</div>      
       </div>
     </div><!-- /.modal-content -->

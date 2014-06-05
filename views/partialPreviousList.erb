@@ -7,7 +7,7 @@
                 <input type="checkbox" ng-model = "a.keep"> Keep
               </label>
             </div>
-            <div class="col-sm-12 btn btn-sm btn-danger" ng-click="emergencyStop(a)"> stop </div>
+            <div class="col-sm-12 btn btn-sm btn-danger" ng-click="emergencyStop(a)" ng-hide = "true"> stop </div>
           </div > 
 					<div class="col-sm-3 card-fixed task-card" 
                 ng-class="{'focus':getClass(a.task_id)}" 
@@ -57,7 +57,7 @@
               </label>
 
             </div>
-            <div class="col-sm-12 btn btn-sm btn-danger" ng-click="emergencyStop(a)"> stop </div>
+            <div class="col-sm-12 btn btn-sm btn-danger" ng-click="emergencyStop(a)" ng-hide="true"> stop </div>
           </div > 
 					<div class="col-sm-3 card-fixed task-card" 
                ng-class="{'focus':getClass(a.task_id)}"
