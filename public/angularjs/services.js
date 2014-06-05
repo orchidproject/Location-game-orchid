@@ -262,7 +262,7 @@ app.factory("httpService",function($http){
 		},
 		callback: function(){},
 		sendMsg: function(data){
-			socket.emit("message",{"instruction1": G_msg_assignment1,"instruction2": G_msg_assignment2, "target" :G_msg_player,"content":data,"timeStamp":Math.floor((new Date().getTime())/1000), "player_id":-1, "player_initials":"HQ", "skill":null});
+			socket.emit("message",{"instruction1": G_msg_assignment1,"instruction2": G_msg_assignment2, "target" :G_msg_player1, "target2" :G_msg_player2, "content":data,"timeStamp":Math.floor((new Date().getTime())/1000), "player_id":-1, "player_initials":"HQ", "skill":null});
 		},
 		rejectionCallback: null
 	}
