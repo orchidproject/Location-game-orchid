@@ -134,10 +134,11 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
     	G_msg_player = player_id;
 
     	var aid = dataService.getPreAssignmentByPlayerId(player_id);
-    	G_msg_player1 = (aid!=null)? aid.player1 : -1;
+    	G_msg_player1 = (aid!=null)? aid.player1 : G_msg_player;
     	G_msg_player2 = (aid!=null)? aid.player2 : -1;
     	G_msg_assignment1 = (aid!=null)? aid.id1 : -1;
     	G_msg_assignment2 = (aid!=null)? aid.id2 : -1;
+
     }
 
 	$scope.$watch(function(){ return dataService.instruction_frame.id; }, function(oldVal,newVal){
