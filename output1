@@ -1,0 +1,6 @@
+info: socket.io started
+node-router server instance at unix:8080
+
+Error: connect ECONNREFUSED
+    at errnoException (net.js:901:11)
+    at Object.afterConnect [as oncomplete] (net.js:892:19)

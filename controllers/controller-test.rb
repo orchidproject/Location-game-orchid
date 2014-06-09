@@ -93,8 +93,7 @@ post '/test/:game_id/:frame/fetchplan' do
 
  			to_delete = []
  			data[:state][:players].each do |p|
- 				puts "keep compare " + p[:id].to_s + " " + a["player1"].to_s + " " + a["player2"].to_s
- 				if p[:id].to_i == a["player1"].to_i or p[:id] == a["player2"].to_i
+                if p[:id].to_i == a["player1"].to_i or p[:id] == a["player2"].to_i
  					puts "keep compare marched"
  					to_delete << p
  				end
@@ -135,8 +134,7 @@ post '/test/:game_id/:frame/fetchplan' do
 		
 	    new_frame = p.frames.create(:count=> frame["time_frame"]) 	
 	    frame["players"].each do |player|
-		    puts "group is : " + player["group"].to_s 
-		    if player["group"] == nil  
+            if player["group"] == nil
 			puts "group null, abort <--------------------------------"
 	 		next 	
 		    end 
@@ -165,10 +163,9 @@ post '/test/:game_id/:frame/fetchplan' do
 	    end 
 	end
 	
-
+    puts "NNNNNNNNNitify players"
 	p.notifyPlayers socketIO 	
-	(time2-time1).to_s+" seconds result" + res
- end 
+end 
 
  get '/test/:game_id/:frame_id/getFrame' do 
 	game = Game.get(params[:game_id]) 
@@ -299,8 +296,11 @@ end
 		occupied_players << assignment["player1"]
 		occupied_players << assignment["player2"]
 
-		compareInstructions g, new_frame, ins1
-		compareInstructions g, new_frame, ins2
+		ins1.save
+		ins2.save
+
+		#compareInstructions g, new_frame, ins1
+		#compareInstructions g, new_frame, ins2
 	end
 
 	#after the loop, find out idle player
@@ -316,7 +316,7 @@ end
 			:action => "stop",
 			:path => [].to_json
 		)
-		compareInstructions g, new_frame, ins
+		#compareInstructions g, new_frame, ins
 	end
 
 
@@ -329,15 +329,16 @@ end
  	#compare the data
 	#is it guarantee to be the latest?
 	last_instruction = g.confirmed_plans.frames(:confirmed_plan_id.gt =>0).instructions.last(:player_id => ins.player_id)
+	puts last_instruction.id
 	if last_instruction&&!last_instruction.equals(ins)
 		ins.save
 		puts "instruction not same, saved <-------------------------" 
-	elsif !last_instruction
+	elsif last_instruction == nil
 		puts "first plan, saved < -------------------------------"
 		ins.save
 	else 
 		f.instructions.delete(ins)
-		puts "same instruction abort <-----------------------------"
+		puts "delete <-----------------------------"
 	end 
 
  end 
@@ -353,7 +354,7 @@ end
 	g = Game.get(game_id)
 	p = g.plans.create 
 	if(resJson["status"] == "error" )
-		 puts resJson["message"]
+		 
 		 return
 	end 
 
@@ -368,11 +369,11 @@ end
 	    new_frame = p.frames.create(:count=> frame["time_frame"],:confirmed_plan_id => 0) 	
 	 
 	    frame["players"].each do |player|
-			puts "group is : " + player["group"].to_s 
+			
 			if player["task"] == -1 || player["group"] == nil  
 				player["group"] == "" 
 			end 
-			puts player.to_json 
+          
 
 			coord_path = [] 
 			if player["path"] != nil 
@@ -444,7 +445,7 @@ end
 
 		end 
 	end
-	
+	puts "NNNNNNNTIFY Players"
 	p.notifyPlayers socketIO
 end 
 
@@ -630,7 +631,7 @@ end
 			point =  getLegalPoint(p["x"], p["y"], (sim.y_size/2).floor, (sim.x_size/2).floor,terrains)
 			p["x"] = point[0]
 			p["y"] = point[1]
-			puts "pid is " + p[:id].to_s	
+			
 			player = Player.get(p[:id])
 			player.update(:x=> point[0], :y => point[1])	
 
@@ -655,7 +656,6 @@ end
   def getLegalPoint(x1,y1,x2,y2,terrains) 
 	fx = x1
 	fy = y1
-	puts "target " + x2.to_s + " " + y2.to_s
 	while( fx <0 || fy<0 || terrains[fx] == nil || terrains[fx][fy] == nil ||terrains[fx][fy]!=0)
 		
 		if(fx<x2)	
@@ -669,8 +669,7 @@ end
 		else
 			fy -= 1
 		end
-		puts fx.to_s + ":" + fy.to_s 
-	end
+			end
 	return fx,fy
   end 
 

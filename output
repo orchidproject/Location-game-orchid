@@ -1,0 +1,14 @@
+The source :rubyforge is deprecated because HTTP requests are insecure.
+Please change your source to 'https://rubygems.org' if possible, or 'http://rubygems.org' if not.
+/Users/wxj/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/gems/2.0.0/gems/bundler-1.3.5/lib/bundler/spec_set.rb:92:in `block in materialize': Could not find rack-1.4.1 in any of the sources (Bundler::GemNotFound)
+	from /Users/wxj/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/gems/2.0.0/gems/bundler-1.3.5/lib/bundler/spec_set.rb:85:in `map!'
+	from /Users/wxj/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/gems/2.0.0/gems/bundler-1.3.5/lib/bundler/spec_set.rb:85:in `materialize'
+	from /Users/wxj/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/gems/2.0.0/gems/bundler-1.3.5/lib/bundler/definition.rb:114:in `specs'
+	from /Users/wxj/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/gems/2.0.0/gems/bundler-1.3.5/lib/bundler/definition.rb:159:in `specs_for'
+	from /Users/wxj/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/gems/2.0.0/gems/bundler-1.3.5/lib/bundler/definition.rb:148:in `requested_specs'
+	from /Users/wxj/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/gems/2.0.0/gems/bundler-1.3.5/lib/bundler/environment.rb:18:in `requested_specs'
+	from /Users/wxj/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/gems/2.0.0/gems/bundler-1.3.5/lib/bundler/runtime.rb:13:in `setup'
+	from /Users/wxj/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/gems/2.0.0/gems/bundler-1.3.5/lib/bundler.rb:120:in `setup'
+	from /Users/wxj/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/gems/2.0.0/gems/bundler-1.3.5/lib/bundler/setup.rb:17:in `<top (required)>'
+	from /Users/wxj/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/site_ruby/2.0.0/rubygems/core_ext/kernel_require.rb:51:in `require'
+	from /Users/wxj/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/site_ruby/2.0.0/rubygems/core_ext/kernel_require.rb:51:in `require'

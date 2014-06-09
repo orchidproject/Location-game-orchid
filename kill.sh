@@ -1,2 +1,2 @@
-kill 17998 &&
-kill 17999
+kill 914 &&
+kill 915

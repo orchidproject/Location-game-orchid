@@ -19,6 +19,7 @@ class Game
   property :is_active, Integer, :default => -1
   property :created_at, DateTime
   property :updated_at, DateTime
+  
   has n, :teams
   has n, :players
   has n, :tasks

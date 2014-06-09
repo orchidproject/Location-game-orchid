@@ -16,8 +16,8 @@ class Controller < Sinatra::Base
     instruction = []
 
     game.players.each do |p|
-	next if (p.status == "incapacitated" && action == "fetch") 
-	player <<{
+		next if (p.status == "incapacitated" && action == "fetch") 
+		player <<{
 		:id => p.id,
 		:latitude => p.latitude.to_s('F'),
 		:longitude => p.longitude.to_s('F'),
@@ -26,22 +26,30 @@ class Controller < Sinatra::Base
 		:status => p.status,
 		:health => p.health,
 		:task => -1
-	} 
-	
-	ins = Instruction.last(:player_id => p.id)
+		} 
+=begin		
+		ins = Instruction.last(:player_id => p.id)
 		if(ins)
-		instruction << {
-			:teammate=> ins.getTeammate,
-			:task=> ins.task_id, 
-			:direction=> ins.action,
-			:status => ins.status,
-			#:time => ins.created_at.to_time.to_i,
-			:id => ins.id,
-			:player_id => ins.player_id
-		 }
+			
 		end	
+=end		
     end 
+=begin
+    game.confirmed_plans.last.frame.instructions do |ins|
+    	instruction << {
+				:teammate=> ins.getTeammate,
+				:task=> ins.task_id, 
+				:direction=> ins.action,
+				:status => ins.status,
+				#:time => ins.created_at.to_time.to_i,
+				:id => ins.id,
+				:player_id => ins.player_id,
+            	:confirmed => 1
+		 	}
 
+
+    end
+=end
     game.tasks.each do |t|
           task<<{
               :id=>t.id,
