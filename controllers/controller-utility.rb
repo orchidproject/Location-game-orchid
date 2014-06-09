@@ -28,7 +28,7 @@ class Controller < Sinatra::Base
 		:task => -1
 		} 
 	
-		ins =  Instruction.all(:player_id => 388).frames.last(:confirmed_plan_id.not => 0).instructions.last(:player_id => 388)
+		ins =  Instruction.all(:player_id => p.id).frames.last(:confirmed_plan_id.not => 0).instructions.last(:player_id => p.id)
 		if(ins)
 			instruction << {
 
