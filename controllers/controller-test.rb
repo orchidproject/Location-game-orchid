@@ -327,7 +327,7 @@ end
  	#compare the data
 	#is it guarantee to be the latest?
 	last_instruction = g.confirmed_plans.frames(:confirmed_plan_id.gt =>0).instructions.last(:player_id => ins.player_id)
-	puts last_instruction.id
+	
 	if last_instruction&&!last_instruction.equals(ins)
 		ins.save
 		puts "instruction not same, saved <-------------------------" 
