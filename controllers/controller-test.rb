@@ -296,11 +296,9 @@ end
 		occupied_players << assignment["player1"]
 		occupied_players << assignment["player2"]
 
-		ins1.save
-		ins2.save
-
-		#compareInstructions g, new_frame, ins1
-		#compareInstructions g, new_frame, ins2
+		
+		compareInstructions g, new_frame, ins1
+		compareInstructions g, new_frame, ins2
 	end
 
 	#after the loop, find out idle player
@@ -316,7 +314,7 @@ end
 			:action => "stop",
 			:path => [].to_json
 		)
-		#compareInstructions g, new_frame, ins
+		compareInstructions g, new_frame, ins
 	end
 
 

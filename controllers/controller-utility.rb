@@ -34,9 +34,11 @@ class Controller < Sinatra::Base
 		end	
 =end		
     end 
-=begin
-    game.confirmed_plans.last.frame.instructions do |ins|
+    
+    game.confirmed_plans.last.frames.instructions.each do |ins|
+
     	instruction << {
+
 				:teammate=> ins.getTeammate,
 				:task=> ins.task_id, 
 				:direction=> ins.action,
@@ -49,7 +51,7 @@ class Controller < Sinatra::Base
 
 
     end
-=end
+
     game.tasks.each do |t|
           task<<{
               :id=>t.id,
@@ -72,7 +74,7 @@ class Controller < Sinatra::Base
 
 			player.each do |p|		
 				if p[:id] == pid.to_i
-					puts "got it !!!!!!"
+				
 					p[:task] = t.id
 				end
 			end 
@@ -177,7 +179,7 @@ class Controller < Sinatra::Base
 
  
   def update_game(game, frame)
-         puts "game update"
+
          sim = $simulations[game.layer_id]
 	 if(@init_plan_fetched == nil)
 	   agentFetchPlan(game.layer_id,frame)
