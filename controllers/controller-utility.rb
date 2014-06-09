@@ -35,7 +35,8 @@ class Controller < Sinatra::Base
 =end		
     end 
     
-    game.confirmed_plans.last.frames.instructions.each do |ins|
+    if game.confirmed_plans.last != nil
+    	game.confirmed_plans.last.frames.instructions.each do |ins|
 
     	instruction << {
 
@@ -50,7 +51,8 @@ class Controller < Sinatra::Base
 		 	}
 
 
-    end
+    	end
+	end
 
     game.tasks.each do |t|
           task<<{
