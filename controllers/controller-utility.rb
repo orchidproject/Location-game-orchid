@@ -27,16 +27,27 @@ class Controller < Sinatra::Base
 		:health => p.health,
 		:task => -1
 		} 
-=begin		
-		ins = Instruction.last(:player_id => p.id)
+	
+		ins =  Instruction.all(:player_id => 388).frames.last(:confirmed_plan_id.not => 0).instructions.last(:player_id => 388)
 		if(ins)
+			instruction << {
+
+				:teammate=> ins.getTeammate,
+				:task=> ins.task_id, 
+				:direction=> ins.action,
+				:status => ins.status,
+				#:time => ins.created_at.to_time.to_i,
+				:id => ins.id,
+				:player_id => ins.player_id,
+            	:confirmed => 1
+		 	}
 			
 		end	
-=end		
+		
     end 
-    
-    if game.confirmed_plans.last != nil
-    	game.confirmed_plans.last.frames.instructions.each do |ins|
+=begin   
+    if game.confirmed_plans.last() != nil
+    	game.confirmed_plans.last().frames.instructions.each do |ins|
 
     	instruction << {
 
@@ -53,7 +64,7 @@ class Controller < Sinatra::Base
 
     	end
 	end
-
+=end
     game.tasks.each do |t|
           task<<{
               :id=>t.id,

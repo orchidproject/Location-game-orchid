@@ -78,6 +78,8 @@ class Instruction
 	return true 
   end 
 
+  
+
   def output
 	
 	{
