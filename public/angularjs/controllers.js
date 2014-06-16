@@ -315,7 +315,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		httpService.requestPlan(dataService.previous_instructions).then(function(result){
 			$scope.fetching = false;		
 			$scope.$apply();
-			//alert(JSON.stringify(result.data.sent));
+			alert(JSON.stringify(result.data.sent));
 		});
 		
 	}
@@ -395,7 +395,8 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 
 	$scope.getTaskIcon = function(task_id){
 		var task = getById($scope.tasks,task_id);
-		return (task==null)? "": "/img/task_icon" + (task.type+1) + ".png";
+		var task_id_s = task_id+"";
+		return (task==null)? "": "/player/" + task_id_s[task_id_s.length-2] + "/" + task_id%10 + "/task_icon" + (task.type+1) + "/map_icon.png";
 	}
 
 	$scope.getPlayerIcon = function(id){

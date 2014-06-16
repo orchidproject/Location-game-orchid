@@ -1,6 +1,6 @@
 <!-- assignment list -->
           <div class="row flickable" ng-repeat = "a in aCopy| filter: changed"   >
-				 	  <div class="col-sm-3 task-card task-draggable" 
+				 	  <div class="col-sm-3 task-card task-draggable exisiting-task-droppable" 
             ng-show="taskExist(a)" taskId = "{{a.task_id}}" 
             assignmentId = "{{a.id}}" 
             ng-mouseover="focus(a.task_id)" 
@@ -10,9 +10,9 @@
             > 
               <img ng-src = "{{getTaskIcon(a.task_id)}}" >
 	      
-		            {{a.task_id}}
 						  <span class="glyphicon glyphicon-move corner" ng-show="editMode"></span> 
             </div>
+
             <div class="col-sm-3 card-fixed transparent-5 task-card exisiting-task-droppable" ng-hide="taskExist(a)" assignmentId = "{{a.id}}" > 
               <span class="glyphicon glyphicon-plus corner "></span> 
             </div>
@@ -33,7 +33,7 @@
               >
                 <img ng-src = "{{getPlayerIcon(a.player1)}}" >
                  <div class = "health"><div style="height:{{getHealth(a.player1)}}"></div></div>
-                <span ng-show="editMode"class="glyphicon glyphicon-move corner"></span>
+                <span ng-show="editMode" class="glyphicon glyphicon-move corner"></span>
               </div>
 
               <div class = "card-fixed player-card player-droppable transparent-5" ng-hide="playerExist(a,1)" playerHolder = "1" 

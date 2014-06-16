@@ -111,7 +111,7 @@
           <div class = "row ">  
             <div 
             class = "col-sm-1 task-card task-draggable" 
-            ng-repeat = "t in tasks | filter: filterUnassignedTasks" 
+            ng-repeat = "t in tasks | filter: filterUnassignedTasks | orderBy:'type':false" 
             taskId = "{{t.id}}" 
             
             ng-mouseover="focus(t.id)" 
@@ -120,7 +120,7 @@
             ng-init = "initEditables()"
             >
               <img ng-src = "{{getTaskIcon(t.id)}}" /> 
-              <span ng-show="editMode" class="glyphicon glyphicon-move corner"></span> {{t.id}}
+              <span ng-show="editMode" class="glyphicon glyphicon-move corner"></span> 
             </div>
   
 
@@ -128,11 +128,11 @@
 	  
                       </div>
           </div>
-<input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
-<input type="hidden" id="user_id" value="<%= @user_id %>" />
-<input type="hidden" id="user_initials" value="<%= @user_initials %>" />
-<input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
-<input type="hidden" id="game_status" value="<%= @game.is_active %>" />
+  <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
+  <input type="hidden" id="user_id" value="<%= @user_id %>" />
+  <input type="hidden" id="user_initials" value="<%= @user_initials %>" />
+  <input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
+  <input type="hidden" id="game_status" value="<%= @game.is_active %>" />
 
 </div> 
 

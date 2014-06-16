@@ -28,7 +28,13 @@ class Controller < Sinatra::Base
 		:task => -1
 		} 
 	
-		ins =  Instruction.all(:player_id => p.id).frames.last(:confirmed_plan_id.not => 0).instructions.last(:player_id => p.id)
+		#Put the latest instructions in the game.
+		frame = nil
+		ins = nil
+		if frame = Instruction.all(:player_id => p.id).frames.last(:confirmed_plan_id.not => 0)
+			ins = frame.instructions.last(:player_id => p.id)
+		end 
+
 		if(ins)
 			instruction << {
 

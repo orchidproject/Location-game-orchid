@@ -7,7 +7,7 @@
                 <input type="checkbox" ng-model = "a.keep"> Keep
               </label>
             </div>
-            <div class="col-sm-12 btn btn-sm btn-danger" ng-click="emergencyStop(a)" ng-hide = "true"> stop </div>
+            <div class="col-sm-12 btn btn-sm btn-danger" ng-click="emergencyStop(a)"> stop </div>
           </div > 
 					<div class="col-sm-3 card-fixed task-card" 
                 ng-class="{'focus':getClass(a.task_id)}" 
@@ -23,7 +23,7 @@
                  >
 								<img ng-src="{{getPlayerIcon(a.player1)}}" /> 
 
-                 <div class = "health"><div style="height:{{getHealth(a.player1)}}"></div></div>
+                <div class = "health"><div style="height:{{getHealth(a.player1)}}"></div></div>
 								<div class="btn btn-primary btn-sm" data-toggle="modal" data-target="#msgModal" ng-click = "openMsg(a.player1)">msg</div>
                 <span class="label label-default">{{msgCount(a.player1)}}</span>
 							</div >
