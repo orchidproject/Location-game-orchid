@@ -788,6 +788,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		var index = $scope.prev_assignments.indexOf(a);
 		$scope.prev_assignments.splice(index,1);
 		$scope.aCopy = $scope.aCopy = $.extend(true,[],$scope.prev_assignments);
+		
 		$scope.confirmAll(false);
 	}
 
