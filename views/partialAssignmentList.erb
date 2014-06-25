@@ -40,7 +40,9 @@
                playerId = "{{a.player1}}" 
                assignmentId = "{{a.id}}"
                ng-init = "initEditables()">
+                 <img ng-src= "/img/{{showRequirement(a,0)}}.png"  >
                 {{showRequirement(a,0)}}
+                
                 <span  class="glyphicon glyphicon-plus corner"></span>
               </div>
               <!-- player 1 2 deliminator -->
@@ -66,7 +68,9 @@
                    playerId = {{a.player2}} 
                    assignmentId = "{{a.id}}"
                    ng-init = "initEditables()">
+                   <img ng-src= "/img/{{showRequirement(a,1)}}.png" >
                   {{showRequirement(a,1)}}
+                  
                 <span class="glyphicon glyphicon-plus corner"></span>
               </div>
             </div>

@@ -1,7 +1,7 @@
 
           <!-- assignment list -->
           <div class="row" ng-repeat = "a in aCopy | filter: unchanged" ng-show="editMode"  >
-            <div class="col-sm-3 task-card task-draggable" 
+            <div class="col-sm-3 task-card task-draggable exisiting-task-droppable" 
             ng-show="taskExist(a)" 
             taskId = "{{a.task_id}}" 
             assignmentId = "{{a.id}}" 

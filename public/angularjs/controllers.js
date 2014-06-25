@@ -70,7 +70,7 @@ app.controller("MsgCtrl",function($scope,dataService,sIOService){
 	var senders = [];
 	sIOService.rejectionCallback = function(id){
 		senders.push(id);
-		$scope.msgs.push( {sender:id,msg: count + ":" + messages[(Math.floor(Math.random()*100))%6]});
+		//$scope.msgs.push( {sender:id,msg: count + ":" + messages[(Math.floor(Math.random()*100))%6]});
 		count++;
 	}
 
@@ -112,8 +112,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		var count = 0;
 
 		$(dataService.msgs).each(function(i,d){
-
-			if(d.sender == id){
+			if(d.target == id || d.target2 == id){
 				count ++ ;
 			}
 		});
@@ -254,8 +253,6 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 			d.player2 = parseInt(d.player2);
 		});
 		
-		
-
 		if(clear){
 			$($scope.aCopy).each(function(i,d){
 			d.response1 = "no response";
@@ -315,7 +312,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		httpService.requestPlan(dataService.previous_instructions).then(function(result){
 			$scope.fetching = false;		
 			$scope.$apply();
-			alert(JSON.stringify(result.data.sent));
+			//alert(JSON.stringify(result.data.sent));
 		});
 		
 	}
@@ -741,10 +738,9 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 			return dataService.role_string[r[1-mark_index]];
 		}
 
-		/*var r1 = dataService.requirements[getById($scope.tasks,a.task_id).type][0];
-		var r2 = dataService.requirements[getById($scope.tasks,a.task_id).type][1];*/
-		//return {r1:dataService.role_string[r1],r2:dataService.role_string[r2]};
 	}
+
+	
 
 	var checkoutSingle = function(assignment){
 		var to_delete = [];
