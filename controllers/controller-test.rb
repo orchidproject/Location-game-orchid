@@ -69,7 +69,7 @@ post '/test/:game_id/:frame/fetchplan' do
 	res = @agent.loadPlan(data.to_json)	
 	time2 = Time.now
 
-
+	puts res
 	#------------------------processing-------------------------
 	processResponse(params[:game_id], res , keeps)	
 
@@ -163,7 +163,6 @@ post '/test/:game_id/:frame/fetchplan' do
 	    end 
 	end
 	
-    puts "NNNNNNNNNitify players"
 	p.notifyPlayers socketIO 	
 end 
 
@@ -360,7 +359,7 @@ end
 		puts "error no plan attribute"
 		return	
 	end	
-
+puts resJson["plan"]
 	resJson["plan"].each  do |frame| 
 		#alright, this will be a bit confusing. the required false for Old DM is not working , so confirmed_plan_id has to be set a value.
 		#since index in DB start from 1 anyway, why not use 0 instead of null? cool, done
@@ -443,7 +442,7 @@ end
 
 		end 
 	end
-	puts "NNNNNNNTIFY Players"
+	
 	p.notifyPlayers socketIO
 end 
 
@@ -534,7 +533,7 @@ end
 	end
 
 	sim = $simulations[game.layer_id]
-
+	
 
 	if action == "init"
 		data = snapshot(Game.get(game_id), false,"init")
@@ -558,7 +557,31 @@ end
 		data[:session_id] = game_id 
 		response = data
 	elsif action == "fetch"
+		
 		data = snapshot(Game.get(game_id), false,"fetch")
+		skills  =  [
+			{
+            	"id" => 0,
+            	"name" => "medic",
+            	"task_types" => [1,2]
+        	},
+        	{
+            	"id" => 1,
+            	"name" => "firefighter",
+            	"task_types" => [2,3]
+        	},
+        	{
+            	"id" => 2,
+            	"name" => "soldier",
+            	"task_types" => [0,3]
+        	},
+        	{
+            	"id" => 3,
+            	"name" => "transporter",
+            	"task_types" => [0,1]
+        	}
+    	]
+
 		data[:players].each do |p| 
 			result =  sim.getGridCoord(Float(p[:latitude]),Float(p[:longitude]))
 			p.delete(:latitude)
@@ -569,7 +592,6 @@ end
 		end 
 		data[:tasks].each do |t| 
 			result =  sim.getGridCoord(Float(t[:latitude]),Float(t[:longitude]))
-			t.delete(:requirement)
 			t.delete(:latitude)
 			t.delete(:longitude)
 			t["x"] = result[:x]
@@ -582,6 +604,7 @@ end
 			:session_id => game_id, 
 			:rejections => [], 
 			:step =>1,
+			:skills => skills,
 			:state => checkCoords(data,game,sim)  
 		}
 		

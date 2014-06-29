@@ -1,6 +1,4 @@
 class Controller < Sinatra::Base
- 
-       
   def endGame(game)
     game.update(:is_active=>1)
     game.broadcast(socketIO, "end")
