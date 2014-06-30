@@ -50,5 +50,10 @@ $(document).ready(function() {
     G_game_id = $("#layer_id").val();
     //CALL angular data from outside the framework
     angular.element($("#main")).scope().loadData();
+    $('#msgModal').on('hidden.bs.modal', function () {
+   		alert("close");
+	})
+
+
 
 });
