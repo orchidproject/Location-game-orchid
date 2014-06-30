@@ -75,7 +75,6 @@ app.controller("MsgCtrl",function($scope,dataService,sIOService){
 	}
 
 	$scope.filterMsg = function(data){
-		console.log(data);
 
 		if( G_msg_player == data.target || G_msg_player == data.target2 ) 
 		{
@@ -322,6 +321,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 					c1.response1 = c2.response1;
 					c1.response2 = c2.response2;
 					c1.keep = c2.keep;
+					c1.marched = true;
 				}
 			});
 
@@ -330,6 +330,13 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 				clearMessages(c2.player2);
 			}
 
+		});
+
+		$(copyee).each(function(i,c){
+			if(c.marched == null || !c.marched){
+				clearMessages(c.player1);
+				clearMessages(c.player2);
+			}
 		});
 	}
 
