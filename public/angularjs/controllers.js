@@ -322,23 +322,23 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 					c1.response2 = c2.response2;
 					c1.keep = c2.keep;
 					c1.marched = true;
+					c2.marched = true;
 				}
 			});
+		});
 
-			if(!copied){
-				clearMessages(c2.player1);
-				clearMessages(c2.player2);
-			}
-
+		$(copyer).each(function(i,c){
+			clearMessages(c.player1);
+			clearMessages(c.player2);
 		});
 
 		$(copyee).each(function(i,c){
-			if(c.marched == null || !c.marched){
-				clearMessages(c.player1);
-				clearMessages(c.player2);
-			}
+			clearMessages(c.player1);
+			clearMessages(c.player2);
 		});
 	}
+
+
 
 	$scope.getPlan = function(){
 		$scope.fetching = true;
@@ -797,6 +797,8 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 				value.player2 == assignment.player1 ||
 				value.player2 == assignment.player2 
 			){
+				clearMessages(value.player1);
+				clearMessages(value.player2);
 				to_delete.push(value);
 			}
 		});
@@ -811,6 +813,8 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		assignment.response2 = "no response";
 		var new_assignment = JSON.parse(JSON.stringify(assignment));
 		
+		clearMessages(new_assignment.player1);
+		clearMessages(new_assignment.player2);
 		$scope.prev_assignments.push(new_assignment);
 
 	}
