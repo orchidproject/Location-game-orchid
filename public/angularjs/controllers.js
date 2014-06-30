@@ -328,13 +328,17 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		});
 
 		$(copyer).each(function(i,c){
-			clearMessages(c.player1);
-			clearMessages(c.player2);
+			if(c.marched  == null || !c.marched){
+				clearMessages(c.player1);
+				clearMessages(c.player2);
+			}
 		});
 
 		$(copyee).each(function(i,c){
-			clearMessages(c.player1);
-			clearMessages(c.player2);
+			if(c.marched  == null || !c.marched){
+				clearMessages(c.player1);
+				clearMessages(c.player2);
+			}
 		});
 	}
 
