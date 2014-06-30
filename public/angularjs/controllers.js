@@ -79,6 +79,7 @@ app.controller("MsgCtrl",function($scope,dataService,sIOService){
 
 		if( G_msg_player == data.target || G_msg_player == data.target2 ) 
 		{
+			data.read == true;
 			return true;
 		}
 		return false;
@@ -112,7 +113,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		var count = 0;
 
 		$(dataService.msgs).each(function(i,d){
-			if(d.target == id || d.target2 == id){
+			if ((d.target == id || d.target2 == id) && d.read == null ) {
 				count ++ ;
 			}
 		});
