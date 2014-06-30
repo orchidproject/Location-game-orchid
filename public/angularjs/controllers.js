@@ -302,8 +302,9 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		$(dataService.previous_instructions).each(function(i,v){
 			if(v.keep == false) all_keeps = false;
 		});
-		if(all_keeps){
+		if(all_keeps && dataService.previous_instructions.length != 0){
 			alert("You chose to keep all the changes, so plan request does not send");
+			return;
 		}
 
 		httpService.requestPlan(dataService.previous_instructions).then(function(result){
