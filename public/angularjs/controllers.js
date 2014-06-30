@@ -131,6 +131,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 				d.read = true;
 			}
 		});
+		$scope.$apply();
 	}
 
 	function clearMessages(id){
