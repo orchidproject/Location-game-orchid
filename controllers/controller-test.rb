@@ -68,7 +68,6 @@ post '/test/:game_id/:frame/fetchplan' do
 	
 	res = @agent.loadPlan(data.to_json)	
 	time2 = Time.now
-
 	puts res
 	#------------------------processing-------------------------
 	processResponse(params[:game_id], res , keeps)	
@@ -82,8 +81,15 @@ post '/test/:game_id/:frame/fetchplan' do
  	#two nested loops
  	keeps.each do |a|
  		if a["keep"] == true 
- 			puts "yes"
  			task = nil
+ 			data[:state][:players].each do |p|
+                if p[:id].to_i == a["player1"].to_i or p[:id] == a["player2"].to_i
+                	p[:task] = a["task_id"]
+ 				end
+ 			end
+ 			
+#this used to be used as a hack to do things
+=begin
  			data[:state][:tasks].each do |t|
  				if t[:id] == a["task_id"]
  					t["status"] = 2 
@@ -102,6 +108,7 @@ post '/test/:game_id/:frame/fetchplan' do
  			to_delete.each do |d|
  				data[:state][:players].delete(d)
  			end
+=end 
  		end
  	end 
 
@@ -411,6 +418,8 @@ puts resJson["plan"]
 				puts "same instruction abort <-----------------------------"
 			end 
 =end
+
+=begin
 			keeps.each do |a|
 				if(a["keep"] == true)
 				ins= new_frame.instructions.new(
@@ -438,7 +447,7 @@ puts resJson["plan"]
 				ins.save
 				end
 			end
-
+=end 
 
 		end 
 	end
@@ -597,7 +606,6 @@ end
 			t["x"] = result[:x]
 			t["y"] = result[:y]
 			t["status"] = t[:state]	
-			
 		end
 		response = { 
 			:time_frame => sec, 

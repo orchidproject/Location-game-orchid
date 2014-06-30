@@ -308,6 +308,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 			}				
 			,"json"
 		);*/
+
 		//alert(JSON.stringify(dataService.previous_instructions));
 		httpService.requestPlan(dataService.previous_instructions).then(function(result){
 			$scope.fetching = false;		

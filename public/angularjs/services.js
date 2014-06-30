@@ -123,7 +123,6 @@ app.factory("httpService",function($http){
 			t.latitude = data.latitude;
 			t.longitude = data.longitude;
 			t.state = data.state;
-		//idle do noting
 		}
 
 
@@ -200,7 +199,7 @@ app.factory("httpService",function($http){
 		console.log(data);
 		//if task value is not in the instruction
 		var assignment = dataService.getInstructionByTask(data.task);
-		if(data.task!=-1){
+		if(data.task!=-1 && data.task!=null){
 			if(assignment == null){
 				//nooot so good
 				dataService.instructions.push({
