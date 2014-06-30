@@ -108,8 +108,6 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	$scope.aCopy = $.extend(true,[],$scope.assignments);
 	$scope.prev_assignments = dataService.previous_instructions;
 
-	var msgCounts = {};
-
 
 	/*function markTargets(t1,t2){
 		$
@@ -124,11 +122,17 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 				count ++ ;
 			}
 		});
-		if (msgCounts[id] == null) msgCounts[id] = 0;
-		var difference = count - msgCounts[id];
-		msgCounts[id] = count;
-		return difference;
+		
+		return count;
 	};
+
+	function markRead(id){
+		$(dataService.msgs).each(function(i,d){
+			if ((d.target == id || d.target2 == id)  && d.read == null ) {
+				d.read = true;
+			}
+		});
+	}
 
 
 	//so bad, so bad
@@ -142,6 +146,8 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 
     $scope.openMsg = function(player_id){
     	G_msg_player = player_id;
+    	
+    	markRead(player_id);
 
     	var aid = dataService.getPreAssignmentByPlayerId(player_id);
     	G_msg_player1 = (aid!=null)? aid.player1 : G_msg_player;
