@@ -134,6 +134,13 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		});
 	}
 
+	function clearMessages(id){
+		$(dataService.msgs).each(function(i,d){
+			if ( d.target == id || d.target2 == id ) {
+				dataService.msgs.remove(d);
+			}
+		});
+	}
 
 	//so bad, so bad
 	dataService.taskCallback = function(to_remove){   
@@ -301,14 +308,23 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	}
 
 	var copyStatus =function(copyee,copyer){
-		$(copyee).each(function(i,c1){
-			$(copyer).each(function(i,c2){
+		$(copyer).each(function(i,c2){
+			var copied = false;
+			$(copyee).each(function(i,c1){
+
 				if(compareAssignments(c1,c2)){
+					copied = true;
 					c1.response1 = c2.response1;
 					c1.response2 = c2.response2;
 					c1.keep = c2.keep;
 				}
 			});
+
+			if(!copied){
+				clearMessages(c2.player1);
+				clearMessages(c2.player2);
+			}
+
 		});
 	}
 
