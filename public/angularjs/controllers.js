@@ -125,7 +125,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		return count;
 	};
 
-	function markRead(id){
+	$scope.markRead = function(id){
 		$(dataService.msgs).each(function(i,d){
 			if ((d.target == id || d.target2 == id)  && d.read == null ) {
 				d.read = true;
@@ -158,8 +158,6 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
     $scope.openMsg = function(player_id){
     	G_msg_player = player_id;
     	
-    	markRead(player_id);
-
     	var aid = dataService.getPreAssignmentByPlayerId(player_id);
     	G_msg_player1 = (aid!=null)? aid.player1 : G_msg_player;
     	G_msg_player2 = (aid!=null)? aid.player2 : -1;

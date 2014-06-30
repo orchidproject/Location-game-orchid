@@ -51,7 +51,7 @@ $(document).ready(function() {
     //CALL angular data from outside the framework
     angular.element($("#main")).scope().loadData();
     $('#msgModal').on('hidden.bs.modal', function () {
-   		alert("close");
+   		angular.element($("#main")).scope().markRead(G_msg_player);
 	})
 
 
