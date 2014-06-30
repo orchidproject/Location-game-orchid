@@ -309,7 +309,6 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 			,"json"
 		);*/
 
-		//alert(JSON.stringify(dataService.previous_instructions));
 		httpService.requestPlan(dataService.previous_instructions).then(function(result){
 			$scope.fetching = false;		
 			$scope.$apply();
@@ -721,7 +720,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	}
 	
 	$scope.showRequirement = function(a,preference){
-		if(a.task_id == -1){
+		if(a.task_id == -1 && a.task_id!=null){
 			return "-"
 		}
 		var r = getRequirement(a);
