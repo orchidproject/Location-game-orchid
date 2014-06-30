@@ -79,7 +79,7 @@ app.controller("MsgCtrl",function($scope,dataService,sIOService){
 
 		if( G_msg_player == data.target || G_msg_player == data.target2 ) 
 		{
-			data.read == true;
+			data.read = true;
 			return true;
 		}
 		return false;
