@@ -135,10 +135,15 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	}
 
 	function clearMessages(id){
+		var to_delete = [];
 		$(dataService.msgs).each(function(i,d){
 			if ( d.target == id || d.target2 == id ) {
-				dataService.msgs.remove(d);
+				to_delete.push(d);
 			}
+		});
+
+		$(to_delete).each(function(i,d){
+			dataService.msgs.splice(dataService.msgs.indexOf(d),1);
 		});
 	}
 
