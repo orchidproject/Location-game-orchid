@@ -297,17 +297,14 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 
 	$scope.getPlan = function(){
 		$scope.fetching = true;
-		/*$.post("/test/" + G_game_id + "/" +  $scope.frame + "/fetchplan",
-			{},		
-			function(data){	
-				//("New plan delivered");	
-				//$scope.planPending = true;
-				//alert("received plan: "+JSON.stringify(data));
-				$scope.fetching = false;		
-				$scope.$apply();				
-			}				
-			,"json"
-		);*/
+		//check keeps
+		var all_keeps = true;
+		$(dataService.previous_instructions).each(function(i,v){
+			if(v.keep == false) all_keeps = false;
+		});
+		if(all_keeps){
+			alert("You chose to keep all the changes, so plan request does not send");
+		}
 
 		httpService.requestPlan(dataService.previous_instructions).then(function(result){
 			$scope.fetching = false;		
