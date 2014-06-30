@@ -124,7 +124,8 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 				count ++ ;
 			}
 		});
-		var difference = msgCounts[id] - count;
+		if (msgCounts[id] == null) msgCounts[id] = 0;
+		var difference = count - msgCounts[id];
 		msgCounts[id] = count;
 		return difference;
 	};
