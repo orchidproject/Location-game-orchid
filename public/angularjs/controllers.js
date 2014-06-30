@@ -79,7 +79,6 @@ app.controller("MsgCtrl",function($scope,dataService,sIOService){
 
 		if( G_msg_player == data.target || G_msg_player == data.target2 ) 
 		{
-			data.read = true;
 			return true;
 		}
 		return false;
@@ -109,15 +108,25 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	$scope.aCopy = $.extend(true,[],$scope.assignments);
 	$scope.prev_assignments = dataService.previous_instructions;
 
+	var msgCounts = {};
+
+
+	/*function markTargets(t1,t2){
+		$
+		data.read = true;
+	}*/
+
 	$scope.msgCount = function(id){
 		var count = 0;
 
 		$(dataService.msgs).each(function(i,d){
-			if ((d.target == id || d.target2 == id) && d.read == null ) {
+			if ((d.target == id || d.target2 == id)  && d.read == null ) {
 				count ++ ;
 			}
 		});
-		return count;
+		var difference = msgCounts[id] - count;
+		msgCounts[id] = count;
+		return difference;
 	};
 
 
