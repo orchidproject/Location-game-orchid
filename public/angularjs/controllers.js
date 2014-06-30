@@ -777,11 +777,9 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	var checkoutSingle = function(assignment){
 		var to_delete = [];
 		$($scope.prev_assignments).each(function(index,value){
-			if(value.task_id == assignment.task_id){
-				to_delete.push(value);
-			}
 
 			if(
+				value.task_id == assignment.task_id ||
 				value.player1 == assignment.player1 || 
 				value.player1 == assignment.player2 ||
 				value.player2 == assignment.player1 ||
