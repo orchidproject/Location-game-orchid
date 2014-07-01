@@ -29,7 +29,7 @@
               assignmentId = "{{a.id}}" 
               ng-mouseover="focus(0-a.player1-1)" 
               ng-mouseout="unFocus(0-a.player1-1)" 
-              ng-class = "{'focus':getClass(0-a.player1-1),'card':editMode,'card-fixed':!editMode}"
+              ng-class = "{'focus':getClass(0-a.player1-1),'card':editMode,'card-fixed':!editMode, 'unRead': unRead(a.player1) }"
               ng-init = "initEditables()"
               >
                
@@ -51,7 +51,7 @@
               assignmentId = "{{a.id}}" 
               ng-mouseover="focus(0-a.player2-1)" 
               ng-mouseout="unFocus(0-a.player2-1)" 
-              ng-class = "{'focus':getClass(0-a.player2-1),'card':editMode,'card-fixed':!editMode}"
+              ng-class = "{'focus':getClass(0-a.player2-1),'card':editMode,'card-fixed':!editMode, 'unRead': unRead(a.player2)}"
               ng-init = "initEditables()"
               >
                 <div class = "health" ><div style="height:{{getHealth(a.player2)}}"></div></div>

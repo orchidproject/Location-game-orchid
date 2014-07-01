@@ -25,7 +25,7 @@
               ng-mouseover="focus(0-p.id-1)" 
               ng-mouseout="unFocus(0-p.id-1)" 
               ng-init = "initEditables()"
-              ng-class = "{'focus':getClass(0-p.id-1),'card':editMode,'card-fixed':!editMode}"
+              ng-class = "{'focus':getClass(0-p.id-1),'card':editMode,'card-fixed':!editMode, 'unRead': unRead(p.id)}"
               >
 
                 <img ng-src = "{{getPlayerIcon(p.id)}}" > No task

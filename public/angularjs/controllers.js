@@ -110,6 +110,8 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 
 	
 	$scope.unReadList = function(id){
+		if(unReadList[id] == null) return false;
+
 		return unReadList[id];
 	}
 
