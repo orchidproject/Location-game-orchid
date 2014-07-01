@@ -542,14 +542,20 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
       		var target_player_holder = $(target)[0].attributes.playerHolder.nodeValue;
       		var target_player_id = $(target)[0].attributes.playerId.nodeValue;
 
+      		//assign target
+      		var target_assignment = getById($scope.aCopy, target_assignment_id);
+      		if(target_assignment.task_id == -1){
+      			target_assignment["player"+target_player_holder] = player_id;
+      			return;
+      		}
+
       		var target_slot = getById($scope.aCopy, target_assignment_id)["player"+target_player_holder];
       		//if slot is empty check requirement then put
       		if(target_slot == -1){
-      			//assign target
-      			var target_assignment = getById($scope.aCopy, target_assignment_id);
+      			
       			if(checkRequirement(getRequirement(target_assignment),getById($scope.players,player_id).skill_id)){
       				//assign target
-      				getById($scope.aCopy, target_assignment_id)["player"+target_player_holder] = player_id;
+      				target_assignment["player"+target_player_holder] = player_id;
       			}
 
       		}
@@ -557,7 +563,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
     			//if two players have same skill id then ok to exchange.
       			if(getById($scope.players,player_id).skill_id==getById($scope.players,target_player_id).skill_id){
       				//assign target
-      				getById($scope.aCopy, target_assignment_id)["player"+target_player_holder] = player_id;
+      				target_assignment["player"+target_player_holder] = player_id;
       			}
       		}
       	}
