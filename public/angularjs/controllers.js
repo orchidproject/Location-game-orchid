@@ -862,7 +862,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	}
 
 	$scope.allowConfirmSingle = function(a){
-		if(a.task!=-1 && a.player1 != -1 && a.player2!= -1){
+		if(a.task_id!=-1 && a.player1 != -1 && a.player2!= -1){
 			return false;
 		}
 		return true;
