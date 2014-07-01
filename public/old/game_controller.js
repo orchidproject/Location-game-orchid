@@ -609,7 +609,7 @@ function system(data){
 }
 
 function receiveMessageData(data) {
-	if(data.target1 != null || ata.target1 != null) return;
+	if(data.target1 != null || data.target1 != null) return;
 	pushToTaskHistory(data.content, "msg" + latestMsgId++, data.player_initials, data.player_id,data.player_skill);
 	//alert(data.player_name + ": " + data.content);
 }
