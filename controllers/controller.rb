@@ -399,14 +399,28 @@ class Controller < Sinatra::Base
   
   get '/game/:layer_id/dashboard' do
     if (params[:test])
-	@test =  params[:test]
+	    @test =  params[:test]
     else
-	@test = false
+	    @test = false
     end 
     @game = Game.first :layer_id => params[:layer_id]
     @socket_io_url=SOCKET_CLIENT_REF
    
     erb :'dashboard'
+  end
+
+  get '/game/:layer_id/dashboard2' do
+   
+    if (params[:test])
+      @test =  params[:test]
+    else
+      @test = false
+    end 
+    @prediction = false
+    @game = Game.first :layer_id => params[:layer_id]
+    @socket_io_url=SOCKET_CLIENT_REF
+   
+    erb :'oldDashboard/dashboard', :layout => :'oldDashboard/layout'
   end
 
 

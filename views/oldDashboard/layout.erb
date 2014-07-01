@@ -1,0 +1,28 @@
+<html>
+
+  <head>
+  	<title>Atomic Orchid Dashboard</title>
+	  <meta name="viewport" content="initial-scale=1.0">
+
+  	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,visualization"></script>
+  	<script type="text/javascript" src="/old/game-common.js"></script>
+	<link rel="stylesheet" type="text/css" href="/old/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="/old/reset.css" />
+  	<script> SOCKET_IO_ADDRESS = "<%= @socket_io_url %>";</script>
+  	<script> GAME_ID = "<%= @game.layer_id %>";</script>
+  	
+  	<% if request.path =~ /\/game\// || request.path =~ /\/replay2\// %>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="<%= @socket_io_url %>/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="/old/web_controller.js" ></script>
+		<script type="text/javascript" src="/old/game_controller.js" ></script>
+		<script type="text/javascript" src="/old/js-model/models.js" ></script>
+		<script type="text/javascript" src="/old/test_panel.js" ></script>
+		<link type="text/css" rel="stylesheet" href="/old/chatstyle.css" />
+  	<% end %>
+
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
