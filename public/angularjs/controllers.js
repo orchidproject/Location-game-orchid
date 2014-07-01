@@ -106,12 +106,12 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 	$scope.tasks = dataService.tasks;
 	$scope.aCopy = $.extend(true,[],$scope.assignments);
 	$scope.prev_assignments = dataService.previous_instructions;
+	var unReadList = {};
 
-
-	/*function markTargets(t1,t2){
-		$
-		data.read = true;
-	}*/
+	
+	$scope.unReadList = function(id){
+		return unReadList[id];
+	}
 
 	$scope.msgCount = function(id){
 		var count = 0;
@@ -121,9 +121,15 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 				count ++ ;
 			}
 		});
-		
+
+		if(count > 0){
+			unReadList[id] = true;
+		}
+
 		return count;
 	};
+
+
 
 	$scope.markRead = function(id){
 		$(dataService.msgs).each(function(i,d){

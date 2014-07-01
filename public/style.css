@@ -112,3 +112,7 @@ div[class*="row"] {
 	height:80%;
 	float:left;
 }
+
+.unread {
+	background-color: yellow;
+}
