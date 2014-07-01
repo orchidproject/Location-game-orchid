@@ -126,6 +126,8 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 
 		if(count > 0){
 			unReadList[id] = true;
+		}else{
+			unReadList[id] = false;
 		}
 
 		return count;
