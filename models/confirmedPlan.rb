@@ -44,8 +44,6 @@ class ConfirmedPlan
                             }]
                   }
               }.to_json) 
-
-      #send to particular users 
     end
   end 
 

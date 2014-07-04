@@ -247,6 +247,7 @@ end
  	resJson = nil
  	begin
 		resJson = JSON.parse(res) 
+
 	rescue 
 		puts "plan pause error"
 		return
@@ -256,7 +257,6 @@ end
 	p = g.confirmed_plans.create 
 
 	#plan_id is for get around the bug
-	puts resJson.to_json
 	new_frame = p.frames.create(:count=> -1,:plan_id => 0) 
 	occupied_players = []
 
@@ -323,9 +323,9 @@ end
 		compareInstructions g, new_frame, ins
 	end
 
-
+    
 	p.notifyPlayers socketIO
-	"updated"
+	
  end 
 
  def compareInstructions(g,f,ins)

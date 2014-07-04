@@ -10,7 +10,7 @@ class Plan
   has n, :frames 
 
 
-  def notifyPlayers(io)
+def notifyPlayers(io)
 	
 	first_frame = frames.first
 
@@ -44,11 +44,11 @@ class Plan
                   }
               }.to_json) 
 
-      #send to particular users 
-    end
-  end 
+     
+  end
+end 
 
-  def output 
+def output 
 	result = {:step => self.step , :frames => []} 
 	self.frames.each do |f|
 		result[:frames]<< f.output	

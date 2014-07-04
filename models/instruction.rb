@@ -37,10 +37,10 @@ class Instruction
 		#ßputs "the thing that needs to be parsed:" + self.group
 		the_group = JSON.parse(self.group)
 		the_group.each do |id|
-			if (id == self.player_id)
+			if (id.to_i == self.player_id.to_i)
 				next	
 			else 
-				teammate = id
+				teammate = id.to_i
 			end 
 		end 
 	end 
