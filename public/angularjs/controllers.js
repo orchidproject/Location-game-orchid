@@ -367,9 +367,19 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 		}
 
 		httpService.requestPlan(dataService.previous_instructions).then(function(result){
-			$scope.fetching = false;		
+			$scope.fetching = false;
+			var deadlines = result.data.plan.plan[0].tasks;
+			for(i=0 ; i<deadlines.length; i++){
+				var t = dataService.getTaskById(deadlines[i].id);
+				if(t!= null) { 
+					t.deadline = deadlines[i].deadline;
+					t.getTime = function(){
+						return Math.floor(this.deadline/10)+":"+(this.deadline%10/10*60);
+					}
+				}
+			}
+			
 			$scope.$apply();
-			//alert(JSON.stringify(result.data.sent));
 		});
 		
 	}

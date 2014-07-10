@@ -196,7 +196,8 @@ app.factory("httpService",function($http){
 			dataService.instruction_frame.id = data.frame_id;
 			dataService.instruction_frame.current_size = 0;
 		}
-		console.log(data);
+
+		//console.log(data);
 		//if task value is not in the instruction
 		var assignment = dataService.getInstructionByTask(data.task);
 		if(data.task!=-1 && data.task!=null){
@@ -209,7 +210,8 @@ app.factory("httpService",function($http){
 					player1:data.player_id, 
 					player2:-1,
 					task_id : data.task,
-					path1: data.path
+					path1: data.path,
+					task: dataService.getTaskById(data.task)
 				});
 			}
 			else{
@@ -308,6 +310,7 @@ app.factory("httpService",function($http){
 				{id:1,task_id: 1,  player1:6,player2:2}
 			],*/
 			[],
+
 		instruction_frame: {id:-1, frame_size:0, current_size:0},
 		previous_instructions: [], /*[
 				{id:2,task_id: 3,  player1:1,player2:3},

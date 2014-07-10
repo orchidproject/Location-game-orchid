@@ -11,6 +11,11 @@
               <img ng-src = "{{getTaskIcon(a.task_id)}}" >
 	      
 						  <span class="glyphicon glyphicon-move corner" ng-show="editMode"></span> 
+
+              <div ng-if="a.task !== null">
+                  {{a.task.getTime()}}
+              </div>
+
             </div>
 
             <div class="col-sm-3 card-fixed transparent-5 task-card exisiting-task-droppable" ng-hide="taskExist(a)" assignmentId = "{{a.id}}" > 
