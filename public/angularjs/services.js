@@ -139,6 +139,18 @@ app.factory("httpService",function($http){
 			else{
 				a.player1 = players[0];
 				a.player2 = players[1];
+				//delete ex
+				var a = dataService.getPreAssignmentByPlayerId(players[0]);
+				if(a!==null){
+					var index = dataService.previous_instructions.indexOf(a);
+					dataService.previous_instructions.splice(index,1);
+				}
+
+				a = dataService.getPreAssignmentByPlayerId(players[1];
+				if(a!==null){
+					var index = dataService.previous_instructions.indexOf(a);
+					dataService.previous_instructions.splice(index,1);
+				}
 			}
 			
 		}
@@ -364,6 +376,7 @@ app.factory("httpService",function($http){
 			})
 			return data;
 		},
+
 
 		getPreAssignmentByPlayerId: function(pid){
 			var data = null;
