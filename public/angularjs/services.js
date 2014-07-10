@@ -141,13 +141,13 @@ app.factory("httpService",function($http){
 				a.player2 = players[1];
 				//delete ex
 				var a = dataService.getPreAssignmentByPlayerId(players[0]);
-				if(a!==null){
+				if(a!==null && (a.task_id != data.id) ){
 					var index = dataService.previous_instructions.indexOf(a);
 					dataService.previous_instructions.splice(index,1);
 				}
 
 				a = dataService.getPreAssignmentByPlayerId(players[1]);
-				if(a!==null){
+				if(a!==null && (a.task_id != data.id) ){
 					var index = dataService.previous_instructions.indexOf(a);
 					dataService.previous_instructions.splice(index,1);
 				}
