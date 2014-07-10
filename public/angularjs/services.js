@@ -135,24 +135,22 @@ app.factory("httpService",function($http){
 			if(a == null){
 				//unexpected, push it in array
 				dataService.previous_instructions.push({id:-1, task_id: data.id, player1: players[0], player2:players[1]});
-			}
-			else{
-				a.player1 = players[0];
-				a.player2 = players[1];
-				//delete ex
-				var a = dataService.getPreAssignmentByPlayerId(players[0]);
-				if(a!==null && (a.task_id != data.id) ){
-					var index = dataService.previous_instructions.indexOf(a);
+
+				//unexpected pickup, it think it is to costly, but let's see
+				var a2 = dataService.getPreAssignmentByPlayerId(players[0]);
+				if(a2!==null && (a2.task_id != data.id) ){
+					var index = dataService.previous_instructions.indexOf(a2);
 					dataService.previous_instructions.splice(index,1);
 				}
 
-				a = dataService.getPreAssignmentByPlayerId(players[1]);
-				if(a!==null && (a.task_id != data.id) ){
-					var index = dataService.previous_instructions.indexOf(a);
+				a2 = dataService.getPreAssignmentByPlayerId(players[1]);
+				if(a2!==null && (a2.task_id != data.id) ){
+					var index = dataService.previous_instructions.indexOf(a2);
 					dataService.previous_instructions.splice(index,1);
 				}
+	
 			}
-			
+
 		}
 		else if(data.state == 2){//dropped off
 			//delete entry
