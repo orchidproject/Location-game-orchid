@@ -361,7 +361,7 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 			if(v.keep == false) all_keeps = false;
 		});
 
-		if(dataService.previous_instructions != (dataService.players.length/2)){
+		if(dataService.previous_instructions.length != (dataService.players.length/2)){
 			all_keeps = false;
 		}
 

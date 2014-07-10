@@ -146,7 +146,7 @@ app.factory("httpService",function($http){
 					dataService.previous_instructions.splice(index,1);
 				}
 
-				a = dataService.getPreAssignmentByPlayerId(players[1];
+				a = dataService.getPreAssignmentByPlayerId(players[1]);
 				if(a!==null){
 					var index = dataService.previous_instructions.indexOf(a);
 					dataService.previous_instructions.splice(index,1);

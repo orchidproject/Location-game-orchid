@@ -13,8 +13,10 @@
                 ng-class="{'focus':getClass(a.task_id)}" 
                 ng-mouseover="focus(a.task_id)"> 
             <img ng-src="{{getTaskIcon(a.task_id)}}" /> 
-            
-            {{a.task.getTime()}}
+
+            <div ng-if="a.task !== null">
+                  {{a.task.getTime()}}
+             </div>
           </div>
           
 					<div class="col-sm-8"  > 
