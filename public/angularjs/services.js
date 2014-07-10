@@ -133,8 +133,7 @@ app.factory("httpService",function($http){
 			var players = data.players.split(",");
 
 			if(a == null){
-				//unexpected, push it in array
-				dataService.previous_instructions.push({id:-1, task_id: data.id, player1: players[0], player2:players[1]});
+				
 
 				//unexpected pickup, it think it is to costly, but let's see
 				var a2 = dataService.getPreAssignmentByPlayerId(players[0]);
@@ -148,6 +147,9 @@ app.factory("httpService",function($http){
 					var index = dataService.previous_instructions.indexOf(a2);
 					dataService.previous_instructions.splice(index,1);
 				}
+
+				//unexpected, push it in array
+				dataService.previous_instructions.push({id:-1, task_id: data.id, player1: players[0], player2:players[1]});
 	
 			}
 
