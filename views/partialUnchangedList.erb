@@ -11,7 +11,7 @@
             ng-init = "initEditables()"
             > 
               <img ng-src = "{{getTaskIcon(a.task_id)}}" >
-               {{a.task_id}}
+               {{a.task.getTime()}}
               <span ng-show="editMode" class="glyphicon glyphicon-move corner"></span> 
             </div>
             <div class="col-sm-3 card-fixed task-card exisiting-task-droppable" ng-hide="taskExist(a)" assignmentId = "{{a.id}}" > 
