@@ -94,7 +94,7 @@ sIOService.pushListener("event", listener);
 */
 
 
-app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parseService,httpService){
+app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOService,parseService,httpService){
 	$scope.editMode = false;
 	$scope.edit_indicator = "Edit";
 	$scope.planPending = false;
@@ -386,6 +386,8 @@ app.controller("NewAssignmentCtrl", function($scope,dataService,sIOService,parse
 			
 			$scope.$apply();
 		});
+
+		$timeout(function(){ $scope.fetching = false; },8000);
 		
 	}
 

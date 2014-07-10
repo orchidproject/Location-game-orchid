@@ -1,2 +1,2 @@
-kill 6306 &&
-kill 6307
+kill 6320 &&
+kill 6321
