@@ -72,6 +72,14 @@ post '/test/:game_id/:frame/fetchplan' do
 	#------------------------processing-------------------------
 	processResponse(params[:game_id], res , keeps)	
 
+    #-----------logging
+	log_file="plan-log-#{params[:layer_id]}"
+    Dir.chdir("logs")
+    #create log file when not exits
+    #append and write
+      
+    Dir.chdir("..")
+
 	#parse json
 	{:sent=> data, :plan => JSON.parse(res)}.to_json
 

@@ -47,8 +47,8 @@ class Controller < Sinatra::Base
 		 	}
 			
 		end	
-		
     end 
+
 =begin   
     if game.confirmed_plans.last() != nil
     	game.confirmed_plans.last().frames.instructions.each do |ins|
@@ -107,13 +107,6 @@ class Controller < Sinatra::Base
 		  :radius => d.radius,
           }
     end
-
-   #player data not loaded? 
-   # player = []
-   # game.players.each do |p|
-   #	player<<{
-   #	}
-    
 
     if action == "init"
 	response = {
@@ -223,10 +216,10 @@ class Controller < Sinatra::Base
 	    	if(instruction != nil)
 				instruction.status=4
 				instruction.save
-				puts " instruction for " + p.id.to_s + " is rejected *********************************************************************************************" + instruction.id.to_s
+				#puts " instruction for " + p.id.to_s + " is rejected *********************************************************************************************" + instruction.id.to_s
 				updatePlan = true
 	    	else
-				puts "no instruction *********************************************************************************************************"  
+				#puts "no instruction *********************************************************************************************************"  
 	    	end
 
 
@@ -234,30 +227,30 @@ class Controller < Sinatra::Base
         if (p.latitude == nil || p.longitude == nil)
          	puts "no location for user #{p.id}"
          	next
-             end 
+            end 
          	 
          	 
-             if(sim.isOnMap(p.latitude, p.longitude))
+            if(sim.isOnMap(p.latitude, p.longitude))
 	        if (p.exposure > 1000 )
-                	p.status="incapacitated"
-			p.save
-                	p.broadcast(socketIO)
-                else
-			p.current_exposure = check_radiation(p.latitude,p.longitude,game.layer_id)
-			p.exposure = p.exposure + (p.current_exposure*0.2)
+                p.status="incapacitated"
+				p.save
+                p.broadcast(socketIO)
+            else
+				p.current_exposure = check_radiation(p.latitude,p.longitude,game.layer_id)
+				p.exposure = p.exposure + (p.current_exposure*0.2)
                  
-			#broadcast exposure
-			p.updateHealth(socketIO)
+				#broadcast exposure
+				p.updateHealth(socketIO)
       			p.broadcast_curr_exposure(socketIO)           
-			p.save
-		end 
-             else
-                puts "unit not in the boundary"
-             end
+				p.save
+			end 
+            else
+                #puts "unit not in the boundary"
+            end
          end 
 	
 	 if(updateSession)
-		agentUpdateSession(game.layer_id,frame) 
+		#agentUpdateSession(game.layer_id,frame) 
 	 elsif(updatePlan)
 	 	#commented out for human mediation
 		#agentFetchPlan(game.layer_id,frame)

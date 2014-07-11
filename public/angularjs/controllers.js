@@ -387,7 +387,10 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOServ
 			$scope.$apply();
 		});
 
-		$timeout(function(){ $scope.fetching = false; },8000);
+		$timeout(function(){ 
+			if($scope.fetching)
+			{ $scope.fetching = false; } 
+		},8000);
 		
 	}
 

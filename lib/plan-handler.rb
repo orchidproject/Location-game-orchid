@@ -98,6 +98,9 @@ class PlanHandler
 					doTask
 				end
 				t.run
+
+
+=begin
 			elsif task[:type] == 2 
 				puts "type 2"
 				t = Thread.new do 
@@ -108,9 +111,10 @@ class PlanHandler
 					doTask
 				end	
 				t.run
+=end
+
 			end
 		end	
-		
 	end 
 	
 	public

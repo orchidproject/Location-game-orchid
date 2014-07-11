@@ -61,23 +61,23 @@ class Task
   		self.game.players.each do |p|
   			
   			if (p.distance_to self.latitude, self.longitude) <20 #approxi check
-  				puts "player nearby detected #{p.distance_to self.latitude, self.longitude} task: #{p.current_task}"
+  				#puts "player nearby detected #{p.distance_to self.latitude, self.longitude} task: #{p.current_task}"
   				if p.current_task == -1 #player is idle
   					
   					current_state.each_with_index do |i,index| #match skills and requirements
-  						if i==0 && @@task_type[self.type][index].eql?(p.skill_string())
-  							puts "find eligible player"
+  						if i==0 && @@task_type[self.type][index].eql?(p.skill_string()) && p.health > 0
+  							#puts "find eligible player"
   							
   							#modify array in iteration,seem will throw excepation if it is in Java
   							current_state[index]=1
-  							puts "#{self.type},#{current_state.to_s}"
+  							#puts "#{self.type},#{current_state.to_s}"
   							eligiable_players << p
   							
   						end 
   					end 
   				end 
   			else
-#  			puts "distance: #{p.distance_to self.latitude, self.longitude}"
+        #puts "distance: #{p.distance_to self.latitude, self.longitude}"
   			end
   		end
   		
