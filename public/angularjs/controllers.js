@@ -104,11 +104,18 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOServ
 	$scope.assignments = dataService.instructions;
 	$scope.players = dataService.players;
 	$scope.tasks = dataService.tasks;
-	$scope.aCopy = $.extend(true,[],$scope.assignments);
+	$scope.aCopy = shallowCopy($scope.assignments);
 	$scope.prev_assignments = dataService.previous_instructions;
 	var unReadList = {};
 
-	
+	function shallowCopy(target){
+		var copy = [];
+		for(i in target){
+			copy.push($.extend({}, target[i]));
+		}
+		return copy;
+	}
+
 	$scope.unRead = function(id){
 		if(unReadList[id] == null) return false;
 
@@ -191,7 +198,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOServ
 	$scope.$watch(function(){ return dataService.instruction_frame.current_size}, function(newVal,oldVal){
 		if(newVal == dataService.instruction_frame.size){
 			$scope.assignments = dataService.instructions;
-			$scope.aCopy = $.extend(true,[],$scope.assignments);
+			$scope.aCopy = shallowCopy($scope.assignments);
 			var all_same = true;
 
 			if(dataService.previous_instructions.length == 0 
@@ -378,9 +385,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOServ
 				var t = dataService.getTaskById(deadlines[i].id);
 				if(t!= null) { 
 					t.deadline = deadlines[i].deadline;
-					t.getTime = function(){
-						return Math.floor(this.deadline/10)+":"+(this.deadline%10/10*60);
-					}
+
 				}
 			}
 			
@@ -389,7 +394,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOServ
 
 		$timeout(function(){ 
 			if($scope.fetching)
-			{ $scope.fetching = false; } 
+			{ alert("timeout"); $scope.fetching = false; } 
 		},8000);
 		
 	}
@@ -489,7 +494,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOServ
 	}
 
 	$scope.undoAll = function(){
-		$scope.aCopy = $.extend(true,[],$scope.assignments);
+		$scope.aCopy = shallowCopy($scope.assignments);
 	}
 
 
@@ -876,7 +881,8 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOServ
 	$scope.emergencyStop = function(a){
 		var index = $scope.prev_assignments.indexOf(a);
 		$scope.prev_assignments.splice(index,1);
-		$scope.aCopy = $scope.aCopy = $.extend(true,[],$scope.prev_assignments);
+
+		$scope.aCopy = [];
 		
 		$scope.confirmAll(false);
 	}
@@ -887,6 +893,8 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOServ
 		}
 		return true;
 	}
+
+
 
 });
 

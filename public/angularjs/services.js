@@ -123,6 +123,7 @@ app.factory("httpService",function($http){
 			t.latitude = data.latitude;
 			t.longitude = data.longitude;
 			t.state = data.state;
+
 		}
 
 
@@ -148,10 +149,13 @@ app.factory("httpService",function($http){
 					dataService.previous_instructions.splice(index,1);
 				}
 
+				var t = dataService.getTaskById(data.id);
+
 				//unexpected, push it in array
-				dataService.previous_instructions.push({id:-1, task_id: data.id, player1: players[0], player2:players[1]});
+				dataService.previous_instructions.push({id:-1, task: t, task_id: data.id, player1: players[0], player2:players[1]});
 	
 			}
+
 
 		}
 		else if(data.state == 2){//dropped off
@@ -339,6 +343,23 @@ app.factory("httpService",function($http){
 			return $http.get("/game/"+G_game_id+"/status.json").then(function(result){
 				target.players = parseService.parsePlayer(result.data.players);
 				target.tasks= parseService.parsePlayer(result.data.tasks);
+			
+				for(i=0; i<target.tasks.length; i++){
+					var t = target.tasks[i];
+					t.getTime = function(){
+						
+						if(this.state == 1){
+							return "picked up!"
+						}
+						return Math.floor(this.deadline/10)+":"+(this.deadline%10/10*60);
+					}
+					t.pickedUp = function(){
+						if(this.state == 1){
+							return true
+						}
+						return false;
+					}
+				}
 				//alert(JSON.stringify(target.tasks));
 			});
 		},
