@@ -199,14 +199,7 @@ class Controller < Sinatra::Base
 	 updatePlan = false 
 	 updateSession = false
          game.tasks.each do |t|
-         	state_change =	t.update(socketIO)
-		puts state_change
-		if(3 == state_change[:after]&&1 == state_change[:before]) 
-			updateSession=true
-		elsif(2 == state_change[:after]&&1 == state_change[:before]) 
-			updatePlan = true
-		end
-
+         	t.update(socketIO)
          end
 	
 	 
@@ -216,8 +209,6 @@ class Controller < Sinatra::Base
 	    	if(instruction != nil)
 				instruction.status=4
 				instruction.save
-				#puts " instruction for " + p.id.to_s + " is rejected *********************************************************************************************" + instruction.id.to_s
-				updatePlan = true
 	    	else
 				#puts "no instruction *********************************************************************************************************"  
 	    	end
@@ -248,13 +239,6 @@ class Controller < Sinatra::Base
                 #puts "unit not in the boundary"
             end
          end 
-	
-	 if(updateSession)
-		#agentUpdateSession(game.layer_id,frame) 
-	 elsif(updatePlan)
-	 	#commented out for human mediation
-		#agentFetchPlan(game.layer_id,frame)
-	 end
   end
   
   def check_radiation(latitude, longitude, game_id) 
