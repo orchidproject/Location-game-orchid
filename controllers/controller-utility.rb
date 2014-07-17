@@ -23,7 +23,8 @@ class Controller < Sinatra::Base
 		:skill => p.skill,
 		:status => p.status,
 		:health => p.health,
-		:task => -1
+		:task => -1,
+		:name => p.name
 		} 
 	
 		#Put the latest instructions in the game.
