@@ -49,7 +49,13 @@ app.factory("httpService",function($http){
         	}
         
         	if(typeof data.message != "undefined") {
-            	//receiveMessageData(data.message);
+            	if(message.player_id == -1){
+            		data.message.name = "HQ";
+            	}
+            	else{
+            		data.message.name = getPlayerById(message.player_id).name;
+            	}
+
             	dataService.msgs.push(data.message);
            
         	}
@@ -352,7 +358,7 @@ app.factory("httpService",function($http){
 						if(this.state == 1){
 							return "picked up!"
 						}
-						
+
 						var mins = this.deadline%10/10*60 ;
 						mins = (  mins < 10  )? "0" + mins : mins;
 						return Math.floor(this.deadline/10)+ ":" + mins;
