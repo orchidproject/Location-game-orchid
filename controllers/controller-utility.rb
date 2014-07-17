@@ -43,6 +43,7 @@ class Controller < Sinatra::Base
 				#:time => ins.created_at.to_time.to_i,
 				:id => ins.id,
 				:player_id => ins.player_id,
+				:deadline => ins.deadline,
             	:confirmed => 1
 		 	}
 			
