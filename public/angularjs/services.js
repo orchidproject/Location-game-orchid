@@ -50,10 +50,10 @@ app.factory("httpService",function($http){
         
         	if(typeof data.message != "undefined") {
             	if(data.message.player_id == -1){
-            		data.message.name = "HQ";
+            		data.message.name = "HeadQuarter";
             	}
             	else{
-            		data.message.name = getPlayerById(data.message.player_id).name;
+            		data.message.name = dataService.getPlayerById(data.message.player_id).name;
             	}
 
             	dataService.msgs.push(data.message);
