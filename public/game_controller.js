@@ -302,24 +302,10 @@ function findTaskById(task_id){
 }
 
 function receiveHealthData(data){
-   
-    var health = $("#health_"+data.player_id).html(data.value); 
-    var level = document.getElementById("level_"+data.player_id);
-    if (data.value <= 25) {
-    	level.innerHTML = "high"; 
-    }
-    else if (data.value > 25 && data.value <=50)   {
-    	level.innerHTML = "medium"; 
-    }
-    else if (data.value > 50 && data.value <=75)   {
-    	level.innerHTML = "low"; 
-    }
-    else if (data.value > 75 && data.value <100)   {
-    	level.innerHTML = "minor"; 
-    }
-    else if (data.value == 100){
-	level.innerHTML = "none";
-    }
+   if(data.value == 0){
+   		var dead_icon = "/img/dead.png"
+   		players[data.player_id].marker.setIcon(dead_icon);
+   	}
 }
 
 

@@ -40,7 +40,8 @@ class ConfirmedPlan
                                 :frame_size => first_frame.instructions.size,
                                 :path => path,
                                 #to indentify whether it is confirmed
-                                :confirmed => 1
+                                :confirmed => 1,
+                                :deadline => instruction.deadline
                             }]
                   }
               }.to_json) 

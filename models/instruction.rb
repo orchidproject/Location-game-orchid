@@ -16,6 +16,7 @@ class Instruction
   property :action, String
   property :path, String, :length => 5000
   property :status, Integer, :default=>1 
+  property :deadline, Integer, :default=>0
   #1 idle, 2 rejected, 3 accept
   before :save do
 	puts "before save hooker"

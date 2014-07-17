@@ -1,5 +1,3 @@
-
-
 var app = angular.module('AtomicOrchidJs',[]);
 
 app.factory("httpService",function($http){
@@ -35,7 +33,7 @@ app.factory("httpService",function($http){
 
 
     		if(typeof data.health!="undefined"){
-        		//receiveHealthData(data.health);
+        		receiveHealthData(data.health);
         		aHandleHealthData(data.health);
     		}
         
@@ -202,6 +200,7 @@ app.factory("httpService",function($http){
 		//{"health":{"player_id":1,"value":100.0},"time_stamp":12000}
 		var player = dataService.getPlayerById(data.player_id);
 		player.health = data.value;
+
 	}
 
 	var aHandleInstructionData = function(data){
@@ -228,12 +227,15 @@ app.factory("httpService",function($http){
 					task_id : data.task,
 					path1: data.path,
 					task: dataService.getTaskById(data.task)
+					//playerObj1: dataService.getPlayerById(data.player_id)
+
 				});
 			}
 			else{
 				assignment.player2 = data.player_id;
 				assignment.id2 = data.id;
 				assignment.path2 = data.path;
+				//assignment.playerObj2 = dataService.getPlayerById(data.player_id);
 			}
 		}
 		
@@ -294,7 +296,6 @@ app.factory("httpService",function($http){
 			for(i = 0; i<data.length;i++){
 				data[i].skill_id = data[i].skill;
 				data[i].skill = this.role_string[data[i].skill];
-				data[i].health = 100;
 			}
 			return data;
 		}
@@ -351,8 +352,12 @@ app.factory("httpService",function($http){
 						if(this.state == 1){
 							return "picked up!"
 						}
-						return Math.floor(this.deadline/10)+":"+(this.deadline%10/10*60);
+						
+						var mins = this.deadline%10/10*60 ;
+						mins = (  mins < 10  )? "0" + mins : mins;
+						return Math.floor(this.deadline/10)+ ":" + mins;
 					}
+
 					t.pickedUp = function(){
 						if(this.state == 1){
 							return true

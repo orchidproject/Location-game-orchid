@@ -94,7 +94,7 @@ sIOService.pushListener("event", listener);
 */
 
 
-app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOService,parseService,httpService){
+app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataService,sIOService,parseService,httpService){
 	$scope.editMode = false;
 	$scope.edit_indicator = "Edit";
 	$scope.planPending = false;
@@ -107,6 +107,18 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOServ
 	$scope.aCopy = shallowCopy($scope.assignments);
 	$scope.prev_assignments = dataService.previous_instructions;
 	var unReadList = {};
+
+
+	var time_counter = 0;
+	$interval(function(){
+		time_counter++;
+		if(time_counter%6 != 0) return;
+		$(dataService.tasks).each(function(i,d){
+			if(d.deadline != null && d.deadline > 0 ){
+				d.deadline -= 1;
+			}
+		});
+	},1000);
 
 	function shallowCopy(target){
 		var copy = [];
@@ -236,6 +248,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOServ
 
 		var p = dataService.getPlayerById(id)		
 		var h = p.health;
+		if(h <= 0) h = 0;
 		return (100-h) + "%";
 	}
 
@@ -307,6 +320,10 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOServ
 			//copy status
 			copyStatus($scope.aCopy,dataService.previous_instructions);
 			dataService.previous_instructions = $scope.aCopy;
+
+			$(dataService.previous_instructions).each(function(i,d){
+				d.deadline = d.task.deadline;
+			});
 
 			httpService.confirmPlan({"plan":dataService.previous_instructions});
 
@@ -484,12 +501,13 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,dataService,sIOServ
 			
 			var img = "";
 			//if (p == null){console.log(id);return ""}
-			img = "/player/"+p.initials[0]+"/" + p.initials[1] + "/" + p.skill + "/map_icon.png"
-			/*$($scope.players).each(function(index,value){
-				if(value.id == id){
-					img = "/img/" + value.skill + ".png";
-				}
-			});*/
+			if(p.health <= 0){
+				img = "/player/"+p.initials[0]+"/" + p.initials[1] + "/dead/map_icon.png"
+			}
+			else{
+				img = "/player/"+p.initials[0]+"/" + p.initials[1] + "/" + p.skill + "/map_icon.png"
+			}
+			
 			return img;
 	}
 

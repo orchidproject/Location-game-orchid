@@ -294,7 +294,8 @@ end
 			:next_x => -1 ,
 			:next_y => -1 ,
 			:action => "go",
-			:path => path1 == nil ? nil : path1.to_json
+			:path => path1 == nil ? nil : path1.to_json,
+			:deadline => assignment["deadline"]
 		)
 
 		ins2= new_frame.instructions.new(
@@ -304,7 +305,8 @@ end
 			:next_x => -1 ,
 			:next_y => -1 ,
 			:action => "go",
-			:path => path2 == nil ? nil : path2.to_json
+			:path => path2 == nil ? nil : path2.to_json,
+			:deadline => assignment["deadline"]
 		)
 
 		occupied_players << assignment["player1"]

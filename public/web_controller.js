@@ -53,7 +53,4 @@ $(document).ready(function() {
     $('#msgModal').on('hidden.bs.modal', function () {
    		angular.element($("#main")).scope().markRead(G_msg_player);
 	})
-
-
-
 });
