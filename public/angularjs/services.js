@@ -49,11 +49,11 @@ app.factory("httpService",function($http){
         	}
         
         	if(typeof data.message != "undefined") {
-            	if(message.player_id == -1){
+            	if(data.message.player_id == -1){
             		data.message.name = "HQ";
             	}
             	else{
-            		data.message.name = getPlayerById(message.player_id).name;
+            		data.message.name = getPlayerById(data.message.player_id).name;
             	}
 
             	dataService.msgs.push(data.message);
