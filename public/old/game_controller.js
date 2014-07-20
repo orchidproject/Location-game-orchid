@@ -296,7 +296,7 @@ function receivePlayerInfoData(data){
 		panel_item[data.id]= data;
 		var image_url = cg.imageSrc(data.initials,data.skill);
 		var image = "<img id='player-icon-"+ data.id + "'  src = '" + image_url + "' >";	
-		var icon ="<td align='center'>"+image+"("+ data.initials +")</td>";
+		var icon ="<td align='center'>"+image+" "+ data.name +"</td>";
 		var health = "<td align='center'><div id='health_"+data.id+"'></div> </td>";
 		var level = "<td align='center'> <div id='level_"+data.id+"'></div> </td>";
 		var button = "<td align = 'center'> <input id= 'view_btn_"+data.id+"' type='button' value='view' id='view_ins_"+data.id+"'/> </td>"
@@ -610,7 +610,18 @@ function system(data){
 
 function receiveMessageData(data) {
 	if(data.target != null || data.target2 != null) return;
-	pushToTaskHistory(data.content, "msg" + latestMsgId++, data.player_initials, data.player_id,data.player_skill);
+	var name = data.player_name;
+	/*$(players).each(function(i,d){
+		if(data.player_id == d.id){
+			name = d.player_name;
+		}
+	});*/
+
+	if(data.player_id == -1){
+		name = "HQ";
+	}
+
+	pushToTaskHistory(data.content, "msg" + latestMsgId++, name , data.player_id,data.player_skill);
 	//alert(data.player_name + ": " + data.content);
 }
 var latestMsgId = 0;

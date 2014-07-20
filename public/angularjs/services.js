@@ -50,7 +50,7 @@ app.factory("httpService",function($http){
         
         	if(typeof data.message != "undefined") {
             	if(data.message.player_id == -1){
-            		data.message.name = "HeadQuarter";
+            		data.message.name = "Headquarter";
             	}
             	else{
             		data.message.name = dataService.getPlayerById(data.message.player_id).name;
@@ -133,13 +133,10 @@ app.factory("httpService",function($http){
 
 		if(data.state == 1 ){//pick up
 			//updata status
-			var a = dataService.getPreAssignmentByTaskId(data.id);
+			/*var a = dataService.getPreAssignmentByTaskId(data.id);
 			if(data.players == "") { alert("data error"); return;}
 			var players = data.players.split(",");
-
 			if(a == null){
-				
-
 				//unexpected pickup, it think it is to costly, but let's see
 				var a2 = dataService.getPreAssignmentByPlayerId(players[0]);
 				if(a2!==null && (a2.task_id != data.id) ){
@@ -158,9 +155,7 @@ app.factory("httpService",function($http){
 				//unexpected, push it in array
 				dataService.previous_instructions.push({id:-1, task: t, task_id: data.id, player1: players[0], player2:players[1]});
 	
-			}
-
-
+			}*/
 		}
 		else if(data.state == 2){//dropped off
 			//delete entry
