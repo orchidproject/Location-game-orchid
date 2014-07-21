@@ -890,6 +890,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 	}
 
 	$scope.confirmSingle = function(assignment){
+		assignment.deadline = assignment.task.deadline;
 		//checkout single 
 		checkoutSingle(assignment);
 		//confirm_all
