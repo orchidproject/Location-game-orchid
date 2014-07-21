@@ -715,6 +715,8 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
       			//assign target
       			var assig = getById($scope.aCopy, target_assignment_id)
       			assig.task_id = task_id;
+      			//reset task object
+      			assig.task = dataService.getTaskById(task_id);
       			validateAssigments(assig);
 
       			clearEmptyAssignments();
