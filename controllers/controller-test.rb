@@ -70,18 +70,19 @@ post '/test/:game_id/:frame/fetchplan' do
 	time2 = Time.now
 	puts res
 	#------------------------processing-------------------------
-	processResponse(params[:game_id], res , keeps)	
+	plan_id = processResponse(params[:game_id], res , keeps)	
 
     #-----------logging
-	log_file="plan-log-#{params[:layer_id]}"
-    Dir.chdir("logs")
-    #create log file when not exits
-    #append and write
-      
-    Dir.chdir("..")
-
 	#parse json
-	{:sent=> data, :plan => JSON.parse(res)}.to_json
+	data["plan_id"] = plan_id
+	log = {:sent=> data, :plan => JSON.parse(res)}.to_json
+	puts "begin writing"
+	File.open("logs/log-"+params[:game_id].to_s+"-4","a") do |f|
+		puts "writing"
+		f.write(log)
+	end 
+
+	log
 
  end 
 
@@ -128,8 +129,23 @@ post '/test/:game_id/:frame/fetchplan' do
  	#compare before and after
  	#stream changed part
  	data = request.body.read
- 
- 	processConfirmedResponse(params[:game_id],data)
+
+ 	resJson = nil
+ 	begin
+		resJson = JSON.parse(data) 
+
+	rescue 
+		puts "plan pause error"
+		return
+	end
+
+ 	previous_plan_id = 0
+ 	previous_plan = Frame.get(resJson["frame_id"])? Frame.get(resJson["frame_id"]).plan : nil
+ 	if  previous_plan != nil
+ 		previous_plan_id = previous_plan.id
+ 	end
+
+ 	processConfirmedResponse(params[:game_id],resJson,previous_plan_id)
 
  end 
 
@@ -251,23 +267,16 @@ end
 
  end 
 
- def processConfirmedResponse(game_id,res)
- 	resJson = nil
- 	begin
-		resJson = JSON.parse(res) 
-
-	rescue 
-		puts "plan pause error"
-		return
-	end
+ def processConfirmedResponse(game_id,resJson,previous_plan_id)
+ 	
 
 	g = Game.get(game_id)
 	p = g.confirmed_plans.create 
 
 	#plan_id is for get around the bug
-	new_frame = p.frames.create(:count=> -1,:plan_id => 0) 
+	new_frame = p.frames.create(:count=> -1,:plan_id => previous_plan_id) 
 	occupied_players = []
-
+    
 	resJson["plan"].each  do |assignment| 
 		#add task location anyway
 		path1 = assignment["path1"]
@@ -463,6 +472,7 @@ puts resJson["plan"]
 	end
 	
 	p.notifyPlayers socketIO
+	return p.id
 end 
 
 

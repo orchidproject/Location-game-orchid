@@ -325,7 +325,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 				d.deadline = d.task.deadline;
 			});
 
-			httpService.confirmPlan({"plan":dataService.previous_instructions});
+			httpService.confirmPlan({"plan":dataService.previous_instructions, "frame_id": dataService.instruction_frame.id });
 
 			$scope.prev_assignments = dataService.previous_instructions;
 			
@@ -339,7 +339,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 			$scope.toggleEditMode(false);
 		}
 		else{
-			httpService.confirmPlan({"plan":dataService.previous_instructions});
+			httpService.confirmPlan({"plan":dataService.previous_instructions,"frame_id": dataService.instruction_frame.id });
 		}
 
 	}
@@ -529,7 +529,9 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 	var createNewAssignments = function(task_id,player1,player2){
 		//when droppble dropped on the creation tag
 		//insert a new assigment with 
-		$scope.aCopy.push({id:count--, task_id: task_id, player1:-1,player2:-1});
+		var assig = {id:count--, task_id: task_id, player1:-1,player2:-1};
+		$scope.aCopy.push(assig);
+		return assig;
 		
 	}
 
@@ -698,8 +700,12 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
       			var task_id = ui.helper[0].attributes.taskId.nodeValue;
 
       			eraseOriginalGrid(ui);
-        		createNewAssignments(task_id);
+        		var assig =createNewAssignments(task_id);
         		clearEmptyAssignments();
+
+        		//reset task
+        		assig.task = dataService.getTaskById(task_id);
+
         		$scope.$apply();
       		},
       		accept:".task-draggable"
@@ -892,7 +898,9 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 	}
 
 	$scope.confirmSingle = function(assignment){
-		assignment.deadline = assignment.task.deadline;
+		if(assignment.deadline!=null){
+			assignment.deadline = assignment.task.deadline;
+		}
 		//checkout single 
 		checkoutSingle(assignment);
 		//confirm_all

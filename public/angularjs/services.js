@@ -236,6 +236,7 @@ app.factory("httpService",function($http){
 				assignment.player2 = data.player_id;
 				assignment.id2 = data.id;
 				assignment.path2 = data.path;
+
 				//assignment.playerObj2 = dataService.getPlayerById(data.player_id);
 			}
 		}
