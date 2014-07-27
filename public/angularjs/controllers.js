@@ -300,7 +300,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 	}
 
 	$scope.confirmAll = function(clear){
-		if($scope.aCopy.length == 0){return;}
+		//if($scope.aCopy.length == 0){return;}
 
 		//alert(JSON.stringify($scope.aCopy));
 		//numberising data
@@ -911,7 +911,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 		var index = $scope.prev_assignments.indexOf(a);
 		$scope.prev_assignments.splice(index,1);
 
-		$scope.aCopy = [];
+		$scope.aCopy = shallowCopy($scope.prev_assignments);
 		
 		$scope.confirmAll(false);
 	}

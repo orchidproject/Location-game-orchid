@@ -670,7 +670,17 @@ end
 	terrains = JSON.parse(game.terrains)
 	
 	data[:players].each do |p|
-		puts "------------------------------converting------------------------------"
+		moveToAccessible(p,game,sim,terrains)
+	end	
+
+	data[:tasks].each do |t|
+		moveToAccessible(t,game,sim,terrains)
+	end	
+	return data
+  end 
+
+  def moveToAccessible(p,game,sim,terrains)
+  	puts "------------------------------converting------------------------------"
 		isOnMap = (p["x"] <= sim.x_size&& p["x"] >= 0 && p["y"] <= sim.y_size && p["y"]>= 0)
 		isAccessible = (terrains[p["x"]]== nil || 
 				terrains[p["x"]][p["y"]]== nil || 
@@ -698,8 +708,6 @@ end
 			player.y = point[1] 
 			player.save	
 		end 			
-	end	
-	return data
   end 
 
   def getLegalPoint(x1,y1,x2,y2,terrains) 
