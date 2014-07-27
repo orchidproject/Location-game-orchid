@@ -674,6 +674,7 @@ end
 	end	
 
 	data[:tasks].each do |t|
+		puts "task"
 		moveToAccessible(t,game,sim,terrains)
 	end	
 
@@ -687,6 +688,8 @@ end
 				terrains[p["x"]][p["y"]]== nil || 
 				terrains[p["x"]][p["y"]] == 0)
  
+ 		puts "before" + p["x"].to_s + " " + p["y"].to_s
+ 		
 		if(!isOnMap)
 			point =  getLegalPoint(p["x"], p["y"], (sim.y_size/2).floor, (sim.x_size/2).floor,terrains)
 			p["x"] = point[0]
@@ -696,6 +699,8 @@ end
 			p["x"] = point[0] 
 			p["y"] = point[1]
 		end 			
+
+		puts "after" + p["x"].to_s + " " + p["y"].to_s
   end 
 
   def getLegalPoint(x1,y1,x2,y2,terrains) 
