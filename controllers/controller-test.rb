@@ -676,6 +676,7 @@ end
 	data[:tasks].each do |t|
 		moveToAccessible(t,game,sim,terrains)
 	end	
+
 	return data
   end 
 
@@ -690,23 +691,10 @@ end
 			point =  getLegalPoint(p["x"], p["y"], (sim.y_size/2).floor, (sim.x_size/2).floor,terrains)
 			p["x"] = point[0]
 			p["y"] = point[1]
-			
-			player = Player.get(p[:id])
-			player.update(:x=> point[0], :y => point[1])	
-
 		elsif(!isAccessible)
-			player = Player.get(p[:id])
-			if(player.x == nil || player.y == nil)
-				point = getLegalPoint(p["x"], p["y"], (sim.y_size/2).floor, (sim.x_size/2).floor,terrains)
-			else
-				point = getLegalPoint(p["x"], p["y"], player.x , player.y ,terrains)
-			end
-
+			point = getLegalPoint(p["x"], p["y"], (sim.y_size/2).floor, (sim.x_size/2).floor,terrains)
 			p["x"] = point[0] 
 			p["y"] = point[1]
-			player.x = point[0] 
-			player.y = point[1] 
-			player.save	
 		end 			
   end 
 
