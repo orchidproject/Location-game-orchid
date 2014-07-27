@@ -68,7 +68,7 @@ post '/test/:game_id/:frame/fetchplan' do
 	
 	res = @agent.loadPlan(data.to_json)	
 	time2 = Time.now
-	puts res
+
 	#------------------------processing-------------------------
 	plan_id = processResponse(params[:game_id], res , keeps)	
 
@@ -76,7 +76,7 @@ post '/test/:game_id/:frame/fetchplan' do
 	#parse json
 	data["plan_id"] = plan_id
 	log = {:sent=> data, :plan => JSON.parse(res)}.to_json
-	puts "begin writing"
+
 	File.open("logs/log-"+params[:game_id].to_s+"-4","a") do |f|
 		puts "writing"
 		f.write(log)
