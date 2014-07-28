@@ -501,7 +501,7 @@ function receiveInstructionData(data){
 }
 
 function receiveInstructionDataV2(data){
-
+	if(data.confirmed != 1) return;
 	//sameple:{"teammate":2,"task":117,"direction":"south east","status":1,"time":1372781334,"id":160,"player_id":6}
 	
 	if(players[data.player_id]!=null){
