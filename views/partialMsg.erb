@@ -12,9 +12,9 @@
             <ul ng-repeat = "m in msgs | filter: filterMsg"> {{m.name}}({{m.player_initials}}):{{m.content}} </ul>
 
           </li>
-          <input  type="text"  ng-model = "msg_field" class="form-control" id="exampleInputEmail1" placeholder="Enter messages">
+          <input  type="text"  ng-enter="sendMsg(msg_field)" ng-model = "msg_field" class="form-control" id="exampleInputEmail1" placeholder="Enter messages">
 
-          <button ng-click="sendMsg(msg_field)" type="submit" class="btn btn-default">Send</button>   
+          <button ng-click="sendMsg(msg_field)"  type="submit" class="btn btn-default">Send</button>   
         </div><!-- /.form-group signup-form --> 
         </div>
 

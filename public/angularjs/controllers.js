@@ -10,6 +10,19 @@ var G_msg_player2 = -1;
 var G_msg_assignment1 = -1;
 var G_msg_assignment2 = -1;
 
+app.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});
 
 app.controller("AgentPanelCtrl", function($scope,httpService){
 	$scope.scripts = [];
@@ -57,8 +70,11 @@ app.controller("testPanelCtrl", function($scope,httpService){
 
 })
 
+
+
 app.controller("MsgCtrl",function($scope,dataService,sIOService){
 	$scope.sendMsg = function(data){
+		if($scope.msg_field == "") return;
 		sIOService.sendMsg(data);
 		$scope.msg_field = "";
 	}
