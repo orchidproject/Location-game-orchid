@@ -9,13 +9,12 @@ production:
   socket_io_client_ref: http://holt.mrl.nott.ac.uk:49991
   proxy_address: http://mainproxy.nottingham.ac.uk:8080
 development:
-  database: mysql://jtruck:jtruck@localhost/jtruck_db
+  database: mysql://wxj:t5*m3$A@localhost/wxj 
   base_uri: http://holt.mrl.nott.ac.uk/
   ga_id: 1
   socket_io_url: 0.0.0.0
   socket_io_port: 8080
   default_sim_lat: 52.952617
   default_sim_lng: -1.188639
-  socket_io_client_ref: http://localhost:49991
-  proxy_address: no_proxy 
-
+  socket_io_client_ref: http://holt.mrl.nott.ac.uk:49991
+  proxy_address: http://mainproxy.nottingham.ac.uk:8080

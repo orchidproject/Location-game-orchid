@@ -1,17 +1,1803 @@
+The "sys" module is now called "util". It should have a similar interface.
 info: socket.io started
 node-router server instance at unix:8080
-
-events.js:72
-        throw er; // Unhandled 'error' event
-              ^
-Error: Access denied for user 'wxj'@'localhost' (using password: YES)
-    at Function.Client._packetToUserObject (/Users/wxj/Projects/Location-game-orchid/node_modules/mysql/lib/client.js:387:11)
-    at Client._handlePacket (/Users/wxj/Projects/Location-game-orchid/node_modules/mysql/lib/client.js:300:43)
-    at Parser.EventEmitter.emit (events.js:95:17)
-    at emitPacket (/Users/wxj/Projects/Location-game-orchid/node_modules/mysql/lib/parser.js:71:14)
-    at Parser.write (/Users/wxj/Projects/Location-game-orchid/node_modules/mysql/lib/parser.js:576:7)
-    at Socket.EventEmitter.emit (events.js:95:17)
-    at Socket.<anonymous> (_stream_readable.js:736:14)
-    at Socket.EventEmitter.emit (events.js:92:17)
-    at emitReadable_ (_stream_readable.js:408:10)
-    at emitReadable (_stream_readable.js:404:5)
+127.0.0.1 - - [Tue, 29 Jul 2014 08:47:39 GMT] "POST /broadcast HTTP/1.1" 200 - "" "Ruby"
+15
+127.0.0.1 - - [Tue, 29 Jul 2014 08:47:39 GMT] "POST /broadcast HTTP/1.1" 200 - "" "Ruby"
+15-2
+sent to users:60
+60 not found in session table
+127.0.0.1 - - [Tue, 29 Jul 2014 08:47:39 GMT] "POST /broadcast HTTP/1.1" 200 - "" "Ruby"
+15
+debug: client authorized
+info: handshake authorized 72dfSCOIvMGZ-De9TZji
+debug: setting request GET /socket.io/1/websocket/72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: client authorized for 
+debug: websocket writing 1::
+debug: websocket writing 5:::{"name":"game"}
+session id recorded 60 72dfSCOIvMGZ-De9TZji
+join game channel 15
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"jsi","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406623675,"target":60,"player_skill":"soldier","player_id":60},"ackid":4}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"bdjdj","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406623679,"target":60,"player_skill":"soldier","player_id":60},"ackid":5}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"player_skill":"soldier","content":"jdkkd","player_name":"JS","player_initials":"JS","player_id":60,"timeStamp":1406623685},"ackid":6}]}
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"hjd","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406623690,"target":60,"player_skill":"soldier","player_id":60},"ackid":7}]}
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"dhjdk","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406623837,"target":60,"player_skill":"soldier","player_id":60},"ackid":8}]}
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"player_skill":"soldier","content":"hhjj","player_name":"JS","player_initials":"JS","player_id":60,"timeStamp":1406623844},"ackid":9}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"jdjdj","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406623856,"target":60,"player_skill":"soldier","player_id":60},"ackid":10}]}
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95364659279585, longitude=-1.1865690350532532 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1865690350532532,"latitude":52.95364659279585,"skill":"soldier","initials":"JS","accuracy":0},"ackid":11}]}
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: served static content /socket.io.js
+debug: client authorized
+info: handshake authorized DNPRF3HFXp682ZbKTZjj
+debug: setting request GET /socket.io/1/websocket/DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+debug: client authorized for 
+debug: websocket writing 1::
+debug: websocket writing 5:::{"name":"game"}
+session id recorded -2 DNPRF3HFXp682ZbKTZjj
+join game channel 15-1
+session id recorded -2 DNPRF3HFXp682ZbKTZjj
+join game channel 15-2
+session id recorded -2 DNPRF3HFXp682ZbKTZjj
+join game channel 15
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 2::
+debug: set heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+debug: emitting heartbeat for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 2::
+debug: set heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95355782844126, longitude=-1.1868858709931374 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1868858709931374,"latitude":52.95355782844126,"skill":"soldier","initials":"JS","accuracy":0},"ackid":12}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1868858709931374,"latitude":52.95355782844126,"skill":"soldier","initials":"JS","accuracy":0},"ackid":12}]}
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95359273906797, longitude=-1.1870179697871208 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870179697871208,"latitude":52.95359273906797,"skill":"soldier","initials":"JS","accuracy":0},"ackid":13}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870179697871208,"latitude":52.95359273906797,"skill":"soldier","initials":"JS","accuracy":0},"ackid":13}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953460472635925, longitude=-1.1873401701450348 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873401701450348,"latitude":52.953460472635925,"skill":"soldier","initials":"JS","accuracy":0},"ackid":14}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873401701450348,"latitude":52.953460472635925,"skill":"soldier","initials":"JS","accuracy":0},"ackid":14}]}
+debug: emitting heartbeat for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 2::
+debug: set heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 2::
+debug: set heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95429887250066, longitude=-1.1839437391608953 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1839437391608953,"latitude":52.95429887250066,"skill":"soldier","initials":"JS","accuracy":0},"ackid":15}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1839437391608953,"latitude":52.95429887250066,"skill":"soldier","initials":"JS","accuracy":0},"ackid":15}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95403249561787, longitude=-1.185077391564846 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.185077391564846,"latitude":52.95403249561787,"skill":"soldier","initials":"JS","accuracy":0},"ackid":16}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.185077391564846,"latitude":52.95403249561787,"skill":"soldier","initials":"JS","accuracy":0},"ackid":16}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95376134105027, longitude=-1.186226550489664 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186226550489664,"latitude":52.95376134105027,"skill":"soldier","initials":"JS","accuracy":0},"ackid":17}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186226550489664,"latitude":52.95376134105027,"skill":"soldier","initials":"JS","accuracy":0},"ackid":17}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95351583510637, longitude=-1.1873524077236652 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873524077236652,"latitude":52.95351583510637,"skill":"soldier","initials":"JS","accuracy":0},"ackid":18}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873524077236652,"latitude":52.95351583510637,"skill":"soldier","initials":"JS","accuracy":0},"ackid":18}]}
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953187893144786, longitude=-1.1885674484074116 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1885674484074116,"latitude":52.953187893144786,"skill":"soldier","initials":"JS","accuracy":0},"ackid":19}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1885674484074116,"latitude":52.953187893144786,"skill":"soldier","initials":"JS","accuracy":0},"ackid":19}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953261067159474, longitude=-1.1891706101596355 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1891706101596355,"latitude":52.953261067159474,"skill":"soldier","initials":"JS","accuracy":0},"ackid":20}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1891706101596355,"latitude":52.953261067159474,"skill":"soldier","initials":"JS","accuracy":0},"ackid":20}]}
+debug: emitting heartbeat for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 2::
+debug: set heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95319795142859, longitude=-1.189913246780634 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.189913246780634,"latitude":52.95319795142859,"skill":"soldier","initials":"JS","accuracy":0},"ackid":21}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.189913246780634,"latitude":52.95319795142859,"skill":"soldier","initials":"JS","accuracy":0},"ackid":21}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95311157591641, longitude=-1.1906399577856064 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1906399577856064,"latitude":52.95311157591641,"skill":"soldier","initials":"JS","accuracy":0},"ackid":22}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1906399577856064,"latitude":52.95311157591641,"skill":"soldier","initials":"JS","accuracy":0},"ackid":22}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95304498169571, longitude=-1.191246472299099 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.191246472299099,"latitude":52.95304498169571,"skill":"soldier","initials":"JS","accuracy":0},"ackid":23}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.191246472299099,"latitude":52.95304498169571,"skill":"soldier","initials":"JS","accuracy":0},"ackid":23}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95297930948436, longitude=-1.1917251627892256 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1917251627892256,"latitude":52.95297930948436,"skill":"soldier","initials":"JS","accuracy":0},"ackid":24}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1917251627892256,"latitude":52.95297930948436,"skill":"soldier","initials":"JS","accuracy":0},"ackid":24}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95293899253011, longitude=-1.1919916234910488 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1919916234910488,"latitude":52.95293899253011,"skill":"soldier","initials":"JS","accuracy":0},"ackid":25}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1919916234910488,"latitude":52.95293899253011,"skill":"soldier","initials":"JS","accuracy":0},"ackid":25}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95291845686734, longitude=-1.192046357318759 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.192046357318759,"latitude":52.95291845686734,"skill":"soldier","initials":"JS","accuracy":0},"ackid":26}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.192046357318759,"latitude":52.95291845686734,"skill":"soldier","initials":"JS","accuracy":0},"ackid":26}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.952955714426935, longitude=-1.1919587664306164 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1919587664306164,"latitude":52.952955714426935,"skill":"soldier","initials":"JS","accuracy":0},"ackid":27}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1919587664306164,"latitude":52.952955714426935,"skill":"soldier","initials":"JS","accuracy":0},"ackid":27}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95299666002393, longitude=-1.1917248275130987 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1917248275130987,"latitude":52.95299666002393,"skill":"soldier","initials":"JS","accuracy":0},"ackid":28}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1917248275130987,"latitude":52.95299666002393,"skill":"soldier","initials":"JS","accuracy":0},"ackid":28}]}
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 2::
+debug: set heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 2::
+debug: set heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 2::
+debug: set heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+debug: emitting heartbeat for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 2::
+debug: set heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 2::
+debug: set heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.952613648958504, longitude=-1.187437567859888 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187437567859888,"latitude":52.952613648958504,"skill":"soldier","initials":"JS","accuracy":0},"ackid":29}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187437567859888,"latitude":52.952613648958504,"skill":"soldier","initials":"JS","accuracy":0},"ackid":29}]}
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95270320959389, longitude=-1.1874105781316757 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874105781316757,"latitude":52.95270320959389,"skill":"soldier","initials":"JS","accuracy":0},"ackid":30}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874105781316757,"latitude":52.95270320959389,"skill":"soldier","initials":"JS","accuracy":0},"ackid":30}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95273024123162, longitude=-1.1874148529022932 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874148529022932,"latitude":52.95273024123162,"skill":"soldier","initials":"JS","accuracy":0},"ackid":31}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874148529022932,"latitude":52.95273024123162,"skill":"soldier","initials":"JS","accuracy":0},"ackid":31}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.952741724438965, longitude=-1.1874462012201548 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874462012201548,"latitude":52.952741724438965,"skill":"soldier","initials":"JS","accuracy":0},"ackid":32}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874462012201548,"latitude":52.952741724438965,"skill":"soldier","initials":"JS","accuracy":0},"ackid":32}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.952789375558496, longitude=-1.1874353885650635 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874353885650635,"latitude":52.952789375558496,"skill":"soldier","initials":"JS","accuracy":0},"ackid":33}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874353885650635,"latitude":52.952789375558496,"skill":"soldier","initials":"JS","accuracy":0},"ackid":33}]}
+debug: emitting heartbeat for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 2::
+debug: set heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.952842894010246, longitude=-1.1874418426305056 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874418426305056,"latitude":52.952842894010246,"skill":"soldier","initials":"JS","accuracy":0},"ackid":34}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874418426305056,"latitude":52.952842894010246,"skill":"soldier","initials":"JS","accuracy":0},"ackid":34}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95285907108337, longitude=-1.1874666530638933 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874666530638933,"latitude":52.95285907108337,"skill":"soldier","initials":"JS","accuracy":0},"ackid":35}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874666530638933,"latitude":52.95285907108337,"skill":"soldier","initials":"JS","accuracy":0},"ackid":35}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95288421679288, longitude=-1.1874600313603878 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874600313603878,"latitude":52.95288421679288,"skill":"soldier","initials":"JS","accuracy":0},"ackid":36}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874600313603878,"latitude":52.95288421679288,"skill":"soldier","initials":"JS","accuracy":0},"ackid":36}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95290353707969, longitude=-1.1874474585056305 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874474585056305,"latitude":52.95290353707969,"skill":"soldier","initials":"JS","accuracy":0},"ackid":37}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874474585056305,"latitude":52.95290353707969,"skill":"soldier","initials":"JS","accuracy":0},"ackid":37}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95296413823962, longitude=-1.1874224804341793 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874224804341793,"latitude":52.95296413823962,"skill":"soldier","initials":"JS","accuracy":0},"ackid":38}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874224804341793,"latitude":52.95296413823962,"skill":"soldier","initials":"JS","accuracy":0},"ackid":38}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953070756047964, longitude=-1.1873648967593908 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873648967593908,"latitude":52.953070756047964,"skill":"soldier","initials":"JS","accuracy":0},"ackid":39}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873648967593908,"latitude":52.953070756047964,"skill":"soldier","initials":"JS","accuracy":0},"ackid":39}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95311928726733, longitude=-1.187323909252882 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187323909252882,"latitude":52.95311928726733,"skill":"soldier","initials":"JS","accuracy":0},"ackid":40}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187323909252882,"latitude":52.95311928726733,"skill":"soldier","initials":"JS","accuracy":0},"ackid":40}]}
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95319061726332, longitude=-1.187275880947709 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187275880947709,"latitude":52.95319061726332,"skill":"soldier","initials":"JS","accuracy":0},"ackid":41}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187275880947709,"latitude":52.95319061726332,"skill":"soldier","initials":"JS","accuracy":0},"ackid":41}]}
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953250925056636, longitude=-1.1872380785644054 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872380785644054,"latitude":52.953250925056636,"skill":"soldier","initials":"JS","accuracy":0},"ackid":42}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872380785644054,"latitude":52.953250925056636,"skill":"soldier","initials":"JS","accuracy":0},"ackid":42}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.9533013002947, longitude=-1.1872119270265102 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872119270265102,"latitude":52.9533013002947,"skill":"soldier","initials":"JS","accuracy":0},"ackid":43}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872119270265102,"latitude":52.9533013002947,"skill":"soldier","initials":"JS","accuracy":0},"ackid":43}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95335553120822, longitude=-1.1871826741844416 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871826741844416,"latitude":52.95335553120822,"skill":"soldier","initials":"JS","accuracy":0},"ackid":44}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871826741844416,"latitude":52.95335553120822,"skill":"soldier","initials":"JS","accuracy":0},"ackid":44}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95339320786297, longitude=-1.1871739570051432 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871739570051432,"latitude":52.95339320786297,"skill":"soldier","initials":"JS","accuracy":0},"ackid":45}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871739570051432,"latitude":52.95339320786297,"skill":"soldier","initials":"JS","accuracy":0},"ackid":45}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95341215096414, longitude=-1.1871765553951263 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871765553951263,"latitude":52.95341215096414,"skill":"soldier","initials":"JS","accuracy":0},"ackid":46}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871765553951263,"latitude":52.95341215096414,"skill":"soldier","initials":"JS","accuracy":0},"ackid":46}]}
+debug: emitting heartbeat for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 2::
+debug: set heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95342174824327, longitude=-1.1871491465717554 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871491465717554,"latitude":52.95342174824327,"skill":"soldier","initials":"JS","accuracy":0},"ackid":47}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871491465717554,"latitude":52.95342174824327,"skill":"soldier","initials":"JS","accuracy":0},"ackid":47}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95343440491706, longitude=-1.187126263976097 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187126263976097,"latitude":52.95343440491706,"skill":"soldier","initials":"JS","accuracy":0},"ackid":48}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187126263976097,"latitude":52.95343440491706,"skill":"soldier","initials":"JS","accuracy":0},"ackid":48}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95341512653977, longitude=-1.1871346458792686 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871346458792686,"latitude":52.95341512653977,"skill":"soldier","initials":"JS","accuracy":0},"ackid":49}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871346458792686,"latitude":52.95341512653977,"skill":"soldier","initials":"JS","accuracy":0},"ackid":49}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95341550372541, longitude=-1.1871653236448765 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871653236448765,"latitude":52.95341550372541,"skill":"soldier","initials":"JS","accuracy":0},"ackid":50}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871653236448765,"latitude":52.95341550372541,"skill":"soldier","initials":"JS","accuracy":0},"ackid":50}]}
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95341692864895, longitude=-1.1872004438191652 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872004438191652,"latitude":52.95341692864895,"skill":"soldier","initials":"JS","accuracy":0},"ackid":51}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872004438191652,"latitude":52.95341692864895,"skill":"soldier","initials":"JS","accuracy":0},"ackid":51}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"jdej","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406624279,"target":60,"player_skill":"soldier","player_id":60},"ackid":52}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"jdej","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406624279,"target":60,"player_skill":"soldier","player_id":60},"ackid":52}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95340762473643, longitude=-1.1872542556375265 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872542556375265,"latitude":52.95340762473643,"skill":"soldier","initials":"JS","accuracy":0},"ackid":53}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872542556375265,"latitude":52.95340762473643,"skill":"soldier","initials":"JS","accuracy":0},"ackid":53}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.9534022603184, longitude=-1.1873201373964548 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873201373964548,"latitude":52.9534022603184,"skill":"soldier","initials":"JS","accuracy":0},"ackid":54}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873201373964548,"latitude":52.9534022603184,"skill":"soldier","initials":"JS","accuracy":0},"ackid":54}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"hdje","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406624283,"target":60,"player_skill":"soldier","player_id":60},"ackid":55}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"hdje","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406624283,"target":60,"player_skill":"soldier","player_id":60},"ackid":55}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953425268642604, longitude=-1.1873443610966206 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873443610966206,"latitude":52.953425268642604,"skill":"soldier","initials":"JS","accuracy":0},"ackid":56}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873443610966206,"latitude":52.953425268642604,"skill":"soldier","initials":"JS","accuracy":0},"ackid":56}]}
+debug: emitting heartbeat for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 2::
+debug: set heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client DNPRF3HFXp682ZbKTZjj
+debug: set heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"player_skill":"soldier","content":"jsjs","player_name":"JS","player_initials":"JS","player_id":60,"timeStamp":1406624288},"ackid":57}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"player_skill":"soldier","content":"jsjs","player_name":"JS","player_initials":"JS","player_id":60,"timeStamp":1406624288},"ackid":57}]}
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+info: transport end (undefined)
+debug: set close timeout for client DNPRF3HFXp682ZbKTZjj
+debug: cleared close timeout for client DNPRF3HFXp682ZbKTZjj
+debug: cleared heartbeat interval for client DNPRF3HFXp682ZbKTZjj
+client unregistered
+debug: discarding transport
+debug: served static content /socket.io.js
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: client authorized
+info: handshake authorized T2ovnsSYXl5_Pfq8TZjk
+debug: setting request GET /socket.io/1/websocket/T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: client authorized for 
+debug: websocket writing 1::
+debug: websocket writing 5:::{"name":"game"}
+session id recorded -2 T2ovnsSYXl5_Pfq8TZjk
+join game channel 15-1
+session id recorded -2 T2ovnsSYXl5_Pfq8TZjk
+join game channel 15-2
+session id recorded -2 T2ovnsSYXl5_Pfq8TZjk
+join game channel 15
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95345942489803, longitude=-1.187933860346675 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187933860346675,"latitude":52.95345942489803,"skill":"soldier","initials":"JS","accuracy":0},"ackid":58}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187933860346675,"latitude":52.95345942489803,"skill":"soldier","initials":"JS","accuracy":0},"ackid":58}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953387633897364, longitude=-1.1881751753389835 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1881751753389835,"latitude":52.953387633897364,"skill":"soldier","initials":"JS","accuracy":0},"ackid":59}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1881751753389835,"latitude":52.953387633897364,"skill":"soldier","initials":"JS","accuracy":0},"ackid":59}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95337024144828, longitude=-1.188283720985055 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.188283720985055,"latitude":52.95337024144828,"skill":"soldier","initials":"JS","accuracy":0},"ackid":60}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.188283720985055,"latitude":52.95337024144828,"skill":"soldier","initials":"JS","accuracy":0},"ackid":60}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95341814402491, longitude=-1.187933860346675 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187933860346675,"latitude":52.95341814402491,"skill":"soldier","initials":"JS","accuracy":0},"ackid":61}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187933860346675,"latitude":52.95341814402491,"skill":"soldier","initials":"JS","accuracy":0},"ackid":61}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95347329694778, longitude=-1.187702352181077 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187702352181077,"latitude":52.95347329694778,"skill":"soldier","initials":"JS","accuracy":0},"ackid":62}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187702352181077,"latitude":52.95347329694778,"skill":"soldier","initials":"JS","accuracy":0},"ackid":62}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95350845903158, longitude=-1.1875782161951065 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875782161951065,"latitude":52.95350845903158,"skill":"soldier","initials":"JS","accuracy":0},"ackid":63}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875782161951065,"latitude":52.95350845903158,"skill":"soldier","initials":"JS","accuracy":0},"ackid":63}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95352761168033, longitude=-1.1874566785991192 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874566785991192,"latitude":52.95352761168033,"skill":"soldier","initials":"JS","accuracy":0},"ackid":64}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874566785991192,"latitude":52.95352761168033,"skill":"soldier","initials":"JS","accuracy":0},"ackid":64}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95354705769569, longitude=-1.187336565926671 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187336565926671,"latitude":52.95354705769569,"skill":"soldier","initials":"JS","accuracy":0},"ackid":65}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187336565926671,"latitude":52.95354705769569,"skill":"soldier","initials":"JS","accuracy":0},"ackid":65}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953590685501695, longitude=-1.1872794013470411 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872794013470411,"latitude":52.953590685501695,"skill":"soldier","initials":"JS","accuracy":0},"ackid":66}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872794013470411,"latitude":52.953590685501695,"skill":"soldier","initials":"JS","accuracy":0},"ackid":66}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95364315621555, longitude=-1.1872358154505491 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872358154505491,"latitude":52.95364315621555,"skill":"soldier","initials":"JS","accuracy":0},"ackid":67}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872358154505491,"latitude":52.95364315621555,"skill":"soldier","initials":"JS","accuracy":0},"ackid":67}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.9536327207461, longitude=-1.187178147956729 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187178147956729,"latitude":52.9536327207461,"skill":"soldier","initials":"JS","accuracy":0},"ackid":68}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187178147956729,"latitude":52.9536327207461,"skill":"soldier","initials":"JS","accuracy":0},"ackid":68}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95355418231338, longitude=-1.1871120147407055 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871120147407055,"latitude":52.95355418231338,"skill":"soldier","initials":"JS","accuracy":0},"ackid":69}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871120147407055,"latitude":52.95355418231338,"skill":"soldier","initials":"JS","accuracy":0},"ackid":69}]}
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.9534921143204, longitude=-1.1870430316776037 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870430316776037,"latitude":52.9534921143204,"skill":"soldier","initials":"JS","accuracy":0},"ackid":70}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870430316776037,"latitude":52.9534921143204,"skill":"soldier","initials":"JS","accuracy":0},"ackid":70}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95343884732574, longitude=-1.1869954224675894 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869954224675894,"latitude":52.95343884732574,"skill":"soldier","initials":"JS","accuracy":0},"ackid":71}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869954224675894,"latitude":52.95343884732574,"skill":"soldier","initials":"JS","accuracy":0},"ackid":71}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.9534133663401, longitude=-1.1869644932448864 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869644932448864,"latitude":52.9534133663401,"skill":"soldier","initials":"JS","accuracy":0},"ackid":72}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869644932448864,"latitude":52.9534133663401,"skill":"soldier","initials":"JS","accuracy":0},"ackid":72}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95339827891439, longitude=-1.186947226524353 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186947226524353,"latitude":52.95339827891439,"skill":"soldier","initials":"JS","accuracy":0},"ackid":73}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186947226524353,"latitude":52.95339827891439,"skill":"soldier","initials":"JS","accuracy":0},"ackid":73}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953368606977165, longitude=-1.1869409400969744 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869409400969744,"latitude":52.953368606977165,"skill":"soldier","initials":"JS","accuracy":0},"ackid":74}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869409400969744,"latitude":52.953368606977165,"skill":"soldier","initials":"JS","accuracy":0},"ackid":74}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953345431014895, longitude=-1.1869324743747711 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869324743747711,"latitude":52.953345431014895,"skill":"soldier","initials":"JS","accuracy":0},"ackid":75}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869324743747711,"latitude":52.953345431014895,"skill":"soldier","initials":"JS","accuracy":0},"ackid":75}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95332414098084, longitude=-1.1869963444769382 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869963444769382,"latitude":52.95332414098084,"skill":"soldier","initials":"JS","accuracy":0},"ackid":76}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869963444769382,"latitude":52.95332414098084,"skill":"soldier","initials":"JS","accuracy":0},"ackid":76}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95332841575146, longitude=-1.1870763078331947 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870763078331947,"latitude":52.95332841575146,"skill":"soldier","initials":"JS","accuracy":0},"ackid":77}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870763078331947,"latitude":52.95332841575146,"skill":"soldier","initials":"JS","accuracy":0},"ackid":77}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953326529823244, longitude=-1.1871471349149942 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871471349149942,"latitude":52.953326529823244,"skill":"soldier","initials":"JS","accuracy":0},"ackid":78}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871471349149942,"latitude":52.953326529823244,"skill":"soldier","initials":"JS","accuracy":0},"ackid":78}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.9533332772553, longitude=-1.1872060596942902 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872060596942902,"latitude":52.9533332772553,"skill":"soldier","initials":"JS","accuracy":0},"ackid":79}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872060596942902,"latitude":52.9533332772553,"skill":"soldier","initials":"JS","accuracy":0},"ackid":79}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95334777794778, longitude=-1.1872699297964573 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872699297964573,"latitude":52.95334777794778,"skill":"soldier","initials":"JS","accuracy":0},"ackid":80}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872699297964573,"latitude":52.95334777794778,"skill":"soldier","initials":"JS","accuracy":0},"ackid":80}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953355363570154, longitude=-1.187310079112649 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187310079112649,"latitude":52.953355363570154,"skill":"soldier","initials":"JS","accuracy":0},"ackid":81}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187310079112649,"latitude":52.953355363570154,"skill":"soldier","initials":"JS","accuracy":0},"ackid":81}]}
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95336248818785, longitude=-1.187650552019477 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187650552019477,"latitude":52.95336248818785,"skill":"soldier","initials":"JS","accuracy":0},"ackid":82}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187650552019477,"latitude":52.95336248818785,"skill":"soldier","initials":"JS","accuracy":0},"ackid":82}]}
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953158263117075, longitude=-1.1852126754820347 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1852126754820347,"latitude":52.953158263117075,"skill":"soldier","initials":"JS","accuracy":0},"ackid":83}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1852126754820347,"latitude":52.953158263117075,"skill":"soldier","initials":"JS","accuracy":0},"ackid":83}]}
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953274603933096, longitude=-1.1863777600228786 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1863777600228786,"latitude":52.953274603933096,"skill":"soldier","initials":"JS","accuracy":0},"ackid":84}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1863777600228786,"latitude":52.953274603933096,"skill":"soldier","initials":"JS","accuracy":0},"ackid":84}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95334325172007, longitude=-1.186961978673935 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186961978673935,"latitude":52.95334325172007,"skill":"soldier","initials":"JS","accuracy":0},"ackid":85}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186961978673935,"latitude":52.95334325172007,"skill":"soldier","initials":"JS","accuracy":0},"ackid":85}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95331202913076, longitude=-1.1869553569704294 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869553569704294,"latitude":52.95331202913076,"skill":"soldier","initials":"JS","accuracy":0},"ackid":86}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869553569704294,"latitude":52.95331202913076,"skill":"soldier","initials":"JS","accuracy":0},"ackid":86}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953230515122414, longitude=-1.1868846975266933 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1868846975266933,"latitude":52.953230515122414,"skill":"soldier","initials":"JS","accuracy":0},"ackid":87}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1868846975266933,"latitude":52.953230515122414,"skill":"soldier","initials":"JS","accuracy":0},"ackid":87}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95316941104829, longitude=-1.1868168879300356 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1868168879300356,"latitude":52.95316941104829,"skill":"soldier","initials":"JS","accuracy":0},"ackid":88}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1868168879300356,"latitude":52.95316941104829,"skill":"soldier","initials":"JS","accuracy":0},"ackid":88}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953098164871335, longitude=-1.1867274530231953 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1867274530231953,"latitude":52.953098164871335,"skill":"soldier","initials":"JS","accuracy":0},"ackid":89}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1867274530231953,"latitude":52.953098164871335,"skill":"soldier","initials":"JS","accuracy":0},"ackid":89}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953030983917415, longitude=-1.1866350006312132 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1866350006312132,"latitude":52.953030983917415,"skill":"soldier","initials":"JS","accuracy":0},"ackid":90}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1866350006312132,"latitude":52.953030983917415,"skill":"soldier","initials":"JS","accuracy":0},"ackid":90}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.952965940348804, longitude=-1.186525197699666 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186525197699666,"latitude":52.952965940348804,"skill":"soldier","initials":"JS","accuracy":0},"ackid":91}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186525197699666,"latitude":52.952965940348804,"skill":"soldier","initials":"JS","accuracy":0},"ackid":91}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.9529334185645, longitude=-1.1865000519901514 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1865000519901514,"latitude":52.9529334185645,"skill":"soldier","initials":"JS","accuracy":0},"ackid":92}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1865000519901514,"latitude":52.9529334185645,"skill":"soldier","initials":"JS","accuracy":0},"ackid":92}]}
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95349471271038, longitude=-1.186837088316679 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186837088316679,"latitude":52.95349471271038,"skill":"soldier","initials":"JS","accuracy":0},"ackid":93}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186837088316679,"latitude":52.95349471271038,"skill":"soldier","initials":"JS","accuracy":0},"ackid":93}]}
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95348335523158, longitude=-1.186866844072938 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186866844072938,"latitude":52.95348335523158,"skill":"soldier","initials":"JS","accuracy":0},"ackid":94}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186866844072938,"latitude":52.95348335523158,"skill":"soldier","initials":"JS","accuracy":0},"ackid":94}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953464705497026, longitude=-1.186842704191804 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186842704191804,"latitude":52.953464705497026,"skill":"soldier","initials":"JS","accuracy":0},"ackid":95}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186842704191804,"latitude":52.953464705497026,"skill":"soldier","initials":"JS","accuracy":0},"ackid":95}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953450959175825, longitude=-1.1868143733590841 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1868143733590841,"latitude":52.953450959175825,"skill":"soldier","initials":"JS","accuracy":0},"ackid":96}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1868143733590841,"latitude":52.953450959175825,"skill":"soldier","initials":"JS","accuracy":0},"ackid":96}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95345779042691, longitude=-1.1867828574031591 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1867828574031591,"latitude":52.95345779042691,"skill":"soldier","initials":"JS","accuracy":0},"ackid":97}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1867828574031591,"latitude":52.95345779042691,"skill":"soldier","initials":"JS","accuracy":0},"ackid":97}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95349332969636, longitude=-1.1868103500455618 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1868103500455618,"latitude":52.95349332969636,"skill":"soldier","initials":"JS","accuracy":0},"ackid":98}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1868103500455618,"latitude":52.95349332969636,"skill":"soldier","initials":"JS","accuracy":0},"ackid":98}]}
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"bsjsjks","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406624613,"target":60,"player_skill":"soldier","player_id":60},"ackid":99}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"bsjsjks","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406624613,"target":60,"player_skill":"soldier","player_id":60},"ackid":99}]}
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953094518743455, longitude=-1.187309743836522 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187309743836522,"latitude":52.953094518743455,"skill":"soldier","initials":"JS","accuracy":0},"ackid":100}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187309743836522,"latitude":52.953094518743455,"skill":"soldier","initials":"JS","accuracy":0},"ackid":100}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95309254899621, longitude=-1.1872016172856092 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872016172856092,"latitude":52.95309254899621,"skill":"soldier","initials":"JS","accuracy":0},"ackid":101}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872016172856092,"latitude":52.95309254899621,"skill":"soldier","initials":"JS","accuracy":0},"ackid":101}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95302205719054, longitude=-1.187426084652543 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187426084652543,"latitude":52.95302205719054,"skill":"soldier","initials":"JS","accuracy":0},"ackid":102}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187426084652543,"latitude":52.95302205719054,"skill":"soldier","initials":"JS","accuracy":0},"ackid":102}]}
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95301769860089, longitude=-1.1876389011740685 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1876389011740685,"latitude":52.95301769860089,"skill":"soldier","initials":"JS","accuracy":0},"ackid":103}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1876389011740685,"latitude":52.95301769860089,"skill":"soldier","initials":"JS","accuracy":0},"ackid":103}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95302549377084, longitude=-1.1877857521176338 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1877857521176338,"latitude":52.95302549377084,"skill":"soldier","initials":"JS","accuracy":0},"ackid":104}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1877857521176338,"latitude":52.95302549377084,"skill":"soldier","initials":"JS","accuracy":0},"ackid":104}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95299875549972, longitude=-1.1879757698625326 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1879757698625326,"latitude":52.95299875549972,"skill":"soldier","initials":"JS","accuracy":0},"ackid":105}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1879757698625326,"latitude":52.95299875549972,"skill":"soldier","initials":"JS","accuracy":0},"ackid":105}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.952990415506065, longitude=-1.1881828028708696 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1881828028708696,"latitude":52.952990415506065,"skill":"soldier","initials":"JS","accuracy":0},"ackid":106}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1881828028708696,"latitude":52.952990415506065,"skill":"soldier","initials":"JS","accuracy":0},"ackid":106}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95305097475648, longitude=-1.1883574817329645 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1883574817329645,"latitude":52.95305097475648,"skill":"soldier","initials":"JS","accuracy":0},"ackid":107}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1883574817329645,"latitude":52.95305097475648,"skill":"soldier","initials":"JS","accuracy":0},"ackid":107}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95307100750506, longitude=-1.1884956993162632 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1884956993162632,"latitude":52.95307100750506,"skill":"soldier","initials":"JS","accuracy":0},"ackid":108}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1884956993162632,"latitude":52.95307100750506,"skill":"soldier","initials":"JS","accuracy":0},"ackid":108}]}
+debug: emitting heartbeat for client 72dfSCOIvMGZ-De9TZji
+debug: websocket writing 2::
+debug: set heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client 72dfSCOIvMGZ-De9TZji
+debug: set heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95307117514312, longitude=-1.1886194162070751 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1886194162070751,"latitude":52.95307117514312,"skill":"soldier","initials":"JS","accuracy":0},"ackid":109}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1886194162070751,"latitude":52.95307117514312,"skill":"soldier","initials":"JS","accuracy":0},"ackid":109}]}
+debug: got disconnection packet
+info: transport end by forced client disconnection
+debug: websocket writing 0::
+info: transport end (booted)
+debug: set close timeout for client 72dfSCOIvMGZ-De9TZji
+debug: cleared close timeout for client 72dfSCOIvMGZ-De9TZji
+debug: cleared heartbeat interval for client 72dfSCOIvMGZ-De9TZji
+client unregistered
+debug: discarding transport
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: client authorized
+info: handshake authorized oNM-1ZLq09MXHsscTZjl
+debug: setting request GET /socket.io/1/websocket/oNM-1ZLq09MXHsscTZjl
+debug: set heartbeat interval for client oNM-1ZLq09MXHsscTZjl
+debug: client authorized for 
+debug: websocket writing 1::
+debug: websocket writing 5:::{"name":"game"}
+session id recorded 60 oNM-1ZLq09MXHsscTZjl
+join game channel 15
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"ndndj","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406626554,"target":60,"player_skill":"soldier","player_id":60},"ackid":110}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"ndndj","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406626554,"target":60,"player_skill":"soldier","player_id":60},"ackid":110}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"bbss","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406626556,"target":60,"player_skill":"soldier","player_id":60},"ackid":111}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"bbss","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406626556,"target":60,"player_skill":"soldier","player_id":60},"ackid":111}]}
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"xbbdjd","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406626559,"target":60,"player_skill":"soldier","player_id":60},"ackid":112}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"xbbdjd","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406626559,"target":60,"player_skill":"soldier","player_id":60},"ackid":112}]}
+debug: served static content /socket.io.js
+debug: client authorized
+info: handshake authorized KMfZt2K2j9_X6jkBTZjm
+debug: setting request GET /socket.io/1/websocket/KMfZt2K2j9_X6jkBTZjm
+debug: set heartbeat interval for client KMfZt2K2j9_X6jkBTZjm
+debug: client authorized for 
+debug: websocket writing 1::
+debug: websocket writing 5:::{"name":"game"}
+session id recorded -2 KMfZt2K2j9_X6jkBTZjm
+join game channel 15-1
+session id recorded -2 KMfZt2K2j9_X6jkBTZjm
+join game channel 15-2
+session id recorded -2 KMfZt2K2j9_X6jkBTZjm
+join game channel 15
+debug: emitting heartbeat for client oNM-1ZLq09MXHsscTZjl
+debug: websocket writing 2::
+debug: set heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: set heartbeat interval for client oNM-1ZLq09MXHsscTZjl
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client KMfZt2K2j9_X6jkBTZjm
+debug: websocket writing 2::
+debug: set heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: set heartbeat interval for client KMfZt2K2j9_X6jkBTZjm
+debug: emitting heartbeat for client oNM-1ZLq09MXHsscTZjl
+debug: websocket writing 2::
+debug: set heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: set heartbeat interval for client oNM-1ZLq09MXHsscTZjl
+127.0.0.1 - - [Tue, 29 Jul 2014 09:36:47 GMT] "POST /broadcast HTTP/1.1" 200 - "" "Ruby"
+15-2
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":-1,"task":-1,"direction":"none","status":1,"path":[],"id":197,"player_id":49,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":113}]}
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":-1,"task":-1,"direction":"none","status":1,"path":[],"id":197,"player_id":49,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":113}]}
+sent to users:49,-1
+49 not found in session table
+-1 not found in session table
+127.0.0.1 - - [Tue, 29 Jul 2014 09:36:47 GMT] "POST /broadcast HTTP/1.1" 200 - "" "Ruby"
+15-2
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":55,"task":207,"direction":"south east","status":1,"path":[{"lat":52.952545051083725,"lng":-1.1885195778118773},{"lat":52.95247310216746,"lng":-1.1884001556237545},{"lat":52.95240115325119,"lng":-1.1882807334356318},{"lat":52.952329204334916,"lng":-1.1881613112475091},{"lat":52.95225725541865,"lng":-1.1880418890593862},{"lat":52.95218530650238,"lng":-1.1880418890593862},{"lat":52.95211335758611,"lng":-1.1879224668712636},{"lat":52.95204140866984,"lng":-1.187803044683141},{"lat":52.95196945975357,"lng":-1.187683622495018},{"lat":52.9518975108373,"lng":-1.1875642003068954},{"lat":52.951825561921034,"lng":-1.1875642003068954},{"lat":52.95175361300476,"lng":-1.1875642003068954},{"lat":52.9516816640885,"lng":-1.1875642003068954},{"lat":52.951609715172225,"lng":-1.1875642003068954},{"lat":52.95153776625595,"lng":-1.1875642003068954},{"lat":52.95146581733969,"lng":-1.1875642003068954},{"lat":52.951393868423416,"lng":-1.1874447781187727},{"lat":52.951321919507144,"lng":-1.1874447781187727},{"lat":52.95124997059088,"lng":-1.1874447781187727},{"lat":52.95117802167461,"lng":-1.1874447781187727},{"lat":52.951106072758336,"lng":-1.1874447781187727},{"lat":52.95103412384207,"lng":-1.1874447781187727},{"lat":52.9509621749258,"lng":-1.1874447781187727},{"lat":52.95089022600953,"lng":-1.1874447781187727},{"lat":52.95081827709326,"lng":-1.1874447781187727},{"lat":52.95074632817699,"lng":-1.1874447781187727},{"lat":52.95067437926072,"lng":-1.1874447781187727},{"lat":52.95060243034445,"lng":-1.1874447781187727},{"lat":52.95053048142818,"lng":-1.1874447781187727},{"lat":52.95045853251191,"lng":-1.1874447781187727},{"lat":52.950386583595645,"lng":-1.1874447781187727},{"lat":52.95031463467937,"lng":-1.1874447781187727},{"lat":52.95024268576311,"lng":-1.1874447781187727},{"lat":52.950170736846836,"lng":-1.1874447781187727},{"lat":52.950098787930564,"lng":-1.1874447781187727},{"lat":52.9500268390143,"lng":-1.1874447781187727},{"lat":52.94995489009803,"lng":-1.1874447781187727},{"lat":52.949882941181755,"lng":-1.1874447781187727},{"lat":52.94981099226549,"lng":-1.1874447781187727},{"lat":52.94973904334922,"lng":-1.1874447781187727},{"lat":52.94966709443295,"lng":-1.1873253559306498},{"lat":52.94959514551668,"lng":-1.1872059337425271},{"lat":52.94952319660041,"lng":-1.1870865115544045},{"lat":52.94952319660041,"lng":-1.1869670893662816},{"lat":52.94952319660041,"lng":-1.186847667178159},{"lat":52.94952319660041,"lng":-1.1867282449900363},{"lat":52.94952319660041,"lng":-1.1866088228019134},{"lat":52.94952319660041,"lng":-1.1864894006137907},{"lat":52.94952319660041,"lng":-1.186369978425668},{"lat":52.94952319660041,"lng":-1.1862505562375452}],"id":198,"player_id":54,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":114}]}
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":55,"task":207,"direction":"south east","status":1,"path":[{"lat":52.952545051083725,"lng":-1.1885195778118773},{"lat":52.95247310216746,"lng":-1.1884001556237545},{"lat":52.95240115325119,"lng":-1.1882807334356318},{"lat":52.952329204334916,"lng":-1.1881613112475091},{"lat":52.95225725541865,"lng":-1.1880418890593862},{"lat":52.95218530650238,"lng":-1.1880418890593862},{"lat":52.95211335758611,"lng":-1.1879224668712636},{"lat":52.95204140866984,"lng":-1.187803044683141},{"lat":52.95196945975357,"lng":-1.187683622495018},{"lat":52.9518975108373,"lng":-1.1875642003068954},{"lat":52.951825561921034,"lng":-1.1875642003068954},{"lat":52.95175361300476,"lng":-1.1875642003068954},{"lat":52.9516816640885,"lng":-1.1875642003068954},{"lat":52.951609715172225,"lng":-1.1875642003068954},{"lat":52.95153776625595,"lng":-1.1875642003068954},{"lat":52.95146581733969,"lng":-1.1875642003068954},{"lat":52.951393868423416,"lng":-1.1874447781187727},{"lat":52.951321919507144,"lng":-1.1874447781187727},{"lat":52.95124997059088,"lng":-1.1874447781187727},{"lat":52.95117802167461,"lng":-1.1874447781187727},{"lat":52.951106072758336,"lng":-1.1874447781187727},{"lat":52.95103412384207,"lng":-1.1874447781187727},{"lat":52.9509621749258,"lng":-1.1874447781187727},{"lat":52.95089022600953,"lng":-1.1874447781187727},{"lat":52.95081827709326,"lng":-1.1874447781187727},{"lat":52.95074632817699,"lng":-1.1874447781187727},{"lat":52.95067437926072,"lng":-1.1874447781187727},{"lat":52.95060243034445,"lng":-1.1874447781187727},{"lat":52.95053048142818,"lng":-1.1874447781187727},{"lat":52.95045853251191,"lng":-1.1874447781187727},{"lat":52.950386583595645,"lng":-1.1874447781187727},{"lat":52.95031463467937,"lng":-1.1874447781187727},{"lat":52.95024268576311,"lng":-1.1874447781187727},{"lat":52.950170736846836,"lng":-1.1874447781187727},{"lat":52.950098787930564,"lng":-1.1874447781187727},{"lat":52.9500268390143,"lng":-1.1874447781187727},{"lat":52.94995489009803,"lng":-1.1874447781187727},{"lat":52.949882941181755,"lng":-1.1874447781187727},{"lat":52.94981099226549,"lng":-1.1874447781187727},{"lat":52.94973904334922,"lng":-1.1874447781187727},{"lat":52.94966709443295,"lng":-1.1873253559306498},{"lat":52.94959514551668,"lng":-1.1872059337425271},{"lat":52.94952319660041,"lng":-1.1870865115544045},{"lat":52.94952319660041,"lng":-1.1869670893662816},{"lat":52.94952319660041,"lng":-1.186847667178159},{"lat":52.94952319660041,"lng":-1.1867282449900363},{"lat":52.94952319660041,"lng":-1.1866088228019134},{"lat":52.94952319660041,"lng":-1.1864894006137907},{"lat":52.94952319660041,"lng":-1.186369978425668},{"lat":52.94952319660041,"lng":-1.1862505562375452}],"id":198,"player_id":54,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":114}]}
+sent to users:54,55
+54 not found in session table
+55 not found in session table
+127.0.0.1 - - [Tue, 29 Jul 2014 09:36:47 GMT] "POST /broadcast HTTP/1.1" 200 - "" "Ruby"
+15-2
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":54,"task":207,"direction":"south east","status":1,"path":[{"lat":52.952545051083725,"lng":-1.1885195778118773},{"lat":52.95247310216746,"lng":-1.1884001556237545},{"lat":52.95240115325119,"lng":-1.1882807334356318},{"lat":52.952329204334916,"lng":-1.1881613112475091},{"lat":52.95225725541865,"lng":-1.1880418890593862},{"lat":52.95218530650238,"lng":-1.1880418890593862},{"lat":52.95211335758611,"lng":-1.1879224668712636},{"lat":52.95204140866984,"lng":-1.187803044683141},{"lat":52.95196945975357,"lng":-1.187683622495018},{"lat":52.9518975108373,"lng":-1.1875642003068954},{"lat":52.951825561921034,"lng":-1.1875642003068954},{"lat":52.95175361300476,"lng":-1.1875642003068954},{"lat":52.9516816640885,"lng":-1.1875642003068954},{"lat":52.951609715172225,"lng":-1.1875642003068954},{"lat":52.95153776625595,"lng":-1.1875642003068954},{"lat":52.95146581733969,"lng":-1.1875642003068954},{"lat":52.951393868423416,"lng":-1.1874447781187727},{"lat":52.951321919507144,"lng":-1.1874447781187727},{"lat":52.95124997059088,"lng":-1.1874447781187727},{"lat":52.95117802167461,"lng":-1.1874447781187727},{"lat":52.951106072758336,"lng":-1.1874447781187727},{"lat":52.95103412384207,"lng":-1.1874447781187727},{"lat":52.9509621749258,"lng":-1.1874447781187727},{"lat":52.95089022600953,"lng":-1.1874447781187727},{"lat":52.95081827709326,"lng":-1.1874447781187727},{"lat":52.95074632817699,"lng":-1.1874447781187727},{"lat":52.95067437926072,"lng":-1.1874447781187727},{"lat":52.95060243034445,"lng":-1.1874447781187727},{"lat":52.95053048142818,"lng":-1.1874447781187727},{"lat":52.95045853251191,"lng":-1.1874447781187727},{"lat":52.950386583595645,"lng":-1.1874447781187727},{"lat":52.95031463467937,"lng":-1.1874447781187727},{"lat":52.95024268576311,"lng":-1.1874447781187727},{"lat":52.950170736846836,"lng":-1.1874447781187727},{"lat":52.950098787930564,"lng":-1.1874447781187727},{"lat":52.9500268390143,"lng":-1.1874447781187727},{"lat":52.94995489009803,"lng":-1.1874447781187727},{"lat":52.949882941181755,"lng":-1.1874447781187727},{"lat":52.94981099226549,"lng":-1.1874447781187727},{"lat":52.94973904334922,"lng":-1.1874447781187727},{"lat":52.94966709443295,"lng":-1.1873253559306498},{"lat":52.94959514551668,"lng":-1.1872059337425271},{"lat":52.94952319660041,"lng":-1.1870865115544045},{"lat":52.94952319660041,"lng":-1.1869670893662816},{"lat":52.94952319660041,"lng":-1.186847667178159},{"lat":52.94952319660041,"lng":-1.1867282449900363},{"lat":52.94952319660041,"lng":-1.1866088228019134},{"lat":52.94952319660041,"lng":-1.1864894006137907},{"lat":52.94952319660041,"lng":-1.186369978425668},{"lat":52.94952319660041,"lng":-1.1862505562375452}],"id":199,"player_id":55,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":115}]}
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":54,"task":207,"direction":"south east","status":1,"path":[{"lat":52.952545051083725,"lng":-1.1885195778118773},{"lat":52.95247310216746,"lng":-1.1884001556237545},{"lat":52.95240115325119,"lng":-1.1882807334356318},{"lat":52.952329204334916,"lng":-1.1881613112475091},{"lat":52.95225725541865,"lng":-1.1880418890593862},{"lat":52.95218530650238,"lng":-1.1880418890593862},{"lat":52.95211335758611,"lng":-1.1879224668712636},{"lat":52.95204140866984,"lng":-1.187803044683141},{"lat":52.95196945975357,"lng":-1.187683622495018},{"lat":52.9518975108373,"lng":-1.1875642003068954},{"lat":52.951825561921034,"lng":-1.1875642003068954},{"lat":52.95175361300476,"lng":-1.1875642003068954},{"lat":52.9516816640885,"lng":-1.1875642003068954},{"lat":52.951609715172225,"lng":-1.1875642003068954},{"lat":52.95153776625595,"lng":-1.1875642003068954},{"lat":52.95146581733969,"lng":-1.1875642003068954},{"lat":52.951393868423416,"lng":-1.1874447781187727},{"lat":52.951321919507144,"lng":-1.1874447781187727},{"lat":52.95124997059088,"lng":-1.1874447781187727},{"lat":52.95117802167461,"lng":-1.1874447781187727},{"lat":52.951106072758336,"lng":-1.1874447781187727},{"lat":52.95103412384207,"lng":-1.1874447781187727},{"lat":52.9509621749258,"lng":-1.1874447781187727},{"lat":52.95089022600953,"lng":-1.1874447781187727},{"lat":52.95081827709326,"lng":-1.1874447781187727},{"lat":52.95074632817699,"lng":-1.1874447781187727},{"lat":52.95067437926072,"lng":-1.1874447781187727},{"lat":52.95060243034445,"lng":-1.1874447781187727},{"lat":52.95053048142818,"lng":-1.1874447781187727},{"lat":52.95045853251191,"lng":-1.1874447781187727},{"lat":52.950386583595645,"lng":-1.1874447781187727},{"lat":52.95031463467937,"lng":-1.1874447781187727},{"lat":52.95024268576311,"lng":-1.1874447781187727},{"lat":52.950170736846836,"lng":-1.1874447781187727},{"lat":52.950098787930564,"lng":-1.1874447781187727},{"lat":52.9500268390143,"lng":-1.1874447781187727},{"lat":52.94995489009803,"lng":-1.1874447781187727},{"lat":52.949882941181755,"lng":-1.1874447781187727},{"lat":52.94981099226549,"lng":-1.1874447781187727},{"lat":52.94973904334922,"lng":-1.1874447781187727},{"lat":52.94966709443295,"lng":-1.1873253559306498},{"lat":52.94959514551668,"lng":-1.1872059337425271},{"lat":52.94952319660041,"lng":-1.1870865115544045},{"lat":52.94952319660041,"lng":-1.1869670893662816},{"lat":52.94952319660041,"lng":-1.186847667178159},{"lat":52.94952319660041,"lng":-1.1867282449900363},{"lat":52.94952319660041,"lng":-1.1866088228019134},{"lat":52.94952319660041,"lng":-1.1864894006137907},{"lat":52.94952319660041,"lng":-1.186369978425668},{"lat":52.94952319660041,"lng":-1.1862505562375452}],"id":199,"player_id":55,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":115}]}
+sent to users:55,54
+55 not found in session table
+54 not found in session table
+127.0.0.1 - - [Tue, 29 Jul 2014 09:36:47 GMT] "POST /broadcast HTTP/1.1" 200 - "" "Ruby"
+15-2
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":-1,"task":-1,"direction":"none","status":1,"path":[],"id":200,"player_id":56,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":116}]}
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":-1,"task":-1,"direction":"none","status":1,"path":[],"id":200,"player_id":56,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":116}]}
+sent to users:56,-1
+56 not found in session table
+-1 not found in session table
+127.0.0.1 - - [Tue, 29 Jul 2014 09:36:47 GMT] "POST /broadcast HTTP/1.1" 200 - "" "Ruby"
+15-2
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":-1,"task":-1,"direction":"none","status":1,"path":[],"id":201,"player_id":58,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":117}]}
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":-1,"task":-1,"direction":"none","status":1,"path":[],"id":201,"player_id":58,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":117}]}
+sent to users:58,-1
+58 not found in session table
+-1 not found in session table
+127.0.0.1 - - [Tue, 29 Jul 2014 09:36:47 GMT] "POST /broadcast HTTP/1.1" 200 - "" "Ruby"
+15-2
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":-1,"task":-1,"direction":"none","status":1,"path":[],"id":202,"player_id":59,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":118}]}
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":-1,"task":-1,"direction":"none","status":1,"path":[],"id":202,"player_id":59,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":118}]}
+sent to users:59,-1
+59 not found in session table
+-1 not found in session table
+127.0.0.1 - - [Tue, 29 Jul 2014 09:36:47 GMT] "POST /broadcast HTTP/1.1" 200 - "" "Ruby"
+15-2
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":-1,"task":-1,"direction":"none","status":1,"path":[],"id":203,"player_id":60,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":119}]}
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":-1,"task":-1,"direction":"none","status":1,"path":[],"id":203,"player_id":60,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":119}]}
+sent to users:60,-1
+send to user undefined
+debug: websocket writing 5:::{"name":"data","args":[{"instructions":[{"teammate":-1,"task":-1,"direction":"none","status":1,"path":[],"id":203,"player_id":60,"frame_id":28,"frame_size":7,"confirmed":0}],"ackid":119,"time_stamp":1406626607181}]}
+-1 not found in session table
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client KMfZt2K2j9_X6jkBTZjm
+debug: websocket writing 2::
+debug: set heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: set heartbeat interval for client KMfZt2K2j9_X6jkBTZjm
+debug: emitting heartbeat for client oNM-1ZLq09MXHsscTZjl
+debug: websocket writing 2::
+debug: set heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: set heartbeat interval for client oNM-1ZLq09MXHsscTZjl
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client KMfZt2K2j9_X6jkBTZjm
+debug: websocket writing 2::
+debug: set heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: set heartbeat interval for client KMfZt2K2j9_X6jkBTZjm
+debug: emitting heartbeat for client oNM-1ZLq09MXHsscTZjl
+debug: websocket writing 2::
+debug: set heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: set heartbeat interval for client oNM-1ZLq09MXHsscTZjl
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client KMfZt2K2j9_X6jkBTZjm
+debug: websocket writing 2::
+debug: set heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: set heartbeat interval for client KMfZt2K2j9_X6jkBTZjm
+debug: emitting heartbeat for client oNM-1ZLq09MXHsscTZjl
+debug: websocket writing 2::
+debug: set heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: set heartbeat interval for client oNM-1ZLq09MXHsscTZjl
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"vshjsjsj","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406626688,"target":60,"player_skill":"soldier","player_id":60},"ackid":120}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"vshjsjsj","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406626688,"target":60,"player_skill":"soldier","player_id":60},"ackid":120}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"content":"vshjsjsj","player_name":"JS","player_initials":"JS","target2":-1,"timeStamp":1406626688,"target":60,"player_skill":"soldier","player_id":60},"ackid":120}]}
+debug: emitting heartbeat for client KMfZt2K2j9_X6jkBTZjm
+debug: websocket writing 2::
+debug: set heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: set heartbeat interval for client KMfZt2K2j9_X6jkBTZjm
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"player_skill":"soldier","content":"djj","player_name":"JS","player_initials":"JS","player_id":60,"timeStamp":1406626695},"ackid":121}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"player_skill":"soldier","content":"djj","player_name":"JS","player_initials":"JS","player_id":60,"timeStamp":1406626695},"ackid":121}]}
+debug: websocket writing 5:::{"name":"data","args":[{"message":{"player_skill":"soldier","content":"djj","player_name":"JS","player_initials":"JS","player_id":60,"timeStamp":1406626695},"ackid":121}]}
+debug: emitting heartbeat for client oNM-1ZLq09MXHsscTZjl
+debug: websocket writing 2::
+debug: set heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: set heartbeat interval for client oNM-1ZLq09MXHsscTZjl
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+debug: emitting heartbeat for client KMfZt2K2j9_X6jkBTZjm
+debug: websocket writing 2::
+debug: set heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: set heartbeat interval for client KMfZt2K2j9_X6jkBTZjm
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95324321370572, longitude=-1.187665807083249 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187665807083249,"latitude":52.95324321370572,"skill":"soldier","initials":"JS","accuracy":0},"ackid":122}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187665807083249,"latitude":52.95324321370572,"skill":"soldier","initials":"JS","accuracy":0},"ackid":122}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187665807083249,"latitude":52.95324321370572,"skill":"soldier","initials":"JS","accuracy":0},"ackid":122}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953251050785184, longitude=-1.1875746119767427 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875746119767427,"latitude":52.953251050785184,"skill":"soldier","initials":"JS","accuracy":0},"ackid":123}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875746119767427,"latitude":52.953251050785184,"skill":"soldier","initials":"JS","accuracy":0},"ackid":123}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875746119767427,"latitude":52.953251050785184,"skill":"soldier","initials":"JS","accuracy":0},"ackid":123}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95323483180255, longitude=-1.1875337921082973 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875337921082973,"latitude":52.95323483180255,"skill":"soldier","initials":"JS","accuracy":0},"ackid":124}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875337921082973,"latitude":52.95323483180255,"skill":"soldier","initials":"JS","accuracy":0},"ackid":124}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875337921082973,"latitude":52.95323483180255,"skill":"soldier","initials":"JS","accuracy":0},"ackid":124}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95325515791774, longitude=-1.1874644737690687 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874644737690687,"latitude":52.95325515791774,"skill":"soldier","initials":"JS","accuracy":0},"ackid":125}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874644737690687,"latitude":52.95325515791774,"skill":"soldier","initials":"JS","accuracy":0},"ackid":125}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874644737690687,"latitude":52.95325515791774,"skill":"soldier","initials":"JS","accuracy":0},"ackid":125}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953246398828924, longitude=-1.1875119153410196 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875119153410196,"latitude":52.953246398828924,"skill":"soldier","initials":"JS","accuracy":0},"ackid":126}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875119153410196,"latitude":52.953246398828924,"skill":"soldier","initials":"JS","accuracy":0},"ackid":126}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875119153410196,"latitude":52.953246398828924,"skill":"soldier","initials":"JS","accuracy":0},"ackid":126}]}
+debug: emitting heartbeat for client oNM-1ZLq09MXHsscTZjl
+debug: websocket writing 2::
+debug: set heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: set heartbeat interval for client oNM-1ZLq09MXHsscTZjl
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95324149541557, longitude=-1.1874828301370144 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874828301370144,"latitude":52.95324149541557,"skill":"soldier","initials":"JS","accuracy":0},"ackid":127}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874828301370144,"latitude":52.95324149541557,"skill":"soldier","initials":"JS","accuracy":0},"ackid":127}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874828301370144,"latitude":52.95324149541557,"skill":"soldier","initials":"JS","accuracy":0},"ackid":127}]}
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95324589591473, longitude=-1.1874322034418583 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874322034418583,"latitude":52.95324589591473,"skill":"soldier","initials":"JS","accuracy":0},"ackid":128}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874322034418583,"latitude":52.95324589591473,"skill":"soldier","initials":"JS","accuracy":0},"ackid":128}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874322034418583,"latitude":52.95324589591473,"skill":"soldier","initials":"JS","accuracy":0},"ackid":128}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95327841769904, longitude=-1.1873485520482063 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873485520482063,"latitude":52.95327841769904,"skill":"soldier","initials":"JS","accuracy":0},"ackid":129}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873485520482063,"latitude":52.95327841769904,"skill":"soldier","initials":"JS","accuracy":0},"ackid":129}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873485520482063,"latitude":52.95327841769904,"skill":"soldier","initials":"JS","accuracy":0},"ackid":129}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95330498833209, longitude=-1.1873664055019617 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873664055019617,"latitude":52.95330498833209,"skill":"soldier","initials":"JS","accuracy":0},"ackid":130}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873664055019617,"latitude":52.95330498833209,"skill":"soldier","initials":"JS","accuracy":0},"ackid":130}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873664055019617,"latitude":52.95330498833209,"skill":"soldier","initials":"JS","accuracy":0},"ackid":130}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95333700720221, longitude=-1.1873326264321804 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873326264321804,"latitude":52.95333700720221,"skill":"soldier","initials":"JS","accuracy":0},"ackid":131}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873326264321804,"latitude":52.95333700720221,"skill":"soldier","initials":"JS","accuracy":0},"ackid":131}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873326264321804,"latitude":52.95333700720221,"skill":"soldier","initials":"JS","accuracy":0},"ackid":131}]}
+debug: emitting heartbeat for client KMfZt2K2j9_X6jkBTZjm
+debug: websocket writing 2::
+debug: set heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: set heartbeat interval for client KMfZt2K2j9_X6jkBTZjm
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953356453217566, longitude=-1.18734922260046 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.18734922260046,"latitude":52.953356453217566,"skill":"soldier","initials":"JS","accuracy":0},"ackid":132}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.18734922260046,"latitude":52.953356453217566,"skill":"soldier","initials":"JS","accuracy":0},"ackid":132}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.18734922260046,"latitude":52.953356453217566,"skill":"soldier","initials":"JS","accuracy":0},"ackid":132}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95336148235947, longitude=-1.1873892042785883 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873892042785883,"latitude":52.95336148235947,"skill":"soldier","initials":"JS","accuracy":0},"ackid":133}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873892042785883,"latitude":52.95336148235947,"skill":"soldier","initials":"JS","accuracy":0},"ackid":133}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873892042785883,"latitude":52.95336148235947,"skill":"soldier","initials":"JS","accuracy":0},"ackid":133}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953351507894695, longitude=-1.1874379869550467 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874379869550467,"latitude":52.953351507894695,"skill":"soldier","initials":"JS","accuracy":0},"ackid":134}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874379869550467,"latitude":52.953351507894695,"skill":"soldier","initials":"JS","accuracy":0},"ackid":134}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874379869550467,"latitude":52.953351507894695,"skill":"soldier","initials":"JS","accuracy":0},"ackid":134}]}
+debug: emitting heartbeat for client oNM-1ZLq09MXHsscTZjl
+debug: websocket writing 2::
+debug: set heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95336630195379, longitude=-1.1874659825116396 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874659825116396,"latitude":52.95336630195379,"skill":"soldier","initials":"JS","accuracy":0},"ackid":135}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874659825116396,"latitude":52.95336630195379,"skill":"soldier","initials":"JS","accuracy":0},"ackid":135}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874659825116396,"latitude":52.95336630195379,"skill":"soldier","initials":"JS","accuracy":0},"ackid":135}]}
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: set heartbeat interval for client oNM-1ZLq09MXHsscTZjl
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953372043557465, longitude=-1.1874348018318415 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874348018318415,"latitude":52.953372043557465,"skill":"soldier","initials":"JS","accuracy":0},"ackid":136}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874348018318415,"latitude":52.953372043557465,"skill":"soldier","initials":"JS","accuracy":0},"ackid":136}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874348018318415,"latitude":52.953372043557465,"skill":"soldier","initials":"JS","accuracy":0},"ackid":136}]}
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953348155133426, longitude=-1.1874628812074661 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874628812074661,"latitude":52.953348155133426,"skill":"soldier","initials":"JS","accuracy":0},"ackid":137}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874628812074661,"latitude":52.953348155133426,"skill":"soldier","initials":"JS","accuracy":0},"ackid":137}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874628812074661,"latitude":52.953348155133426,"skill":"soldier","initials":"JS","accuracy":0},"ackid":137}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95331676490605, longitude=-1.1875626258552074 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875626258552074,"latitude":52.95331676490605,"skill":"soldier","initials":"JS","accuracy":0},"ackid":138}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875626258552074,"latitude":52.95331676490605,"skill":"soldier","initials":"JS","accuracy":0},"ackid":138}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875626258552074,"latitude":52.95331676490605,"skill":"soldier","initials":"JS","accuracy":0},"ackid":138}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95329400803894, longitude=-1.1877121590077877 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1877121590077877,"latitude":52.95329400803894,"skill":"soldier","initials":"JS","accuracy":0},"ackid":139}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1877121590077877,"latitude":52.95329400803894,"skill":"soldier","initials":"JS","accuracy":0},"ackid":139}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1877121590077877,"latitude":52.95329400803894,"skill":"soldier","initials":"JS","accuracy":0},"ackid":139}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95330909546465, longitude=-1.1876797210425138 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1876797210425138,"latitude":52.95330909546465,"skill":"soldier","initials":"JS","accuracy":0},"ackid":140}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1876797210425138,"latitude":52.95330909546465,"skill":"soldier","initials":"JS","accuracy":0},"ackid":140}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1876797210425138,"latitude":52.95330909546465,"skill":"soldier","initials":"JS","accuracy":0},"ackid":140}]}
+debug: emitting heartbeat for client KMfZt2K2j9_X6jkBTZjm
+debug: websocket writing 2::
+debug: set heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: set heartbeat interval for client KMfZt2K2j9_X6jkBTZjm
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95330653898418, longitude=-1.187642253935337 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187642253935337,"latitude":52.95330653898418,"skill":"soldier","initials":"JS","accuracy":0},"ackid":141}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187642253935337,"latitude":52.95330653898418,"skill":"soldier","initials":"JS","accuracy":0},"ackid":141}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187642253935337,"latitude":52.95330653898418,"skill":"soldier","initials":"JS","accuracy":0},"ackid":141}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953312364406884, longitude=-1.187588358297944 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187588358297944,"latitude":52.953312364406884,"skill":"soldier","initials":"JS","accuracy":0},"ackid":142}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187588358297944,"latitude":52.953312364406884,"skill":"soldier","initials":"JS","accuracy":0},"ackid":142}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187588358297944,"latitude":52.953312364406884,"skill":"soldier","initials":"JS","accuracy":0},"ackid":142}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95333059504628, longitude=-1.1875168606638908 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875168606638908,"latitude":52.95333059504628,"skill":"soldier","initials":"JS","accuracy":0},"ackid":143}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875168606638908,"latitude":52.95333059504628,"skill":"soldier","initials":"JS","accuracy":0},"ackid":143}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1875168606638908,"latitude":52.95333059504628,"skill":"soldier","initials":"JS","accuracy":0},"ackid":143}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95332778710872, longitude=-1.1874870210886002 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874870210886002,"latitude":52.95332778710872,"skill":"soldier","initials":"JS","accuracy":0},"ackid":144}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874870210886002,"latitude":52.95332778710872,"skill":"soldier","initials":"JS","accuracy":0},"ackid":144}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874870210886002,"latitude":52.95332778710872,"skill":"soldier","initials":"JS","accuracy":0},"ackid":144}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95333113986999, longitude=-1.1874446086585522 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874446086585522,"latitude":52.95333113986999,"skill":"soldier","initials":"JS","accuracy":0},"ackid":145}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874446086585522,"latitude":52.95333113986999,"skill":"soldier","initials":"JS","accuracy":0},"ackid":145}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874446086585522,"latitude":52.95333113986999,"skill":"soldier","initials":"JS","accuracy":0},"ackid":145}]}
+debug: emitting heartbeat for client oNM-1ZLq09MXHsscTZjl
+debug: websocket writing 2::
+debug: set heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: set heartbeat interval for client oNM-1ZLq09MXHsscTZjl
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95332665555179, longitude=-1.1874763760715723 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874763760715723,"latitude":52.95332665555179,"skill":"soldier","initials":"JS","accuracy":0},"ackid":146}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874763760715723,"latitude":52.95332665555179,"skill":"soldier","initials":"JS","accuracy":0},"ackid":146}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874763760715723,"latitude":52.95332665555179,"skill":"soldier","initials":"JS","accuracy":0},"ackid":146}]}
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953335624188185, longitude=-1.1874448601156473 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874448601156473,"latitude":52.953335624188185,"skill":"soldier","initials":"JS","accuracy":0},"ackid":147}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874448601156473,"latitude":52.953335624188185,"skill":"soldier","initials":"JS","accuracy":0},"ackid":147}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1874448601156473,"latitude":52.953335624188185,"skill":"soldier","initials":"JS","accuracy":0},"ackid":147}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95335037633777, longitude=-1.187406051903963 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187406051903963,"latitude":52.95335037633777,"skill":"soldier","initials":"JS","accuracy":0},"ackid":148}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187406051903963,"latitude":52.95335037633777,"skill":"soldier","initials":"JS","accuracy":0},"ackid":148}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187406051903963,"latitude":52.95335037633777,"skill":"soldier","initials":"JS","accuracy":0},"ackid":148}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95336906798184, longitude=-1.187391048297286 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187391048297286,"latitude":52.95336906798184,"skill":"soldier","initials":"JS","accuracy":0},"ackid":149}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187391048297286,"latitude":52.95336906798184,"skill":"soldier","initials":"JS","accuracy":0},"ackid":149}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187391048297286,"latitude":52.95336906798184,"skill":"soldier","initials":"JS","accuracy":0},"ackid":149}]}
+debug: emitting heartbeat for client KMfZt2K2j9_X6jkBTZjm
+debug: websocket writing 2::
+debug: set heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: set heartbeat interval for client KMfZt2K2j9_X6jkBTZjm
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95339044183493, longitude=-1.1873862706124783 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873862706124783,"latitude":52.95339044183493,"skill":"soldier","initials":"JS","accuracy":0},"ackid":150}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873862706124783,"latitude":52.95339044183493,"skill":"soldier","initials":"JS","accuracy":0},"ackid":150}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1873862706124783,"latitude":52.95339044183493,"skill":"soldier","initials":"JS","accuracy":0},"ackid":150}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95340737327933, longitude=-1.187319802120328 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187319802120328,"latitude":52.95340737327933,"skill":"soldier","initials":"JS","accuracy":0},"ackid":151}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187319802120328,"latitude":52.95340737327933,"skill":"soldier","initials":"JS","accuracy":0},"ackid":151}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187319802120328,"latitude":52.95340737327933,"skill":"soldier","initials":"JS","accuracy":0},"ackid":151}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95341386925429, longitude=-1.1872554291039705 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872554291039705,"latitude":52.95341386925429,"skill":"soldier","initials":"JS","accuracy":0},"ackid":152}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872554291039705,"latitude":52.95341386925429,"skill":"soldier","initials":"JS","accuracy":0},"ackid":152}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872554291039705,"latitude":52.95341386925429,"skill":"soldier","initials":"JS","accuracy":0},"ackid":152}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.9534323932603, longitude=-1.1872032936662436 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872032936662436,"latitude":52.9534323932603,"skill":"soldier","initials":"JS","accuracy":0},"ackid":153}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872032936662436,"latitude":52.9534323932603,"skill":"soldier","initials":"JS","accuracy":0},"ackid":153}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1872032936662436,"latitude":52.9534323932603,"skill":"soldier","initials":"JS","accuracy":0},"ackid":153}]}
+debug: emitting heartbeat for client oNM-1ZLq09MXHsscTZjl
+debug: websocket writing 2::
+debug: set heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: set heartbeat interval for client oNM-1ZLq09MXHsscTZjl
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95343101024628, longitude=-1.1871634796261787 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871634796261787,"latitude":52.95343101024628,"skill":"soldier","initials":"JS","accuracy":0},"ackid":154}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871634796261787,"latitude":52.95343101024628,"skill":"soldier","initials":"JS","accuracy":0},"ackid":154}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871634796261787,"latitude":52.95343101024628,"skill":"soldier","initials":"JS","accuracy":0},"ackid":154}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953442577272654, longitude=-1.1871094163507223 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871094163507223,"latitude":52.953442577272654,"skill":"soldier","initials":"JS","accuracy":0},"ackid":155}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871094163507223,"latitude":52.953442577272654,"skill":"soldier","initials":"JS","accuracy":0},"ackid":155}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871094163507223,"latitude":52.953442577272654,"skill":"soldier","initials":"JS","accuracy":0},"ackid":155}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95344412792474, longitude=-1.187069183215499 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187069183215499,"latitude":52.95344412792474,"skill":"soldier","initials":"JS","accuracy":0},"ackid":156}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187069183215499,"latitude":52.95344412792474,"skill":"soldier","initials":"JS","accuracy":0},"ackid":156}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187069183215499,"latitude":52.95344412792474,"skill":"soldier","initials":"JS","accuracy":0},"ackid":156}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95343796722591, longitude=-1.1870983522385359 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870983522385359,"latitude":52.95343796722591,"skill":"soldier","initials":"JS","accuracy":0},"ackid":157}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870983522385359,"latitude":52.95343796722591,"skill":"soldier","initials":"JS","accuracy":0},"ackid":157}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870983522385359,"latitude":52.95343796722591,"skill":"soldier","initials":"JS","accuracy":0},"ackid":157}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95343201607466, longitude=-1.1871717777103186 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871717777103186,"latitude":52.95343201607466,"skill":"soldier","initials":"JS","accuracy":0},"ackid":158}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871717777103186,"latitude":52.95343201607466,"skill":"soldier","initials":"JS","accuracy":0},"ackid":158}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871717777103186,"latitude":52.95343201607466,"skill":"soldier","initials":"JS","accuracy":0},"ackid":158}]}
+debug: emitting heartbeat for client KMfZt2K2j9_X6jkBTZjm
+debug: websocket writing 2::
+debug: set heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: set heartbeat interval for client KMfZt2K2j9_X6jkBTZjm
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.9534453433007, longitude=-1.1871382500976324 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871382500976324,"latitude":52.9534453433007,"skill":"soldier","initials":"JS","accuracy":0},"ackid":159}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871382500976324,"latitude":52.9534453433007,"skill":"soldier","initials":"JS","accuracy":0},"ackid":159}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871382500976324,"latitude":52.9534453433007,"skill":"soldier","initials":"JS","accuracy":0},"ackid":159}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95344928279519, longitude=-1.1870946642011404 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870946642011404,"latitude":52.95344928279519,"skill":"soldier","initials":"JS","accuracy":0},"ackid":160}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870946642011404,"latitude":52.95344928279519,"skill":"soldier","initials":"JS","accuracy":0},"ackid":160}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870946642011404,"latitude":52.95344928279519,"skill":"soldier","initials":"JS","accuracy":0},"ackid":160}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95345615595579, longitude=-1.1870401818305254 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870401818305254,"latitude":52.95345615595579,"skill":"soldier","initials":"JS","accuracy":0},"ackid":161}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870401818305254,"latitude":52.95345615595579,"skill":"soldier","initials":"JS","accuracy":0},"ackid":161}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870401818305254,"latitude":52.95345615595579,"skill":"soldier","initials":"JS","accuracy":0},"ackid":161}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95347153674811, longitude=-1.1870175506919622 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870175506919622,"latitude":52.95347153674811,"skill":"soldier","initials":"JS","accuracy":0},"ackid":162}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870175506919622,"latitude":52.95347153674811,"skill":"soldier","initials":"JS","accuracy":0},"ackid":162}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870175506919622,"latitude":52.95347153674811,"skill":"soldier","initials":"JS","accuracy":0},"ackid":162}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95348205603659, longitude=-1.186960805207491 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186960805207491,"latitude":52.95348205603659,"skill":"soldier","initials":"JS","accuracy":0},"ackid":163}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186960805207491,"latitude":52.95348205603659,"skill":"soldier","initials":"JS","accuracy":0},"ackid":163}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.186960805207491,"latitude":52.95348205603659,"skill":"soldier","initials":"JS","accuracy":0},"ackid":163}]}
+debug: emitting heartbeat for client oNM-1ZLq09MXHsscTZjl
+debug: websocket writing 2::
+debug: set heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: set heartbeat interval for client oNM-1ZLq09MXHsscTZjl
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.953498316928744, longitude=-1.1869464721530676 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869464721530676,"latitude":52.953498316928744,"skill":"soldier","initials":"JS","accuracy":0},"ackid":164}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869464721530676,"latitude":52.953498316928744,"skill":"soldier","initials":"JS","accuracy":0},"ackid":164}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869464721530676,"latitude":52.953498316928744,"skill":"soldier","initials":"JS","accuracy":0},"ackid":164}]}
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95351373963058, longitude=-1.1869711987674236 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869711987674236,"latitude":52.95351373963058,"skill":"soldier","initials":"JS","accuracy":0},"ackid":165}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869711987674236,"latitude":52.95351373963058,"skill":"soldier","initials":"JS","accuracy":0},"ackid":165}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869711987674236,"latitude":52.95351373963058,"skill":"soldier","initials":"JS","accuracy":0},"ackid":165}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95350166969001, longitude=-1.1869977694004774 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869977694004774,"latitude":52.95350166969001,"skill":"soldier","initials":"JS","accuracy":0},"ackid":166}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869977694004774,"latitude":52.95350166969001,"skill":"soldier","initials":"JS","accuracy":0},"ackid":166}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869977694004774,"latitude":52.95350166969001,"skill":"soldier","initials":"JS","accuracy":0},"ackid":166}]}
+debug: emitting heartbeat for client KMfZt2K2j9_X6jkBTZjm
+debug: websocket writing 2::
+debug: set heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: set heartbeat interval for client KMfZt2K2j9_X6jkBTZjm
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95349391642958, longitude=-1.1870362423360348 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870362423360348,"latitude":52.95349391642958,"skill":"soldier","initials":"JS","accuracy":0},"ackid":167}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870362423360348,"latitude":52.95349391642958,"skill":"soldier","initials":"JS","accuracy":0},"ackid":167}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870362423360348,"latitude":52.95349391642958,"skill":"soldier","initials":"JS","accuracy":0},"ackid":167}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95350485481322, longitude=-1.1869971826672554 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869971826672554,"latitude":52.95350485481322,"skill":"soldier","initials":"JS","accuracy":0},"ackid":168}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869971826672554,"latitude":52.95350485481322,"skill":"soldier","initials":"JS","accuracy":0},"ackid":168}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869971826672554,"latitude":52.95350485481322,"skill":"soldier","initials":"JS","accuracy":0},"ackid":168}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.9535161703825, longitude=-1.1869739647954702 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869739647954702,"latitude":52.9535161703825,"skill":"soldier","initials":"JS","accuracy":0},"ackid":169}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869739647954702,"latitude":52.9535161703825,"skill":"soldier","initials":"JS","accuracy":0},"ackid":169}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1869739647954702,"latitude":52.9535161703825,"skill":"soldier","initials":"JS","accuracy":0},"ackid":169}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95350573491305, longitude=-1.187031464651227 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187031464651227,"latitude":52.95350573491305,"skill":"soldier","initials":"JS","accuracy":0},"ackid":170}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187031464651227,"latitude":52.95350573491305,"skill":"soldier","initials":"JS","accuracy":0},"ackid":170}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187031464651227,"latitude":52.95350573491305,"skill":"soldier","initials":"JS","accuracy":0},"ackid":170}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95349135994911, longitude=-1.1870863661170006 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870863661170006,"latitude":52.95349135994911,"skill":"soldier","initials":"JS","accuracy":0},"ackid":171}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870863661170006,"latitude":52.95349135994911,"skill":"soldier","initials":"JS","accuracy":0},"ackid":171}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1870863661170006,"latitude":52.95349135994911,"skill":"soldier","initials":"JS","accuracy":0},"ackid":171}]}
+debug: emitting heartbeat for client oNM-1ZLq09MXHsscTZjl
+debug: websocket writing 2::
+debug: set heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client oNM-1ZLq09MXHsscTZjl
+debug: set heartbeat interval for client oNM-1ZLq09MXHsscTZjl
+debug: emitting heartbeat for client T2ovnsSYXl5_Pfq8TZjk
+debug: websocket writing 2::
+debug: set heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client T2ovnsSYXl5_Pfq8TZjk
+debug: set heartbeat interval for client T2ovnsSYXl5_Pfq8TZjk
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95348255895078, longitude=-1.187119809910655 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187119809910655,"latitude":52.95348255895078,"skill":"soldier","initials":"JS","accuracy":0},"ackid":172}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187119809910655,"latitude":52.95348255895078,"skill":"soldier","initials":"JS","accuracy":0},"ackid":172}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187119809910655,"latitude":52.95348255895078,"skill":"soldier","initials":"JS","accuracy":0},"ackid":172}]}
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.9534841934219, longitude=-1.187164317816496 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187164317816496,"latitude":52.9534841934219,"skill":"soldier","initials":"JS","accuracy":0},"ackid":173}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187164317816496,"latitude":52.9534841934219,"skill":"soldier","initials":"JS","accuracy":0},"ackid":173}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.187164317816496,"latitude":52.9534841934219,"skill":"soldier","initials":"JS","accuracy":0},"ackid":173}]}
+debug: emitting heartbeat for client KMfZt2K2j9_X6jkBTZjm
+debug: websocket writing 2::
+debug: set heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: got heartbeat packet
+debug: cleared heartbeat timeout for client KMfZt2K2j9_X6jkBTZjm
+debug: set heartbeat interval for client KMfZt2K2j9_X6jkBTZjm
+SELECT is_active FROM games  WHERE layer_id=15
+UPDATE players SET latitude=52.95350460335612, longitude=-1.1871522478759289 WHERE id=60
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871522478759289,"latitude":52.95350460335612,"skill":"soldier","initials":"JS","accuracy":0},"ackid":174}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871522478759289,"latitude":52.95350460335612,"skill":"soldier","initials":"JS","accuracy":0},"ackid":174}]}
+debug: websocket writing 5:::{"name":"data","args":[{"location":{"player_id":60,"longitude":-1.1871522478759289,"latitude":52.95350460335612,"skill":"soldier","initials":"JS","accuracy":0},"ackid":174}]}
