@@ -1,5 +1,6 @@
 var socket;
 var game;	
+
 function loadData(){
 	game = new Game(layerId);
 	game.loadData(function(data){
@@ -31,7 +32,6 @@ function loadData(){
 	}); 
 }
 
-
 function sendMsg(data){
 	socket.emit("message",{"content":data,"timeStamp":Math.floor((new Date().getTime())/1000), "player_id":-1, "player_initials":"HQ", "skill":null});
 }
@@ -39,10 +39,6 @@ function sendMsg(data){
 function sendBackAck(ackid){
 	socket.emit("ack",{"ackid":ackid,"channel":$("#layer_id").val()});
 }
-
-
-
-
 
 var G_game_id;
 $(document).ready(function() {
@@ -54,3 +50,5 @@ $(document).ready(function() {
    		angular.element($("#main")).scope().markRead(G_msg_player);
 	})
 });
+
+

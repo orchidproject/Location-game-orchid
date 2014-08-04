@@ -100,6 +100,39 @@ function Game(game_id){
 
 	}
 	
+	//so dirty!!!! 
+	this.loadDataForReplay = function(data,callback){
+		var instance = this;
+		if(data.tasks != null){
+					tasks = data.tasks;
+		}
+		if(data.dropoffpoints != null) {
+					dropOffZones = data.dropoffpoints;
+		}
+		if(data.players != null){
+					players = data.players
+		}
+		instance.simulation_file=data.simulation_file;
+		//TODO validation	
+		instance.sim_lat=parseFloat(data.sim_lat);
+		instance.sim_lng=parseFloat(data.sim_lng);
+		instance.grid_size=parseFloat(data.grid_size);
+		instance.sim_update_interval=parseFloat(data.sim_update_interval);
+				//terrain data is retrieved as a long string		
+		if(data.terrains!=null){
+					instance.terrains=jQuery.parseJSON(data.terrains);
+		}
+		else{
+			instance.terrains = []
+		}
+
+		if(callback!=null){ 
+			callback(instance); 
+		} 
+
+	}
+
+
 	this.loadData = function(callback){
 		var instance = this;
 		$.ajax({ 
@@ -125,10 +158,11 @@ function Game(game_id){
 				//terrain data is retrieved as a long string		
 				if(data.terrains!=null){
 					instance.terrains=jQuery.parseJSON(data.terrains);
-}
-else{
-	instance.terrains = []
-}
+				}
+				else{
+					instance.terrains = []
+				}
+
 				if(callback!=null){ 
 					callback(instance); 
 				} 

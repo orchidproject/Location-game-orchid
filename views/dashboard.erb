@@ -68,11 +68,12 @@
       </div>
 
 	<div class = "row"   >
-	<div  class="col-sm-6 drag-container" ng-show="planPending" >
+	<div  class="col-sm-6 drag-container" ng-show="editMode" >
+
 
           <%= erb(:partialAssignmentList, :layout => false) %>
           <%= erb(:partialUnchangedList, :layout => false) %>
-<!-- new indicator -->
+          <!-- new indicator -->
           <div class="row transparent-5" ng-show = "editMode" >
             <div class="col-sm-2 card-fixed task-card task-droppable"> 
               Drop task here 
@@ -83,7 +84,7 @@
               <div class = "card-fixed player-card" playerHolder = "2"></div>
             </div>
           </div>
-          <!-- new indicator end -->
+<!-- new indicator end -->
           <%= erb(:partialIdlePlayerList, :layout => false) %>
   </div>
   <div  class="col-sm-6 drag-container" ng-show="!planPending" >

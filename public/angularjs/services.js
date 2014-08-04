@@ -28,75 +28,7 @@ app.factory("httpService",function($http){
 	var legReceivers =  function(){
 		G_socket = socket;
 		socket.on('data', function(data) {
-        	//saveLog(data);
-        	//sendBackAck(data.ackid);
-
-
-    		if(typeof data.health!="undefined"){
-        		receiveHealthData(data.health);
-        		aHandleHealthData(data.health);
-    		}
-        
-        	if(typeof data.heatmap != "undefined"){
-              	receiveHeatmapData(data.heatmap);
-              
-        	}
-        
-        	//not sure whether this is implemented
-        	if(typeof data.textMassage != "undefined"){
-            	//receiveTextMassage(data.textMassage);
-            	
-        	}
-        
-        	if(typeof data.message != "undefined") {
-            	if(data.message.player_id == -1){
-            		data.message.name = "Headquarter";
-            	}
-            	else{
-            		data.message.name = dataService.getPlayerById(data.message.player_id).name;
-            	}
-
-            	dataService.msgs.push(data.message);
-           
-        	}
-        
-        	if(typeof data.location != "undefined"){
-        		aHandleLocationData(data.location);
-            	receivePlayerData(data.location);      	
-        	}
-        
-        	if(typeof data.cleanup != "undefined"){
-                cleanup(data.cleanup.player_id); 
-                
-        	}
-        
-        	if(typeof data.player != "undefined"){
-                //receivePlayerInfoData(data.player);
-                aHandlePlayerInfoData(data.player);
-
-                //service.callback();
-        	}
-        
-        	if(typeof data.task != "undefined"){
-        		aHandleTaskData(data.task);
-                receiveTaskData(data.task);              
-        	}
-
-        	if(typeof data["ack-instruction"] != "undefined"){
-        		aHandleAckData(data["ack-instruction"]);             
-        	}
-
-    		if(typeof data.instructions != "undefined"){
-    			if(data.instructions[0].confirmed == 1){
-        			receiveInstructionDataV3(data.instructions[0]);
-        		}else if(data.instructions[0].confirmed == 0){
-        			aHandleInstructionData(data.instructions[0]);
-        		}
-    		}
-    		if(typeof data.debug != "undefined"){
-        		alert(data.debug);
-       		}
-       		service.callback();
+        	handleData(data);
     	});
 	}
 
@@ -270,12 +202,76 @@ app.factory("httpService",function($http){
 	}
 
 	var listeners = []
+	var handleData = function(data){
+		if(typeof data.health!="undefined"){
+        		receiveHealthData(data.health);
+        		aHandleHealthData(data.health);
+    		}
+        
+        	if(typeof data.heatmap != "undefined"){
+              	receiveHeatmapData(data.heatmap);
+              
+        	}
+        
+        	//not sure whether this is implemented
+        	if(typeof data.textMassage != "undefined"){
+            	//receiveTextMassage(data.textMassage);
+            	
+        	}
+        
+        	if(typeof data.message != "undefined") {
+            	if(data.message.player_id == -1){
+            		data.message.name = "Headquarter";
+            	}
+            	else{
+            		data.message.name = dataService.getPlayerById(data.message.player_id).name;
+            	}
+
+            	dataService.msgs.push(data.message);
+           
+        	}
+        
+        	if(typeof data.location != "undefined"){
+        		aHandleLocationData(data.location);
+            	receivePlayerData(data.location);      	
+        	}
+        
+        	if(typeof data.cleanup != "undefined"){
+                cleanup(data.cleanup.player_id); 
+                
+        	}
+        
+        	if(typeof data.player != "undefined"){
+                //receivePlayerInfoData(data.player);
+                aHandlePlayerInfoData(data.player);
+
+                //service.callback();
+        	}
+        
+        	if(typeof data.task != "undefined"){
+        		aHandleTaskData(data.task);
+                receiveTaskData(data.task);              
+        	}
+
+        	if(typeof data["ack-instruction"] != "undefined"){
+        		aHandleAckData(data["ack-instruction"]);             
+        	}
+
+    		if(typeof data.instructions != "undefined"){
+    			if(data.instructions[0].confirmed == 1){
+        			receiveInstructionDataV3(data.instructions[0]);
+        		}else if(data.instructions[0].confirmed == 0){
+        			aHandleInstructionData(data.instructions[0]);
+        		}
+    		}
+    		if(typeof data.debug != "undefined"){
+        		alert(data.debug);
+       		}
+       		service.callback();
+
+	};
 	
 	var socket = setupSocketIO();
-
-
-	
-
 	var service = {
 		pushListener: function(key, call){
 			if(listeners["key"] != null) {listeners["key"] = []}
@@ -285,6 +281,7 @@ app.factory("httpService",function($http){
 		sendMsg: function(data){
 			socket.emit("message",{"instruction1": G_msg_assignment1,"instruction2": G_msg_assignment2, "target" :G_msg_player1, "target2" :G_msg_player2, "content":data,"timeStamp":Math.floor((new Date().getTime())/1000), "player_id":-1, "player_initials":"HQ", "skill":null});
 		},
+		processData: handleData, 
 		rejectionCallback: null
 	}
 	
@@ -367,8 +364,36 @@ app.factory("httpService",function($http){
 						return false;
 					}
 				}
-				//alert(JSON.stringify(target.tasks));
+				
 			});
+		},
+
+		loadForReplay : function(result){
+			var target = this;
+			target.players = parseService.parsePlayer(result.players);
+			target.tasks= parseService.parsePlayer(result.tasks);
+			
+			for(i=0; i<target.tasks.length; i++){
+					var t = target.tasks[i];
+					t.getTime = function(){
+						
+						if(this.state == 1){
+							return "picked up!"
+						}
+
+						var mins = this.deadline%10/10*60 ;
+						mins = (  mins < 10  )? "0" + mins : mins;
+						return Math.floor(this.deadline/10)+ ":" + mins;
+					}
+
+				t.pickedUp = function(){
+						if(this.state == 1){
+							return true
+						}
+						return false;
+					}
+			}
+
 		},
 
 		getInstructionByTask:function(task){

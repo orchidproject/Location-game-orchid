@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<script id="template" type="text/template">
+{
+   "server": {
+       "port": 8000,
+       "time": "10:00:00",
+       "task_duration": 10,
+       "game_id": 1337,
+       "target_size": 20
+   },
+   "agents": [
+       {{#each agents}}
+       {
+           "id": "agent-{{position}}",
+           "lat": {{position.k}},
+           "lng": {{position.B}}
+       }{{#sep}},{{/sep}}
+       {{/each}}
+   ],
+   
+   "targets": [
+       {{#each targets}}
+       {
+           "id": "target-{{targetPC}}",
+           "swlat": {{position.k}},
+           "swlng": {{position.B}},
+"size": {{../size}},
+           "icon": "{{../icon}}"
+       }{{#sep}},{{/sep}}
+       {{/each}}
+   ]
+}
+</script>
+<head>
+   <style type="text/css">
+       html {
+           height: 100%
+       }
+       body {
+           height: 100%;
+           margin: 0px;
+           padding: 0px
+       }
+       #map_canvas {
+           height: 800px;
+           width: 800px
+       }
+   </style>
+   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
+   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+   <script type="text/javascript">
+       var map;
+       var targetsArray = [];
+       var dronesArray = [];
+       var startLat = 52;
+       var startLng = -3;
+
+       function initMap() {
+           var latlng = new google.maps.LatLng(startLat, startLng);
+           var myOptions = {
+               zoom: 10,
+               center: latlng,
+               mapTypeId: google.maps.MapTypeId.ROADMAP
+           };
+           map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+           // add a click event handler to the map object
+           google.maps.event.addListener(map, "click", function (event) {
+               // place a marker
+               addTarget(event.latLng);
+           });
+
+           google.maps.event.addListener(map, "rightclick", function (event) {
+               addDrone(event.latLng);
+           });
+       }
+
+       function initPage() {
+           var source = $('#template').html();
+           $("textarea#templateOut").val(source);
+
+           var coords = "";
+
+           if (localStorage.storedCoords)
+               coords = localStorage.storedCoords;
+           else
+               coords = "52, -3";
+
+
+           coords = prompt("Please enter the starting gps coords", coords);
+           if (coords != null) {
+               var split = coords.split(',');
+               if (split.length == 2) {
+                   startLat = parseFloat(split[0]);
+                   startLng = parseFloat(split[1]);
+               }
+
+               localStorage.storedCoords = coords;
+           }
+           
+           var iconSize = "10";
+           if (localStorage.iconSize)
+               iconSize = localStorage.iconSize;
+           
+           var iconName = "sheep.png";
+           if (localStorage.iconName)
+               iconName = localStorage.iconName;
+           
+           $("#iconSize").val(iconSize);
+           $("#iconName").val(iconName);
+           
+       }
+
+       function addTarget(location) {
+           var marker = new google.maps.Marker({
+               position: location,
+               map: map
+           });
+
+           targetsArray.push(marker);
+
+       }
+
+       function addDrone(location) {
+           console.log(location)
+           var marker = new google.maps.Marker({
+               position: location,
+               map: map,
+               icon: 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png'
+           });
+           dronesArray.push(marker);
+       }
+
+        // Deletes all markers in the array by removing references to them
+       function deleteOverlays() {
+           if (markersArray) {
+               for (i in markersArray) {
+                   markersArray[i].setMap(null);
+               }
+               markersArray.length = 0;
+           }
+       }
+
+       function GenerateJSON() {
+           var positionCounter = 1;
+           Handlebars.registerHelper('position', function () {
+               return positionCounter++;
+           });
+           
+           var targetPC = 1;
+           Handlebars.registerHelper('targetPC', function () {
+               return targetPC++;
+           });
+           
+           Handlebars.registerHelper("sep", function(options){
+               if(options.data.last) {
+                   return options.inverse();
+               } else {
+                   return options.fn();
+               }});
+
+           var $output = $('#textOut');
+           var source = $("textarea#templateOut").val();
+           
+           var size = $("#iconSize").val();
+           
+           if(! (size == undefined))
+               localStorage.iconSize = size;
+           size = parseInt(size);
+           
+           var name = $("#iconName").val();
+           if(! (name == undefined))
+               localStorage.iconName = name;
+
+           
+           var template = Handlebars.compile(source);
+           var json = template({
+               agents: dronesArray,
+               targets: targetsArray,
+               size: size,
+               icon: name
+           });
+           
+           $output.val(json);
+       }
+   </script>
+</head>
+
+<body onload="initPage(); initMap();">
+
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+   <!-- Optional theme -->
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+   <!-- Latest compiled and minified JavaScript -->
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+   <div class="row">
+       <div class="col-md-8">
+           <div id="map_canvas"></div>
+       </div>
+       <div class="col-md-4">
+           <textarea class="col-md-12" rows="15" id="templateOut">Template</textarea>
+           <div class="col-md-6">Icon Size - </div>
+           <input type="text" id = "iconSize" />
+           
+           <div class="col-md-6">Icon Name - </div>
+           <input type="text" id = "iconName" />
+           
+           <button type="button" class="btn btn-primary col-md-12" onclick="GenerateJSON();">^^ Generate JSON vv</button>
+           <textarea class="col-md-12" rows="20" id="textOut">Generated JSON</textarea>
+       </div>
+   </div>
+</body>
+
+</html>

@@ -1,294 +1,145 @@
-
 <script type="text/javascript">
-  
+  var test =  <%= @test %>
+  var layerId =  <%= @game.layer_id %>;
+
   $(function(){
-
-	var test = false;
-	var replay = true;
-	$("#show_status").click(function(event){
-		alert(JSON.stringify(get_current_status())); 
-	});
-
   	if(!document.getElementById("map")) {
   		return;
   	}
 
   	var myOptions = {
-  		zoom: 17,
-  		center: new google.maps.LatLng(52.951611,-1.184059),
-  		mapTypeId: google.maps.MapTypeId.HYBRID,
+  		zoom: 15,
+  		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
+  		mapTypeId: google.maps.MapTypeId.MAP,
   		mapTypeControl: true,
 		disableDoubleClickZoom: true
   	};
 
   	// Create the main map
   	map = new google.maps.Map(document.getElementById("map"), myOptions);
+    GameMap.fitToRadius(<%= @game.radius %>);
+    //G_getPixelFromMap(new google.maps.LatLng(52.954384, -1.191799));
+  });
+
+</script> 
+
+<%= erb(:partialMsg, :layout => false) %>
+<%= erb(:partialModals, :layout => false) %>
+
+<div style="width:100%; height:4%" >
+      <input type="file" style="float:left" id="state_input"  />
+      <input type="file" style="float:left" id="log_input"  />   
+</div>
+
+<div  ng-controller = "NewAssignmentCtrl" id="main">
+	<div class="row">
+		<div id ="map" class="col-sm-6 col-lg-6"></div>
+		<div class="container col-sm-6 col-lg-6"> 
+      <div class="row ">
+        <div class="big-btn col-sm-4 ">
+          <div class="btn btn-sm btn-primary full-btn" ng-disabled="fetching" ng-click="getPlan()"> 
+            Request plan
+          </div>
+
+        </div>
+        <div class="big-btn col-sm-4">
+          <div class="btn btn-sm btn-primary full-btn" ng-click="toggleEditMode()"> 
+            {{edit_indicator}}
+          </div>
+        </div>
+          <div class="big-btn col-sm-4 ">
+          <div class="btn btn-sm btn-primary full-btn" ng-disabled="!allowConfirm()" ng-click="confirmAll(true)"> 
+            Confirm all
+          </div>
+          </div>
+          
+         
+
+      </div>
+      <div class="row " ng-show="editMode">
+           <div class="big-btn col-sm-4 ">
+           <div class="btn btn-sm btn-danger full-btn" ng-click="undoAll()"> 
+            Undo all
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 h5 well well-sm " > New Assignments </div>
+
+        <div class="col-sm-4 h5 well well-sm"  data-toggle="modal" data-target="#agentModal"> Current Assignments </div>
+        <div class="col-sm-1 h5 well well-sm"  data-toggle="modal" data-target="#testModal"> Feedbacks </div>
+      </div>
+
+	<div class = "row"   >
+	<div  class="col-sm-6 drag-container" ng-show="editMode" >
 
 
-	$("#collapse").click(function(){
-		if($("#chat-window").is(':visible')){
-			$("#chat-window").hide();
-			$("#collapse").val("open chatting window");
-		}
-		else{
-			$("#chat-window").show();
-			$("#collapse").val("collapse");
-		}
-	});
-
-	$("#submitmsg").click(function(){});
+          <%= erb(:partialAssignmentList, :layout => false) %>
+          <%= erb(:partialUnchangedList, :layout => false) %>
+          <!-- new indicator -->
+          <div class="row transparent-5" ng-show = "editMode" >
+            <div class="col-sm-2 card-fixed task-card task-droppable"> 
+              Drop task here 
+              <span class="glyphicon glyphicon-plus corner"></span> 
+            </div>
+            <div class="col-sm-6"> 
+              <div class = "card-fixed player-card" playerHolder = "1"></div>
+              <div class = "card-fixed player-card" playerHolder = "2"></div>
+            </div>
+          </div>
+<!-- new indicator end -->
+          <%= erb(:partialIdlePlayerList, :layout => false) %>
+  </div>
+  <div  class="col-sm-6 drag-container" ng-show="!planPending" >
+    <!-- place holder -->
+  </div>
 	
-   
-	var playSelectedFile = function(event) {
-            var file = this.files[0];
-
-            var type = file.type;
-
-            //var videoNode = document.querySelector('#video_1');
-	    var clone_id = $(this).attr('id').split("_").pop();
-            var videoNode = $('#video_'+clone_id)[0];
-
-            var canPlay = videoNode.canPlayType(type);
-
-	    if(!canPlay) {
-		alert("can not play this file");
-		return;
-	    }
-
-	    var fileURL = URL.createObjectURL(file);
-
-            videoNode.src = fileURL;
-        } 
-	
-	$("#file_selector_0").change(playSelectedFile);		
-	
-	var clone_count = 0;
-	$("#clone-video").click(function(){
-		var last_video = $("#video_wrapper_0").clone();
-
-		last_video.attr("id","video_wrapper_"+(++clone_count));	
-		last_video.children().eq(0).attr("id","file_selector_"+clone_count);
-		last_video.children().eq(2).attr("id","video_offset_"+clone_count);
-		last_video.children("video").attr("id","video_"+clone_count);
-		last_video.appendTo("#videos"); 
-		var selector = $("#file_selector_"+clone_count)
-		selector.change(playSelectedFile);		
-	
-		control.setVideo(
-			last_video.children("video"),
-			last_video.children().eq(2),
-			function(videos){
-				
-			}
-		);
-		last_video.children("video").click(function(event){
-			var x =  $(this).attr("enlarged");
-			if($(this).attr("width")==200){
-				$(this).prop("height",280);
-				$(this).prop("width",400);
-			}else{
-				$(this).prop("height",140);
-				$(this).prop("width",200);
-			}
-		});
-	});
-
-
-	$("#delete-video").click(function(){
-		
-		if(clone_count!=0) {
-			$("#video_wrapper_"+clone_count).remove();
-			clone_count--; 
-		}
-		control.offSets.pop();
-		control.videos.pop();
-	});
-	
-
-	/*$("#video_0")[0].ontimeupdate = function(event){
-		var a = 1;
-	}*/
-
-	control.setVideo(
-			$("#video_0"),
-			$("#video_offset_0"),
-			function(videos,offSets){
-				//first main video
-				videos[0].bind("timeupdate", function(event){
-						//bind with progross bar	
-						control.current_time = this.currentTime-parseInt(offSets[0].val())
-						$( "#slider" ).slider(
-							"value",
-							this.currentTime-parseInt(offSets[0].val())
-						);
-						$("#time_display").html(Math.floor(this.currentTime));
-				}); 
-				$("#video_0").click(function(event){
-					var x =  $(this).attr("enlarged");
-					if($(this).attr("width")==200){
-						$(this).prop("height",280);
-						$(this).prop("width",400);
-					}else{
-						$(this).prop("height",140);
-						$(this).prop("width",200);
-					}
-
-				});
-
-			}	
-							
-		);
-
-	
-	//$(videos).hide();
-	
- });
- 
-function setupUI(){
-
-	$( "#slider" ).slider({max:Math.floor((end_time-base_time)/1000)}); 
-	var paused_by_slider = false;
-	$( "#slider" ).slider({
-		 start: function(event, ui){
-			if(control.playing){
-				control.pause();
-				paused_by_slider = true; 
-			}
-			return true;
-
-		},
-		 stop: function( event, ui ) {
-			control.setTime(ui.value);
-			if(paused_by_slider){
-				paused_by_slider=false;
-				control.play(); 
-			} 
-			return true;
-
-		 }
-	});
-
-	var paused_log_by_slider = false;
-	$( "#slider-2" ).slider( {max:Math.floor((end_time-base_time)/1000)}); 
-	$( "#slider-2" ).slider({
-		 start: function(event, ui){ 
-			if(stop == false){
-				paused_log_by_slider = true;	
-				pause();
-			}
-			return true; 
-		 },
-		 stop: function( event, ui ) {
-			forward_to(ui.value, slider_callback);
-			if(paused_log_by_slider){
-				play(slider_callback); 
-				paused_log_by_slider = false;	
-			}
-			return true; 
-		 }
-	});
-
-}	
-
-function slider_callback(time_mili){
-	var percent = time_mili/1000;
-	$( "#slider-2" ).slider(
-		"value",
-	percent);
-
-	$("#time_display_2").html(Math.floor(time_mili/1000));
-
-/*
-	if(value>(time_mili/1000)){
-		alert("inconsistent state");
-	}	
-*/
-}
-
-
-</script>
-
-
-<div id="wrapper">
-		<input type="button" value="get status" id="show_status" />
-
-		<section id="loading_indicator">
-			<div id="scoreboard">				
-				<h1>loading data</h1>
-				
-				
-			</div>
-
-		</section>
-
-		<div id="wedget-panel-1">
-			<div id="test-panel">
-				
-				<input type="text" value=0 id="txt-frame" size=5 />
-				<input type="button" value="set frame" id="btn-setframe" />
-				<input type="button" value="fetchplan" id="btn-fetchplan" />
-			</div>
-			<div id="active-player-wrapper">
-				<div align="center">
-				<table  id="players" >
-					<th>Players&nbsp&nbsp&nbsp&nbsp</th>
-					<th>Health&nbsp&nbsp&nbsp&nbsp</th>
-					<th>Exposure&nbsp&nbsp&nbsp&nbsp</th>
-					<th>Instruction</th> 
-				 </table>
-				</div>
-			
-			</div>	
-			<div id="chat-wrapper">
-				<input name="collapse" type="button" id="collapse" value="collapse"/>
-				<div id="chat-window"> 
-					<div id="chatbox"></div> 
-					<input name="usermsg" type="text" id="usermsg" size="63" />
-					<input name="submitmsg" type="button"  id="submitmsg" value="Send" />
-				</div>
-			</div>
+       <%= erb(:partialPreviousList, :layout => false) %>
+       <div class="bottom-right" style="background-color:white">
+<!--
+          <div class = "row" >
+            Unassigned Tasks:
+          </div>
+          <div class = "row ">  
+            <div class = "col-sm-1 card task-card " ng-repeat = "t in tasks | filter: filterPrevUnassignedTasks" taskId = "{{t.id}}" ng-init="initD()" ng-class="getClass(t.id)">
+              <img ng-src = "{{getTaskIcon(t.id)}}"  /> 
+             
+            </div>
+          </div>
+-->
+          			</div>
 		</div>
-	
-		<div id="videos" > 
-			<div id="video_wrapper_0" style = "float:left" >
-				<input id="file_selector_0" type="file" accept="video/*"/>
-				<br>
-				offset: <input value=0 id="video_offset_0" size=10 type="text" /> 
-				<br>
-				<video style="background-color:black" id="video_0" enlarged=false width="200" height="140" controls> 	
-					<source  type="video/mp4" >
-					Your browser does not support the video tag
-				</video>
-			
-			</div> 
-		
-			<input type="button" id="clone-video" value="+" />
-			<input type="button" id="delete-video" value="-" />
-		</div> 
-		<section id="control-wrapper">
-			<div class="control" id="backward-button" ><img src="/img/replay-control/forward.png"></div>
-			<div class="control" id="play-button" ><img src="/img/replay-control/play.png"></div>
-			<div class="control" id="forward-button" ><img src="/img/replay-control/backward.png"></div>
-			<div id="speed_display">x 1</div>
-			
-			<!--<div id="scroll-bar" class="control">
-				
-				<div id="dot"></div>
-				<div id="bar"></div>
-			</div> -->
-			<div class="control"> 
-				<div id="time_display" class="timer">0:00</div>
-				<div id="time_display_2" class="timer" >0:00</div>
-			</div>
-			<div class="control"> 
-				<div id="slider"   class = "slider"  ></div>
-				<div id="slider-2" class = "slider"  ></div>
-			</div>
-		</section>
+
+	</div>
+	<div class="bottom-left" style="background-color:#BFE8E8">
+          <div class = "row ">  
+            <div 
+            class = "col-sm-1 task-card task-draggable" 
+            ng-repeat = "t in tasks | filter: filterUnassignedTasks | orderBy:'type':false" 
+            taskId = "{{t.id}}" 
+            
+            ng-mouseover="focus(t.id)" 
+            ng-mouseout="unFocus(t.id)" 
+            ng-class = "{'focus':getClass(t.id),'card':editMode,'card-fixed':!editMode}"
+            ng-init = "initEditables()"
+            >
+              <img ng-src = "{{getTaskIcon(t.id)}}" /> 
+              <span ng-show="editMode" class="glyphicon glyphicon-move corner"></span> 
+              {{t.getTime()}}
+            </div>
+  
+
+          </div>
+	  
+                      </div>
+          </div>
+  <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
+  <input type="hidden" id="user_id" value="<%= @user_id %>" />
+  <input type="hidden" id="user_initials" value="<%= @user_initials %>" />
+  <input type="hidden" id="group_token" value="<%= @game.layer_id %>" />
+  <input type="hidden" id="game_status" value="<%= @game.is_active %>" />
+
+</div> 
 
 
-		<div id="map"></div>
-
-</div> <!-- wrapper -->
-<input type="hidden" id="replay_file" value= "<%= @replay_file %>" />
-<input type="hidden" id="setup_file" value= "<%= @setup_file %>" />

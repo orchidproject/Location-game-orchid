@@ -425,42 +425,17 @@ class Controller < Sinatra::Base
 
 
 
-  get '/replay/:filename/:setup_file' do
-  	 @game = Game.first :layer_id => params[:layer_id]
-  	 #@replay_data = File.read("logs/#{params[:filename]}")
-         @replay_file=params[:filename]
-	 @setup_file=params[:setup_file]
-   	 erb :'replay'
-  end
-  
-  get '/replay/:filename/delete' do
-  	 require 'fileutils'
-  	 file=params[:filename]
-  	 #file.gsub!("%"," ")
-  	 puts file
-     FileUtils.rm_rf("logs/#{file}")
-     redirect "/admin/replay"
-   	
-  end
-
-  get '/replay2/:filename' do
-	replay_option = {:latitude => 52.49, 
-			 :longitude=> -1.0, 
-			 :layer_id => params[:filename], 
-			 :radius => "1594",
-			 :speed => 1.0}
-	
-	$replays ||= {}
-	$replays[params[:filename]] ||= Replay.new replay_option, socketIO
-  	
-	@game = $replays[params[:filename]]
-    	@socket_io_url=SOCKET_CLIENT_REF
-
-	$replays[params[:filename]].start
+  get '/game/:layer_id/replay' do
+    if (params[:test])
+      @test =  params[:test]
+    else
+      @test = false
+    end 
+    @game = Game.first :layer_id => params[:layer_id]
+    @socket_io_url=SOCKET_CLIENT_REF
    
-    	erb :'dashboard'
-  end
-  
+    erb :'replay' , :layout => :'layout'
+  end 
   
   #######################    mapeditor   ####################
   get '/admin/simulation_files' do

@@ -103,10 +103,7 @@ function forward_to(sec,callback){
 		
 
 var index=0
-function play(callback){
-	stop=false;
-	oneStep(index,callback);
-}
+
 
 function pause(callback){
 	if(current_task!=null){
@@ -115,28 +112,7 @@ function pause(callback){
 	stop=true;
 }
 
-function oneStep(i,callback){
-     var interval;
-    
-     if(i==log.length-1){
-        return
-     }
-     else{
-        interval=(log[i+1].time_stamp-log[i].time_stamp);
-     } 
 
-     process_data(log[i]);
-     callback(log[i].time_stamp-base_time);
-     current_task=setTimeout(function(){
-        
-        if(!stop){
-		index=i;
-        	oneStep(++i,callback);
-        }
-       
-     },interval/speed);
-
-}
 
 
 
@@ -201,146 +177,10 @@ function process_data(data){
 
         
 }
-//analysis
-var metrics = { finish_accepted: 0, task_allocation : 0 , rejection : 0 , acceptance: 0, no_decision : 0}; 
-var ana_instructions = [];
-function ana_push_instructions (ins){
-	var pre_ins = get_ins_by_player(ins.player_id); 
-	if( pre_ins==null){
-		ana_instructions.push(ins); 
-	}
-	else{
-		//delete previous 
-		ana_remove(pre_ins.player_id);	
-		ana_instructions.push(ins); 
-		
-	}
-	//get teammate
-	var team_ins = get_ins_by_player(ins.teammate);	
-	if (team_ins != null) {
-		//check new assigment completed
-		if(team_ins.teammate == ins.player_id && team_ins.task == ins.task){
-			metrics.task_allocation++;		
-	//		alert("new assignment " + metrics.task_allocation);
-		}
-	}
-}
 
-function ana_push_instrucition_ack(ack){
-	var ins = get_ins_by_player(ack.player_id);
-	ins.status = ack.status;
-	//need to confirm that the assignment is validated	
-	var teammate = get_ins_by_player(ins.teammate);
-	if(teammate!=null){ 
-		var p1 = players[ins.player_id]
-		var p2 = players[ins.teammate];
-		p1.instruction.status = ack.status;
-		//update instruction display 
-		drawInstruction(ins.player_id,ins.task);
-
-		var distance = ana_get_distance(p1.marker.position,p2.marker.position); 
-
-		if(ack.status == 2 && teammate.status == 2){
-			metrics.acceptance++;
-			ana_accept_distance+= distance;
-			var avg = ana_accept_distance/metrics.acceptance; 
-			//alert("accept " + metrics.acceptance + " avg_distance: " + avg + "ins: " + p1.initials);
-		}
-		else if (ack.status == 3 && teammate.status != 3){
-			metrics.rejection++;
-			ana_rejection_distance+= distance;
-			var avg = ana_rejection_distance/metrics.rejection; 
-			//alert("rejection " + metrics.rejection + " avg_distance: " + avg + " player:" +p1.initials); 
-		}	
-	}
-	
-	  
-} 
-var ana_rejection_distance = 0;
-var ana_accept_distance = 0;
-
-
-function get_ins_by_player(id){
-	var ins = null;
-	$(ana_instructions).each(function(index,value){
-		if (value.player_id == id){	
-			ins = value			
-		}
-	});	
-	return ins; 
-}
-
-function get_ins_by_task(id){
-	var res = []; 
-	$(ana_instructions).each(function(index,value){
-		if (value.task == id){	
-			res.push(value);	
-		}
-	});
-	return res;
-
-}
-
-function ana_get_task_by_id(id){
-	var t = null;
-	$(tasks).each(function(index,value){
-		if (value.id == id){	
-			t = value;			
-		}
-	});	
-	return t;
-
-}
-
-var ana_time = 0;
-var ana_time_count = 0;
-function check_task(task){
-	var t = ana_get_task_by_id(task.id);
-	if(t.state ==1 && task.state == 2){
-		var ins = get_ins_by_task(task.id);
-		//bypass the AD bug, remove in future	
-		if(ins.length >= 2 && ins.length <= 3&& ins[0].status == 2 && ins[1].status ==2){
-			metrics.finish_accepted++;	
-			ana_time_count++;
-			ana_time += (task.time_stamp - ins[0].time_stamp); 
-		//	alert("accepted and finished " + metrics.finish_accepted + 
-		//		"  time : " + (task.time_stamp - ins[0].time_stamp) +
-	//			" avg_time : " + ana_time/ana_time_count 
-	//		);
-		}
-		else if(ins.length > 0) {
-			ana_time_count++;
-			ana_time += (task.time_stamp - ins[0].time_stamp); 
-	//		alert( "  time : " + (task.time_stamp - ins[0].time_stamp) +
-	//			" avg_time : " + ana_time/ana_time_count 
-	//		);
-
-		}
-		else if(ins.length == 0) {
-			//alert("not instructed to do so ");
-		}
-	}
-}
-
-function ana_remove(id){
-	var i = -1;
-	$(ana_instructions).each(function(index,value){
-		if (value.player_id == id){	
-			i = index; 
-		}
-	});	
-	ana_instructions.splice(i,1);
-
-}
-
-function ana_get_distance(l1,l2){
-	return google.maps.geometry.spherical.computeDistanceBetween(l1, l2);	  
-}
+//analysis log deleted, please refer to previous stable versions.
 
 //-------------------
-function draw_stroke(p1, p2){
-
-}
 
 function setup_game() {
 	$.ajax({ 
@@ -386,30 +226,164 @@ function get_current_status(){
 			  skill: mapping[value.skill]
 			};
 			result.players.push(p);
-		});
+	});
+
 	$(tasks).each(function(index,value){
 			var t = { 
 			  id : value.id, 
 			  status: value.state
 			};
 			result.tasks.push(t);
-		});
+	});
 
-
-	
 	return  result;
 }
 
 
 
-$(document).ready(function() {
+/*$(document).ready(function() {
 	setup = true;
 	//updateGame(true);
 	get_data();
 	setup_game();
+});*/
+
+
+
+function _play(callback){
+	stop=false;
+	var elem = angular.element(document.querySelector('[ng-controller]'));
+
+  	//get the injector.
+  	var injector = elem.injector();
+
+  	//get the service.
+  	var service = injector.get('sIOService');
+
+	_oneStep(index,service,callback);
+}
+
+
+function _oneStep(i,service,callback){
+     var interval;
+    
+     if(i==G_logs.length-1){
+        return
+     }
+     else{
+        interval=(G_logs[i+1].time_stamp - G_logs[i].time_stamp);
+     } 
+
+    //process_data(log[i]);
+    //get your angular element
+  	service.processData(G_logs[i]);
+
+    if(callback != null) {
+     	callback(G_logs[i].time_stamp-base_time);
+    }
+
+    current_task=setTimeout(function(){
+        
+    if(!stop){
+		index=i;
+        	_oneStep(++i,service,callback);
+        }  
+
+    },interval/100);
+
+}
+
+//------------------------new------------------------
+
+var G_test;
+var G_game_id;
+
+function loadDataForReplay(state){
+	game = new Game(-1); // fake one game instance
+	game.loadDataForReplay(state,function(data){
+		$(data.getPlayers()).each(function(i,p){
+			//translate to role id to role string
+			p.skill = ROLE_MAPPING[p.skill]
+			receivePlayerInfoData(p);
+			p.player_id = p.id;
+			receivePlayerData(p);
+		});
+		
+		$(data.getTasks()).each(function(i,t){
+			receiveTaskData(t);
+		});
+
+		$(data.getDropOffZones()).each(function(i,d){
+			receiveDropoffpointData(d);	
+		});
+
+        var bounds = new google.maps.LatLngBounds();
+        $(tasks).each(function(index,value){
+            bounds.extend(new google.maps.LatLng(value.marker.getPosition().lat(), value.marker.getPosition().lng()));
+        });     
+
+        //set 
+        map.fitBounds(bounds);
+	}); 
+}
+
+$(document).ready(function() {
+    
+    G_game_id = $("#layer_id").val();
+    G_test = true;
+   
+
+    $('#msgModal').on('hidden.bs.modal', function () {
+   		angular.element($("#main")).scope().markRead(G_msg_player);
+	});
+
+	$("#log_input").change(loadLog);
+    $("#state_input").change(loadState);
+
 });
 
 
+function _parseLog(content){
+    var records = content.split("\n");
+    for(i=0; i<records.length;i++){
+    
+    if(records[i] == "") { continue; }
+        records[i] = JSON.parse(records[i]);
+    }
+    
+    G_logs = records
+    console.log("finish loading " + records.length + " records");
+    _play();
+}
+
+function _parseState(content){
+    //G_replay_state = 
+    angular.element($("#main")).scope().loadForReplay(JSON.parse(content));
+    loadDataForReplay(JSON.parse(content));
+}
+
+function _process_file(evt,callback){
+    if (!(window.File && window.FileReader && window.FileList && window.Blob)){
+          alert('The File APIs are not fully supported in this browser.');
+          return;
+    }
+
+    var fr = evt.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function(e){
+          //console.log(e.target.result);
+          callback(e.target.result);
+    }
+    reader.readAsText(fr);
+}
+
+function loadLog(evt){
+        _process_file(evt,_parseLog);
+}
+
+function loadState(evt){
+        _process_file(evt,_parseState);
+}
 
 
 

@@ -311,9 +311,12 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 		}else{
 			$scope.editMode = true;
 			$scope.edit_indicator = "Finish Editing";
+			
 			$scope.initD();
 		}
 	}
+
+
 
 	$scope.confirmAll = function(clear){
 		//if($scope.aCopy.length == 0){return;}
@@ -440,9 +443,13 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 
 	}
 
-	var count = -1;
-	
+	$scope.loadForReplay=function(state){
+		dataService.loadForReplay(state)
+		$scope.players = dataService.players;
+		$scope.tasks= dataService.tasks;
+	}
 
+	var count = -1;
 	var getTask = function(id){
 		var data = null;
 		$(dataService.tasks).each(function(index,value){
