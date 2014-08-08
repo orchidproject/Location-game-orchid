@@ -260,6 +260,12 @@ function _play(callback){
   	//get the service.
   	var service = injector.get('sIOService');
 
+  	/*var count = 0;
+  	for (k=0; k < G_logs.length; k++){
+  		console.log(k);
+  		service.processData(G_logs[k]);
+  	}*/
+
 	_oneStep(index,service,callback);
 }
 
@@ -289,7 +295,7 @@ function _oneStep(i,service,callback){
         	_oneStep(++i,service,callback);
         }  
 
-    },interval/100);
+    },interval*2);
 
 }
 
@@ -331,7 +337,6 @@ $(document).ready(function() {
     
     G_game_id = $("#layer_id").val();
     G_test = true;
-   
 
     $('#msgModal').on('hidden.bs.modal', function () {
    		angular.element($("#main")).scope().markRead(G_msg_player);

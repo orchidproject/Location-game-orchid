@@ -43,7 +43,7 @@
 
         </div>
         <div class="big-btn col-sm-4">
-          <div class="btn btn-sm btn-primary full-btn" ng-click="toggleEditMode()"> 
+          <div class="btn btn-sm btn-primary full-btn" ng-disabled="!planPending" ng-click="toggleEditMode()"> 
             {{edit_indicator}}
           </div>
         </div>
@@ -72,7 +72,7 @@
       </div>
 
 	<div class = "row"   >
-	<div  class="col-sm-6 drag-container" ng-show="editMode" >
+	<div  class="col-sm-6 drag-container" >
 
 
           <%= erb(:partialAssignmentList, :layout => false) %>
@@ -128,12 +128,10 @@
               <span ng-show="editMode" class="glyphicon glyphicon-move corner"></span> 
               {{t.getTime()}}
             </div>
-  
-
-          </div>
+  </div>
 	  
-                      </div>
-          </div>
+  </div>
+  </div>
   <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
   <input type="hidden" id="user_id" value="<%= @user_id %>" />
   <input type="hidden" id="user_initials" value="<%= @user_initials %>" />

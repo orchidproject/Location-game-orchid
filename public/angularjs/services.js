@@ -65,11 +65,12 @@ app.factory("httpService",function($http){
 
 		if(data.state == 1 ){//pick up
 			//updata status
-			/*var a = dataService.getPreAssignmentByTaskId(data.id);
+			/*
+			var a = dataService.getPreAssignmentByTaskId(data.id);
 			if(data.players == "") { alert("data error"); return;}
 			var players = data.players.split(",");
 			if(a == null){
-				//unexpected pickup, it think it is to costly, but let's see
+				//unexpected pickup, I think it is to costly, but let's see
 				var a2 = dataService.getPreAssignmentByPlayerId(players[0]);
 				if(a2!==null && (a2.task_id != data.id) ){
 					var index = dataService.previous_instructions.indexOf(a2);
@@ -160,7 +161,6 @@ app.factory("httpService",function($http){
 					task_id : data.task,
 					path1: data.path,
 					task: dataService.getTaskById(data.task)
-					//playerObj1: dataService.getPlayerById(data.player_id)
 
 				});
 			}
@@ -168,13 +168,72 @@ app.factory("httpService",function($http){
 				assignment.player2 = data.player_id;
 				assignment.id2 = data.id;
 				assignment.path2 = data.path;
-
-				//assignment.playerObj2 = dataService.getPlayerById(data.player_id);
 			}
-		}
-		
+		}	
 		dataService.instruction_frame.current_size ++;
+	}
 
+	var aHandlePrevInstructionData = function(data){
+		//adapt data
+		if(data.frame_id != dataService.prev_instruction_frame.id){
+			dataService.prev_instruction_frame.size = data.frame_size;
+			//clear an array in a way that do not change the reference.
+			/*while(dataService.previous_instructions.length > 0) {
+    			dataService.previous_instructions.pop();
+			}*/
+			dataService.prev_instruction_frame.id = data.frame_id;
+			dataService.prev_instruction_frame.current_size = 0;
+		}
+
+		var other_assignment = dataService.getPreAssignmentByPlayerId(data.player_id);
+		if(other_assignment != null){
+			var index = dataService.previous_instructions.indexOf(other_assignment);
+			dataService.previous_instructions.splice(index,1);
+		}
+
+
+		//console.log(data);
+		//if task value is not in the instruction
+		var assignment = dataService.getPrevInstructionByTask(data.task);
+		if(data.task!=-1 && data.task!=null){
+			if(assignment == null){
+				//nooot so good
+				dataService.previous_instructions.push({
+					id:dataService.instructions.length, 
+					id1:data.id, 
+					id2:-1, 
+					player1:data.player_id, 
+					player2:-1,
+					task_id : data.task,
+					path1: data.path,
+					task: dataService.getTaskById(data.task)
+
+				});
+			}
+			else if(assignment.player2 == -1){
+				assignment.player2 = data.player_id;
+				assignment.id2 = data.id;
+				assignment.path2 = data.path;
+			}
+			else{
+				var index = dataService.previous_instructions.indexOf(assignment);
+				dataService.previous_instructions.splice(index,1);
+
+				dataService.previous_instructions.push({
+					id:dataService.instructions.length, 
+					id1:data.id, 
+					id2:-1, 
+					player1:data.player_id, 
+					player2:-1,
+					task_id : data.task,
+					path1: data.path,
+					task: dataService.getTaskById(data.task)
+
+				});
+			}
+		}	
+
+		dataService.prev_instruction_frame.current_size ++;
 	}
 
 
@@ -260,6 +319,7 @@ app.factory("httpService",function($http){
     		if(typeof data.instructions != "undefined"){
     			if(data.instructions[0].confirmed == 1){
         			receiveInstructionDataV3(data.instructions[0]);
+        			aHandlePrevInstructionData(data.instructions[0]);
         		}else if(data.instructions[0].confirmed == 0){
         			aHandleInstructionData(data.instructions[0]);
         		}
@@ -328,14 +388,12 @@ app.factory("httpService",function($http){
 			[],
 
 		instruction_frame: {id:-1, frame_size:0, current_size:0},
+		prev_instruction_frame: {id:-1, frame_size:0, current_size:0},
 		previous_instructions: [], /*[
 				{id:2,task_id: 3,  player1:1,player2:3},
 				{id:3,task_id: 1,  player1:3,player2:1}
 			],*/
 		focus : null,
-
-
-
 		msgs: [] ,
 
 		loadData : function(){
@@ -396,6 +454,16 @@ app.factory("httpService",function($http){
 
 		},
 
+		getPrevInstructionByTask:function(task){
+			var i = null;
+			$(this.previous_instructions).each(function(index,value){
+				if(task == value.task_id){
+					i = value;
+				}
+			});
+			return i;
+		},
+
 		getInstructionByTask:function(task){
 			var i = null;
 			$(this.instructions).each(function(index,value){
@@ -446,8 +514,6 @@ app.factory("httpService",function($http){
 }).factory("mapService", function(){
 	var service = {
 		setGameArea:function(){
-
-
 			var bounds = new google.maps.LatLngBounds();
 			$(tasks).each(function(index,value){
 				bounds.extend(new google.maps.LatLng(value.marker.getPosition().lat(), value.marker.getPosition().lng()));	
