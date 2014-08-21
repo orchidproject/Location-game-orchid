@@ -1,0 +1,83 @@
+\subsection{The Optimisation Problem}
+\label{sec:model}
+\noindent Previous agent-based models for team coordination in disaster response typically assume deterministic task executions and environments \cite{ramchurn:etal:2010,Scerri2005}. However, in order to evaluate agent-guided coordination in a real-world environment, it is important to consider uncertainties due to player behaviours and the environment (as discussed in the previous section). Given this, we propose a new representation for the task allocation problem in disaster response that does take into account such uncertainties. More specifically, we represent this problem using an MMDP that captures the uncertainties of the radioactive cloud and the responders' behaviours. We model the spreading of the radioactive cloud as a random process over the disaster space and allow the actions requested from the responders to  fail (because they decline to go to a  task) or incur delays (because they are too slow) during the rescue process. Thus in the MMDP model, we represent  task executions as stochastic processes of state transitions, while the uncertainties of the radioactive cloud and the responders' behaviours can be easily captured with transition probabilities.  More formally, the MMDP is
+represented by tuple $\mathcal{M} = \langle I, S, \{A_i\}, P, R
+\rangle$, where $I$ is the set of actors as defined in the previous
+section,  $S$ is the state space, $A_i$ is a set of responder
+$p_i$'s actions, $P$ is the transition function, and $R$ is the
+reward function. We elaborate on each of these below.
+
+In more detail, $S= S^G_r \times S_{p_1} \times \cdots \times
+S_{p_n} \times S_{t_1} \times \cdots \times S_{t_m}$ where $S^G_r =
+\{l_{(x,y)}| (x, y) \in G\}$ is the state variable of the
+radioactive cloud that specifies the radioactive level
+$l_{(x,y)}\in[0, 100]$ at every point $(x, y)\in G$. $S_{p_i} =
+\langle h_i, (x_i, y_i), t_j \rangle$ is the state variable for
+each responder $p_i$ that specifies her health level
+$h_i\in[0, 100]$, her present position $(x_i, y_i)$, and the task
+$t_j$ she is carrying out. $S_{t_j} = \langle {\tt st_j}, (x_j, y_j)
+\rangle$ is then the state variable for task $t_j$ to specify its
+status ${\tt st_j}$ (i.e., the target is picked up, dropped off, or idle) and position $(x_j, y_j)$. 
+
+The three types of actions  (in set $A_i$) a responder can take
+are: (i) {\em stay} in the current location $(x_i, y_i)$, (ii) {\em
+move} to the 8 neighbouring locations, or (iii) {\em complete} a
+task located at $(x_i, y_i)$. A joint action $\vec{a}=\langle a_1,
+\cdots, a_n \rangle$ is a set of actions where $a_i\in A_i$, one
+for each responder (a responder may just \emph{stay} at its current
+position if it has no targets to rescue). The transition function
+$P$ is defined in more detail as: $P= P_r \times P_{p_1} \times
+\cdots \times P_{p_n} \times P_{t_1} \times \cdots \times P_{t_m}$
+where:
+\begin{itemize}
+    \itemsep=-2pt
+    \item $P_r(s'_r|s_r)$ is the probability the radioactive
+        cloud spreads from state $s_r\in S^G_r$ to $s'_r\in
+        S^G_r$. It captures the uncertainty of the  radiation
+        levels in the environment due to  noisy sensor readings
+        and the variations in wind speed and direction.
+    \item $P_{p_i}(s'_{p_i}|s, a_i)$ is the probability
+        responder $p_i$ transitions to a new state $s'_{p_i}\in
+        S_{p_i}$ when executing action $a_i$. For example, when
+        a responder is asked to go to a new location,  she
+        may not end up there because  she is tired,
+        gets injured, or receives radiation doses that are life
+        threatening.
+    \item $P_{t_j}(s'_{t_j}|s, \vec{a})$ is the probability
+        of task $t_j$ being completed. A task $t_j$ can only be completed by a
+        team of responders with the required types ($\Theta_{t_j}$) located at the
+        same position as $t_j$.
+\end{itemize}
+
+Now,  if  $t_j$ is completed (i.e., in ${\tt st_j}\in S_{t_j}$, the
+status ${\tt st_j}$ is marked as ``dropped off'' and its position $(x_j,
+y_j)$ is within a safe zone), the team will be rewarded using
+function $R$. The team is penalised if a responder $p_i$ gets
+injured or receives a high dose of radiation (i.e., in $s_{p_i}$,
+the health level $h_i$ is 0). Moreover, we attribute a cost to each
+of the responders' actions since  each  action requires them to
+exert some effort (e.g., running or carrying objects).
+
+\todo{FENG: Please add details that you omitted to reduce space requirements}
+
+Give the above definitions, a policy for the MMDP is a mapping from
+states to joint actions, $\pi: S \rightarrow \vec{A}$ so that the
+responders know which actions to take given the current state of
+the problem. The quality of a policy $\pi$ is  measured by
+its expected value $V^\pi$, which can be computed recursively by
+the Bellman equation:
+\begin{equation}
+  V^\pi(s^\tau) = R(s^\tau, \pi(s^\tau)) + \!\!\!\sum_{s^{\tau+1}\in S}\!\!\!
+  P(s^{\tau+1}|s^\tau, \pi(s^t)) V^\pi(s^{\tau+1})
+\end{equation}
+where $\tau$ denotes the current time point and $\pi(s^\tau)$ is a joint action given $s^\tau$. The goal of solving
+the MMDP is to find an optimal policy $\pi^*$ that maximises the
+expected value with the initial state $s^0$, $\pi^* =
+\arg\max_{\pi} V^\pi(s^0)$.
+
+At each decision step, we assume the planning agent can fully
+observe the state of the environment $s$ by collecting sensor
+readings of the radioactive cloud and GPS locations of the
+responders. Given a policy $\pi$ of the MMDP, a joint action
+$\vec{a}=\pi(s)$ can be selected and broadcast to the responders
+(as mentioned earlier).

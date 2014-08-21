@@ -1,55 +1,47 @@
-% This is "aamas2014.tex", a revised version of aamas2013.tex
-% This file should be compiled with "aamas2014.cls"
-% This example file demonstrates the use of the 'aamas2014.cls'
-% LaTeX2e document class file. It is for those submitting
-% articles to AAMAS 2014  conference. This file is based on
-% the sig-alternate.tex example file.
-% The 'sig-alternate.cls' file of ACM will produce a similar-looking,
-% albeit, 'tighter' paper resulting in, invariably, fewer pages.
-% than the original style ACM style.
+%%%%%%%%%%%%%%%%%%%%%%% file template.tex %%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% ----------------------------------------------------------------------------------------------------------------
-% This .tex file (and associated .cls ) produces:
-%       1) The Permission Statement
-%       2) The Conference (location) Info information
-%       3) The Copyright Line with AAMAS data
-%       4) NO page numbers
+% This is a general template file for the LaTeX package SVJour3
+% for Springer journals.          Springer Heidelberg 2010/09/16
 %
-% as against the acm_proc_article-sp.cls file which
-% DOES NOT produce 1) through 3) above.
+% Copy it to a new file with a new name and use it as the basis
+% for your article. Delete % signs as needed.
 %
-% Using 'aamas2014.cls' you don't have control
-% from within the source .tex file, over both the CopyrightYear
-% (defaulted to 200X) and the IFAAMAS Copyright Data
-% (defaulted to X-XXXXX-XX-X/XX/XX).
-% These information will be overwritten by fixed AAMAS 2014  information
-% in the style files - it is NOT as you are used with ACM style files.
+% This template includes a few options for different layouts and
+% content for various journals. Please consult a previous issue of
+% your journal as needed.
 %
-% ---------------------------------------------------------------------------------------------------------------
-% This .tex source is an example which *does* use
-% the .bib file (from which the .bbl file % is produced).
-% REMEMBER HOWEVER: After having produced the .bbl file,
-% and prior to final submission, you *NEED* to 'insert'
-% your .bbl file into your source .tex file so as to provide
-% ONE 'self-contained' source file.
 %
-
-% This is the document class for full camera ready papers and extended abstracts repsectively
-
-\documentclass{aamas2014}
-% if you are using PDF LaTex and you cannot find a way for producing
-% letter, the following explicit settings may help
-
-\pdfpagewidth=8.5truein
-\pdfpageheight=11truein
-\def\baselinestretch{0.98}
+\RequirePackage{fix-cm}
+%
+%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+%\documentclass[twocolumn]{svjour3}          % twocolumn
+%
+\smartqed  % flush right qed marks, e.g. at end of proof
+%
 \usepackage[ruled, vlined, linesnumbered]{algorithm2e}
-\DontPrintSemicolon
 
+\usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{times}
 \usepackage{url}
-
+\usepackage{color}
+\definecolor{Orange}{rgb}{1,0.5,0}
+\newcommand{\todo}[1]{\textsf{\textbf{\textcolor{Orange}{[[#1]]}}}}
+%
+% \usepackage{mathptmx}      % use Times fonts if available on your TeX system
+%
+% insert here the call for the packages your document requires
+%\usepackage{latexsym}
+% etc.
+%
+% please place your own definitions here and don't use \def but
+% \newcommand{}{}
+%
+% Insert the name of "your journal" with
+% \journalname{myjournal}
+%
 \begin{document}
 
 % In the original styles from ACM, you would have needed to
@@ -94,9 +86,7 @@
 % reasons) and the remaining two appear in the \additionalauthors section.
 %
 
-\numberofauthors{3}
-
-\author{
+% \author{
 % You can go ahead and credit any number of authors here,
 % e.g. one 'row of three' or two rows (consisting of one row of three
 % and a second row of one, two or three).
@@ -107,75 +97,27 @@
 % affiliation/address with \affaddr, and tag the
 % e-mail address with \email.
 % 1st. author
-\alignauthor
-Sarvapali D. Ramchurn, Feng Wu,  \\Nicholas R. Jennings\\
-%\and
-%\alignauthor
-	\affaddr{$^1$Agents, Interaction, and Complexity Group}\\
-	\affaddr{University of Southampton}\\
-	\affaddr{Southampton, UK}\\
-	\email{sdr@ecs.soton.ac.uk, fw16e11@ecs.soton.ac.uk, nrj@ecs.soton.ac.uk} \\
-\alignauthor
- Wenchao Jiang, \\Joel Fischer, \\Chris Greenhalgh, \\Tom Rodden \\
-	\affaddr{$^2$Mixed Reality Lab}\\
-	\affaddr{University of Nottingham}\\
-	\affaddr{Nottingham, UK}\\
-	\email{psxwj@nottingham.ac.uk, cmg@cs.nott.ac.uk, jef@cs.nott.ac.uk, tar@cs.nott.ac.uk}
-\alignauthor
- Steve Reece, \\Stephen Roberts\\
-	\affaddr{$^3$Pattern Recognition Group}\\
-	\affaddr{University of Oxford}\\
-	\affaddr{Oxford, UK}\\
-	\email{reece@ox.ac.uk, sjrob@ox.ac.uk}
+\author{Sarvapali D. Ramchurn     \and Feng Wu \and Wenchao Jiang \and Joel Fischer  \and Steve Reece \and Stephen Roberts \and Tom Rodden \and Chris Greenhalgh \and  Nicholas R. Jennings 
 }
 
-%\and  % use '\and' if you need 'another row' of author names
+%\authorrunning{Short form of author list} % if too long for running head
 
-% 4th. author
-%\alignauthor Lawrence P. Leipuner\\
-%       \affaddr{Brookhaven Laboratories}\\
-%       \affaddr{Brookhaven National Lab}\\
-%       \affaddr{P.O. Box 5000}\\
-%       \email{lleipuner@researchlabs.org}
-
-% 5th. author
-%\alignauthor Sean Fogarty\\
-%       \affaddr{NASA Ames Research Center}\\
-%       \affaddr{Moffett Field}\\
-%       \affaddr{California 94035}\\
-%       \email{fogartys@amesres.org}
-
-% 6th. author
-%\alignauthor Charles Palmer\\
-%       \affaddr{Palmer Research Laboratories}\\
-%      \affaddr{8600 Datapoint Drive}\\
-%       \affaddr{San Antonio, Texas 78229}\\
-%       \email{cpalmer@prl.com}
-
-%\and
-
-%% 7th. author
-%\alignauthor Lawrence P. Leipuner\\
-%       \affaddr{Brookhaven Laboratories}\\
-%       \affaddr{Brookhaven National Lab}\\
-%       \affaddr{P.O. Box 5000}\\
-%       \email{lleipuner@researchlabs.org}
-
-%% 8th. author
-%\alignauthor Sean Fogarty\\
-%       \affaddr{NASA Ames Research Center}\\
-%       \affaddr{Moffett Field}\\
-%       \affaddr{California 94035}\\
-%       \email{fogartys@amesres.org}
-
-%% 9th. author
-%\alignauthor Charles Palmer\\
-%       \affaddr{Palmer Research Laboratories}\\
-%       \affaddr{8600 Datapoint Drive}\\
-%       \affaddr{San Antonio, Texas 78229}\\
-%       \email{cpalmer@prl.com}
-
-%}
+\institute{Sarvapali D. Ramchurn, Feng Wu, and Nick Jennings \at
+              Electronics  and Computer Science \\
+	    University of Southampton, UK\\
+              \email{\{sdr1,fw1e11,nrj\}@soton.ac.uk}           %  \\
+           \and
+           Wenchao Jiang, Joel Fischer,  Chris Greenhalgh, and Tom Rodden \at
+              Mixed Reality Lab\\
+		University of Nottingham\\
+		Nottingham, UK\\
+		\email{\{psxwj,cmg jef,tar\}@cs.nott.ac.uk}
+\and
+           Steve Reece and Stephen Roberts \at
+              Pattern Recognition Group\\
+		University of Oxford\\
+		Oxford, UK\\
+		\email{\{reece,roberts\}@ox.ac.uk}}
 
 %% There's nothing stopping you putting the seventh, eighth, etc.
 %% author on the opening page (as the 'third row') but we ask,
@@ -188,25 +130,26 @@ Sarvapali D. Ramchurn, Feng Wu,  \\Nicholas R. Jennings\\
 %% Just remember to make sure that the TOTAL number of authors
 %% is the number that will appear on the first page PLUS the
 %% number that will appear in the \additionalauthors section.
-
+\date{Received: date / Accepted: date}
 \maketitle
 
 \begin{abstract}
 The allocation of emergency responders to rescue tasks is a key application area for agent-based coordination algorithms. However, to date, none of the proposed approaches take into account the inherent uncertainty  in disaster scenarios and, crucially, none have been field-trialled in order to understand how humans perform when instructed by an agent. Hence, in this paper, we propose a novel representation and an algorithm, using Multi-agent Markov Decision Processes, to solve the problem of  coordinating emergency responders in uncertain environments. Moreover,  we deploy our algorithm in a mixed-reality game called AtomicOrchid, with an agent that works alongside a human commander to guide human players to complete rescue tasks. In our  trials, our algorithm is shown to improve  performance significantly (compared to a no-agent setting) and our results allow us to elucidate some of the key challenges faced when developing systems involving human-agent collaboration.
- \end{abstract}\vspace{-3mm}
+ \end{abstract}
 
 % Note that the category section should be completed after reference to the ACM Computing Classification Scheme available at
 % http://www.acm.org/about/class/1998/.
 
 \keywords{Human-Agent Interaction, Agents for improving human cooperative activities, Disaster Response.}
-%\vspace{-2mm}
+
 \input{introduction.tex}
+\input{background.tex}
 \input{scenario.tex}
 \input{coordination.tex}
 \input{atomicorchid.tex}
-\vspace{-2mm}
+
 \input{conclusions.tex}
-\vspace{-2mm}
+
 \bibliographystyle{abbrv}
 
 {

@@ -1,5 +1,5 @@
 \begin{thebibliography}{1}
-
+\vspace{2mm}
 \bibitem{Chapman2009}
 A.~Chapman, R.~A. Micillo, R.~Kota, and N.~R. Jennings.
 \newblock Decentralised dynamic task allocation: A practical game-theoretic
@@ -15,8 +15,7 @@ J.~Drury, C.~Cocking, and S.~Reicher.
 \bibitem{Fischer:etal:2012}
 J.~E. Fischer, M.~Flintham, D.~Price, J.~Goulding, N.~Pantidi, and T.~Rodden.
 \newblock Serious mixed reality games.
-\newblock In {\em Mixed Reality games Workshop at the 2012 ACM Conference on
-  Computer Supported Cooperative Work}, 2012.
+\newblock In {\em Mixed Reality games Workshop at the CSCW 2012}, 2012.
 
 \bibitem{kitano:2001}
 H.~Kitano and S.~Tadokoro.

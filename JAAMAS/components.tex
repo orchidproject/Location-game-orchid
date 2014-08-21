@@ -21,6 +21,8 @@ $H$ has at her disposal an `HQ dashboard' that provides an over\-view of the gam
 \item \textit{Explicit reject}. On rejection of a task allocation by any of the allocated first responders, a new plan is requested.  More importantly, the rejected allocation is, in turn, used as a constraint within the optimisation run by the planner agent (as described in Section \ref{sec:adaptive}). For example, if two responders, one medic and one soldier, were allocated a task and the medic rejected it, the planning agent would rerun the optimisation algorithm with the constraint that this medic should not be allocated this task. If another medic is free (and accepts) the soldier and this medic can go ahead and complete the task. Otherwise, a new plan is created for the soldier.
 \end{itemize} 
 
+\todo{GOPAL: add architecture diagram showing how agent and human interact}
+
 %\subsection{Interacting with planning agent}
 %There can interact directly with field players through a task tab (Figure xx) and agent plans are also visible to HQ's dashboard interface.
 Once a plan is received from $PA$, the AtomicOrchid game engine splits the plan for a given team into individual task allocations for each player and sends them to their mobile responder app. The app presents the task allocation in the task tab, detailing: i) the responder to team up with, ii) the allocated target (using target id), and iii) approximate direction of the target (e.g., north, east).  Once a player accepts a task, an acknowledgement is sent to their teammate, while rejecting a task triggers a new assignment from $PA$. 
