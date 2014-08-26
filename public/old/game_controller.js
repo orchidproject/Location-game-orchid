@@ -135,7 +135,7 @@ function drawNewHmap(){
 
 
 
-function receiveHeatmapDataV2(data){
+function receiveHeatmapData(data){
 	hUpdateReadings(data,heatMapIndexing,heatMapData);
     hUpdateReadings(data,cHeatMapIndexing,cHeatMapData);
     hFilterOverlapData(cHeatMapData,heatMapData,heatMapIndexing);
@@ -147,11 +147,8 @@ function receiveHeatmapDataV2(data){
     cHeatMapIndexing=[];
 	cHeatMapData = [];
 }
-
-
 //----------------------------------------Old Heatmap drawing --------------------------- 
-var heat_map = [];
-function receiveHeatmapData(data){
+function receiveHeatmapDataV2(data){
     var i=0;
     for (i=0; i<data.length; i++){
        if(heat_map[data[i].index]==null){
@@ -296,7 +293,7 @@ function receivePlayerInfoData(data){
 		panel_item[data.id]= data;
 		var image_url = cg.imageSrc(data.initials,data.skill);
 		var image = "<img id='player-icon-"+ data.id + "'  src = '" + image_url + "' >";	
-		var icon ="<td align='center'>"+image+" "+ data.name +"</td>";
+		var icon ="<td align='center'>"+image+"("+ data.initials +")</td>";
 		var health = "<td align='center'><div id='health_"+data.id+"'></div> </td>";
 		var level = "<td align='center'> <div id='level_"+data.id+"'></div> </td>";
 		var button = "<td align = 'center'> <input id= 'view_btn_"+data.id+"' type='button' value='view' id='view_ins_"+data.id+"'/> </td>"
@@ -501,7 +498,7 @@ function receiveInstructionData(data){
 }
 
 function receiveInstructionDataV2(data){
-	if(data.confirmed != 1) return;
+
 	//sameple:{"teammate":2,"task":117,"direction":"south east","status":1,"time":1372781334,"id":160,"player_id":6}
 	
 	if(players[data.player_id]!=null){
@@ -609,19 +606,7 @@ function system(data){
 }
 
 function receiveMessageData(data) {
-	if(data.target != null || data.target2 != null) return;
-	var name = data.player_name;
-	/*$(players).each(function(i,d){
-		if(data.player_id == d.id){
-			name = d.player_name;
-		}
-	});*/
-
-	if(data.player_id == -1){
-		name = "HQ";
-	}
-
-	pushToTaskHistory(data.content, "msg" + latestMsgId++, name , data.player_id,data.player_skill);
+	pushToTaskHistory(data.content, "msg" + latestMsgId++, data.player_initials, data.player_id,data.player_skill);
 	//alert(data.player_name + ": " + data.content);
 }
 var latestMsgId = 0;
