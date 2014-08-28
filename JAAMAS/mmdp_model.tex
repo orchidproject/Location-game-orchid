@@ -66,6 +66,8 @@ responders know which actions to take given the current state of
 the problem. The quality of a policy $\pi$ is  measured by
 its expected value $V^\pi$, which can be computed recursively by
 the Bellman equation:
+\todo{ the value function in equation (1) is never defined precisely, so it is impossible to determine whether the function to be maximized aligns with the needs of the task}
+
 \begin{equation}
   V^\pi(s^\tau) = R(s^\tau, \pi(s^\tau)) + \!\!\!\sum_{s^{\tau+1}\in S}\!\!\!
   P(s^{\tau+1}|s^\tau, \pi(s^t)) V^\pi(s^{\tau+1})
