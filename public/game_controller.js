@@ -15,7 +15,7 @@ var playerIcons = {
 	red: new google.maps.MarkerImage("http://www.google.com/intl/en_us/mapfiles/ms/icons/red-dot.png", playerIconSize, playerIconOrigin, playerIconAnchor)
 }
 
-var ROLE_MAPPING = ["medic","firefighter","soldier","transporter"];
+var ROLE_MAPPING = ["medic","firefighter","soldier","transporter","plane"];
 
 var taskIcon = playerIcons['blue']; 
 var personSkillA = playerIcons['red'];
@@ -28,75 +28,126 @@ var lastGeigerPlayTime = 0;
 var rejections =[];
 
 
-//new heatmap drawing//
-//var backGroundRec;
-var heat_map=[];
-function receiveHeatmapData_old(data){
-    var i=0;
+//------------------------------------------HeatMapDrawing-----------------------------------
+var HCount = 0;
+
+var hUpdateReadings = function(data,indexing,hmData){
+	var i=0;
     for (i=0; i<data.length; i++){
-       if(heat_map[data[i].index]==null){
+       if(indexing[data[i].index]==null){
        		if (data[i].value>0){
-       			var point=new google.maps.LatLng(data[i].lat, data[i].lng);
-       			heat_map[data[i].index]=new google.maps.Circle(pick_overlay( data[i].value, point))
+				var point=new google.maps.LatLng(data[i].lat, data[i].lng);
+				hmData.push({
+					index: data[i].index,
+					location: point,
+					weight: parseFloat(data[i].value),
+					count:HCount
+				});	
+				//remember the index
+				indexing[data[i].index] = hmData.length-1;	
        		}
        }
        else{
-       		var point=new google.maps.LatLng(data[i].lat, data[i].lng);
-       		heat_map[data[i].index].setOptions(pick_overlay( data[i].value, point));
+			hmData[indexing[data[i].index]].weight = parseFloat(data[i].value);
+			hmData[indexing[data[i].index]].count = HCount; 
        }
-    }
-	
+    }   
+    HCount++;
 }
 
+
+//-------------------------- m1 ---------------------------
+var cHeatMapIndexing={};
+var cHeatMapData = [];
+var cHeatMap = null;
+
+//var backGroundRec;
+var heatMapIndexing={};
 var heatMapData = [];
-var heatMap=null ;  
-function receiveHeatmapData(data){
-    var i=0;
-    for (i=0; i<data.length; i++){
-       if(heat_map[data[i].index]==null){
-       		if (data[i].value>0){
-			var point=new google.maps.LatLng(data[i].lat, data[i].lng);
-			heatMapData.push({
-				location: point,
-				weight: parseFloat(data[i].value)
-			});	
-			//remember the index
-			heat_map[data[i].index] = heatMapData.length-1;	
-       		}
-       }
-       else{
-		heatMapData[heat_map[data[i].index]].weight= parseFloat(data[i].value);
-       }
+var heatMap=null ; 
+
+var hBuffer = [];
+
+ 
+function hFilterOverlapData(o1,o2,i2){
+	hBuffer = [];
+	hBuffer = hBuffer.concat(o2);
+	var dup = [];
+	for (i=0; i<o1.length; i++){
+		for (j=0; j<hBuffer.length; j++){
+			if(o1[i].index == hBuffer[j].index){
+				dup.push(hBuffer[j]);
+			}
+		}
+	}
+
+	//delete duplication
+	for (i=0; i<dup.length; i++){
+		hBuffer.splice(hBuffer.indexOf(dup[i]),1);
+		//delete i2[dup[i].index];
+	}
+}
+
+function drawOldHmap(){
+	if(heatMap != null){
+		heatMap.setMap(null); 
     }
 
-    if(heatMap != null){
-	heatMap.setMap(null); 
-    }
-
+ 	var gradient = [
+    'rgba(0, 255, 255, 0)',
+    'rgba(0, 255, 255, 1)',
+    'rgba(0, 191, 255, 1)',
+    'rgba(0, 127, 255, 1)',
+    'rgba(0, 63, 255, 1)',
+    'rgba(0, 0, 255, 1)',
+    'rgba(0, 0, 223, 1)',
+    'rgba(0, 0, 191, 1)',
+    'rgba(0, 0, 159, 1)',
+    'rgba(0, 0, 127, 1)',
+    'rgba(63, 0, 91, 1)',
+    'rgba(127, 0, 63, 1)',
+    'rgba(191, 0, 31, 1)',
+    'rgba(255, 0, 0, 1)'
+  	]
     heatMap = new google.maps.visualization.HeatmapLayer({
-	    data: heatMapData, 
-	    radius: 20 
+	    data: hBuffer, 
+	    opacity: 0.5,
+	    radius: 20,
+	    gradient: gradient
     });
 	
     heatMap.setMap(map);
 }
 
-var HEAT_MAP_COLORS = ["#202020","#3B3B3B","#3B3D64","#3F3CAD","#4B85F3","#3CBDC3","#56D355","#FFFB3D","#FF9F48","#FD3B3B","#FD3B3B"];
-function pick_overlay(value, point){
-		var circleOptions = {
-        		strokeColor: HEAT_MAP_COLORS[value],
-        		strokeOpacity: 0.8,
-        		strokeWeight: 0,
-        		fillColor: HEAT_MAP_COLORS[value],
-        		fillOpacity: 0.35,
-        		map: map,
-        		center: point,
-                clickable:false,
-        		radius: 5//0.5*5.71
-        };
-    return circleOptions;
+function drawNewHmap(){
+	if(cHeatMap != null){
+		cHeatMap.setMap(null); 
+    }
 
+    cHeatMap = new google.maps.visualization.HeatmapLayer({
+	    data: cHeatMapData, 
+	    opacity: 0.7,
+	    radius: 20 
+    });
+	
+    cHeatMap.setMap(map);	
 }
+
+
+
+function receiveHeatmapData(data){
+	hUpdateReadings(data,heatMapIndexing,heatMapData);
+    hUpdateReadings(data,cHeatMapIndexing,cHeatMapData);
+    hFilterOverlapData(cHeatMapData,heatMapData,heatMapIndexing);
+
+    drawOldHmap();
+    drawNewHmap();
+
+    //clear data
+    cHeatMapIndexing=[];
+	cHeatMapData = [];
+}
+//-----------------------------------------
 
 var log="";
 function saveLog(data){

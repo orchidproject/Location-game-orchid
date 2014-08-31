@@ -5,6 +5,7 @@ class Task
     DROPPED_DOWN = 2
     IDLE = 3
     UNSEEN = 4
+    Invalidated = 5
   end
 
  include DataMapper::Resource 
@@ -17,13 +18,16 @@ class Task
     
     #}
     
-    @@task_type=[
-        ['transporter','soldier'],
-        ['transporter','medic'],
-        ['firefighter','medic'],
-        ['firefighter','soldier']     
-    ]
+  @@task_type=[
+    ['transporter','soldier'],
+    ['transporter','medic'],
+    ['firefighter','medic'],
+    ['firefighter','soldier']     
+  ]
  
+
+  property :shared_id, Integer
+
   property :type, Integer
   property :id, Serial
   property :created_at, DateTime
@@ -64,7 +68,7 @@ class Task
       eligiable_players = []
       
       self.game.players.each do |p|
-        
+        next if p.skill == 4
         if (p.distance_to self.latitude, self.longitude) <20 #approxi check
           puts "player nearby detected #{p.distance_to self.latitude, self.longitude} task: #{p.current_task}"
           if p.current_task == -1 #player is idle
@@ -177,6 +181,7 @@ class Task
   
   def reveal
     self.game.players.each do |p|      
+      next if p.skill == 4
       if (p.distance_to self.latitude, self.longitude) <50 #approxi check
         self.state=State::IDLE
         return true
@@ -190,18 +195,18 @@ class Task
     socket.broadcast(
          { 
             :channel=> self.game.layer_id,     
-          :data=>{
+            :data=>{
                   
-            :task=>{
-              :id => self.id,
-              :type=>self.type,
-        :requirement=>self.requirement,
-              :description=> self.description,
-              :longitude => self.longitude.to_s('F'),
-              :latitude => self.latitude.to_s('F'),
-        :state => self.state,
-        :players => self.players
-        }
+              :task=>{
+                :id => self.id,
+                :type=>self.type,
+                :requirement=>self.requirement,
+                :description=> self.description,
+                :longitude => self.longitude.to_s('F'),
+                :latitude => self.latitude.to_s('F'),
+                :state => self.state,
+                :players => self.players
+              }
       }
          }.to_json)
         
@@ -218,7 +223,7 @@ class Task
                   :content=>"Picked up",
                   :player_initials=>"CO",
                   :player_name=>"controller",
-            :target => targets
+                  :target => targets
             }
       }
          }.to_json)

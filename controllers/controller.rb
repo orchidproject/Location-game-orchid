@@ -705,16 +705,16 @@ class Controller < Sinatra::Base
 				
 		if count%6==0
                     #diffFrame can be nil, (when there is no diff between two frames) 
-			diffFrame=$simulations[g.layer_id].getIndexedDiffFrame(time)
-					
-					if diffFrame
+			
+					 targetFrame = $simulations[g.layer_id].getVisibleFrame(time,g.players)
+					if targetFrame
                     	puts "heat map redraw in this loop"
                     	socketIO.broadcast( 
                                        { 
                                        :channel=> "#{game.layer_id}-1",             
                                        :data=>{
                                        #:heatmap=>@simulation.getTimeFrameWithLatLng(Time.now)
-                                        :heatmap=>diffFrame
+                                        :heatmap=>targetFrame
                                        }
 		       }.to_json)
                     end

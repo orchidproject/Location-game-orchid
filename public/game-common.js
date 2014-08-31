@@ -144,15 +144,19 @@ function drawInstruction(pid,tid){
 }
 var tasks = [];
 function receiveTaskData(task){
+
+
 	var existing_task=null;
 	for (i=0;i<tasks.length;i++) {
 		if (tasks[i].id==task.id){
 			existing_task=tasks[i];
 		}
 	}
-		
+	
+	
 	if(existing_task==null){
-			
+		if(task.state == 4) return;
+		
 		var taskIcon= getTaskIcon(task.type,task.id);
 		var point = new google.maps.LatLng(task.latitude,task.longitude);
 		if (task.state==2){
@@ -171,15 +175,21 @@ function receiveTaskData(task){
         
         var the_task={id:task.id,state: task.state, marker:marker};
         
-        	tasks.push(the_task);
-			if(test!=null&&test){
+        tasks.push(the_task);
+		if(test!=null&&test){
 			//setupTaskTest(the_task);
-			}
+		}
     }
     else{
+    		//delete exisiting target when invalidated
+			if(existing_task.state == 5) {
+				existing_task.marker.setMap(null);
+				return;
+			}
+
+    		//update both type and location
         	var new_postion = new google.maps.LatLng(task.latitude,task.longitude);
         	existing_task.marker.setPosition(new_postion);
-			
         	
         	if (task.state==2){
 				var taskIcon=new google.maps.MarkerImage(
@@ -197,7 +207,7 @@ function receiveTaskData(task){
 			}
 
 	        else if(task.state != 2){
-				var taskIcon= getTaskIcon(task.type,task.id);
+				var taskIcon = getTaskIcon(task.type,task.id);
 				existing_task.marker.setIcon(taskIcon); 
 			}
 
@@ -363,7 +373,7 @@ function drawTask(task){
        
         }
         else{
-        	task.marker.setPosition(taskIcon);
+        	task.marker.setPosition(point);
         }
 }
 

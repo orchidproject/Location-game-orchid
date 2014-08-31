@@ -39,7 +39,8 @@ def notifyPlayers(io)
 				                        :player_id => instruction.player_id,
                                 :frame_id => instruction.frame.id,
                                 :frame_size => first_frame.instructions.size,
-                                :confirmed => 0
+                                :confirmed => 0,
+                                :plan_id => self.id
                             }]
                   }
               }.to_json) 

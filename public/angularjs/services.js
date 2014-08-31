@@ -137,6 +137,12 @@ app.factory("httpService",function($http){
 
 	}
 
+	var aHandleSystem = function(data){
+		if(data == "prov"){
+			alert("Target invalidated");
+		}
+	}
+
 	var aHandleInstructionData = function(data){
 		//adapt data
 		if(data.frame_id != dataService.instruction_frame.id){
@@ -312,6 +318,10 @@ app.factory("httpService",function($http){
                 receiveTaskData(data.task);              
         	}
 
+        	if(typeof data.system != "undefined"){
+        		aHandleSystem(data.system);            
+        	}
+
         	if(typeof data["ack-instruction"] != "undefined"){
         		aHandleAckData(data["ack-instruction"]);             
         	}
@@ -349,7 +359,7 @@ app.factory("httpService",function($http){
 
 }).factory("parseService",function(){
 	return {
-		role_string: ["medic","firefighter","soldier","transporter"],
+		role_string: ["medic","firefighter","soldier","transporter","plane"],
 		requirements: [[2,3],[3,0],[1,0],[1,2]],
 		parsePlayer: function(data){
 			for(i = 0; i<data.length;i++){

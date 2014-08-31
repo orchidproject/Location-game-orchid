@@ -1,6 +1,6 @@
 class Player
     
-  @@skill = ["medic","firefighter","soldier","transporter"]
+  @@skill = ["medic","firefighter","soldier","transporter","plane"]
     
     
     
@@ -46,6 +46,7 @@ class Player
   end
 
   def updateHealth(so)
+    return if self.skill == 4
 	if (self.health >= 0 )
 		self.health=100-(self.exposure/10)
   	end	

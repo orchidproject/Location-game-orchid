@@ -41,7 +41,8 @@ class ConfirmedPlan
                                 :path => path,
                                 #to indentify whether it is confirmed
                                 :confirmed => 1,
-                                :deadline => instruction.deadline
+                                :deadline => instruction.deadline,
+                                :plan_id => self.id
                             }]
                   }
               }.to_json) 
@@ -49,10 +50,10 @@ class ConfirmedPlan
   end 
 
   def output 
-	result = {:step => self.step , :frames => []} 
-	self.frames.each do |f|
+	  result = {:step => self.step , :frames => []} 
+	  self.frames.each do |f|
 		result[:frames]<< f.output	
-	end 	
-	result
+	   end 	
+	   result
   end 
 end 
