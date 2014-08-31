@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.1)  31 AUG 2014 15:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.1)  31 AUG 2014 22:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -406,24 +406,68 @@ Missing character: There is no ú in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
-[3]) (./scenario.tex [4] [5]
 
-LaTeX Warning: Citation `scerri:etal:2005' on page 6 undefined on input line 16
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+
+ []
+
+) (./scenario.tex [5]
+Underfull \vbox (badness 5161) has occurred while \output is active []
+
+ [6]
+
+LaTeX Warning: Citation `scerri:etal:2005' on page 7 undefined on input line 16
 .
 
 (./mmdp_model.tex
 
-LaTeX Warning: Citation `ramchurn:etal:2010' on page 6 undefined on input line 
+LaTeX Warning: Citation `ramchurn:etal:2010' on page 7 undefined on input line 
 3.
 
 
-LaTeX Warning: Citation `Scerri2005' on page 6 undefined on input line 3.
+LaTeX Warning: Citation `Scerri2005' on page 7 undefined on input line 3.
 
-
-Underfull \vbox (badness 6268) has occurred while \output is active []
-
- [6]
-[7])) (./coordination.tex [8]
+[7] [8])) (./coordination.tex
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 50.
@@ -444,24 +488,25 @@ LaTeX Warning: Citation `kocsis2006bandit' on page 10 undefined on input line 1
 LaTeX Warning: Citation `proper2009solving' on page 10 undefined on input line 
 141.
 
+[10]
 
-LaTeX Warning: Citation `auer2002finite' on page 10 undefined on input line 151
+LaTeX Warning: Citation `auer2002finite' on page 11 undefined on input line 151
 .
 
-[10]
 
 LaTeX Font Warning: Command \small invalid in math mode on input line 153.
 
 LaTeX Font Info:    Calculating math sizes for size <> on input line 155.
+[11]
 
-LaTeX Warning: Citation `kolobov2012planning' on page 11 undefined on input lin
+LaTeX Warning: Citation `kolobov2012planning' on page 12 undefined on input lin
 e 224.
 
 
-LaTeX Warning: Citation `barto1995learning' on page 11 undefined on input line 
+LaTeX Warning: Citation `barto1995learning' on page 12 undefined on input line 
 225.
 
-[11]) (./atomicorchid.tex [12]
+[12]) (./atomicorchid.tex
 
 LaTeX Warning: Citation `Fischer:etal:2012' on page 13 undefined on input line 
 3.
@@ -476,7 +521,11 @@ LaTeX Warning: Citation `drury:etal:2009' on page 13 undefined on input line 3.
 
 LaTeX Warning: Citation `paho:2001' on page 13 undefined on input line 3.
 
-(./components.tex [13] <UI.png, id=71, 1260.71pt x 912.40875pt>
+
+Underfull \vbox (badness 4954) has occurred while \output is active []
+
+ [13]
+(./components.tex [14] <UI.png, id=74, 1260.71pt x 912.40875pt>
 File: UI.png Graphic file (type png)
  <use UI.png>
 Package pdftex.def Info: UI.png used on input line 5.
@@ -487,42 +536,42 @@ Overfull \hbox (14.69664pt too wide) in paragraph at lines 13--14
 ly) scal-able ex-pe-ri-ence. The location-
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [14 <./UI.png>]) (./radiation_model.tex [15]
-<figures/radiation_ss_calm.png, id=80, 1507.6325pt x 803.0pt>
+[15 <./UI.png>]) (./radiation_model.tex [16]
+<figures/radiation_ss_calm.png, id=84, 1507.6325pt x 803.0pt>
 File: figures/radiation_ss_calm.png Graphic file (type png)
 
 <use figures/radiation_ss_calm.png>
 Package pdftex.def Info: figures/radiation_ss_calm.png used on input line 20.
 (pdftex.def)             Requested size: 152.09897pt x 81.00311pt.
 
-<figures/radiation_ss_gust.png, id=81, 1508.63625pt x 805.0075pt>
+<figures/radiation_ss_gust.png, id=85, 1508.63625pt x 805.0075pt>
 File: figures/radiation_ss_gust.png Graphic file (type png)
 
 <use figures/radiation_ss_gust.png>
 Package pdftex.def Info: figures/radiation_ss_gust.png used on input line 22.
 (pdftex.def)             Requested size: 152.09897pt x 81.15648pt.
 ) (./evaluation.tex
+Underfull \vbox (badness 6300) has occurred while \output is active []
+
+ [17 <./figures/radiation_ss_calm.png> <./figures/radiation_ss_gust.png>]
 LaTeX Font Info:    Font shape `OT1/ptm/m/ui' in size <10> not available
 (Font)              Font shape `OT1/ptm/m/it' tried instead on input line 5.
- [16] [17 <./figures/radiation_ss_calm.png> <./figures/radiation_ss_gust.png>]
+ [18]
 
-LaTeX Warning: Citation `searle:1975' on page 18 undefined on input line 25.
+LaTeX Warning: Citation `searle:1975' on page 19 undefined on input line 25.
 
-[18] <message_handling.png, id=92, 1049.9225pt x 640.3925pt>
+[19] <message_handling.png, id=96, 1049.9225pt x 640.3925pt>
 File: message_handling.png Graphic file (type png)
 
 <use message_handling.png>
 Package pdftex.def Info: message_handling.png used on input line 62.
 (pdftex.def)             Requested size: 338.0pt x 206.161pt.
- [19 <./message_handling.png>] [20]
+ [20 <./message_handling.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 90--91
 
  []
 
-
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 92--93
 
  []
@@ -533,15 +582,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--95
  []
 
 
-LaTeX Warning: Citation `scerri:etal:2005' on page 21 undefined on input line 9
+LaTeX Warning: Citation `scerri:etal:2005' on page 22 undefined on input line 9
 6.
 
-)) (./conclusions.tex)
-Underfull \vbox (badness 3690) has occurred while \output is active []
-
- [21]
+)) (./conclusions.tex) [22]
 No file main.bbl.
-[22] (./main.aux)
+[23] (./main.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
@@ -549,7 +595,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Here is how much of TeX's memory you used:
  4892 strings out of 493315
  68787 string characters out of 6137904
- 149778 words of memory out of 5000000
+ 149779 words of memory out of 5000000
  8211 multiletter control sequences out of 15000+600000
  40000 words of font info for 105 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -582,10 +628,10 @@ e1/urw/courier/ucrr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/h
 elvetic/uhvb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/ut
 mb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
 /usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (22 pages, 3478135 bytes).
+Output written on main.pdf (23 pages, 3479204 bytes).
 PDF statistics:
- 196 PDF objects out of 1000 (max. 8388607)
- 136 compressed objects within 2 object streams
+ 199 PDF objects out of 1000 (max. 8388607)
+ 138 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
