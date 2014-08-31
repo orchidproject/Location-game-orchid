@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.1)  31 AUG 2014 15:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.1)  31 AUG 2014 15:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -419,7 +419,11 @@ LaTeX Warning: Citation `ramchurn:etal:2010' on page 6 undefined on input line
 
 LaTeX Warning: Citation `Scerri2005' on page 6 undefined on input line 3.
 
-[6] [7])) (./coordination.tex
+
+Underfull \vbox (badness 6268) has occurred while \output is active []
+
+ [6]
+[7])) (./coordination.tex [8]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 50.
@@ -431,7 +435,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 51.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5.55556> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 51.
- [8] [9]
+ [9]
 
 LaTeX Warning: Citation `kocsis2006bandit' on page 10 undefined on input line 1
 37.
@@ -444,11 +448,11 @@ LaTeX Warning: Citation `proper2009solving' on page 10 undefined on input line
 LaTeX Warning: Citation `auer2002finite' on page 10 undefined on input line 151
 .
 
+[10]
 
 LaTeX Font Warning: Command \small invalid in math mode on input line 153.
 
 LaTeX Font Info:    Calculating math sizes for size <> on input line 155.
-[10]
 
 LaTeX Warning: Citation `kolobov2012planning' on page 11 undefined on input lin
 e 224.
@@ -457,25 +461,24 @@ e 224.
 LaTeX Warning: Citation `barto1995learning' on page 11 undefined on input line 
 225.
 
-[11]) (./atomicorchid.tex
+[11]) (./atomicorchid.tex [12]
 
-LaTeX Warning: Citation `Fischer:etal:2012' on page 12 undefined on input line 
+LaTeX Warning: Citation `Fischer:etal:2012' on page 13 undefined on input line 
 3.
 
 
-LaTeX Warning: Citation `simonovic:2009' on page 12 undefined on input line 3.
+LaTeX Warning: Citation `simonovic:2009' on page 13 undefined on input line 3.
 
 
-LaTeX Warning: Citation `drury:etal:2009' on page 12 undefined on input line 3.
+LaTeX Warning: Citation `drury:etal:2009' on page 13 undefined on input line 3.
 
 
 
-LaTeX Warning: Citation `paho:2001' on page 12 undefined on input line 3.
+LaTeX Warning: Citation `paho:2001' on page 13 undefined on input line 3.
 
-[12] (./components.tex [13] <UI.png, id=71, 1260.71pt x 912.40875pt>
+(./components.tex [13] <UI.png, id=71, 1260.71pt x 912.40875pt>
 File: UI.png Graphic file (type png)
-
-<use UI.png>
+ <use UI.png>
 Package pdftex.def Info: UI.png used on input line 5.
 (pdftex.def)             Requested size: 338.0pt x 244.61337pt.
 
@@ -484,27 +487,27 @@ Overfull \hbox (14.69664pt too wide) in paragraph at lines 13--14
 ly) scal-able ex-pe-ri-ence. The location-
  []
 
-[14 <./UI.png>]) (./radiation_model.tex [15]
-<figures/radiation_ss_calm.png, id=81, 1507.6325pt x 803.0pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14 <./UI.png>]) (./radiation_model.tex [15]
+<figures/radiation_ss_calm.png, id=80, 1507.6325pt x 803.0pt>
 File: figures/radiation_ss_calm.png Graphic file (type png)
 
 <use figures/radiation_ss_calm.png>
 Package pdftex.def Info: figures/radiation_ss_calm.png used on input line 20.
 (pdftex.def)             Requested size: 152.09897pt x 81.00311pt.
 
-<figures/radiation_ss_gust.png, id=82, 1508.63625pt x 805.0075pt>
+<figures/radiation_ss_gust.png, id=81, 1508.63625pt x 805.0075pt>
 File: figures/radiation_ss_gust.png Graphic file (type png)
 
 <use figures/radiation_ss_gust.png>
 Package pdftex.def Info: figures/radiation_ss_gust.png used on input line 22.
 (pdftex.def)             Requested size: 152.09897pt x 81.15648pt.
 ) (./evaluation.tex
-Underfull \vbox (badness 6300) has occurred while \output is active []
-
- [16 <./figures/radiation_ss_calm.png> <./figures/radiation_ss_gust.png>]
 LaTeX Font Info:    Font shape `OT1/ptm/m/ui' in size <10> not available
 (Font)              Font shape `OT1/ptm/m/it' tried instead on input line 5.
- [17]
+ [16] [17 <./figures/radiation_ss_calm.png> <./figures/radiation_ss_gust.png>]
 
 LaTeX Warning: Citation `searle:1975' on page 18 undefined on input line 25.
 
@@ -514,12 +517,12 @@ File: message_handling.png Graphic file (type png)
 <use message_handling.png>
 Package pdftex.def Info: message_handling.png used on input line 62.
 (pdftex.def)             Requested size: 338.0pt x 206.161pt.
- [19 <./message_handling.png>]
+ [19 <./message_handling.png>] [20]
 Underfull \hbox (badness 10000) in paragraph at lines 90--91
 
  []
 
-[20]
+
 Underfull \hbox (badness 10000) in paragraph at lines 92--93
 
  []
@@ -533,47 +536,53 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--95
 LaTeX Warning: Citation `scerri:etal:2005' on page 21 undefined on input line 9
 6.
 
-)) (./conclusions.tex) [21]
+)) (./conclusions.tex)
+Underfull \vbox (badness 3690) has occurred while \output is active []
+
+ [21]
 No file main.bbl.
-[22] (./main.aux) ) 
+[22] (./main.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
  4892 strings out of 493315
  68787 string characters out of 6137904
- 148778 words of memory out of 5000000
+ 149778 words of memory out of 5000000
  8211 multiletter control sequences out of 15000+600000
  40000 words of font info for 105 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  38i,19n,27p,2984b,512s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.
-enc}</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.
-pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.p
-fb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb
-></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.p
-fb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb>
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></
-usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></us
-r/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
-local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
-cal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local
-/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
-xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
-ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
-2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
-013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/201
-3/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2013/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2013/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2013/texmf
--dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2013/texmf-d
-ist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2013/tex
-mf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2013/texmf-dist/
-fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/t
-ype1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/t
-imes/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmri
-8a.pfb>
-Output written on main.pdf (22 pages, 3477564 bytes).
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/t
+exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
+xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texl
+ive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texli
+ve/2013/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/te
+xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texli
+ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive
+/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2
+013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/201
+3/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2013/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2013/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2013/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2013/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2013/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2013/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/p
+ublic/amsfonts/symbols/msam10.pfb></usr/local/texlive/2013/texmf-dist/fonts/typ
+e1/urw/courier/ucrr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/h
+elvetic/uhvb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/ut
+mb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
+/usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (22 pages, 3478135 bytes).
 PDF statistics:
  196 PDF objects out of 1000 (max. 8388607)
  136 compressed objects within 2 object streams
