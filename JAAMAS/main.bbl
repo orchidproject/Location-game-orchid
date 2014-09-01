@@ -1,0 +1,108 @@
+\begin{thebibliography}{10}
+
+\bibitem{auer2002finite}
+P.~Auer, N.~Cesa-Bianchi, and P.~Fischer.
+\newblock Finite-time analysis of the multi-armed bandit problem.
+\newblock {\em Machine learning}, 47(2-3):235--256, 2002.
+
+\bibitem{barto1995learning}
+A.~G. Barto, S.~J. Bradtke, and S.~P. Singh.
+\newblock Learning to act using real-time dynamic programming.
+\newblock {\em Artificial Intelligence}, 72(1):81--138, 1995.
+
+\bibitem{boutilier1996planning}
+C.~Boutilier.
+\newblock Planning, learning and coordination in multi-agent decision
+  processes.
+\newblock In {\em Proc. of TARK 1996}, pages 195--210, 1996.
+
+\bibitem{Chapman2009}
+A.~Chapman, R.~A. Micillo, R.~Kota, and N.~R. Jennings.
+\newblock Decentralised dynamic task allocation: A practical game-theoretic
+  approach.
+\newblock In {\em Proc. of AAMAS 2009}, pages 915--922, May 2009.
+
+\bibitem{drury:etal:2009}
+J.~Drury, C.~Cocking, and S.~Reicher.
+\newblock Everyone for themselves? a comparative study of crowd solidarity
+  among emergency survivors.
+\newblock {\em The British journal of social psychology}, 48(3):487--506, 2009.
+
+\bibitem{Fischer:etal:2012}
+J.~E. Fischer, M.~Flintham, D.~Price, J.~Goulding, N.~Pantidi, and T.~Rodden.
+\newblock Serious mixed reality games.
+\newblock In {\em Mixed Reality games Workshop at the 2012 ACM Conference on
+  Computer Supported Cooperative Work}, 2012.
+
+\bibitem{kitano:2001}
+H.~Kitano and S.~Tadokoro.
+\newblock Robocup rescue: A grand challenge for multiagent and intelligent
+  systems.
+\newblock {\em AI Magazine}, 22(1):39--52, 2001.
+
+\bibitem{kocsis2006bandit}
+L.~Kocsis and C.~Szepesv{\'a}ri.
+\newblock Bandit based monte-carlo planning.
+\newblock In {\em Proc. of ECML 2006}, pages 282--293, 2006.
+
+\bibitem{kolobov2012planning}
+Mausam and A.~Kolobov.
+\newblock Planning with markov decision processes: An {AI} perspective.
+\newblock {\em Synthesis Lectures on {AI} and Machine Learning}, 6(1):1--210,
+  2012.
+
+\bibitem{paho:2001}
+{Pan American Health Organization}.
+\newblock Stress management in disasters, 2001.
+
+\bibitem{proper2009solving}
+S.~Proper and P.~Tadepalli.
+\newblock Solving multi-agent assignment \text{Markov} decision processes.
+\newblock In {\em Proc. of AAMAS 2009}, pages 681--688, 2009.
+
+\bibitem{ramchurn:etal:2010}
+S.~D. Ramchurn, A.~Farinelli, K.~S. Macarthur, and N.~R. Jennings.
+\newblock Decentralized coordination in robocup rescue.
+\newblock {\em The Computer Journal}, 53(9):1447--1461, 2010.
+
+\bibitem{rasmussen06}
+C.~E. Rasmussen and C.~K.~I. Williams.
+\newblock {\em Gaussian Processes for Machine Learning}.
+\newblock The MIT Press, 2006.
+
+\bibitem{reece14}
+S.~Reece, S.~Ghosh, S.~Roberts, A.~Rogers, and N.~R. Jennings.
+\newblock Efficient state-space inference of periodic latent force models.
+\newblock {\em Journal of Machine Learning Research}, 15:2337--2397, 2014.
+
+\bibitem{reece10}
+S.~Reece and S.~Roberts.
+\newblock An introduction to gaussian processes for the kalman filter expert.
+\newblock In {\em Prof. of Intl. Conf. on Information Fusion (FUSION)}, pages
+  1--9. IEEE, 2010.
+
+\bibitem{Scerri2005}
+P.~Scerri, A.~Farinelli, S.~Okamoto, and M.~Tambe.
+\newblock {Allocating tasks in extreme teams}.
+\newblock In {\em Proc. of AAMAS}, pages 727--734. ACM, 2005.
+
+\bibitem{scerri:etal:2005}
+P.~Scerri, M.~Tambe, and D.~V. Pynadath.
+\newblock Towards adjustable autonomy for the real-world.
+\newblock {\em Journal of Artificial Intelligence Research}, 17(1):171--228,
+  2002.
+
+\bibitem{searle:1975}
+J.~Searle.
+\newblock A taxonomy of illocutionary acts.
+\newblock In K.~G\"{u}nderson, editor, {\em Language, Mind, and Knowledge,
+  (Studies in the Philosophy of Science}, volume~7, pages 344--69. University
+  of Minneapolis Press, 1975.
+
+\bibitem{simonovic:2009}
+S.~P. Simonovic.
+\newblock Systems approach to management of disasters: Methods and
+  applications.
+\newblock In {\em Disaster Prevention and Management}, volume~20. Wiley, 2009.
+
+\end{thebibliography}
