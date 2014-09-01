@@ -28,6 +28,16 @@
   year = {1996},
   pages = {195--210}
 }
+@inproceedings {puyol:etal:2014,
+	title = {Binary max-sum for multi-team task allocation in RoboCup Rescue},
+	journal = {Optimisation in Multi-Agent Systems and Distributed Constraint Reasoning (OptMAS-DCR)},
+	year = {2014},
+	month = {05/05/2014},
+	address = {Paris, France},
+	abstract = {Coordination of agents involved in rescue missions is an important open research problem. We focus on the RoboCup Rescue Simulation (RCS) challenge, where different teams of agents perform urban rescue operations. Previous approaches typically cast such coordination problem as separate single-team allocation problems, and solve them separately. Our first key contribution is to focus on the max-sum approach, which has been successfully applied in this setting. We show that it is possible to reduce the computational complexity associated to max- sum from exponential to polynomial time. Our empirical evaluation shows that, by using our approach, the fire brigades team obtains significantly better results when compared to state-of- the-art approaches. Our second key contribution is a methodology that allows teams in RCS to make joint allocations. Specifically, our approach supports a modular design, where teams are independently modeled and subsequently connected via well-defined coordination points. To the best of our knowledge, this is the first task-assignment approach in the literature that enables teams in RCS to make simultaneous joint allocations. Experiments with fire brigades and police agents show that teams employing inter-team coordination are significantly more effective than uncoordinated teams.},
+	keywords = {RoboCup Rescue, Binary MaxSum},
+	author = {Marc Pujol-Gonzalez and Jes\'us Cerquides and Alessandro Farinelli and Pedro Meseguer and Juan A. Rodr\'{\i}guez-Aguilar}
+}
 
 @INPROCEEDINGS{Chapman2009,
   author = {A. Chapman and R. A. Micillo and R. Kota and N. R. Jennings},
@@ -174,7 +184,63 @@
   volume = {15},
   pages = {2337--2397}
 }
-
+@inproceedings{skinner:ramchurn:2010,
+   author = {Skinner, Cameron and Ramchurn, Sarvapali D.},
+  booktitle = {AAMAS},
+  pages = {1647-1648},
+  publisher = {IFAAMAS},
+  title = {The RoboCup rescue simulation platform.},
+  url = {http://dblp.uni-trier.de/db/conf/atal/aamas2010.html#SkinnerR10},
+  year = 2010
+}
+@inproceedings{kleiner:etal:2013,
+title = {RMASBench: a benchmarking system for multi-agent coordination in urban search and rescue},
+author = {Alexander Kleiner and Alessandro Farinelli and Sarvapali Ramchurn and Bing Shi and Fabio Mafioletti and Riccardo Refatto},
+url = {http://eprints.soton.ac.uk/350678/},
+year = {2013},
+date = {2013-01-01},
+booktitle = {International Conference on Autonomous Agents and Multi-Agent Systems (AAMAS 2013)},
+abstract = {This demonstration paper illustrates RMASBench, a new benchmarking system based on the RoboCup Rescue Agent simulator. The aim of the system is to facilitate benchmarking of coordination approaches in controlled settings for dynamic rescue scenario. In particular, the key features of the systems are: i) programming interfaces to plug-in coordination algorithms without the need for implementing and tuning low-level agents? behaviors, ii) implementations of state-of-the art coordination approaches: DSA and MaxSum, iii) a large scale crowd simulator, which exploits GPUs parallel architecture, to simulate the behaviour of thousands of agents in real time.},
+keywords = {}
+}
+@article{Khan-2011-JAAMAS,
+   title = "Optimizing coalition formation for tasks with dynamically evolving rewards and nondeterministic action effects",
+   author = "M. A. Khan and D. Turgut and L. B{\"o}l{\"o}ni",
+   journal = "Journal of Autonomous Agents and Multi-Agent Systems",
+   year = "2011",
+   volume = "22",
+   number = "3",
+   pages = "415-438",
+   abstract = {
+      We consider a problem domain where coalitions of agents are formed
+      in order to execute tasks. Each task is assigned at most one
+      coalition of agents, and the coalition can be reorganized during
+      execution. Executing a task means bringing it to one of the
+      desired terminal states, which might take several time steps. The
+      state of the task evolves even if no coalition is assigned to its
+      execution and depends nondeterministically on the cumulative
+      actions of the agents in the coalition. Furthermore, we assume
+      that the reward obtained for executing a task evolves in time: the
+      more the execution of the task is delayed, the lesser the reward.
+      A representative example of this class of problems is the
+      allocation of firefighters to fires in a disaster rescue
+      environment. We describe a practical methodology through which a
+      problem of this class can be encoded as a Markov Decision Process.
+      Due to the three levels of factoring in the resulting MDP (the
+      states, actions and rewards are composites of the original
+      features of the problem) the resulting MDP can be directly solved
+      only for small problem instances. We describe two methods for
+      parallel decomposition of the MDP: the MDP RSUA approach for
+      random sampling and uniform allocation and the MDP REUSE method
+      which reuses the lower level MDP to allocate resources to the
+      parallel subproblems.
+      Through an experimental study which models the problem domain
+      using the fire simulation components of the Robocup Rescue
+      simulator, we show that both methods significantly outperform
+      heuristic approaches and MDP REUSE provides an overall higher
+      performance than MDP RSUA.
+      },
+}
 @CONFERENCE{Scerri2005,
   author = {Scerri, P. and Farinelli, A. and Okamoto, S. and Tambe, M.},
   title = {{Allocating tasks in extreme teams}},
