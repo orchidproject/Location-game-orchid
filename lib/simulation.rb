@@ -56,6 +56,11 @@ class Simulation
         
   end
 
+  def resetStart(start_time)
+     @start_time = start_time
+
+  end 
+
   def setTime(time)
      @start_time = time
   end
