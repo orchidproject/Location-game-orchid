@@ -229,7 +229,7 @@ class Task
          }.to_json)
   end
 
-  def invalidate() do
+  def invalidate 
     socket.broadcast(
          { 
             :channel=> self.game.layer_id,     
