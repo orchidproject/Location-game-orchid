@@ -228,5 +228,20 @@ class Task
       }
          }.to_json)
   end
+
+  def invalidate() do
+    socket.broadcast(
+         { 
+            :channel=> self.game.layer_id,     
+            :data=>{          
+            :textMessage=>{
+                  :content=>"Task invalidated",
+                  :player_initials=>"CO",
+                  :player_name=>"controller",
+            }
+      }
+    }.to_json)
+  end
+
 end
 

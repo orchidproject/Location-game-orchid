@@ -611,9 +611,9 @@ end
         	}
     	]
 
-    	to_delete =[]
+    	
 		data[:players].each do |p| 
-			to_delete << p if p.state == 5
+			
 			result =  sim.getGridCoord(Float(p[:latitude]),Float(p[:longitude]))
 			p.delete(:latitude)
 			p.delete(:longitude)
@@ -622,17 +622,20 @@ end
 		
 		end 
 
-		to_delete.each do |p|
-			data[:players].delete(p)
-		end
-
+		
+		to_delete =[]
 		data[:tasks].each do |t| 
+			to_delete << t if t["state"] == 5
 			result =  sim.getGridCoord(Float(t[:latitude]),Float(t[:longitude]))
 			t.delete(:latitude)
 			t.delete(:longitude)
 			t["x"] = result[:x]
 			t["y"] = result[:y]
 			t["status"] = t[:state]	
+		end
+
+		to_delete.each do |t|
+			data[:tasks].delete(t)
 		end
 
 		response = { 

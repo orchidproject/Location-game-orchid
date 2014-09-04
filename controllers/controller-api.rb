@@ -44,6 +44,14 @@ class Controller < Sinatra::Base
 		t = Task.all(:game_layer_id => params[:layer_id], :shared_id => data["target_id"]).first
 		return {:state=>"error", :msg =>"no target found"}.to_json if t.nil?
 
+		if data["type_id"] == -1
+			t.invalidate
+			t.destroy
+			return {:state => "ok"}.to_json
+			#need to broadcast
+
+		end 
+
 		if t.state == Task::State::UNSEEN
 			t.state = Task::State::IDLE		
 		end
