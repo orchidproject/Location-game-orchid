@@ -29,6 +29,7 @@ app.controller("AgentPanelCtrl", function($scope,httpService){
 	$scope.selected_scripte = " ";
 	$scope.par= "";
 	httpService.getScriptsList().then(function(result){
+		
 		$(result.data).each(function(index,value){
 			$scope.scripts.push({id:value,name:value});
 		});
@@ -77,7 +78,6 @@ app.controller("MsgCtrl",function($scope,dataService,sIOService){
 		sIOService.sendMsg(data);
 		$scope.msg_field = "";
 	}
-
 	sIOService.callback = function(){$scope.$apply()};
 	$scope.msg_field = "";
 	$scope.msgs = dataService.msgs;
@@ -86,38 +86,27 @@ app.controller("MsgCtrl",function($scope,dataService,sIOService){
 	var senders = [];
 	sIOService.rejectionCallback = function(id){
 		senders.push(id);
+		//$scope.msgs.push( {sender:id,msg: count + ":" + messages[(Math.floor(Math.random()*100))%6]});
 		count++;
 	}
 
-	$scope.$watch(function(){ return $scope.msgs.length; }, function(){
-		var list = $("#msgList");
-		var height = list[0].scrollHeight;
-		list.scrollTop(height);
-	});
-
-	$scope.getPlayerInitials = function(id){
-		if(id == null|| id  == -1){
-			return "all";
-		}
-		var p = dataService.getPlayerById(id);
-		if( p == null){
-			return id + "";
-		}
-		return dataService.getPlayerById(id).initials;
-	}
-
 	$scope.filterMsg = function(data){
+
 		if( G_msg_player == data.target || G_msg_player == data.target2 ) 
 		{
 			return true;
 		}
 		return false;
 	}
+
+
 });
 
 //requester to socketIO Listen to all kinds of data 
 /*
-sIOService.pushListener("event", listene
+sIOService.pushListener("event", listener);
+
+
 */
 
 
@@ -242,10 +231,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 
 			if(dataService.previous_instructions.length == 0 
 				&& $scope.aCopy.length == 0) 
-			{
-				//alert("No more plans"); 
-				return;
-			} ;
+			{alert("No more plans"); return;} ;
 
 			$($scope.aCopy).each(function(i,d1){
 				var same = false;
@@ -260,7 +246,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 			});
 
 			if(all_same){
-				//alert("No new task assignments for rejecting team. Press Edit to assign task manually.");
+				alert("No new task assignments for rejecting team. Press Edit to assign task manually.");
 			}
 		}
 	});
@@ -325,12 +311,9 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 		}else{
 			$scope.editMode = true;
 			$scope.edit_indicator = "Finish Editing";
-			
 			$scope.initD();
 		}
 	}
-
-
 
 	$scope.confirmAll = function(clear){
 		//if($scope.aCopy.length == 0){return;}
@@ -360,7 +343,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 
 			httpService.confirmPlan({"plan":dataService.previous_instructions, "frame_id": dataService.instruction_frame.id });
 
-			//$scope.prev_assignments = dataService.previous_instructions;
+			$scope.prev_assignments = dataService.previous_instructions;
 			
 			dataService.instructions = [];
 			//this is just a set of copy for undo
@@ -457,13 +440,9 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 
 	}
 
-	$scope.loadForReplay=function(state){
-		dataService.loadForReplay(state)
-		$scope.players = dataService.players;
-		$scope.tasks= dataService.tasks;
-	}
-
 	var count = -1;
+	
+
 	var getTask = function(id){
 		var data = null;
 		$(dataService.tasks).each(function(index,value){
@@ -596,9 +575,8 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 	}
 
 	$scope.filterPrevUnassignedTasks = function(task){
-		var data = null ;
-		var array = dataService.previous_instructions;
-		$(array).each(function(index,value){
+		var data = null 
+		$($scope.prev_assignments).each(function(index,value){
 			if(value.task_id == task.id){
 				data = value;
 			}
@@ -607,9 +585,8 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 	}
 
 	$scope.filterPrevIdlePlayers = function(player){
-		var data = null ;
-		var array = dataService.previous_instructions;
-		$(array).each(function(index,value){
+		var data = null 
+		$($scope.prev_assignments).each(function(index,value){
 			if(value.player1 == player.id || value.player2
 			 == player.id){
 				data = value;
@@ -863,12 +840,12 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 	}
 
 	$scope.unchanged = function(a){
-		return compareAssignments(a,dataService.previous_instructions);
+		return compareAssignments(a,$scope.prev_assignments);
 	}
 
 
 	$scope.changed = function(a){
-		return !compareAssignments(a,dataService.previous_instructions);
+		return !compareAssignments(a,$scope.prev_assignments);
 			}
 
 	$scope.pUnchanged = function(a){
@@ -905,7 +882,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 
 	var checkoutSingle = function(assignment){
 		var to_delete = [];
-		$(dataService.previous_instructions).each(function(index,value){
+		$($scope.prev_assignments).each(function(index,value){
 
 			if(
 				value.task_id == assignment.task_id ||
@@ -921,8 +898,8 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 		});
 
 		$(to_delete).each(function(index,value){
-			var index = $scope.dataService.previous_instructions.indexOf(value);
-			$scope.dataService.previous_instructions.splice(index,1);
+			var index = $scope.prev_assignments.indexOf(value);
+			$scope.prev_assignments.splice(index,1);
 		})
 
 		//make a copy
@@ -932,7 +909,7 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 		
 		clearMessages(new_assignment.player1);
 		clearMessages(new_assignment.player2);
-		$scope.dataService.previous_instructions.push(new_assignment);
+		$scope.prev_assignments.push(new_assignment);
 
 	}
 
@@ -947,10 +924,10 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
 	}
 
 	$scope.emergencyStop = function(a){
-		var index = $scope.dataService.previous_instructions.indexOf(a);
-		$scope.dataService.previous_instructions.splice(index,1);
+		var index = $scope.prev_assignments.indexOf(a);
+		$scope.prev_assignments.splice(index,1);
 
-		$scope.aCopy = shallowCopy(dataService.previous_instructions);
+		$scope.aCopy = shallowCopy($scope.prev_assignments);
 		
 		$scope.confirmAll(false);
 	}
