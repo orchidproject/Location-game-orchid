@@ -1,46 +1,60 @@
-This is BibTeX, Version 0.99d (TeX Live 2011)
+This is BibTeX, Version 0.99d (TeX Live 2013)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: abbrv.bst
 Database file #1: citations.bib
-You've used 19 entries,
+Warning--I didn't find a database entry for "Ramchurn:etal"
+Warning--I didn't find a database entry for "xx"
+Warning--empty journal in Abbott1994
+Warning--empty booktitle in Bowers1994
+Warning--empty journal in Fischer
+Warning--empty year in Fischer
+Warning--empty journal in Rachlin1997
+Warning--empty journal in Cooke2006
+Warning--empty booktitle in puyol:etal:2014
+Warning--empty year in Robinson
+Warning--empty journal in Sukthankar
+Warning--there's a number but no volume in Sukthankar
+Warning--empty year in Sukthankar
+You've used 52 entries,
             2118 wiz_defined-function locations,
-            617 strings with 6624 characters,
-and the built_in function-call counts, 7245 in all, are:
-= -- 723
-> -- 312
-< -- 9
-+ -- 124
-- -- 103
-* -- 491
-:= -- 1141
-add.period$ -- 60
-call.type$ -- 19
-change.case$ -- 107
+            827 strings with 13871 characters,
+and the built_in function-call counts, 20946 in all, are:
+= -- 2079
+> -- 1039
+< -- 24
++ -- 411
+- -- 354
+* -- 1501
+:= -- 3325
+add.period$ -- 166
+call.type$ -- 52
+change.case$ -- 330
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 294
-empty$ -- 596
-format.name$ -- 103
-if$ -- 1567
+cite$ -- 63
+duplicate$ -- 813
+empty$ -- 1574
+format.name$ -- 354
+if$ -- 4469
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 19
-newline$ -- 97
-num.names$ -- 40
-pop$ -- 128
+int.to.str$ -- 52
+missing$ -- 53
+newline$ -- 261
+num.names$ -- 108
+pop$ -- 381
 preamble$ -- 1
-purify$ -- 89
+purify$ -- 280
 quote$ -- 0
-skip$ -- 217
+skip$ -- 608
 stack$ -- 0
-substring$ -- 491
-swap$ -- 87
-text.length$ -- 9
+substring$ -- 1337
+swap$ -- 247
+text.length$ -- 24
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 74
-warning$ -- 0
-while$ -- 74
-width$ -- 21
-write$ -- 211
+type$ -- 204
+warning$ -- 11
+while$ -- 202
+width$ -- 54
+write$ -- 569
+(There were 13 warnings)
