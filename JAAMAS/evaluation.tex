@@ -1,4 +1,4 @@
-\section{The Field-Trials}\label{sec:evaluation}
+\section{Field Trialling AtomicOrchid}\label{sec:evaluation}
 \noindent We ran three sessions of AtomicOrchid with participants recruited from the local university to trial mixed-initiative coordination in a disaster response scenario. The following sections describe the participants, procedure, session configuration and methods used to collect and analyse quantitative and qualitative data.
 
 \subsection{Participants and Procedure}
@@ -8,14 +8,15 @@
 
 At the end of the briefing, in which mission objectives and rules were outlined, responder types were randomly assigned to all participants (fire-fighter, medic, transporter, soldier). The HQ was staffed by a different member of the research team in each session in order to mimic an experienced $H$, while avoiding the same person running the HQ every time.  Moreover, responders were provided with a smartphone and $H$ with a laptop. The team was given 5 minutes to discuss a common game strategy. 
 \todo{ COMMENT FROM HAIDM: 
--- the field trials appear to have a significant confounding factor, namely the lack of counterbalance in the different session PES. Many of the results, including the in table 2 and th subsequent paragraphs could be explained by a learning effect. Mthemaouthors state that the results are preliminary, so perhaps it is not too late to fix this apparent experiment design flaw.
-}
-%(\textbf{Joel: where did the agent run ? --> Gopal, this should be covered in the previous section I think?})
+-- the field trials appear to have a significant confounding factor, namely the lack of counterbalance in the different session PES. Many of the results, including the in table 2 and the subsequent paragraphs could be explained by a learning effect. Mthemaouthors state that the results are preliminary, so perhaps it is not too late to fix this apparent experiment design flaw.
+ - DONE - attempted to address this further below (JF)}
 
 First responders were then accompanied to the starting point within the designated game area, about 1 minute walk from headquarters. Once first responders were ready to start, $H$ sent a `game start' message. After 30 minutes of game play the first responders returned to the HQ where a group interview was conducted, before participants were debriefed and dismissed.
 
 \subsection{Game Sessions}
-\noindent We ran one session without $PA$, and two sessions with $PA$ to be able to compare team performance in the two versions. Each session involved \emph{different} sets of players (8 each). Thus,  players were unique to a session to avoid learning effects between sessions. We also ran a pilot study for each condition to fine tune game configuration. The 8 first responders in each session were randomly allocated a role so that the whole team had two of each of the four types of responders. The terrain of the 400x400 metre  game area includes grassland, a lake, buildings, roads,  footpaths and lawns. There were two  drop-off zones and 16 targets in each session. There were four targets for each of the four target types. The target locations, pattern of cloud movement and expansion were kept constant for all game sessions. The pilot study showed that this was a challenging, yet not too overwhelming configuration of game area size, and number of targets to collect in a 30 min game session. 
+\noindent We ran one session without $PA$, and two sessions with $PA$ to be able to compare team performance in the two versions. Each session involved \emph{different} sets of players (8 each). Thus,  players were unique to a session to avoid learning effects between sessions. While we cannot rule out learning effects \textit{within} sessions, we accept this as an integral part of working with humans in the real world. 
+
+We also ran a pilot study for each condition to fine tune game configuration. The 8 first responders in each session were randomly allocated a role so that the whole team had two of each of the four types of responders. The terrain of the 400x400 metre  game area includes grassland, a lake, buildings, roads,  footpaths and lawns. There were two  drop-off zones and 16 targets in each session. There were four targets for each of the four target types. The target locations, pattern of cloud movement and expansion were kept constant for all game sessions. The pilot study showed that this was a challenging, yet not too overwhelming configuration of game area size, and number of targets to collect in a 30 min game session. 
 
 \subsection{Data Collection and Analysis}
 \noindent We developed a log file replay tool to triangulate video recordings of game action with the timestamped system logs that contain a complete record of the game play, including responders' GPS location, their health status and radioactive exposure, messages, cloud location, locations of target objects and task status.
@@ -30,7 +31,8 @@ To assess how humans interact with each other and with $PA$, we focused on colle
 \end{itemize}
 
 \subsection{Results}
-\noindent Overall, 8 targets were rescued in the non-agent condition (Session A), and respectively 12 targets (Session B) and 11 targets (Session C) were rescued in the agent condition. Teams (re-)formed six times in session A, four times in session B and nine times  in session C. Average player health after the game was much higher (more than double) for the agent-assisted sessions (80 for Session B and 82 for Session C) compared to the non-agent assisted session (40 in Session A). In fact, one responder `died' in Session A.
+\noindent Overall, 8 targets were rescued in the non-agent condition (Session A), and respectively 12 targets (Session B) and 11 targets (Session C) were rescued in the agent condition. Teams (re-)formed six times in session A, four times in session B and nine times  in session C. Average player health after the game was much higher (more than double) for the agent-assisted sessions (80 for Session B and 82 for Session C) compared to the non-agent assisted session (40 in Session A) (see table \todo{TODO}). In fact, one responder `died' in Session A. This suggests that the agent's more conservative approach not to send field responders  into 'harms way' paid off. Moreover, surprisingly this more conservative approach did also not result in less numbers of targets saved than with a perhaps less risk averse approach by HQ in Session A. This may probably be explained by more timely instructions by the agent, as these were generated automatically after a target had been dropped off.  
+
 $PA$ dynamically re-planned 14 times in session B and 18 times in session C. In most cases, this was triggered when a target was dropped off in the safe zone (24 times) -- as this frees up resources for  $PA$ to recompute an allocation. In the remaining cases, this was triggered by a player declining the agent's task allocation (8 times). 
 
 
@@ -51,7 +53,7 @@ $PA$ dynamically re-planned 14 times in session B and 18 times in session C. In 
  \caption{Message classification. FR: First Responder.} \label{tab:msgs}
 \end{table}
 \todo{COMMENT FROM HAIDM REVIEW:
--- the results should show something about the health status of the participants across the scenarios.}
+-- the results should show something about the health status of the participants across the scenarios. Wenchao: can you add a table with the average (mean) health status for each session, including standard deviation}
 Table \ref{tab:msgs} shows the remote message directives (mainly related to task allocation and execution) and assertives (mainly related to situational awareness) sent in the sessions. The following discussion draws on how these messages were handled to give a sense of mixed-initiative coordination in the game sessions.
 
 
@@ -94,6 +96,6 @@ Given the above observation we argue that a planning agent for team formation sh
 \noindent \textbf{Interaction Simplicity}: our agent was designed to issue simple commands (Do X with Y) and respond to simple requests (OK or Reject Task). Such simple messages were shown to be far more effective at guiding players to do the right task than the unstructured human communication in the non-agent assisted case that was fraught with inconsistencies and inaccuracies. In fact, we would suggest that agents should be designed with minimal options to simplify the reasoning users have to do to interact with the agent, particularly when they are under pressure to act.\\
 
 \noindent \textbf{Flexbile autonomy}: the HQ dashboard proved to be a key tool for the HQ coordinator $H$ to \emph{check} and \emph{correct for} the allocations of $PA$, taking into account the real-world constraints that the players on the ground faced. In particular, letting the human oversee the agent (i.e., ``on-the-loop") at times and actively instructing  the players (and bypassing the agent) at other times (i.e., ``in-the-loop") as and when needed, was seen to be particularly effective. This was achieved by $H$ \emph{without the agent} defining when such transfers of control should happen (as in \cite{scerri:etal:2005}) and, therefore, left the coordinator the option of taking control when she judged it was needed. Hence, we suggest that such deployed autonomous systems should be built for flexible autonomy. Specifically, interfaces should be designed to pass control \emph{seamlessly} between humans and agents.
-\todo{-- the conclusions call for flexible autonomy, and this is somewhat supported by the algorithm and results. There are a few important limitations that the authors should discuss. For example, it is possible for responders to reject enough tasks tha the mission becomes infeasible. How would such a problem be addressed? The solution to such problems is beyond the scpoe of the paper but the relevant limitations of the algorithms are not.
+\todo{--Gopal? Think this one's for you? (JF) -- the conclusions call for flexible autonomy, and this is somewhat supported by the algorithm and results. There are a few important limitations that the authors should discuss. For example, it is possible for responders to reject enough tasks tha the mission becomes infeasible. How would such a problem be addressed? The solution to such problems is beyond the scpoe of the paper but the relevant limitations of the algorithms are not.
 }
 
