@@ -11,7 +11,7 @@ class Game
   property :sim_lng, Decimal, :precision=>10, :scale=>7
   property :terrains,Text, :default => "[]" 
   property :simulation_file,String, :default=>""
-  property :grid_size, Decimal, :precision=>5, :scale=>3, :default=> 8 
+  property :grid_size, Integer, :default=> 8 
   property :sim_lat, Decimal, :precision=>10, :scale=>7  
   property :sim_update_interval, Decimal, :precision=>5, :scale=>3, :default=>0.2
   

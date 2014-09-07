@@ -20,7 +20,7 @@ var game_id=process.argv[2];
 var role=process.argv[3];
 
 var players =  [];
-var dp = [{lat:52.9521738,lng:-1.1862338},{lat:52.9517213,lng:-1.1845815}];
+var dp = [{lat:18.694383,lng:-72.3257446},{lat:18.5993952,lng:-72.0826721}];
 
 var Helper = require('../agent_helper');
 var helper = new Helper(game_id);
@@ -164,8 +164,8 @@ function mainloop(id){
     }, 500);
     
    
-    p.lat = 52.9521738;
-    p.lng = -1.1862338;
+    p.lat = 18.694383 ;
+    p.lng = -72.3257446;
     
     /*
     var path = null;

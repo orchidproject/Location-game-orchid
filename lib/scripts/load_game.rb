@@ -1,6 +1,6 @@
 data = File.read("./lib/scripts/session/formal.json")
 data = JSON.parse(data)
-game = Game.create(:latitude => 52.952617, :longitude=> -1.188639,
+game = Game.create(:latitude => 18.5, :longitude=> -72,
 	:radius => 1000,
 	:sim_lat => data["sim_lat"],
 	:sim_lng => data["sim_lng"],
@@ -32,7 +32,7 @@ data["tasks"].each do |p|
 		:latitude => p["latitude"] ,
 		:longitude =>p["longitude"],
 		:type =>p["type"],
-		:state => p["state"],
+		:state => 3,
 		:players => p["players"],
 		:shared_id => count
 	) 

@@ -59,38 +59,14 @@ app.factory("httpService",function($http){
 			t.latitude = data.latitude;
 			t.longitude = data.longitude;
 			t.state = data.state;
+		}
+		else{
+			dataService.tasks.push(data);
 
 		}
 
 
-		if(data.state == 1 ){//pick up
-			//updata status
-			/*
-			var a = dataService.getPreAssignmentByTaskId(data.id);
-			if(data.players == "") { alert("data error"); return;}
-			var players = data.players.split(",");
-			if(a == null){
-				//unexpected pickup, I think it is to costly, but let's see
-				var a2 = dataService.getPreAssignmentByPlayerId(players[0]);
-				if(a2!==null && (a2.task_id != data.id) ){
-					var index = dataService.previous_instructions.indexOf(a2);
-					dataService.previous_instructions.splice(index,1);
-				}
-
-				a2 = dataService.getPreAssignmentByPlayerId(players[1]);
-				if(a2!==null && (a2.task_id != data.id) ){
-					var index = dataService.previous_instructions.indexOf(a2);
-					dataService.previous_instructions.splice(index,1);
-				}
-
-				var t = dataService.getTaskById(data.id);
-
-				//unexpected, push it in array
-				dataService.previous_instructions.push({id:-1, task: t, task_id: data.id, player1: players[0], player2:players[1]});
-	
-			}*/
-		}
-		else if(data.state == 2){//dropped off
+		if(data.state == 2){//dropped off
 			//delete entry
 			var a = dataService.getPreAssignmentByTaskId(data.id);
 			if(a == null){
@@ -266,6 +242,13 @@ app.factory("httpService",function($http){
 
 	}
 
+	var aHandleInvalidation = function(data){
+		var t = dataService.getTaskById(data.id);
+		//remove
+		var index = dataService.tasks.indexOf(t);
+		dataService.tasks.splice(index,1);	
+	}
+
 	var listeners = []
 	var handleData = function(data){
 		if(typeof data.health!="undefined"){
@@ -334,12 +317,20 @@ app.factory("httpService",function($http){
         			aHandleInstructionData(data.instructions[0]);
         		}
     		}
+
     		if(typeof data.debug != "undefined"){
         		alert(data.debug);
        		}
+
+       		if(typeof data.invalidate != "undefined"){
+       			aHandleInvalidation(data.invalidate);
+       		}
+
        		service.callback();
 
 	};
+
+
 	
 	var socket = setupSocketIO();
 	var service = {
@@ -410,7 +401,7 @@ app.factory("httpService",function($http){
 			var target = this;
 			return $http.get("/game/"+G_game_id+"/status.json").then(function(result){
 				target.players = parseService.parsePlayer(result.data.players);
-				target.tasks= parseService.parsePlayer(result.data.tasks);
+				target.tasks = result.data.tasks;
 			
 				for(i=0; i<target.tasks.length; i++){
 					var t = target.tasks[i];

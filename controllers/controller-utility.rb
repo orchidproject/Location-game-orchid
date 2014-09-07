@@ -260,6 +260,7 @@ class Controller < Sinatra::Base
 	#directory of including file, in this case environment.rb
 	Dir.new("./cloud").each do |fname|
 		next if File.directory?(fname)
+		next if fname == "." or fname == ".." or fname == ".DS_Store"
 		f = File.open("./cloud/"+fname)
 		y_size = Integer(f.readline())	
 		x_size = Integer(f.readline())

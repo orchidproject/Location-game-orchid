@@ -42,14 +42,26 @@ class Controller < Sinatra::Base
 		data = JSON.parse(request.body.read)
 		
 		t = Task.all(:game_layer_id => params[:layer_id], :shared_id => data["target_id"]).first
-		return {:state=>"error", :msg =>"no target found"}.to_json if t.nil?
 
-		if data["type_id"] == -1
-			t.invalidate
+
+		if t != nil && data["type_id"] == -1 
+			t.invalidate(socketIO)
 			t.destroy
 			return {:state => "ok"}.to_json
 			#need to broadcast
 
+		end 
+
+
+		if t == nil
+			t = Task.create(
+				:shared_id => data["target_id"],
+				:game_layer_id => params[:layer_id],
+				:state => 3,
+				:type => data["type_id"],
+				:latitude => data["latitude"],
+				:longitude => data["longitude"]
+			)
 		end 
 
 		if t.state == Task::State::UNSEEN
