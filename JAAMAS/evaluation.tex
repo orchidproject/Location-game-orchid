@@ -2,14 +2,11 @@
 \noindent We ran three sessions of AtomicOrchid with participants recruited from the local university to trial mixed-initiative coordination in a disaster response scenario. The following sections describe the participants, procedure, session configuration and methods used to collect and analyse quantitative and qualitative data.
 
 \subsection{Participants and Procedure}
-\noindent  A total of 24 participants (17 males and 5 females) were recruited through posters and emails, and reimbursed with \pounds 15  for 1.5-2 hours of study. The majority were students. The procedure consisted of 30 minutes of game play, and about 1 hour in total of pre-game briefing, consent forms,  a short training session, and a post-game group discussion. 
+\noindent  A total of 24 participants (17 males and 7 females) were recruited through posters and emails, and reimbursed with \pounds 15  for 1.5-2 hours of study. The majority were students. The procedure consisted of 30 minutes of game play, and about 1 hour in total of pre-game briefing, consent forms,  a short training session, and a post-game group discussion. 
 
 %Upon arrival in the HQ (set up in a meeting room at the local university), participants were briefed and asked to consent to participate. They were presented with a demographic questionnaire to record gender, occupation, experience of using smartphones and level of map navigation skills.
 
 At the end of the briefing, in which mission objectives and rules were outlined, responder types were randomly assigned to all participants (fire-fighter, medic, transporter, soldier). The HQ was staffed by a different member of the research team in each session in order to mimic an experienced $H$, while avoiding the same person running the HQ every time.  Moreover, responders were provided with a smartphone and $H$ with a laptop. The team was given 5 minutes to discuss a common game strategy. 
-\todo{ COMMENT FROM HAIDM: 
--- the field trials appear to have a significant confounding factor, namely the lack of counterbalance in the different session PES. Many of the results, including the in table 2 and the subsequent paragraphs could be explained by a learning effect. Mthemaouthors state that the results are preliminary, so perhaps it is not too late to fix this apparent experiment design flaw.
- - DONE - attempted to address this further below (JF)}
 
 First responders were then accompanied to the starting point within the designated game area, about 1 minute walk from headquarters. Once first responders were ready to start, $H$ sent a `game start' message. After 30 minutes of game play the first responders returned to the HQ where a group interview was conducted, before participants were debriefed and dismissed.
 
@@ -38,6 +35,7 @@ $PA$ dynamically re-planned 14 times in session B and 18 times in session C. In 
 
 
 \begin{table}[ht]\small\centering
+ \caption{Message classification. FR: First Responder.} \label{tab:msgs}
 \begin{tabular}{c | c c | c c c c | c}
  & \multicolumn{2}{c|}{no agent} &  \multicolumn{4}{c|}{agent} & Total \\
  \hline
@@ -49,13 +47,23 @@ $PA$ dynamically re-planned 14 times in session B and 18 times in session C. In 
   \hline
   Total & 122 & 6 & 60 & 18 & 58 & 16 & 280 \\
 \end{tabular}
-\vspace{-2mm}
- \caption{Message classification. FR: First Responder.} \label{tab:msgs}
 \end{table}
 \todo{COMMENT FROM HAIDM REVIEW:
 -- the results should show something about the health status of the participants across the scenarios. Wenchao: can you add a table with the average (mean) health status for each session, including standard deviation}
 Table \ref{tab:msgs} shows the remote message directives (mainly related to task allocation and execution) and assertives (mainly related to situational awareness) sent in the sessions. The following discussion draws on how these messages were handled to give a sense of mixed-initiative coordination in the game sessions.
 
+\begin{table}[ht]\small\centering
+\begin{tabular}{c | c | c | c | c}
+ & minumn health &  maximun health & average health & standard deviation \\
+ \hline
+ Session A & 0 & 95 & 40 & 26.95  \\
+  \hline
+  Session B & 64 & 100 & 91 & 13.41   \\
+  Session C & 41 & 99 & 72 & 24.99   \\
+\end{tabular}
+\vspace{-2mm}
+ \caption{Health of Field Responders} \label{tab:msgs}
+\end{table}
 
 %\subsubsection{Handling Task Allocations}
 In particular, Figure \ref{fig:msgs} shows how first responders handled task allocations in the agent and  non-agent conditions. In the non-agent condition, the HQ commander sent 43 task allocation directives. Of these, the recipient first responders addressed only 15 messages (bringing them up in conversation). Of these 15, responders chose to ignore the instructions only once. The responders ignored the instruction because they were engaged in another task and did not want to abandon it. A further 4 $H$ instructions were consistent with a decision to rescue a certain target that had already been agreed locally by the responders. In the remaining 10 cases, first responders chose to follow the instructions. Although players were willing to follow $H$'s instructions, they failed to correctly follow the instructions due to confusion and misunderstanding in the communication. In fact, only 2 instances of directives from $H$ led to task completion. The first responders performed 6 rescue operations (tasks) without being instructed by $H$.
@@ -91,11 +99,13 @@ In summary, these results suggest three key observations with regard to  human-a
 
 Given the above observation we argue that a planning agent for team formation should not only model the uncertainty in player behaviours and in the environment, but that interactional challenges also need to be addressed  if such a technology is to be accepted in practice. In particular, we propose the following design guidelines for human-agent collaborations:\\
 
-\noindent \textbf{Adaptivity}: our experiences suggest that planning algorithms should be designed to take in human input, and more importantly, be \emph{responsive} to the needs of the users. As we saw in AtomicOrchid, players repeatedly requested new tasks and this would not have been possible unless our algorithm  was computationally efficient but could dynamically assimilate updates, requests, and constraints dynamically. We believe this makes the algorithm more acceptable to the users.\\
+\noindent \textbf{Adaptivity}: our experiences suggest that planning algorithms should be designed to take in human input, and more importantly, be \emph{responsive} to the needs of the users. As we saw in AtomicOrchid, players repeatedly requested new tasks and this would not have been possible unless our algorithm  was computationally efficient but could dynamically assimilate updates, requests, and constraints dynamically. We believe this makes the algorithm more acceptable to the users. However, this adaptivity does cost the system in terms of efficiency as the rejection of tasks may lead the problem to be so constrained that the algorithm cannot return any solutions. To alleviate such issues, we believe human mediation may be important in nudging the players to justify their rejection of tasks or to nudge them not to do so too frequently. \\
 
-\noindent \textbf{Interaction Simplicity}: our agent was designed to issue simple commands (Do X with Y) and respond to simple requests (OK or Reject Task). Such simple messages were shown to be far more effective at guiding players to do the right task than the unstructured human communication in the non-agent assisted case that was fraught with inconsistencies and inaccuracies. In fact, we would suggest that agents should be designed with minimal options to simplify the reasoning users have to do to interact with the agent, particularly when they are under pressure to act.\\
+\noindent \textbf{Interaction Simplicity}: our agent was designed to issue simple commands (Do X with Y) and respond to simple requests (OK or Reject Task). Such simple messages were shown to be far more effective at guiding players to do the right task than the unstructured human communication in the non-agent assisted case that was fraught with inconsistencies and inaccuracies. In fact, we would suggest that agents should be designed with minimal options to simplify the reasoning users have to do to interact with the agent, particularly when they are under pressure to act.  Doing so, however, may also result in humans not being able to express new conditions or constraints but these could be solved by using other communication media such as walkie talkies or mobile phones where possible.\\
 
 \noindent \textbf{Flexbile autonomy}: the HQ dashboard proved to be a key tool for the HQ coordinator $H$ to \emph{check} and \emph{correct for} the allocations of $PA$, taking into account the real-world constraints that the players on the ground faced. In particular, letting the human oversee the agent (i.e., ``on-the-loop") at times and actively instructing  the players (and bypassing the agent) at other times (i.e., ``in-the-loop") as and when needed, was seen to be particularly effective. This was achieved by $H$ \emph{without the agent} defining when such transfers of control should happen (as in \cite{scerri:etal:2005}) and, therefore, left the coordinator the option of taking control when she judged it was needed. Hence, we suggest that such deployed autonomous systems should be built for flexible autonomy. Specifically, interfaces should be designed to pass control \emph{seamlessly} between humans and agents.
-\todo{--Gopal? Think this one's for you? (JF) -- the conclusions call for flexible autonomy, and this is somewhat supported by the algorithm and results. There are a few important limitations that the authors should discuss. For example, it is possible for responders to reject enough tasks tha the mission becomes infeasible. How would such a problem be addressed? The solution to such problems is beyond the scpoe of the paper but the relevant limitations of the algorithms are not.
-}
+
+
+%\todo{--Gopal? Think this one's for you? (JF) -- the conclusions call for flexible autonomy, and this is somewhat supported by the algorithm and results. There are a few important limitations that the authors should discuss. For example, it is possible for responders to reject enough tasks tha the mission becomes infeasible. How would such a problem be addressed? The solution to such problems is beyond the scpoe of the paper but the relevant limitations of the algorithms are not.
+%}
 

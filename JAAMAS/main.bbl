@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{Abbott1994}
+K.~R. Abbott.
+\newblock {Experiences with VVorkflow Management : Issues for the Next
+  Generation}.
+\newblock pages 113--120, 1994.
+
 \bibitem{auer2002finite}
 P.~Auer, N.~Cesa-Bianchi, and P.~Fischer.
 \newblock Finite-time analysis of the multi-armed bandit problem.
@@ -10,11 +16,40 @@ A.~G. Barto, S.~J. Bradtke, and S.~P. Singh.
 \newblock Learning to act using real-time dynamic programming.
 \newblock {\em Artificial Intelligence}, 72(1):81--138, 1995.
 
+\bibitem{Benford2005a}
+S.~Benford, C.~Magerkurth, and P.~Ljungstrand.
+\newblock {Bridging the physical and digital in pervasive gaming}.
+\newblock {\em Communications of the ACM}, 48(3):54, Mar. 2005.
+
+\bibitem{bernstein2002complexity}
+D.~S. Bernstein, R.~Givan, N.~Immerman, and S.~Zilberstein.
+\newblock The complexity of decentralized control of markov decision processes.
+\newblock {\em Mathematics of operations research}, 27(4):819--840, 2002.
+
 \bibitem{boutilier1996planning}
 C.~Boutilier.
 \newblock Planning, learning and coordination in multi-agent decision
   processes.
 \newblock In {\em Proc. of TARK 1996}, pages 195--210, 1996.
+
+\bibitem{boutilier2000stochastic}
+C.~Boutilier, R.~Dearden, and M.~Goldszmidt.
+\newblock Stochastic dynamic programming with factored representations.
+\newblock {\em Artificial Intelligence}, 121(1):49--107, 2000.
+
+\bibitem{Bowers1994}
+J.~Bowers, G.~Button, and W.~Sharrock.
+\newblock {Workflow From Within and Without : Technology and Cooperative Work
+  on the Print Industry Shopfloor Introduction : Workflow Systems and Work
+  Practice}.
+\newblock pages 51--66. Fourth European Conference on Computer-Supported
+  Cooperative Work, 1994.
+
+\bibitem{Bradshaw2011}
+J.~M. Bradshaw, P.~Feltovich, and M.~Johnson.
+\newblock {Human-Agent Interaction}.
+\newblock In G.~Boy, editor, {\em Handbook of HumanMachine Interaction},
+  chapter~13, pages 293--302. Ashgate, 2011.
 
 \bibitem{Chapman2009}
 A.~Chapman, R.~A. Micillo, R.~Kota, and N.~R. Jennings.
@@ -22,11 +57,33 @@ A.~Chapman, R.~A. Micillo, R.~Kota, and N.~R. Jennings.
   approach.
 \newblock In {\em Proc. of AAMAS 2009}, pages 915--922, May 2009.
 
-\bibitem{drury:etal:2009}
+\bibitem{chen2005}
+R.~Chen, R.~Sharman, H.~R. Rao, and S.~J. Upadhyaya.
+\newblock {Design Principles of Coordinated Multi-incident Emergency Response
+  Systems}.
+\newblock {\em Simulation}, 3495:177--202, 2005.
+
+\bibitem{Convertino2011}
+G.~Convertino, H.~M. Mentis, A.~Slavkovic, M.~B. Rosson, and J.~M. Carroll.
+\newblock {Supporting common ground and awareness in emergency management
+  planning}.
+\newblock {\em ACM Transactions on Computer-Human Interaction}, 18(4):1--34,
+  Dec. 2011.
+
+\bibitem{Crabtree2006a}
+A.~Crabtree, S.~Benford, C.~Greenhalgh, P.~Tennent, M.~Chalmers, and B.~Brown.
+\newblock {Supporting ethnographic studies of ubiquitous computing in the
+  wild}.
+\newblock In {\em Proceedings of the 6th ACM conference on Designing
+  Interactive systems - DIS '06}, page~60, New York, New York, USA, 2006. ACM
+  Press.
+
+\bibitem{Drury2009}
 J.~Drury, C.~Cocking, and S.~Reicher.
-\newblock Everyone for themselves? a comparative study of crowd solidarity
-  among emergency survivors.
-\newblock {\em The British journal of social psychology}, 48(3):487--506, 2009.
+\newblock {Everyone for themselves? A comparative study of crowd solidarity
+  among emergency survivors.}
+\newblock {\em The British journal of social psychology / the British
+  Psychological Society}, 48(Pt 3):487--506, Sept. 2009.
 
 \bibitem{Fischer:etal:2012}
 J.~E. Fischer, M.~Flintham, D.~Price, J.~Goulding, N.~Pantidi, and T.~Rodden.
@@ -34,22 +91,131 @@ J.~E. Fischer, M.~Flintham, D.~Price, J.~Goulding, N.~Pantidi, and T.~Rodden.
 \newblock In {\em Mixed Reality games Workshop at the 2012 ACM Conference on
   Computer Supported Cooperative Work}, 2012.
 
+\bibitem{Fischer}
+J.~E. Fischer, W.~Jiang, A.~Kerne, C.~Greenhalgh, S.~D. Ramchurn, S.~Reece,
+  N.~Pantidi, and T.~Rodden.
+\newblock {Supporting Team Coordination on the Ground : Requirements from a
+  Mixed Reality Game}.
+
+\bibitem{guestrin2001multiagent}
+C.~Guestrin, D.~Koller, and R.~Parr.
+\newblock Multiagent planning with factored mdps.
+\newblock In {\em NIPS}, volume~1, pages 1523--1530, 2001.
+
+\bibitem{guestrin2003efficient}
+C.~Guestrin, D.~Koller, R.~Parr, and S.~Venkataraman.
+\newblock Efficient solution algorithms for factored mdps.
+\newblock {\em J. Artif. Intell. Res.(JAIR)}, 19:399--468, 2003.
+
+\bibitem{Hawe2012}
+G.~I. Hawe, G.~Coates, D.~T. Wilson, and R.~S. Crouch.
+\newblock {Agent-based simulation for large-scale emergency response}.
+\newblock {\em ACM Computing Surveys}, 45(1):1--51, Nov. 2012.
+
+\bibitem{Khan-2011-JAAMAS}
+M.~A. Khan, D.~Turgut, and L.~B{\"o}l{\"o}ni.
+\newblock Optimizing coalition formation for tasks with dynamically evolving
+  rewards and nondeterministic action effects.
+\newblock {\em Journal of Autonomous Agents and Multi-Agent Systems},
+  22(3):415--438, 2011.
+
 \bibitem{kitano:2001}
 H.~Kitano and S.~Tadokoro.
 \newblock Robocup rescue: A grand challenge for multiagent and intelligent
   systems.
 \newblock {\em AI Magazine}, 22(1):39--52, 2001.
 
+\bibitem{kleiner:etal:2013}
+A.~Kleiner, A.~Farinelli, S.~Ramchurn, B.~Shi, F.~Mafioletti, and R.~Refatto.
+\newblock Rmasbench: a benchmarking system for multi-agent coordination in
+  urban search and rescue.
+\newblock In {\em International Conference on Autonomous Agents and Multi-Agent
+  Systems (AAMAS 2013)}, 2013.
+
 \bibitem{kocsis2006bandit}
 L.~Kocsis and C.~Szepesv{\'a}ri.
 \newblock Bandit based monte-carlo planning.
 \newblock In {\em Proc. of ECML 2006}, pages 282--293, 2006.
+
+\bibitem{koes2006constraint}
+M.~Koes, I.~Nourbakhsh, and K.~Sycara.
+\newblock Constraint optimization coordination architecture for search and
+  rescue robotics.
+\newblock In {\em Proceedings of IEEE Intl. Conf. on Robotics and Automation},
+  pages 3977--3982. IEEE, 2006.
+
+\bibitem{koller2000policy}
+D.~Koller and R.~Parr.
+\newblock Policy iteration for factored mdps.
+\newblock In {\em Proceedings of the Sixteenth conference on Uncertainty in
+  artificial intelligence}, pages 326--334. Morgan Kaufmann Publishers Inc.,
+  2000.
+
+\bibitem{Lee2009}
+Y.~M. Lee, S.~Ghosh, and M.~Ettl.
+\newblock {Simulating distribution of emergency relief supplies for disaster
+  response operations}.
+\newblock In {\em Proceedings of the 2009 Winter Simulation Conference (WSC)},
+  pages 2797--2808. IEEE, Dec. 2009.
+
+\bibitem{Lenox2000}
+T.~L. Lenox, T.~Payne, S.~Hahn, M.~Lewis, and K.~Sycara.
+\newblock {Agent-Based Aiding for Individual and Team Planning Tasks}.
+\newblock {\em Proceedings of the Human Factors and Ergonomics Society Annual
+  Meeting}, 44(1):65--68, July 2000.
+
+\bibitem{Malone1990}
+T.~W. Malone and K.~Crowston.
+\newblock {What is coordination theory and how can it help design cooperative
+  work systems?}
+\newblock In {\em Proceedings of the 1990 ACM conference on Computer-supported
+  cooperative work - CSCW '90}, pages 357--370, New York, New York, USA, 1990.
+  ACM Press.
 
 \bibitem{kolobov2012planning}
 Mausam and A.~Kolobov.
 \newblock Planning with markov decision processes: An {AI} perspective.
 \newblock {\em Synthesis Lectures on {AI} and Machine Learning}, 6(1):1--210,
   2012.
+
+\bibitem{Monares2011}
+A.~Monares, S.~F. Ochoa, J.~A. Pino, V.~Herskovic, J.~Rodriguez-Covili, and
+  A.~Neyem.
+\newblock {Mobile computing in urban emergency situations: Improving the
+  support to firefighters in the field}.
+\newblock {\em Expert Systems with Applications}, 38(2):1255--1267, 2011.
+
+\bibitem{Moran2013}
+S.~Moran, N.~Pantidi, K.~Bachour, J.~E. Fischer, M.~Flintham, T.~Rodden,
+  S.~Evans, and S.~Johnson.
+\newblock {Team reactions to voiced agent instructions in a pervasive game}.
+\newblock {\em Proceedings of the 2013 international conference on Intelligent
+  user interfaces - IUI '13}, page 371, 2013.
+
+\bibitem{Rachlin1997}
+S.~Murthy, J.~Rachlin, R.~Akkiraju, and F.~Wu.
+\newblock {Agent-Based Cooperative Scheduling}.
+\newblock 1997.
+
+\bibitem{musliner2006coordinated}
+D.~J. Musliner, E.~H. Durfee, J.~Wu, D.~A. Dolgov, R.~P. Goldman, and M.~S.
+  Boddy.
+\newblock Coordinated plan management using multiagent mdps.
+\newblock In {\em AAAI Spring Symposium: Distributed Plan and Schedule
+  Management}, pages 73--80, 2006.
+
+\bibitem{Cooke2006}
+G.~J. {Nancy, Cooke} and B.~B. {Pederson Harry}.
+\newblock {Distributed Mission Environments: Effects of Geographic Distribution
+  on Team Cognition, Process, and Performance Chapter for S. M. Fiore and E.
+  Salas (Eds.),}.
+\newblock 2006.
+
+\bibitem{Padilha2010}
+R.~P. Padilha, J.~O. Gomes, and J.~H. Can\'{o}s.
+\newblock {The Design of Collaboration Support Between Command and Operation
+  Teams during Emergency Response}.
+\newblock {\em Current}, pages 759--763, 2010.
 
 \bibitem{paho:2001}
 {Pan American Health Organization}.
@@ -59,6 +225,18 @@ Mausam and A.~Kolobov.
 S.~Proper and P.~Tadepalli.
 \newblock Solving multi-agent assignment \text{Markov} decision processes.
 \newblock In {\em Proc. of AAMAS 2009}, pages 681--688, 2009.
+
+\bibitem{puyol:etal:2014}
+M.~Pujol-Gonzalez, J.~Cerquides, A.~Farinelli, P.~Meseguer, and J.~A.
+  Rodr\'{\i}guez-Aguilar.
+\newblock Binary max-sum for multi-team task allocation in robocup rescue.
+\newblock Paris, France, 05/05/2014 2014.
+
+\bibitem{pynadath2002communicative}
+D.~V. Pynadath and M.~Tambe.
+\newblock The communicative multiagent team decision problem: Analyzing
+  teamwork theories and models.
+\newblock {\em Journal of Artificial Intelligence Research}, 16:389--423, 2002.
 
 \bibitem{ramchurn:etal:2010}
 S.~D. Ramchurn, A.~Farinelli, K.~S. Macarthur, and N.~R. Jennings.
@@ -81,6 +259,13 @@ S.~Reece and S.~Roberts.
 \newblock In {\em Prof. of Intl. Conf. on Information Fusion (FUSION)}, pages
   1--9. IEEE, 2010.
 
+\bibitem{Robinson}
+C.~Robinson and D.~Brown.
+\newblock {First Responder Information Flow Simulation: A Tool for Technology
+  Assessment}.
+\newblock In {\em Proceedings of the Winter Simulation Conference, 2005.},
+  pages 919--925. IEEE.
+
 \bibitem{Scerri2005}
 P.~Scerri, A.~Farinelli, S.~Okamoto, and M.~Tambe.
 \newblock {Allocating tasks in extreme teams}.
@@ -99,10 +284,31 @@ J.~Searle.
   (Studies in the Philosophy of Science}, volume~7, pages 344--69. University
   of Minneapolis Press, 1975.
 
-\bibitem{simonovic:2009}
-S.~P. Simonovic.
-\newblock Systems approach to management of disasters: Methods and
-  applications.
-\newblock In {\em Disaster Prevention and Management}, volume~20. Wiley, 2009.
+\bibitem{Simonovic2010}
+S.~P. Simonovi\'{c}.
+\newblock {\em {Systems Approach to Management of Disasters}}.
+\newblock John Wiley \& Sons, Inc., Hoboken, NJ, USA, Nov. 2010.
+
+\bibitem{skinner:ramchurn:2010}
+C.~Skinner and S.~D. Ramchurn.
+\newblock The robocup rescue simulation platform.
+\newblock In {\em AAMAS}, pages 1647--1648. IFAAMAS, 2010.
+
+\bibitem{Sukthankar}
+G.~Sukthankar, J.~A. Giampapa, and C.~Burnett.
+\newblock {Communications for Agent-Based Human Team Support}.
+\newblock (1):284--312.
+
+\bibitem{Toups2011}
+Z.~O. Toups, A.~Kerne, and W.~A. Hamilton.
+\newblock {The team coordination game}.
+\newblock {\em ACM Transactions on Computer-Human Interaction}, 18(4):1--37,
+  Dec. 2011.
+
+\bibitem{Wagner2004}
+T.~Wagner, J.~Phelps, V.~Guralnik, and R.~VanRiper.
+\newblock {An application view of coordinators: Coordination managers for first
+  responders}.
+\newblock {\em AAAI}, 2004.
 
 \end{thebibliography}
