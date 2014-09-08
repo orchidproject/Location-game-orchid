@@ -80,7 +80,7 @@ function centreMap(loc) {
 /**
 TASK ICONS... 
 */
-
+var dropOffZones = [];
 function receiveDropoffpointData(drop){
 	point = new google.maps.LatLng(drop.latitude,drop.longitude);
                 	
@@ -98,6 +98,8 @@ function receiveDropoffpointData(drop){
 				map:map, 
 				icon:cg.large_number((drop.id%10))
 	});
+
+	dropOffZones.push(circle);
 }
 
 function drawInstruction(pid,tid){
@@ -142,6 +144,10 @@ function drawInstruction(pid,tid){
 
 
 }
+
+
+
+
 var tasks = [];
 function receiveTaskData(task){
 

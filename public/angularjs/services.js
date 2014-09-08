@@ -324,6 +324,8 @@ app.factory("httpService",function($http){
 
        		if(typeof data.invalidate != "undefined"){
        			aHandleInvalidation(data.invalidate);
+       			//map
+       			invalidateTask(data.invalidate);
        		}
 
        		service.callback();

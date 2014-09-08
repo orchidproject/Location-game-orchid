@@ -12,7 +12,7 @@
   		center: new google.maps.LatLng(<%= @game.latitude %>, <%= @game.longitude %>),
   		mapTypeId: google.maps.MapTypeId.MAP,
   		mapTypeControl: true,
-		disableDoubleClickZoom: true
+		  disableDoubleClickZoom: true
   	};
 
   	// Create the main map
@@ -126,10 +126,9 @@
             </div>
   
 
-          </div>
-	  
-                      </div>
-          </div>
+  </div>	  
+  </div>
+  </div>
   <input type="hidden" id="layer_id" value="<%= @game.layer_id %>" />
   <input type="hidden" id="user_id" value="<%= @user_id %>" />
   <input type="hidden" id="user_initials" value="<%= @user_initials %>" />
