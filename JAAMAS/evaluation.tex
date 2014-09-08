@@ -2,7 +2,9 @@
 \noindent We ran three sessions of AtomicOrchid with participants recruited from the local university to trial mixed-initiative coordination in a disaster response scenario. The following sections describe the participants, procedure, session configuration and methods used to collect and analyse quantitative and qualitative data.
 
 \subsection{Participants and Procedure}
-\noindent  A total of 24 participants (17 males and 7 females) were recruited through posters and emails, and reimbursed with \pounds 15  for 1.5-2 hours of study. The majority were students. The procedure consisted of 30 minutes of game play, and about 1 hour in total of pre-game briefing, consent forms,  a short training session, and a post-game group discussion. 
+\noindent Field trials of mixed-reality games come at a non-negligible cost (in time, effort, and money) . For example, for each trial, videos of \emph{each} participant has to be analysed (i.e., for FRs and HQ), logs of messages exchanged and instructions sent need to be cross-matched with video logs, and vouchers need to be given to participants. Hence, in line with previous studies using such games, we do not attempt to run tens or hundreds of trials to generate statistically significant results. Rather, we focus on running enough trials to gather a reasonable amount of data about the system and to generate qualitative results. 
+
+Hence, a total of 24 participants (17 males and 7 females) were recruited through posters and emails, and reimbursed with \pounds 15  for 1.5-2 hours of study. The majority were students. The procedure consisted of 30 minutes of game play, and about 1 hour in total of pre-game briefing, consent forms,  a short training session, and a post-game group discussion. 
 
 %Upon arrival in the HQ (set up in a meeting room at the local university), participants were briefed and asked to consent to participate. They were presented with a demographic questionnaire to record gender, occupation, experience of using smartphones and level of map navigation skills.
 
@@ -23,15 +25,37 @@ We also ran a pilot study for each condition to fine tune game configuration. Th
 To assess how humans interact with each other and with $PA$, we focused on collecting data relevant to $PA$'s task allocations and remote messages  that are used to support coordination. In particular, we use speech-act theory \cite{searle:1975} to classify messages sent between and among responders and $H$. We focus on the most relevant types of acts in this paper (which are also the most frequently used in AtomicOrchid):
 
 \begin{itemize}
-\item Assertives: \textit{speech acts that commit a speaker to the truth of the expressed proposition}; these were a common category as they include messages that contain situational information.
-\item Directives: \textit{speech acts that are meant to cause the hearer to take a particular action}, e.g. requests, commands and advice, including task and team allocation messages. 
+\item Assertives: \textit{speech acts that commit a speaker to the truth of the expressed proposition}; these were a common category as they include messages that contain situational information (e.g., You are next to the radiation cloud or the task is North of your current position).
+\item Directives: \textit{speech acts that are meant to cause the hearer to take a particular action}; requests, commands and advice, including task and team allocation messages (e.g., X go to task 1, Y go with X).
 \end{itemize}
 
 \subsection{Results}
-\noindent Overall, 8 targets were rescued in the non-agent condition (Session A), and respectively 12 targets (Session B) and 11 targets (Session C) were rescued in the agent condition. Teams (re-)formed six times in session A, four times in session B and nine times  in session C. Average player health after the game was much higher (more than double) for the agent-assisted sessions (80 for Session B and 82 for Session C) compared to the non-agent assisted session (40 in Session A) (see table \todo{TODO}). In fact, one responder `died' in Session A. This suggests that the agent's more conservative approach not to send field responders  into 'harms way' paid off. Moreover, surprisingly this more conservative approach did also not result in less numbers of targets saved than with a perhaps less risk averse approach by HQ in Session A. This may probably be explained by more timely instructions by the agent, as these were generated automatically after a target had been dropped off.  
+\noindent Overall, 8 targets were rescued in the non-agent condition (Session A), and respectively 12 targets (Session B) and 11 targets (Session C) were rescued in the agent condition. Teams (re-)formed six times in session A, four times in session B and nine times  in session C. Average player health after the game was much higher (more than double) for the agent-assisted sessions (80 for Session B and 82 for Session C) compared to the non-agent assisted session (40 in Session A) (see table \ref{tab:health}). In fact, one responder `died' in Session A. This suggests that the agent's more conservative approach not to send field responders  into 'harms way' paid off. Moreover, surprisingly this more conservative approach did also not result in less numbers of targets saved than with a perhaps less risk averse approach by HQ in Session A. This may probably be explained by more timely instructions by the agent, as these were generated automatically after a target had been dropped off.  
 
 $PA$ dynamically re-planned 14 times in session B and 18 times in session C. In most cases, this was triggered when a target was dropped off in the safe zone (24 times) -- as this frees up resources for  $PA$ to recompute an allocation. In the remaining cases, this was triggered by a player declining the agent's task allocation (8 times). 
 
+
+\begin{table}[ht]\small\centering
+ \caption{Health of Field Responders} \label{tab:msgs}
+\begin{tabular}{c | c | c | c | c}
+ & Minimum health &  Maximun health & Average health & Standard deviation \\
+ \hline
+ Session A & 0 & 95 & 40 & 26.95  \\
+  \hline
+  Session B & 64 & 100 & 91 & 13.41   \\
+  Session C & 41 & 99 & 72 & 24.99   \\
+\end{tabular}\label{tab:health}
+\end{table}
+
+
+%\subsubsection{Handling Task Allocations}
+In particular, Figure \ref{fig:msgs} shows how first responders handled task allocations in the agent and  non-agent conditions. In the non-agent condition, the HQ commander sent 43 task allocation directives (see Table \ref{tab:assertives} for details of each run) . Of these, the recipient first responders addressed only 15 messages (bringing them up in conversation). Of these 15, responders chose to ignore the instructions only once. The responders ignored the instruction because they were engaged in another task and did not want to abandon it. A further 4 $H$ instructions were consistent with a decision to rescue a certain target that had already been agreed locally by the responders. In the remaining 10 cases, first responders chose to follow the instructions. Although players were willing to follow $H$'s instructions, they failed to correctly follow the instructions due to confusion and misunderstanding in the communication. In fact, only 2 instances of directives from $H$ led to task completion. The first responders performed 6 rescue operations (tasks) without being instructed by $H$.
+
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{message_handling.png}
+\vspace{-5mm}
+\caption{How task allocations were handled by first responders in the version with agent (left), and without agent (right).\vspace{-3mm}}\label{fig:msgs}
+\end{figure}
 
 
 \begin{table}[ht]\small\centering
@@ -47,32 +71,9 @@ $PA$ dynamically re-planned 14 times in session B and 18 times in session C. In 
   \hline
   Total & 122 & 6 & 60 & 18 & 58 & 16 & 280 \\
 \end{tabular}
-\end{table}
-\todo{COMMENT FROM HAIDM REVIEW:
--- the results should show something about the health status of the participants across the scenarios. Wenchao: can you add a table with the average (mean) health status for each session, including standard deviation}
-Table \ref{tab:msgs} shows the remote message directives (mainly related to task allocation and execution) and assertives (mainly related to situational awareness) sent in the sessions. The following discussion draws on how these messages were handled to give a sense of mixed-initiative coordination in the game sessions.
-
-\begin{table}[ht]\small\centering
-\begin{tabular}{c | c | c | c | c}
- & minumn health &  maximun health & average health & standard deviation \\
- \hline
- Session A & 0 & 95 & 40 & 26.95  \\
-  \hline
-  Session B & 64 & 100 & 91 & 13.41   \\
-  Session C & 41 & 99 & 72 & 24.99   \\
-\end{tabular}
-\vspace{-2mm}
- \caption{Health of Field Responders} \label{tab:msgs}
+\label{tab:assertives}
 \end{table}
 
-%\subsubsection{Handling Task Allocations}
-In particular, Figure \ref{fig:msgs} shows how first responders handled task allocations in the agent and  non-agent conditions. In the non-agent condition, the HQ commander sent 43 task allocation directives. Of these, the recipient first responders addressed only 15 messages (bringing them up in conversation). Of these 15, responders chose to ignore the instructions only once. The responders ignored the instruction because they were engaged in another task and did not want to abandon it. A further 4 $H$ instructions were consistent with a decision to rescue a certain target that had already been agreed locally by the responders. In the remaining 10 cases, first responders chose to follow the instructions. Although players were willing to follow $H$'s instructions, they failed to correctly follow the instructions due to confusion and misunderstanding in the communication. In fact, only 2 instances of directives from $H$ led to task completion. The first responders performed 6 rescue operations (tasks) without being instructed by $H$.
-
-\begin{figure}[t]
-\includegraphics[width=\columnwidth]{message_handling.png}
-\vspace{-5mm}
-\caption{How task allocations were handled by first responders in the version with agent (left), and without agent (right).\vspace{-3mm}}\label{fig:msgs}
-\end{figure}
 
 In contrast, when task allocation was handled by the agent (52 tasks allocated in two trials on average), responders explicitly accepted 24 tasks,  of which they completed 15  successfully. Although there was either no response or no consensus between the responders (in 17 tasks allocated), they still completed 6 of these tasks successfully. In total, 20 task allocations were withdrawn by the agent as a result of re-planning. 
 
@@ -97,14 +98,7 @@ In summary, these results suggest three key observations with regard to  human-a
 \item When task allocation was handled by $PA$, $H$ could focus on providing vital situational awareness to safely route first responders around danger zones: thus demonstrating effective division of labour and complementary collaboration between humans and agents.
 \end{enumerate}
 
-Given the above observation we argue that a planning agent for team formation should not only model the uncertainty in player behaviours and in the environment, but that interactional challenges also need to be addressed  if such a technology is to be accepted in practice. In particular, we propose the following design guidelines for human-agent collaborations:\\
-
-\noindent \textbf{Adaptivity}: our experiences suggest that planning algorithms should be designed to take in human input, and more importantly, be \emph{responsive} to the needs of the users. As we saw in AtomicOrchid, players repeatedly requested new tasks and this would not have been possible unless our algorithm  was computationally efficient but could dynamically assimilate updates, requests, and constraints dynamically. We believe this makes the algorithm more acceptable to the users. However, this adaptivity does cost the system in terms of efficiency as the rejection of tasks may lead the problem to be so constrained that the algorithm cannot return any solutions. To alleviate such issues, we believe human mediation may be important in nudging the players to justify their rejection of tasks or to nudge them not to do so too frequently. \\
-
-\noindent \textbf{Interaction Simplicity}: our agent was designed to issue simple commands (Do X with Y) and respond to simple requests (OK or Reject Task). Such simple messages were shown to be far more effective at guiding players to do the right task than the unstructured human communication in the non-agent assisted case that was fraught with inconsistencies and inaccuracies. In fact, we would suggest that agents should be designed with minimal options to simplify the reasoning users have to do to interact with the agent, particularly when they are under pressure to act.  Doing so, however, may also result in humans not being able to express new conditions or constraints but these could be solved by using other communication media such as walkie talkies or mobile phones where possible.\\
-
-\noindent \textbf{Flexbile autonomy}: the HQ dashboard proved to be a key tool for the HQ coordinator $H$ to \emph{check} and \emph{correct for} the allocations of $PA$, taking into account the real-world constraints that the players on the ground faced. In particular, letting the human oversee the agent (i.e., ``on-the-loop") at times and actively instructing  the players (and bypassing the agent) at other times (i.e., ``in-the-loop") as and when needed, was seen to be particularly effective. This was achieved by $H$ \emph{without the agent} defining when such transfers of control should happen (as in \cite{scerri:etal:2005}) and, therefore, left the coordinator the option of taking control when she judged it was needed. Hence, we suggest that such deployed autonomous systems should be built for flexible autonomy. Specifically, interfaces should be designed to pass control \emph{seamlessly} between humans and agents.
-
+Given the above observation we argue that a planning agent for team formation should not only model the uncertainty in player behaviours and in the environment, but that interactional challenges also need to be addressed  if such a technology is to be accepted in practice. In the next section we elaborate on how our study results lead to new design guidelines for Human-Agent Collectives.
 
 %\todo{--Gopal? Think this one's for you? (JF) -- the conclusions call for flexible autonomy, and this is somewhat supported by the algorithm and results. There are a few important limitations that the authors should discuss. For example, it is possible for responders to reject enough tasks tha the mission becomes infeasible. How would such a problem be addressed? The solution to such problems is beyond the scpoe of the paper but the relevant limitations of the algorithms are not.
 %}

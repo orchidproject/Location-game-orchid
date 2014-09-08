@@ -1,0 +1,49 @@
+\input{radiation_model.tex}
+
+\section*{Appendix 2: Simulation Results of MMDP Solution}\label{sec:appendix2}
+
+%\begin{figure}[htbp]
+%  \centering
+%  \includegraphics[width=0.8\linewidth]{simulation}
+%  \caption{Experimental results for the MMDP, myopic, greedy
+%  algorithms in simulation.}
+%  \label{fig:simulation}
+%\end{figure}
+
+
+\noindent Before deploying our solution (as part of $PA$) to advise
+human responders, it is important  to test its performance to
+ensure it can return efficient solutions on simulations of the
+real-world problem. Given there is no extant solution that
+takes into account uncertainty in team coordination for emergency
+response, we compare our algorithm with a greedy and a
+myopic method to evaluate the benefits of coordination and
+lookahead. For each method, we use our path planning algorithm to
+compute the path for each responder. In the greedy method, the responders
+are uncoordinated and select the closest tasks they can do. In
+the myopic method, the responders are coordinated to select the
+tasks but have no lookahead for the future tasks (Line 8 in
+Algorithm~\ref{alg:taskplanning}). Table~\ref{tab:simulation} shows
+the results for a problem with 17 tasks and 8 responders on a
+50$\times$55 grid. As can be seen, our MMDP algorithm 
+completes more tasks than the myopic and greedy methods (see Table
+\ref{tab:simulation}). More importantly, our algorithm guarantees
+the safety of the responders, while in the myopic method  only 25\%
+of the responders survive and in the greedy method all responders
+are killed by the radioactive cloud. More extensive evaluations are
+beyond the scope of this paper as our focus here is on the use of
+the algorithm in a field deployment to test how humans take up
+advice computed by the planning agent $PA$.
+\begin{table}[htbp]
+  \centering
+  \caption{Experimental results for the MMDP, myopic, greedy
+  algorithms in simulation.}
+  \begin{tabular}{l|c|c|c}
+   & MMDP & Myopic & Greedy \\
+  \hline
+  No. of completed tasks & 71\% & 65\% & 41\% \\
+  \hline
+  No. responders alive at the end & 100\% & 25\% & 0\% \\
+  \end{tabular}
+  \label{tab:simulation}\vspace{-3mm}
+\end{table}
