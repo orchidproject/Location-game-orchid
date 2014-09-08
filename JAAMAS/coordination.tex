@@ -1,5 +1,5 @@
 \section{Team Coordination Algorithm}\label{sec:algo}
-\noindent Unfortunately, our  MMDP model results in a very large search space,
+\noindent Unfortunately, as in most MDP-based approaches to solving team coordination problems (see Section \ref{sec:decisiontheoretic}, our  MMDP model results in a very large search space,
 even for small-sized problems. For example, with 8 responders and
 17 tasks in a 50$\times$55 grid, the number of possible states is
 more than $2\times 10^{400}$. Therefore, it is practically
@@ -138,7 +138,7 @@ Monte-Carlo Tree Search (MCTS)~\cite{kocsis2006bandit} (Line 8),
 which provides a good trade-off between exploitation and exploration
 of the policy space and has been shown to be efficient for large
 MDPs.\footnote{Other methods such as sequential greedy assignment
-or swap-based hill climbing~\cite{proper2009solving} may also be useful. However, they do not explore the policy space as well as MCTS.} After $N$ simulations, the average value is returned as an approximation of
+or swap-based hill climbing~\cite{proper2009solving} may also be useful. However, they do not explore the policy space as well as MCTS \cite{kocsis2006bandit}.} After $N$ simulations, the average value is returned as an approximation of
 the team value (Line 10).
 
 The basic idea of MCTS is to maintain a search tree where each node
@@ -187,7 +187,7 @@ to at most one team (a task does not need more than one group of
 responders) and constraint (ii) ensures that a responder $p_i$ is
 assigned to only one task (a responder cannot do more than one task
 at the same time). This is a standard Mixed Integer Linear Program
-(MILP) that can be efficiently solved  using solvers (e.g., IBM CPLEX or lp\_solve).
+(MILP) that can be efficiently solved  using off-the-shelf solvers (e.g., IBM CPLEX or lp\_solve).
 
 \subsubsection{Adapting to Responder Requests}\label{sec:adaptive}
 \noindent An important characteristic of our approach is that it can easily
@@ -234,56 +234,9 @@ between the current location and the task location on the map, which
 can be computed offline without considering the radioactive cloud.
 This helps RTDP quickly navigate among the obstacles (e.g.,
 buildings, water pools, blocked roads) without getting trapped in
-dead-ends during the search. Another speed up is also possible if,
-when traversing the possible states, we only consider the
-responder's current location and the neighbouring points. This will
-further speed up the algorithm where the main bottleneck is the
-huge state space.
+dead-ends during the search. 
 
-\subsection{Simulation Results}
+Since, in this paper, we focus on the integration and validation of the algorithm in a real-world deployment, we leave the presentation of  computational simulation results and comparisons with other agent-based planning solutions (using our MMDP formulation) to Appendix \ref{sec:appendix2}. As argued earlier (see Section \ref{sec:challenges}), while computational simulations are useful to exemplify extreme cases, they do not explain how human FRs and the planning agent will actually collaborate. Hence, we turn to the real-world trial of our algorithm as part of a planning agent next.
 
-%\begin{figure}[htbp]
-%  \centering
-%  \includegraphics[width=0.8\linewidth]{simulation}
-%  \caption{Experimental results for the MMDP, myopic, greedy
-%  algorithms in simulation.}
-%  \label{fig:simulation}
-%\end{figure}
+%Another speed up is also possible if, when traversing the possible states, we only consider the responder's current location and the neighbouring points. This will further speed up the algorithm where the main bottleneck is the huge state space.
 
-
-\noindent Before deploying our solution (as part of $PA$) to advise
-human responders, it is important  to test its performance to
-ensure it can return efficient solutions on simulations of the
-real-world problem. Given there is no extant solution that
-takes into account uncertainty in team coordination for emergency
-response, we compare our algorithm with a greedy and a
-myopic method to evaluate the benefits of coordination and
-lookahead. For each method, we use our path planning algorithm to
-compute the path for each responder. In the greedy method, the responders
-are uncoordinated and select the closest tasks they can do. In
-the myopic method, the responders are coordinated to select the
-tasks but have no lookahead for the future tasks (Line 8 in
-Algorithm~\ref{alg:taskplanning}). Table~\ref{tab:simulation} shows
-the results for a problem with 17 tasks and 8 responders on a
-50$\times$55 grid. As can be seen, our MMDP algorithm 
-completes more tasks than the myopic and greedy methods (see Table
-\ref{tab:simulation}). More importantly, our algorithm guarantees
-the safety of the responders, while in the myopic method  only 25\%
-of the responders survive and in the greedy method all responders
-are killed by the radioactive cloud. More extensive evaluations are
-beyond the scope of this paper as our focus here is on the use of
-the algorithm in a field deployment to test how humans take up
-advice computed by the planning agent $PA$.
-\begin{table}[htbp]
-  \centering
-  \caption{Experimental results for the MMDP, myopic, greedy
-  algorithms in simulation.}
-  \begin{tabular}{l|c|c|c}
-   & MMDP & Myopic & Greedy \\
-  \hline
-  No. of completed tasks & 71\% & 65\% & 41\% \\
-  \hline
-  No. responders alive at the end & 100\% & 25\% & 0\% \\
-  \end{tabular}
-  \label{tab:simulation}\vspace{-3mm}
-\end{table}
