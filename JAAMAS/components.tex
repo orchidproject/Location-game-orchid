@@ -2,11 +2,18 @@
 \noindent First responders are equipped with a `mobile responder tool' providing sensing and awareness capabilities in three tabs (geiger cou\-nter, map, messaging and tasks; see Figure \ref{fig:ui}). The first tab shows a reading of radioactivity, player health level (based on exposure), and a GPS-enabled map of the game area to locate fellow responders, the targets to be rescued and the drop off zones for the targets. The second tab provides a broadcast messaging interface to communicate with fellow first responders and the commander $H$. The third tab shows the team and task allocation dynamically provided by the agent $PA$ that can be accepted or rejected. Notifications are used to alert both to new messages and task allocations.
 
 \begin{figure}[htbp]
-\includegraphics[width=\columnwidth]{UI.png}
-\caption{Mobile first responder and HQ interfaces.}\vspace{-3mm}
+\includegraphics[width=\columnwidth]{mobile_interface.png}
+\caption{Mobile responder tool.}
 \label{fig:ui}
 \end{figure}
-$H$ has at her disposal an `HQ dashboard' that provides an over\-view of the game area, including real-time information of the players' locations (see Figure \ref{fig:ui}). The dashboard provides a broadcast messaging widget, and a player status widget so that the responders' exposure and health levels can be monitored. $H$ can further monitor the  current team and task allocations to individual responders by $PA$ (by clicking on a button). The radioactive cloud (see Section \ref{sec:radiation} for more details) is graphically depicted as a heatmap (`Hotter'  (red) zones correspond to higher levels of radiation). Crucially, only  $H$ can 'see' the entire cloud, while field responders are restricted to seeing a reading for their current location on their Geiger counters --- this is a deliberate design choice to require frequent communication between HQ and field responders. 
+
+
+$H$ has at her disposal an `HQ dashboard' that provides an over\-view of the game area, including real-time information of the players' locations (see Figure \ref{fig:ui2}). The dashboard provides a broadcast messaging widget, and a player status widget so that the responders' exposure and health levels can be monitored. $H$ can further monitor the  current team and task allocations to individual responders by $PA$ (by clicking on a button). The radioactive cloud (see Section \ref{sec:radiation} for more details) is graphically depicted as a heatmap (`Hotter'  (red) zones correspond to higher levels of radiation). Crucially, only  $H$ can 'see' the entire cloud, while field responders are restricted to seeing a reading for their current location on their Geiger counters --- this is a deliberate design choice to require frequent communication between HQ and field responders. 
+\begin{figure}[htbp]
+\includegraphics[width=\columnwidth]{dashboard.png}
+\caption{HQ interface.}
+\label{fig:ui2}
+\end{figure}
 
 \subsection{System Architecture}
 \noindent AtomicOrchid is based on the open-sourced geo-fencing game MapAttack\footnote{\url{http://mapattack.org}.} that has been iteratively developed for a responsive, (relatively) scalable experience.  The location-based game is underpinned by client-server architecture, that relies on real-time data streaming between client and server. Client-side requests for less dynamic content use HTTP. Frequent events (e.g., location updates and radiation exposure) are streamed to clients to avoid the overhead of HTTP. In this way, first responders are kept informed in near real-time. Finally,  to build the mobile app, we adapted the existing MapAttack Android app.
