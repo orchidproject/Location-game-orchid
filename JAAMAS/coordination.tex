@@ -41,7 +41,7 @@ outlined in Algorithm~\ref{alg:coordination}. The following
 sections describe the procedures of each level in more detail.
 
 \begin{algorithm}[t]
-  \caption{Team Coordination Algorithm}\small
+  \caption{Team Coordination Algorithm}
   \label{alg:coordination}
   \Indm
   \KwIn{the MMDP model and the current state $s$.}
@@ -53,7 +53,7 @@ sections describe the procedures of each level in more detail.
     \tcp{The path planning}
     $a_i \gets$ compute the best path to task $t^i$ \;
   }
-  \Return{$\vec{a}$}\vspace{-1mm}
+  \Return{$\vec{a}$}
 \end{algorithm}
 
 
@@ -98,7 +98,7 @@ evaluate all possible future outcomes. According to the central
 limit theorem, if the number of simulations is sufficiently
 large, the estimated value will converge to the true $v(C_{jk})$.
 This process is outlined in Algorithm~\ref{alg:taskplanning}.
-\begin{algorithm}[htbp]\small
+\begin{algorithm}[htbp]
   \caption{Team Value Calculation}
   \label{alg:taskplanning}
   \Indm
@@ -150,7 +150,7 @@ node of the search tree. This can be computed by
 Equation~\ref{eq:cf} using the team values estimated by the UCB1
 heuristic~\cite{auer2002finite} to balance exploitation and
 exploration:
-\begin{equation}\small
+\begin{equation}
   v(C_{jk}) = \overline{v(C_{jk})} + c\sqrt{\frac{2N(s)}{N(s, C_{jk})}}
 \end{equation}
 where $\overline{v(C_{jk})}$ is the averaged value of team $C_{jk}$
