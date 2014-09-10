@@ -20,7 +20,7 @@ Furthermore, not all states of MMDPs are relevant to the problem
 (e.g., if a responder gets injured, she is incapable of doing any
 task in the future and therefore her state is irrelevant
 to other responders) and we only need to consider the reachable
-states given the current global state $S$ of the problem. Hence,
+states given the current global state $s$ of the problem. Hence,
 given the current state, we compute the policy online only for
 reachable states. This saves a considerable amount of computation
 because the size of the reachable states is usually much smaller
@@ -88,16 +88,19 @@ transition function of the MMDP.
 
 
 \subsubsection{Team Value Calculation}
-\noindent The computation of  $v(C_{jk})$ for each team
-$C_{jk}$ is challenging because not all tasks can be completed by
-one allocation (there are usually more targets than responders). Moreover, the policy after completing task $t_j$ must also be computed by the agent, which is time-consuming given the number of states and joint
-actions. Given this, we propose to estimate $v(C_{jk})$ through
-several simulations. This is much cheaper computationally as it avoids computing the complete policy to come up
-with a good estimate of the team value, though we may not be able to
-evaluate all possible future outcomes. According to the central
-limit theorem, if the number of simulations is sufficiently
-large, the estimated value will converge to the true $v(C_{jk})$.
-This process is outlined in Algorithm~\ref{alg:taskplanning}.
+\noindent The computation of $v(C_{jk})$ for each team $C_{jk}$ is
+challenging because not all tasks can be completed by one allocation
+(there are usually more targets than responders). Moreover, the policy
+after completing task $t_j$ must also be computed by the agent, which
+is time-consuming given the number of states and joint actions. Given
+this, we propose to estimate $v(C_{jk})$ through several
+simulations. This is much cheaper computationally as it avoids
+computing the complete policy to come up with a good estimate of the
+team value, though we may not be able to evaluate all possible future
+outcomes. According to the law of large numbers, if the number of
+simulations is sufficiently large, the estimated value will converge
+to the true $v(C_{jk})$.  This process is outlined in
+Algorithm~\ref{alg:taskplanning}.
 \begin{algorithm}[htbp]
   \caption{Team Value Calculation}
   \label{alg:taskplanning}
@@ -121,7 +124,7 @@ This process is outlined in Algorithm~\ref{alg:taskplanning}.
             $v_i(C_{jk}) \gets r + \gamma V(s')$ \;
         }
     }
-    $v(C_{jk}) \gets \frac{1}{N} \sum_{i=1}^{N} v_i(C_{jk})$ \;
+    $\bar{v(C_{jk})} \gets \frac{1}{N} \sum_{i=1}^{N} v_i(C_{jk})$ \;
   }
   \Return the task assignment computed by Equation~\ref{eq:cf}
 \end{algorithm}
@@ -204,28 +207,27 @@ have identical weights of 1.0). Thus, our approach is adaptive to the
 \subsection{Path Planning}
 \label{sec:pathplanning}
 
-\noindent In the path planning phase, we compute the best path for
-a responder to her assigned task. This phase is stochastic as there
-are uncertainties in the radioactive cloud and the responders'
-actions. We model this problem as a single-agent MDP that can be
-defined as a tuple, $\mathcal{M}_i = \langle S_i, A_i, P_i, R_i
-\rangle$, where: (1) $S_i = S^G_r \times S_{p_i}$ is the state
-space, (2) $A_i$ is the set of $p_i$'s actions, (3) $P_i = P_r
-\times P_{p_i}$ is the transition function, and (4) $R_i$ is the
-reward function. In this level, responder $p_i$ only needs to
-consider the states of the radioactive cloud $S^G_r$ and her own
-states $S_{p_i}$ and her moving actions. Similarly, the transition
-function only needs to consider the spreading of the radioactive
-cloud $P_r$ and the changes of her locations and health levels when
-moving in the field $P_{p_i}$, and the reward function only needs
-to consider the cost of moving to a task and the penalty of
-receiving high radiation doses. This is a typical MDP that can be
-solved by many existing solvers (see the most recent
-survey~\cite{kolobov2012planning}). We choose Real-Time Dynamic
-Programming (RTDP)~\cite{barto1995learning} because it is simple
-and particularly fits our problem, that is, a goal-directed MDP
-with large number of states. However, other approaches for solving
-large MDPs  could equally be used here.
+\noindent In the path planning phase, we compute the best path for a
+responder to her assigned task.  Our approach accommodates the
+uncertainties in the radioactive cloud and the responders' actions. We
+model this problem as a single-agent MDP that can be defined as a
+tuple, $\mathcal{M}_i = \langle S_i, A_i, P_i, R_i \rangle$, where:
+(1) $S_i = S^G_r \times S_{p_i}$ is the state space, (2) $A_i$ is the
+set of $p_i$'s actions, (3) $P_i = P_r \times P_{p_i}$ is the
+transition function, and (4) $R_i$ is the reward function. In this
+level, responder $p_i$ only needs to consider the states of the
+radioactive cloud $S^G_r$ and her own states $S_{p_i}$ and her moving
+actions. Similarly, the transition function only needs to consider the
+spreading of the radioactive cloud $P_r$ and the changes of her
+locations and health levels when moving in the field $P_{p_i}$, and
+the reward function only needs to consider the cost of moving to a
+task and the penalty of receiving high radiation doses. This is a
+typical MDP that can be solved by many existing solvers (see the most
+recent survey~\cite{kolobov2012planning}). We choose Real-Time Dynamic
+Programming (RTDP)~\cite{barto1995learning} because it is simple and
+particularly fits our problem, that is, a goal-directed MDP with large
+number of states. However, other approaches for solving large MDPs
+could equally be used here.
 
 There are several techniques we use to speed up the convergence of
 RTDP. In our problem, the map is static. Thus, we can initialize
@@ -236,7 +238,15 @@ This helps RTDP quickly navigate among the obstacles (e.g.,
 buildings, water pools, blocked roads) without getting trapped in
 dead-ends during the search. 
 
-Since, in this paper, we focus on the integration and validation of the algorithm in a real-world deployment, we leave the presentation of  computational simulation results and comparisons with other agent-based planning solutions (using our MMDP formulation) to Appendix \ref{sec:appendix2}. As argued earlier (see Section \ref{sec:challenges}), while computational simulations are useful to exemplify extreme cases, they do not explain how human FRs and the planning agent will actually collaborate. Hence, we turn to the real-world trial of our algorithm as part of a planning agent next.
+Since, in this paper, we focus on the integration and validation of
+the algorithm in a real-world deployment, we leave the presentation of
+computational simulation results and comparisons with other
+agent-based planning solutions (using our MMDP formulation) to
+Appendix \ref{sec:appendix2}. As argued earlier (see Section
+\ref{sec:challenges}), while computational simulations are useful to
+exemplify extreme cases, they do not explain how human FRs and the
+planning agent actually collaborate. We resolve this issue via a
+real-world trial of our algorithm as part of a planning agent next.
 
 %Another speed up is also possible if, when traversing the possible states, we only consider the responder's current location and the neighbouring points. This will further speed up the algorithm where the main bottleneck is the huge state space.
 

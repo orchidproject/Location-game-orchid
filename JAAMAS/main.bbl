@@ -1,10 +1,10 @@
 \begin{thebibliography}{10}
 
 \bibitem{Abbott1994}
-K.~R. Abbott.
-\newblock {Experiences with VVorkflow Management : Issues for the Next
-  Generation}.
-\newblock pages 113--120, 1994.
+K.~R. Abbott and S.~K. Sarin.
+\newblock Experiences with workflow management: issues for the next generation.
+\newblock In {\em Proceedings of the 1994 ACM conference on Computer supported
+  cooperative work (CSCW)}, pages 113--120, 1994.
 
 \bibitem{auer2002finite}
 P.~Auer, N.~Cesa-Bianchi, and P.~Fischer.
@@ -50,8 +50,8 @@ J.~Bowers, G.~Button, and W.~Sharrock.
 \newblock {Workflow From Within and Without : Technology and Cooperative Work
   on the Print Industry Shopfloor Introduction : Workflow Systems and Work
   Practice}.
-\newblock pages 51--66. Fourth European Conference on Computer-Supported
-  Cooperative Work, 1994.
+\newblock In {\em Fourth European Conference on Computer-Supported Cooperative
+  Work}, pages 51--66, 1994.
 
 \bibitem{Bradshaw2011}
 J.~M. Bradshaw, P.~Feltovich, and M.~Johnson.
@@ -59,7 +59,7 @@ J.~M. Bradshaw, P.~Feltovich, and M.~Johnson.
 \newblock In G.~Boy, editor, {\em Handbook of HumanMachine Interaction},
   chapter~13, pages 293--302. Ashgate, 2011.
 
-\bibitem{Brown:2011:WCO:1978942.1979185}
+\bibitem{Brown:2011}
 B.~Brown, S.~Reeves, and S.~Sherwood.
 \newblock Into the wild: Challenges and opportunities for field trial methods.
 \newblock In {\em Proceedings of the SIGCHI Conference on Human Factors in
@@ -102,8 +102,11 @@ J.~Drury, C.~Cocking, and S.~Reicher.
 \bibitem{Fischer}
 J.~E. Fischer, W.~Jiang, A.~Kerne, C.~Greenhalgh, S.~D. Ramchurn, S.~Reece,
   N.~Pantidi, and T.~Rodden.
-\newblock {Supporting Team Coordination on the Ground : Requirements from a
-  Mixed Reality Game}.
+\newblock Supporting team coordination on the ground: Requirements from a mixed
+  reality game.
+\newblock In {\em COOP 2014-Proceedings of the 11th International Conference on
+  the Design of Cooperative Systems, 27-30 May 2014, Nice (France)}, pages
+  49--67. Springer, 2014.
 
 \bibitem{guestrin2001multiagent}
 C.~Guestrin, D.~Koller, and R.~Parr.
@@ -119,6 +122,20 @@ C.~Guestrin, D.~Koller, R.~Parr, and S.~Venkataraman.
 G.~I. Hawe, G.~Coates, D.~T. Wilson, and R.~S. Crouch.
 \newblock {Agent-based simulation for large-scale emergency response}.
 \newblock {\em ACM Computing Surveys}, 45(1):1--51, Nov. 2012.
+
+\bibitem{harvard2010disaster}
+H.~H. Initiative et~al.
+\newblock Disaster relief 2.0: The future of information sharing in
+  humanitarian emergencies.
+\newblock In {\em Disaster Relief 2.0: The future of information sharing in
+  humanitarian emergencies}. HHI; United Nations Foundation; OCHA; The Vodafone
+  Foundation, 2010.
+
+\bibitem{jennings:etal:2014}
+N.~R. Jennings, L.~Moreau, D.~Nicholson, S.~D. Ramchurn, S.~J. Roberts,
+  T.~Rodden, and A.~Rogers.
+\newblock On human-agent collectives.
+\newblock {\em Communications of the ACM (In Press)}, 2014.
 
 \bibitem{Khan-2011-JAAMAS}
 M.~A. Khan, D.~Turgut, and L.~B{\"o}l{\"o}ni.
@@ -201,9 +218,10 @@ S.~Moran, N.~Pantidi, K.~Bachour, J.~E. Fischer, M.~Flintham, T.~Rodden,
   user interfaces - IUI '13}, page 371, 2013.
 
 \bibitem{Rachlin1997}
-S.~Murthy, J.~Rachlin, R.~Akkiraju, and F.~Wu.
-\newblock {Agent-Based Cooperative Scheduling}.
-\newblock 1997.
+S.~Murthy, R.~Akkiraju, J.~Rachlin, and F.~Wu.
+\newblock Agent-based cooperative scheduling.
+\newblock In {\em Proceedings of AAAI Workshop on Constraints and Agents},
+  pages 112--117, 1997.
 
 \bibitem{musliner2006coordinated}
 D.~J. Musliner, E.~H. Durfee, J.~Wu, D.~A. Dolgov, R.~P. Goldman, and M.~S.
@@ -214,10 +232,10 @@ D.~J. Musliner, E.~H. Durfee, J.~Wu, D.~A. Dolgov, R.~P. Goldman, and M.~S.
 
 \bibitem{Cooke2006}
 G.~J. {Nancy, Cooke} and B.~B. {Pederson Harry}.
-\newblock {Distributed Mission Environments: Effects of Geographic Distribution
-  on Team Cognition, Process, and Performance Chapter for S. M. Fiore and E.
-  Salas (Eds.),}.
-\newblock 2006.
+\newblock Distributed mission environments: Effects of geographic distribution
+  on team cognition, process, and performance.
+\newblock In {\em Towards a science of distributed learning and training.}
+  American Psychological Association, 2006.
 
 \bibitem{Padilha2010}
 R.~P. Padilha, J.~O. Gomes, and J.~H. Can\'{o}s.
@@ -234,7 +252,8 @@ S.~Proper and P.~Tadepalli.
 M.~Pujol-Gonzalez, J.~Cerquides, A.~Farinelli, P.~Meseguer, and J.~A.
   Rodr\'{\i}guez-Aguilar.
 \newblock Binary max-sum for multi-team task allocation in robocup rescue.
-\newblock Paris, France, 05/05/2014 2014.
+\newblock In {\em Optimisation in Multi-Agent Systems and Distributed
+  Constraint Reasoning (OptMAS-DCR)}, Paris, France, 05/05/2014 2014.
 
 \bibitem{pynadath2002communicative}
 D.~V. Pynadath and M.~Tambe.
@@ -268,18 +287,32 @@ C.~Robinson and D.~Brown.
 \newblock {First Responder Information Flow Simulation: A Tool for Technology
   Assessment}.
 \newblock In {\em Proceedings of the Winter Simulation Conference, 2005.},
-  pages 919--925. IEEE.
+  pages 919--925. IEEE, 2005.
 
 \bibitem{Scerri2005}
 P.~Scerri, A.~Farinelli, S.~Okamoto, and M.~Tambe.
 \newblock {Allocating tasks in extreme teams}.
 \newblock In {\em Proc. of AAMAS}, pages 727--734. ACM, 2005.
 
+\bibitem{scerri:etal:2003}
+P.~Scerri, D.~Pynadath, L.~Johnson, P.~Rosenbloom, M.~Si, N.~Schurr, and
+  M.~Tambe.
+\newblock A prototype infrastructure for distributed robot-agent-person teams.
+\newblock In {\em Proceedings of the Second International Joint Conference on
+  Autonomous Agents and Multiagent Systems}, AAMAS '03, pages 433--440, New
+  York, NY, USA, 2003. ACM.
+
 \bibitem{scerri:etal:2005}
 P.~Scerri, M.~Tambe, and D.~V. Pynadath.
 \newblock Towards adjustable autonomy for the real-world.
 \newblock {\em Journal of Artificial Intelligence Research}, 17(1):171--228,
   2002.
+
+\bibitem{schurr2005defacto}
+N.~Schurr, J.~Marecki, J.~P. Lewis, M.~Tambe, and P.~Scerri.
+\newblock The defacto system: Training tool for incident commanders.
+\newblock In {\em National Conference on Artificial Intelligence (AAAI)}, pages
+  1555--1562, 2005.
 
 \bibitem{searle:1975}
 J.~Searle.
@@ -299,9 +332,10 @@ C.~Skinner and S.~D. Ramchurn.
 \newblock In {\em AAMAS}, pages 1647--1648. IFAAMAS, 2010.
 
 \bibitem{Sukthankar}
-G.~Sukthankar, J.~A. Giampapa, and C.~Burnett.
-\newblock {Communications for Agent-Based Human Team Support}.
-\newblock (1):284--312.
+G.~Sukthankar, K.~Sycara, J.~A. Giampapa, and C.~Burnett.
+\newblock Communications for agent-based human team support.
+\newblock {\em Handbook of Research on Multi-agent Systems: Semantics and
+  Dynamics of Organizational Models}, page 285, 2009.
 
 \bibitem{Toups2011}
 Z.~O. Toups, A.~Kerne, and W.~A. Hamilton.

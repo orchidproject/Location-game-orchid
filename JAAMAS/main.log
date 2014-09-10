@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  9 SEP 2014 10:43
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  10 SEP 2014 14:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -248,11 +248,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-(./main.aux
-
-LaTeX Warning: Label `tab:msgs' multiply defined.
-
-)
+(./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
@@ -360,87 +356,43 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
 LaTeX Font Info:    Calculating math sizes for size <9.5> on input line 148.
  [1{/usr/local/texlive/2011/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./i
 ntroduction.tex
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 15.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 15.
 
-(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/ot1phv.fd
-File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
-)
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 15.
-
-
-LaTeX Warning: Citation `jennings:etal:2014' on page 2 undefined on input line 
-15.
-
-[2]
+(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [2]
 Overfull \hbox (5.55083pt too wide) in paragraph at lines 18--20
 \OT1/ptm/m/n/9.5 un-der un-cer-tainty, fo-cussing par-tic-u-larly on human-agen
 t col-lab-o-ra-tion. In Atom-i-cOrchid,
  []
 
 ) (./background.tex [3]
-
-LaTeX Warning: Citation `bader2008digital' on page 4 undefined on input line 4.
-
-
-
 Overfull \hbox (9.83513pt too wide) in paragraph at lines 11--12
 []\OT1/ptm/m/n/9.5 Now, many of these al-go-rithms are ac-tu-ally eval-u-ated i
 n sim-u-la-tion us-ing the RoboCupRes-
  []
 
-[4]
-
-LaTeX Warning: Citation `machinetta' on page 5 undefined on input line 14.
-
-
-LaTeX Warning: Citation `XXX' on page 5 undefined on input line 14.
-
-
-LaTeX Warning: Citation `machinetta' on page 5 undefined on input line 14.
-
-
-LaTeX Warning: Citation `XXX' on page 5 undefined on input line 14.
-
-[5] [6]) (./scenario.tex
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 2.
-
-(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [7]
+[4] [5] [6]) (./scenario.tex [7] [8]) (./coordination.tex [9]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
-
-
-LaTeX Warning: Citation `UNOCHA' on page 8 undefined on input line 14.
-
-[8]) (./coordination.tex [9]
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 51.
-
-
-LaTeX Warning: Reference `sec:model' on page 10 undefined on input line 62.
-
-[10]
-
-LaTeX Font Warning: Command \small invalid in math mode on input line 153.
-
-LaTeX Font Info:    Calculating math sizes for size <> on input line 155.
-[11] [12]) (./atomicorchid.tex (./components.tex
-<mobile_interface.png, id=59, 589.2414pt x 361.8318pt>
+ [10] [11]
+[12]) (./atomicorchid.tex (./components.tex
+<mobile_interface.png, id=58, 589.2414pt x 361.8318pt>
 File: mobile_interface.png Graphic file (type png)
 
 <use mobile_interface.png>
 Package pdftex.def Info: mobile_interface.png used on input line 5.
 (pdftex.def)             Requested size: 347.0pt x 213.08691pt.
- <dashboard.png, id=61, 688.0104pt x 501.5538pt>
+ <dashboard.png, id=60, 688.0104pt x 501.5538pt>
 File: dashboard.png Graphic file (type png)
 
 <use dashboard.png>
 Package pdftex.def Info: dashboard.png used on input line 13.
 (pdftex.def)             Requested size: 347.0pt x 252.95741pt.
  [13] [14 <./mobile_interface.png>]
-<agent-planner.png, id=70, 182.3613pt x 150.8034pt>
+<agent-planner.png, id=69, 182.3613pt x 150.8034pt>
 File: agent-planner.png Graphic file (type png)
  <use agent-planner.png>
 Package pdftex.def Info: agent-planner.png used on input line 30.
@@ -450,22 +402,17 @@ Package pdftex.def Info: agent-planner.png used on input line 30.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [15 <./dashboard.png>]
-
-LaTeX Warning: Citation `Brown:2011:WCO:1978942.1979185' on page 16 undefined o
-n input line 5.
-
-Missing character: There is no Õ in font ptmr7t!
 LaTeX Font Info:    Font shape `OT1/ptm/m/ui' in size <9.5> not available
-(Font)              Font shape `OT1/ptm/m/it' tried instead on input line 7.
-[16 <./agent-planner.png>] [17]
-<message_handling.png, id=82, 1049.9225pt x 640.3925pt>
+(Font)              Font shape `OT1/ptm/m/it' tried instead on input line 13.
+ [16 <./agent-planner.png>] [17]
+<message_handling.png, id=81, 1049.9225pt x 640.3925pt>
 File: message_handling.png Graphic file (type png)
 
 <use message_handling.png>
-Package pdftex.def Info: message_handling.png used on input line 55.
+Package pdftex.def Info: message_handling.png used on input line 60.
 (pdftex.def)             Requested size: 347.0pt x 211.65263pt.
  [18]
-Overfull \hbox (6.05038pt too wide) in paragraph at lines 85--88
+Overfull \hbox (6.05038pt too wide) in paragraph at lines 90--93
 []\OT1/ptm/m/n/9.5 The re-sults above show that the sim-ple mech-a-nism to get 
 $\OML/cmm/m/it/9.5 PA$ \OT1/ptm/m/n/9.5 to re-plan (i.e., re-ject/accept)
  []
@@ -473,13 +420,23 @@ $\OML/cmm/m/it/9.5 PA$ \OT1/ptm/m/n/9.5 to re-plan (i.e., re-ject/accept)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [19 <./message_handling.png>])) (./conclusions.tex [20]) (./main.bbl [21] [22]
-) [23]
-(./appendix.tex (./radiation_model.tex
+ [19 <./message_handling.png>])) (./conclusions.tex
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
 
-LaTeX Warning: Reference `sec:model' on page 24 undefined on input line 7.
+ []
 
-[24] <figures/radiation_ss_calm_annotated.png, id=108, 722.7pt x 385.44pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
+
+ []
+
+[20]) (./main.bbl [21] [22] [23]) [24] (./appendix.tex (./radiation_model.tex
+<figures/radiation_ss_calm_annotated.png, id=105, 722.7pt x 385.44pt>
 File: figures/radiation_ss_calm_annotated.png Graphic file (type png)
 
 <use figures/radiation_ss_calm_annotated.png>
@@ -487,55 +444,48 @@ Package pdftex.def Info: figures/radiation_ss_calm_annotated.png used on input
 line 24.
 (pdftex.def)             Requested size: 312.29788pt x 166.55936pt.
 
-<figures/radiation_ss_gust_annotated.png, id=109, 722.7pt x 386.4036pt>
+<figures/radiation_ss_gust_annotated.png, id=106, 722.7pt x 386.4036pt>
 File: figures/radiation_ss_gust_annotated.png Graphic file (type png)
 
 <use figures/radiation_ss_gust_annotated.png>
 Package pdftex.def Info: figures/radiation_ss_gust_annotated.png used on input 
 line 26.
 (pdftex.def)             Requested size: 312.29788pt x 166.97575pt.
-)) [25] [26 <./figures/radiation_ss_calm_annotated.png> <./figures/radiation_ss
-_gust_annotated.png>] (./main.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+) [25]) [26 <./figures/radiation_ss_calm_annotated.png> <./figures/radiation_ss
+_gust_annotated.png>] [27]
+(./main.aux) ) 
 Here is how much of TeX's memory you used:
- 4667 strings out of 493633
- 64896 string characters out of 3143378
- 137567 words of memory out of 3000000
- 7831 multiletter control sequences out of 15000+200000
- 40806 words of font info for 106 fonts, out of 3000000 for 9000
+ 4586 strings out of 493633
+ 63809 string characters out of 3143378
+ 137555 words of memory out of 3000000
+ 7757 multiletter control sequences out of 15000+200000
+ 33036 words of font info for 82 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 38i,19n,26p,2989b,508s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/tex
-live/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texli
-ve/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texliv
-e/2011/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/tex
-live/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texli
-ve/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive
-/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2
-011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/201
-1/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2011/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2011/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2011/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2011/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2011/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2011/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2011/texmf-dist/font
-s/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2011/texmf-dist/
-fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/ty
-pe1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw
-/times/utmb8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/times/utm
-r8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (26 pages, 5225275 bytes).
+ 38i,19n,26p,2989b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/base/8r.enc}<
+/usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></u
+sr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
+r/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><
+/usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></u
+sr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
+/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/l
+ocal/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/loc
+al/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
+texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
+live/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texliv
+e/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/
+2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/20
+11/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2011
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2011/t
+exmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/20
+11/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2011/texmf
+-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2011/texmf-dist/font
+s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/ur
+w/times/utmri8a.pfb>
+Output written on main.pdf (27 pages, 5214256 bytes).
 PDF statistics:
- 187 PDF objects out of 1000 (max. 8388607)
- 124 compressed objects within 2 object streams
+ 182 PDF objects out of 1000 (max. 8388607)
+ 120 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
