@@ -1,10 +1,12 @@
-This is BibTeX, Version 0.99d (TeX Live 2013)
+This is BibTeX, Version 0.99d (TeX Live 2011)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: abbrv.bst
 Database file #1: citations.bib
-Warning--I didn't find a database entry for "Ramchurn:etal"
-Warning--I didn't find a database entry for "xx"
+Warning--I didn't find a database entry for "jennings:etal:2014"
+Warning--I didn't find a database entry for "machinetta"
+Warning--I didn't find a database entry for "XXX"
+Warning--I didn't find a database entry for "UNOCHA"
 Warning--empty journal in Abbott1994
 Warning--empty booktitle in Bowers1994
 Warning--empty journal in Fischer
@@ -18,43 +20,43 @@ Warning--there's a number but no volume in Sukthankar
 Warning--empty year in Sukthankar
 You've used 52 entries,
             2118 wiz_defined-function locations,
-            827 strings with 13871 characters,
-and the built_in function-call counts, 20946 in all, are:
-= -- 2079
-> -- 1039
-< -- 24
-+ -- 411
-- -- 354
-* -- 1501
-:= -- 3325
-add.period$ -- 166
+            836 strings with 14150 characters,
+and the built_in function-call counts, 21372 in all, are:
+= -- 2141
+> -- 1035
+< -- 26
++ -- 409
+- -- 352
+* -- 1528
+:= -- 3366
+add.period$ -- 168
 call.type$ -- 52
-change.case$ -- 330
+change.case$ -- 329
 chr.to.int$ -- 0
 cite$ -- 63
-duplicate$ -- 813
-empty$ -- 1574
-format.name$ -- 354
-if$ -- 4469
+duplicate$ -- 840
+empty$ -- 1607
+format.name$ -- 352
+if$ -- 4584
 int.to.chr$ -- 0
 int.to.str$ -- 52
-missing$ -- 53
-newline$ -- 261
+missing$ -- 54
+newline$ -- 262
 num.names$ -- 108
-pop$ -- 381
+pop$ -- 374
 preamble$ -- 1
-purify$ -- 280
+purify$ -- 279
 quote$ -- 0
-skip$ -- 608
+skip$ -- 635
 stack$ -- 0
-substring$ -- 1337
-swap$ -- 247
-text.length$ -- 24
+substring$ -- 1409
+swap$ -- 267
+text.length$ -- 26
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 204
 warning$ -- 11
-while$ -- 202
+while$ -- 208
 width$ -- 54
-write$ -- 569
-(There were 13 warnings)
+write$ -- 576
+(There were 15 warnings)

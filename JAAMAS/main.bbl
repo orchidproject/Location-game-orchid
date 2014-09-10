@@ -11,6 +11,14 @@ P.~Auer, N.~Cesa-Bianchi, and P.~Fischer.
 \newblock Finite-time analysis of the multi-armed bandit problem.
 \newblock {\em Machine learning}, 47(2-3):235--256, 2002.
 
+\bibitem{bader2008digital}
+T.~Bader, A.~Meissner, and R.~Tscherney.
+\newblock Digital map table with fovea-tablett{\textregistered}: Smart
+  furniture for emergency operation centers.
+\newblock In {\em proceedings of the 5th International Conference on
+  Information Systems for Crisis Response and Management}, pages 679--688,
+  2008.
+
 \bibitem{barto1995learning}
 A.~G. Barto, S.~J. Bradtke, and S.~P. Singh.
 \newblock Learning to act using real-time dynamic programming.
@@ -51,6 +59,12 @@ J.~M. Bradshaw, P.~Feltovich, and M.~Johnson.
 \newblock In G.~Boy, editor, {\em Handbook of HumanMachine Interaction},
   chapter~13, pages 293--302. Ashgate, 2011.
 
+\bibitem{Brown:2011:WCO:1978942.1979185}
+B.~Brown, S.~Reeves, and S.~Sherwood.
+\newblock Into the wild: Challenges and opportunities for field trial methods.
+\newblock In {\em Proceedings of the SIGCHI Conference on Human Factors in
+  Computing Systems}, CHI '11, pages 1657--1666, New York, NY, USA, 2011. ACM.
+
 \bibitem{Chapman2009}
 A.~Chapman, R.~A. Micillo, R.~Kota, and N.~R. Jennings.
 \newblock Decentralised dynamic task allocation: A practical game-theoretic
@@ -84,12 +98,6 @@ J.~Drury, C.~Cocking, and S.~Reicher.
   among emergency survivors.}
 \newblock {\em The British journal of social psychology / the British
   Psychological Society}, 48(Pt 3):487--506, Sept. 2009.
-
-\bibitem{Fischer:etal:2012}
-J.~E. Fischer, M.~Flintham, D.~Price, J.~Goulding, N.~Pantidi, and T.~Rodden.
-\newblock Serious mixed reality games.
-\newblock In {\em Mixed Reality games Workshop at the 2012 ACM Conference on
-  Computer Supported Cooperative Work}, 2012.
 
 \bibitem{Fischer}
 J.~E. Fischer, W.~Jiang, A.~Kerne, C.~Greenhalgh, S.~D. Ramchurn, S.~Reece,
@@ -216,10 +224,6 @@ R.~P. Padilha, J.~O. Gomes, and J.~H. Can\'{o}s.
 \newblock {The Design of Collaboration Support Between Command and Operation
   Teams during Emergency Response}.
 \newblock {\em Current}, pages 759--763, 2010.
-
-\bibitem{paho:2001}
-{Pan American Health Organization}.
-\newblock Stress management in disasters, 2001.
 
 \bibitem{proper2009solving}
 S.~Proper and P.~Tadepalli.
