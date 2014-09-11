@@ -8,7 +8,7 @@
 \end{figure}
 
 
-$H$ has at her disposal an `HQ dashboard' that provides an over\-view of the game area, including real-time information of the players' locations (see Figure \ref{fig:ui2}). The dashboard provides a broadcast messaging widget, and a player status widget so that the responders' exposure and health levels can be monitored. $H$ can further monitor the  current team and task allocations to individual responders by $PA$ (by clicking on a button). The radioactive cloud (see Section \ref{sec:radiation} for more details) is graphically depicted as a heatmap (`Hotter'  (red) zones correspond to higher levels of radiation). Crucially, only  $H$ can 'see' the entire cloud, while field responders are restricted to seeing a reading for their current location on their Geiger counters --- this is a deliberate design choice to require frequent communication between HQ and field responders. 
+$H$ has at her disposal an `HQ dashboard' that provides an over\-view of the game area, including real-time information of the players' locations (see Figure \ref{fig:ui2}). The dashboard provides a broadcast messaging widget, and a player status widget so that the responders' exposure and health levels can be monitored. $H$ can further monitor the  current team and task allocations to individual responders by $PA$ (by clicking on a button). The radioactive cloud (see Appendices \ref{sec:radiation} and \ref{sec:appendix} for more details) is graphically depicted as a heatmap (`Hotter'  (red) zones correspond to higher levels of radiation). Crucially, only  $H$ can 'see' the entire cloud, while field responders are restricted to seeing a reading for their current location on their Geiger counters --- this is a deliberate design choice to require frequent communication between HQ and field responders. 
 \begin{figure}[htbp]
 \includegraphics[width=\columnwidth]{dashboard.png}
 \caption{HQ interface.}
@@ -36,7 +36,7 @@ $H$ has at her disposal an `HQ dashboard' that provides an over\-view of the gam
 %There can interact directly with field players through a task tab (Figure xx) and agent plans are also visible to HQ's dashboard interface.
 Once a plan is received from $PA$, the AtomicOrchid game engine splits the plan for a given team into individual task allocations for each player and sends them to their mobile responder app. The app presents the task allocation in the task tab, detailing: i) the responder to team up with, ii) the allocated target (using target id), and iii) approximate direction of the target (e.g., north, east).  Once a player accepts a task, an acknowledgement is sent to their teammate, while rejecting a task triggers a new assignment from $PA$. 
 
-Now, in order to create a challenging, dynamic and pressured setting for the game players, $H$, and $PA$, we simulate a radioactive cloud that moves according to simulated wind conditions that mimics real-world cloud movement behaviours. The model we use for this purpose is described in Appendix 1.
+Now, in order to create a challenging, dynamic and pressured setting for the game players, $H$, and $PA$, we simulate a radioactive cloud that moves according to simulated wind conditions that mimics real-world cloud movement behaviours. The model we use for this purpose is described in Appendices \ref{sec:radiation} and \ref{sec:appendix}.
 
 %Furthermore, $H$ is provided with a visualisation of task allocations for each player on demand (by button press), to help monitor the task allocation computed by the agent.
 
