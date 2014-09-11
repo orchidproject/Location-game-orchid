@@ -1,17 +1,17 @@
 info: socket.io started
 node-router server instance at unix:8080
+warn: error raised: Error: listen EADDRINUSE
 
 events.js:72
         throw er; // Unhandled 'error' event
               ^
-Error: Access denied for user 'wxj'@'localhost' (using password: YES)
-    at Function.Client._packetToUserObject (/Users/wxj/Projects/Location-game-orchid/node_modules/mysql/lib/client.js:387:11)
-    at Client._handlePacket (/Users/wxj/Projects/Location-game-orchid/node_modules/mysql/lib/client.js:300:43)
-    at Parser.EventEmitter.emit (events.js:95:17)
-    at emitPacket (/Users/wxj/Projects/Location-game-orchid/node_modules/mysql/lib/parser.js:71:14)
-    at Parser.write (/Users/wxj/Projects/Location-game-orchid/node_modules/mysql/lib/parser.js:576:7)
-    at Socket.EventEmitter.emit (events.js:95:17)
-    at Socket.<anonymous> (_stream_readable.js:736:14)
-    at Socket.EventEmitter.emit (events.js:92:17)
-    at emitReadable_ (_stream_readable.js:408:10)
-    at emitReadable (_stream_readable.js:404:5)
+Error: listen EADDRINUSE
+    at errnoException (net.js:901:11)
+    at Server._listen2 (net.js:1039:14)
+    at listen (net.js:1061:10)
+    at net.js:1135:9
+    at dns.js:72:18
+    at process._tickCallback (node.js:415:13)
+    at Function.Module.runMain (module.js:499:11)
+    at startup (node.js:119:16)
+    at node.js:901:3

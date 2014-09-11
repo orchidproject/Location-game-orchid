@@ -77,7 +77,7 @@ post '/test/:game_id/:frame/fetchplan' do
 	data["plan_id"] = plan_id
 	log = {:sent=> data, :plan => JSON.parse(res)}.to_json
 
-	File.open("logs/log-"+params[:game_id].to_s+"-4","a") do |f|
+	File.open("logs/log-"+params[:game_id].to_s+"-4","a+") do |f|
 		puts "writing"
 		f.write(log)
 	end 

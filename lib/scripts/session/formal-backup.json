@@ -3,219 +3,11 @@
     "instructions": [],
     "tasks": [
         {
-            "type": 1,
-            "latitude": "18.2336",
-            "longitude": "-72.5351",
-            "state": 4,
-            "shared_id": 0,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 1,
-            "latitude": "18.4123",
-            "longitude": "-72.4524",
-            "state": 4,
-            "shared_id": 15,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 0,
-            "latitude": "18.4496",
-            "longitude": "-72.2868",
-            "state": 4,
-            "shared_id": 23,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 1,
-            "latitude": "18.476",
-            "longitude": "-72.246",
-            "state": 4,
-            "shared_id": 19,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 0,
-            "latitude": "18.4832",
-            "longitude": "-72.5171",
-            "state": 4,
-            "shared_id": 24,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 0,
-            "latitude": "18.4856",
-            "longitude": "-72.3132",
-            "state": 4,
-            "shared_id": 12,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 1,
-            "latitude": "18.4928",
-            "longitude": "-72.588",
-            "state": 4,
-            "shared_id": 25,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 3,
-            "latitude": "18.4964",
-            "longitude": "-72.4392",
-            "state": 4,
-            "shared_id": 3,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
             "type": 0,
             "latitude": "18.512",
-            "longitude": "-72.2856",
+            "longitude": "-72.2859",
             "state": 4,
-            "shared_id": 1,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 1,
-            "latitude": "18.5192",
-            "longitude": "-72.2376",
-            "state": 4,
-            "shared_id": 11,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 2,
-            "latitude": "18.5216",
-            "longitude": "-72.5868",
-            "state": 4,
-            "shared_id": 26,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 1,
-            "latitude": "18.5276",
-            "longitude": "-72.3744",
-            "state": 4,
-            "shared_id": 2,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-
-
-
-
-        {
-            "type": 1,
-            "latitude": "18.2336",
-            "longitude": "-72.5351",
-            "state": 4,
-            "shared_id": 2,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 3,
-            "latitude": "18.5372",
-            "longitude": "-72.4067",
-            "state": 4,
-            "shared_id": 6,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 1,
-            "latitude": "18.5396",
-            "longitude": "-72.3348",
-            "state": 4,
-            "shared_id": 4,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 3,
-            "latitude": "18.5432",
-            "longitude": "-72.5196",
-            "state": 4,
-            "shared_id": 7,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 2,
-            "latitude": "18.5444",
-            "longitude": "-72.3023",
-            "state": 4,
-            "shared_id": 5,
-            "players": "",
-            "requirement": [
-                "transporter",
-                "soldier"
-            ]
-        },
-        {
-            "type": 3,
-            "latitude": "18.572",
-            "longitude": "-72.2843",
-            "state": 4,
-            "shared_id": 13,
+            "id": 57,
             "players": "",
             "requirement": [
                 "transporter",
@@ -224,23 +16,34 @@
         },
         {
             "type": 0,
-            "latitude": "18.596",
-            "longitude": "-72.2244",
+            "latitude": "18.522",
+            "longitude": "-72.372",
             "state": 4,
-            "shared_id": 9,
+            "id": 58,
             "players": "",
             "requirement": [
                 "transporter",
                 "soldier"
             ]
         },
-        
         {
-            "type": 1,
-            "latitude": "18.5972",
-            "longitude": "-72.2856",
+            "type": 0,
+            "latitude": "18.526",
+            "longitude": "-72.435",
             "state": 4,
-            "shared_id": 8,
+            "id": 59,
+            "players": "",
+            "requirement": [
+                "transporter",
+                "soldier"
+            ]
+        },
+        {
+            "type": 0,
+            "latitude": "18.528",
+            "longitude": "-72.3384",
+            "state": 4,
+            "id": 60,
             "players": "",
             "requirement": [
                 "transporter",
@@ -249,53 +52,124 @@
         },
         {
             "type": 2,
-            "latitude": "18.626",
-            "longitude": "-72.2712",
+            "latitude": "18.53",
+            "longitude": "-72.3342",
             "state": 4,
-            "shared_id": 29,
+            "id": 61,
             "players": "",
             "requirement": [
-                "transporter",
-                "soldier"
+                "firefighter",
+                "medic"
             ]
         },
         {
-            "type": 3,
-            "latitude": "18.6512",
-            "longitude": "-72.2783",
+            "type": 2,
+            "latitude": "18.536",
+            "longitude": "-72.351",
             "state": 4,
-            "shared_id": 10,
+            "id": 62,
             "players": "",
             "requirement": [
-                "transporter",
-                "soldier"
+                "firefighter",
+                "medic"
+            ]
+        },
+        {
+            "type": 2,
+            "latitude": "18.536",
+            "longitude": "-72.3321",
+            "state": 4,
+            "id": 63,
+            "players": "",
+            "requirement": [
+                "firefighter",
+                "medic"
+            ]
+        },
+        {
+            "type": 2,
+            "latitude": "18.54",
+            "longitude": "-72.3363",
+            "state": 4,
+            "id": 64,
+            "players": "",
+            "requirement": [
+                "firefighter",
+                "medic"
             ]
         },
         {
             "type": 1,
-            "latitude": "18.6524",
-            "longitude": "-72.0936",
+            "latitude": "18.54",
+            "longitude": "-72.3153",
             "state": 4,
-            "shared_id": 16,
+            "id": 65,
             "players": "",
             "requirement": [
                 "transporter",
+                "medic"
+            ]
+        },
+        {
+            "type": 1,
+            "latitude": "18.544",
+            "longitude": "-72.3048",
+            "state": 4,
+            "id": 66,
+            "players": "",
+            "requirement": [
+                "transporter",
+                "medic"
+            ]
+        },
+        {
+            "type": 1,
+            "latitude": "18.55",
+            "longitude": "-72.5169",
+            "state": 4,
+            "id": 67,
+            "players": "",
+            "requirement": [
+                "transporter",
+                "medic"
+            ]
+        },
+        {
+            "type": 1,
+            "latitude": "18.582",
+            "longitude": "-72.2313",
+            "state": 4,
+            "id": 68,
+            "players": "",
+            "requirement": [
+                "transporter",
+                "medic"
+            ]
+        },
+        {
+            "type": 3,
+            "latitude": "18.634",
+            "longitude": "-72.267",
+            "state": 4,
+            "id": 69,
+            "players": "",
+            "requirement": [
+                "firefighter",
                 "soldier"
             ]
         },
-         {
+        {
             "type": 3,
-            "latitude": "18.7712",
-            "longitude": "-72.5124",
+            "latitude": "18.83",
+            "longitude": "-71.9373",
             "state": 4,
-            "shared_id": 20,
+            "id": 70,
             "players": "",
             "requirement": [
-                "transporter",
+                "firefighter",
                 "soldier"
             ]
         }
-        
     ],
     "grid_size": "1500.000000",
     "sim_lat": "18.855610",

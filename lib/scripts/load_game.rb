@@ -6,7 +6,8 @@ game = Game.create(:latitude => 18.5, :longitude=> -72,
 	:sim_lng => data["sim_lng"],
 	:sim_update_interval => data["sim_update_interval"],
 	:simulation_file => data["simulation_file"],
-	:terrains => data["terrains"].to_s
+	:terrains => data["terrains"].to_s,
+	:grid_size => data["grid_size"].to_i
 ) 
 
 =begin
