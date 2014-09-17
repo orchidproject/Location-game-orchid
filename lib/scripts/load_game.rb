@@ -29,16 +29,16 @@ end
 count = 0
 data["tasks"].each do |p|
 
-	game.tasks.create(
+	task = game.tasks.create(
 		:latitude => p["latitude"] ,
 		:longitude =>p["longitude"],
 		:type =>p["type"],
 		:state => 3,
 		:players => p["players"],
-		:shared_id => count
 	) 
-
-	count+=1
+	task.shared_id = p["shared_id"]
+	task.save
+	
 end
 
 data["dropoffpoints"].each do |p|

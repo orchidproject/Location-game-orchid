@@ -50,10 +50,7 @@ class Controller < Sinatra::Base
 			return {:state => "ok"}.to_json
 			#need to broadcast
 
-		end 
-
-
-		if t == nil
+		elsif t == nil
 			t = Task.create(
 				:shared_id => data["target_id"],
 				:game_layer_id => params[:layer_id],
