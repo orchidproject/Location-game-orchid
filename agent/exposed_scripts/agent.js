@@ -20,7 +20,7 @@ var game_id=process.argv[2];
 var role=process.argv[3];
 
 var players =  [];
-var dp = [{lat:18.694383,lng:-72.3257446},{lat:18.5993952,lng:-72.0826721}];
+var dp = [{lat:18.532243,lng:-72.303938},{lat:18.570650,lng:-72.310204}];
 
 var Helper = require('../agent_helper');
 var helper = new Helper(game_id);
@@ -164,8 +164,8 @@ function mainloop(id){
     }, 500);
     
    
-    p.lat = 18.694383 ;
-    p.lng = -72.3257446;
+    p.lat = 18.532243 ;
+    p.lng = -72.303938;
     
     /*
     var path = null;
@@ -245,7 +245,7 @@ MoveEvent.prototype=new events.EventEmitter;
 var event= new MoveEvent;
 
 function moveTruck(ori,des,id){
-    var speed = 3; //1 m/s
+    var speed = 50; //1 m/s
     var p = players[id];
 
     //if(id%2==0) {console.log("from " +JSON.stringify(ori)+ " to " + JSON.stringify(des));}

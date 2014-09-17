@@ -69,7 +69,7 @@ class Task
       
       self.game.players.each do |p|
         next if p.skill == 4
-        if (p.distance_to self.latitude, self.longitude) <20 #approxi check
+        if (p.distance_to self.latitude, self.longitude) < 100 #approxi check
           puts "player nearby detected #{p.distance_to self.latitude, self.longitude} task: #{p.current_task}"
           if p.current_task == -1 #player is idle
             

@@ -73,6 +73,7 @@ class Controller < Sinatra::Base
 	end
 =end
     game.tasks.each do |t|
+    	  puts t.id
           task<<{
               :id=>t.id,
               :latitude => t.latitude.to_s('F'),
