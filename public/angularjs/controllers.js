@@ -739,6 +739,10 @@ app.controller("NewAssignmentCtrl", function($scope,$timeout,$interval,dataServi
       			assig.task_id = task_id;
       			//reset task object
       			assig.task = dataService.getTaskById(task_id);
+
+      			assig.path1 = [ { lat: assig.task.latitude , lng: assig.task.longitude } ];
+      			assig.path2 = [ { lat: assig.task.latitude , lng: assig.task.longitude } ];
+
       			validateAssigments(assig);
 
       			clearEmptyAssignments();

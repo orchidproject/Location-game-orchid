@@ -34,7 +34,7 @@ data["tasks"].each do |p|
 		:longitude =>p["longitude"],
 		:type =>p["type"],
 		:state => 3,
-		:players => p["players"],
+		:players => p["players"]
 	) 
 	task.shared_id = p["shared_id"]
 	task.save

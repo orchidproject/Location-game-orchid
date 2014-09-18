@@ -3,33 +3,33 @@ parsed: localhost
 parsed: localhost
 parsed: localhost
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"application/json","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-game join status: {"user_id":57,"skill":"medic"}
+HEADERS: {"content-length":"30","content-type":"application/json","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"medic","user_id":73}
 STATUS: 200
-HEADERS: {"content-length":"36","access-control-allow-origin":"*","content-type":"application/json","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-game join status: {"user_id":58,"skill":"firefighter"}
+HEADERS: {"content-length":"36","content-type":"application/json","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"firefighter","user_id":74}
 STATUS: 200
-HEADERS: {"content-length":"32","access-control-allow-origin":"*","content-type":"application/json","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-game join status: {"user_id":59,"skill":"soldier"}
+HEADERS: {"content-length":"32","content-type":"application/json","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"soldier","user_id":75}
 STATUS: 200
-HEADERS: {"content-length":"36","access-control-allow-origin":"*","content-type":"application/json","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-game join status: {"user_id":60,"skill":"transporter"}
+HEADERS: {"content-length":"36","content-type":"application/json","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"transporter","user_id":76}
 parsed: localhost
 parsed: localhost
 parsed: localhost
 parsed: localhost
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"application/json","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-game join status: {"user_id":61,"skill":"medic"}
+HEADERS: {"content-length":"30","content-type":"application/json","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"medic","user_id":77}
 STATUS: 200
-HEADERS: {"content-length":"36","access-control-allow-origin":"*","content-type":"application/json","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-game join status: {"user_id":62,"skill":"firefighter"}
+HEADERS: {"content-length":"36","content-type":"application/json","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"firefighter","user_id":78}
 STATUS: 200
-HEADERS: {"content-length":"32","access-control-allow-origin":"*","content-type":"application/json","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-game join status: {"user_id":63,"skill":"soldier"}
+HEADERS: {"content-length":"32","content-type":"application/json","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"soldier","user_id":79}
 STATUS: 200
-HEADERS: {"content-length":"36","access-control-allow-origin":"*","content-type":"application/json","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-game join status: {"user_id":64,"skill":"transporter"}
+HEADERS: {"content-length":"36","content-type":"application/json","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"transporter","user_id":80}
 test: 0
 test: 1
 test: 2
@@ -38,489 +38,290 @@ test: 4
 test: 5
 test: 6
 test: 7
-count:0 ratio:0
-instruction: {"status":1,"path":[{"lng":-72.3032691430676,"lat":18.5341985898912},{"lng":-72.3013714042981,"lat":18.5359973127979},{"lng":-72.2994736655286,"lat":18.5377960357046},{"lng":-72.2975759267591,"lat":18.5377960357046},{"lng":-72.2956781879896,"lat":18.5377960357046},{"lng":"-0.72294E2","lat":"0.185372E2"}],"frame_id":29,"player_id":57,"direction":"go","frame_size":8,"confirmed":1,"teammate":60,"deadline":157,"task":845,"plan_id":8,"id":207}
-{"status":1,"path":[{"lng":-72.3032691430676,"lat":18.5341985898912},{"lng":-72.3013714042981,"lat":18.5359973127979},{"lng":-72.2994736655286,"lat":18.5377960357046},{"lng":-72.2975759267591,"lat":18.5377960357046},{"lng":-72.2956781879896,"lat":18.5377960357046},{"lng":"-0.72294E2","lat":"0.185372E2"}],"frame_id":29,"player_id":57,"direction":"go","frame_size":8,"confirmed":1,"teammate":60,"deadline":157,"task":845,"plan_id":8,"id":207}
-begin drop off 57 : 60
+instruction: {"status":1,"path":[{"lng":"-72.3096","lat":"18.5504"},{"lng":"-0.723096E2","lat":"0.185504E2"}],"frame_id":41,"player_id":73,"direction":"go","frame_size":8,"confirmed":1,"teammate":76,"deadline":null,"task":879,"plan_id":11,"id":251}
+{"status":1,"path":[{"lng":"-72.3096","lat":"18.5504"},{"lng":"-0.723096E2","lat":"0.185504E2"}],"frame_id":41,"player_id":73,"direction":"go","frame_size":8,"confirmed":1,"teammate":76,"deadline":null,"task":879,"plan_id":11,"id":251}
+begin drop off 73 : 76
 test: 8
-count:1 ratio:0.125
-instruction: {"status":1,"path":[{"lng":-72.3032691430676,"lat":18.5341985898912},{"lng":-72.3013714042981,"lat":18.5359973127979},{"lng":-72.2994736655286,"lat":18.5377960357046},{"lng":-72.2975759267591,"lat":18.5377960357046},{"lng":-72.2956781879896,"lat":18.5377960357046},{"lng":"-0.72294E2","lat":"0.185372E2"}],"frame_id":29,"player_id":60,"direction":"go","frame_size":8,"confirmed":1,"teammate":57,"deadline":157,"task":845,"plan_id":8,"id":208}
-{"status":1,"path":[{"lng":-72.3032691430676,"lat":18.5341985898912},{"lng":-72.3013714042981,"lat":18.5359973127979},{"lng":-72.2994736655286,"lat":18.5377960357046},{"lng":-72.2975759267591,"lat":18.5377960357046},{"lng":-72.2956781879896,"lat":18.5377960357046},{"lng":"-0.72294E2","lat":"0.185372E2"}],"frame_id":29,"player_id":60,"direction":"go","frame_size":8,"confirmed":1,"teammate":57,"deadline":157,"task":845,"plan_id":8,"id":208}
-begin drop off 60 : 57
+instruction: {"status":1,"path":[{"lng":"-72.3096","lat":"18.5504"},{"lng":"-0.723096E2","lat":"0.185504E2"}],"frame_id":41,"player_id":76,"direction":"go","frame_size":8,"confirmed":1,"teammate":73,"deadline":null,"task":879,"plan_id":11,"id":252}
+{"status":1,"path":[{"lng":"-72.3096","lat":"18.5504"},{"lng":"-0.723096E2","lat":"0.185504E2"}],"frame_id":41,"player_id":76,"direction":"go","frame_size":8,"confirmed":1,"teammate":73,"deadline":null,"task":879,"plan_id":11,"id":252}
+begin drop off 76 : 73
 test: 9
-count:2 ratio:0.25
-instruction: {"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5413934815181},{"lng":-72.3165533144541,"lat":18.5413934815181},{"lng":-72.3184510532236,"lat":18.5413934815181},{"lng":"-0.723168E2","lat":"0.185408E2"}],"frame_id":29,"player_id":58,"direction":"go","frame_size":8,"confirmed":1,"teammate":59,"deadline":95,"task":848,"plan_id":8,"id":209}
-{"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5413934815181},{"lng":-72.3165533144541,"lat":18.5413934815181},{"lng":-72.3184510532236,"lat":18.5413934815181},{"lng":"-0.723168E2","lat":"0.185408E2"}],"frame_id":29,"player_id":58,"direction":"go","frame_size":8,"confirmed":1,"teammate":59,"deadline":95,"task":848,"plan_id":8,"id":209}
-begin drop off 58 : 59
+instruction: {"status":1,"path":[],"frame_id":41,"player_id":74,"direction":"stop","frame_size":8,"confirmed":1,"teammate":-1,"deadline":0,"task":-1,"plan_id":11,"id":253}
 test: 10
-count:3 ratio:0.375
-instruction: {"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5413934815181},{"lng":-72.3165533144541,"lat":18.5413934815181},{"lng":-72.3184510532236,"lat":18.5413934815181},{"lng":"-0.723168E2","lat":"0.185408E2"}],"frame_id":29,"player_id":59,"direction":"go","frame_size":8,"confirmed":1,"teammate":58,"deadline":95,"task":848,"plan_id":8,"id":210}
-{"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5413934815181},{"lng":-72.3165533144541,"lat":18.5413934815181},{"lng":-72.3184510532236,"lat":18.5413934815181},{"lng":"-0.723168E2","lat":"0.185408E2"}],"frame_id":29,"player_id":59,"direction":"go","frame_size":8,"confirmed":1,"teammate":58,"deadline":95,"task":848,"plan_id":8,"id":210}
-begin drop off 59 : 58
+instruction: {"status":1,"path":[],"frame_id":41,"player_id":75,"direction":"stop","frame_size":8,"confirmed":1,"teammate":-1,"deadline":0,"task":-1,"plan_id":11,"id":254}
 test: 11
-count:4 ratio:0.5
-instruction: {"status":1,"path":[{"lng":-72.3032691430676,"lat":18.5341985898912},{"lng":-72.3032691430676,"lat":18.5359973127979},{"lng":-72.3032691430676,"lat":18.5377960357046},{"lng":-72.3032691430676,"lat":18.5395947586114},{"lng":-72.3032691430676,"lat":18.5413934815181},{"lng":-72.3032691430676,"lat":18.5431922044249},{"lng":-72.3032691430676,"lat":18.5449909273316},{"lng":"-0.723024E2","lat":"0.185444E2"}],"frame_id":29,"player_id":61,"direction":"go","frame_size":8,"confirmed":1,"teammate":62,"deadline":130,"task":849,"plan_id":8,"id":211}
-{"status":1,"path":[{"lng":-72.3032691430676,"lat":18.5341985898912},{"lng":-72.3032691430676,"lat":18.5359973127979},{"lng":-72.3032691430676,"lat":18.5377960357046},{"lng":-72.3032691430676,"lat":18.5395947586114},{"lng":-72.3032691430676,"lat":18.5413934815181},{"lng":-72.3032691430676,"lat":18.5431922044249},{"lng":-72.3032691430676,"lat":18.5449909273316},{"lng":"-0.723024E2","lat":"0.185444E2"}],"frame_id":29,"player_id":61,"direction":"go","frame_size":8,"confirmed":1,"teammate":62,"deadline":130,"task":849,"plan_id":8,"id":211}
-begin drop off 61 : 62
+instruction: {"status":1,"path":[],"frame_id":41,"player_id":77,"direction":"stop","frame_size":8,"confirmed":1,"teammate":-1,"deadline":0,"task":-1,"plan_id":11,"id":255}
 test: 12
-count:5 ratio:0.625
-instruction: {"status":1,"path":[{"lng":-72.3032691430676,"lat":18.5341985898912},{"lng":-72.3032691430676,"lat":18.5359973127979},{"lng":-72.3032691430676,"lat":18.5377960357046},{"lng":-72.3032691430676,"lat":18.5395947586114},{"lng":-72.3032691430676,"lat":18.5413934815181},{"lng":-72.3032691430676,"lat":18.5431922044249},{"lng":-72.3032691430676,"lat":18.5449909273316},{"lng":"-0.723024E2","lat":"0.185444E2"}],"frame_id":29,"player_id":62,"direction":"go","frame_size":8,"confirmed":1,"teammate":61,"deadline":130,"task":849,"plan_id":8,"id":212}
-{"status":1,"path":[{"lng":-72.3032691430676,"lat":18.5341985898912},{"lng":-72.3032691430676,"lat":18.5359973127979},{"lng":-72.3032691430676,"lat":18.5377960357046},{"lng":-72.3032691430676,"lat":18.5395947586114},{"lng":-72.3032691430676,"lat":18.5413934815181},{"lng":-72.3032691430676,"lat":18.5431922044249},{"lng":-72.3032691430676,"lat":18.5449909273316},{"lng":"-0.723024E2","lat":"0.185444E2"}],"frame_id":29,"player_id":62,"direction":"go","frame_size":8,"confirmed":1,"teammate":61,"deadline":130,"task":849,"plan_id":8,"id":212}
-begin drop off 62 : 61
+instruction: {"status":1,"path":[],"frame_id":41,"player_id":78,"direction":"stop","frame_size":8,"confirmed":1,"teammate":-1,"deadline":0,"task":-1,"plan_id":11,"id":256}
 test: 13
-count:6 ratio:0.75
-instruction: {"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5323998669844},{"lng":-72.3089623593761,"lat":18.5323998669844},{"lng":-72.3108600981456,"lat":18.5323998669844},{"lng":-72.3127578369151,"lat":18.5323998669844},{"lng":-72.3146555756846,"lat":18.5323998669844},{"lng":-72.3165533144541,"lat":18.5323998669844},{"lng":-72.3184510532236,"lat":18.5323998669844},{"lng":-72.3203487919931,"lat":18.5323998669844},{"lng":-72.3222465307626,"lat":18.5323998669844},{"lng":-72.3241442695321,"lat":18.5323998669844},{"lng":-72.3260420083016,"lat":18.5323998669844},{"lng":-72.3279397470711,"lat":18.5323998669844},{"lng":-72.3298374858406,"lat":18.5323998669844},{"lng":"-0.723288E2","lat":"0.185312E2"}],"frame_id":29,"player_id":63,"direction":"go","frame_size":8,"confirmed":1,"teammate":64,"deadline":76,"task":844,"plan_id":8,"id":213}
-{"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5323998669844},{"lng":-72.3089623593761,"lat":18.5323998669844},{"lng":-72.3108600981456,"lat":18.5323998669844},{"lng":-72.3127578369151,"lat":18.5323998669844},{"lng":-72.3146555756846,"lat":18.5323998669844},{"lng":-72.3165533144541,"lat":18.5323998669844},{"lng":-72.3184510532236,"lat":18.5323998669844},{"lng":-72.3203487919931,"lat":18.5323998669844},{"lng":-72.3222465307626,"lat":18.5323998669844},{"lng":-72.3241442695321,"lat":18.5323998669844},{"lng":-72.3260420083016,"lat":18.5323998669844},{"lng":-72.3279397470711,"lat":18.5323998669844},{"lng":-72.3298374858406,"lat":18.5323998669844},{"lng":"-0.723288E2","lat":"0.185312E2"}],"frame_id":29,"player_id":63,"direction":"go","frame_size":8,"confirmed":1,"teammate":64,"deadline":76,"task":844,"plan_id":8,"id":213}
-begin drop off 63 : 64
+instruction: {"status":1,"path":[],"frame_id":41,"player_id":79,"direction":"stop","frame_size":8,"confirmed":1,"teammate":-1,"deadline":0,"task":-1,"plan_id":11,"id":257}
 test: 14
-count:7 ratio:0.875
-instruction: {"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5323998669844},{"lng":-72.3089623593761,"lat":18.5323998669844},{"lng":-72.3108600981456,"lat":18.5323998669844},{"lng":-72.3127578369151,"lat":18.5323998669844},{"lng":-72.3146555756846,"lat":18.5323998669844},{"lng":-72.3165533144541,"lat":18.5323998669844},{"lng":-72.3184510532236,"lat":18.5323998669844},{"lng":-72.3203487919931,"lat":18.5323998669844},{"lng":-72.3222465307626,"lat":18.5323998669844},{"lng":-72.3241442695321,"lat":18.5323998669844},{"lng":-72.3260420083016,"lat":18.5323998669844},{"lng":-72.3279397470711,"lat":18.5323998669844},{"lng":-72.3298374858406,"lat":18.5323998669844},{"lng":"-0.723288E2","lat":"0.185312E2"}],"frame_id":29,"player_id":64,"direction":"go","frame_size":8,"confirmed":1,"teammate":63,"deadline":76,"task":844,"plan_id":8,"id":214}
-{"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5323998669844},{"lng":-72.3089623593761,"lat":18.5323998669844},{"lng":-72.3108600981456,"lat":18.5323998669844},{"lng":-72.3127578369151,"lat":18.5323998669844},{"lng":-72.3146555756846,"lat":18.5323998669844},{"lng":-72.3165533144541,"lat":18.5323998669844},{"lng":-72.3184510532236,"lat":18.5323998669844},{"lng":-72.3203487919931,"lat":18.5323998669844},{"lng":-72.3222465307626,"lat":18.5323998669844},{"lng":-72.3241442695321,"lat":18.5323998669844},{"lng":-72.3260420083016,"lat":18.5323998669844},{"lng":-72.3279397470711,"lat":18.5323998669844},{"lng":-72.3298374858406,"lat":18.5323998669844},{"lng":"-0.723288E2","lat":"0.185312E2"}],"frame_id":29,"player_id":64,"direction":"go","frame_size":8,"confirmed":1,"teammate":63,"deadline":76,"task":844,"plan_id":8,"id":214}
-begin drop off 64 : 63
+instruction: {"status":1,"path":[],"frame_id":41,"player_id":80,"direction":"stop","frame_size":8,"confirmed":1,"teammate":-1,"deadline":0,"task":-1,"plan_id":11,"id":258}
 test: 15
 STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"28","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"28","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:1
-section:1
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:1
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:1
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:2
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:2
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:2
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:3
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:2
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:3
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:3
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:4
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:4
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:3
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:4
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:5
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:5
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:5
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:4
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:6
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:6
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-movement finished
-60 wait for 57
-movement finished
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-begin drop off 57 : 60 path [{"lat":18.537230790096828,"lng":-72.29387382019699},{"lat":18.532243,"lng":-72.303938}]:[{"lat":18.537230790096828,"lng":-72.29387382019699},{"lat":18.532243,"lng":-72.303938}]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:7
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:5
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:7
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-movement finished
-62 wait for 61
-movement finished
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-begin drop off 61 : 62 path [{"lat":18.544658264298345,"lng":-72.30237998177499},{"lat":18.532243,"lng":-72.303938}]:[{"lat":18.544658264298345,"lng":-72.30237998177499},{"lat":18.532243,"lng":-72.303938}]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:6
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:8
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:7
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:9
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-movement finished
-58 wait for 59
-movement finished
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-begin drop off 59 : 58 path [{"lat":18.54085863379602,"lng":-72.31694446229413},{"lat":18.532243,"lng":-72.303938}]:[{"lat":18.54085863379602,"lng":-72.31694446229413},{"lat":18.532243,"lng":-72.303938}]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:10
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:11
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-movement finished
-movement finished
-section:12
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-section:13
-movement finished
-movement finished
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-movement finished
-63 wait for 64
-movement finished
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"28","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-begin drop off 64 : 63 path [{"lat":18.531186075630174,"lng":-72.32936892858527},{"lat":18.532243,"lng":-72.303938}]:[{"lat":18.531186075630174,"lng":-72.32936892858527},{"lat":18.532243,"lng":-72.303938}]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
-BODY: [object Object]
-movement finished
-movement finished
+instruction: {"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5413934815181},{"lng":-72.3165533144541,"lat":18.5413934815181},{"lng":-72.3184510532236,"lat":18.5413934815181},{"lng":"-0.723168E2","lat":"0.185408E2"}],"frame_id":42,"player_id":74,"direction":"go","frame_size":2,"confirmed":1,"teammate":75,"deadline":null,"task":876,"plan_id":12,"id":259}
+{"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5413934815181},{"lng":-72.3165533144541,"lat":18.5413934815181},{"lng":-72.3184510532236,"lat":18.5413934815181},{"lng":"-0.723168E2","lat":"0.185408E2"}],"frame_id":42,"player_id":74,"direction":"go","frame_size":2,"confirmed":1,"teammate":75,"deadline":null,"task":876,"plan_id":12,"id":259}
+begin drop off 74 : 75
 test: 16
+instruction: {"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5413934815181},{"lng":-72.3165533144541,"lat":18.5413934815181},{"lng":-72.3184510532236,"lat":18.5413934815181},{"lng":"-0.723168E2","lat":"0.185408E2"}],"frame_id":42,"player_id":75,"direction":"go","frame_size":2,"confirmed":1,"teammate":74,"deadline":null,"task":876,"plan_id":12,"id":260}
+{"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5413934815181},{"lng":-72.3165533144541,"lat":18.5413934815181},{"lng":-72.3184510532236,"lat":18.5413934815181},{"lng":"-0.723168E2","lat":"0.185408E2"}],"frame_id":42,"player_id":75,"direction":"go","frame_size":2,"confirmed":1,"teammate":74,"deadline":null,"task":876,"plan_id":12,"id":260}
+begin drop off 75 : 74
 test: 17
-test: 18
-test: 19
-test: 20
-test: 21
-test: 22
-test: 23
-movement finished
-movement finished
-test: 24
-test: 25
-test: 26
-test: 27
-test: 28
-test: 29
-test: 30
-test: 31
-count:8 ratio:1
-instruction: {"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3108600981456,"lat":18.5395947586114},{"lng":-72.3108600981456,"lat":18.5413934815181},{"lng":-72.3108600981456,"lat":18.5431922044249},{"lng":-72.3108600981456,"lat":18.5449909273316},{"lng":-72.3108600981456,"lat":18.5467896502383},{"lng":-72.3108600981456,"lat":18.5485883731451},{"lng":-72.3108600981456,"lat":18.5503870960518},{"lng":-72.3108600981456,"lat":18.5521858189585},{"lng":"-0.723096E2","lat":"0.185504E2"}],"frame_id":33,"player_id":61,"direction":"go","frame_size":4,"confirmed":1,"teammate":64,"deadline":110,"task":-1,"plan_id":10,"id":231}
-test: 32
-count:9 ratio:1.125
-instruction: {"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3108600981456,"lat":18.5395947586114},{"lng":-72.3108600981456,"lat":18.5413934815181},{"lng":-72.3108600981456,"lat":18.5431922044249},{"lng":-72.3108600981456,"lat":18.5449909273316},{"lng":-72.3108600981456,"lat":18.5467896502383},{"lng":-72.3108600981456,"lat":18.5485883731451},{"lng":-72.3108600981456,"lat":18.5503870960518},{"lng":-72.3108600981456,"lat":18.5521858189585},{"lng":"-0.723096E2","lat":"0.185504E2"}],"frame_id":33,"player_id":64,"direction":"go","frame_size":4,"confirmed":1,"teammate":61,"deadline":110,"task":-1,"plan_id":10,"id":232}
-test: 33
-count:10 ratio:1.25
-instruction: {"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5395947586114},{"lng":-72.3165533144541,"lat":18.5395947586114},{"lng":-72.3184510532236,"lat":18.5395947586114},{"lng":-72.3203487919931,"lat":18.5395947586114},{"lng":-72.3222465307626,"lat":18.5395947586114},{"lng":-72.3241442695321,"lat":18.5395947586114},{"lng":"-0.723228E2","lat":"0.185384E2"}],"frame_id":33,"player_id":62,"direction":"go","frame_size":4,"confirmed":1,"teammate":63,"deadline":74,"task":846,"plan_id":10,"id":233}
-{"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5395947586114},{"lng":-72.3165533144541,"lat":18.5395947586114},{"lng":-72.3184510532236,"lat":18.5395947586114},{"lng":-72.3203487919931,"lat":18.5395947586114},{"lng":-72.3222465307626,"lat":18.5395947586114},{"lng":-72.3241442695321,"lat":18.5395947586114},{"lng":"-0.723228E2","lat":"0.185384E2"}],"frame_id":33,"player_id":62,"direction":"go","frame_size":4,"confirmed":1,"teammate":63,"deadline":74,"task":846,"plan_id":10,"id":233}
-begin drop off 62 : 63
-test: 34
-count:11 ratio:1.375
-instruction: {"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5395947586114},{"lng":-72.3165533144541,"lat":18.5395947586114},{"lng":-72.3184510532236,"lat":18.5395947586114},{"lng":-72.3203487919931,"lat":18.5395947586114},{"lng":-72.3222465307626,"lat":18.5395947586114},{"lng":-72.3241442695321,"lat":18.5395947586114},{"lng":"-0.723228E2","lat":"0.185384E2"}],"frame_id":33,"player_id":63,"direction":"go","frame_size":4,"confirmed":1,"teammate":62,"deadline":74,"task":846,"plan_id":10,"id":234}
-{"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5395947586114},{"lng":-72.3165533144541,"lat":18.5395947586114},{"lng":-72.3184510532236,"lat":18.5395947586114},{"lng":-72.3203487919931,"lat":18.5395947586114},{"lng":-72.3222465307626,"lat":18.5395947586114},{"lng":-72.3241442695321,"lat":18.5395947586114},{"lng":"-0.723228E2","lat":"0.185384E2"}],"frame_id":33,"player_id":63,"direction":"go","frame_size":4,"confirmed":1,"teammate":62,"deadline":74,"task":846,"plan_id":10,"id":234}
-begin drop off 63 : 62
-test: 35
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+instruction: {"status":1,"path":[{"lng":"-72.294","lat":"18.5372"},{"lng":"-0.72294E2","lat":"0.185372E2"}],"frame_id":43,"player_id":77,"direction":"go","frame_size":2,"confirmed":1,"teammate":80,"deadline":null,"task":873,"plan_id":13,"id":261}
+{"status":1,"path":[{"lng":"-72.294","lat":"18.5372"},{"lng":"-0.72294E2","lat":"0.185372E2"}],"frame_id":43,"player_id":77,"direction":"go","frame_size":2,"confirmed":1,"teammate":80,"deadline":null,"task":873,"plan_id":13,"id":261}
+begin drop off 77 : 80
+test: 18
+instruction: {"status":1,"path":[{"lng":"-72.294","lat":"18.5372"},{"lng":"-0.72294E2","lat":"0.185372E2"}],"frame_id":43,"player_id":80,"direction":"go","frame_size":2,"confirmed":1,"teammate":77,"deadline":null,"task":873,"plan_id":13,"id":262}
+{"status":1,"path":[{"lng":"-72.294","lat":"18.5372"},{"lng":"-0.72294E2","lat":"0.185372E2"}],"frame_id":43,"player_id":80,"direction":"go","frame_size":2,"confirmed":1,"teammate":77,"deadline":null,"task":873,"plan_id":13,"id":262}
+begin drop off 80 : 77
+test: 19
+STATUS: 200
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+instruction: {"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5395947586114},{"lng":-72.3165533144541,"lat":18.5395947586114},{"lng":-72.3184510532236,"lat":18.5395947586114},{"lng":-72.3203487919931,"lat":18.5395947586114},{"lng":-72.3222465307626,"lat":18.5395947586114},{"lng":-72.3241442695321,"lat":18.5395947586114},{"lng":"-0.723228E2","lat":"0.185384E2"}],"frame_id":44,"player_id":78,"direction":"go","frame_size":2,"confirmed":1,"teammate":79,"deadline":null,"task":874,"plan_id":14,"id":263}
+{"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5395947586114},{"lng":-72.3165533144541,"lat":18.5395947586114},{"lng":-72.3184510532236,"lat":18.5395947586114},{"lng":-72.3203487919931,"lat":18.5395947586114},{"lng":-72.3222465307626,"lat":18.5395947586114},{"lng":-72.3241442695321,"lat":18.5395947586114},{"lng":"-0.723228E2","lat":"0.185384E2"}],"frame_id":44,"player_id":78,"direction":"go","frame_size":2,"confirmed":1,"teammate":79,"deadline":null,"task":874,"plan_id":14,"id":263}
+begin drop off 78 : 79
+test: 20
+instruction: {"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5395947586114},{"lng":-72.3165533144541,"lat":18.5395947586114},{"lng":-72.3184510532236,"lat":18.5395947586114},{"lng":-72.3203487919931,"lat":18.5395947586114},{"lng":-72.3222465307626,"lat":18.5395947586114},{"lng":-72.3241442695321,"lat":18.5395947586114},{"lng":"-0.723228E2","lat":"0.185384E2"}],"frame_id":44,"player_id":79,"direction":"go","frame_size":2,"confirmed":1,"teammate":78,"deadline":null,"task":874,"plan_id":14,"id":264}
+{"status":1,"path":[{"lng":-72.3070646206066,"lat":18.5341985898912},{"lng":-72.3089623593761,"lat":18.5359973127979},{"lng":-72.3108600981456,"lat":18.5377960357046},{"lng":-72.3127578369151,"lat":18.5395947586114},{"lng":-72.3146555756846,"lat":18.5395947586114},{"lng":-72.3165533144541,"lat":18.5395947586114},{"lng":-72.3184510532236,"lat":18.5395947586114},{"lng":-72.3203487919931,"lat":18.5395947586114},{"lng":-72.3222465307626,"lat":18.5395947586114},{"lng":-72.3241442695321,"lat":18.5395947586114},{"lng":"-0.723228E2","lat":"0.185384E2"}],"frame_id":44,"player_id":79,"direction":"go","frame_size":2,"confirmed":1,"teammate":78,"deadline":null,"task":874,"plan_id":14,"id":264}
+begin drop off 79 : 78
+test: 21
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 section:1
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+instruction: {"status":1,"path":[{"lng":"-72.342","lat":"18.5468"},{"lng":"-0.72342E2","lat":"0.185468E2"}],"frame_id":45,"player_id":73,"direction":"go","frame_size":2,"confirmed":1,"teammate":76,"deadline":null,"task":878,"plan_id":15,"id":265}
+{"status":1,"path":[{"lng":"-72.342","lat":"18.5468"},{"lng":"-0.72342E2","lat":"0.185468E2"}],"frame_id":45,"player_id":73,"direction":"go","frame_size":2,"confirmed":1,"teammate":76,"deadline":null,"task":878,"plan_id":15,"id":265}
+begin drop off 73 : 76
+test: 22
+instruction: {"status":1,"path":[{"lng":"-72.342","lat":"18.5468"},{"lng":"-0.72342E2","lat":"0.185468E2"}],"frame_id":45,"player_id":76,"direction":"go","frame_size":2,"confirmed":1,"teammate":73,"deadline":null,"task":878,"plan_id":15,"id":266}
+{"status":1,"path":[{"lng":"-72.342","lat":"18.5468"},{"lng":"-0.72342E2","lat":"0.185468E2"}],"frame_id":45,"player_id":76,"direction":"go","frame_size":2,"confirmed":1,"teammate":73,"deadline":null,"task":878,"plan_id":15,"id":266}
+begin drop off 76 : 73
+test: 23
+STATUS: 200
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:1
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 section:2
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:2
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 section:3
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:3
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:1
+STATUS: 200
+HEADERS: {"content-length":"16","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"16","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+movement finished
+80 wait for 77
+movement finished
+STATUS: 200
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+begin drop off 77 : 80 path [{"lat":18.537200205684332,"lng":-72.29399958763535},{"lat":18.532243,"lng":-72.303938}]:[{"lat":18.537200205684332,"lng":-72.29399958763535},{"lat":18.532243,"lng":-72.303938}]
+STATUS: 200
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 section:4
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:4
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 section:5
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:5
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 section:6
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:6
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 section:7
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:7
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+movement finished
+75 wait for 74
+movement finished
+STATUS: 200
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+begin drop off 74 : 75 path [{"lat":18.54085863379602,"lng":-72.31694446229413},{"lat":18.532243,"lng":-72.303938}]:[{"lat":18.54085863379602,"lng":-72.31694446229413},{"lat":18.532243,"lng":-72.303938}]
+STATUS: 200
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 section:8
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
+movement finished
+movement finished
 section:9
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 section:10
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"30","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"30","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 movement finished
-63 wait for 62
+78 wait for 79
 movement finished
 STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
-begin drop off 62 : 63 path [{"lat":18.538447498603283,"lng":-72.32312820211098},{"lat":18.532243,"lng":-72.303938}]:[{"lat":18.538439660829372,"lng":-72.32311625844852},{"lat":18.532243,"lng":-72.303938}]
+begin drop off 79 : 78 path [{"lat":18.538455108979807,"lng":-72.32314079826916},{"lat":18.532243,"lng":-72.303938}]:[{"lat":18.538455108979807,"lng":-72.32314079826916},{"lat":18.532243,"lng":-72.303938}]
 STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
 STATUS: 200
-HEADERS: {"content-length":"29","access-control-allow-origin":"*","content-type":"text/html;charset=utf-8","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
 BODY: [object Object]
+movement finished
+movement finished
+section:1
+STATUS: 200
+HEADERS: {"content-length":"16","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"16","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+movement finished
+76 wait for 73
+movement finished
+STATUS: 200
+HEADERS: {"content-length":"29","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"28","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+begin drop off 73 : 76 path [{"lat":18.546806684660524,"lng":-72.34202698468299},{"lat":18.57065,"lng":-72.310204}]:[{"lat":18.546806684660524,"lng":-72.34202698468299},{"lat":18.57065,"lng":-72.310204}]
+STATUS: 200
+HEADERS: {"content-length":"28","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-length":"28","content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+movement finished
+movement finished
 movement finished
 movement finished
