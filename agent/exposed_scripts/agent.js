@@ -92,7 +92,7 @@ var instruction_count = 0;
 function considerInstruction(data){
 
 
-    if(data.confirmed == 0) return data;
+    /*if(data.confirmed == 0) return data;
 
     var chance = 0;
     console.log("count:" + instruction_count + " ratio:" + instruction_count/8);
@@ -124,7 +124,7 @@ function considerInstruction(data){
     }
 
     
-    rejections[data.player_id] = false;
+    rejections[data.player_id] = false;*/
     return data;
 }
 
