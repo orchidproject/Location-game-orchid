@@ -94,7 +94,7 @@ function considerInstruction(data){
 
     if(data.confirmed == 0) return data;
 
-    var chance = 20;
+    var chance = 0;
     console.log("count:" + instruction_count + " ratio:" + instruction_count/8);
     if((instruction_count/8) < 1){ chance = 0}
     else if((instruction_count/8) == 1){ chance = 100}
