@@ -194,7 +194,7 @@ class Controller < Sinatra::Base
  
   def update_game(game, frame)
 
-         sim = $simulations[game.layer_id]
+     sim = $simulations[game.layer_id]
 	 if(@init_plan_fetched == nil)
 	   agentFetchPlan(game.layer_id,frame)
 	   @init_plan_fetched=true
@@ -202,12 +202,10 @@ class Controller < Sinatra::Base
         
 	 updatePlan = false 
 	 updateSession = false
-         game.tasks.each do |t|
+        game.tasks.each do |t|
          	t.update(socketIO)
-         end
-	
-	 
-         
+        end
+
         game.players.each do |p|
 	    	instruction =  Instruction.last(:player_id => p.id, :status => 3)
 	    	if(instruction != nil)
@@ -235,7 +233,7 @@ class Controller < Sinatra::Base
 				p.exposure = p.exposure + (p.current_exposure*0.2)
                  
 				#broadcast exposure
-				p.updateHealth(socketIO)
+				#p.updateHealth(socketIO)
       			p.broadcast_curr_exposure(socketIO)           
 				p.save
 			end 
