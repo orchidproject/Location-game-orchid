@@ -115,7 +115,9 @@ app.factory("httpService",function($http){
 
 	var aHandleSystem = function(data){
 		if(data == "prov"){
-			alert("Target invalidated");
+			if(confirm("Target invalidated by ProvStore, Show ProvStore ?")){
+				 window.open('https://provenance.ecs.soton.ac.uk/atomicorchid/games/' + G_game_id);
+			}
 		}
 	}
 
