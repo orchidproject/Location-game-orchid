@@ -72,6 +72,7 @@ class Controller < Sinatra::Base
     	end
 	end
 =end
+
     game.tasks.each do |t|
     	  puts t.id
           task<<{
@@ -229,12 +230,12 @@ class Controller < Sinatra::Base
 				p.save
                 p.broadcast(socketIO)
             else
-				p.current_exposure = check_radiation(p.latitude,p.longitude,game.layer_id)
-				p.exposure = p.exposure + (p.current_exposure*0.2)
+				#p.current_exposure = check_radiation(p.latitude,p.longitude,game.layer_id)
+				#p.exposure = p.exposure + (p.current_exposure*0.2)
                  
 				#broadcast exposure
 				#p.updateHealth(socketIO)
-      			p.broadcast_curr_exposure(socketIO)           
+      			#p.broadcast_curr_exposure(socketIO)           
 				p.save
 			end 
             else
