@@ -163,7 +163,7 @@ function receiveTaskData(task){
 	if(existing_task==null){
 		if(task.state == 4) return;
 		
-		var taskIcon= getTaskIcon(task.type,task.id);
+		var taskIcon= new google.maps.MarkerImage(getTaskIcon(task.type,task.id),playerIconSize, playerIconOrigin, playerIconAnchor);
 		var point = new google.maps.LatLng(task.latitude,task.longitude);
 		if (task.state==2){
 			taskIcon=new google.maps.MarkerImage(tick, playerIconSize, playerIconOrigin, playerIconAnchor);
@@ -213,7 +213,7 @@ function receiveTaskData(task){
 			}
 
 	        else if(task.state != 2){
-				var taskIcon = getTaskIcon(task.type,task.id);
+				var taskIcon= new google.maps.MarkerImage(getTaskIcon(task.type,task.id),playerIconSize, playerIconOrigin, playerIconAnchor);
 				existing_task.marker.setIcon(taskIcon); 
 			}
 
