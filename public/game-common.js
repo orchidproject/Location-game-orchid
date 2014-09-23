@@ -28,7 +28,7 @@ var cg = {
 		return new google.maps.Point(w,h);
 	},
 	playerImage: function(name, skill) {
-		return new google.maps.MarkerImage("/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png", new google.maps.Size(30 , 30), new google.maps.Point(0,0), new google.maps.Point(10, 30), new google.maps.Size(30 , 30));
+		return new google.maps.MarkerImage("/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png", new google.maps.Size(50 , 58), new google.maps.Point(0,0), new google.maps.Point(10, 30), new google.maps.Size(30 , 30));
 	},
 	imageSrc: function(name, skill) {
 		return "/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png";
@@ -163,7 +163,7 @@ function receiveTaskData(task){
 	if(existing_task==null){
 		if(task.state == 4) return;
 		
-		var taskIcon= new google.maps.MarkerImage(getTaskIcon(task.type,task.id),playerIconSize, playerIconOrigin, playerIconAnchor);
+		var taskIcon= getTaskIcon(task.type,task.id);
 		var point = new google.maps.LatLng(task.latitude,task.longitude);
 		if (task.state==2){
 			taskIcon=new google.maps.MarkerImage(tick, playerIconSize, playerIconOrigin, playerIconAnchor);
@@ -213,7 +213,7 @@ function receiveTaskData(task){
 			}
 
 	        else if(task.state != 2){
-				var taskIcon= new google.maps.MarkerImage(getTaskIcon(task.type,task.id),playerIconSize, playerIconOrigin, playerIconAnchor);
+				var taskIcon= getTaskIcon(task.type,task.id);
 				existing_task.marker.setIcon(taskIcon); 
 			}
 
