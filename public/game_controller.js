@@ -7,7 +7,7 @@ var setup = false;
 
 var lastRequestTime = 0;
 
-var playerIconSize = new google.maps.Size(32, 32);
+var playerIconSize = new google.maps.Size(50, 58);
 var playerIconOrigin = new google.maps.Point(0,0);
 var playerIconAnchor = new google.maps.Point(16, 32);
 var playerIcons = {
