@@ -140,7 +140,9 @@ function clearMovement(id, tm){
 //handlers
 var frame_id = -1;
 function exeInstruction(data){
+    if(data[data.player_id] == null) return;
     if(data.confirmed == 0) return ;
+    
     console.log("instruction: "+ JSON.stringify(data));
     clearMovement(data.player_id,data.teammate);
     if(data.task == -1) return;
