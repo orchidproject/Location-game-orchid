@@ -28,13 +28,13 @@ var cg = {
 		return new google.maps.Point(w,h);
 	},
 	playerImage: function(name, skill) {
-		return new google.maps.MarkerImage("/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png", new google.maps.Size(50 , 58), new google.maps.Point(0,0), new google.maps.Point(10, 30), new google.maps.Size(30 , 30));
+		return new google.maps.MarkerImage("/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png", new google.maps.Size(50 , 58), new google.maps.Point(0,0), new google.maps.Point(10, 30), new google.maps.Size(50 , 58));
 	},
 	imageSrc: function(name, skill) {
 		return "/player/"+name[0]+"/"+name[1]+"/"+skill+"/map_icon.png";
 	},
 	large_number: function(number){
-		return new google.maps.MarkerImage("/img/large_number/" + number + ".png", new google.maps.Size(30, 30), new google.maps.Point(0,0), new google.maps.Point(10, 30), new google.maps.Size(30 , 30));
+		return new google.maps.MarkerImage("/img/large_number/" + number + ".png", new google.maps.Size(50 , 58), new google.maps.Point(0,0), new google.maps.Point(10, 30), new google.maps.Size(50 , 58));
 
 	}
 	
