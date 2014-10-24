@@ -295,7 +295,7 @@ function _oneStep(i,service,callback){
         	_oneStep(++i,service,callback);
         }  
 
-    },interval*2);
+    },interval);
 
 }
 
