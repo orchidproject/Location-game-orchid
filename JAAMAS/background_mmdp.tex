@@ -1,0 +1,80 @@
+\subsection{Coordinating with Decision-Theoretic Planning}
+
+A {\em Markov decision process} (MDP) is a mathematical framework
+for sequential decision making under uncertainty. In the presence
+of multiple agents, this model has been extended to {\em
+multi-agent MDP} (MMDP)~\cite{boutilier1996planning} where the
+action chosen at any state consists of individual action components
+performed by the agents. Theoretically, any algorithm such as {\em
+linear programming}, {\em value iteration}, or {\em policy
+iteration} that can solve MDPs can also be used to solve MMDPs.
+However, it will be very inefficient because the action space grows
+exponentially with the number of agents. To exploit the domain
+structure, {\em factored MDP} (FMDP)~\cite{boutilier2000stochastic}
+was introduced in which the state space is described by a set of
+variables and the transition model is defined by a {\em dynamic
+Bayesian network} (DBN). When the agents can only observe partial
+information of the state, this problem can be modeled by {\em
+multi-agent partially observable MDPs}
+(MPOMDP)~\cite{pynadath2002communicative}. Similar to MMDP, MPOMDP
+can be treated as an extension of single-agent POMDP to multi-agent
+domains. This analogy is useful because MPOMDPs can be solved as
+belief-state MMDPs where a belief state is a probability
+distribution over the states. All the above models assume that
+there is a centralised unit that will select a joint action for the
+team and distribute each action component to the corresponding
+agent. {\em Decentralised POMDP}
+(DEC-POMDP)~\cite{bernstein2002complexity} is a more general model
+where the agents are controlled in a decentralised manner. In other
+words, there is no centralised unit for distributing the actions
+and each agent must choose its own action based on the local
+observation.
+
+In this article, we restrict ourself to model our problem as the
+MMDP because other models do not fit the characteristic of our
+domain or are too difficult to be solved with the size of our
+problem. Specifically, in our domain, there is a headquarter that
+will collect all the information and distribute the commands to
+each filed responder. Therefore, it is not necessary to assume that
+the information is only partial (as in MPOMDPs) or the decision
+must be made locally by the responders (as in DEC-POMDPs).
+Furthermore, those models are much harder than MMDPs and the
+existing algorithms can only solve very small problems. We do not
+use the FMDP because most of the algorithms for solving this model
+require that the value function can be factored additively into a
+set of localized value
+functions~\cite{koller2000policy,guestrin2001multiagent,guestrin2003efficient}
+and our problem does not have such structures. For example, in our
+domain, several tasks may depend on the same responder. If she is
+delayed in one task, this may affect the completion of the other
+tasks. In other words, the completion of one task may depend on the
+completion of the other tasks so the value function can not be
+factored on the basis of the local task states. Our settings are
+also different from the one in~\cite{Chapman2009} where they assume
+that the responders are self-interested and need to negotiate with
+each other on the task that they want to perform next.
+
+As aforementioned, any algorithm that can solve large MDPs can be
+used to solve MMDPs. However, most of the existing approaches are
+offline algorithms (See the most recent
+survey~\cite{kolobov2012planning} for more detail). The main
+disadvantage of offline algorithms is that they must compute a
+complete action mapping for all possible states in the policy. This
+is intractable for problems with huge state space as in our domain.
+In contrast to offline approaches, online algorithms interleave
+planning with execution and only need to compute the best action
+for the current state instead of the entire state space.
+Specifically, we adopt the basic framework of {\em Monte-Carlo tree
+search} (MCTS)~\cite{kocsis2006bandit}, which is currently the
+leading online planning algorithm for large MDPs, and divide our
+online algorithm into two levels: task planning and path planning.
+It is worth pointing out that our method is different from the
+hierarchical planning for MMDPs~\cite{musliner2006coordinated}
+because it requires the task hierarchy to be part of the model and
+our problem does not have such task hierarchy for the responders.
+Indeed, our problem is more closely related to the {\em coalition
+formation with spatial and temporal constraints} (CFST) problem
+where agents form coalitions to complete tasks, each with different
+demands. However, existing work on CFST often assumes that there is
+no uncertainty on the agents' actions and the
+environment~\cite{ramchurn:etal:2010}.

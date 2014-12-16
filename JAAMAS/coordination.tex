@@ -59,7 +59,7 @@ sections describe the procedures of each level in more detail.
 
 \subsection{Task Planning}
 \label{sec:taskplanning}
-\noindent As described in Section \ref{sec:model}, each responder
+\noindent As described in Section \ref{sec:model}, each FR
 $p_i$ is of a specific type $\theta_i \in \Theta$ that determines which task
 she can perform and  a task $t$ can only be completed by a team of
 responders with the required types $\Theta_t$. If, at some point in
@@ -71,7 +71,7 @@ information can be obtained from the state $s \in S$. When a task
 is completed by a chosen team, the task is simply removed from the
 set (that is $T \to T\setminus t_k$ if $t_k$ has been completed).
 
-Now, to capture the efficiency of groupings of responders at
+Now, to capture the efficiency of groupings of FRs at
 performing tasks, we define the value
 of a team $v(C_{jk})$ that reflects the level of performance of
 team $C_k$ in performing task $t_j$. This is computed from the estimated rewards the team obtains for performing $t_j$ (as we show below).  Then, the goal of the task
@@ -90,7 +90,7 @@ transition function of the MMDP.
 \subsubsection{Team Value Calculation}
 \noindent The computation of $v(C_{jk})$ for each team $C_{jk}$ is
 challenging because not all tasks can be completed by one allocation
-(there are usually more targets than responders). Moreover, the policy
+(there are usually more targets than FRs). Moreover, the policy
 after completing task $t_j$ must also be computed by the agent, which
 is time-consuming given the number of states and joint actions. Given
 this, we propose to estimate $v(C_{jk})$ through several
@@ -107,8 +107,8 @@ Algorithm~\ref{alg:taskplanning}.
   \Indm
   \KwIn{the current state $s$,
   a set of unfinished tasks $T$,
-  and a set of free responders $I$.}
-  \KwOut{a task assignment for all responders.}
+  and a set of free FRs $I$.}
+  \KwOut{a task assignment for all FRs.}
   \Indp\BlankLine
   $\{ C_{jk} \} \gets$ compute all possible teams of $I$ for
   $T$ \;
@@ -116,7 +116,7 @@ Algorithm~\ref{alg:taskplanning}.
     \tcp{The $N$ trial simulations}
     \For{$i=1$ \KwTo $N$}{
         $(r, s') \gets$ simulate the process with the starting state $s$
-        until task $k$ is completed by the responders in $C_{jk}$ \;
+        until task $k$ is completed by the FRs in $C_{jk}$ \;
         \If{$s'$ is a terminal state} {
             $v_i(C_{jk}) \gets r$ \;
         } \Else {
@@ -130,10 +130,10 @@ Algorithm~\ref{alg:taskplanning}.
 \end{algorithm}
 
 In each simulation of Algorithm~\ref{alg:taskplanning}, we first
-assign the responders in $C_{jk}$ to task $t_j$ and run the
+assign the FRs in $C_{jk}$ to task $t_j$ and run the
 simulator starting from the current state $s$ (Line 4). After task
 $t_j$ is completed, the simulator returns the sum of the rewards
-$r$ and the new state $s'$ (Line 4). If all the responders in
+$r$ and the new state $s'$ (Line 4). If all the FRs in
 $C_{jk}$ are incapable of doing other tasks (e.g., suffered
 radiation burns), the simulation is terminated (Line
 5). Otherwise, we estimate the expected value of $s'$ using
@@ -146,8 +146,8 @@ the team value (Line 10).
 
 The basic idea of MCTS is to maintain a search tree where each node
 is associated with a state $s$ and each branch is a task assignment
-for all responders. To implement MCTS, the main step is to compute
-an assignment for the free responders (a responder is free when she
+for all FRs. To implement MCTS, the main step is to compute
+an assignment for the free FRs (a FR is free when she
 is capable of doing tasks but not assigned to any) at each
 node of the search tree. This can be computed by
 Equation~\ref{eq:cf} using the team values estimated by the UCB1
@@ -164,11 +164,11 @@ Intuitively, if a team $C_{jk}$ has  a higher average value in the
 trials so far or is rarely selected in the previous visits, it has
 higher chance of being selected in the next visit of the tree node.
 
-As we assume that the type of a responder and the role requirements
+As we assume that the type of a FR and the role requirements
 of each task are static, we can compute all possible team values
 offline. Therefore, in the online phase, we only need to filter out
 the teams for completed tasks and those containing
-incapacitated responders to compute the team set $\{ C_{jk} \}$.
+incapacitated FRs to compute the team set $\{ C_{jk} \}$.
 
 \subsubsection{Coordinated Task Allocation}
 \noindent Given the team values computed above, we then solve the
@@ -184,38 +184,38 @@ following optimisation problem to find the best solution:
 \end{equation}
 where $x_{jk}$ is the boolean variable to indicate whether team
 $C_{jk}$ is selected for task $t_j$ or not, $v(C_{jk})$ is the value of team $C_{jk}$, and $\delta_i(C_{jk}) =
-1$ if responder $p_i\in C_{jk}$ and 0 otherwise. In the
+1$ if FR $p_i\in C_{jk}$ and 0 otherwise. In the
 optimisation, constraint (i) ensures that a task $t_j$ is allocated
 to at most one team (a task does not need more than one group of
-responders) and constraint (ii) ensures that a responder $p_i$ is
-assigned to only one task (a responder cannot do more than one task
+FRs) and constraint (ii) ensures that a FR $p_i$ is
+assigned to only one task (a FR cannot do more than one task
 at the same time). This is a standard Mixed Integer Linear Program
 (MILP) that can be efficiently solved  using off-the-shelf solvers (e.g., IBM CPLEX or lp\_solve).
 
-\subsubsection{Adapting to Responder Requests}\label{sec:adaptive}
+\subsubsection{Adapting to FR Requests}\label{sec:adaptive}
 \noindent An important characteristic of our approach is that it can easily
-incorporate the preferences of the responders. For example, if a
-responder declines a task allocated to it by the planning agent, we
+incorporate the preferences of the FRs. For example, if a
+FR declines a task allocated to it by the planning agent, we
 simply filter out the teams for the task that contain this
-responder. By so doing, the responder will not be assigned to the
-task. Moreover, if a responder prefers to do the tasks with another
-responder, we can increase the weights of the teams that
+FR. By so doing, the FR will not be assigned to the
+task. Moreover, if an FR prefers to do the tasks with another
+FR, we can increase the weights of the teams that
 contain them in Equation~\ref{eq:cf} (by default, all teams
 have identical weights of 1.0). Thus, our approach is adaptive to the
- preferences of human responders.
+ preferences of human FRs.
 
 \subsection{Path Planning}
 \label{sec:pathplanning}
 
 \noindent In the path planning phase, we compute the best path for a
-responder to her assigned task.  Our approach accommodates the
-uncertainties in the radioactive cloud and the responders' actions. We
+FR to her assigned task.  Our approach accommodates the
+uncertainties in the radioactive cloud and the FRs' actions. We
 model this problem as a single-agent MDP that can be defined as a
 tuple, $\mathcal{M}_i = \langle S_i, A_i, P_i, R_i \rangle$, where:
 (1) $S_i = S^G_r \times S_{p_i}$ is the state space, (2) $A_i$ is the
 set of $p_i$'s actions, (3) $P_i = P_r \times P_{p_i}$ is the
 transition function, and (4) $R_i$ is the reward function. In this
-level, responder $p_i$ only needs to consider the states of the
+level, FR $p_i$ only needs to consider the states of the
 radioactive cloud $S^G_r$ and her own states $S_{p_i}$ and her moving
 actions. Similarly, the transition function only needs to consider the
 spreading of the radioactive cloud $P_r$ and the changes of her
