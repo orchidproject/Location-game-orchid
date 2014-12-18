@@ -115,7 +115,7 @@ Algorithm~\ref{alg:taskplanning}.
   \ForEach{$C_{jk} \in \{C_{jk}\}$}{
     \tcp{The $N$ trial simulations}
     \For{$i=1$ \KwTo $N$}{
-        $(r, s') \gets$ simulate the process with the starting state $s$
+        $(r, s') \gets$ run the simulation starting at state $s$
         until task $k$ is completed by the FRs in $C_{jk}$ \;
         \If{$s'$ is a terminal state} {
             $v_i(C_{jk}) \gets r$ \;
@@ -168,10 +168,14 @@ As we assume that the type of a FR and the role requirements
 of each task are static, we can compute all possible team values
 offline. Therefore, in the online phase, we only need to filter out
 the teams for completed tasks and those containing
-incapacitated FRs to compute the team set $\{ C_{jk} \}$.
+incapacitated FRs to compute the team set $\{ C_{jk} \}$. Note that the 
+expected health levels of the FRs after completing tasks are considered
+during the simulations if they enter the radioactive cloud. To simplfy the
+simulations, we assume that there is no rejections from the FRs when 
+completing the tasks. 
 
 \subsubsection{Coordinated Task Allocation}
-\noindent Given the team values computed above, we then solve the
+\noindent Given the team values $v(C_{jk})$ computed above, we then solve the
 following optimisation problem to find the best solution:
 \begin{equation}
   \begin{array}{lll}
