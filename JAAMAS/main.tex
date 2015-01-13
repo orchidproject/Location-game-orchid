@@ -25,6 +25,7 @@
 
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
+\usepackage{subfig}
 \usepackage{times}
 \usepackage{url}
 \usepackage{color}
@@ -156,23 +157,16 @@ have to operate in highly uncertain and dynamic environments where new
 tasks may appear and hazards may be spreading across the disaster
 space. Hence, rescue missions may need to be re-planned as new
 information comes in, tasks are completed, or new hazards are
-discovered. Hence, finding an optimal allocation of resources to
-complete all the tasks is a major computational challenge. Indeed,  a
-number of agent-based solutions have been developed to help human
-commanders perform such planning tasks. However, studies have shown
-that, unless these solutions minimise the cognitive burden imposed on
-human commanders and first responders, they may hinder task
-performance rather than help.  It is therefore crucial to deploy such
-agent-based planning solutions alongside human commanders in order to
-uncover the interactional issues that arise. Hence, in this paper, we
+discovered. Finding an optimal allocation of resources to
+complete all the tasks is a major computational challenge. In this paper, we
 use decision theoretic techniques to solve the task allocation problem
 posed by emergency response planning and then deploy our solution as
 part of an agent-based planning tool in  real-world field trials. By
 so doing, we are able to study the interactional issues that arise
-when humans are guided by an agent. In more detail, we develop an
+when humans are guided by an agent. Specifically, we develop an
 algorithm, based on a  Multi-Agent Markov Decision Process
 representation of the task allocation problem and show that it
-outperforms standard benchmarks from the literature. We then integrate
+outperforms standard baseline solutions. We then integrate
 the algorithm into a planning agent that responds to requests for
 tasks from  participants in a mixed-reality location-based game,
 called AtomicOrchid, that simulates disaster response settings in the
