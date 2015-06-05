@@ -1,0 +1,114 @@
+[
+  {
+    "id":6,
+    "lat":18.5252,
+    "lng":-72.342,
+    "targetType":1,
+    "prov_version":1,
+    "tweets":"MISSING PERSONS : CARREFOUR FEUILLE,500 people need help in Leglise Salem,Little girl still alive,Girl trapped under rubble,St. Gerard Church collapse,Person Trapped - 66 Rue St. Gerard,Collapsed School,People buried in school,Tractor required,St. Gerard Technical School - PEOPLE STILL TRAPPED"
+  },
+  {
+    "id":28,
+    "lat":18.5312,
+    "lng":-72.3288,
+    "targetType":2,
+    "prov_version":1,
+    "tweets":"Child has broken arm  father fears infection. The man is with 7 others.,Food  water  medicine needed near Spanish Embassy,Chantal Landrin stuck under rubble in Turjo,Chantal Landrin trapped,leoni and dominique orisma are alive in turgeau"
+  },
+  {
+    "id":9,
+    "lat":18.5372,
+    "lng":-72.294,
+    "targetType":3,
+    "prov_version":1,
+    "tweets":"TRAPPED,Aid needed Maison de Lumiere,Person trapped in supermarket,Carribean Market: 63 people alive,Rescue team still working at carribean market,Medication needed - diabetics,woman stuck on balcony,Trapped persons,urgent,Destroyed Orphanage"
+  },
+  {
+    "id":30,
+    "lat":18.5384,
+    "lng":-72.3228,
+    "targetType":0,
+    "prov_version":0,
+    "tweets":"EVEILLARD Family,Unknown number of people  drugs  food  water  sanitary material Alix Roi Street on Impasse Champagne,950 people need water  food and medicine by Safari Motors,950 people need food  water  and medicatino in Ruelle Nazon"
+  },
+  {
+    "id":10,
+    "lat":18.5396,
+    "lng":-72.3348,
+    "targetType":1,
+    "prov_version":1,
+    "tweets":"Parliament has collapsed,The tax office has collapsed,American Citizen broken leg - Please Help,Looking for the following person,Prisoners escaped from collapsed prison,Searching for Marie Claire Amardy and children,LOOKING FOR JEAN PIERRE FAMILY,Louis Naomie  26 ans,lelenne cesar..... works in l'opital general.,SEARCH FOR FAMILIES IN DELMAS 13  RUE MERRY"
+  },
+  {
+    "id":11,
+    "lat":18.5408,
+    "lng":-72.3168,
+    "targetType":2,
+    "prov_version":0,
+    "tweets":"Less than 10 persons pulled from UNHQ,Need Help with Crowd Control,Trapped person at UNIBANK BOURDON,Oxfam HQ collapse,8-yr old trapped,Trapped person,Stranded survivors - Food/Water needed!,The Magnitude of Disaster,TRAPPED / stranded survivors,Forestal Family-Found but medical  food and water urgently needed."
+  },
+  {
+    "id":12,
+    "lat":18.5444,
+    "lng":-72.3024,
+    "targetType":3,
+    "prov_version":1,
+    "tweets":"HELP ME FIND MY SISTER NADIA CADET AND HER FAMILY,Missing Person,Searching for Magalie Jaccy,looking for family in haiti,plz help treat my mom  she has a head inj and in critical condition,Robbery,Food water needed at Delmas 75,154 Rue Martin Luther King  in Delmas,Resident in Delmas house 14,Wawel Jean Pierre family needs help"
+  },
+  {
+    "id":31,
+    "lat":18.5468,
+    "lng":-72.342,
+    "targetType":0,
+    "prov_version":2,
+    "tweets":"cholera disease outbreak after haiti eartquake,Water distribution &amp&amp  burning bodies in Champmars,trapped in a restaurant,Report that someone may still be alive at Building Napolin,Food and Water needed at Lycee Toussain Luverture,National Palace damaged,The National Palace  Before &amp After,TRAPPED: Ecole Normale Superieure  Close to Palais de Justice,The Magnitude of a Disaster,People trapped - Please have a site location  check..."
+  },
+  {
+    "id":54,
+    "lat":18.5504,
+    "lng":-72.3096,
+    "targetType":1,
+    "prov_version":3,
+    "tweets":"Factory on Fire in Sogebank,Trapped Persons at Universite Caraibe,Persone Trapped at Carribean University,Help needed in Gressier,People trapped under the rubble at Delmas 17,Persons Trapped,Trapped: Delmas 17,Person trapped in rubble Universtiy Caraibes  Delmas 29,approx. 500 people in Delmas 19.requring food  water  drugs.."
+  },
+  {
+    "id":33,
+    "lat":18.554,
+    "lng":-72.3396,
+    "targetType":2,
+    "prov_version":0,
+    "tweets":"Foyer des Filles de Dieu,New Satellite Photos of Port Damage,Aid needed in Delmas 2,Need medical care"
+  },
+  {
+    "id":55,
+    "lat":18.5552,
+    "lng":-72.3264,
+    "targetType":3,
+    "prov_version":2,
+    "tweets":"Food  water and aid needed at Delmas 18. many houses have collapsed,Food  water and aid needed at Delmas 18. many houses have collapsed,Help in collapsed house needed in Delmas 18,Food  water  and medication needed in Delmas 18"
+  },
+  {
+    "id":32,
+    "lat":18.5564,
+    "lng":-72.3084,
+    "targetType":0,
+    "prov_version":3,
+    "tweets":"Orphanage - 19.Delmas,Students alive under the rubble,Urgent Help Needed,Foyer des Filles de Dieu orphanage needs help 65 kids,Foyer des Filles Orphanage - some needs met  still have needs,Village of Lamothe needs water! Water contaminated."
+  },
+  {
+    "id":56,
+    "lat":18.56,
+    "lng":-72.2952,
+    "targetType":1,
+    "prov_version":0,
+    "tweets":"La Plaza Hotel in Delmas 33,Food and water needed,Trapped person,Trapped person,Food and medical supplies needed at Delmas 33,Water NEEDED,Seriously Injured Uncle AND Son,People with Head injuries in Delmas 33 Z Silo"
+  },
+  {
+    "id":40,
+    "lat":18.572,
+    "lng":-72.2844,
+    "targetType":2,
+    "prov_version":3,
+    "tweets":"Aid needed - Delmas 33  Avenue Mais Gate  Rue St. Pierre  Rue La Paix  Impasse La Gloire"
+  }
+]

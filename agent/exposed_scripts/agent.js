@@ -140,7 +140,8 @@ function clearMovement(id, tm){
 //handlers
 var frame_id = -1;
 function exeInstruction(data){
-    if(data[data.player_id] == null) return;
+    console.log(data);
+    if(players[data.player_id] == null) return;
     if(data.confirmed == 0) return ;
     
     console.log("instruction: "+ JSON.stringify(data));

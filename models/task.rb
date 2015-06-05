@@ -202,8 +202,8 @@ class Task
                 :type=>self.type,
                 :requirement=>self.requirement,
                 :description=> self.description,
-                :longitude => self.longitude.to_s('F'),
-                :latitude => self.latitude.to_s('F'),
+                :longitude => "%.5f" % self.longitude,
+                :latitude => "%.5f" % self.latitude,
                 :state => self.state,
                 :players => self.players
               }

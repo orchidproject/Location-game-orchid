@@ -18,8 +18,8 @@ class Controller < Sinatra::Base
 		
 		player <<{
 		:id => p.id,
-		:latitude => p.latitude.to_s('F'),
-		:longitude => p.longitude.to_s('F'),
+		:latitude => "%.5f" % p.latitude,
+		:longitude => "%.5f" % p.longitude,
 		:initials => p.initials,
 		:skill => p.skill,
 		:status => p.status,
@@ -77,8 +77,8 @@ class Controller < Sinatra::Base
     	  puts t.id
           task<<{
               :id=>t.id,
-              :latitude => t.latitude.to_s('F'),
-              :longitude => t.longitude.to_s('F'),
+              :latitude => "%.5f" % t.latitude,
+              :longitude => "%.5f" % t.longitude,
 	      :type => t.type,
               :state => t.state,
               :requirement => t.requirement,
@@ -107,8 +107,8 @@ class Controller < Sinatra::Base
     game.dropoffpoints.each do |d|
           dropoffpoint<<{
               :id=>d.id,
-              :latitude => d.latitude.to_s('F'),
-              :longitude => d.longitude.to_s('F'),
+              :latitude => "%.5f" % d.latitude,
+              :longitude => "%.5f" % d.longitude,
 		  :radius => d.radius,
           }
     end
@@ -118,7 +118,7 @@ class Controller < Sinatra::Base
 		:sim_lat=> "%f" % game.sim_lat, 
 		:sim_lng=> "%f" % game.sim_lng,
 		:simulation_file=> game.simulation_file,
-		:sim_update_interval => game.sim_update_interval.to_s('F'),
+		:sim_update_interval => "%.5f" % game.sim_update_interval,
 		:grid_size=> "%f" % game.grid_size,
 		:tasks=>task,
 		:dropoffzones=>dropoffpoint,
@@ -137,10 +137,10 @@ class Controller < Sinatra::Base
 	}	
     else
 	response = {
-		:sim_lat=> "%f" % game.sim_lat, 
-		:sim_lng=> "%f" % game.sim_lng,
+		:sim_lat=> "%.5f" % game.sim_lat, 
+		:sim_lng=> "%.5f" % game.sim_lng,
 		:simulation_file=> game.simulation_file,
-		:sim_update_interval => game.sim_update_interval.to_s('F'),
+		:sim_update_interval => '%.5f' % game.sim_update_interval,
 		:grid_size=> "%f" % game.grid_size,
 		:tasks=>task,
 		:dropoffpoints=>dropoffpoint,

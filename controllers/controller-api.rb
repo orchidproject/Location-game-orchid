@@ -74,7 +74,8 @@ class Controller < Sinatra::Base
 	post '/game/:layer_id/reveal_all'  do
 		game = Game.get(params[:layer_id])
 		game.tasks.each do |t|
-			t.state = 2
+			t.state = 3
+                        t.save
 			t.broadcast(socketIO)
 		end
 	end
