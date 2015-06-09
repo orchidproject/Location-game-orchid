@@ -1,1 +1,2274 @@
-6903,6966,6976,7054,7209,30089,30336,4063,4124,4131,21396,21406,21615,21629,21688,21998,22225,22938,22948,23091,24200,24236,24993,30875,30886,31554,31799,31942,32597,32747,1030,1474,1828,2847,3034,3350,3722,17882,4377,4384,4395,8857,8911,8961,6569,6574,6579,6586,6613,6765,6782,6879,6957,7149,8868,8891,9120,12204,21049,21212,3140,3911,4132,4466,4577,4661,9658,6328,6401,11086,4336,9181,11261,11357,11449,11804,11943,12870,12979,31208,6852,6890,6935,7310,7509,7591,7704,7723,7950,7983,
+parsed: localhost
+parsed: localhost
+parsed: localhost
+parsed: localhost
+STATUS: 200
+HEADERS: {"content-type":"application/json","access-control-allow-origin":"*","content-length":"37","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"transporter","user_id":134}
+STATUS: 200
+HEADERS: {"content-type":"application/json","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"medic","user_id":135}
+STATUS: 200
+HEADERS: {"content-type":"application/json","access-control-allow-origin":"*","content-length":"33","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"soldier","user_id":137}
+STATUS: 200
+HEADERS: {"content-type":"application/json","access-control-allow-origin":"*","content-length":"37","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"firefighter","user_id":136}
+parsed: localhost
+parsed: localhost
+parsed: localhost
+STATUS: 200
+HEADERS: {"content-type":"application/json","access-control-allow-origin":"*","content-length":"37","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"transporter","user_id":138}
+STATUS: 200
+HEADERS: {"content-type":"application/json","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"medic","user_id":139}
+STATUS: 200
+HEADERS: {"content-type":"application/json","access-control-allow-origin":"*","content-length":"37","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+game join status: {"skill":"firefighter","user_id":140}
+{ teammate: 139,
+  task: 363,
+  direction: 'north west',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.30982446519003 },
+     { lat: 18.540564903318643, lng: -72.30982446519003 },
+     { lat: 18.541913945498695, lng: -72.30982446519003 },
+     { lat: 18.543262987678748, lng: -72.30982446519003 },
+     { lat: 18.5446120298588, lng: -72.30982446519003 },
+     { lat: 18.545961072038853, lng: -72.30982446519003 },
+     { lat: 18.547310114218906, lng: -72.30982446519003 },
+     { lat: 18.548659156398955, lng: -72.30982446519003 },
+     { lat: 18.550008198579008, lng: -72.30982446519003 },
+     { lat: 18.55135724075906, lng: -72.30982446519003 } ],
+  id: 531,
+  player_id: 134,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 0
+{ teammate: 140,
+  task: 360,
+  direction: 'north west',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.541913945498695, lng: -72.31409401867103 },
+     { lat: 18.541913945498695, lng: -72.31551720316469 },
+     { lat: 18.541913945498695, lng: -72.31694038765836 } ],
+  id: 532,
+  player_id: 135,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 1
+{ teammate: 137,
+  task: 357,
+  direction: 'north east',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.537866818958538, lng: -72.29701580474703 },
+     { lat: 18.537866818958538, lng: -72.29559262025337 },
+     { lat: 18.537866818958538, lng: -72.29416943575971 } ],
+  id: 533,
+  player_id: 136,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 2
+{ teammate: 136,
+  task: 357,
+  direction: 'north east',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.537866818958538, lng: -72.29701580474703 },
+     { lat: 18.537866818958538, lng: -72.29559262025337 },
+     { lat: 18.537866818958538, lng: -72.29416943575971 } ],
+  id: 534,
+  player_id: 137,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 3
+{ teammate: -1,
+  task: -1,
+  direction: 'none',
+  status: 1,
+  path: [],
+  id: 535,
+  player_id: 138,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 4
+{ teammate: 134,
+  task: 363,
+  direction: 'north west',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.30982446519003 },
+     { lat: 18.540564903318643, lng: -72.30982446519003 },
+     { lat: 18.541913945498695, lng: -72.30982446519003 },
+     { lat: 18.543262987678748, lng: -72.30982446519003 },
+     { lat: 18.5446120298588, lng: -72.30982446519003 },
+     { lat: 18.545961072038853, lng: -72.30982446519003 },
+     { lat: 18.547310114218906, lng: -72.30982446519003 },
+     { lat: 18.548659156398955, lng: -72.30982446519003 },
+     { lat: 18.550008198579008, lng: -72.30982446519003 },
+     { lat: 18.55135724075906, lng: -72.30982446519003 } ],
+  id: 536,
+  player_id: 139,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 5
+{ teammate: 135,
+  task: 360,
+  direction: 'north west',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.541913945498695, lng: -72.31409401867103 },
+     { lat: 18.541913945498695, lng: -72.31551720316469 },
+     { lat: 18.541913945498695, lng: -72.31694038765836 } ],
+  id: 537,
+  player_id: 140,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 6
+{ teammate: 139,
+  task: 363,
+  direction: 'go',
+  status: 1,
+  id: 538,
+  player_id: 134,
+  frame_id: 84,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.30982446519003 },
+     { lat: 18.540564903318643, lng: -72.30982446519003 },
+     { lat: 18.541913945498695, lng: -72.30982446519003 },
+     { lat: 18.543262987678748, lng: -72.30982446519003 },
+     { lat: 18.5446120298588, lng: -72.30982446519003 },
+     { lat: 18.545961072038853, lng: -72.30982446519003 },
+     { lat: 18.547310114218906, lng: -72.30982446519003 },
+     { lat: 18.548659156398955, lng: -72.30982446519003 },
+     { lat: 18.550008198579008, lng: -72.30982446519003 },
+     { lat: 18.55135724075906, lng: -72.30982446519003 },
+     { lat: '0.185504E2', lng: '-0.723096E2' } ],
+  confirmed: 1,
+  deadline: null,
+  plan_id: 34 }
+instruction: {"teammate":139,"task":363,"direction":"go","status":1,"id":538,"player_id":134,"frame_id":84,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.30555491170904},{"lat":18.535168734598436,"lng":-72.3069780962027},{"lat":18.53651777677849,"lng":-72.30840128069636},{"lat":18.537866818958538,"lng":-72.30982446519003},{"lat":18.53921586113859,"lng":-72.30982446519003},{"lat":18.540564903318643,"lng":-72.30982446519003},{"lat":18.541913945498695,"lng":-72.30982446519003},{"lat":18.543262987678748,"lng":-72.30982446519003},{"lat":18.5446120298588,"lng":-72.30982446519003},{"lat":18.545961072038853,"lng":-72.30982446519003},{"lat":18.547310114218906,"lng":-72.30982446519003},{"lat":18.548659156398955,"lng":-72.30982446519003},{"lat":18.550008198579008,"lng":-72.30982446519003},{"lat":18.55135724075906,"lng":-72.30982446519003},{"lat":"0.185504E2","lng":"-0.723096E2"}],"confirmed":1,"deadline":null,"plan_id":34}
+{"teammate":139,"task":363,"direction":"go","status":1,"id":538,"player_id":134,"frame_id":84,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.30555491170904},{"lat":18.535168734598436,"lng":-72.3069780962027},{"lat":18.53651777677849,"lng":-72.30840128069636},{"lat":18.537866818958538,"lng":-72.30982446519003},{"lat":18.53921586113859,"lng":-72.30982446519003},{"lat":18.540564903318643,"lng":-72.30982446519003},{"lat":18.541913945498695,"lng":-72.30982446519003},{"lat":18.543262987678748,"lng":-72.30982446519003},{"lat":18.5446120298588,"lng":-72.30982446519003},{"lat":18.545961072038853,"lng":-72.30982446519003},{"lat":18.547310114218906,"lng":-72.30982446519003},{"lat":18.548659156398955,"lng":-72.30982446519003},{"lat":18.550008198579008,"lng":-72.30982446519003},{"lat":18.55135724075906,"lng":-72.30982446519003},{"lat":"0.185504E2","lng":"-0.723096E2"}],"confirmed":1,"deadline":null,"plan_id":34}
+begin drop off 134 : 139
+test: 7
+{ teammate: 134,
+  task: 363,
+  direction: 'go',
+  status: 1,
+  id: 539,
+  player_id: 139,
+  frame_id: 84,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.30982446519003 },
+     { lat: 18.540564903318643, lng: -72.30982446519003 },
+     { lat: 18.541913945498695, lng: -72.30982446519003 },
+     { lat: 18.543262987678748, lng: -72.30982446519003 },
+     { lat: 18.5446120298588, lng: -72.30982446519003 },
+     { lat: 18.545961072038853, lng: -72.30982446519003 },
+     { lat: 18.547310114218906, lng: -72.30982446519003 },
+     { lat: 18.548659156398955, lng: -72.30982446519003 },
+     { lat: 18.550008198579008, lng: -72.30982446519003 },
+     { lat: 18.55135724075906, lng: -72.30982446519003 },
+     { lat: '0.185504E2', lng: '-0.723096E2' } ],
+  confirmed: 1,
+  deadline: null,
+  plan_id: 34 }
+instruction: {"teammate":134,"task":363,"direction":"go","status":1,"id":539,"player_id":139,"frame_id":84,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.30555491170904},{"lat":18.535168734598436,"lng":-72.3069780962027},{"lat":18.53651777677849,"lng":-72.30840128069636},{"lat":18.537866818958538,"lng":-72.30982446519003},{"lat":18.53921586113859,"lng":-72.30982446519003},{"lat":18.540564903318643,"lng":-72.30982446519003},{"lat":18.541913945498695,"lng":-72.30982446519003},{"lat":18.543262987678748,"lng":-72.30982446519003},{"lat":18.5446120298588,"lng":-72.30982446519003},{"lat":18.545961072038853,"lng":-72.30982446519003},{"lat":18.547310114218906,"lng":-72.30982446519003},{"lat":18.548659156398955,"lng":-72.30982446519003},{"lat":18.550008198579008,"lng":-72.30982446519003},{"lat":18.55135724075906,"lng":-72.30982446519003},{"lat":"0.185504E2","lng":"-0.723096E2"}],"confirmed":1,"deadline":null,"plan_id":34}
+{"teammate":134,"task":363,"direction":"go","status":1,"id":539,"player_id":139,"frame_id":84,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.30555491170904},{"lat":18.535168734598436,"lng":-72.3069780962027},{"lat":18.53651777677849,"lng":-72.30840128069636},{"lat":18.537866818958538,"lng":-72.30982446519003},{"lat":18.53921586113859,"lng":-72.30982446519003},{"lat":18.540564903318643,"lng":-72.30982446519003},{"lat":18.541913945498695,"lng":-72.30982446519003},{"lat":18.543262987678748,"lng":-72.30982446519003},{"lat":18.5446120298588,"lng":-72.30982446519003},{"lat":18.545961072038853,"lng":-72.30982446519003},{"lat":18.547310114218906,"lng":-72.30982446519003},{"lat":18.548659156398955,"lng":-72.30982446519003},{"lat":18.550008198579008,"lng":-72.30982446519003},{"lat":18.55135724075906,"lng":-72.30982446519003},{"lat":"0.185504E2","lng":"-0.723096E2"}],"confirmed":1,"deadline":null,"plan_id":34}
+begin drop off 139 : 134
+test: 8
+{ teammate: -1,
+  task: -1,
+  direction: 'stop',
+  status: 1,
+  id: 540,
+  player_id: 135,
+  frame_id: 84,
+  frame_size: 7,
+  path: [],
+  confirmed: 1,
+  deadline: 0,
+  plan_id: 34 }
+instruction: {"teammate":-1,"task":-1,"direction":"stop","status":1,"id":540,"player_id":135,"frame_id":84,"frame_size":7,"path":[],"confirmed":1,"deadline":0,"plan_id":34}
+test: 9
+{ teammate: -1,
+  task: -1,
+  direction: 'stop',
+  status: 1,
+  id: 541,
+  player_id: 136,
+  frame_id: 84,
+  frame_size: 7,
+  path: [],
+  confirmed: 1,
+  deadline: 0,
+  plan_id: 34 }
+instruction: {"teammate":-1,"task":-1,"direction":"stop","status":1,"id":541,"player_id":136,"frame_id":84,"frame_size":7,"path":[],"confirmed":1,"deadline":0,"plan_id":34}
+test: 10
+{ teammate: -1,
+  task: -1,
+  direction: 'stop',
+  status: 1,
+  id: 542,
+  player_id: 137,
+  frame_id: 84,
+  frame_size: 7,
+  path: [],
+  confirmed: 1,
+  deadline: 0,
+  plan_id: 34 }
+instruction: {"teammate":-1,"task":-1,"direction":"stop","status":1,"id":542,"player_id":137,"frame_id":84,"frame_size":7,"path":[],"confirmed":1,"deadline":0,"plan_id":34}
+test: 11
+{ teammate: -1,
+  task: -1,
+  direction: 'stop',
+  status: 1,
+  id: 543,
+  player_id: 138,
+  frame_id: 84,
+  frame_size: 7,
+  path: [],
+  confirmed: 1,
+  deadline: 0,
+  plan_id: 34 }
+instruction: {"teammate":-1,"task":-1,"direction":"stop","status":1,"id":543,"player_id":138,"frame_id":84,"frame_size":7,"path":[],"confirmed":1,"deadline":0,"plan_id":34}
+test: 12
+{ teammate: -1,
+  task: -1,
+  direction: 'stop',
+  status: 1,
+  id: 544,
+  player_id: 140,
+  frame_id: 84,
+  frame_size: 7,
+  path: [],
+  confirmed: 1,
+  deadline: 0,
+  plan_id: 34 }
+instruction: {"teammate":-1,"task":-1,"direction":"stop","status":1,"id":544,"player_id":140,"frame_id":84,"frame_size":7,"path":[],"confirmed":1,"deadline":0,"plan_id":34}
+test: 13
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:1
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:2
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+{ teammate: 140,
+  task: 360,
+  direction: 'go',
+  status: 1,
+  id: 545,
+  player_id: 135,
+  frame_id: 85,
+  frame_size: 2,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.541913945498695, lng: -72.31409401867103 },
+     { lat: 18.541913945498695, lng: -72.31551720316469 },
+     { lat: 18.541913945498695, lng: -72.31694038765836 },
+     { lat: '0.185408E2', lng: '-0.723168E2' } ],
+  confirmed: 1,
+  deadline: null,
+  plan_id: 35 }
+instruction: {"teammate":140,"task":360,"direction":"go","status":1,"id":545,"player_id":135,"frame_id":85,"frame_size":2,"path":[{"lat":18.533819692418383,"lng":-72.30555491170904},{"lat":18.535168734598436,"lng":-72.3069780962027},{"lat":18.53651777677849,"lng":-72.30840128069636},{"lat":18.537866818958538,"lng":-72.30982446519003},{"lat":18.53921586113859,"lng":-72.3112476496837},{"lat":18.540564903318643,"lng":-72.31267083417737},{"lat":18.541913945498695,"lng":-72.31409401867103},{"lat":18.541913945498695,"lng":-72.31551720316469},{"lat":18.541913945498695,"lng":-72.31694038765836},{"lat":"0.185408E2","lng":"-0.723168E2"}],"confirmed":1,"deadline":null,"plan_id":35}
+{"teammate":140,"task":360,"direction":"go","status":1,"id":545,"player_id":135,"frame_id":85,"frame_size":2,"path":[{"lat":18.533819692418383,"lng":-72.30555491170904},{"lat":18.535168734598436,"lng":-72.3069780962027},{"lat":18.53651777677849,"lng":-72.30840128069636},{"lat":18.537866818958538,"lng":-72.30982446519003},{"lat":18.53921586113859,"lng":-72.3112476496837},{"lat":18.540564903318643,"lng":-72.31267083417737},{"lat":18.541913945498695,"lng":-72.31409401867103},{"lat":18.541913945498695,"lng":-72.31551720316469},{"lat":18.541913945498695,"lng":-72.31694038765836},{"lat":"0.185408E2","lng":"-0.723168E2"}],"confirmed":1,"deadline":null,"plan_id":35}
+begin drop off 135 : 140
+test: 14
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+{ teammate: 135,
+  task: 360,
+  direction: 'go',
+  status: 1,
+  id: 546,
+  player_id: 140,
+  frame_id: 85,
+  frame_size: 2,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.541913945498695, lng: -72.31409401867103 },
+     { lat: 18.541913945498695, lng: -72.31551720316469 },
+     { lat: 18.541913945498695, lng: -72.31694038765836 },
+     { lat: '0.185408E2', lng: '-0.723168E2' } ],
+  confirmed: 1,
+  deadline: null,
+  plan_id: 35 }
+instruction: {"teammate":135,"task":360,"direction":"go","status":1,"id":546,"player_id":140,"frame_id":85,"frame_size":2,"path":[{"lat":18.533819692418383,"lng":-72.30555491170904},{"lat":18.535168734598436,"lng":-72.3069780962027},{"lat":18.53651777677849,"lng":-72.30840128069636},{"lat":18.537866818958538,"lng":-72.30982446519003},{"lat":18.53921586113859,"lng":-72.3112476496837},{"lat":18.540564903318643,"lng":-72.31267083417737},{"lat":18.541913945498695,"lng":-72.31409401867103},{"lat":18.541913945498695,"lng":-72.31551720316469},{"lat":18.541913945498695,"lng":-72.31694038765836},{"lat":"0.185408E2","lng":"-0.723168E2"}],"confirmed":1,"deadline":null,"plan_id":35}
+{"teammate":135,"task":360,"direction":"go","status":1,"id":546,"player_id":140,"frame_id":85,"frame_size":2,"path":[{"lat":18.533819692418383,"lng":-72.30555491170904},{"lat":18.535168734598436,"lng":-72.3069780962027},{"lat":18.53651777677849,"lng":-72.30840128069636},{"lat":18.537866818958538,"lng":-72.30982446519003},{"lat":18.53921586113859,"lng":-72.3112476496837},{"lat":18.540564903318643,"lng":-72.31267083417737},{"lat":18.541913945498695,"lng":-72.31409401867103},{"lat":18.541913945498695,"lng":-72.31551720316469},{"lat":18.541913945498695,"lng":-72.31694038765836},{"lat":"0.185408E2","lng":"-0.723168E2"}],"confirmed":1,"deadline":null,"plan_id":35}
+begin drop off 140 : 135
+test: 15
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:3
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:1
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:4
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:2
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:5
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+{ teammate: 137,
+  task: 357,
+  direction: 'go',
+  status: 1,
+  id: 547,
+  player_id: 136,
+  frame_id: 86,
+  frame_size: 2,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.537866818958538, lng: -72.29701580474703 },
+     { lat: 18.537866818958538, lng: -72.29559262025337 },
+     { lat: 18.537866818958538, lng: -72.29416943575971 },
+     { lat: '0.185372E2', lng: '-0.72294E2' } ],
+  confirmed: 1,
+  deadline: 329,
+  plan_id: 36 }
+instruction: {"teammate":137,"task":357,"direction":"go","status":1,"id":547,"player_id":136,"frame_id":86,"frame_size":2,"path":[{"lat":18.533819692418383,"lng":-72.3027085427217},{"lat":18.535168734598436,"lng":-72.30128535822804},{"lat":18.53651777677849,"lng":-72.29986217373437},{"lat":18.537866818958538,"lng":-72.29843898924071},{"lat":18.537866818958538,"lng":-72.29701580474703},{"lat":18.537866818958538,"lng":-72.29559262025337},{"lat":18.537866818958538,"lng":-72.29416943575971},{"lat":"0.185372E2","lng":"-0.72294E2"}],"confirmed":1,"deadline":329,"plan_id":36}
+{"teammate":137,"task":357,"direction":"go","status":1,"id":547,"player_id":136,"frame_id":86,"frame_size":2,"path":[{"lat":18.533819692418383,"lng":-72.3027085427217},{"lat":18.535168734598436,"lng":-72.30128535822804},{"lat":18.53651777677849,"lng":-72.29986217373437},{"lat":18.537866818958538,"lng":-72.29843898924071},{"lat":18.537866818958538,"lng":-72.29701580474703},{"lat":18.537866818958538,"lng":-72.29559262025337},{"lat":18.537866818958538,"lng":-72.29416943575971},{"lat":"0.185372E2","lng":"-0.72294E2"}],"confirmed":1,"deadline":329,"plan_id":36}
+begin drop off 136 : 137
+test: 16
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+{ teammate: 136,
+  task: 357,
+  direction: 'go',
+  status: 1,
+  id: 548,
+  player_id: 137,
+  frame_id: 86,
+  frame_size: 2,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.537866818958538, lng: -72.29701580474703 },
+     { lat: 18.537866818958538, lng: -72.29559262025337 },
+     { lat: 18.537866818958538, lng: -72.29416943575971 },
+     { lat: '0.185372E2', lng: '-0.72294E2' } ],
+  confirmed: 1,
+  deadline: 329,
+  plan_id: 36 }
+instruction: {"teammate":136,"task":357,"direction":"go","status":1,"id":548,"player_id":137,"frame_id":86,"frame_size":2,"path":[{"lat":18.533819692418383,"lng":-72.3027085427217},{"lat":18.535168734598436,"lng":-72.30128535822804},{"lat":18.53651777677849,"lng":-72.29986217373437},{"lat":18.537866818958538,"lng":-72.29843898924071},{"lat":18.537866818958538,"lng":-72.29701580474703},{"lat":18.537866818958538,"lng":-72.29559262025337},{"lat":18.537866818958538,"lng":-72.29416943575971},{"lat":"0.185372E2","lng":"-0.72294E2"}],"confirmed":1,"deadline":329,"plan_id":36}
+{"teammate":136,"task":357,"direction":"go","status":1,"id":548,"player_id":137,"frame_id":86,"frame_size":2,"path":[{"lat":18.533819692418383,"lng":-72.3027085427217},{"lat":18.535168734598436,"lng":-72.30128535822804},{"lat":18.53651777677849,"lng":-72.29986217373437},{"lat":18.537866818958538,"lng":-72.29843898924071},{"lat":18.537866818958538,"lng":-72.29701580474703},{"lat":18.537866818958538,"lng":-72.29559262025337},{"lat":18.537866818958538,"lng":-72.29416943575971},{"lat":"0.185372E2","lng":"-0.72294E2"}],"confirmed":1,"deadline":329,"plan_id":36}
+begin drop off 137 : 136
+test: 17
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:3
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:6
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:7
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:1
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:4
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:8
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:2
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:5
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:9
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:3
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:10
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:6
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:11
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:4
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:7
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:12
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:5
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:8
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:13
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:6
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:9
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:14
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:7
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+movement finished
+135 wait for 140
+movement finished
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+begin drop off 140 : 135 path [{"lat":18.540901056209403,"lng":-72.31699923514856},{"lat":18.532243,"lng":-72.303938}]:[{"lat":18.540901056209403,"lng":-72.31699923514856},{"lat":18.532243,"lng":-72.303938}]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+movement finished
+137 wait for 136
+movement finished
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"30","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+begin drop off 136 : 137 path [{"lat":18.537231132095783,"lng":-72.29379163804197},{"lat":18.532243,"lng":-72.303938}]:[{"lat":18.537231132095783,"lng":-72.29379163804197},{"lat":18.532243,"lng":-72.303938}]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+movement finished
+139 wait for 134
+movement finished
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"30","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+begin drop off 134 : 139 path [{"lat":18.55088079948125,"lng":-72.3096529538418},{"lat":18.532243,"lng":-72.303938}]:[{"lat":18.55088079948125,"lng":-72.3096529538418},{"lat":18.532243,"lng":-72.303938}]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+movement finished
+movement finished
+movement finished
+movement finished
+movement finished
+movement finished
+{ teammate: 135,
+  task: 367,
+  direction: 'north east',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.53921586113859, lng: -72.29701580474703 },
+     { lat: 18.540564903318643, lng: -72.29559262025337 },
+     { lat: 18.541913945498695, lng: -72.29559262025337 },
+     { lat: 18.543262987678748, lng: -72.29559262025337 },
+     { lat: 18.5446120298588, lng: -72.29559262025337 },
+     { lat: 18.545961072038853, lng: -72.29559262025337 },
+     { lat: 18.547310114218906, lng: -72.29559262025337 },
+     { lat: 18.548659156398955, lng: -72.29559262025337 },
+     { lat: 18.550008198579008, lng: -72.29559262025337 },
+     { lat: 18.55135724075906, lng: -72.29559262025337 },
+     { lat: 18.552706282939113, lng: -72.29559262025337 },
+     { lat: 18.554055325119165, lng: -72.29559262025337 },
+     { lat: 18.555404367299218, lng: -72.29559262025337 },
+     { lat: 18.55675340947927, lng: -72.29559262025337 },
+     { lat: 18.558102451659323, lng: -72.29559262025337 },
+     { lat: 18.559451493839372, lng: -72.29559262025337 },
+     { lat: 18.560800536019425, lng: -72.29559262025337 } ],
+  id: 549,
+  player_id: 134,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 18
+{ teammate: 134,
+  task: 367,
+  direction: 'north east',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.53921586113859, lng: -72.29701580474703 },
+     { lat: 18.540564903318643, lng: -72.29559262025337 },
+     { lat: 18.541913945498695, lng: -72.29559262025337 },
+     { lat: 18.543262987678748, lng: -72.29559262025337 },
+     { lat: 18.5446120298588, lng: -72.29559262025337 },
+     { lat: 18.545961072038853, lng: -72.29559262025337 },
+     { lat: 18.547310114218906, lng: -72.29559262025337 },
+     { lat: 18.548659156398955, lng: -72.29559262025337 },
+     { lat: 18.550008198579008, lng: -72.29559262025337 },
+     { lat: 18.55135724075906, lng: -72.29559262025337 },
+     { lat: 18.552706282939113, lng: -72.29559262025337 },
+     { lat: 18.554055325119165, lng: -72.29559262025337 },
+     { lat: 18.555404367299218, lng: -72.29559262025337 },
+     { lat: 18.55675340947927, lng: -72.29559262025337 },
+     { lat: 18.558102451659323, lng: -72.29559262025337 },
+     { lat: 18.559451493839372, lng: -72.29559262025337 },
+     { lat: 18.560800536019425, lng: -72.29559262025337 } ],
+  id: 550,
+  player_id: 135,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 19
+{ teammate: 137,
+  task: 361,
+  direction: 'north east',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.3027085427217 },
+     { lat: 18.53651777677849, lng: -72.3027085427217 },
+     { lat: 18.537866818958538, lng: -72.3027085427217 },
+     { lat: 18.53921586113859, lng: -72.3027085427217 },
+     { lat: 18.540564903318643, lng: -72.3027085427217 },
+     { lat: 18.541913945498695, lng: -72.3027085427217 },
+     { lat: 18.543262987678748, lng: -72.3027085427217 },
+     { lat: 18.5446120298588, lng: -72.3027085427217 } ],
+  id: 551,
+  player_id: 136,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 20
+{ teammate: 136,
+  task: 361,
+  direction: 'north east',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.3027085427217 },
+     { lat: 18.53651777677849, lng: -72.3027085427217 },
+     { lat: 18.537866818958538, lng: -72.3027085427217 },
+     { lat: 18.53921586113859, lng: -72.3027085427217 },
+     { lat: 18.540564903318643, lng: -72.3027085427217 },
+     { lat: 18.541913945498695, lng: -72.3027085427217 },
+     { lat: 18.543262987678748, lng: -72.3027085427217 },
+     { lat: 18.5446120298588, lng: -72.3027085427217 } ],
+  id: 552,
+  player_id: 137,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 21
+{ teammate: 139,
+  task: 359,
+  direction: 'north west',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.540564903318643, lng: -72.31409401867103 },
+     { lat: 18.540564903318643, lng: -72.31551720316469 },
+     { lat: 18.540564903318643, lng: -72.31694038765836 },
+     { lat: 18.540564903318643, lng: -72.31836357215202 },
+     { lat: 18.540564903318643, lng: -72.31978675664568 },
+     { lat: 18.540564903318643, lng: -72.32120994113936 },
+     { lat: 18.540564903318643, lng: -72.32263312563302 },
+     { lat: 18.540564903318643, lng: -72.32405631012669 },
+     { lat: 18.540564903318643, lng: -72.32547949462035 },
+     { lat: 18.540564903318643, lng: -72.32690267911401 },
+     { lat: 18.540564903318643, lng: -72.32832586360769 },
+     { lat: 18.540564903318643, lng: -72.32974904810135 },
+     { lat: 18.540564903318643, lng: -72.33117223259501 },
+     { lat: 18.540564903318643, lng: -72.33259541708868 },
+     { lat: 18.540564903318643, lng: -72.33401860158234 },
+     { lat: 18.540564903318643, lng: -72.33544178607602 } ],
+  id: 553,
+  player_id: 138,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 22
+{ teammate: 138,
+  task: 359,
+  direction: 'north west',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.540564903318643, lng: -72.31409401867103 },
+     { lat: 18.540564903318643, lng: -72.31551720316469 },
+     { lat: 18.540564903318643, lng: -72.31694038765836 },
+     { lat: 18.540564903318643, lng: -72.31836357215202 },
+     { lat: 18.540564903318643, lng: -72.31978675664568 },
+     { lat: 18.540564903318643, lng: -72.32120994113936 },
+     { lat: 18.540564903318643, lng: -72.32263312563302 },
+     { lat: 18.540564903318643, lng: -72.32405631012669 },
+     { lat: 18.540564903318643, lng: -72.32547949462035 },
+     { lat: 18.540564903318643, lng: -72.32690267911401 },
+     { lat: 18.540564903318643, lng: -72.32832586360769 },
+     { lat: 18.540564903318643, lng: -72.32974904810135 },
+     { lat: 18.540564903318643, lng: -72.33117223259501 },
+     { lat: 18.540564903318643, lng: -72.33259541708868 },
+     { lat: 18.540564903318643, lng: -72.33401860158234 },
+     { lat: 18.540564903318643, lng: -72.33544178607602 } ],
+  id: 554,
+  player_id: 139,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 23
+{ teammate: -1,
+  task: -1,
+  direction: 'none',
+  status: 1,
+  path: [],
+  id: 555,
+  player_id: 140,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 24
+{ teammate: 135,
+  task: 367,
+  direction: 'go',
+  status: 1,
+  id: 556,
+  player_id: 134,
+  frame_id: 88,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.53921586113859, lng: -72.29701580474703 },
+     { lat: 18.540564903318643, lng: -72.29559262025337 },
+     { lat: 18.541913945498695, lng: -72.29559262025337 },
+     { lat: 18.543262987678748, lng: -72.29559262025337 },
+     { lat: 18.5446120298588, lng: -72.29559262025337 },
+     { lat: 18.545961072038853, lng: -72.29559262025337 },
+     { lat: 18.547310114218906, lng: -72.29559262025337 },
+     { lat: 18.548659156398955, lng: -72.29559262025337 },
+     { lat: 18.550008198579008, lng: -72.29559262025337 },
+     { lat: 18.55135724075906, lng: -72.29559262025337 },
+     { lat: 18.552706282939113, lng: -72.29559262025337 },
+     { lat: 18.554055325119165, lng: -72.29559262025337 },
+     { lat: 18.555404367299218, lng: -72.29559262025337 },
+     { lat: 18.55675340947927, lng: -72.29559262025337 },
+     { lat: 18.558102451659323, lng: -72.29559262025337 },
+     { lat: 18.559451493839372, lng: -72.29559262025337 },
+     { lat: 18.560800536019425, lng: -72.29559262025337 },
+     { lat: '0.1856E2', lng: '-0.722952E2' } ],
+  confirmed: 1,
+  deadline: 101,
+  plan_id: 37 }
+instruction: {"teammate":135,"task":367,"direction":"go","status":1,"id":556,"player_id":134,"frame_id":88,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.3027085427217},{"lat":18.535168734598436,"lng":-72.30128535822804},{"lat":18.53651777677849,"lng":-72.29986217373437},{"lat":18.537866818958538,"lng":-72.29843898924071},{"lat":18.53921586113859,"lng":-72.29701580474703},{"lat":18.540564903318643,"lng":-72.29559262025337},{"lat":18.541913945498695,"lng":-72.29559262025337},{"lat":18.543262987678748,"lng":-72.29559262025337},{"lat":18.5446120298588,"lng":-72.29559262025337},{"lat":18.545961072038853,"lng":-72.29559262025337},{"lat":18.547310114218906,"lng":-72.29559262025337},{"lat":18.548659156398955,"lng":-72.29559262025337},{"lat":18.550008198579008,"lng":-72.29559262025337},{"lat":18.55135724075906,"lng":-72.29559262025337},{"lat":18.552706282939113,"lng":-72.29559262025337},{"lat":18.554055325119165,"lng":-72.29559262025337},{"lat":18.555404367299218,"lng":-72.29559262025337},{"lat":18.55675340947927,"lng":-72.29559262025337},{"lat":18.558102451659323,"lng":-72.29559262025337},{"lat":18.559451493839372,"lng":-72.29559262025337},{"lat":18.560800536019425,"lng":-72.29559262025337},{"lat":"0.1856E2","lng":"-0.722952E2"}],"confirmed":1,"deadline":101,"plan_id":37}
+{"teammate":135,"task":367,"direction":"go","status":1,"id":556,"player_id":134,"frame_id":88,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.3027085427217},{"lat":18.535168734598436,"lng":-72.30128535822804},{"lat":18.53651777677849,"lng":-72.29986217373437},{"lat":18.537866818958538,"lng":-72.29843898924071},{"lat":18.53921586113859,"lng":-72.29701580474703},{"lat":18.540564903318643,"lng":-72.29559262025337},{"lat":18.541913945498695,"lng":-72.29559262025337},{"lat":18.543262987678748,"lng":-72.29559262025337},{"lat":18.5446120298588,"lng":-72.29559262025337},{"lat":18.545961072038853,"lng":-72.29559262025337},{"lat":18.547310114218906,"lng":-72.29559262025337},{"lat":18.548659156398955,"lng":-72.29559262025337},{"lat":18.550008198579008,"lng":-72.29559262025337},{"lat":18.55135724075906,"lng":-72.29559262025337},{"lat":18.552706282939113,"lng":-72.29559262025337},{"lat":18.554055325119165,"lng":-72.29559262025337},{"lat":18.555404367299218,"lng":-72.29559262025337},{"lat":18.55675340947927,"lng":-72.29559262025337},{"lat":18.558102451659323,"lng":-72.29559262025337},{"lat":18.559451493839372,"lng":-72.29559262025337},{"lat":18.560800536019425,"lng":-72.29559262025337},{"lat":"0.1856E2","lng":"-0.722952E2"}],"confirmed":1,"deadline":101,"plan_id":37}
+begin drop off 134 : 135
+test: 25
+{ teammate: 134,
+  task: 367,
+  direction: 'go',
+  status: 1,
+  id: 557,
+  player_id: 135,
+  frame_id: 88,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.53921586113859, lng: -72.29701580474703 },
+     { lat: 18.540564903318643, lng: -72.29559262025337 },
+     { lat: 18.541913945498695, lng: -72.29559262025337 },
+     { lat: 18.543262987678748, lng: -72.29559262025337 },
+     { lat: 18.5446120298588, lng: -72.29559262025337 },
+     { lat: 18.545961072038853, lng: -72.29559262025337 },
+     { lat: 18.547310114218906, lng: -72.29559262025337 },
+     { lat: 18.548659156398955, lng: -72.29559262025337 },
+     { lat: 18.550008198579008, lng: -72.29559262025337 },
+     { lat: 18.55135724075906, lng: -72.29559262025337 },
+     { lat: 18.552706282939113, lng: -72.29559262025337 },
+     { lat: 18.554055325119165, lng: -72.29559262025337 },
+     { lat: 18.555404367299218, lng: -72.29559262025337 },
+     { lat: 18.55675340947927, lng: -72.29559262025337 },
+     { lat: 18.558102451659323, lng: -72.29559262025337 },
+     { lat: 18.559451493839372, lng: -72.29559262025337 },
+     { lat: 18.560800536019425, lng: -72.29559262025337 },
+     { lat: '0.1856E2', lng: '-0.722952E2' } ],
+  confirmed: 1,
+  deadline: 101,
+  plan_id: 37 }
+instruction: {"teammate":134,"task":367,"direction":"go","status":1,"id":557,"player_id":135,"frame_id":88,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.3027085427217},{"lat":18.535168734598436,"lng":-72.30128535822804},{"lat":18.53651777677849,"lng":-72.29986217373437},{"lat":18.537866818958538,"lng":-72.29843898924071},{"lat":18.53921586113859,"lng":-72.29701580474703},{"lat":18.540564903318643,"lng":-72.29559262025337},{"lat":18.541913945498695,"lng":-72.29559262025337},{"lat":18.543262987678748,"lng":-72.29559262025337},{"lat":18.5446120298588,"lng":-72.29559262025337},{"lat":18.545961072038853,"lng":-72.29559262025337},{"lat":18.547310114218906,"lng":-72.29559262025337},{"lat":18.548659156398955,"lng":-72.29559262025337},{"lat":18.550008198579008,"lng":-72.29559262025337},{"lat":18.55135724075906,"lng":-72.29559262025337},{"lat":18.552706282939113,"lng":-72.29559262025337},{"lat":18.554055325119165,"lng":-72.29559262025337},{"lat":18.555404367299218,"lng":-72.29559262025337},{"lat":18.55675340947927,"lng":-72.29559262025337},{"lat":18.558102451659323,"lng":-72.29559262025337},{"lat":18.559451493839372,"lng":-72.29559262025337},{"lat":18.560800536019425,"lng":-72.29559262025337},{"lat":"0.1856E2","lng":"-0.722952E2"}],"confirmed":1,"deadline":101,"plan_id":37}
+{"teammate":134,"task":367,"direction":"go","status":1,"id":557,"player_id":135,"frame_id":88,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.3027085427217},{"lat":18.535168734598436,"lng":-72.30128535822804},{"lat":18.53651777677849,"lng":-72.29986217373437},{"lat":18.537866818958538,"lng":-72.29843898924071},{"lat":18.53921586113859,"lng":-72.29701580474703},{"lat":18.540564903318643,"lng":-72.29559262025337},{"lat":18.541913945498695,"lng":-72.29559262025337},{"lat":18.543262987678748,"lng":-72.29559262025337},{"lat":18.5446120298588,"lng":-72.29559262025337},{"lat":18.545961072038853,"lng":-72.29559262025337},{"lat":18.547310114218906,"lng":-72.29559262025337},{"lat":18.548659156398955,"lng":-72.29559262025337},{"lat":18.550008198579008,"lng":-72.29559262025337},{"lat":18.55135724075906,"lng":-72.29559262025337},{"lat":18.552706282939113,"lng":-72.29559262025337},{"lat":18.554055325119165,"lng":-72.29559262025337},{"lat":18.555404367299218,"lng":-72.29559262025337},{"lat":18.55675340947927,"lng":-72.29559262025337},{"lat":18.558102451659323,"lng":-72.29559262025337},{"lat":18.559451493839372,"lng":-72.29559262025337},{"lat":18.560800536019425,"lng":-72.29559262025337},{"lat":"0.1856E2","lng":"-0.722952E2"}],"confirmed":1,"deadline":101,"plan_id":37}
+begin drop off 135 : 134
+test: 26
+{ teammate: 137,
+  task: 361,
+  direction: 'go',
+  status: 1,
+  id: 558,
+  player_id: 136,
+  frame_id: 88,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.3027085427217 },
+     { lat: 18.53651777677849, lng: -72.3027085427217 },
+     { lat: 18.537866818958538, lng: -72.3027085427217 },
+     { lat: 18.53921586113859, lng: -72.3027085427217 },
+     { lat: 18.540564903318643, lng: -72.3027085427217 },
+     { lat: 18.541913945498695, lng: -72.3027085427217 },
+     { lat: 18.543262987678748, lng: -72.3027085427217 },
+     { lat: 18.5446120298588, lng: -72.3027085427217 },
+     { lat: '0.185444E2', lng: '-0.723024E2' } ],
+  confirmed: 1,
+  deadline: 124,
+  plan_id: 37 }
+instruction: {"teammate":137,"task":361,"direction":"go","status":1,"id":558,"player_id":136,"frame_id":88,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.3027085427217},{"lat":18.535168734598436,"lng":-72.3027085427217},{"lat":18.53651777677849,"lng":-72.3027085427217},{"lat":18.537866818958538,"lng":-72.3027085427217},{"lat":18.53921586113859,"lng":-72.3027085427217},{"lat":18.540564903318643,"lng":-72.3027085427217},{"lat":18.541913945498695,"lng":-72.3027085427217},{"lat":18.543262987678748,"lng":-72.3027085427217},{"lat":18.5446120298588,"lng":-72.3027085427217},{"lat":"0.185444E2","lng":"-0.723024E2"}],"confirmed":1,"deadline":124,"plan_id":37}
+{"teammate":137,"task":361,"direction":"go","status":1,"id":558,"player_id":136,"frame_id":88,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.3027085427217},{"lat":18.535168734598436,"lng":-72.3027085427217},{"lat":18.53651777677849,"lng":-72.3027085427217},{"lat":18.537866818958538,"lng":-72.3027085427217},{"lat":18.53921586113859,"lng":-72.3027085427217},{"lat":18.540564903318643,"lng":-72.3027085427217},{"lat":18.541913945498695,"lng":-72.3027085427217},{"lat":18.543262987678748,"lng":-72.3027085427217},{"lat":18.5446120298588,"lng":-72.3027085427217},{"lat":"0.185444E2","lng":"-0.723024E2"}],"confirmed":1,"deadline":124,"plan_id":37}
+begin drop off 136 : 137
+test: 27
+{ teammate: 136,
+  task: 361,
+  direction: 'go',
+  status: 1,
+  id: 559,
+  player_id: 137,
+  frame_id: 88,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.3027085427217 },
+     { lat: 18.53651777677849, lng: -72.3027085427217 },
+     { lat: 18.537866818958538, lng: -72.3027085427217 },
+     { lat: 18.53921586113859, lng: -72.3027085427217 },
+     { lat: 18.540564903318643, lng: -72.3027085427217 },
+     { lat: 18.541913945498695, lng: -72.3027085427217 },
+     { lat: 18.543262987678748, lng: -72.3027085427217 },
+     { lat: 18.5446120298588, lng: -72.3027085427217 },
+     { lat: '0.185444E2', lng: '-0.723024E2' } ],
+  confirmed: 1,
+  deadline: 124,
+  plan_id: 37 }
+instruction: {"teammate":136,"task":361,"direction":"go","status":1,"id":559,"player_id":137,"frame_id":88,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.3027085427217},{"lat":18.535168734598436,"lng":-72.3027085427217},{"lat":18.53651777677849,"lng":-72.3027085427217},{"lat":18.537866818958538,"lng":-72.3027085427217},{"lat":18.53921586113859,"lng":-72.3027085427217},{"lat":18.540564903318643,"lng":-72.3027085427217},{"lat":18.541913945498695,"lng":-72.3027085427217},{"lat":18.543262987678748,"lng":-72.3027085427217},{"lat":18.5446120298588,"lng":-72.3027085427217},{"lat":"0.185444E2","lng":"-0.723024E2"}],"confirmed":1,"deadline":124,"plan_id":37}
+{"teammate":136,"task":361,"direction":"go","status":1,"id":559,"player_id":137,"frame_id":88,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.3027085427217},{"lat":18.535168734598436,"lng":-72.3027085427217},{"lat":18.53651777677849,"lng":-72.3027085427217},{"lat":18.537866818958538,"lng":-72.3027085427217},{"lat":18.53921586113859,"lng":-72.3027085427217},{"lat":18.540564903318643,"lng":-72.3027085427217},{"lat":18.541913945498695,"lng":-72.3027085427217},{"lat":18.543262987678748,"lng":-72.3027085427217},{"lat":18.5446120298588,"lng":-72.3027085427217},{"lat":"0.185444E2","lng":"-0.723024E2"}],"confirmed":1,"deadline":124,"plan_id":37}
+begin drop off 137 : 136
+test: 28
+{ teammate: 139,
+  task: 359,
+  direction: 'go',
+  status: 1,
+  id: 560,
+  player_id: 138,
+  frame_id: 88,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.540564903318643, lng: -72.31409401867103 },
+     { lat: 18.540564903318643, lng: -72.31551720316469 },
+     { lat: 18.540564903318643, lng: -72.31694038765836 },
+     { lat: 18.540564903318643, lng: -72.31836357215202 },
+     { lat: 18.540564903318643, lng: -72.31978675664568 },
+     { lat: 18.540564903318643, lng: -72.32120994113936 },
+     { lat: 18.540564903318643, lng: -72.32263312563302 },
+     { lat: 18.540564903318643, lng: -72.32405631012669 },
+     { lat: 18.540564903318643, lng: -72.32547949462035 },
+     { lat: 18.540564903318643, lng: -72.32690267911401 },
+     { lat: 18.540564903318643, lng: -72.32832586360769 },
+     { lat: 18.540564903318643, lng: -72.32974904810135 },
+     { lat: 18.540564903318643, lng: -72.33117223259501 },
+     { lat: 18.540564903318643, lng: -72.33259541708868 },
+     { lat: 18.540564903318643, lng: -72.33401860158234 },
+     { lat: 18.540564903318643, lng: -72.33544178607602 },
+     { lat: '0.185396E2', lng: '-0.723348E2' } ],
+  confirmed: 1,
+  deadline: 57,
+  plan_id: 37 }
+instruction: {"teammate":139,"task":359,"direction":"go","status":1,"id":560,"player_id":138,"frame_id":88,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.30555491170904},{"lat":18.535168734598436,"lng":-72.3069780962027},{"lat":18.53651777677849,"lng":-72.30840128069636},{"lat":18.537866818958538,"lng":-72.30982446519003},{"lat":18.53921586113859,"lng":-72.3112476496837},{"lat":18.540564903318643,"lng":-72.31267083417737},{"lat":18.540564903318643,"lng":-72.31409401867103},{"lat":18.540564903318643,"lng":-72.31551720316469},{"lat":18.540564903318643,"lng":-72.31694038765836},{"lat":18.540564903318643,"lng":-72.31836357215202},{"lat":18.540564903318643,"lng":-72.31978675664568},{"lat":18.540564903318643,"lng":-72.32120994113936},{"lat":18.540564903318643,"lng":-72.32263312563302},{"lat":18.540564903318643,"lng":-72.32405631012669},{"lat":18.540564903318643,"lng":-72.32547949462035},{"lat":18.540564903318643,"lng":-72.32690267911401},{"lat":18.540564903318643,"lng":-72.32832586360769},{"lat":18.540564903318643,"lng":-72.32974904810135},{"lat":18.540564903318643,"lng":-72.33117223259501},{"lat":18.540564903318643,"lng":-72.33259541708868},{"lat":18.540564903318643,"lng":-72.33401860158234},{"lat":18.540564903318643,"lng":-72.33544178607602},{"lat":"0.185396E2","lng":"-0.723348E2"}],"confirmed":1,"deadline":57,"plan_id":37}
+{"teammate":139,"task":359,"direction":"go","status":1,"id":560,"player_id":138,"frame_id":88,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.30555491170904},{"lat":18.535168734598436,"lng":-72.3069780962027},{"lat":18.53651777677849,"lng":-72.30840128069636},{"lat":18.537866818958538,"lng":-72.30982446519003},{"lat":18.53921586113859,"lng":-72.3112476496837},{"lat":18.540564903318643,"lng":-72.31267083417737},{"lat":18.540564903318643,"lng":-72.31409401867103},{"lat":18.540564903318643,"lng":-72.31551720316469},{"lat":18.540564903318643,"lng":-72.31694038765836},{"lat":18.540564903318643,"lng":-72.31836357215202},{"lat":18.540564903318643,"lng":-72.31978675664568},{"lat":18.540564903318643,"lng":-72.32120994113936},{"lat":18.540564903318643,"lng":-72.32263312563302},{"lat":18.540564903318643,"lng":-72.32405631012669},{"lat":18.540564903318643,"lng":-72.32547949462035},{"lat":18.540564903318643,"lng":-72.32690267911401},{"lat":18.540564903318643,"lng":-72.32832586360769},{"lat":18.540564903318643,"lng":-72.32974904810135},{"lat":18.540564903318643,"lng":-72.33117223259501},{"lat":18.540564903318643,"lng":-72.33259541708868},{"lat":18.540564903318643,"lng":-72.33401860158234},{"lat":18.540564903318643,"lng":-72.33544178607602},{"lat":"0.185396E2","lng":"-0.723348E2"}],"confirmed":1,"deadline":57,"plan_id":37}
+begin drop off 138 : 139
+test: 29
+{ teammate: 138,
+  task: 359,
+  direction: 'go',
+  status: 1,
+  id: 561,
+  player_id: 139,
+  frame_id: 88,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.540564903318643, lng: -72.31409401867103 },
+     { lat: 18.540564903318643, lng: -72.31551720316469 },
+     { lat: 18.540564903318643, lng: -72.31694038765836 },
+     { lat: 18.540564903318643, lng: -72.31836357215202 },
+     { lat: 18.540564903318643, lng: -72.31978675664568 },
+     { lat: 18.540564903318643, lng: -72.32120994113936 },
+     { lat: 18.540564903318643, lng: -72.32263312563302 },
+     { lat: 18.540564903318643, lng: -72.32405631012669 },
+     { lat: 18.540564903318643, lng: -72.32547949462035 },
+     { lat: 18.540564903318643, lng: -72.32690267911401 },
+     { lat: 18.540564903318643, lng: -72.32832586360769 },
+     { lat: 18.540564903318643, lng: -72.32974904810135 },
+     { lat: 18.540564903318643, lng: -72.33117223259501 },
+     { lat: 18.540564903318643, lng: -72.33259541708868 },
+     { lat: 18.540564903318643, lng: -72.33401860158234 },
+     { lat: 18.540564903318643, lng: -72.33544178607602 },
+     { lat: '0.185396E2', lng: '-0.723348E2' } ],
+  confirmed: 1,
+  deadline: 57,
+  plan_id: 37 }
+instruction: {"teammate":138,"task":359,"direction":"go","status":1,"id":561,"player_id":139,"frame_id":88,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.30555491170904},{"lat":18.535168734598436,"lng":-72.3069780962027},{"lat":18.53651777677849,"lng":-72.30840128069636},{"lat":18.537866818958538,"lng":-72.30982446519003},{"lat":18.53921586113859,"lng":-72.3112476496837},{"lat":18.540564903318643,"lng":-72.31267083417737},{"lat":18.540564903318643,"lng":-72.31409401867103},{"lat":18.540564903318643,"lng":-72.31551720316469},{"lat":18.540564903318643,"lng":-72.31694038765836},{"lat":18.540564903318643,"lng":-72.31836357215202},{"lat":18.540564903318643,"lng":-72.31978675664568},{"lat":18.540564903318643,"lng":-72.32120994113936},{"lat":18.540564903318643,"lng":-72.32263312563302},{"lat":18.540564903318643,"lng":-72.32405631012669},{"lat":18.540564903318643,"lng":-72.32547949462035},{"lat":18.540564903318643,"lng":-72.32690267911401},{"lat":18.540564903318643,"lng":-72.32832586360769},{"lat":18.540564903318643,"lng":-72.32974904810135},{"lat":18.540564903318643,"lng":-72.33117223259501},{"lat":18.540564903318643,"lng":-72.33259541708868},{"lat":18.540564903318643,"lng":-72.33401860158234},{"lat":18.540564903318643,"lng":-72.33544178607602},{"lat":"0.185396E2","lng":"-0.723348E2"}],"confirmed":1,"deadline":57,"plan_id":37}
+{"teammate":138,"task":359,"direction":"go","status":1,"id":561,"player_id":139,"frame_id":88,"frame_size":7,"path":[{"lat":18.533819692418383,"lng":-72.30555491170904},{"lat":18.535168734598436,"lng":-72.3069780962027},{"lat":18.53651777677849,"lng":-72.30840128069636},{"lat":18.537866818958538,"lng":-72.30982446519003},{"lat":18.53921586113859,"lng":-72.3112476496837},{"lat":18.540564903318643,"lng":-72.31267083417737},{"lat":18.540564903318643,"lng":-72.31409401867103},{"lat":18.540564903318643,"lng":-72.31551720316469},{"lat":18.540564903318643,"lng":-72.31694038765836},{"lat":18.540564903318643,"lng":-72.31836357215202},{"lat":18.540564903318643,"lng":-72.31978675664568},{"lat":18.540564903318643,"lng":-72.32120994113936},{"lat":18.540564903318643,"lng":-72.32263312563302},{"lat":18.540564903318643,"lng":-72.32405631012669},{"lat":18.540564903318643,"lng":-72.32547949462035},{"lat":18.540564903318643,"lng":-72.32690267911401},{"lat":18.540564903318643,"lng":-72.32832586360769},{"lat":18.540564903318643,"lng":-72.32974904810135},{"lat":18.540564903318643,"lng":-72.33117223259501},{"lat":18.540564903318643,"lng":-72.33259541708868},{"lat":18.540564903318643,"lng":-72.33401860158234},{"lat":18.540564903318643,"lng":-72.33544178607602},{"lat":"0.185396E2","lng":"-0.723348E2"}],"confirmed":1,"deadline":57,"plan_id":37}
+begin drop off 139 : 138
+test: 30
+{ teammate: -1,
+  task: -1,
+  direction: 'stop',
+  status: 1,
+  id: 562,
+  player_id: 140,
+  frame_id: 88,
+  frame_size: 7,
+  path: [],
+  confirmed: 1,
+  deadline: 0,
+  plan_id: 37 }
+instruction: {"teammate":-1,"task":-1,"direction":"stop","status":1,"id":562,"player_id":140,"frame_id":88,"frame_size":7,"path":[],"confirmed":1,"deadline":0,"plan_id":37}
+test: 31
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:1
+section:1
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:1
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:2
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:2
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:2
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:3
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:3
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:3
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:4
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:5
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:4
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:4
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:6
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:5
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:5
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:7
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:6
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:6
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:8
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:7
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:7
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:9
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+movement finished
+137 wait for 136
+movement finished
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"30","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+begin drop off 136 : 137 path [{"lat":18.54474695052787,"lng":-72.30234496303648},{"lat":18.532243,"lng":-72.303938}]:[{"lat":18.54474695052787,"lng":-72.30234496303648},{"lat":18.532243,"lng":-72.303938}]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:8
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:8
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:9
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:9
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:10
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:10
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:11
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:11
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:12
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:12
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:13
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:13
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:14
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:14
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:15
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:15
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:16
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:16
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+movement finished
+movement finished
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:17
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:17
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:18
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:18
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:19
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:19
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:20
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:20
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:21
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:21
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+movement finished
+134 wait for 135
+movement finished
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+begin drop off 135 : 134 path [{"lat":18.560737765157487,"lng":-72.29509437554835},{"lat":18.57065,"lng":-72.310204}]:[{"lat":18.56075231199526,"lng":-72.29508348418955},{"lat":18.57065,"lng":-72.310204}]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"30","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+section:22
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"32","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+movement finished
+139 wait for 138
+movement finished
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"30","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+begin drop off 138 : 139 path [{"lat":18.539662399705385,"lng":-72.33560665414021},{"lat":18.532243,"lng":-72.303938}]:[{"lat":18.539667206408865,"lng":-72.33561146563277},{"lat":18.532243,"lng":-72.303938}]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+STATUS: 200
+HEADERS: {"content-type":"text/html;charset=utf-8","access-control-allow-origin":"*","content-length":"31","connection":"keep-alive","server":"thin 1.5.0 codename Knife"}
+BODY: [object Object]
+movement finished
+movement finished
+movement finished
+movement finished
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     movement finished
+movement finished
+{ teammate: 139,
+  task: 363,
+  direction: 'north west',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.30982446519003 },
+     { lat: 18.540564903318643, lng: -72.30982446519003 },
+     { lat: 18.541913945498695, lng: -72.30982446519003 },
+     { lat: 18.543262987678748, lng: -72.30982446519003 },
+     { lat: 18.5446120298588, lng: -72.30982446519003 },
+     { lat: 18.545961072038853, lng: -72.30982446519003 },
+     { lat: 18.547310114218906, lng: -72.30982446519003 },
+     { lat: 18.548659156398955, lng: -72.30982446519003 },
+     { lat: 18.550008198579008, lng: -72.30982446519003 },
+     { lat: 18.55135724075906, lng: -72.30982446519003 } ],
+  id: 531,
+  player_id: 134,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 70
+{ teammate: 140,
+  task: 360,
+  direction: 'north west',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.541913945498695, lng: -72.31409401867103 },
+     { lat: 18.541913945498695, lng: -72.31551720316469 },
+     { lat: 18.541913945498695, lng: -72.31694038765836 } ],
+  id: 532,
+  player_id: 135,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 71
+{ teammate: 137,
+  task: 357,
+  direction: 'north east',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.537866818958538, lng: -72.29701580474703 },
+     { lat: 18.537866818958538, lng: -72.29559262025337 },
+     { lat: 18.537866818958538, lng: -72.29416943575971 } ],
+  id: 533,
+  player_id: 136,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 72
+{ teammate: 136,
+  task: 357,
+  direction: 'north east',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.537866818958538, lng: -72.29701580474703 },
+     { lat: 18.537866818958538, lng: -72.29559262025337 },
+     { lat: 18.537866818958538, lng: -72.29416943575971 } ],
+  id: 534,
+  player_id: 137,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 73
+{ teammate: -1,
+  task: -1,
+  direction: 'none',
+  status: 1,
+  path: [],
+  id: 535,
+  player_id: 138,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 74
+{ teammate: 134,
+  task: 363,
+  direction: 'north west',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.30982446519003 },
+     { lat: 18.540564903318643, lng: -72.30982446519003 },
+     { lat: 18.541913945498695, lng: -72.30982446519003 },
+     { lat: 18.543262987678748, lng: -72.30982446519003 },
+     { lat: 18.5446120298588, lng: -72.30982446519003 },
+     { lat: 18.545961072038853, lng: -72.30982446519003 },
+     { lat: 18.547310114218906, lng: -72.30982446519003 },
+     { lat: 18.548659156398955, lng: -72.30982446519003 },
+     { lat: 18.550008198579008, lng: -72.30982446519003 },
+     { lat: 18.55135724075906, lng: -72.30982446519003 } ],
+  id: 536,
+  player_id: 139,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 75
+{ teammate: 135,
+  task: 360,
+  direction: 'north west',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.541913945498695, lng: -72.31409401867103 },
+     { lat: 18.541913945498695, lng: -72.31551720316469 },
+     { lat: 18.541913945498695, lng: -72.31694038765836 } ],
+  id: 537,
+  player_id: 140,
+  frame_id: 83,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 60 }
+test: 76
+{ teammate: 139,
+  task: 363,
+  direction: 'go',
+  status: 1,
+  id: 538,
+  player_id: 134,
+  frame_id: 84,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.30982446519003 },
+     { lat: 18.540564903318643, lng: -72.30982446519003 },
+     { lat: 18.541913945498695, lng: -72.30982446519003 },
+     { lat: 18.543262987678748, lng: -72.30982446519003 },
+     { lat: 18.5446120298588, lng: -72.30982446519003 },
+     { lat: 18.545961072038853, lng: -72.30982446519003 },
+     { lat: 18.547310114218906, lng: -72.30982446519003 },
+     { lat: 18.548659156398955, lng: -72.30982446519003 },
+     { lat: 18.550008198579008, lng: -72.30982446519003 },
+     { lat: 18.55135724075906, lng: -72.30982446519003 },
+     { lat: '0.185504E2', lng: '-0.723096E2' } ],
+  confirmed: 1,
+  deadline: null,
+  plan_id: 34 }
+test: 77
+{ teammate: 134,
+  task: 363,
+  direction: 'go',
+  status: 1,
+  id: 539,
+  player_id: 139,
+  frame_id: 84,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.30982446519003 },
+     { lat: 18.540564903318643, lng: -72.30982446519003 },
+     { lat: 18.541913945498695, lng: -72.30982446519003 },
+     { lat: 18.543262987678748, lng: -72.30982446519003 },
+     { lat: 18.5446120298588, lng: -72.30982446519003 },
+     { lat: 18.545961072038853, lng: -72.30982446519003 },
+     { lat: 18.547310114218906, lng: -72.30982446519003 },
+     { lat: 18.548659156398955, lng: -72.30982446519003 },
+     { lat: 18.550008198579008, lng: -72.30982446519003 },
+     { lat: 18.55135724075906, lng: -72.30982446519003 },
+     { lat: '0.185504E2', lng: '-0.723096E2' } ],
+  confirmed: 1,
+  deadline: null,
+  plan_id: 34 }
+test: 78
+{ teammate: -1,
+  task: -1,
+  direction: 'stop',
+  status: 1,
+  id: 540,
+  player_id: 135,
+  frame_id: 84,
+  frame_size: 7,
+  path: [],
+  confirmed: 1,
+  deadline: 0,
+  plan_id: 34 }
+test: 79
+{ teammate: -1,
+  task: -1,
+  direction: 'stop',
+  status: 1,
+  id: 541,
+  player_id: 136,
+  frame_id: 84,
+  frame_size: 7,
+  path: [],
+  confirmed: 1,
+  deadline: 0,
+  plan_id: 34 }
+test: 80
+{ teammate: -1,
+  task: -1,
+  direction: 'stop',
+  status: 1,
+  id: 542,
+  player_id: 137,
+  frame_id: 84,
+  frame_size: 7,
+  path: [],
+  confirmed: 1,
+  deadline: 0,
+  plan_id: 34 }
+test: 81
+{ teammate: -1,
+  task: -1,
+  direction: 'stop',
+  status: 1,
+  id: 543,
+  player_id: 138,
+  frame_id: 84,
+  frame_size: 7,
+  path: [],
+  confirmed: 1,
+  deadline: 0,
+  plan_id: 34 }
+test: 82
+{ teammate: -1,
+  task: -1,
+  direction: 'stop',
+  status: 1,
+  id: 544,
+  player_id: 140,
+  frame_id: 84,
+  frame_size: 7,
+  path: [],
+  confirmed: 1,
+  deadline: 0,
+  plan_id: 34 }
+test: 83
+{ teammate: 140,
+  task: 360,
+  direction: 'go',
+  status: 1,
+  id: 545,
+  player_id: 135,
+  frame_id: 85,
+  frame_size: 2,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.541913945498695, lng: -72.31409401867103 },
+     { lat: 18.541913945498695, lng: -72.31551720316469 },
+     { lat: 18.541913945498695, lng: -72.31694038765836 },
+     { lat: '0.185408E2', lng: '-0.723168E2' } ],
+  confirmed: 1,
+  deadline: null,
+  plan_id: 35 }
+test: 84
+{ teammate: 135,
+  task: 360,
+  direction: 'go',
+  status: 1,
+  id: 546,
+  player_id: 140,
+  frame_id: 85,
+  frame_size: 2,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.541913945498695, lng: -72.31409401867103 },
+     { lat: 18.541913945498695, lng: -72.31551720316469 },
+     { lat: 18.541913945498695, lng: -72.31694038765836 },
+     { lat: '0.185408E2', lng: '-0.723168E2' } ],
+  confirmed: 1,
+  deadline: null,
+  plan_id: 35 }
+test: 85
+{ teammate: 137,
+  task: 357,
+  direction: 'go',
+  status: 1,
+  id: 547,
+  player_id: 136,
+  frame_id: 86,
+  frame_size: 2,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.537866818958538, lng: -72.29701580474703 },
+     { lat: 18.537866818958538, lng: -72.29559262025337 },
+     { lat: 18.537866818958538, lng: -72.29416943575971 },
+     { lat: '0.185372E2', lng: '-0.72294E2' } ],
+  confirmed: 1,
+  deadline: 329,
+  plan_id: 36 }
+test: 86
+{ teammate: 136,
+  task: 357,
+  direction: 'go',
+  status: 1,
+  id: 548,
+  player_id: 137,
+  frame_id: 86,
+  frame_size: 2,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.537866818958538, lng: -72.29701580474703 },
+     { lat: 18.537866818958538, lng: -72.29559262025337 },
+     { lat: 18.537866818958538, lng: -72.29416943575971 },
+     { lat: '0.185372E2', lng: '-0.72294E2' } ],
+  confirmed: 1,
+  deadline: 329,
+  plan_id: 36 }
+test: 87
+{ teammate: 135,
+  task: 367,
+  direction: 'north east',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.53921586113859, lng: -72.29701580474703 },
+     { lat: 18.540564903318643, lng: -72.29559262025337 },
+     { lat: 18.541913945498695, lng: -72.29559262025337 },
+     { lat: 18.543262987678748, lng: -72.29559262025337 },
+     { lat: 18.5446120298588, lng: -72.29559262025337 },
+     { lat: 18.545961072038853, lng: -72.29559262025337 },
+     { lat: 18.547310114218906, lng: -72.29559262025337 },
+     { lat: 18.548659156398955, lng: -72.29559262025337 },
+     { lat: 18.550008198579008, lng: -72.29559262025337 },
+     { lat: 18.55135724075906, lng: -72.29559262025337 },
+     { lat: 18.552706282939113, lng: -72.29559262025337 },
+     { lat: 18.554055325119165, lng: -72.29559262025337 },
+     { lat: 18.555404367299218, lng: -72.29559262025337 },
+     { lat: 18.55675340947927, lng: -72.29559262025337 },
+     { lat: 18.558102451659323, lng: -72.29559262025337 },
+     { lat: 18.559451493839372, lng: -72.29559262025337 },
+     { lat: 18.560800536019425, lng: -72.29559262025337 } ],
+  id: 549,
+  player_id: 134,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 88
+{ teammate: 134,
+  task: 367,
+  direction: 'north east',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.53921586113859, lng: -72.29701580474703 },
+     { lat: 18.540564903318643, lng: -72.29559262025337 },
+     { lat: 18.541913945498695, lng: -72.29559262025337 },
+     { lat: 18.543262987678748, lng: -72.29559262025337 },
+     { lat: 18.5446120298588, lng: -72.29559262025337 },
+     { lat: 18.545961072038853, lng: -72.29559262025337 },
+     { lat: 18.547310114218906, lng: -72.29559262025337 },
+     { lat: 18.548659156398955, lng: -72.29559262025337 },
+     { lat: 18.550008198579008, lng: -72.29559262025337 },
+     { lat: 18.55135724075906, lng: -72.29559262025337 },
+     { lat: 18.552706282939113, lng: -72.29559262025337 },
+     { lat: 18.554055325119165, lng: -72.29559262025337 },
+     { lat: 18.555404367299218, lng: -72.29559262025337 },
+     { lat: 18.55675340947927, lng: -72.29559262025337 },
+     { lat: 18.558102451659323, lng: -72.29559262025337 },
+     { lat: 18.559451493839372, lng: -72.29559262025337 },
+     { lat: 18.560800536019425, lng: -72.29559262025337 } ],
+  id: 550,
+  player_id: 135,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 89
+{ teammate: 137,
+  task: 361,
+  direction: 'north east',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.3027085427217 },
+     { lat: 18.53651777677849, lng: -72.3027085427217 },
+     { lat: 18.537866818958538, lng: -72.3027085427217 },
+     { lat: 18.53921586113859, lng: -72.3027085427217 },
+     { lat: 18.540564903318643, lng: -72.3027085427217 },
+     { lat: 18.541913945498695, lng: -72.3027085427217 },
+     { lat: 18.543262987678748, lng: -72.3027085427217 },
+     { lat: 18.5446120298588, lng: -72.3027085427217 } ],
+  id: 551,
+  player_id: 136,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 90
+{ teammate: 136,
+  task: 361,
+  direction: 'north east',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.3027085427217 },
+     { lat: 18.53651777677849, lng: -72.3027085427217 },
+     { lat: 18.537866818958538, lng: -72.3027085427217 },
+     { lat: 18.53921586113859, lng: -72.3027085427217 },
+     { lat: 18.540564903318643, lng: -72.3027085427217 },
+     { lat: 18.541913945498695, lng: -72.3027085427217 },
+     { lat: 18.543262987678748, lng: -72.3027085427217 },
+     { lat: 18.5446120298588, lng: -72.3027085427217 } ],
+  id: 552,
+  player_id: 137,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 91
+{ teammate: 139,
+  task: 359,
+  direction: 'north west',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.540564903318643, lng: -72.31409401867103 },
+     { lat: 18.540564903318643, lng: -72.31551720316469 },
+     { lat: 18.540564903318643, lng: -72.31694038765836 },
+     { lat: 18.540564903318643, lng: -72.31836357215202 },
+     { lat: 18.540564903318643, lng: -72.31978675664568 },
+     { lat: 18.540564903318643, lng: -72.32120994113936 },
+     { lat: 18.540564903318643, lng: -72.32263312563302 },
+     { lat: 18.540564903318643, lng: -72.32405631012669 },
+     { lat: 18.540564903318643, lng: -72.32547949462035 },
+     { lat: 18.540564903318643, lng: -72.32690267911401 },
+     { lat: 18.540564903318643, lng: -72.32832586360769 },
+     { lat: 18.540564903318643, lng: -72.32974904810135 },
+     { lat: 18.540564903318643, lng: -72.33117223259501 },
+     { lat: 18.540564903318643, lng: -72.33259541708868 },
+     { lat: 18.540564903318643, lng: -72.33401860158234 },
+     { lat: 18.540564903318643, lng: -72.33544178607602 } ],
+  id: 553,
+  player_id: 138,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 92
+{ teammate: 138,
+  task: 359,
+  direction: 'north west',
+  status: 1,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.540564903318643, lng: -72.31409401867103 },
+     { lat: 18.540564903318643, lng: -72.31551720316469 },
+     { lat: 18.540564903318643, lng: -72.31694038765836 },
+     { lat: 18.540564903318643, lng: -72.31836357215202 },
+     { lat: 18.540564903318643, lng: -72.31978675664568 },
+     { lat: 18.540564903318643, lng: -72.32120994113936 },
+     { lat: 18.540564903318643, lng: -72.32263312563302 },
+     { lat: 18.540564903318643, lng: -72.32405631012669 },
+     { lat: 18.540564903318643, lng: -72.32547949462035 },
+     { lat: 18.540564903318643, lng: -72.32690267911401 },
+     { lat: 18.540564903318643, lng: -72.32832586360769 },
+     { lat: 18.540564903318643, lng: -72.32974904810135 },
+     { lat: 18.540564903318643, lng: -72.33117223259501 },
+     { lat: 18.540564903318643, lng: -72.33259541708868 },
+     { lat: 18.540564903318643, lng: -72.33401860158234 },
+     { lat: 18.540564903318643, lng: -72.33544178607602 } ],
+  id: 554,
+  player_id: 139,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 93
+{ teammate: -1,
+  task: -1,
+  direction: 'none',
+  status: 1,
+  path: [],
+  id: 555,
+  player_id: 140,
+  frame_id: 87,
+  frame_size: 7,
+  confirmed: 0,
+  plan_id: 61 }
+test: 94
+{ teammate: 135,
+  task: 367,
+  direction: 'go',
+  status: 1,
+  id: 556,
+  player_id: 134,
+  frame_id: 88,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.53921586113859, lng: -72.29701580474703 },
+     { lat: 18.540564903318643, lng: -72.29559262025337 },
+     { lat: 18.541913945498695, lng: -72.29559262025337 },
+     { lat: 18.543262987678748, lng: -72.29559262025337 },
+     { lat: 18.5446120298588, lng: -72.29559262025337 },
+     { lat: 18.545961072038853, lng: -72.29559262025337 },
+     { lat: 18.547310114218906, lng: -72.29559262025337 },
+     { lat: 18.548659156398955, lng: -72.29559262025337 },
+     { lat: 18.550008198579008, lng: -72.29559262025337 },
+     { lat: 18.55135724075906, lng: -72.29559262025337 },
+     { lat: 18.552706282939113, lng: -72.29559262025337 },
+     { lat: 18.554055325119165, lng: -72.29559262025337 },
+     { lat: 18.555404367299218, lng: -72.29559262025337 },
+     { lat: 18.55675340947927, lng: -72.29559262025337 },
+     { lat: 18.558102451659323, lng: -72.29559262025337 },
+     { lat: 18.559451493839372, lng: -72.29559262025337 },
+     { lat: 18.560800536019425, lng: -72.29559262025337 },
+     { lat: '0.1856E2', lng: '-0.722952E2' } ],
+  confirmed: 1,
+  deadline: 101,
+  plan_id: 37 }
+test: 95
+{ teammate: 134,
+  task: 367,
+  direction: 'go',
+  status: 1,
+  id: 557,
+  player_id: 135,
+  frame_id: 88,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.30128535822804 },
+     { lat: 18.53651777677849, lng: -72.29986217373437 },
+     { lat: 18.537866818958538, lng: -72.29843898924071 },
+     { lat: 18.53921586113859, lng: -72.29701580474703 },
+     { lat: 18.540564903318643, lng: -72.29559262025337 },
+     { lat: 18.541913945498695, lng: -72.29559262025337 },
+     { lat: 18.543262987678748, lng: -72.29559262025337 },
+     { lat: 18.5446120298588, lng: -72.29559262025337 },
+     { lat: 18.545961072038853, lng: -72.29559262025337 },
+     { lat: 18.547310114218906, lng: -72.29559262025337 },
+     { lat: 18.548659156398955, lng: -72.29559262025337 },
+     { lat: 18.550008198579008, lng: -72.29559262025337 },
+     { lat: 18.55135724075906, lng: -72.29559262025337 },
+     { lat: 18.552706282939113, lng: -72.29559262025337 },
+     { lat: 18.554055325119165, lng: -72.29559262025337 },
+     { lat: 18.555404367299218, lng: -72.29559262025337 },
+     { lat: 18.55675340947927, lng: -72.29559262025337 },
+     { lat: 18.558102451659323, lng: -72.29559262025337 },
+     { lat: 18.559451493839372, lng: -72.29559262025337 },
+     { lat: 18.560800536019425, lng: -72.29559262025337 },
+     { lat: '0.1856E2', lng: '-0.722952E2' } ],
+  confirmed: 1,
+  deadline: 101,
+  plan_id: 37 }
+test: 96
+{ teammate: 137,
+  task: 361,
+  direction: 'go',
+  status: 1,
+  id: 558,
+  player_id: 136,
+  frame_id: 88,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.3027085427217 },
+     { lat: 18.53651777677849, lng: -72.3027085427217 },
+     { lat: 18.537866818958538, lng: -72.3027085427217 },
+     { lat: 18.53921586113859, lng: -72.3027085427217 },
+     { lat: 18.540564903318643, lng: -72.3027085427217 },
+     { lat: 18.541913945498695, lng: -72.3027085427217 },
+     { lat: 18.543262987678748, lng: -72.3027085427217 },
+     { lat: 18.5446120298588, lng: -72.3027085427217 },
+     { lat: '0.185444E2', lng: '-0.723024E2' } ],
+  confirmed: 1,
+  deadline: 124,
+  plan_id: 37 }
+test: 97
+{ teammate: 136,
+  task: 361,
+  direction: 'go',
+  status: 1,
+  id: 559,
+  player_id: 137,
+  frame_id: 88,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.3027085427217 },
+     { lat: 18.535168734598436, lng: -72.3027085427217 },
+     { lat: 18.53651777677849, lng: -72.3027085427217 },
+     { lat: 18.537866818958538, lng: -72.3027085427217 },
+     { lat: 18.53921586113859, lng: -72.3027085427217 },
+     { lat: 18.540564903318643, lng: -72.3027085427217 },
+     { lat: 18.541913945498695, lng: -72.3027085427217 },
+     { lat: 18.543262987678748, lng: -72.3027085427217 },
+     { lat: 18.5446120298588, lng: -72.3027085427217 },
+     { lat: '0.185444E2', lng: '-0.723024E2' } ],
+  confirmed: 1,
+  deadline: 124,
+  plan_id: 37 }
+test: 98
+{ teammate: 139,
+  task: 359,
+  direction: 'go',
+  status: 1,
+  id: 560,
+  player_id: 138,
+  frame_id: 88,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.540564903318643, lng: -72.31409401867103 },
+     { lat: 18.540564903318643, lng: -72.31551720316469 },
+     { lat: 18.540564903318643, lng: -72.31694038765836 },
+     { lat: 18.540564903318643, lng: -72.31836357215202 },
+     { lat: 18.540564903318643, lng: -72.31978675664568 },
+     { lat: 18.540564903318643, lng: -72.32120994113936 },
+     { lat: 18.540564903318643, lng: -72.32263312563302 },
+     { lat: 18.540564903318643, lng: -72.32405631012669 },
+     { lat: 18.540564903318643, lng: -72.32547949462035 },
+     { lat: 18.540564903318643, lng: -72.32690267911401 },
+     { lat: 18.540564903318643, lng: -72.32832586360769 },
+     { lat: 18.540564903318643, lng: -72.32974904810135 },
+     { lat: 18.540564903318643, lng: -72.33117223259501 },
+     { lat: 18.540564903318643, lng: -72.33259541708868 },
+     { lat: 18.540564903318643, lng: -72.33401860158234 },
+     { lat: 18.540564903318643, lng: -72.33544178607602 },
+     { lat: '0.185396E2', lng: '-0.723348E2' } ],
+  confirmed: 1,
+  deadline: 57,
+  plan_id: 37 }
+test: 99
+{ teammate: 138,
+  task: 359,
+  direction: 'go',
+  status: 1,
+  id: 561,
+  player_id: 139,
+  frame_id: 88,
+  frame_size: 7,
+  path: 
+   [ { lat: 18.533819692418383, lng: -72.30555491170904 },
+     { lat: 18.535168734598436, lng: -72.3069780962027 },
+     { lat: 18.53651777677849, lng: -72.30840128069636 },
+     { lat: 18.537866818958538, lng: -72.30982446519003 },
+     { lat: 18.53921586113859, lng: -72.3112476496837 },
+     { lat: 18.540564903318643, lng: -72.31267083417737 },
+     { lat: 18.540564903318643, lng: -72.31409401867103 },
+     { lat: 18.540564903318643, lng: -72.31551720316469 },
+     { lat: 18.540564903318643, lng: -72.31694038765836 },
+     { lat: 18.540564903318643, lng: -72.31836357215202 },
+     { lat: 18.540564903318643, lng: -72.31978675664568 },
+     { lat: 18.540564903318643, lng: -72.32120994113936 },
+     { lat: 18.540564903318643, lng: -72.32263312563302 },
+     { lat: 18.540564903318643, lng: -72.32405631012669 },
+     { lat: 18.540564903318643, lng: -72.32547949462035 },
+     { lat: 18.540564903318643, lng: -72.32690267911401 },
+     { lat: 18.540564903318643, lng: -72.32832586360769 },
+     { lat: 18.540564903318643, lng: -72.32974904810135 },
+     { lat: 18.540564903318643, lng: -72.33117223259501 },
+     { lat: 18.540564903318643, lng: -72.33259541708868 },
+     { lat: 18.540564903318643, lng: -72.33401860158234 },
+     { lat: 18.540564903318643, lng: -72.33544178607602 },
+     { lat: '0.185396E2', lng: '-0.723348E2' } ],
+  confirmed: 1,
+  deadline: 57,
+  plan_id: 37 }
+test: 100
+{ teammate: -1,
+  task: -1,
+  direction: 'stop',
+  status: 1,
+  id: 562,
+  player_id: 140,
+  frame_id: 88,
+  frame_size: 7,
+  path: [],
+  confirmed: 1,
+  deadline: 0,
+  plan_id: 37 }
+test: 101

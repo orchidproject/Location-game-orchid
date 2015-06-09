@@ -346,9 +346,6 @@ setTimeout(function(){
 
 
 
-setTimeout(function(){
-    startAgents(2,'FF');
-},2000);
 
 setTimeout(function(){
     startAgents(3,'GG');
